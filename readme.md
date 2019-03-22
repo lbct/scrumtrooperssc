@@ -25,3 +25,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+## Conexiones a la base de datos
+Revisar el archivo .env
+
+Revisar el archivo config/database.php
+
+## Migración
+Crear migración: php artisan make:migration crear_tabla_xxx --create=xxx
+
+Hacer migración: php artisan migrate:refresh
+
+Campos: https://laravel.com/docs/5.0/schema
+
+Guía: https://richos.gitbooks.io/laravel-5/content/capitulos/chapter6.html
+
+##  Modelo
+php artisan make:model xxx
+
+Guía: https://fernando-gaitan.com.ar/laravel-5-parte-4-modelos-y-relaciones/
