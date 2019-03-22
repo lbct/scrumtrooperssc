@@ -28,6 +28,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Conexiones a la base de datos
 Revisar el archivo .env
+
 Revisar el archivo config/database.php
 
 ## Migración
