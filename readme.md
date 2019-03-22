@@ -32,9 +32,11 @@ Revisar el archivo config/database.php
 
 ## Migración
 Crear migración: php artisan make:migration crear_tabla_xxx --create=xxx
+
 Hacer migración: php artisan migrate:refresh
 
 Campos: https://laravel.com/docs/5.0/schema
+
 Guía: https://richos.gitbooks.io/laravel-5/content/capitulos/chapter6.html
 
 ##  Modelo
