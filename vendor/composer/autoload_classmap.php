@@ -6,8 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CrearTablaAdministrador' => $baseDir . '/database/migrations/2019_03_22_000005_crear_tabla_administrador.php',
+    'CrearTablaAula' => $baseDir . '/database/migrations/2019_03_22_000008_crear_tabla_aula.php',
+    'CrearTablaAuxiliar' => $baseDir . '/database/migrations/2019_03_22_000006_crear_tabla_auxiliar.php',
+    'CrearTablaDocente' => $baseDir . '/database/migrations/2019_03_22_000004_crear_tabla_docente.php',
+    'CrearTablaEstudiante' => $baseDir . '/database/migrations/2019_03_22_000007_crear_tabla_estudiante.php',
+    'CrearTablaGestion' => $baseDir . '/database/migrations/2019_03_22_000001_crear_tabla_gestion.php',
+    'CrearTablaHorario' => $baseDir . '/database/migrations/2019_03_22_191656_crear_tabla_horario.php',
+    'CrearTablaIniciarSesion' => $baseDir . '/database/migrations/2019_03_22_000009_crear_tabla_iniciar_sesion.php',
+    'CrearTablaMateria' => $baseDir . '/database/migrations/2019_03_22_000003_crear_tabla_materia.php',
+    'CrearTablaPersona' => $baseDir . '/database/migrations/2019_03_22_000002_crear_tabla_persona.php',
+    'CrearTablaUsuario' => $baseDir . '/database/migrations/2019_03_22_000000_crear_tabla_usuario.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
