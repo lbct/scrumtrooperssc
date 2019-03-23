@@ -12,6 +12,7 @@ class CrearTablaAuxiliar extends Migration
             
             $table->increments('ID');
             $table->integer('USUARIO_ID')->unsigned();
+            
             $table->timestamps();
             
             $table->foreign('USUARIO_ID')->references('ID')->on('USUARIO')->onDelete('cascade');

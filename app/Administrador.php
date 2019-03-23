@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Administrador extends Model
 {
-    protected $table = 'Administrador';
+    protected $table = 'ADMINISTRADOR';
     
     public function usuario()
     {
-        return $this->hasOne('App\Usuario', 'ID', 'USUARIO_ID');
+        return $this->belongsTo('App\Usuario', 'USUARIO_ID');
     }
 }

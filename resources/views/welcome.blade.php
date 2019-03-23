@@ -10,7 +10,7 @@
   <title>Bare - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
 
 </head>
 
