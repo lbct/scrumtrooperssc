@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Administrador extends Model
 {
-    protected $table = 'Administrador';
+    protected $table = 'ADMINISTRADOR';
     
     public function usuario()
     {
