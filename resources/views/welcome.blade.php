@@ -10,7 +10,7 @@
   <title>Bare - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -59,8 +59,8 @@
   </div>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{{asset('public/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('public/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
 </body>
 
