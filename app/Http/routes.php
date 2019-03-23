@@ -26,13 +26,13 @@ Route::get('home', function(){
     echo 'Welcome Home';
 });
 
-Route::get('test', function(){
-    $usuario = Usuario::find(1)->asignaRol->rol->asignaFuncion[0]->funcion->asignaFuncion[0]->rol->asignaRol[0]->usuario;
-    
-    echo $usuario;
-    echo 'Welcome Home';
-});
+Route::get('registrarse', 'RegistroEstudianteController@getRegistro');
+Route::post('registrarse', 'RegistroEstudianteController@postRegistro');
 
+Route::get('login', 'IngresoUsuarioController@getLogin');
+Route::post('login', 'IngresoUsuarioController@postLogin');
+
+/*
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -41,4 +41,4 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-
+*/

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Usuario;
 
 class UsuarioSeeder extends Seeder
@@ -9,7 +10,7 @@ class UsuarioSeeder extends Seeder
     {
         Usuario::create([
         	'CODIGO_SIS' 		=>	'201400001',
-        	'CONTRASENA'		=>	'textoplano',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
         	'NOMBRE'			=>	'Administrador',
             'APELLIDO'			=>	'1',
             'CORREO'			=>	'Administrador@tis.com',
@@ -21,7 +22,7 @@ class UsuarioSeeder extends Seeder
         
         Usuario::create([
         	'CODIGO_SIS' 		=>	'201400002',
-        	'CONTRASENA'		=>	'textoplano',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
         	'NOMBRE'			=>	'Docente',
             'APELLIDO'			=>	'1',
             'CORREO'			=>	'Docente@tis.com',
@@ -33,7 +34,7 @@ class UsuarioSeeder extends Seeder
         
         Usuario::create([
         	'CODIGO_SIS' 		=>	'201400003',
-        	'CONTRASENA'		=>	'textoplano',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
         	'NOMBRE'			=>	'Auxiliar',
             'APELLIDO'			=>	'1',
             'CORREO'			=>	'Auxiliar@gmail.com',
@@ -45,7 +46,7 @@ class UsuarioSeeder extends Seeder
         
         Usuario::create([
         	'CODIGO_SIS' 		=>	'201400004',
-        	'CONTRASENA'		=>	'textoplano',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
         	'NOMBRE'			=>	'Estudiante',
             'APELLIDO'			=>	'1',
             'CORREO'			=>	'Estudiante@gmail.com',
