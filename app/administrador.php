@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class administrador extends Model
+class Administrador extends Model
 {
-    protected $table    = 'administrador';
+    protected $table = 'Administrador';
+    
+    public function usuario()
+    {
+        return $this->hasOne('App\Usuario', 'ID', 'USUARIO_ID');
+    }
 }

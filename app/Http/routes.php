@@ -1,4 +1,6 @@
 <?php
+use \App\Administrador;
+use \App\Usuario;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,10 @@ Route::get('/', function () {
 });
 
 Route::get('home', function(){
+    $admin = usuario::find(1)->administrador;
+    
+    echo $admin.'<br>';
+    echo $admin->usuario;
     echo 'Welcome Home';
 });
 
@@ -27,3 +33,4 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+

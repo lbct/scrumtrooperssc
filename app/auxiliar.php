@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class auxiliar extends Model
+class Auxiliar extends Model
 {
-    protected $table    = 'auxiliar';
+    protected $table    = 'Auxiliar';
+    
+    public function usuario()
+    {
+        return $this->hasOne('App\Usuario', 'ID', 'USUARIO_ID');
+    }
 }

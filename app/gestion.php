@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class gestion extends Model
+class Gestion extends Model
 {
-    protected $table    = 'gestion';
+    protected $table    = 'Gestion';
 }
