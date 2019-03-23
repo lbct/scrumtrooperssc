@@ -55,9 +55,15 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
+<<<<<<< HEAD:config/database.php
             'database'  => env('DB_DATABASE', 'tis'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', ''),
+=======
+            'database'  => env('DB_DATABASE', 'u441280180_dajer'),
+            'username'  => env('DB_USERNAME', 'u441280180_vepad'),
+            'password'  => env('DB_PASSWORD', 'fexCNdR3L!7+'),
+>>>>>>> cesar:config/database.php
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -67,9 +73,15 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
+<<<<<<< HEAD:config/database.php
             'database' => env('DB_DATABASE', 'tis'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
+=======
+            'database' => env('DB_DATABASE', 'u441280180_dajer'),
+            'username' => env('DB_USERNAME', 'u441280180_vepad'),
+            'password' => env('DB_PASSWORD', 'fexCNdR3L!7+'),
+>>>>>>> cesar:config/database.php
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
@@ -78,9 +90,15 @@ return [
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
             'host'     => env('DB_HOST', 'localhost'),
+<<<<<<< HEAD:config/database.php
             'database' => env('DB_DATABASE', 'tis'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
+=======
+            'database' => env('DB_DATABASE', 'u441280180_dajer'),
+            'username' => env('DB_USERNAME', 'u441280180_vepad'),
+            'password' => env('DB_PASSWORD', 'fexCNdR3L!7+'),
+>>>>>>> cesar:config/database.php
             'charset'  => 'utf8',
             'prefix'   => '',
         ],
