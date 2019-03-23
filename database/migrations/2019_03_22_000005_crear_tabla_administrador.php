@@ -11,10 +11,10 @@ class CrearTablaAdministrador extends Migration
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
-            $table->integer('PERSONA_ID')->unsigned();
+            $table->integer('USUARIO_ID')->unsigned();
             $table->timestamps();
             
-            $table->foreign('PERSONA_ID')->references('ID')->on('PERSONA')->onDelete('cascade');
+            $table->foreign('USUARIO_ID')->references('ID')->on('USUARIO')->onDelete('cascade');
         });
     }
 
