@@ -12,8 +12,16 @@ class CrearTablaUsuario extends Migration
             
             $table->increments('ID');
             
-            $table->string('NOMBRE_USUARIO', 25);
-            $table->string('CONTRASENA', 32);
+            $table->string('CODIGO_SIS', 15);
+            $table->string('CONTRASENA', 100);
+            
+            $table->string('NOMBRE', 100);
+            $table->string('APELLIDO', 100);
+            $table->string('CORREO', 255);
+            $table->string('SEXO',1);
+            $table->string('TELEFONO');
+            $table->string('CI');
+            $table->date('FECHA_NACIMIENTO');
             $table->timestamps();
         });
     }
