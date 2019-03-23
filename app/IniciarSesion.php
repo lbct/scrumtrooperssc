@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class IniciarSesion extends Model
 {
-    protected $table = 'Iniciar_Sesion';
+    protected $table = 'INICIAR_SESION';
     
     public function usuario()
     {

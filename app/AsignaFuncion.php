@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AsignaFuncion extends Model
 {
-    protected $table = 'Asigna_Funcion';
+    protected $table = 'ASIGNA_FUNCION';
     
     public function funcion()
     {

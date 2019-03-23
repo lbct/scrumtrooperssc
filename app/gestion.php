@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gestion extends Model
 {
-    protected $table    = 'Gestion';
+    protected $table    = 'GESTION';
 }
