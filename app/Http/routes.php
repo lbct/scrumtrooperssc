@@ -1,6 +1,11 @@
 <?php
-use \App\Administrador;
 use \App\Usuario;
+use \App\Administrador;
+use \App\Docente;
+use \App\Auxiliar;
+use \App\Estudiante;
+use \App\IniciarSesion;
+use \App\AsignaRol;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +23,13 @@ Route::get('/', function () {
 });
 
 Route::get('home', function(){
-    $admin = usuario::find(1)->administrador;
+    echo 'Welcome Home';
+});
+
+Route::get('test', function(){
+    $usuario = Usuario::find(1)->asignaRol->rol->asignaFuncion[0]->funcion->asignaFuncion[0]->rol->asignaRol[0]->usuario;
     
-    echo $admin.'<br>';
-    echo $admin->usuario;
+    echo $usuario;
     echo 'Welcome Home';
 });
 

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Administrador extends Model
+class IniciarSesion extends Model
 {
-    protected $table = 'Administrador';
+    protected $table = 'Iniciar_Sesion';
     
     public function usuario()
     {
