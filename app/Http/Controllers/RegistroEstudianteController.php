@@ -33,7 +33,7 @@ class RegistroEstudianteController extends Controller
         ]);
         
         if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-            return redirect('registrarse')->withErrors($validator)->withInput();
+            return redirect('registro')->withErrors($validator)->withInput();
         }
         else
         {

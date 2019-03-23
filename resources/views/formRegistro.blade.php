@@ -1,4 +1,4 @@
-<form method="POST" action="/registrarse">
+<form method="POST" action="/registro">
     {!! csrf_field() !!}
     <div>
         Código SIS
