@@ -4,11 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-<<<<<<< HEAD
-class usuario extends Model
-{
-    protected $table    = 'usuario';
-=======
 class Usuario extends Model
 {
     protected $table = 'Usuario';
@@ -32,5 +27,4 @@ class Usuario extends Model
     {
         return $this->hasOne('App\Estudiante', 'ID');
     }
->>>>>>> cesar
 }
