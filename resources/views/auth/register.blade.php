@@ -4,26 +4,26 @@
     {!! csrf_field() !!}
 
     <div>
-        Nombre
-        <input type="text" name="nombre" value="{{ old('nombre') }}">
+        Name
+        <input type="text" name="name">
     </div>
 
     <div>
         Email
-        <input type="email" name="correo" value="{{ old('correo') }}">
+        <input type="email" name="email">
     </div>
 
     <div>
-        Contraseña
-        <input type="contrasena" name="contrasena">
+        Password
+        <input type="password" name="password">
     </div>
 
     <div>
         Confirm Password
-        <input type="contrasena" name="contrasena_confirmation">
+        <input type="password" name="password_confirmation">
     </div>
 
     <div>
-        <button type="submit">Registrar</button>
+        <button type="submit">Register</button>
     </div>
 </form>

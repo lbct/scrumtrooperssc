@@ -16,7 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('home', function(){
-    echo 'Welcome Home';
+    if(Auth::guest()){
+        return Redirect::to('auth/login');
+    }
+    else{
+        echo 'Welcome Home.';
+    }
 });
 
 // Authentication routes...
