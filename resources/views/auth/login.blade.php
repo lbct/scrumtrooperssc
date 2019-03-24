@@ -1,23 +1,29 @@
-<!-- resources/views/auth/login.blade.php -->
+<link href="{{asset('/css/login.css')}}" rel="stylesheet" id="bootstrap-css">
+<script src="{{asset('jquery/jquery.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+  
+  <!------ Include the above in your HEAD tag ---------->
 
-<form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-    <div>
-        Email
-        <input type="email" name="email">
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
     </div>
 
-    <div>
-        Password
-        <input type="password" name="password" id="password">
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+  </div>
+</div>
