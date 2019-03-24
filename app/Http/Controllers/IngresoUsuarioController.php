@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Validator;
 
 class IngresoUsuarioController extends Controller
 {
-    public function getLogin()
+    public function getLogin(Request $request)
     {
-        return view('formLogin');
+        $rol = $request->cookie('ROL');
+        
+        if( $rol != null )
+            return redirect('/'.$rol);
+        
+        return view('login');
     }
     
     public function postLogin(Request $request)
@@ -32,11 +37,12 @@ class IngresoUsuarioController extends Controller
             {
                 if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
                 {
-                    $rol        = $usuario->asignaRol->rol;
+                    $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
                     $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
-                    $rolUsuario = cookie('ROL_ID', $rol->ID, 120);
+                    $rolUsuario = cookie('ROL', $rol, 120);
                     
-                    return redirect(strtolower('/'.$rol->DESCRIPCION))->withCookie($usuarioID)->withCookie($rolUsuario);
+                    //Redirije a la ruta iniclal del Rol
+                    return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);
                 }
             }
         }
@@ -46,6 +52,6 @@ class IngresoUsuarioController extends Controller
     
     public function getLogout(Request $request)
     {        
-        return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL_ID'));
+        return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL'));
     }
 }

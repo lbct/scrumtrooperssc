@@ -2,37 +2,26 @@
 namespace App\Http\Controllers\Estudiante;
 
 use App\Usuario;
-use App\AsignaRol;
 use App\Estudiante;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Estudiante\Base;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class Control extends Controller
+class Control extends Base
 {
-    public function isEstudiante(Request $request)
-    {
-        $ROL_ID     = $request->cookie('ROL_ID');
-        $estudiante = false;
-        
-        if( $ROL_ID == 4 )
-            $estudiante = true;
-        
-        return $estudiante;
-    }
-    
     public function getVista(Request $request)
     {
-        if( $this->isEstudiante($request) )
-            return view('welcome');
+        if( $this->rol->is($request) )
+            return view('estudiante.index');
         
         return redirect('login');
     }
     
     public function getEdit(Request $request)
     {
-        if( $this->isEstudiante($request) )
+        if( $this->rol->is($request) )
         {
             $USUARIO_ID = $request->cookie('USUARIO_ID');
             $usuario = Usuario::find($USUARIO_ID);
@@ -45,7 +34,7 @@ class Control extends Controller
 
     public function postEdit(Request $request)
     {
-        if( $this->isEstudiante($request) )
+        if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
                 'nombre'                    => 'required|min:2',
