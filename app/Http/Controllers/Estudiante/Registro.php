@@ -14,7 +14,7 @@ class Registro extends Controller
 {
     public function getRegistro()
     {
-        return view('estudiante\formRegistro');
+        return view('estudiante\registro');
     }
     
     public function postRegistro(Request $request)
