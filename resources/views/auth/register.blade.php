@@ -1,29 +1,35 @@
-<!-- resources/views/auth/register.blade.php -->
+<link href="{{asset('/css/login.css')}}" rel="stylesheet" id="bootstrap-css">
+<script src="{{asset('jquery/jquery.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
-<form method="POST" action="/auth/register">
+@extends('inicio')
+
+@section('main-content')
+  <form>
     {!! csrf_field() !!}
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
 
-    <div>
-        Name
-        <input type="text" name="name">
-    </div>
+        <!-- Login Form -->
+        <form>
+            <div>
+                <label>CodigoSis</label>
+                <input type="text" id="codigo_sis" name="codigo_sis" class="fadeIn second" placeholder="CodigoSis" value="{{ old('codigo_sis') }}">
+            </div>
+          
+          <input type="text" id="nombre" name="nombre" class="fadeIn third" placeholder="Nombre(s)" value="{{ old('nombre') }}">
+          <input type="password" id="contrasena" name="contrasena" class="fadeIn third" placeholder="Contraseña">
+          
+          <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
+        </form>
 
-    <div>
-        Email
-        <input type="email" name="email">
-    </div>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a href="registro">Crear Cuenta?</a>
+        </div>
 
-    <div>
-        Password
-        <input type="password" name="password">
+      </div>
     </div>
-
-    <div>
-        Confirm Password
-        <input type="password" name="password_confirmation">
-    </div>
-
-    <div>
-        <button type="submit">Register</button>
-    </div>
-</form>
+  </form>
+@endsection

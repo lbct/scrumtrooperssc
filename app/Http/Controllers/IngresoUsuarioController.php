@@ -19,7 +19,7 @@ class IngresoUsuarioController extends Controller
         if( $rol != null )
             return redirect('/'.$rol);
         
-        return view('welcome');
+        return view('login');
     }
     
     public function postLogin(Request $request)

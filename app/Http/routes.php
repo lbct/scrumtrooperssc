@@ -7,11 +7,12 @@ use \App\Estudiante;
 use \App\IniciarSesion;
 use \App\AsignaRol;
 
-Route::get('/', 'IngresoUsuarioController@getLogin');
-
-Route::get('home', function(){
-    echo 'Welcome Home';
+Route::get('auth/register', function(){
+    return View('auth/register');
 });
+
+//Ruta Inicial Login
+Route::get('/', 'IngresoUsuarioController@getLogin');
 
 Route::get('login', 'IngresoUsuarioController@getLogin');
 Route::post('login', 'IngresoUsuarioController@postLogin');
