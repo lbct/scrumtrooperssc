@@ -26,7 +26,7 @@ class Control extends Base
             $USUARIO_ID = $request->cookie('USUARIO_ID');
             $usuario = Usuario::find($USUARIO_ID);
             
-            return view('estudiante\formEditar')->with('usuario', $usuario);
+            return view('estudiante.editar')->with('usuario', $usuario);
         }
         
         return redirect('login');

@@ -1,4 +1,4 @@
-<html lang="en">
+<!--<html lang="en">
 
 <head>
 
@@ -9,29 +9,27 @@
 
   <title>SESLAB</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body>-->
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" h ref="#">SESLAB</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-
-      </div>
-    </div>
-  </nav>
 
   <!-- Page Content -->
+  @extends('estudiante.plantilla')
+  @section('contenido_barra')
+  <h2>Estudiante</h2>
+  @endsection
+  @section('contenido')
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
   <div class="container col-md-5 col-md-offset-6  ">
     <div class="row">
       <div class="panel panel-default">
@@ -130,11 +128,11 @@
        </div>
     </div>
   </div>
-
+@endsection
   <!-- Bootstrap core JavaScript -->
-  <script src="{{asset('jquery/jquery.min.js')}}"></script>
+  <!--<script src="{{asset('jquery/jquery.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
 </body>
 
-</html>
+</html>-->

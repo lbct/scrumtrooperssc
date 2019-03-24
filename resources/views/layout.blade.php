@@ -68,7 +68,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
       
       <!-- Main Content -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       @yield('contenido_barra')
     </div>
