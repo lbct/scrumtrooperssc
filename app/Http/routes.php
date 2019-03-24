@@ -20,9 +20,6 @@ Route::get('home', function(){
 Route::get('login', 'IngresoUsuarioController@getLogin');
 Route::post('login', 'IngresoUsuarioController@postLogin');
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-
 //Rutas Estudiante
 Route::get('estudiante','Estudiante\Control@getVista');
 Route::get('estudiante/editar','Estudiante\Control@getEdit');
