@@ -28,19 +28,19 @@ Route::post('registro', 'Estudiante\Registro@postRegistro');
 //Rutas Admin
 Route::get('administrador','Admin\Control@getVista');
 
-Route::get('administrador/crearDocente','Admin\Docente\Control@getCuentaDocente');
-Route::post('administrador/crearDocente','Admin\Docente\Control@postCuentaDocente');
+Route::get('administrador/crearDocente','Admin\Docente\Control@getCrear');
+Route::post('administrador/crearDocente','Admin\Docente\Control@postCrear');
 
 Route::get('administrador/listaDocente','Admin\Docente\Control@getLista');  //Mostrar lista de docentes registrados
 
-Route::get('administrador/editarDocente','Admin\Docente\Control@editCuenta');
-Route::post('administrador/editarDocente','Admin\Docente\Control@postCuenta');
+Route::get('administrador/editarDocente','Admin\Docente\Control@getEdit');
+Route::post('administrador/editarDocente','Admin\Docente\Control@postEdit');
 
-Route::get('administrador/crearAdmin','Admin\Control@getCuentaAdmin');
-Route::post('administrador/crearAdmin','Admin\Control@postCuentaAdmin');
+Route::get('administrador/crearAdmin','Admin\Control@getCrear');
+Route::post('administrador/crearAdmin','Admin\Control@postCrear');
 
-Route::get('administrador/crearGestion','Admin\Control@getGestion');
-Route::post('administrador/crearGestion','Admin\Control@postGestion');
+Route::get('administrador/crearGestion','Admin\Gestion\Control@getCrear');
+Route::post('administrador/crearGestion','Admin\Gestion\Control@postCrear');
 
 //Rutas Auxiliar
 //Route::get('auxiliar','');
@@ -48,6 +48,6 @@ Route::post('administrador/crearGestion','Admin\Control@postGestion');
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');
 
-Route::get('docente/crearAuxiliar','Docente\Control@getCuentaAuxiliar');
-Route::post('docente/crearAuxiliar','Docente\Control@postCuentaAuxiliar');
+Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
+Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
 
