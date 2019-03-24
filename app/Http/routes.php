@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('administrador', 'PaginasController@administrador');
+
+Route::get('estudiante', 'PaginasController@estudiante');
+
 Route::get('home', function(){
     echo 'Welcome Home';
 });
