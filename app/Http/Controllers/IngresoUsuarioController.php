@@ -14,7 +14,7 @@ class IngresoUsuarioController extends Controller
 {
     public function getLogin()
     {
-        return view('welcome');
+        return view('login');
     }
     
     public function postLogin(Request $request)
