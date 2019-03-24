@@ -68,7 +68,20 @@
     <div id="content-wrapper" class="d-flex flex-column">
       
       <!-- Main Content -->
-      @yield('contenido')
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      @yield('contenido_barra')
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        @yield('contenido')
+      </div>
+    </div>
+  </div>
       <!-- End of Main Content -->
 
     </div>

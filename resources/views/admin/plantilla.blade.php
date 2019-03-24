@@ -11,9 +11,9 @@
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="administrador/crearDocente">Crear Docente</a>
-        <a class="collapse-item" href="administrador/crearAdmin">Crear Administrador</a>
-        <a class="collapse-item" href="administrador/crearGestion">Crear Gestión</a>
+        <a class="collapse-item" href="/administrador/crearDocente">Crear Docente</a>
+        <a class="collapse-item" href="/administrador/crearAdmin">Crear Administrador</a>
+        <a class="collapse-item" href="/administrador/crearGestion">Crear Gestión</a>
         </div>
     </div>
 </li>
@@ -24,9 +24,9 @@
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="administrador">Lista de Docentes</a>
-        <a class="collapse-item" href="administrador">Lista de Administradores</a>
-        <a class="collapse-item" href="administrador">Lista de Gestiones</a>
+        <a class="collapse-item" href="/administrador">Lista de Docentes</a>
+        <a class="collapse-item" href="/administrador">Lista de Administradores</a>
+        <a class="collapse-item" href="/administrador">Lista de Gestiones</a>
         </div>
     </div>
 </li>
