@@ -28,7 +28,7 @@ Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
 
 //Rutas Admin
-Route::get('admin','Admin\Control@getVista');
+Route::get('admin/vistaInicial','Admin\Control@getVista');
 
 Route::get('admin/crearDocente','Admin\Docente\Control@getCuentaDocente');
 Route::post('admin/crearDocente','Admin\Docente\Control@postCuentaDocente');

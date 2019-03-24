@@ -14,7 +14,7 @@ class Control extends Controller
 {
     public function getEdit()
     {
-        return view('welcome');
+        return view('estudiante/editar');
     }
 
     public function postEdit()
