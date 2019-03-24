@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Validator;
 
 class IngresoUsuarioController extends Controller
 {
-    public function getLogin()
+    public function getLogin(Request $request)
     {
-        return view('welcome');
+        $rol = $request->cookie('ROL');
+        
+        if( $rol != null )
+            return redirect('/'.$rol);
+        
+        return view('login');
     }
     
     public function postLogin(Request $request)
@@ -24,23 +29,29 @@ class IngresoUsuarioController extends Controller
             'contrasena'                => 'required|min:2',
         ]);
         
-        if($validator->fails()) {
-            return redirect('login')->withErrors($validator)->withInput();
-        }
-        else
-        {
+        if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
+            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get()[0];
             
             if($usuario != null)
             {
-                if( Hash::check($request->contrasena, $usuario[0]->CONTRASENA) )
-                    echo 'Hola '.$usuario[0]->NOMBRE;
-                else
-                    return redirect('login')->withErrors($validator)->withInput();
+                if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
+                {
+                    $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
+                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
+                    $rolUsuario = cookie('ROL', $rol, 120);
+                    
+                    //Redirije a la ruta iniclal del Rol
+                    return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);
+                }
             }
-            else
-                return redirect('login')->withErrors($validator)->withInput();
         }
+        
+        return redirect('login')->withErrors($validator)->withInput();
+    }
+    
+    public function getLogout(Request $request)
+    {        
+        return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL'));
     }
 }

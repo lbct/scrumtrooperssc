@@ -26,9 +26,11 @@ html {
     margin: 40px 8px 10px 8px; 
     color: #cccccc;
   }
-  
-  
-  
+
+  .form-horizontal .control-label{
+    text-align: left;
+  }
+    
   /* STRUCTURE */
   
   .wrapper {
