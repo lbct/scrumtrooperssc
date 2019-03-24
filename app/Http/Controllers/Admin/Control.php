@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Admin;
 
 use App\Usuario;
 use App\AsignaRol;
@@ -11,21 +11,21 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Controller
 {
-    public function isEstudiante(Request $request)
+    public function isAdministrador(Request $request)
     {
-        $rol        = $request->cookie('ROL');
-        $estudiante = false;
+        $rol           = $request->cookie('ROL');
+        $administrador = false;
         
-        if( $rol == 'estudiante' )
-            $estudiante = true;
+        if( $rol == 'administrador' )
+            $administrador = true;
         
-        return $estudiante;
+        return $administrador;
     }
     
     public function getVista(Request $request)
     {
-        if( $this->isEstudiante($request) )
-            return 'Hola Estudiante 
+        if( $this->isAdministrador($request) )
+            return 'Hola Administrador 
                         <a href="/estudiante/editar">Editar Perfil</a>
                         <a href="/logout">Salir</a>';
         
@@ -34,12 +34,12 @@ class Control extends Controller
     
     public function getEdit(Request $request)
     {
-        if( $this->isEstudiante($request) )
+        if( $this->isAdministrador($request) )
         {
             $USUARIO_ID = $request->cookie('USUARIO_ID');
             $usuario = Usuario::find($USUARIO_ID);
             
-            return view('estudiante\formEditar')->with('usuario', $usuario);
+            return view('administrador\formEditar')->with('usuario', $usuario);
         }
         
         return redirect('login');
@@ -47,7 +47,7 @@ class Control extends Controller
 
     public function postEdit(Request $request)
     {
-        if( $this->isEstudiante($request) )
+        if( $this->isAdministrador($request) )
         {
             $validator = Validator::make($request->all(), [
                 'nombre'                    => 'required|min:2',
@@ -60,7 +60,7 @@ class Control extends Controller
             ]);
             
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-                return redirect('/estudiante/editar')->withErrors($validator)->withInput();
+                return redirect('/administrador/editar')->withErrors($validator)->withInput();
             }
             else
             {
