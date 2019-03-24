@@ -3,7 +3,8 @@
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
   
   <!------ Include the above in your HEAD tag ---------->
-<form>
+<form method="POST" action="/login">
+  {!! csrf_field() !!}
   <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
@@ -15,8 +16,8 @@
 
       <!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="CodigoSis">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+        <input type="text" id="codigo_sis" name="codigo_sis" class="fadeIn second" placeholder="CodigoSis" value="{{ old('codigo_sis') }}">
+        <input type="password" id="contrasena" name="contrasena" class="fadeIn third" placeholder="Contraseña">
         <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
       </form>
 
