@@ -24,23 +24,28 @@ class IngresoUsuarioController extends Controller
             'contrasena'                => 'required|min:2',
         ]);
         
-        if($validator->fails()) {
-            return redirect('login')->withErrors($validator)->withInput();
-        }
-        else
-        {
+        if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
+            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get()[0];
             
             if($usuario != null)
             {
-                if( Hash::check($request->contrasena, $usuario[0]->CONTRASENA) )
-                    echo 'Hola '.$usuario[0]->NOMBRE;
-                else
-                    return redirect('login')->withErrors($validator)->withInput();
+                if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
+                {
+                    $rol        = $usuario->asignaRol->rol;
+                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
+                    $rolUsuario = cookie('ROL_ID', $rol->ID, 120);
+                    
+                    return redirect(strtolower('/'.$rol->DESCRIPCION))->withCookie($usuarioID)->withCookie($rolUsuario);
+                }
             }
-            else
-                return redirect('login')->withErrors($validator)->withInput();
         }
+        
+        return redirect('login')->withErrors($validator)->withInput();
+    }
+    
+    public function getLogout(Request $request)
+    {        
+        return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL_ID'));
     }
 }
