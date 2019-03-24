@@ -1,29 +1,53 @@
 <?php
+use \App\Usuario;
+use \App\Administrador;
+use \App\Docente;
+use \App\Auxiliar;
+use \App\Estudiante;
+use \App\IniciarSesion;
+use \App\AsignaRol;
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('auth/register', function(){
+    return View('auth/register');
 });
 
-Route::get('home', function(){
-    echo 'Welcome Home';
-});
+//Ruta Inicial Login
+Route::get('/', 'IngresoUsuarioController@getLogin');
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('login', 'IngresoUsuarioController@getLogin');
+Route::post('login', 'IngresoUsuarioController@postLogin');
+Route::get('logout', 'IngresoUsuarioController@getLogout');
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+//Rutas Estudiante
+Route::get('estudiante','Estudiante\Control@getVista');
+Route::get('estudiante/editar','Estudiante\Control@getEdit');
+Route::post('estudiante/editar','Estudiante\Control@postEdit');
+Route::get('registro', 'Estudiante\Registro@getRegistro');
+Route::post('registro', 'Estudiante\Registro@postRegistro');
+
+//Rutas Admin
+Route::get('administrador','Admin\Control@getVista');
+
+Route::get('administrador/crearDocente','Admin\Docente\Control@getCrear');
+Route::post('administrador/crearDocente','Admin\Docente\Control@postCrear');
+
+Route::get('administrador/listaDocente','Admin\Docente\Control@getLista');  //Mostrar lista de docentes registrados
+
+Route::get('administrador/editarDocente','Admin\Docente\Control@getEdit');
+Route::post('administrador/editarDocente','Admin\Docente\Control@postEdit');
+
+Route::get('administrador/crearAdmin','Admin\Control@getCrear');
+Route::post('administrador/crearAdmin','Admin\Control@postCrear');
+
+Route::get('administrador/crearGestion','Admin\Gestion\Control@getCrear');
+Route::post('administrador/crearGestion','Admin\Gestion\Control@postCrear');
+
+//Rutas Auxiliar
+//Route::get('auxiliar','');
+
+//Rutas Docente
+Route::get('docente','Docente\Control@getVista');
+
+Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
+Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
+

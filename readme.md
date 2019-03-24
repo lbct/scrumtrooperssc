@@ -31,6 +31,16 @@ Revisar el archivo .env
 
 Revisar el archivo config/database.php
 
+Credenciales:
+
+DB_HOST=localhost
+
+DB_DATABASE=u441280180_dajer
+
+DB_USERNAME=u441280180_vepad
+
+DB_PASSWORD=fexCNdR3L!7+
+
 ## Migración
 Crear migración: php artisan make:migration crear_tabla_xxx --create=xxx
 
@@ -41,6 +51,11 @@ Campos: https://laravel.com/docs/5.0/schema
 Guía: https://richos.gitbooks.io/laravel-5/content/capitulos/chapter6.html
 
 ##  Modelo
-php artisan make:model xxx
+Crear modelo: php artisan make:model xxx
 
 Guía: https://fernando-gaitan.com.ar/laravel-5-parte-4-modelos-y-relaciones/
+
+## Seeders
+Cargar Todos los Seeders y migraciones: php artisan migrate:refresh --seed
+
+Guia: https://desarrolloweb.com/articulos/seeders-laravel5.html
