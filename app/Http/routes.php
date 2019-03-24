@@ -7,17 +7,6 @@ use \App\Estudiante;
 use \App\IniciarSesion;
 use \App\AsignaRol;
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,19 +15,44 @@ Route::get('home', function(){
     echo 'Welcome Home';
 });
 
-Route::get('test', function(){
-    $usuario = Usuario::find(1)->asignaRol->rol->asignaFuncion[0]->funcion->asignaFuncion[0]->rol->asignaRol[0]->usuario;
-    
-    echo $usuario;
-    echo 'Welcome Home';
-});
+
+
+Route::get('login', 'IngresoUsuarioController@getLogin');
+Route::post('login', 'IngresoUsuarioController@postLogin');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+//Rutas Estudiante
+Route::get('estudiante','Estudiante\Control@getVista');
+Route::get('estudiante/editar','Estudiante\Control@getEdit');
+Route::post('estudiante/editar','Estudiante\Control@postEdit');
+Route::get('registro', 'Estudiante\Registro@getRegistro');
+Route::post('registro', 'Estudiante\Registro@postRegistro');
+
+//Rutas Admin
+Route::get('admin','Admin\Control@getVista');
+
+Route::get('admin/crearDocente','Admin\Docente\Control@getCuentaDocente');
+Route::post('admin/crearDocente','Admin\Docente\Control@postCuentaDocente');
+
+Route::get('admin/listaDocente','Admin\Docente\Control@getLista');  //Mostrar lista de docentes registrados
+
+Route::get('admin/editarDocente','Admin\Docente\Control@editCuenta');
+Route::post('admin/editarDocente','Admin\Docente\Control@postCuenta');
+
+Route::get('admin/crearAdmin','Admin\Control@getCuentaAdmin');
+Route::post('admin/crearAdmin','Admin\Control@postCuentaAdmin');
+
+Route::get('admin/crearGestion','Admin\Control@getGestion');
+Route::post('admin/crearGestion','Admin\Control@postGestion');
+
+//Rutas Auxiliar
+//Route::get('auxiliar','');
+
+//Rutas Docente
+Route::get('docente','Docente\Control@getVista');
+
+Route::get('docente/crearAuxiliar','Docente\Control@getCuentaAuxiliar');
+Route::post('docente/crearAuxiliar','Docente\Control@postCuentaAuxiliar');
 
