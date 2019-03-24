@@ -16,12 +16,7 @@ class Control extends Base
     public function getVista(Request $request)
     {
         if( $this->rol->is($request) )
-            return 'Hola Administrador 
-                        <a href="/administrador/crearDocente">Crear Docente</a>
-                        <a href="/administrador/listaDocente">Lista Docente</a>
-                        <a href="/administrador/crearAdmin">Crear Administrador</a>
-                        <a href="/administrador/crearGestion">Crear Gestion</a>
-                        <a href="/logout">Salir</a>';
+            return view('admin.index');
         
         return redirect('login');
     }
