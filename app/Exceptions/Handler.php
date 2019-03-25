@@ -42,10 +42,39 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
+        /*if ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
-        }
+            return parent::render($request, $e);
+        }*/
 
-        return parent::render($request, $e);
+        if ($this->isHttpException($e)) {
+            switch ($e->getStatusCode()) {
+    
+                // not authorized
+                case '403':
+                    $request->session()->flash('alert-info', 'No tiene permiso de acceder a la pagina');
+                    return redirect('login');
+                    break;
+    
+                // not found
+                case '404':
+                    $request->session()->flash('alert-info', 'La pagina no existe');
+                    return redirect('login');
+                    break;
+    
+                // internal error
+                case '500':
+                    $request->session()->flash('alert-info', 'La pagina no "existe"');
+                    return redirect('login');
+                    break;
+    
+                default:
+                    return $this->renderHttpException($e);
+                    break;
+            }
+        } else {
+            return parent::render($request, $e);
+        }
+        
     }
 }

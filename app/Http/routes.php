@@ -7,10 +7,6 @@ use \App\Estudiante;
 use \App\IniciarSesion;
 use \App\AsignaRol;
 
-Route::get('auth/register', function(){
-    return View('auth/register');
-});
-
 //Ruta Inicial Login
 Route::get('/', 'IngresoUsuarioController@getLogin');
 
