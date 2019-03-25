@@ -24,7 +24,7 @@
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="/administrador">Lista de Docentes</a>
+        <a class="collapse-item" href="/administrador/listaDocente">Lista de Docentes</a>
         <a class="collapse-item" href="/administrador">Lista de Administradores</a>
         <a class="collapse-item" href="/administrador">Lista de Gestiones</a>
         </div>
