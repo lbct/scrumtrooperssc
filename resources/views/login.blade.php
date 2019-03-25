@@ -6,6 +6,7 @@
 
 @section('main-content')
   <form method="POST" action="/login">
+    @include('alertas')
     {!! csrf_field() !!}
     <div class="wrapper fadeInDown">
       <div id="formContent">
@@ -23,7 +24,7 @@
           <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
         </form>
 
-        <!-- Remind Passowrd -->
+        <!-- Crear User -->
         <div id="formFooter">
           <a href="registro">Crear Cuenta?</a>
         </div>

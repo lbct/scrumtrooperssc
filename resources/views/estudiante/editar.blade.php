@@ -22,109 +22,94 @@
   <!-- Page Content -->
   @extends('estudiante.plantilla')
   @section('contenido_barra')
-  <h2>Estudiante</h2>
+  <h2 align="center">Estudiante</h2>
+
   @endsection
   @section('contenido')
-  
+  <form method="POST" action="/estudiante/editar">
+    {!! csrf_field() !!}
+    @if (count($errors)>0)
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{!!$error!!}</li>
+            @endforeach
+
+    </div>
+    @endif
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
-  <div class="container col-md-5 col-md-offset-6  ">
+<br><br><br>
+  <div class="container col-md-5 col-md-offset-4  ">
     <div class="row">
       <div class="panel panel-default">
-        <div class="panel-body">
-        <br>
-          <h2>Editar Perfil</h2>
-          <br>
+        <div class="panel-body col-md-12 ">
+        <div class="col-md-12 ">
+          <center><h2>Editar&nbspPerfil</h2></center>
+          </div>
         </div>
        <div>
-             <form>
+        <br>
+        <br>  
+             <form method="POST" action="/editar">
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Nombre:</label>
-                  <input type="text" class="form-control" id="validationServer01" placeholder="Nombre" value="" required>
+                <div class="col-md-6 mb-10">
+                  <input type="text"  name="nombre" id="nombre" class="form-control" placeholder="Nuevo Nombre" tabindex="1" value="{{ $usuario->NOMBRE }}">
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">Apellidos:</label>
-                  <input type="text" class="form-control" id="validationServer02" placeholder="Apellidos" value="" required>
+                <div class="col-md-6 mb-4">
+                  <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Nuevos Apellidos" tabindex="2" value="{{ $usuario->APELLIDO }}">
                 </div>
               </div>
                 <div class="form-row">
-                  <div class="col-md-7 mb-3">
-                    <label for="validationServer02">Correo:</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  <div class="col-md-8 mb-4">
+                    <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ $usuario->CORREO }}">
                   </div>
-                  <div class="col-md-3 mb-3">
-                    <div class="form-check">
-                      <label for="validationServer02">Sexo:</label>
-                        <div>
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="" >
-                          <label class="form-check-label" for="exampleRadios1"> Femenino                      
-                        </div>
-                        <div>
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="">
-                          <label class="form-check-label" for="exampleRadios1"> Masculino                      
-                        </div>
-                    </div>
-                  </div>
+                  <div class="form-group column2 row justify-content-end col-md-4 mb-4">
+                                    <select id="sexo" name="sexo" class="form-control input-lg" tabindex="9" style="width:100%;max-width:90%;">
+                                            <option value="M"@if($usuario->SEXO == 'M') selected @endif>Masculino</option>
+                                            <option value="F"@if($usuario->SEXO == 'F') selected @endif>Femenino</option>
+                                    </select>
+                                </div>
                 </div>
                 <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Telefono:</label>
-                  <input type="number_format" class="form-control" id="validationServer01" placeholder="78451256" value="" required>
+                <div class="col-md-5 mb-4">
+                  <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Telefono" value="{{$usuario->TELEFONO}}">
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">CI:</label>
-                  <input type="text" class="form-control" id="validationServer02" placeholder="8563249" value="" required>
+                <div class="col-md-5 mb-3">
+                  <input type="text" name="ci" class="form-control" id="ci" placeholder="Carnet de Identidad" value="{{$usuario->CI}}">
                 </div>
                 </div>
               </div>
               <div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                <input id="datepicker" width="156" />
-                  <script>
-                      $('#datepicker').datepicker({
-                          showOtherMonths: true
-                      });
-                  </script>
-                </div>
+              <div>
+              <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
               </div>
+                  <div class="col-md-4 mb-4">
+                  <input id="datepicker" name="fecha_nacimiento" width="156" placeholder=" dd/mm/aaaa"/ value="{{ $usuario->FECHA_NACIMIENTO }}"">
+                    <script>
+                        $('#datepicker').datepicker({
+                            showOtherMonths: true
+                        });
+                    </script>
+                  </div>
+                </div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Contraseña:</label>
-                  <input type="number_format" class="form-control" id="validationServer01" placeholder="*******" value="" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">Confirmar&nbspContraseña:</label>
-                  <input type="text" class="form-control" id="validationServer02" placeholder="******" value="" required>
+                <div class="col-md-6 mb-3">
+                  <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña">
+             </div>
+                <div class="col-md-6 mb-5">
+                  <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="formform-control input-lg"  placeholder="Confirme contraseña">
                 </div>
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Guardar
-                </button>
+                <div>
+                       <div class="form-group row justify-content-center">
+                       <div class="column2"><input type="submit" href="/estudiante/editar" value ="guardar" class="btn btn-primary" tabindex="7"></div>
+                </div>
           </form>
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Confirmar</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Esta seguro de cambiar sus datos? 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                  <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
-              </div>
-            </div>
-          </div>
        </div>
     </div>
   </div>

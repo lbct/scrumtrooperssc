@@ -18,7 +18,7 @@ class Registro extends Controller
     }
     
     public function postRegistro(Request $request)
-    {
+    {   
         $validator = Validator::make($request->all(), [
             'codigo_sis'                => 'required|min:9|max:9',
             'contrasena'                => 'required|min:2',
@@ -67,7 +67,9 @@ class Registro extends Controller
             
             $estudiante->save();
             
-            echo 'Éxito al crear el usuario';
+            $request->session()->flash('alert-success', 'Cuenta Creada');
+
+            return redirect('login');
         }
     }
 }
