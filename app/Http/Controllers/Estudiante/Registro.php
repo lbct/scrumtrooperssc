@@ -67,7 +67,9 @@ class Registro extends Controller
             
             $estudiante->save();
             
-            echo 'Éxito al crear el usuario';
+            $request->session()->flash('alert-success', 'Cuenta Creada');
+
+            return redirect('login');
         }
     }
 }
