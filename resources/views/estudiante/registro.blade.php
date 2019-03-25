@@ -68,7 +68,8 @@
                                     <input id="datepicker" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
                                     <script>
                                         $('#datepicker').datepicker({
-                                            showOtherMonths: true
+                                            showOtherMonths: true,
+                                            format: 'yyyy-mm-dd'
                                         });
                                     </script>
                                 

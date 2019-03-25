@@ -15,7 +15,6 @@ class Control extends Base
     {
         if( $this->rol->is($request) )
             return view('estudiante.index');
-        
         return redirect('login');
     }
     
@@ -58,7 +57,6 @@ class Control extends Base
                 
                 if( $request->contrasena!=null )
                     $usuario->CONTRASENA        = Hash::make($request->contrasena);
-                
                 $usuario->NOMBRE            = $request->nombre;
                 $usuario->APELLIDO          = $request->apellido;
                 $usuario->CORREO            = $request->correo;
@@ -67,9 +65,9 @@ class Control extends Base
                 $usuario->CI                = $request->ci;
                 $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;
                 
-                $usuario->save();
-
-                return 'Éxito al editar el usuario';
+                $usuario->update();
+                $request->session()->flash('alert-success', 'Los datos fueron actualizados');
+                return view('estudiante.index');
             }
         }
             

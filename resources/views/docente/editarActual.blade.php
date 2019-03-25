@@ -1,10 +1,10 @@
-@extends('admin.plantilla')
+@extends('docente.plantilla')
 @section('titulo', 'Editar Docente')
 @section('contenido_barra')
-<h2>Administrador</h2>
+<h2>Docente</h2>
 @endsection
 @section('contenido')
-<form method="POST" action="{{route('administrador/editarDocente', $usuario->ID)}}">
+<form method="POST" action="/docente/editar">
 {!! csrf_field() !!}
 <div>
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -17,8 +17,8 @@
                       <br>
                       <br>
                       <form>
-                          <h2>Editar Docente</h2>
-                          <br>
+                      <h2>Editar perfil</h2>
+                      <br>
                           <div class="form-row">
                               <div class="col-md-6 mb-10">
                                   <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nuevo Nombre" tabindex="1" value="{{ $usuario->NOMBRE }}">

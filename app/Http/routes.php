@@ -55,12 +55,19 @@ Route::post('administrador/crearAdmin','Admin\Control@postCrear');
 Route::get('administrador/crearGestion','Admin\Gestion\Control@getCrear');
 Route::post('administrador/crearGestion','Admin\Gestion\Control@postCrear');
 
+Route::get('administrador/verDocente/{id_usuario}',
+[
+    'as' => 'administrador/verDocente',
+    'uses' => 'Admin\Docente\Control@getVistaSimple'
+]);
+
 //Rutas Auxiliar
 //Route::get('auxiliar','');
 
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');
-
+Route::get('docente/editar', 'Docente\Control@getEditar');
+Route::post('docente/editar', 'Docente\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
 Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
 

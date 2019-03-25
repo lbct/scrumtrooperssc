@@ -10,7 +10,7 @@
         </p>
     </div>
 
-    @if ($usuarios)
+    @if (sizeof($usuarios) > 0)
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -29,9 +29,9 @@
                 <form action="/administrador" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-                    <a href="/administrador" class="btn btn-link"><span class="fas fa-fw fa-eye"></span></a>
+                    <a href="{{route('administrador/verDocente', $user->ID)}}" class="btn btn-link"><span class="fas fa-fw fa-eye"></span></a>
                     <a href="{{ route('administrador/editarDocente', $user->ID) }}" class="btn btn-link"><span class="fas fa-pencil-alt"></span></a>
-                    <button type="submit" class="btn btn-link"><span class="fas fa-trash"></span></button>
+                    <a class="btn btn-link"><span class="fas fa-trash"></span></a>
                 </form>
             </td>
         </tr>
