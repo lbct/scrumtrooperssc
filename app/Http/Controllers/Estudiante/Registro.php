@@ -37,39 +37,46 @@ class Registro extends Controller
         }
         else
         {
-            //Creación de usuario
-            $usuario = new Usuario();
+            $cuentaCreada = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
             
-            $usuario->CODIGO_SIS        = $request->codigo_sis;
-            $usuario->CONTRASENA        = Hash::make($request->contrasena);
-            $usuario->NOMBRE            = $request->nombre;
-            $usuario->APELLIDO          = $request->apellido;
-            $usuario->CORREO            = $request->correo;
-            $usuario->SEXO              = $request->sexo;
-            $usuario->TELEFONO          = $request->telefono;
-            $usuario->CI                = $request->ci;
-            $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
-            
-            $usuario->save();
-            
-            //Añadir rol de estudiante al usuario
-            $rolAsignado = new AsignaRol;
-            
-            $rolAsignado->ROL_ID        = 4;
-            $rolAsignado->USUARIO_ID    = $usuario->ID;
-            
-            $rolAsignado->save();
-            
-            //Crear estudiante
-            $estudiante = new Estudiante;
-            
-            $estudiante->USUARIO_ID     = $usuario->ID;
-            
-            $estudiante->save();
-            
-            $request->session()->flash('alert-success', 'Cuenta Creada');
+            if($cuentaCreada->isEmpty())
+            {
+                //Creación de usuario
+                $usuario = new Usuario();
 
-            return redirect('login');
+                $usuario->CODIGO_SIS        = $request->codigo_sis;
+                $usuario->CONTRASENA        = Hash::make($request->contrasena);
+                $usuario->NOMBRE            = $request->nombre;
+                $usuario->APELLIDO          = $request->apellido;
+                $usuario->CORREO            = $request->correo;
+                $usuario->SEXO              = $request->sexo;
+                $usuario->TELEFONO          = $request->telefono;
+                $usuario->CI                = $request->ci;
+                $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
+
+                $usuario->save();
+
+                //Añadir rol de estudiante al usuario
+                $rolAsignado = new AsignaRol;
+
+                $rolAsignado->ROL_ID        = 4;
+                $rolAsignado->USUARIO_ID    = $usuario->ID;
+
+                $rolAsignado->save();
+
+                //Crear estudiante
+                $estudiante = new Estudiante;
+
+                $estudiante->USUARIO_ID     = $usuario->ID;
+
+                $estudiante->save();
+
+                $request->session()->flash('alert-success', 'Cuenta Creada');
+                return redirect('login');
+            }
+            
+            $request->session()->flash('alert-danger', 'Codigo SIS no válido');
+            return redirect('registro')->withErrors($validator)->withInput();
         }
     }
 }

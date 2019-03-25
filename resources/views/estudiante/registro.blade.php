@@ -12,10 +12,11 @@
 @section('main-content')
   <form method="POST" action="/registro">
     {!! csrf_field() !!}
+    @include('alertas')
 
     <div class="wrapper fadeInDown">
         <div id="formContent">
-
+            
             @include('errores')
 
             <div>

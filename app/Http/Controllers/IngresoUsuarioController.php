@@ -31,10 +31,11 @@ class IngresoUsuarioController extends Controller
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get()[0];
+            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
             
-            if($usuario != null)
+            if(!$usuario->isEmpty())
             {
+                $usuario = $usuario[0];
                 if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
                 {
                     $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
@@ -45,6 +46,8 @@ class IngresoUsuarioController extends Controller
                     return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);
                 }
             }
+            
+            $request->session()->flash('alert-danger', 'Usuario Incorrecto');
         }
         
         return redirect('login')->withErrors($validator)->withInput();
