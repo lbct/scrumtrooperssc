@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin\Docente;
 use App\Usuario;
 use App\AsignaRol;
 use App\Estudiante;
+use App\Docente;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class Control extends Base
 {
@@ -82,7 +84,13 @@ class Control extends Base
     {
         if( $this->rol->is($request) )
         {
-            return 'Lista Docente';
+            $docentes = Docente::all();
+            $usuarios = [];
+            foreach($docentes as $docente)
+            {
+                array_push($usuarios, $docente -> usuario);
+            }
+            return view('docente.lista')->with('usuarios', $usuarios);
         }
         
         return redirect('login');
