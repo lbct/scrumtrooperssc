@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Usuario;
 use App\AsignaRol;
-use App\Estudiante;
+use App\Administrador;
 use App\Classes\Rol;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
@@ -33,7 +33,7 @@ class Control extends Base
     
     public function postCrear(Request $request)
     {
-        if( $this->rol->is($request)  )
+        if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
                 'codigo_sis'                => 'required|min:9|max:9',
@@ -72,16 +72,16 @@ class Control extends Base
                 $rolAsignado = new AsignaRol;
                 
                 $rolAsignado->ROL_ID        = 1;
-                $rolAsignado->USUARIO_ID    = $usuario->id;
+                $rolAsignado->USUARIO_ID    = $usuario->ID;
                 
                 $rolAsignado->save();
                 
                 //Crear estudiante
-                $estudiante = new Estudiante;
+                $administrador = new Administrador;
                 
-                $estudiante->USUARIO_ID     = $usuario->id;
+                $administrador->USUARIO_ID     = $usuario->ID;
                 
-                $estudiante->save();
+                $administrador->save();
                 return redirect('administrador');
             }
         }

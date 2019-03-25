@@ -56,14 +56,14 @@ class Registro extends Controller
             $rolAsignado = new AsignaRol;
             
             $rolAsignado->ROL_ID        = 4;
-            $rolAsignado->USUARIO_ID    = $usuario->id;
+            $rolAsignado->USUARIO_ID    = $usuario->ID;
             
             $rolAsignado->save();
             
             //Crear estudiante
             $estudiante = new Estudiante;
             
-            $estudiante->USUARIO_ID     = $usuario->id;
+            $estudiante->USUARIO_ID     = $usuario->ID;
             
             $estudiante->save();
             

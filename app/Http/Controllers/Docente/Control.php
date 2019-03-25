@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Docente;
 
 use App\Usuario;
 use App\AsignaRol;
-use App\Estudiante;
+use App\Auxiliar;
 use App\Classes\Rol;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Docente\Base;
@@ -72,16 +72,16 @@ class Control extends Base
                 $rolAsignado = new AsignaRol;
                 
                 $rolAsignado->ROL_ID        = 3;
-                $rolAsignado->USUARIO_ID    = $usuario->id;
+                $rolAsignado->USUARIO_ID    = $usuario->ID;
                 
                 $rolAsignado->save();
                 
                 //Crear estudiante
-                $estudiante = new Estudiante;
+                $auxiliar = new Auxiliar;
                 
-                $estudiante->USUARIO_ID     = $usuario->id;
+                $auxiliar->USUARIO_ID     = $usuario->ID;
                 
-                $estudiante->save();
+                $auxiliar->save();
                 return redirect('docente');
             }
         }
