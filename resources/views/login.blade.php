@@ -23,7 +23,7 @@
           <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
         </form>
 
-        <!-- Remind Passowrd -->
+        <!-- Crear User -->
         <div id="formFooter">
           <a href="registro">Crear Cuenta?</a>
         </div>
