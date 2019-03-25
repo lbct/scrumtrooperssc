@@ -4,7 +4,6 @@
 <h2>Administrador</h2>
 @endsection
 @section('contenido')
-<h3>Lista de Docentes</h3>
 <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">Lista de Docentes</h1>
         <p>
@@ -26,6 +25,15 @@
             <th scope="row">{{ $user->CODIGO_SIS }}</th>
             <td>{{ $user->NOMBRE }}</td>
             <td>{{ $user->APELLIDO }}</td>
+            <td>
+                <form action="/administrador" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <a href="/administrador" class="btn btn-link"><span class="fas fa-fw fa-eye"></span></a>
+                    <a href="{{ route('administrador/editarDocente', $user->ID) }}" class="btn btn-link"><span class="fas fa-pencil-alt"></span></a>
+                    <button type="submit" class="btn btn-link"><span class="fas fa-trash"></span></button>
+                </form>
+            </td>
         </tr>
         @endforeach
         </tbody>

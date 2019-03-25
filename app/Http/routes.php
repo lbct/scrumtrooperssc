@@ -26,15 +26,28 @@ Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
 
 //Rutas Admin
-Route::get('administrador','Admin\Control@getVista');
+Route::get('administrador',[
+    'as' => 'administrador',
+    'uses' => 'Admin\Control@getVista'
+    ]);
 
 Route::get('administrador/crearDocente','Admin\Docente\Control@getCrear');
 Route::post('administrador/crearDocente','Admin\Docente\Control@postCrear');
 
 Route::get('administrador/listaDocente','Admin\Docente\Control@getLista');  //Mostrar lista de docentes registrados
 
-Route::get('administrador/editarDocente','Admin\Docente\Control@getEdit');
-Route::post('administrador/editarDocente','Admin\Docente\Control@postEdit');
+Route::get('administrador/editarDocente/{id_usuario}',
+[
+    'as' => 'administrador/editarDocente',
+    'uses' => 'Admin\Docente\Control@getEdit'
+]);
+
+
+Route::post('administrador/editarDocente/{id_usuario}',
+[
+    'as' => 'administrador/editarDocente',
+    'uses' => 'Admin\Docente\Control@postEdit'
+]);
 
 Route::get('administrador/crearAdmin','Admin\Control@getCrear');
 Route::post('administrador/crearAdmin','Admin\Control@postCrear');

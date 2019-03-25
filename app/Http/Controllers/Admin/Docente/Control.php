@@ -96,21 +96,49 @@ class Control extends Base
         return redirect('login');
     }
     
-    public function getEdit(Request $request)
+    public function getEdit(Request $request, $id_usuario)
     {
         if( $this->rol->is($request) )
         {
-            return 'GET Editar cuenta Docente';
+            $usuario = Usuario::find($id_usuario);
+            return view('docente.editar') -> with('usuario', $usuario);
         }
         
         return redirect('login');
     }
     
-    public function postEdit(Request $request)
+    public function postEdit(Request $request, $id_usuario)
     {
         if( $this->rol->is($request) )
         {
-            return 'POST Editar cuenta Docente';
+            $validator = Validator::make($request->all(), [
+                'contrasena'                => 'required|min:2',
+                'nombre'                    => 'required|min:2',
+                'apellido'                  => 'required|min:2',
+                'correo'                    => 'required|min:8',
+                'telefono'                  => 'required|min:6',
+                'ci'                        => 'required|min:6',
+                'fecha_nacimiento'          => 'required',
+            ]);
+
+            if($validator->fails() || $request->contrasena != $request->confirmar_contrasena) {
+                return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+            }
+            else
+            {
+                $usuario = User::find($id_usuario);
+                
+                $usuario->CONTRASENA        = Hash::make($request->contrasena);
+                $usuario->NOMBRE            = $request->nombre;
+                $usuario->APELLIDO          = $request->apellido;
+                $usuario->CORREO            = $request->correo;
+                $usuario->TELEFONO          = $request->telefono;
+                $usuario->CI                = $request->ci;
+                $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
+                
+                $usuario->update();
+                return redirect('administrador');
+            }
         }
         
         return redirect('login');
