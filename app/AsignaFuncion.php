@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AsignaFuncion extends Model
 {
+    protected $primaryKey = 'ID';
     protected $table = 'ASIGNA_FUNCION';
     
     public function funcion()

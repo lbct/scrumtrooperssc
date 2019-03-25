@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
+    protected $primaryKey = 'ID';
     protected $table = 'ROL';
     
     public function asignaRol()

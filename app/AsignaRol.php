@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AsignaRol extends Model
 {
+    protected $primaryKey = 'ID';
     protected $table = 'ASIGNA_ROL';
     
     public function usuario()

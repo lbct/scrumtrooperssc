@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Auxiliar extends Model
 {
+    protected $primaryKey = 'ID';
     protected $table = 'AUXILIAR';
     
     public function usuario()
