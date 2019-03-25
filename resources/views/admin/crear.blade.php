@@ -4,10 +4,12 @@
 <h2>Administrador</h2>
 @endsection
 @section('contenido')
+<br><br>
 <h3>Nuevo Administrador</h3>
 <form method="POST" action="/administrador/crearAdmin">
     {!! csrf_field() !!}
-    <div>
+    @include('formulario')
+    <!--<div>
         Código SIS
         <input type="text" name="codigo_sis" value="{{ old('codigo_sis') }}">
     </div>
@@ -64,4 +66,5 @@
         <button type="submit">Registrar</button>
     </div>
 </form>
+-->
 @endsection

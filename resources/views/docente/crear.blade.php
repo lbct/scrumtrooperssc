@@ -4,64 +4,72 @@
 <h2>Administrador</h2>
 @endsection
 @section('contenido')
-<h3>Nuevo Docente</h3>
-<form method="POST" action="/administrador/crearDocente">
-    {!! csrf_field() !!}
-    <div>
-        Código SIS
-        <input type="text" name="codigo_sis" value="{{ old('codigo_sis') }}">
-    </div>
+<br><br><br>
+<h3>Nuevo Docente</h3>   
+    <form method="POST" action="/administrador/crearDocente">
+        {!! csrf_field() !!}
+    @include('formulario')
     
-    <div>
-        Nombre
-        <input type="text" name="nombre" value="{{ old('nombre') }}">
-    </div>
-    
-    <div>
-        Apellido
-        <input type="text" name="apellido" value="{{ old('apellido') }}">
-    </div>
 
-    <div>
-        Correo
-        <input type="email" name="correo" value="{{ old('correo') }}">
-    </div>
+<!--
+    <form method="POST" action="/administrador/crearDocente">
+        {!! csrf_field() !!}
+        <div>
+            Código SISasd
+            <input type="text" name="codigo_sis" value="{{ old('codigo_sis') }}">
+        </div>
+        
+        <div>
+            Nombre
+            <input type="text" name="nombre" value="{{ old('nombre') }}">
+        </div>
+        
+        <div>
+            Apellido
+            <input type="text" name="apellido" value="{{ old('apellido') }}">
+        </div>
     
-    <div>
-        Sexo
-        <select name="sexo">
-            <option value ="M">Masculino</option>
-            <option value ="F">Femenino</option>
-        </select> 
-    </div>
+        <div>
+            Correo
+            <input type="email" name="correo" value="{{ old('correo') }}">
+        </div>
+        
+        <div>
+            Sexo
+            <select name="sexo">
+                <option value ="M">Masculino</option>
+                <option value ="F">Femenino</option>
+            </select> 
+        </div>
+        
+        <div>
+            Telefono
+            <input type="text" name="telefono" value="{{ old('telefono') }}">
+        </div>
+        
+        <div>
+            Carnet de Identidad
+            <input type="text" name="ci" value="{{ old('ci') }}">
+        </div>
+        
+        <div>
+            Fecha de nacimiento:
+            <input name="fecha_nacimiento" type="date">
+        </div>
     
-    <div>
-        Telefono
-        <input type="text" name="telefono" value="{{ old('telefono') }}">
-    </div>
+        <div>
+            Contraseña
+            <input type="password" name="contrasena">
+        </div>
     
-    <div>
-        Carnet de Identidad
-        <input type="text" name="ci" value="{{ old('ci') }}">
-    </div>
+        <div>
+            Confirma la contraseña
+            <input type="password" name="confirmacion_contrasena">
+        </div>
     
-    <div>
-        Fecha de nacimiento:
-        <input name="fecha_nacimiento" type="date">
-    </div>
-
-    <div>
-        Contraseña
-        <input type="password" name="contrasena">
-    </div>
-
-    <div>
-        Confirma la contraseña
-        <input type="password" name="confirmacion_contrasena">
-    </div>
-
-    <div>
-        <button type="submit">Registrar</button>
-    </div>
-</form>
+        <div>
+            <button type="submit">Registrar</button>
+        </div>
+    </form>
+-->
 @endsection
