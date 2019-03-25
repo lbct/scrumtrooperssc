@@ -22,88 +22,84 @@
   <!-- Page Content -->
   @extends('estudiante.plantilla')
   @section('contenido_barra')
-  <h2>Estudiante</h2>
+  <h2 align="center">Estudiante</h2>
   @endsection
   @section('contenido')
   
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
-  <div class="container col-md-5 col-md-offset-6  ">
+<br><br><br>
+  <div class="container col-md-5 col-md-offset-4  ">
     <div class="row">
       <div class="panel panel-default">
-        <div class="panel-body">
-        <br>
-          <h2>Editar Perfil</h2>
-          <br>
+        <div class="panel-body col-md-12 ">
+        <div class="col-md-12 ">
+          <center><h2>Editar&nbspPerfil</h2></center>
+          </div>
         </div>
        <div>
+        <br>
+        <br>  
              <form>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Nombre:</label>
+                <div class="col-md-6 mb-10">
                   <input type="text" class="form-control" id="validationServer01" placeholder="Nombre" value="" required>
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">Apellidos:</label>
+                <div class="col-md-6 mb-4">
                   <input type="text" class="form-control" id="validationServer02" placeholder="Apellidos" value="" required>
                 </div>
               </div>
                 <div class="form-row">
-                  <div class="col-md-7 mb-3">
-                    <label for="validationServer02">Correo:</label>
+                  <div class="col-md-8 mb-4">
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                   </div>
-                  <div class="col-md-3 mb-3">
-                    <div class="form-check">
-                      <label for="validationServer02">Sexo:</label>
-                        <div>
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="" >
-                          <label class="form-check-label" for="exampleRadios1"> Femenino                      
-                        </div>
-                        <div>
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="">
-                          <label class="form-check-label" for="exampleRadios1"> Masculino                      
-                        </div>
+                  <div class="dropdown col-md-4">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Sexo
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="sexo">
+                      <a class="dropdown-item" href="#">Femenino</a>
+                      <a class="dropdown-item" href="#">Masculino</a>
                     </div>
                   </div>
                 </div>
                 <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Telefono:</label>
-                  <input type="number_format" class="form-control" id="validationServer01" placeholder="78451256" value="" required>
+                <div class="col-md-5 mb-4">
+                  <input type="number_format" class="form-control" id="validationServer01" placeholder="Telefono" value="" required>
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">CI:</label>
-                  <input type="text" class="form-control" id="validationServer02" placeholder="8563249" value="" required>
+                <div class="col-md-5 mb-3">
+                  <input type="text" class="form-control" id="validationServer02" placeholder="Carnet de Identidad" value="" required>
                 </div>
                 </div>
               </div>
               <div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                <input id="datepicker" width="156" />
-                  <script>
-                      $('#datepicker').datepicker({
-                          showOtherMonths: true
-                      });
-                  </script>
-                </div>
+              <div>
+              <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
               </div>
+                  <div class="col-md-4 mb-4">
+                  <input id="datepicker" width="156" placeholder=" dd/mm/aaaa"/>
+                    <script>
+                        $('#datepicker').datepicker({
+                            showOtherMonths: true
+                        });
+                    </script>
+                  </div>
+                </div>
               <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer01">Contraseña:</label>
-                  <input type="number_format" class="form-control" id="validationServer01" placeholder="*******" value="" required>
+                <div class="col-md-6 mb-3">
+                  <input type="number_format" class="form-control" id="validationServer01" placeholder="Contraseña" value="" required>
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationServer02">Confirmar&nbspContraseña:</label>
-                  <input type="text" class="form-control" id="validationServer02" placeholder="******" value="" required>
+                <div class="col-md-6 mb-5">
+                  <input type="text" class="form-control" id="validationServer02" placeholder="Confirme contraseña" value="" required>
                 </div>
                 </div>
+                <div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                   Guardar
                 </button>
+                </div>
           </form>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
