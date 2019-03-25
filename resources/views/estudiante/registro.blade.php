@@ -2,11 +2,30 @@
 <script src="{{asset('jquery/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 @extends('inicio')
+
 
 @section('main-content')
   <form method="POST" action="/registro">
     {!! csrf_field() !!}
+
+    @if (count($errors)>0)
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+        </button>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{!!$error!!}</li>
+            @endforeach
+
+    </div>
+    @endif
+
+
     <div class="wrapper fadeInDown">
         <div id="formContent">
 
@@ -55,9 +74,16 @@
                                             <option value="F">Femenino</option>
                                     </select>
                                 </div>
-                                <div class="form-group column2">
-                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
-                                    </div>
+                                <div class="form-group column2 row justify-content-center">
+                                
+                                    <input id="datepicker" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
+                                    <script>
+                                        $('#datepicker').datepicker({
+                                            showOtherMonths: true
+                                        });
+                                    </script>
+                                
+                                
                                 </div>
                         </div>
 
