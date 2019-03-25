@@ -5,9 +5,11 @@
 @endsection
 @section('contenido')
 <br><br>
-<h3>Nuevo Gestion</h3>
+<h3>Nueva Gestión</h3>
 <form method="POST" action="/administrador/crearGestion">
     {!! csrf_field() !!}
+    @include('alertas')
+    @include('errores')
     <div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
