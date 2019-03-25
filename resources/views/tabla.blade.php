@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td>pend 4</td>
-            <td>Doe</td>            
+            <td>Doe</td>
             <td>Mateira</td>
             <td>pend 2</td>
             <td>Thomas</td>
@@ -52,11 +52,11 @@
         </tr>
         <tr>
             <td>pend 6</td>
-            <td>Jim</td>            
+            <td>Jim</td>
             <td>Mateira</td>
             <td>pend 2</td>
             <td>Thomas</td>
             <td>[email protected]</td>
         </tr>
     </tbody>
-</table>
+</table> 
