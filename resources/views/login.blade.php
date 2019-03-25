@@ -7,6 +7,7 @@
 @section('main-content')
   <form method="POST" action="/login">
     @include('alertas')
+    @include('errores')
     {!! csrf_field() !!}
     <div class="wrapper fadeInDown">
       <div id="formContent">

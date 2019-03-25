@@ -6,17 +6,6 @@
 @section('contenido')
 <form method="POST" action="/estudiante/editar">
     {!! csrf_field() !!}
-    @if (count($errors)>0)
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-        </button>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{!!$error!!}</li>
-            @endforeach
-
-    </div>
-    @endif
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
