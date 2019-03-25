@@ -25,7 +25,7 @@ class Control extends Base
     {
         if( $this->rol->is($request)  )
         {
-            return 'GET Crear cuenta Administrador';
+            return view('admin.crear');
         }
         
         return redirect('login');
@@ -35,7 +35,55 @@ class Control extends Base
     {
         if( $this->rol->is($request)  )
         {
-            return 'POST Crear cuenta Administrador';
+            $validator = Validator::make($request->all(), [
+                'codigo_sis'                => 'required|min:9|max:9',
+                'contrasena'                => 'required|min:2',
+                'confirmacion_contrasena'   => 'required|min:2',
+                'nombre'                    => 'required|min:2',
+                'apellido'                  => 'required|min:2',
+                'correo'                    => 'required|min:8',
+                'sexo'                      => 'required|max:1|min:1',
+                'telefono'                  => 'required|min:6',
+                'ci'                        => 'required|min:6',
+                'fecha_nacimiento'          => 'required',
+            ]);
+            
+            if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
+                return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+            }
+            else
+            {
+                //Creación de usuario
+                $usuario = new Usuario();
+                
+                $usuario->CODIGO_SIS        = $request->codigo_sis;
+                $usuario->CONTRASENA        = Hash::make($request->contrasena);
+                $usuario->NOMBRE            = $request->nombre;
+                $usuario->APELLIDO          = $request->apellido;
+                $usuario->CORREO            = $request->correo;
+                $usuario->SEXO              = $request->sexo;
+                $usuario->TELEFONO          = $request->telefono;
+                $usuario->CI                = $request->ci;
+                $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
+                
+                $usuario->save();
+                
+                //Añadir rol de estudiante al usuario
+                $rolAsignado = new AsignaRol;
+                
+                $rolAsignado->ROL_ID        = 1;
+                $rolAsignado->USUARIO_ID    = $usuario->id;
+                
+                $rolAsignado->save();
+                
+                //Crear estudiante
+                $estudiante = new Estudiante;
+                
+                $estudiante->USUARIO_ID     = $usuario->id;
+                
+                $estudiante->save();
+                return redirect('administrador');
+            }
         }
         
         return redirect('login');
