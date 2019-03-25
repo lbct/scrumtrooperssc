@@ -44,6 +44,7 @@ class Control extends Base
                 'telefono'                  => 'required|min:6',
                 'ci'                        => 'required|min:6',
                 'fecha_nacimiento'          => 'required',
+                'contrasena'                =>'required|min:2'
             ]);
             
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {

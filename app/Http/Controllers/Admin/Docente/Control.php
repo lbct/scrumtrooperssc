@@ -46,7 +46,7 @@ class Control extends Base
     {
         if( $this->rol->is($request) )
         {
-            return 'GET Editar cuenta Docente';
+            return view('admin.editarDocente');;
         }
         
         return redirect('login');

@@ -18,7 +18,7 @@ class Registro extends Controller
     }
     
     public function postRegistro(Request $request)
-    {
+    {   
         $validator = Validator::make($request->all(), [
             'codigo_sis'                => 'required|min:9|max:9',
             'contrasena'                => 'required|min:2',
