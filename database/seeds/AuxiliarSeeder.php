@@ -8,7 +8,7 @@ class AuxiliarSeeder extends Seeder
     public function run()
     {
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	'3',
+        	'USUARIO_ID' 		=>	4,
         ]);
     }
 }

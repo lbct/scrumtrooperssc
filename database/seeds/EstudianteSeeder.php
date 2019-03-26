@@ -8,7 +8,11 @@ class EstudianteSeeder extends Seeder
     public function run()
     {
         Estudiante::create([
-        	'USUARIO_ID' 		=>	'4',
+        	'USUARIO_ID' 		=>	5,
+        ]);
+        
+        Estudiante::create([
+        	'USUARIO_ID' 		=>	6,
         ]);
     }
 }

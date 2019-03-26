@@ -8,52 +8,80 @@ class UsuarioSeeder extends Seeder
 {
     public function run()
     {
+        //Administrador
         Usuario::create([
-        	'CODIGO_SIS' 		=>	'201400001',
+        	'CODIGO_SIS' 		=>	'200100001',
         	'CONTRASENA'		=>	Hash::make('textoplano'),
-        	'NOMBRE'			=>	'Administrador',
-            'APELLIDO'			=>	'1',
-            'CORREO'			=>	'Administrador@tis.com',
+        	'NOMBRE'			=>	'Vladimir',
+            'APELLIDO'			=>	'Costas',
+            'CORREO'			=>	'v.costas@umss.edu.bo',
             'SEXO'				=>	'M',
-            'TELEFONO'			=>	'11111111',
-            'CI'				=>	'8888888',
-            'FECHA_NACIMIENTO'	=>	'0000-00-00',
+            'TELEFONO'			=>	'4666037',
+            'CI'				=>	'6324583',
+            'FECHA_NACIMIENTO'	=>	'1990-06-09',
+        ]);
+        
+        //Docente
+        Usuario::create([
+        	'CODIGO_SIS' 		=>	'200200001',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
+        	'NOMBRE'			=>	'Leticia',
+            'APELLIDO'			=>	'Blanco',
+            'CORREO'			=>	'leticia@memi.umss.edu.bo',
+            'SEXO'				=>	'F',
+            'TELEFONO'			=>	'4252439',
+            'CI'				=>	'6936875',
+            'FECHA_NACIMIENTO'	=>	'1990-01-01',
         ]);
         
         Usuario::create([
-        	'CODIGO_SIS' 		=>	'201400002',
+        	'CODIGO_SIS' 		=>	'200200002',
         	'CONTRASENA'		=>	Hash::make('textoplano'),
-        	'NOMBRE'			=>	'Docente',
-            'APELLIDO'			=>	'1',
-            'CORREO'			=>	'Docente@tis.com',
+        	'NOMBRE'			=>	'Rosemary',
+            'APELLIDO'			=>	'Torrico',
+            'CORREO'			=>	'rosemary@cs.umss.edu.bo',
+            'SEXO'				=>	'F',
+            'TELEFONO'			=>	'71778384',
+            'CI'				=>	'3549875',
+            'FECHA_NACIMIENTO'	=>	'1990-09-03',
+        ]);
+        
+        //Auxiliar
+        Usuario::create([
+        	'CODIGO_SIS' 		=>	'201400991',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
+        	'NOMBRE'			=>	'William',
+            'APELLIDO'			=>	'Velasquez',
+            'CORREO'			=>	'william.velasquez.umss@gmail.com',
             'SEXO'				=>	'M',
-            'TELEFONO'			=>	'11111111',
-            'CI'				=>	'8888888',
-            'FECHA_NACIMIENTO'	=>	'0000-00-00',
+            'TELEFONO'			=>	'79712058',
+            'CI'				=>	'9381027',
+            'FECHA_NACIMIENTO'	=>	'1995-10-05',
+        ]);
+        
+        //Estudiante
+        Usuario::create([
+        	'CODIGO_SIS' 		=>	'201400043',
+        	'CONTRASENA'		=>	Hash::make('textoplano'),
+        	'NOMBRE'			=>	'Cesar',
+            'APELLIDO'			=>	'Quiroga',
+            'CORREO'			=>	'cesar.a.quiroga.c@gmail.com',
+            'SEXO'				=>	'M',
+            'TELEFONO'			=>	'60753939',
+            'CI'				=>	'8846218',
+            'FECHA_NACIMIENTO'	=>	'1995-08-03',
         ]);
         
         Usuario::create([
-        	'CODIGO_SIS' 		=>	'201400003',
+        	'CODIGO_SIS' 		=>	'201400929',
         	'CONTRASENA'		=>	Hash::make('textoplano'),
-        	'NOMBRE'			=>	'Auxiliar',
-            'APELLIDO'			=>	'1',
-            'CORREO'			=>	'Auxiliar@gmail.com',
+        	'NOMBRE'			=>	'Alex',
+            'APELLIDO'			=>	'Cardona',
+            'CORREO'			=>	'alex.cardona@gmail.com',
             'SEXO'				=>	'M',
-            'TELEFONO'			=>	'11111111',
-            'CI'				=>	'8888888',
-            'FECHA_NACIMIENTO'	=>	'0000-00-00',
-        ]);
-        
-        Usuario::create([
-        	'CODIGO_SIS' 		=>	'201400004',
-        	'CONTRASENA'		=>	Hash::make('textoplano'),
-        	'NOMBRE'			=>	'Estudiante',
-            'APELLIDO'			=>	'1',
-            'CORREO'			=>	'Estudiante@gmail.com',
-            'SEXO'				=>	'M',
-            'TELEFONO'			=>	'11111111',
-            'CI'				=>	'8888888',
-            'FECHA_NACIMIENTO'	=>	'0000-00-00',
+            'TELEFONO'			=>	'60789692',
+            'CI'				=>	'6497347',
+            'FECHA_NACIMIENTO'	=>	'1996-04-06',
         ]);
     }
 }

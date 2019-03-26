@@ -13,21 +13,31 @@ class AsignaRolSeeder extends Seeder
             'ROL_ID' 		    =>	1,
         ]);
         
-        //Docente
+        //Docentes
         AsignaRol::create([
         	'USUARIO_ID' 		=>	2,
             'ROL_ID' 		    =>	2,
         ]);
         
-        //Auxiliar
         AsignaRol::create([
         	'USUARIO_ID' 		=>	3,
+            'ROL_ID' 		    =>	2,
+        ]);
+        
+        //Auxiliar
+        AsignaRol::create([
+        	'USUARIO_ID' 		=>	4,
             'ROL_ID' 		    =>	3,
         ]);
         
         //Estudiante
         AsignaRol::create([
-        	'USUARIO_ID' 		=>	4,
+        	'USUARIO_ID' 		=>	5,
+            'ROL_ID' 		    =>	4,
+        ]);
+        
+        AsignaRol::create([
+        	'USUARIO_ID' 		=>	6,
             'ROL_ID' 		    =>	4,
         ]);
     }
