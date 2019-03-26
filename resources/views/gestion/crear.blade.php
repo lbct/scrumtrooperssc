@@ -1,14 +1,13 @@
 @extends('admin.plantilla')
 @section('titulo', 'Nueva Gestión')
 @section('contenido_barra')
-<h2>Nueva Gestión</h2>
+<h2>Administrador</h2>
 @endsection
 @section('contenido')
 <br><br>
 <h3>Nueva Gestión</h3>
 <form method="POST" action="/administrador/crearGestion">
     {!! csrf_field() !!}
-    @include('alertas')
     @include('errores')
     <div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -23,39 +22,41 @@
                         <form>
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
-                                    Fecha&nbspInicio:<input id="startDate" name="fecha_inicio" width="376" value="{{ old('fecha_inicio') }}" />
+                                    Fecha&nbspInicio:<input id="fecha_inicio" name="fecha_inicio" width="376" value="{{ old('fecha_inicio') }}" />
                                     <br>
-                                    Fecha Fin:<input id="endDate" name="fecha_fin" width="376" value="{{ old('fecha_inicio') }}" />
+                                    Fecha Fin:<input id="fecha_fin" name="fecha_fin" width="376" value="{{ old('fecha_inicio') }}" />
                                 </div>
                             </div>
                             <div class="form-row">
                                 <script>
                                     var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-                                    $('#startDate').datepicker({
+                                    $('#fecha_inicio').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         iconsLibrary: 'fontawesome',
                                         minDate: today,
                                         maxDate: function() {
-                                            return $('#endDate').val();
-                                        }
+                                            return $('#fecha_fin').val();
+                                        },
+                                        format: 'yyyy-mm-dd'
                                     });
-                                    $('#endDate').datepicker({
+                                    $('#fecha_fin').datepicker({
                                         uiLibrary: 'bootstrap4',
                                         iconsLibrary: 'fontawesome',
                                         minDate: function() {
-                                            return $('#startDate').val();
-                                        }
+                                            return $('#fecha_inicio').val();
+                                        },
+                                        format: 'yyyy-mm-dd'
                                     });
                                 </script>
                             </div>
                             <div class="col-md-3 mb-3">
                                 Semestre:
                                 <div class="form-group column2 row justify-content-end">
-                                    <select id="sexo" name="sexo" class="form-control input-lg" width="000" tabindex="9" value="{{ old('numero_semestre') }}">
+                                    <select id="numero_semestre" name="numero_semestre" class="form-control input-lg" width="000" tabindex="9" value="{{ old('numero_semestre') }}">
                                         <option value=" 1">PS</option>
-                                        <option value="2">Ver</option>
+                                        <option value="2">VER</option>
                                         <option value="3">SS</option>
-                                        <option value="4">Inv</option>
+                                        <option value="4">INV</option>
                                     </select>
                                 </div>
                             </div>

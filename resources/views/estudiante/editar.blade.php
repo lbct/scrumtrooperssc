@@ -1,25 +1,3 @@
-<!--<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>SESLAB</title>
-
-  <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>-->
-
-<!-- Navigation -->
-
-<!-- Page Content -->
 @extends('estudiante.plantilla')
 @section('contenido_barra')
 <h2 align="center">Estudiante</h2>
@@ -28,17 +6,6 @@
 @section('contenido')
 <form method="POST" action="/estudiante/editar">
     {!! csrf_field() !!}
-    @if (count($errors)>0)
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-        </button>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{!!$error!!}</li>
-            @endforeach
-
-    </div>
-    @endif
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
@@ -91,10 +58,11 @@
                             <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <input id="datepicker" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA"/ value="{{ $usuario->FECHA_NACIMIENTO }}"">
+                            <input id="fecha_nacimiento" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA" value="<?php echo date($usuario->FECHA_NACIMIENTO);?>">
                                 <script>
-                                    $('#datepicker').datepicker({
-                                        showOtherMonths: true
+                                    $('#fecha_nacimiento').datepicker({
+                                        showOtherMonths: true,
+                                        format: 'yyyy-mm-dd'
                                     });
                                 </script>
                             </div>
@@ -119,10 +87,3 @@
     </div>
 </form>
 @endsection
-<!-- Bootstrap core JavaScript -->
-<!--<script src="{{asset('jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-
-</body>
-
-</html>--> 

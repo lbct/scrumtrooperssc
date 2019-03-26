@@ -25,7 +25,7 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'numero_semestre'                => 'required|min:1|max:1',
+                'numero_semestre'                => 'required',
                 'fecha_inicio'          => 'required',
                 'fecha_fin'          => 'required',
             ]);
@@ -37,12 +37,20 @@ class Control extends Base
             {
                 //Creación de usuario
                 $gestion = new Gestion();
-                
+                $numero_semestre = 1;
+                switch($request->numero_semestre)
+                {
+                    case 'PS': $numero_semestre = 1; break;
+                    case 'VER': $numero_semestre = 2; break;
+                    case 'SS': $numero_semestre = 3; break;
+                    case 'INV': $numero_semestre = 4; break;
+                }
                 $gestion->FECHA_INICIO      = $request->fecha_inicio;
                 $gestion->FECHA_FIN         = $request->fecha_fin;
-                $gestion->NUMERO_SEMESTRE   = $request->numero_semestre;
+                $gestion->NUMERO_SEMESTRE   = $numero_semestre;
 
                 $gestion->save();
+                $request->session()->flash('alert-success', 'Gestión creada con éxito');
                 return redirect('/administrador');
             }
         }

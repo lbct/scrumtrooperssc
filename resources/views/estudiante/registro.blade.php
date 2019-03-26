@@ -33,7 +33,7 @@
                                 
                         </div>
                         <div class="form-group">
-                            <input type="text" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis" tabindex="3"  value="{{ old('codigo_sis') }}">
+                            <input type="number" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis" tabindex="3"  value="{{ old('codigo_sis') }}">
                         </div>
                         <div class="form-group">
                             <input type="email" name="correo" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" value="{{ old('correo') }}">
@@ -52,7 +52,7 @@
                                     <input type="number" name="telefono" id="telefono" class="form-control input-lg" placeholder="Telefono" tabindex="7" value="{{ old('telefono') }}">
                                 </div>
                                 <div class="form-group column2">
-                                    <input type="number" name="ci" id="ci" class="form-control input-lg" placeholder="C.I." tabindex="8" value="{{ old('ci') }}">
+                                    <input type="text" name="ci" id="ci" class="form-control input-lg" placeholder="C.I." tabindex="8" value="{{ old('ci') }}">
                                 </div>
                         </div>
 
@@ -68,7 +68,8 @@
                                     <input id="datepicker" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
                                     <script>
                                         $('#datepicker').datepicker({
-                                            showOtherMonths: true
+                                            showOtherMonths: true,
+                                            format: 'yyyy-mm-dd'
                                         });
                                     </script>
                                 
