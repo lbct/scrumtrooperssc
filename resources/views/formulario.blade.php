@@ -2,6 +2,7 @@
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
       <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+      <link href="{{asset('/css/campos.css')}}" rel="stylesheet" id="bootstrap-css">
       <div class="container col-md-5 col-md-offset-5 ">
           <div class="row">
               <div class="panel panel-default">
