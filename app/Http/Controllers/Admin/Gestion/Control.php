@@ -30,7 +30,7 @@ class Control extends Base
                 'fecha_fin'          => 'required',
             ]);
             
-            if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
+            if($validator->fails()) {
                 return redirect('/administrador/crearGestion')->withErrors($validator)->withInput();
             }
             else

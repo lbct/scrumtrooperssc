@@ -38,9 +38,13 @@ class Control extends Base
                 'ci'                        => 'required|min:6',
                 'fecha_nacimiento'          => 'required',
             ]);
-            
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-                return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
+                if($validator->fails())
+                    return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
+                else{
+                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                    return redirect('administrador/crearDocente');
+                }
             }
             else
             {
@@ -144,7 +148,12 @@ class Control extends Base
             ]);
 
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-                return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+                if($validator->fails())
+                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+                else{
+                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                    return redirect('administrador/editarDocente/'.$id_usuario);
+                }
             }
             else
             {

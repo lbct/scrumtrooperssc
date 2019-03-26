@@ -45,9 +45,13 @@ class Control extends Base
                 'fecha_nacimiento'          => 'required',
                 'contrasena'                =>'required|min:2'
             ]);
-            
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-                return redirect('/estudiante/editar')->withErrors($validator)->withInput();
+                if($validator->fails())
+                    return redirect('/estudiante/editar')->withErrors($validator)->withInput();
+                else{
+                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                    return redirect('/estudiante/editar');
+                }
             }
             else
             {

@@ -33,7 +33,12 @@ class Registro extends Controller
         ]);
         
         if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-            return redirect('registro')->withErrors($validator)->withInput();
+            if($validator->fails())
+                return redirect('registro')->withErrors($validator)->withInput();
+            else{
+                $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                return redirect('registro');
+            }
         }
         else
         {

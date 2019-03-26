@@ -47,9 +47,13 @@ class Control extends Base
                 'ci'                        => 'required|min:6',
                 'fecha_nacimiento'          => 'required',
             ]);
-            
             if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-                return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+                if($validator->fails())
+                    return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+                else{
+                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                    return redirect('administrador/crearAdmin');
+                }
             }
             else
             {
