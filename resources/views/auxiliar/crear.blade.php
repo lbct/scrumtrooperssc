@@ -7,7 +7,8 @@
 <h3>Nuevo Auxiliar</h3>
 <form method="POST" action="/docente/crearAuxiliar">
     {!! csrf_field() !!}
-    <div>
+    @include('formulario')
+    <!--<div>
         Código SIS
         <input type="text" name="codigo_sis" value="{{ old('codigo_sis') }}">
     </div>
@@ -62,6 +63,6 @@
 
     <div>
         <button type="submit">Registrar</button>
-    </div>
+    </div>-->
 </form>
 @endsection
