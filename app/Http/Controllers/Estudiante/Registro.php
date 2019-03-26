@@ -14,13 +14,13 @@ class Registro extends Controller
 {
     public function getRegistro()
     {
-        return view('estudiante\registro');
+        return view('estudiante.registro');
     }
     
     public function postRegistro(Request $request)
     {   
         $validator = Validator::make($request->all(), [
-            'codigo_sis'                => 'required|min:9|max:9',
+            'codigo_sis'                => 'required|size:9',
             'contrasena'                => 'required|min:2',
             'confirmacion_contrasena'   => 'required|min:2',
             'nombre'                    => 'required|min:2',

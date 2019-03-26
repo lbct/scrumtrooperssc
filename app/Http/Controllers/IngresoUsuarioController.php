@@ -25,7 +25,7 @@ class IngresoUsuarioController extends Controller
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'codigo_sis'                => 'required|min:9|max:9',
+            'codigo_sis'                => 'required|size:9',
             'contrasena'                => 'required|min:2',
         ]);
         
