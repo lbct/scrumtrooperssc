@@ -72,12 +72,12 @@
                                 <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="formform-control input-lg" placeholder="Confirme contraseña">
+                                <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control input-lg" placeholder="Confirme contraseña">
                             </div>
                         </div>
                         <div>
                             <div class="form-group row justify-content-center">
-                                <div class="column2"><input type="submit" href="/estudiante/editar" value="guardar" class="btn btn-primary" tabindex="7"></div>
+                                <div class="column2"><input type="submit" href="/estudiante/editar" value="Guardar" class="btn btn-primary" tabindex="7"></div>
                             </div>
                         </div>
                     </div>
