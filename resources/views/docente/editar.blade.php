@@ -57,7 +57,7 @@
                               <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
                           </div>
                           <div class="col-md-6 mb-4">
-                              <input id="datepicker" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA"/ value="{{$usuario->FECHA_NACIMIENTO}}">
+                              <input id="datepicker" readonly="readonly" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA"/ value="{{$usuario->FECHA_NACIMIENTO}}">
                               <script>
                                   $('#datepicker').datepicker({
                                       showOtherMonths: true,

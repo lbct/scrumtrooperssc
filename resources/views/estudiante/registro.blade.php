@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group column2 row justify-content-center">
                                 
-                                    <input id="datepicker" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
+                                    <input id="datepicker" readonly="readonly" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
                                     <script>
                                         $('#datepicker').datepicker({
                                             showOtherMonths: true,

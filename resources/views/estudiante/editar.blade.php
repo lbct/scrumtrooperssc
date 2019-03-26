@@ -59,7 +59,7 @@
                             <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <input id="fecha_nacimiento" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA" value="<?php echo date($usuario->FECHA_NACIMIENTO);?>">
+                            <input id="fecha_nacimiento" readonly="readonly" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA" value="<?php echo date($usuario->FECHA_NACIMIENTO);?>">
                                 <script>
                                     $('#fecha_nacimiento').datepicker({
                                         showOtherMonths: true,
