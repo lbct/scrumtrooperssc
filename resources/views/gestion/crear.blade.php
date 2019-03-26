@@ -22,9 +22,9 @@
                         <form>
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
-                                    Fecha&nbspInicio:<input id="fecha_inicio" name="fecha_inicio" width="376" value="{{ old('fecha_inicio') }}" />
+                                    Fecha&nbspInicio:<input id="fecha_inicio" name="fecha_inicio" width="376" value="<?php echo date('Y-m-d');?>" />
                                     <br>
-                                    Fecha Fin:<input id="fecha_fin" name="fecha_fin" width="376" value="{{ old('fecha_inicio') }}" />
+                                    Fecha Fin:<input id="fecha_fin" name="fecha_fin" width="376" value="{{ old('fecha_fin') }}" />
                                 </div>
                             </div>
                             <div class="form-row">
