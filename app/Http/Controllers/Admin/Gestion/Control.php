@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin\Gestion;
 
-use App\Gestion;
+use App\Models\Gestion;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
@@ -25,29 +25,23 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'numero_semestre'                => 'required',
-                'fecha_inicio'          => 'required',
+                'numero_semestre'    => 'required',
+                'fecha_inicio'       => 'required',
                 'fecha_fin'          => 'required',
             ]);
             
-            if($validator->fails()) {
+            if($validator->fails()) 
+            {
                 return redirect('/administrador/crearGestion')->withErrors($validator)->withInput();
             }
             else
             {
-                //Creación de usuario
+                //Creación de gestión
                 $gestion = new Gestion();
-                $numero_semestre = 1;
-                switch($request->numero_semestre)
-                {
-                    case 'PS': $numero_semestre = 1; break;
-                    case 'VER': $numero_semestre = 2; break;
-                    case 'SS': $numero_semestre = 3; break;
-                    case 'INV': $numero_semestre = 4; break;
-                }
+                
                 $gestion->FECHA_INICIO      = $request->fecha_inicio;
                 $gestion->FECHA_FIN         = $request->fecha_fin;
-                $gestion->NUMERO_SEMESTRE   = $numero_semestre;
+                $gestion->NUMERO_SEMESTRE   = $request->$numero_semestre;
 
                 $gestion->save();
                 $request->session()->flash('alert-success', 'Gestión creada con éxito');

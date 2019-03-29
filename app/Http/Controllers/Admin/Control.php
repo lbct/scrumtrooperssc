@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\Usuario;
-use App\AsignaRol;
-use App\Administrador;
+use App\Models\Usuario;
+use App\Models\AsignaRol;
+use App\Models\Administrador;
 use App\Classes\Rol;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
@@ -36,43 +36,37 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'codigo_sis'                => 'required|size:9',
-                'contrasena'                => 'required|min:2',
-                'confirmacion_contrasena'   => 'required|min:2',
+                'username'                  => 'required|min:5',
+                'password'                  => 'required|min:2',
+                'password_confirmation'     => 'required|min:2',
                 'nombre'                    => 'required|min:2',
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
-                'sexo'                      => 'required|max:1|min:1',
-                'telefono'                  => 'required|min:6',
-                'ci'                        => 'required|min:6',
-                'fecha_nacimiento'          => 'required',
             ]);
-            if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
+            if($validator->fails() || $request->password != $request->password_confirmation) 
+            {
                 if($validator->fails())
                     return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
-                else{
+                else
+                {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
                     return redirect('administrador/crearAdmin');
                 }
             }
             else
             {
-                $cuentaCreada = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
+                $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
             
                 if($cuentaCreada->isEmpty())
                 {
                     //Creación de usuario
                     $usuario = new Usuario();
 
-                    $usuario->CODIGO_SIS        = $request->codigo_sis;
-                    $usuario->CONTRASENA        = Hash::make($request->contrasena);
+                    $usuario->USERNAME          = $request->codigo_sis;
+                    $usuario->PASSWORD          = Hash::make($request->contrasena);
                     $usuario->NOMBRE            = $request->nombre;
                     $usuario->APELLIDO          = $request->apellido;
                     $usuario->CORREO            = $request->correo;
-                    $usuario->SEXO              = $request->sexo;
-                    $usuario->TELEFONO          = $request->telefono;
-                    $usuario->CI                = $request->ci;
-                    $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
 
                     $usuario->save();
 
@@ -87,7 +81,7 @@ class Control extends Base
                     //Crear estudiante
                     $administrador = new Administrador;
 
-                    $administrador->USUARIO_ID     = $usuario->ID;
+                    $administrador->USUARIO_ID = $usuario->ID;
 
                     $administrador->save();
                     

@@ -1,9 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin\Docente;
 
-use App\Usuario;
-use App\AsignaRol;
-use App\Docente;
+use App\Models\Usuario;
+use App\Models\AsignaRol;
+use App\Models\Docente;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
@@ -27,43 +27,37 @@ class Control extends Base
         if( $this->rol->is($request))
         {
             $validator = Validator::make($request->all(), [
-                'codigo_sis'                => 'required|size:9',
-                'contrasena'                => 'required|min:2',
-                'confirmacion_contrasena'   => 'required|min:2',
+                'username'                  => 'required|min:2',
+                'password'                  => 'required|min:2',
+                'password_confirmation'     => 'required|min:2',
                 'nombre'                    => 'required|min:2',
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
-                'sexo'                      => 'required|max:1|min:1',
-                'telefono'                  => 'required|min:6',
-                'ci'                        => 'required|min:6',
-                'fecha_nacimiento'          => 'required',
             ]);
-            if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
+            if($validator->fails() || $request->password != $request->password_confirmation)
+            {
                 if($validator->fails())
                     return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
-                else{
+                else
+                {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
                     return redirect('administrador/crearDocente');
                 }
             }
             else
             {
-                $cuentaCreada = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
+                $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
             
                 if($cuentaCreada->isEmpty())
                 {
                     //Creación de usuario
                     $usuario = new Usuario();
 
-                    $usuario->CODIGO_SIS        = $request->codigo_sis;
+                    $usuario->USERNAME          = $request->username;
                     $usuario->CONTRASENA        = Hash::make($request->contrasena);
                     $usuario->NOMBRE            = $request->nombre;
                     $usuario->APELLIDO          = $request->apellido;
                     $usuario->CORREO            = $request->correo;
-                    $usuario->SEXO              = $request->sexo;
-                    $usuario->TELEFONO          = $request->telefono;
-                    $usuario->CI                = $request->ci;
-                    $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
 
                     $usuario->save();
 
@@ -78,7 +72,7 @@ class Control extends Base
                     //Crear estudiante
                     $docente = new Docente;
 
-                    $docente->USUARIO_ID     = $usuario->ID;
+                    $docente->USUARIO_ID = $usuario->ID;
 
                     $docente->save();
                     
@@ -135,43 +129,47 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'codigo_sis'                => 'required|size:9',
-                'contrasena'                => 'required|min:2',
-                'confirmacion_contrasena'   => 'required|min:2',
+                'username'                  => 'required|min:2',
                 'nombre'                    => 'required|min:2',
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
-                'sexo'                      => 'required|max:1|min:1',
-                'telefono'                  => 'required|min:6',
-                'ci'                        => 'required|min:6',
-                'fecha_nacimiento'          => 'required',
+                'password'                  => 'nullable|min:2',
+                'password_confirmation'     => 'nullable|min:2',
             ]);
 
-            if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
+            if($validator->fails() || $request->password != $request->password_confirmation)
+            {
                 if($validator->fails())
-                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
-                else{
+                {
+                    return redirect('registro')->withErrors($validator)->withInput();
+                }
+                else
+                {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                    return redirect('administrador/editarDocente/'.$id_usuario);
+                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
                 }
             }
             else
             {
-                $usuario = Usuario::find($id_usuario);
+                $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
                 
-                $usuario->CODIGO_SIS        = $request->codigo_sis;
-                $usuario->CONTRASENA        = Hash::make($request->contrasena);
-                $usuario->NOMBRE            = $request->nombre;
-                $usuario->APELLIDO          = $request->apellido;
-                $usuario->CORREO            = $request->correo;
-                $usuario->SEXO              = $request->sexo;
-                $usuario->TELEFONO          = $request->telefono;
-                $usuario->CI                = $request->ci;
-                $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
+                if( $cuentaCreada->isEmpty() )
+                {
+                    $usuario = Usuario::find($id_usuario);
                 
-                $usuario->update();
-                $request->session()->flash('alert-success', 'Datos del docente actualizados');
-                return redirect('administrador');
+                    $usuario->USERNAME          = $request->username;
+                    $usuario->NOMBRE            = $request->nombre;
+                    $usuario->APELLIDO          = $request->apellido;
+                    $usuario->CORREO            = $request->correo;
+                    
+                    $usuario->save();
+                    
+                    $request->session()->flash('alert-success', 'Datos del docente actualizados');
+                    return redirect('administrador');
+                }
+                
+                $request->session()->flash('alert-danger', 'Usuario ya existente');
+                return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
             }
         }
         

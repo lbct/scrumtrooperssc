@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuario;
-use App\AsignaRol;
-use App\Estudiante;
+use App\Models\Usuario;
+use App\Models\AsignaRol;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -25,18 +24,18 @@ class IngresoUsuarioController extends Controller
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'codigo_sis'                => 'required|size:9',
-            'contrasena'                => 'required|min:2',
+            'username'                => 'required|min:5',
+            'password'                => 'required|min:2',
         ]);
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get();
+            $usuario = Usuario::where('USERNAME',($request->codigo_sis))->get();
             
             if(!$usuario->isEmpty())
             {
                 $usuario = $usuario[0];
-                if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
+                if( Hash::check($request->password, $usuario->PASSWORD) )
                 {
                     $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
                     $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
