@@ -29,54 +29,25 @@
                               </div>
                           </div>
                           <div class="form-row">
-                              <div class="col-md-8 mb-4">
+                              <div class="col-md-7 mb-4">
                                   <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ $usuario->CORREO }}">
-                              </div>
-                              <div class="form-group column2 row justify-content-end col-md-4 mb-4">
-                                  <select name="sexo">
-                                  <option value="M" @if($usuario->SEXO == 'M') selected @endif>Masculino</option>
-                                    <option value="F" @if($usuario->SEXO == 'F') selected @endif>Femenino</option>
-                                  </select>
-                              </div>
-                          </div>
-                          <div class="form-row">
-                              <div class="col-md-4 mb-4">
-                                  <input type="number" name="telefono" class="form-control" id="telefono" placeholder="Telefono" value="{{ $usuario->TELEFONO }}">
-                              </div>
-                              <div class="col-md-4 mb-3">
-                                  <input type="text" name="ci" class="form-control" id="ci" placeholder="Carnet de Identidad" value="{{ $usuario->CI }}">
-                              </div>
-                              <div class="col-md-4 mb-3">
-                                  <input type="number" name="codigo_sis" class="form-control" id="codigo_sis" placeholder="Codigo Sis" value="{{ $usuario->CODIGO_SIS }}">
                               </div>
                           </div>
                   </div>
                   <div>
-                      <div class="form-row">
-                          <div>
-                              <label for="validationServer01">&nbsp&nbspFecha nacimiento:</label>
-                          </div>
-                          <div class="col-md-6 mb-4">
-                              <input id="datepicker" readonly="readonly" name="fecha_nacimiento" width="156" placeholder="DD/MM/AAAA"/ value="{{$usuario->FECHA_NACIMIENTO}}">
-                              <script>
-                                  $('#datepicker').datepicker({
-                                      showOtherMonths: true,
-                                      format: 'yyyy-mm-dd'
-                                  });
-                              </script>
-                          </div>
-                      </div>
-                      <div class=" form-row">
+                      <!--<div class=" form-row">
                           <div class="col-md-6 mb-3">
                               <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña">
                           </div>
                           <div class="col-md-6 mb-5">
                               <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control input-lg" placeholder="Confirme contraseña">
                           </div>
-                      </div>
+                      </div>-->
                       <div>
                           <div class="form-group row justify-content-center">
-                              <div class="column2"><input type="submit" value="Guardar" class="btn btn-primary" tabindex="7">
+                              <div class="column2"><input type="submit" value="Guardar" class="btn btn-primary" tabindex="7" style="margin:10px">
+                              </div>
+                              <div class="column"><input type="submit" value="Cambiar Contraseña" class="btn btn-primary" disabled="disabled" tabindex="7" style="margin:10px">
                               </div>
                           </div>
                       </div>
