@@ -8,6 +8,11 @@ class EstudianteSeeder extends Seeder
     public function run()
     {
         Estudiante::create([
+        	'USUARIO_ID' 		=>	4,
+            'CODIGO_SIS' 		=>	'201400991',
+        ]);
+        
+        Estudiante::create([
         	'USUARIO_ID' 		=>	5,
             'CODIGO_SIS' 		=>	'201400043',
         ]);

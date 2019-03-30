@@ -3,24 +3,24 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaGestion extends Migration
+class CrearTablaAula extends Migration
 {
     public function up()
     {
-        Schema::create('GESTION', function (Blueprint $table) {
+        Schema::create('AULA', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
             
-            $table->date('FECHA_INICIO');
-            $table->date('FECHA_FIN');
-            $table->string('NUMERO_SEMESTRE',1);
+            $table->string('CODIGO_AULA',25)->unique();
+            $table->string('NOMBRE_AULA',50);
+            $table->string('DETALLE_AULA',255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('GESTION');
+        Schema::drop('AULA');
     }
 }
