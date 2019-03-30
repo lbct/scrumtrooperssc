@@ -39,8 +39,8 @@ class Control extends Base
                 'nombre'                    => 'required|min:2',
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
-                'password'                  => 'nullable|min:2',
-                'password_confirmation'     => 'nullable|min:2',
+                'password'                  => 'min:2',
+                'password_confirmation'     => 'min:2',
             ]);
             
             if($validator->fails() || $request->password != $request->password_confirmation)

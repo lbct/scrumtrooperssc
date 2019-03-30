@@ -15,10 +15,8 @@
           <div class="row">
               <div class="panel panel-default">
                   <div>
-                      <br>
-                      <br>
-                      <form>
-                      <h2>Editar perfil</h2>
+                      <br><br>
+                      <h3>Editar perfil</h3>
                       <br>
                           <div class="form-row">
                               <div class="col-md-6 mb-10">
@@ -29,20 +27,12 @@
                               </div>
                           </div>
                           <div class="form-row">
-                              <div class="col-md-7 mb-4">
+                              <div class="col-md-12 mb-4">
                                   <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ $usuario->CORREO }}">
                               </div>
                           </div>
                   </div>
                   <div>
-                      <!--<div class=" form-row">
-                          <div class="col-md-6 mb-3">
-                              <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña">
-                          </div>
-                          <div class="col-md-6 mb-5">
-                              <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control input-lg" placeholder="Confirme contraseña">
-                          </div>
-                      </div>-->
                       <div>
                           <div class="form-group row justify-content-center">
                               <div class="column2"><input type="submit" value="Guardar" class="btn btn-primary" tabindex="7" style="margin:10px">
@@ -55,8 +45,6 @@
               </div>
           </div>
       </div>
-  </div>
-  </form>
   </div>
 </form>
 @endsection

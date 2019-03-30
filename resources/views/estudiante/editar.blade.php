@@ -10,20 +10,19 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <br><br><br>
+    <br><br>
     <div class="container col-md-5 col-md-offset-4  ">
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-body col-md-12 ">
                     <div class="col-md-12 ">
                         <center>
-                            <h2>Editar&nbspPerfil</h2>
+                            <h3>Editar&nbspPerfil</h3>
                         </center>
                     </div>
                 </div>
                 <div>
-                    <br>
-                    <br>
+                    <br><br>
                     <form method="POST" action="/editar">
                         <div class="form-row">
                             <div class="col-md-6 mb-10">
@@ -34,7 +33,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-8 mb-4">
+                            <div class="col-md-12 mb-4">
                                 <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ $usuario->CORREO }}">
                             </div>
                         </div>

@@ -4,7 +4,7 @@
 <h2>Docente</h2>
 @endsection
 @section('contenido')
-<br><br><br>
+<br><br>
 <h3>Nuevo Auxiliar</h3>   
     <form method="POST" action="/docente/crearAuxiliar">
         {!! csrf_field() !!}

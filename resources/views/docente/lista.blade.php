@@ -14,15 +14,16 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Codigo Sis</th>
+            <th scope="col">Username</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
+            <th scope="col">Acciones</th>
         </tr>
         </thead>
         <tbody>
         @foreach($usuarios as $user)
         <tr>
-            <th scope="row">{{ $user->CODIGO_SIS }}</th>
+            <th scope="row">{{ $user->USERNAME }}</th>
             <td>{{ $user->NOMBRE }}</td>
             <td>{{ $user->APELLIDO }}</td>
             <td>
