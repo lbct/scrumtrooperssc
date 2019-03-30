@@ -36,7 +36,7 @@ class Registro extends Controller
             else
             {
                 $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                return redirect('registro');
+                return redirect('registro')->withErrors($validator)->withInput();
             }
         }
         else
