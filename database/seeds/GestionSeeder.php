@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Gestion;
+use App\Models\Gestion;
 
 class GestionSeeder extends Seeder
 {
