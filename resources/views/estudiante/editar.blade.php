@@ -23,7 +23,6 @@
                 </div>
                 <div>
                     <br><br>
-                    <form method="POST" action="/editar">
                         <div class="form-row">
                             <div class="col-md-6 mb-10">
                                 <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nuevo Nombre" tabindex="1" value="{{ $usuario->NOMBRE }}">
@@ -39,21 +38,22 @@
                         </div>
                 </div>
                 <div>
-
-                    <!--<div class=" form-row">
-                            <div class="col-md-6 mb-3">
-                                <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control input-lg" placeholder="Confirme contraseña">
-                            </div>
-                        </div>-->
-                        <div>
-                            <div class="form-group row justify-content-center">
-                                <div class="column2"><input type="submit" href="/estudiante/editar" value="Guardar" class="btn btn-primary" tabindex="7" style="margin:10px"></div>
-                                <div class="column"><input type="submit" value="Cambiar Contraseña" class="btn btn-primary" disabled="disabled" tabindex="7" style="margin:10px">
-                              </div>
-                            </div>
+                    <!-- Passwords
+                      <div class=" form-row">
+                          
+                          <div class="col-md-6 mb-3">
+                              <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña">
+                          </div>
+                          <div class="col-md-6 mb-5">
+                              <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirme la contraseña">
+                          </div>
+                      </div>
+                    -->
+                    <div>
+                        <div class="form-group row justify-content-center">
+                            <div class="column2"><input type="submit" href="/estudiante/editar" value="Guardar" class="btn btn-primary" tabindex="7" style="margin:10px"></div>
+                            <div class="column"><input type="submit" value="Cambiar Contraseña" class="btn btn-primary" disabled="disabled" tabindex="7" style="margin:10px">
+                          </div>
                         </div>
                     </div>
                 </div>
