@@ -58,7 +58,7 @@ Route::get('administrador/verDocente/{id_usuario}',
 ]);
 
 //Rutas Auxiliar
-Route::get('Auxiliar','Auxiliar\Control@getVista');
+Route::get('auxiliar','Auxiliar\Control@getVista');
 
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');
