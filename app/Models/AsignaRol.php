@@ -11,11 +11,11 @@ class AsignaRol extends Model
     
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
     }
     
     public function rol()
     {
-        return $this->belongsTo('App\Rol', 'ROL_ID');
+        return $this->belongsTo('App\Models\Rol', 'ROL_ID');
     }
 }

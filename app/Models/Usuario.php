@@ -11,31 +11,31 @@ class Usuario extends Model
     
     public function administrador()
     {
-        return $this->hasOne('App\Administrador', 'USUARIO_ID', 'ID');
+        return $this->hasOne('App\Models\Administrador', 'USUARIO_ID', 'ID');
     }
     
     public function docente()
     {
-        return $this->hasOne('App\Docnete', 'USUARIO_ID', 'ID');
+        return $this->hasOne('App\Models\Docente', 'USUARIO_ID', 'ID');
     }
     
     public function auxiliar()
     {
-        return $this->hasOne('App\Auxiliar', 'USUARIO_ID', 'ID');
+        return $this->hasOne('App\Models\Auxiliar', 'USUARIO_ID', 'ID');
     }
     
     public function estudiante()
     {
-        return $this->hasOne('App\Estudiante', 'USUARIO_ID', 'ID');
+        return $this->hasOne('App\Models\Estudiante', 'USUARIO_ID', 'ID');
     }
     
     public function iniciarSesion()
     {
-        return $this->hasMany('App\IniciarSesion', 'USUARIO_ID', 'ID');
+        return $this->hasMany('App\Models\IniciarSesion', 'USUARIO_ID', 'ID');
     }
     
     public function asignaRol()
     {
-        return $this->hasOne('App\AsignaRol', 'USUARIO_ID', 'ID');
+        return $this->hasOne('App\Models\AsignaRol', 'USUARIO_ID', 'ID');
     }
 }

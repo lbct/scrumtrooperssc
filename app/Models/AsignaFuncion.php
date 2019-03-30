@@ -11,11 +11,11 @@ class AsignaFuncion extends Model
     
     public function funcion()
     {
-        return $this->belongsTo('App\Funcion', 'FUNCION_ID');
+        return $this->belongsTo('App\Models\Funcion', 'FUNCION_ID');
     }
     
     public function rol()
     {
-        return $this->belongsTo('App\Rol', 'ROL_ID');
+        return $this->belongsTo('App\Models\Rol', 'ROL_ID');
     }
 }

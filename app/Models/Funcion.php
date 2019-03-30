@@ -11,6 +11,6 @@ class Funcion extends Model
     
     public function asignaFuncion()
     {
-        return $this->hasMany('App\AsignaFuncion', 'FUNCION_ID', 'ID');
+        return $this->hasMany('App\Models\AsignaFuncion', 'FUNCION_ID', 'ID');
     }
 }

@@ -11,6 +11,6 @@ class Auxiliar extends Model
     
     public function usuario()
     {
-        return $this->belongsTo('App\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
     }
 }

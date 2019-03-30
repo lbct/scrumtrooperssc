@@ -30,7 +30,7 @@ class IngresoUsuarioController extends Controller
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('USERNAME',($request->codigo_sis))->get();
+            $usuario = Usuario::where('USERNAME',($request->username))->get();
             
             if(!$usuario->isEmpty())
             {
