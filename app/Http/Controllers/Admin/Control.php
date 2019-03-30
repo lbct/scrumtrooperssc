@@ -50,7 +50,7 @@ class Control extends Base
                 else
                 {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                    return redirect('administrador/crearAdmin');
+                    return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
                 }
             }
             else
@@ -62,8 +62,8 @@ class Control extends Base
                     //Creación de usuario
                     $usuario = new Usuario();
 
-                    $usuario->USERNAME          = $request->codigo_sis;
-                    $usuario->PASSWORD          = Hash::make($request->contrasena);
+                    $usuario->USERNAME          = $request->username;
+                    $usuario->PASSWORD          = Hash::make($request->password);
                     $usuario->NOMBRE            = $request->nombre;
                     $usuario->APELLIDO          = $request->apellido;
                     $usuario->CORREO            = $request->correo;

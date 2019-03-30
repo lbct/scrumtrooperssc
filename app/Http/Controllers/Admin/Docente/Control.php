@@ -41,7 +41,7 @@ class Control extends Base
                 else
                 {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                    return redirect('administrador/crearDocente');
+                    return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
                 }
             }
             else
@@ -54,7 +54,7 @@ class Control extends Base
                     $usuario = new Usuario();
 
                     $usuario->USERNAME          = $request->username;
-                    $usuario->CONTRASENA        = Hash::make($request->contrasena);
+                    $usuario->PASSWORD          = Hash::make($request->password);
                     $usuario->NOMBRE            = $request->nombre;
                     $usuario->APELLIDO          = $request->apellido;
                     $usuario->CORREO            = $request->correo;
