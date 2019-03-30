@@ -138,6 +138,15 @@ return [
         | de "email". Esto simplemente nos ayuda a hacer los mensajes un poco más limpios.
 	|
 	*/
-	'attributes' => [],
+	'attributes' => [
+			'username'=>'Usuario',
+			'password'=>'Contraseña',
+			'password_confirmation'=>'Confirmar Contraseña',
+			'codigo_sis'=>'CodigoSis',
+			'correo'=>'Email',
+			'nombre'=>'Nombres',
+			'apellido'=>'Apellidos',
+			
+	],
 	
 ];

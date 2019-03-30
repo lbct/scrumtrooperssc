@@ -2,12 +2,7 @@
 <script src="{{asset('jquery/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-
 @extends('inicio')
-
 
 @section('main-content')
   <form method="POST" action="/registro">
@@ -33,50 +28,22 @@
                                 
                         </div>
                         <div class="form-group">
-                            <input type="number" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis" tabindex="3"  value="{{ old('codigo_sis') }}">
+                            <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" tabindex="3"  value="{{ old('username') }}">
                         </div>
                         <div class="form-group">
                             <input type="email" name="correo" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" value="{{ old('correo') }}">
                         </div>
+                        <div class="form-group">
+                            <input type="number" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis" tabindex="4" value="{{ old('codigo_sis') }}">
+                        </div>
                         <div class="row">
                                 <div class="form-group column2">
-                                    <input type="password" name="contrasena" id="contrasena" class="form-control input-lg" placeholder="Contraseña" tabindex="5">
+                                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="5" value="{{ old('password') }}">
                                 </div>
                                 <div class="form-group column2">
-                                    <input type="password" name="confirmacion_contrasena" id="confirmacion_contrasena" class="form-control input-lg" placeholder="Confirma tu Contraseña" tabindex="6">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirma tu Contraseña" tabindex="6" value="{{ old('password_confirmation') }}">
                                 </div>
                         </div>
-
-                        <div class="row">
-                                <div class="form-group column2">
-                                    <input type="number" name="telefono" id="telefono" class="form-control input-lg" placeholder="Telefono" tabindex="7" value="{{ old('telefono') }}">
-                                </div>
-                                <div class="form-group column2">
-                                    <input type="text" name="ci" id="ci" class="form-control input-lg" placeholder="C.I." tabindex="8" value="{{ old('ci') }}">
-                                </div>
-                        </div>
-
-                        <div class="row">
-                                <div class="form-group column2 row justify-content-end">
-                                    <select id="sexo" name="sexo" class="form-control input-lg" tabindex="9" style="width:100%;max-width:90%;">
-                                            <option value="M">Masculino</option>
-                                            <option value="F">Femenino</option>
-                                    </select>
-                                </div>
-                                <div class="form-group column2 row justify-content-center">
-                                
-                                    <input id="datepicker" readonly="readonly" name="fecha_nacimiento" placeholder="Fecha de Nacimiento"/>
-                                    <script>
-                                        $('#datepicker').datepicker({
-                                            showOtherMonths: true,
-                                            format: 'yyyy-mm-dd'
-                                        });
-                                    </script>
-                                
-                                
-                                </div>
-                        </div>
-
 
 
                         <!--div class="row">
