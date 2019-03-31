@@ -3,26 +3,26 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaRegistroGrupoDocenteGestion extends Migration
+class CrearTablaGrupoADocente extends Migration
 {
     public function up()
     {
-        Schema::create('REGISTRO_GRUPO_DOCENTE_GESTION', function (Blueprint $table) {
+        Schema::create('GRUPO_A_DOCENTE', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
-            $table->integer('GESTION_ID')->unsigned();
+            $table->integer('DOCENTE_ID')->unsigned();
             $table->integer('GRUPO_DOCENTE_ID')->unsigned();
             
             $table->timestamps();
             
-            $table->foreign('GESTION_ID')->references('ID')->on('GESTION')->onDelete('cascade');
+            $table->foreign('DOCENTE_ID')->references('ID')->on('DOCENTE')->onDelete('cascade');
             $table->foreign('GRUPO_DOCENTE_ID')->references('ID')->on('GRUPO_DOCENTE')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('REGISTRO_GRUPO_DOCENTE_GESTION');
+        Schema::drop('GRUPO_A_DOCENTE');
     }
 }

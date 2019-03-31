@@ -80,7 +80,7 @@ class Control extends Base
                     return redirect('administrador');
                 }
                 
-                $request->session()->flash('alert-danger', 'Codigo SIS no válido');
+                $request->session()->flash('alert-danger', 'Usuario no válido');
                 return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
             }
         }
@@ -143,7 +143,12 @@ class Control extends Base
             {
                // $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
                 
+<<<<<<< HEAD
                // if( $cuentaCreada->isEmpty() )
+=======
+                
+                if( $cuentaCreada->isEmpty() || $cuentaCreada[0]->ID==$id_usuario)
+>>>>>>> c871db029a5aa7c73fac65cf696133e6fc5cc737
                 {
                     $usuario = Usuario::find($id_usuario);
                 

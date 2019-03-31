@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ResgistroGestionMateria extends Model
+class SesionEstudiante extends Model
 {
     protected $primaryKey = 'ID';
-    protected $table = 'REGISTRO_GESTION_MATERIA';
+    protected $table = 'SESION_ESTUDIANTE';
 }

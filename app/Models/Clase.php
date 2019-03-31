@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EnvioPracticaEstudiante extends Model
+class Clase extends Model
 {
     protected $primaryKey = 'ID';
-    protected $table = 'ENVIO_PRACTICA_ESTUDIANTE';
+    protected $table = 'CLASE';
 }

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AsignarGrupoADocente extends Model
+class GrupoADocente extends Model
 {
     protected $primaryKey = 'ID';
-    protected $table = 'ASIGNAR_GRUPO_A_DOCENTE';
+    protected $table = 'GRUPO_A_DOCENTE';
 }

@@ -36,7 +36,7 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'username'                  => 'required|min:5',
+                'username'                  => 'required|min:2',
                 'password'                  => 'required|min:2',
                 'password_confirmation'     => 'required|min:2',
                 'nombre'                    => 'required|min:2',
@@ -90,7 +90,7 @@ class Control extends Base
                     return redirect('administrador');
                 }
                 
-                $request->session()->flash('alert-danger', 'Codigo SIS no válido');
+                $request->session()->flash('alert-danger', 'Usuario no válido');
                 return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
             }
         }
