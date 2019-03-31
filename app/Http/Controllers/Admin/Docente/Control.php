@@ -143,13 +143,8 @@ class Control extends Base
             {
                // $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
                 
-<<<<<<< HEAD
                // if( $cuentaCreada->isEmpty() )
-=======
-                
-                if( $cuentaCreada->isEmpty() || $cuentaCreada[0]->ID==$id_usuario)
->>>>>>> c871db029a5aa7c73fac65cf696133e6fc5cc737
-                {
+               // {
                     $usuario = Usuario::find($id_usuario);
                 
                     $usuario->USERNAME          = $request->username;
@@ -161,7 +156,7 @@ class Control extends Base
                     
                     $request->session()->flash('alert-success', 'Datos del docente actualizados');
                     return redirect('administrador');
-                }
+               // }
                 
                 //$request->session()->flash('alert-danger', 'Usuario ya existente');
                 //return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
