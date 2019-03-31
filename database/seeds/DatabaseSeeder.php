@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GestionSeeder::class);
         
         $this->call(MateriaSeeder::class);
-        $this->call(MateriaGestionSeeder::class);
         
         $this->call(UsuarioSeeder::class);
         $this->call(AdministradorSeeder::class);
@@ -30,7 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IniciarSesionSeeder::class);
         
         $this->call(GrupoDocenteSeeder::class);
-        $this->call(GrupoDocenteGestionSeeder::class);
         $this->call(GrupoADocenteSeeder::class);
         
         $this->call(AulaSeeder::class);

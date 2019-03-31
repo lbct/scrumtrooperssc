@@ -8,18 +8,18 @@ class GrupoADocenteSeeder extends Seeder
     public function run()
     {
         GrupoADocente::create([
-        'DOCENTE_ID' 		        =>	1,
-        'GRUPO_DOCENTE_ID' 	        =>	1,
+            'DOCENTE_ID' 		        =>	1,
+            'GRUPO_DOCENTE_ID' 	        =>	1,
         ]);
         
         GrupoADocente::create([
-        'DOCENTE_ID' 		        =>	2,
-        'GRUPO_DOCENTE_ID' 	        =>	1,
+            'DOCENTE_ID' 		        =>	2,
+            'GRUPO_DOCENTE_ID' 	        =>	1,
         ]);
         
         GrupoADocente::create([
-        'DOCENTE_ID' 		        =>	1,
-        'GRUPO_DOCENTE_ID' 	        =>	2,
+            'DOCENTE_ID' 		        =>	1,
+            'GRUPO_DOCENTE_ID' 	        =>	2,
         ]);
     }
 }

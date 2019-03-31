@@ -17,6 +17,8 @@ class CrearTablaGestion extends Migration
             $table->timestamps();
             
             $table->foreign('PERIODO_ID')->references('ID')->on('PERIODO')->onDelete('cascade');
+            
+            $table->unique(['ANO_GESTION', 'PERIODO_ID']);
         });
     }
 

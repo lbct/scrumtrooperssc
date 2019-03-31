@@ -12,7 +12,7 @@ class CrearTablaUsuario extends Migration
             
             $table->increments('ID');
             
-            $table->string('USERNAME', 15)->unique();;
+            $table->string('USERNAME', 30)->unique();;
             $table->string('PASSWORD', 100);
             
             $table->string('NOMBRE', 100);
