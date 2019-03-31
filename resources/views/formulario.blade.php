@@ -38,7 +38,7 @@
                       </div>
                       <div>
                           <div class="form-group row justify-content-center">
-                              <div class="column2"><input type="submit" value="Guardar" class="btn btn-primary" tabindex="7">
+                              <div class="column2"><input type="submit" value="Registrar" class="btn btn-primary" tabindex="7">
                               </div>
                           </div>
                       </div>
