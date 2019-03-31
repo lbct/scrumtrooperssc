@@ -20,6 +20,8 @@ class CrearTablaSesionEstudiante extends Migration
             
             $table->foreign('SESION_ID')->references('ID')->on('SESION')->onDelete('cascade');
             $table->foreign('ESTUDIANTE_ID')->references('ID')->on('ESTUDIANTE')->onDelete('cascade');
+            
+            $table->unique(['SESION_ID', 'ESTUDIANTE_ID']);
         });
     }
 

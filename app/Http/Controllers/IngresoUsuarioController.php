@@ -24,7 +24,7 @@ class IngresoUsuarioController extends Controller
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username'                => 'required|min:5',
+            'username'                => 'required|min:2',
             'password'                => 'required|min:2',
         ]);
         
@@ -37,9 +37,9 @@ class IngresoUsuarioController extends Controller
                 $usuario = $usuario[0];
                 if( Hash::check($request->password, $usuario->PASSWORD) )
                 {
-                    $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
-                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
-                    $rolUsuario = cookie('ROL', $rol, 120);
+                    $rol        = strtolower($usuario->asignaRol[0]->rol->DESCRIPCION);
+                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 90);
+                    $rolUsuario = cookie('ROL', $rol, 90);
                     
                     //Redirije a la ruta iniclal del Rol
                     return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);

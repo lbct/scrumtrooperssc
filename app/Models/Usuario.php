@@ -36,6 +36,6 @@ class Usuario extends Model
     
     public function asignaRol()
     {
-        return $this->hasOne('App\Models\AsignaRol', 'USUARIO_ID', 'ID');
+        return $this->hasMany('App\Models\AsignaRol', 'USUARIO_ID', 'ID');
     }
 }
