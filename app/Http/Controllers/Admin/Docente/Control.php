@@ -143,7 +143,6 @@ class Control extends Base
             {
                 $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
                 
-                
                 if( $cuentaCreada->isEmpty() || $cuentaCreada[0]->ID==$id_usuario)
                 {
                     $usuario = Usuario::find($id_usuario);

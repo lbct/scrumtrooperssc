@@ -1,11 +1,10 @@
 <?php
-use \App\Usuario;
-use \App\Administrador;
-use \App\Docente;
-use \App\Auxiliar;
-use \App\Estudiante;
-use \App\IniciarSesion;
-use \App\AsignaRol;
+use \App\Models\Docente;
+
+Route::get('test', function () {
+    $clases = Docente::all();
+    return $clases[0]->grupoADocente;
+});
 
 //Ruta Inicial Login
 Route::get('/', 'IngresoUsuarioController@getLogin');
