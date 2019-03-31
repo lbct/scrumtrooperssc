@@ -2,11 +2,13 @@
 namespace App\Http\Controllers\Admin\Gestion;
 
 use App\Models\Gestion;
+use App\Models\Periodo;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Control extends Base
 {
@@ -14,7 +16,8 @@ class Control extends Base
     {
         if( $this->rol->is($request) )
         {
-            return view('gestion.crear');
+            $items = Periodo::all();
+            return view('gestion.crear')->with('items', $items);
         }
         
         return redirect('/login');
@@ -25,9 +28,8 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $validator = Validator::make($request->all(), [
-                'numero_semestre'    => 'required',
-                'fecha_inicio'       => 'required',
-                'fecha_fin'          => 'required',
+                'periodo'    => 'required',
+                'anio_gestion'       => 'required',
             ]);
             
             if($validator->fails()) 
@@ -36,16 +38,20 @@ class Control extends Base
             }
             else
             {
-                //Creación de gestión
-                $gestion = new Gestion();
-                
-                $gestion->FECHA_INICIO      = $request->fecha_inicio;
-                $gestion->FECHA_FIN         = $request->fecha_fin;
-                $gestion->NUMERO_SEMESTRE   = $request->$numero_semestre;
-
-                $gestion->save();
-                $request->session()->flash('alert-success', 'Gestión creada con éxito');
-                return redirect('/administrador');
+                try{
+                    $gestion = Gestion::whereRaw('PERIODO_ID='.($request->periodo).' and ANO_GESTION='.($request->anio_gestion))->firstOrFail();
+                    $request->session()->flash('alert-danger', 'Ya existe la gestión.');
+                    return redirect('/administrador/crearGestion');
+                }
+                catch(ModelNotFoundException $e) 
+                {
+                    $gestion = new Gestion();
+                    $gestion->PERIODO_ID    = $request->periodo;
+                    $gestion->ANO_GESTION   = $request->anio_gestion;
+                    $gestion->save();
+                    $request->session()->flash('alert-success', 'Gestión creada con éxito');
+                    return redirect('/administrador');
+                }
             }
         }
         
