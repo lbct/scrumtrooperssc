@@ -3,11 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaRegistroGestionMateria extends Migration
+class CrearTablaMateriaGestion extends Migration
 {
     public function up()
     {
-        Schema::create('REGISTRO_GESTION_MATERIA', function (Blueprint $table) {
+        Schema::create('MATERIA_GESTION', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
@@ -23,6 +23,6 @@ class CrearTablaRegistroGestionMateria extends Migration
 
     public function down()
     {
-        Schema::drop('REGISTRO_GESTION_MATERIA');
+        Schema::drop('MATERIA_GESTION');
     }
 }

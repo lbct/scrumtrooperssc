@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Practica extends Model
+class MateriaGestion extends Model
 {
     protected $primaryKey = 'ID';
-    protected $table = 'PRACTICA';
+    protected $table = 'MATERIA_GESTION';
 }

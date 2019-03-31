@@ -14,7 +14,6 @@ class CrearTablaHorario extends Migration
             
             $table->time('HORA_INICIO');
             $table->time('HORA_FIN');
-            $table->string('DETALLE_HORARIO',255);
             $table->timestamps();
         });
     }

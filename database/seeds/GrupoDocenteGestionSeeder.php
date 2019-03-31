@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\RegistroGrupoDocenteGestion;
+use App\Models\GrupoDocenteGestion;
 
-class RegistroGrupoDocenteGestionSeeder extends Seeder
+class GrupoDocenteGestionSeeder extends Seeder
 {
     public function run()
     {
-        RegistroGrupoDocenteGestion::create([
+        GrupoDocenteGestion::create([
         'GESTION_ID' 		        =>	1,
         'GRUPO_DOCENTE_ID' 	        =>	1,
         ]);
         
-        RegistroGrupoDocenteGestion::create([
+        GrupoDocenteGestion::create([
         'GESTION_ID' 		        =>	1,
         'GRUPO_DOCENTE_ID' 	        =>	2,
         ]);

@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sesion extends Model
+class GrupoADocente extends Model
 {
     protected $primaryKey = 'ID';
-    protected $table = 'SESION';
+    protected $table = 'GRUPO_A_DOCENTE';
 }

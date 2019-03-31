@@ -3,11 +3,11 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaRegistroGrupoDocenteGestion extends Migration
+class CrearTablaGrupoDocenteGestion extends Migration
 {
     public function up()
     {
-        Schema::create('REGISTRO_GRUPO_DOCENTE_GESTION', function (Blueprint $table) {
+        Schema::create('GRUPO_DOCENTE_GESTION', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
@@ -23,6 +23,6 @@ class CrearTablaRegistroGrupoDocenteGestion extends Migration
 
     public function down()
     {
-        Schema::drop('REGISTRO_GRUPO_DOCENTE_GESTION');
+        Schema::drop('GRUPO_DOCENTE_GESTION');
     }
 }

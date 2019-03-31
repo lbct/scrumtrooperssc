@@ -1,23 +1,23 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\AsignarGrupoADocente;
+use App\Models\GrupoADocente;
 
-class AsignarGrupoADocenteSeeder extends Seeder
+class GrupoADocenteSeeder extends Seeder
 {
     public function run()
     {
-        AsignarGrupoADocente::create([
+        GrupoADocente::create([
         'DOCENTE_ID' 		        =>	1,
         'GRUPO_DOCENTE_ID' 	        =>	1,
         ]);
         
-        AsignarGrupoADocente::create([
+        GrupoADocente::create([
         'DOCENTE_ID' 		        =>	2,
         'GRUPO_DOCENTE_ID' 	        =>	1,
         ]);
         
-        AsignarGrupoADocente::create([
+        GrupoADocente::create([
         'DOCENTE_ID' 		        =>	1,
         'GRUPO_DOCENTE_ID' 	        =>	2,
         ]);

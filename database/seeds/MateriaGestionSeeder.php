@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\ResgistroGestionMateria;
+use App\Models\MateriaGestion;
 
-class ResgistroGestionMateriaSeeder extends Seeder
+class MateriaGestionSeeder extends Seeder
 {
     public function run()
     {
-        ResgistroGestionMateria::create([
+        MateriaGestion::create([
             'GESTION_ID' 		=>	1,
             'MATERIA_ID' 		=>	1,
         ]);
         
-        ResgistroGestionMateria::create([
+        MateriaGestion::create([
             'GESTION_ID' 		=>	1,
             'MATERIA_ID' 		=>	2,
         ]);
