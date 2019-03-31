@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Estudiante;
 
-use App\Usuario;
-use App\AsignaRol;
-use App\Estudiante;
+use App\Models\Usuario;
+use App\Models\AsignaRol;
+use App\Models\Estudiante;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -14,60 +14,71 @@ class Registro extends Controller
 {
     public function getRegistro()
     {
-        return view('estudiante\formRegistro');
+        return view('estudiante.registro');
     }
     
     public function postRegistro(Request $request)
-    {
+    {   
         $validator = Validator::make($request->all(), [
-            'codigo_sis'                => 'required|min:9|max:9',
-            'contrasena'                => 'required|min:2',
-            'confirmacion_contrasena'   => 'required|min:2',
+            'username'                  => 'required|min:5',
+            'password'                  => 'required|min:2',
+            'password_confirmation'     => 'required|min:2',
+            'codigo_sis'                => 'required|size:9',
             'nombre'                    => 'required|min:2',
             'apellido'                  => 'required|min:2',
             'correo'                    => 'required|min:8',
-            'sexo'                      => 'required|max:1|min:1',
-            'telefono'                  => 'required|min:6',
-            'ci'                        => 'required|min:6',
-            'fecha_nacimiento'          => 'required',
         ]);
         
-        if($validator->fails() || $request->contrasena != $request->confirmacion_contrasena) {
-            return redirect('registro')->withErrors($validator)->withInput();
+        if($validator->fails() || $request->password != $request->password_confirmation) 
+        {
+            if($validator->fails())
+                return redirect('registro')->withErrors($validator)->withInput();
+            else
+            {
+                $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                return redirect('registro')->withErrors($validator)->withInput();
+            }
         }
         else
         {
-            //Creación de usuario
-            $usuario = new Usuario();
+            $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
+            $sisCreado    = Estudiante::where('CODIGO_SIS',($request->codigo_sis))->get();
             
-            $usuario->CODIGO_SIS        = $request->codigo_sis;
-            $usuario->CONTRASENA        = Hash::make($request->contrasena);
-            $usuario->NOMBRE            = $request->nombre;
-            $usuario->APELLIDO          = $request->apellido;
-            $usuario->CORREO            = $request->correo;
-            $usuario->SEXO              = $request->sexo;
-            $usuario->TELEFONO          = $request->telefono;
-            $usuario->CI                = $request->ci;
-            $usuario->FECHA_NACIMIENTO  = $request->fecha_nacimiento;       
+            if($cuentaCreada->isEmpty() && $sisCreado->isEmpty() )
+            {
+                //Creación de usuario
+                $usuario = new Usuario();
+
+                $usuario->USERNAME          = $request->username;
+                $usuario->PASSWORD          = Hash::make($request->password);
+                $usuario->NOMBRE            = $request->nombre;
+                $usuario->APELLIDO          = $request->apellido;
+                $usuario->CORREO            = $request->correo;   
+
+                $usuario->save();
+
+                //Añadir rol de estudiante al usuario
+                $rolAsignado = new AsignaRol;
+
+                $rolAsignado->ROL_ID        = 4;
+                $rolAsignado->USUARIO_ID    = $usuario->ID;
+
+                $rolAsignado->save();
+
+                //Crear estudiante
+                $estudiante = new Estudiante;
+
+                $estudiante->USUARIO_ID     = $usuario->ID;
+                $estudiante->CODIGO_SIS     = $request->codigo_sis;
+
+                $estudiante->save();
+
+                $request->session()->flash('alert-success', 'Cuenta Creada');
+                return redirect('login');
+            }
             
-            $usuario->save();
-            
-            //Añadir rol de estudiante al usuario
-            $rolAsignado = new AsignaRol;
-            
-            $rolAsignado->ROL_ID        = 4;
-            $rolAsignado->USUARIO_ID    = $usuario->id;
-            
-            $rolAsignado->save();
-            
-            //Crear estudiante
-            $estudiante = new Estudiante;
-            
-            $estudiante->USUARIO_ID     = $usuario->id;
-            
-            $estudiante->save();
-            
-            echo 'Éxito al crear el usuario';
+            $request->session()->flash('alert-danger', 'Usuario o código SIS no válido');
+            return redirect('registro')->withErrors($validator)->withInput();
         }
     }
 }

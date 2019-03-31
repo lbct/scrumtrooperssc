@@ -6,6 +6,8 @@
 
 @section('main-content')
   <form method="POST" action="/login">
+    @include('alertas')
+    @include('errores')
     {!! csrf_field() !!}
     <div class="wrapper fadeInDown">
       <div id="formContent">
@@ -18,12 +20,12 @@
 
         <!-- Login Form -->
         <form>
-          <input type="text" id="codigo_sis" name="codigo_sis" class="fadeIn second" placeholder="CodigoSis" value="{{ old('codigo_sis') }}">
-          <input type="password" id="contrasena" name="contrasena" class="fadeIn third" placeholder="Contraseña">
+          <input type="text" id="username" name="username" class="fadeIn second" placeholder="Usuario" value="{{ old('username') }}">
+          <input type="password" id="password" name="password" class="fadeIn third" placeholder="Contraseña">
           <input type="submit" class="fadeIn fourth" value="Iniciar Sesion">
         </form>
 
-        <!-- Remind Passowrd -->
+        <!-- Crear User -->
         <div id="formFooter">
           <a href="registro">Crear Cuenta?</a>
         </div>

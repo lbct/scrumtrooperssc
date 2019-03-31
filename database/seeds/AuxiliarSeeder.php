@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Auxiliar;
+use App\Models\Auxiliar;
 
 class AuxiliarSeeder extends Seeder
 {
     public function run()
     {
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	'3',
+        	'USUARIO_ID' 		=>	4,
         ]);
     }
 }

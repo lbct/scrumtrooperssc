@@ -9,7 +9,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         
+        $this->call(PeriodoSeeder::class);
         $this->call(GestionSeeder::class);
+        
+        $this->call(MateriaSeeder::class);
         
         $this->call(UsuarioSeeder::class);
         $this->call(AdministradorSeeder::class);
@@ -24,6 +27,21 @@ class DatabaseSeeder extends Seeder
         $this->call(AsignaFuncionSeeder::class);
         
         $this->call(IniciarSesionSeeder::class);
+        
+        $this->call(GrupoDocenteSeeder::class);
+        $this->call(GrupoADocenteSeeder::class);
+        
+        $this->call(AulaSeeder::class);
+        $this->call(HorarioSeeder::class);
+        $this->call(ClaseSeeder::class);
+        
+        $this->call(EstudianteClaseSeeder::class);
+        
+        $this->call(SesionSeeder::class);
+        
+        $this->call(SesionEstudianteSeeder::class);
+        
+        $this->call(EnvioPracticaSeeder::class);
         
         Model::reguard();
     }

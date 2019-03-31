@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\IniciarSesion;
+use App\Models\IniciarSesion;
 
 class IniciarSesionSeeder extends Seeder
 {

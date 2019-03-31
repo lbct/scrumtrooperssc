@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuario;
-use App\AsignaRol;
-use App\Estudiante;
+use App\Models\Usuario;
+use App\Models\AsignaRol;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -25,26 +24,29 @@ class IngresoUsuarioController extends Controller
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'codigo_sis'                => 'required|min:9|max:9',
-            'contrasena'                => 'required|min:2',
+            'username'                => 'required|min:2',
+            'password'                => 'required|min:2',
         ]);
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('CODIGO_SIS',($request->codigo_sis))->get()[0];
+            $usuario = Usuario::where('USERNAME',($request->username))->get();
             
-            if($usuario != null)
+            if(!$usuario->isEmpty())
             {
-                if( Hash::check($request->contrasena, $usuario->CONTRASENA) )
+                $usuario = $usuario[0];
+                if( Hash::check($request->password, $usuario->PASSWORD) )
                 {
-                    $rol        = strtolower($usuario->asignaRol->rol->DESCRIPCION);
-                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 120);
-                    $rolUsuario = cookie('ROL', $rol, 120);
+                    $rol        = strtolower($usuario->asignaRol[0]->rol->DESCRIPCION);
+                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 90);
+                    $rolUsuario = cookie('ROL', $rol, 90);
                     
                     //Redirije a la ruta iniclal del Rol
                     return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);
                 }
             }
+            
+            $request->session()->flash('alert-danger', 'Usuario Incorrecto');
         }
         
         return redirect('login')->withErrors($validator)->withInput();

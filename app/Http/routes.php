@@ -7,10 +7,6 @@ use \App\Estudiante;
 use \App\IniciarSesion;
 use \App\AsignaRol;
 
-Route::get('auth/register', function(){
-    return View('auth/register');
-});
-
 //Ruta Inicial Login
 Route::get('/', 'IngresoUsuarioController@getLogin');
 
@@ -26,15 +22,28 @@ Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
 
 //Rutas Admin
-Route::get('administrador','Admin\Control@getVista');
+Route::get('administrador',[
+    'as' => 'administrador',
+    'uses' => 'Admin\Control@getVista'
+    ]);
 
 Route::get('administrador/crearDocente','Admin\Docente\Control@getCrear');
 Route::post('administrador/crearDocente','Admin\Docente\Control@postCrear');
 
 Route::get('administrador/listaDocente','Admin\Docente\Control@getLista');  //Mostrar lista de docentes registrados
 
-Route::get('administrador/editarDocente','Admin\Docente\Control@getEdit');
-Route::post('administrador/editarDocente','Admin\Docente\Control@postEdit');
+Route::get('administrador/editarDocente/{id_usuario}',
+[
+    'as' => 'administrador/editarDocente',
+    'uses' => 'Admin\Docente\Control@getEdit'
+]);
+
+
+Route::post('administrador/editarDocente/{id_usuario}',
+[
+    'as' => 'administrador/editarDocente',
+    'uses' => 'Admin\Docente\Control@postEdit'
+]);
 
 Route::get('administrador/crearAdmin','Admin\Control@getCrear');
 Route::post('administrador/crearAdmin','Admin\Control@postCrear');
@@ -42,12 +51,19 @@ Route::post('administrador/crearAdmin','Admin\Control@postCrear');
 Route::get('administrador/crearGestion','Admin\Gestion\Control@getCrear');
 Route::post('administrador/crearGestion','Admin\Gestion\Control@postCrear');
 
+Route::get('administrador/verDocente/{id_usuario}',
+[
+    'as' => 'administrador/verDocente',
+    'uses' => 'Admin\Docente\Control@getVistaSimple'
+]);
+
 //Rutas Auxiliar
-//Route::get('auxiliar','');
+Route::get('auxiliar','Auxiliar\Control@getVista');
 
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');
-
+Route::get('docente/editar', 'Docente\Control@getEditar');
+Route::post('docente/editar', 'Docente\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
 Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
 
