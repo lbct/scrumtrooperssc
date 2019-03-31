@@ -8,19 +8,13 @@ class RegistroEstudianteGrupoDocenteSeeder extends Seeder
     public function run()
     {
         RegistroEstudianteGrupoDocente::create([
-        'DOCENTE_ID' 		                 =>	1,
+        'SESION_ID' 		                 =>	1,
         'ESTUDIANTE_ID' 	                 =>	1,
         'GRUPO_DOCENTE_ID' 	                 =>	1,
         ]);
-         
-        RegistroEstudianteGrupoDocente::create([
-        'DOCENTE_ID' 		                 =>	1,
-        'ESTUDIANTE_ID' 	                 =>	1,
-        'GRUPO_DOCENTE_ID' 	                 =>	2,
-        ]);
         
         RegistroEstudianteGrupoDocente::create([
-        'DOCENTE_ID' 		                 =>	2,
+        'SESION_ID' 		                 =>	3,
         'ESTUDIANTE_ID' 	                 =>	2,
         'GRUPO_DOCENTE_ID' 	                 =>	1,
         ]);

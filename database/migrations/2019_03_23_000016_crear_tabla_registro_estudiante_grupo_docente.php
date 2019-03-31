@@ -11,13 +11,13 @@ class CrearTablaRegistroEstudianteGrupoDocente extends Migration
             $table->engine = 'InnoDB';
             
             $table->increments('ID');
-            $table->integer('DOCENTE_ID')->unsigned();
+            $table->integer('SESION_ID')->unsigned();
             $table->integer('ESTUDIANTE_ID')->unsigned();
             $table->integer('GRUPO_DOCENTE_ID')->unsigned();
             
             $table->timestamps();
             
-            $table->foreign('DOCENTE_ID')->references('ID')->on('DOCENTE')->onDelete('cascade');
+            $table->foreign('SESION_ID')->references('ID')->on('SESION')->onDelete('cascade');
             $table->foreign('ESTUDIANTE_ID')->references('ID')->on('ESTUDIANTE')->onDelete('cascade');
             $table->foreign('GRUPO_DOCENTE_ID')->references('ID')->on('GRUPO_DOCENTE')->onDelete('cascade');
         });
