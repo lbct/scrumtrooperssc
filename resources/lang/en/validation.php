@@ -146,7 +146,7 @@ return [
 			'correo'=>'Email',
 			'nombre'=>'Nombres',
 			'apellido'=>'Apellidos',
-			
+			'anio'=>'Año'
 	],
 	
 ];
