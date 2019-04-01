@@ -6,8 +6,6 @@
 <!-- AQUI EL CONTENIDO :V-->
 
 <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
-<script src="{{asset('js/bs-stepper.min.js')}}"></script>
-
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
         <div class="mb-5 p-4 bg-white shadow-sm">
@@ -62,5 +60,23 @@
         </div>
 </div>
 
+<script src="{{asset('js/bs-stepper.min.js')}}"></script>
+<script>
+      var stepper1Node = document.querySelector('#stepper1')
+      var stepper1 = new Stepper(document.querySelector('#stepper1'))
+      stepper1Node.addEventListener('show.bs-stepper', function (event) {
+        console.warn('show.bs-stepper', event)
+      })
+      stepper1Node.addEventListener('shown.bs-stepper', function (event) {
+        console.warn('shown.bs-stepper', event)
+      })
+      var stepper2 = new Stepper(document.querySelector('#stepper2'), {
+          linear: false,
+          animation: true
+        })
+      var stepper3 = new Stepper(document.querySelector('#stepper3'), {
+          animation: true
+        })
+</script>
 
 @endsection
