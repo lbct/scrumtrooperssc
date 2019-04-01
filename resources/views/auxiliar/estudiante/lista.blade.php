@@ -4,6 +4,7 @@
 @endsection
 @section('contenido')
 <link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">
+<link href="{{asset('/css/table_test.css')}}" rel="stylesheet" id="bootstrap-css">
 <div>
     <br>
     <br>
@@ -21,8 +22,8 @@
     </form>
 </div>
     @if(sizeof($estudiantes) > 0)
-    <table class="table">
-        <thead class="thead-dark">
+    <table>
+        <thead>
         <tr>
             <th scope="col">CódigoSis</th>    
             <th scope="col">Nombre(s)</th>
@@ -34,7 +35,7 @@
         <tbody>
         @foreach($estudiantes as $estudiante)
         <tr>
-            <th scope="row">{{$estudiante->CODIGO_SIS}}</th>
+            <td>{{$estudiante->CODIGO_SIS}}</th>
             <td>{{$estudiante->usuario->NOMBRE}}</td>
             <td>{{$estudiante->usuario->APELLIDO}}</td>
             <td>{{$estudiante->usuario->CORREO}}</td>
@@ -59,6 +60,7 @@
     @else
     <h4>No tiene estudiantes inscritos en la clase</h4>
     @endif
+    <br><br>
 <div>
     <input type="submit" value="Volver a lista de Clases" onclick="volver();" class="btn btn-primary">
     <script>
