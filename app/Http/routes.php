@@ -58,6 +58,17 @@ Route::get('administrador/verDocente/{id_usuario}',
 
 //Rutas Auxiliar
 Route::get('auxiliar','Auxiliar\Control@getVista');
+Route::get('auxiliar/clases/{id_gestion}', 
+[
+    'as' => 'auxiliar/clases',
+    'uses' => 'Auxiliar\Control@getClases'
+]);
+Route::get('auxiliar/clases', 'Auxiliar\Control@getUltimaClase');
+Route::post('auxiliar/clases', 
+[
+    'as'   => 'auxiliar/clases',
+    'uses' => 'Auxiliar\Control@postClases'
+]);
 
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');

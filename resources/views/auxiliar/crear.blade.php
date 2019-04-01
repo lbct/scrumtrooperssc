@@ -1,4 +1,4 @@
-@extends('docente.plantilla')
+@extends('auxiliar.plantilla')
 @section('titulo', 'Nuevo Auxiliar')
 @section('contenido_barra')
 <h2>Docente</h2>
