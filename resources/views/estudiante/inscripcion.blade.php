@@ -34,24 +34,25 @@
               </div>
             </div>
             <div class="bs-stepper-content">
-              <form  method="POST" action="/inscripcion">
+              <form method="POST" action="/estudiante/inscripcion">
+                {!! csrf_field() !!}
                 <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
-                  <button class="btn btn-primary" onclick="stepper1.next()">Next</button>
+                  <button class="btn btn-primary" onclick="stepper1.next()" type="button">Next</button>
                 </div>
                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
-                  <button class="btn btn-primary" onclick="stepper1.previous()">Previous</button>
-                  <button class="btn btn-primary" onclick="stepper1.next()">Next</button>
+                  <button class="btn btn-primary" onclick="stepper1.previous()" type="button">Previous</button>
+                  <button class="btn btn-primary" onclick="stepper1.next()" type="button">Next</button>
                 </div>
                 <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="stepper1trigger3">
-                  <button class="btn btn-primary mt-5" onclick="stepper1.previous()">Previous</button>
+                  <button class="btn btn-primary mt-5" onclick="stepper1.previous()" type="button">Previous</button>
                   <button type="submit" class="btn btn-primary mt-5">Submit</button>
                 </div>
               </form>
