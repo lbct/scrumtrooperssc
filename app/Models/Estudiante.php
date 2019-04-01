@@ -13,4 +13,14 @@ class Estudiante extends Model
     {
         return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
     }
+    
+    public function estudianteClase()
+    {
+        return $this->hasMany('App\Models\EstudianteClase', 'ESTUDIANTE_ID', 'ID');
+    }
+    
+    public function sesionEstudiante()
+    {
+        return $this->hasMany('App\Models\SesionEstudiante', 'ESTUDIANTE_ID', 'ID');
+    }
 }

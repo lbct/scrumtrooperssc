@@ -8,4 +8,9 @@ class Periodo extends Model
 {
     protected $primaryKey = 'ID';
     protected $table = 'PERIODO';
+    
+    public function gestion()
+    {
+        return $this->hasMany('App\Models\Gestion', 'PERIODO_ID', 'ID');
+    }
 }

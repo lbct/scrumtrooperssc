@@ -13,4 +13,9 @@ class Auxiliar extends Model
     {
         return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
     }
+    
+    public function sesion()
+    {
+        return $this->hasMany('App\Models\Sesion', 'AUXILIAR_ID', 'ID');
+    }
 }

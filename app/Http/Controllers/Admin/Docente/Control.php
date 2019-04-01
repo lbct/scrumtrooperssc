@@ -80,7 +80,7 @@ class Control extends Base
                     return redirect('administrador');
                 }
                 
-                $request->session()->flash('alert-danger', 'Codigo SIS no válido');
+                $request->session()->flash('alert-danger', 'Usuario no válido');
                 return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
             }
         }
@@ -133,27 +133,17 @@ class Control extends Base
                 'nombre'                    => 'required|min:2',
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
-                'password'                  => 'min:2',
-                'password_confirmation'     => 'min:2',
             ]);
 
-            if($validator->fails() || $request->password != $request->password_confirmation)
+            if($validator->fails() )
             {
-                if($validator->fails())
-                {
-                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
-                }
-                else
-                {
-                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
-                }
+                return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
             }
             else
             {
                 $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
                 
-                if( $cuentaCreada->isEmpty() )
+                if( $cuentaCreada->isEmpty() || $cuentaCreada[0]->ID==$id_usuario)
                 {
                     $usuario = Usuario::find($id_usuario);
                 
@@ -162,14 +152,14 @@ class Control extends Base
                     $usuario->APELLIDO          = $request->apellido;
                     $usuario->CORREO            = $request->correo;
                     
-                    $usuario->save();
+                    $usuario->update();
                     
                     $request->session()->flash('alert-success', 'Datos del docente actualizados');
                     return redirect('administrador');
-                }
+               // }
                 
-                $request->session()->flash('alert-danger', 'Usuario ya existente');
-                return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+                //$request->session()->flash('alert-danger', 'Usuario ya existente');
+                //return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
             }
         }
         

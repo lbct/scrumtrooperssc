@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GestionSeeder::class);
         
         $this->call(MateriaSeeder::class);
-        $this->call(ResgistroGestionMateriaSeeder::class);
         
         $this->call(UsuarioSeeder::class);
         $this->call(AdministradorSeeder::class);
@@ -30,20 +29,19 @@ class DatabaseSeeder extends Seeder
         $this->call(IniciarSesionSeeder::class);
         
         $this->call(GrupoDocenteSeeder::class);
-        $this->call(RegistroGrupoDocenteGestionSeeder::class);
-        $this->call(AsignarGrupoADocenteSeeder::class);
+        $this->call(GrupoADocenteSeeder::class);
         
         $this->call(AulaSeeder::class);
         $this->call(HorarioSeeder::class);
+        $this->call(ClaseSeeder::class);
+        
+        $this->call(EstudianteClaseSeeder::class);
+        
         $this->call(SesionSeeder::class);
         
-        $this->call(RegistroEstudianteGrupoDocenteSeeder::class);
+        $this->call(SesionEstudianteSeeder::class);
         
-        $this->call(PracticaSeeder::class);
-        
-        $this->call(RregistroAsistenciaPracticaEstudianteSeeder::class);
-        
-        $this->call(EnvioPracticaEstudianteSeeder::class);
+        $this->call(EnvioPracticaSeeder::class);
         
         Model::reguard();
     }
