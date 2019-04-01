@@ -43,6 +43,8 @@ Route::post('administrador/editarDocente/{id_usuario}',
     'as' => 'administrador/editarDocente',
     'uses' => 'Admin\Docente\Control@postEdit'
 ]);
+Route::get('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Control@getEditarClave');
+Route::post('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Control@postEditarClave');
 
 Route::get('administrador/crearAdmin','Admin\Control@getCrear');
 Route::post('administrador/crearAdmin','Admin\Control@postCrear');
