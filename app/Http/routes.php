@@ -20,6 +20,9 @@ Route::get('estudiante/editar','Estudiante\Control@getEdit');
 Route::post('estudiante/editar','Estudiante\Control@postEdit');
 Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
+Route::get('estudiante/inscripcion', 'Estudiante\Inscripcion@getVista');
+Route::post('estudiante/inscripcion', 'Estudiante\Inscripcion@postInscripcion');
+
 
 //Rutas Admin
 Route::get('administrador',[

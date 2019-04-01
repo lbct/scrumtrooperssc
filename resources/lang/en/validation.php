@@ -144,7 +144,7 @@ return [
 			'password_confirmation'=>'Confirmar Contraseña',
 			'codigo_sis'=>'CodigoSis',
 			'correo'=>'Email',
-			'nombre'=>'Nombres',
+			'nombre'=>'Nombre(s)',
 			'apellido'=>'Apellidos',
 			
 	],
