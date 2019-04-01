@@ -56,7 +56,7 @@
                       <option value="4">TIS :(</option>
                     </select>
                   </div>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Next</button>
+                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                   <div class="form-group">
@@ -68,8 +68,8 @@
                       <option value="4">TIS :(</option>
                     </select>
                   </div>
-                  <button class="btn btn-primary" onclick="stepper.previous()" type="button">Previous</button>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Next</button>
+                  <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
+                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger3">
                   <div class="form-group">
@@ -81,8 +81,8 @@
                       <option value="4">TIS :(</option>
                     </select>
                   </div>
-                  <button class="btn btn-primary" onclick="stepper.previous()" type="button">Previous</button>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Next</button>
+                  <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
+                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-4" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger4">
                   <div class="form-group">
@@ -93,8 +93,8 @@
                       <label for="verficar_horario">Horario</label>
                       <input type="text" class="form-control" id="verificar_horario" value="Horario Selecionada" disabled>
                   </div>
-                  <button class="btn btn-primary mt-5" onclick="stepper.previous()" type="button">Previous</button>
-                  <button type="submit" class="btn btn-primary mt-5">Inscibirse</button>
+                  <button class="btn btn-primary mt-5" onclick="stepper.previous()" type="button">Anterior</button>
+                  <button type="submit" class="btn btn-primary mt-5">Inscribirse</button>
                 </div>
               </form>
             </div>
@@ -104,15 +104,18 @@
 
 <script src="{{asset('js/bs-stepper.min.js')}}"></script>
 <script>
-      var stepperNode = document.querySelector('#stepper')
-      var stepper = new Stepper(document.querySelector('#stepper'))
+      //var stepperNode = document.querySelector('#stepper')
+      var stepper = new Stepper(document.querySelector('#stepper'), {
+        linear: false
+      })
+      /*
       stepperNode.addEventListener('show.bs-stepper', function (event) {
         //console.warn('show.bs-stepper', event)
       })
       stepperNode.addEventListener('shown.bs-stepper', function (event) {
         //console.warn('shown.bs-stepper', event)
       })
-      /*var stepper2 = new Stepper(document.querySelector('#stepper2'), {
+      var stepper2 = new Stepper(document.querySelector('#stepper2'), {
           linear: false,
           animation: true
         })
