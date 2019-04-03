@@ -46,6 +46,7 @@
             </div>
             <div class="bs-stepper-content">
               <form method="POST" action="/estudiante/inscripcion">
+                {!! csrf_field() !!}
                 <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                   <div class="form-group">
                     <label for="materia">Seleciona la Materia</label>
