@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @extends('estudiante.plantilla')
 @section('contenido_barra')
   <h2>Estudiante</h2>
@@ -8,8 +9,6 @@
 <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
 @include('alertas')
 @include('errores')
-{!! csrf_field() !!}
-
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
         <div class="mb-5 p-4">
@@ -47,43 +46,35 @@
             <div class="bs-stepper-content">
               <form method="POST" action="/estudiante/inscripcion">
                 {!! csrf_field() !!}
+                <input type="hidden" id="paso" name="paso" value=1>
                 <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                   <div class="form-group">
                     <label for="materia">Seleciona la Materia</label>
                     <select class="form-control" id="materia" value="{{ old('materia') }}">
-                      <option value="1">Intro</option>
-                      <option value="2">Elementos</option>
-                      <option value="3">Taller de Progra</option>
-                      <option value="4">TIS :(</option>
+                      @foreach ($materias as $materia)
+                        <option value={{$materia->ID}}>{{$materia->NOMBRE_MATERIA}}</option>
+                      @endforeach
                     </select>
                   </div>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(2);getDocentes();" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                   <div class="form-group">
                     <label for="docente">Seleciona tu Docente</label>
                     <select class="form-control" id="docente" value="{{ old('docente') }}">
-                      <option value="1">Leticia</option>
-                      <option value="2">Vladimir</option>
-                      <option value="3">Flores</option>
-                      <option value="4">TIS :(</option>
                     </select>
                   </div>
                   <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(3);getHorarios();" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger3">
                   <div class="form-group">
                     <label for="horario">Seleciona un Horario</label>
-                    <select class="form-control" id="horario">
-                      <option value="1">Lunes 6'45"</option>
-                      <option value="2">Lunes 6:45</option>
-                      <option value="3">Lunes 00:00</option>
-                      <option value="4">TIS :(</option>
+                    <select class="form-control" id="horario" name="horario">
                     </select>
                   </div>
                   <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
-                  <button class="btn btn-primary" onclick="stepper.next()" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(4);verificacion()" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-4" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger4">
                   <div class="form-group">
@@ -107,22 +98,95 @@
 <script>
       //var stepperNode = document.querySelector('#stepper')
       var stepper = new Stepper(document.querySelector('#stepper'), {
-        linear: false
+        linear: true
       })
-      /*
-      stepperNode.addEventListener('show.bs-stepper', function (event) {
-        //console.warn('show.bs-stepper', event)
-      })
-      stepperNode.addEventListener('shown.bs-stepper', function (event) {
-        //console.warn('shown.bs-stepper', event)
-      })
-      var stepper2 = new Stepper(document.querySelector('#stepper2'), {
-          linear: false,
-          animation: true
-        })
-      var stepper3 = new Stepper(document.querySelector('#stepper3'), {
-          animation: true
-        })*/
+      
+      function fijarPaso(paso) {
+          if(paso < 1 || paso > 4)
+            paso = 1;
+          
+          document.getElementById('paso').value = paso;
+      }
+    
+      function getDocentes() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+          
+            $.ajax({
+                url: '/estudiante/inscripcion',
+                type: 'POST',
+                data: {
+                    _token: CSRF_TOKEN,
+                    paso: document.getElementById('paso').value,
+                    materia: document.getElementById('materia').value
+                },
+                dataType: 'JSON',
+                success: function (docentes) {
+                    selectDocente   = document.getElementById('docente');
+                    opcionesDocente = "";
+                    
+                    docentes.forEach(function(docente) {
+                        opcionesDocente += '<option value='+docente.ID+'>'+docente.NOMBRE+' '+docente.APELLIDO+'</option>';
+                    });
+                    
+                    selectDocente.innerHTML = opcionesDocente;
+                }
+            });
+      }
+    
+      function getHorarios() {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+          
+            $.ajax({
+                url: '/estudiante/inscripcion',
+                type: 'POST',
+                data: {
+                    _token: CSRF_TOKEN,
+                    paso: document.getElementById('paso').value,
+                    docente: document.getElementById('docente').value
+                },
+                dataType: 'JSON',
+                success: function (horarios) {
+                    horario   = document.getElementById('horario');
+                    opcionesHorario = "";
+                    
+                    horarios.forEach(function(horario) {
+                        dia = "";
+                        switch (horario.DIA) {
+                          case 1:
+                            dia = "Lunes";
+                            break;
+                          case 2:
+                            dia = "Martes";
+                            break;
+                          case 3:
+                            dia = "Miercoles";
+                            break;
+                          case 4:
+                            dia = "Jueves";
+                            break;
+                          case 5:
+                            dia = "Viernes";
+                            break;
+                          case 6:
+                            dia = "Sábado";
+                            break;
+                        }
+                        
+                        opcionesHorario += '<option value='+horario.ID+'>'+dia+' - '+horario.HORA_INICIO+' / '+horario.HORA_FIN+' - '+horario.NOMBRE_AULA+'</option>';
+                        
+                        
+                    });
+                    
+                    horario.innerHTML = opcionesHorario;
+                }
+            });
+      }
+    
+      function verificacion() {
+          document.getElementById('verificar_materia').value = $("#materia option:selected").text();
+          document.getElementById('verificar_docente').value = $("#docente option:selected").text();
+          document.getElementById('verificar_horario').value = $("#horario option:selected").text();
+      }
 </script>
 
 @endsection

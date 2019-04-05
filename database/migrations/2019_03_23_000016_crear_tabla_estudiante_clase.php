@@ -18,6 +18,8 @@ class CrearTablaEstudianteClase extends Migration
             
             $table->foreign('CLASE_ID')->references('ID')->on('CLASE')->onDelete('cascade');
             $table->foreign('ESTUDIANTE_ID')->references('ID')->on('ESTUDIANTE')->onDelete('cascade');
+            
+            $table->unique(['CLASE_ID', 'ESTUDIANTE_ID']);
         });
     }
 

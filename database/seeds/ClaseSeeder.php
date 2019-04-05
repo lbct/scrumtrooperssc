@@ -33,5 +33,14 @@ class ClaseSeeder extends Seeder
         'DETALLE_CLASE' 	             =>	'Sesion de Rosemary Torrico, Introducción a la programación, horario: 8:15 a 9:45 en LAB0002, Gestion 2019 Primer Semestre',
         'DIA' 	                         =>	1,
         ]);
+        
+        Clase::create([
+        'GESTION_ID'                     => 1,
+        'AULA_ID' 		                 =>	1,
+        'HORARIO_ID' 	                 =>	2,
+        'GRUPO_A_DOCENTE_ID' 	         =>	3,
+        'DETALLE_CLASE' 	             =>	'Sesion de Leticia Blanco, Estructura de datos, horario: 8:15 a 9:45 en LAB0001, Gestion 2019 Primer Semestre',
+        'DIA' 	                         =>	5,
+        ]);
     }
 }
