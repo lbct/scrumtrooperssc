@@ -8,7 +8,9 @@
     <div class="row">
         <div class="col-9">
             
-        <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+        <div id="columnchart_material" style="width: 800px; height: 500px;">
+         <p>"hola hola"</p>
+        </div>
         </div>
         <div class="col-2">
         <br>
@@ -19,6 +21,7 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Apellido</th>
+                            <th>Materia</th>
                             <th>Materia</th>
                         </tr>
                     </thead>
