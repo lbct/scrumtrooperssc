@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\AsignaFuncion;
-use App\Funcion;
+use App\Models\AsignaFuncion;
+use App\Models\Funcion;
 
 class AsignaFuncionSeeder extends Seeder
 {
