@@ -99,8 +99,9 @@
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
 
 </body>
