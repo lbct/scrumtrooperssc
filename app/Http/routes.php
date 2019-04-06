@@ -21,6 +21,8 @@ Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscripcion@getVista');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscripcion@postInscripcion');
+Route::get('estudiante/estadoInscripcion', 'Estudiante\EstadoInscripcion@getLista');
+
 
 //Rutas Admin
 Route::get('administrador',[
