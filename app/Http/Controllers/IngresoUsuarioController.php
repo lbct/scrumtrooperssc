@@ -45,7 +45,7 @@ class IngresoUsuarioController extends Controller
                 }
             }
             
-            $request->session()->flash('alert-danger', 'Usuario Incorrecto');
+            $request->session()->flash('alert-danger', 'Usuario o Contraseña Incorrecta');
         }
         
         return redirect('login')->withErrors($validator)->withInput();

@@ -58,8 +58,8 @@
                             </div>
                         </div-->
                         <div class="form-group row justify-content-center">
-                            <div><input type="button" value="volver atrás" name="volver atrás2" onclick="history.back()" /></div>
-                            <div class="column2"><input type="submit" value="Registrar" class="btn btn-primary" tabindex="7"></div>
+                            <div><input type="button" class="btn-primary" value="Volver" onclick="window.location='/'" tabindex="7"/></div>
+                            <div><input type="submit" class="btn btn-primary" value="Registrar" tabindex="8"></div>
                             <!--div class="column2"><input type="submit" value="Iniciar Sesion" class="btn btn-primary" onclick="window.location.href = '/'" tabindex="8"></div-->
                             <!--div class="col-xs-12 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div-->
                         </div>
