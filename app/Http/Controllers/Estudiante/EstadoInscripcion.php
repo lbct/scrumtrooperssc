@@ -19,13 +19,12 @@ class EstadoInscripcion extends Base
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
 
             $materias = EstudianteClase::where("ESTUDIANTE_ID",$estudiante->ID)
-            ->join("CLASE","ESTUDIANTE_CLASE.CLASE_ID","=","CLASE.ID")
-            ->join("GRUPO_A_DOCENTE","GRUPO_A_DOCENTE.ID","=","CLASE.GRUPO_A_DOCENTE_ID")
-            ->join("GRUPO_DOCENTE","GRUPO_DOCENTE.ID","=","GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-            ->join("MATERIA","MATERIA.ID","=","GRUPO_DOCENTE.MATERIA_ID")
-            ->select("NOMBRE_MATERIA")
-            ->get();
-
+                    ->join("CLASE","ESTUDIANTE_CLASE.CLASE_ID","=","CLASE.ID")
+                    ->join("GRUPO_A_DOCENTE","GRUPO_A_DOCENTE.ID","=","CLASE.GRUPO_A_DOCENTE_ID")
+                    ->join("GRUPO_DOCENTE","GRUPO_DOCENTE.ID","=","GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                    ->join("MATERIA","MATERIA.ID","=","GRUPO_DOCENTE.MATERIA_ID")
+                    ->select("NOMBRE_MATERIA")
+                    ->get();
            
             return view('estudiante.estadoInscripcion')->with('materias', $materias);
         }
