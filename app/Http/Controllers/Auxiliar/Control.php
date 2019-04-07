@@ -5,6 +5,8 @@ use App\Models\Usuario;
 use App\Models\Auxiliar;
 use App\Models\Sesion;
 use App\Models\Gestion;
+use App\Models\GrupoDocenteAuxiliar;
+use App\Models\GrupoADocente;
 use App\Models\Clase;
 use App\Models\EstudianteClase;
 use App\Models\Estudiante;
@@ -32,13 +34,14 @@ class Control extends Base
             $id_gestion = Clase::find($request->clase_id)->gestion->ID;
             $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
             $sesiones = Sesion::whereRaw('AUXILIAR_ID='.$auxiliar->ID.' AND CLASE_ID='.$request->clase_id)->orderBy('ID', 'DESC')->get();
-            $sesion_id;
+            $sesion_id = -1;
             if($request->sesion_id != null){
                 $sesion_id = $request->sesion_id;
             }
-            else{
+            else if($sesiones != null && sizeof($sesiones) > 0){
                 $sesion_id = $sesiones->first()->ID;
             }
+            
             if($request->estudiante_id != null){
                 $estudiante = Estudiante::find($request->estudiante_id);
                 $sesion_est = SesionEstudiante::whereRaw('SESION_ID='.$sesion_id.' AND ESTUDIANTE_ID='.$estudiante->ID)->first();
@@ -54,12 +57,18 @@ class Control extends Base
             foreach($est_clases as $est_clase){
                 array_push($estudiantes, $est_clase->estudiante);
             }
-            return view('auxiliar.estudiante.lista')
-            ->with('estudiantes', $estudiantes)
-            ->with('sesiones', $sesiones)
-            ->with('sesion_id', $sesion_id)
-            ->with('clase_id', $request->clase_id)
-            ->with('id_gestion', $id_gestion);
+            if($sesion_id != -1){
+                return view('auxiliar.estudiante.lista')
+                ->with('estudiantes', $estudiantes)
+                ->with('sesiones', $sesiones)
+                ->with('sesion_id', $sesion_id)
+                ->with('clase_id', $request->clase_id)
+                ->with('id_gestion', $id_gestion);
+            }
+            else{
+                $request->session()->flash('alert-danger', 'No existen sesiones para la clase seleccionada.');
+                return redirect('/auxiliar/clases/'.$id_gestion);
+            }
         }
         return redirect('login');
     }
@@ -69,14 +78,23 @@ class Control extends Base
         if($this->rol->is($request))
         {
             $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
-            $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
-            $ids_clase = Sesion::where('AUXILIAR_ID', '=', $auxiliar->ID)->selectRaw('DISTINCT CLASE_ID')->get();
+            $id_auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first()->ID;
+
+            $grupos_docentes = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)->get();
+
+            $ids_clases = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)
+            ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_AUXILIAR.GRUPO_DOCENTE_ID')
+            ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
+            ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+            ->where('CLASE.GESTION_ID', '=', $id_gestion)
+            ->select('CLASE.ID')
+            ->get();
+
             $clases = [];
-            foreach($ids_clase as $id_clase){
-                $clase = Clase::find($id_clase->CLASE_ID);
-                if($clase->GESTION_ID == $id_gestion)
-                    array_push($clases, $clase);
+            foreach($ids_clases as $id_clase){
+                array_push($clases, Clase::find($id_clase->ID));
             }
+
             return view('auxiliar.clases')
             ->with('id_gestion', $id_gestion)
             ->with('gestiones', $gestiones)
