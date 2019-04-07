@@ -7,12 +7,17 @@
 <!-- AQUI EL CONTENIDO :V-->
 
 <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
+<div id="alertas">
+    
+</div>
 @include('alertas')
 @include('errores')
+
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
         <div class="mb-5 p-4">
           <h3>Formulario de Inscripcion</h3>
+          @if (sizeof($materias) > 0)
           <div id="stepper" class="bs-stepper">
             <div class="bs-stepper-header" role="tablist">
               <div class="step" data-target="#test-l-1">
@@ -46,35 +51,34 @@
             <div class="bs-stepper-content">
               <form method="POST" action="/estudiante/inscripcion">
                 {!! csrf_field() !!}
-                <input type="hidden" id="paso" name="paso" value=1>
                 <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                   <div class="form-group">
                     <label for="materia">Seleciona la Materia</label>
-                    <select class="form-control" id="materia" value="{{ old('materia') }}">
+                    <select class="form-control" id="materia" name="materia" value="{{ old('materia') }}" required>
                       @foreach ($materias as $materia)
                         <option value={{$materia->ID}}>{{$materia->NOMBRE_MATERIA}}</option>
                       @endforeach
                     </select>
                   </div>
-                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(2);getDocentes();" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="getDocentes();" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                   <div class="form-group">
                     <label for="docente">Seleciona tu Docente</label>
-                    <select class="form-control" id="docente" value="{{ old('docente') }}">
+                    <select class="form-control" id="docente" value="{{ old('docente') }}" required>
                     </select>
                   </div>
                   <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
-                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(3);getHorarios();" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="getHorarios();" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger3">
                   <div class="form-group">
-                    <label for="horario">Seleciona un Horario</label>
-                    <select class="form-control" id="horario" name="horario">
+                    <label for="horario" if="titulo_horario">Seleciona un Horario</label>
+                    <select class="form-control" id="horario" name="horario" value="{{ old('horario') }}" required>
                     </select>
                   </div>
                   <button class="btn btn-primary" onclick="stepper.previous()" type="button">Anterior</button>
-                  <button class="btn btn-primary" onclick="stepper.next();fijarPaso(4);verificacion()" type="button">Siguiente</button>
+                  <button class="btn btn-primary" onclick="verificacion();" type="button">Siguiente</button>
                 </div>
                 <div id="test-l-4" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger4">
                   <div class="form-group">
@@ -91,6 +95,9 @@
               </form>
             </div>
           </div>
+          @else
+            <p>No tienes Materias Disponibles.</p>
+          @endif
         </div>
 </div>
 
@@ -100,13 +107,6 @@
       var stepper = new Stepper(document.querySelector('#stepper'), {
         linear: true
       })
-      
-      function fijarPaso(paso) {
-          if(paso < 1 || paso > 4)
-            paso = 1;
-          
-          document.getElementById('paso').value = paso;
-      }
     
       function getDocentes() {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -116,19 +116,29 @@
                 type: 'POST',
                 data: {
                     _token: CSRF_TOKEN,
-                    paso: document.getElementById('paso').value,
+                    paso: 2,
                     materia: document.getElementById('materia').value
                 },
                 dataType: 'JSON',
-                success: function (docentes) {
-                    selectDocente   = document.getElementById('docente');
-                    opcionesDocente = "";
-                    
-                    docentes.forEach(function(docente) {
-                        opcionesDocente += '<option value='+docente.ID+'>'+docente.NOMBRE+' '+docente.APELLIDO+'</option>';
-                    });
-                    
-                    selectDocente.innerHTML = opcionesDocente;
+                success: function (docentes){
+                    if(docentes.length>0)
+                    {
+                        selectDocente   = document.getElementById('docente');
+                        opcionesDocente = "";
+
+                        docentes.forEach(function(docente) {
+                            opcionesDocente += '<option value='+docente.ID+'>'+docente.NOMBRE+' '+docente.APELLIDO+'</option>';
+                        });
+
+                        selectDocente.innerHTML = opcionesDocente;
+                        
+                        stepper.next();
+                    }
+                    else
+                    {
+                        $alertas = document.getElementById('alertas');
+                        $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>No se tiene docentes disponibles.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>"
+                    }
                 }
             });
       }
@@ -141,43 +151,50 @@
                 type: 'POST',
                 data: {
                     _token: CSRF_TOKEN,
-                    paso: document.getElementById('paso').value,
+                    paso: 3,
                     docente: document.getElementById('docente').value
                 },
                 dataType: 'JSON',
-                success: function (horarios) {
-                    horario   = document.getElementById('horario');
-                    opcionesHorario = "";
-                    
-                    horarios.forEach(function(horario) {
-                        dia = "";
-                        switch (horario.DIA) {
-                          case 1:
-                            dia = "Lunes";
-                            break;
-                          case 2:
-                            dia = "Martes";
-                            break;
-                          case 3:
-                            dia = "Miercoles";
-                            break;
-                          case 4:
-                            dia = "Jueves";
-                            break;
-                          case 5:
-                            dia = "Viernes";
-                            break;
-                          case 6:
-                            dia = "Sábado";
-                            break;
-                        }
-                        
-                        opcionesHorario += '<option value='+horario.ID+'>'+dia+' - '+horario.HORA_INICIO+' / '+horario.HORA_FIN+' - '+horario.NOMBRE_AULA+'</option>';
-                        
-                        
-                    });
-                    
-                    horario.innerHTML = opcionesHorario;
+                success: function (horarios) {                    
+                    if(horarios.length>0)
+                    {
+                        horario   = document.getElementById('horario');
+                        opcionesHorario = "";
+
+                        horarios.forEach(function(horario){
+                            dia = "";
+                            switch (horario.DIA) {
+                              case 1:
+                                dia = "Lunes";
+                                break;
+                              case 2:
+                                dia = "Martes";
+                                break;
+                              case 3:
+                                dia = "Miercoles";
+                                break;
+                              case 4:
+                                dia = "Jueves";
+                                break;
+                              case 5:
+                                dia = "Viernes";
+                                break;
+                              case 6:
+                                dia = "Sábado";
+                                break;
+                            }
+
+                            opcionesHorario += '<option value='+horario.ID+'>'+dia+' - '+horario.HORA_INICIO+' / '+horario.HORA_FIN+' - '+horario.NOMBRE_AULA+'</option>'; 
+                        });
+
+                        horario.innerHTML = opcionesHorario;
+                        stepper.next();
+                    }
+                    else
+                    {
+                        $alertas = document.getElementById('alertas');
+                        $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>No se tiene horarios disponibles.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>"
+                    }
                 }
             });
       }
@@ -186,6 +203,8 @@
           document.getElementById('verificar_materia').value = $("#materia option:selected").text();
           document.getElementById('verificar_docente').value = $("#docente option:selected").text();
           document.getElementById('verificar_horario').value = $("#horario option:selected").text();
+          
+          stepper.next();
       }
 </script>
 

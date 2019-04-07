@@ -5,8 +5,10 @@ use App\Models\Usuario;
 use App\Models\Estudiante;
 use App\Models\Materia;
 use App\Models\Docente;
+use App\Models\Gestion;
 use App\Models\GrupoDocente;
 use App\Models\EstudianteClase;
+use App\Models\Clase;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Estudiante\Base;
 use Illuminate\Support\Facades\Hash;
@@ -20,8 +22,27 @@ class Inscripcion extends Base
     {
         if( $this->rol->is($request) )
         {
-            $materias = Materia::select('MATERIA.ID', 'NOMBRE_MATERIA')->get();
-            return view('estudiante.inscripcion')->with('materias', $materias);
+            $gestion = Gestion::select('ID')
+                       ->orderBy('ANO_GESTION','desc')
+                       ->first();
+            
+            $materias = Materia::select('MATERIA.ID', 'NOMBRE_MATERIA')
+                        ->where('GESTION_ID',$gestion->ID)
+                        ->get();
+            
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $materiasRegistradas = EstudianteClase::where("ESTUDIANTE_ID",$estudiante->ID)
+                    ->join("CLASE","ESTUDIANTE_CLASE.CLASE_ID","=","CLASE.ID")
+                    ->join("GRUPO_A_DOCENTE","GRUPO_A_DOCENTE.ID","=","CLASE.GRUPO_A_DOCENTE_ID")
+                    ->join("GRUPO_DOCENTE","GRUPO_DOCENTE.ID","=","GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                    ->join("MATERIA","MATERIA.ID","=","GRUPO_DOCENTE.MATERIA_ID")
+                    ->select("MATERIA.ID","NOMBRE_MATERIA")
+                    ->where('MATERIA.GESTION_ID',$gestion->ID)
+                    ->get();
+            
+            $materiasDisponibles = $materias->diff($materiasRegistradas);
+            
+            return view('estudiante.inscripcion')->with('materias', $materiasDisponibles);
         }
             
         return redirect('login');
@@ -29,16 +50,10 @@ class Inscripcion extends Base
 
     public function postInscripcion(Request $request)
     {
-        $paso = $request->paso;
         if( $this->rol->is($request) )
         {
-            if($paso == 1)
-            {
-                $materias = Materia::select('MATERIA.ID', 'NOMBRE_MATERIA')->get();
-
-                return $materias;
-            }
-            else if($paso == 2)
+            $paso = $request->paso;
+            if($paso == 2)
             {
                 $materia = $request->materia;
                 $gruposdocentes =   Materia::where('MATERIA.ID', $materia)
@@ -51,7 +66,7 @@ class Inscripcion extends Base
 
                 return $gruposdocentes;
             }
-            else if($paso == 3)
+            else if($paso == 3 && $request->horario==null)
             {
                 $grupoDocente = $request->docente;
                 $clases =   GrupoDocente::where('GRUPO_DOCENTE.ID', $grupoDocente)
@@ -61,25 +76,53 @@ class Inscripcion extends Base
                             ->join('AULA', 'CLASE.AULA_ID', '=', 'AULA.ID')
                             ->select('CLASE.ID', 'NOMBRE_AULA', 'HORA_INICIO', 'HORA_FIN', 'DIA')
                             ->get();
-
+                
                 return $clases;
             }
-            else if($paso == 4)
+            else if($request->horario!=null)
             {
+                $gestion = Gestion::select('ID')
+                           ->orderBy('ANO_GESTION','desc')
+                           ->first();
+                
                 $clase = intval($request->horario);
-                $usuario = Usuario::find($request->cookie('USUARIO_ID'));
-                $estudiante = $usuario->estudiante;
+                $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+                
+                $valido = true;
+                $materiaDeClase = Clase::find($clase)->grupoADocente->grupoDocente->materia->ID;
+                $claseEnGestion = Clase::find($clase);
+                $materiasRegistradas = EstudianteClase::where("ESTUDIANTE_ID",$estudiante->ID)
+                    ->join("CLASE","ESTUDIANTE_CLASE.CLASE_ID","=","CLASE.ID")
+                    ->join("GRUPO_A_DOCENTE","GRUPO_A_DOCENTE.ID","=","CLASE.GRUPO_A_DOCENTE_ID")
+                    ->join("GRUPO_DOCENTE","GRUPO_DOCENTE.ID","=","GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                    ->join("MATERIA","MATERIA.ID","=","GRUPO_DOCENTE.MATERIA_ID")
+                    ->select("MATERIA.ID","NOMBRE_MATERIA")
+                    ->where('MATERIA.GESTION_ID',$gestion->ID)
+                    ->get();
 
-                $estudianteClase = new EstudianteClase();
+                if($claseEnGestion->GESTION_ID != $gestion->ID)
+                    $valido = false;
+                else if( $materiasRegistradas->find($materiaDeClase) !=null )
+                    $valido = false;
+                
+                if($valido)
+                {
+                    $estudianteClase = new EstudianteClase();
 
-                $estudianteClase->CLASE_ID      = $clase;
-                $estudianteClase->ESTUDIANTE_ID = $estudiante->ID;
+                    $estudianteClase->CLASE_ID      = $clase;
+                    $estudianteClase->ESTUDIANTE_ID = $estudiante->ID;
 
-                $estudianteClase->save();
-
-                return $estudianteClase;
+                    $estudianteClase->save();
+                    $request->session()->flash('alert-success', '¡Inscrito a la materia con éxito!');
+                    return redirect('/estudiante/estadoInscripcion');
+                }
             }
+            
+            $request->session()->flash('alert-danger', 'No se pudo inscribir a la materia');
+            return redirect('/estudiante/inscripcion')->withInput();
         }
+        
+        return redirect('login');
     }
 
 }
