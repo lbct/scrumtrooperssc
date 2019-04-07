@@ -7,9 +7,6 @@
 <div id="alertas">
     
 </div>
-@include('alertas')
-@include('errores')
-
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
         <div class="mb-5 p-4">

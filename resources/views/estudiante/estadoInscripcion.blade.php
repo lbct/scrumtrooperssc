@@ -17,7 +17,7 @@
         <tbody>
         @foreach($materias as $materia)
         <tr>
-            <th scope="row">{{ $materia->NOMBRE_MATERIA }}</th>
+            <td>{{ $materia->NOMBRE_MATERIA }}</td>
         </tr>
         @endforeach
         </tbody>

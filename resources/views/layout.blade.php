@@ -25,7 +25,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/login">
@@ -39,7 +39,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="/logout">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-power-off"></i>
                     <span>Cerrar sesión</span></a>
             </li>
 
@@ -62,7 +62,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/inscripcion">
-                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <i class="fas fa-fw fa-plus-circle"></i>
                     <span>Inscripcion</span>
                 </a>
             </li>
@@ -78,7 +78,7 @@
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
             <li class="nav-item">
                 <a class="nav-link" href="/auxiliar/clases">
-                    <i class="fas fa-fw fa-th-list"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Lista de clases</span>
                 </a>
             </li>
@@ -142,10 +142,15 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <h2>{{
-                        App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->NOMBRE.' '.
-                        App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->APELLIDO
-                    }}</h2>
+                    <h4 class="text-light">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>  
+                        {{
+                            App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->NOMBRE.' '.
+                            App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->APELLIDO
+                        }}
+                        </span>
+                    </h4>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                     </div>
                 </div>

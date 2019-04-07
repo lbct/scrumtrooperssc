@@ -12,9 +12,9 @@
         {!! csrf_field() !!}
         <input type="hidden" name="clase_id" value="{{$clase_id}}"/>
         <select class="form-control" id='sesiones_est' name='sesion_id' onchange="parentNode.submit();">
-            @foreach($sesiones as $sesion)
-                <option value="{{$sesion->ID}}" @if(($sesion->ID)==$sesion_id) selected="selected" @endif>{{'ID de Sesión: '.($sesion->ID)}}</option>
-            @endforeach
+            @for($i=0;$i<sizeof($sesiones);$i++)
+                <option value="{{$sesiones[$i]->ID}}" @if(($sesiones[$i]->ID)==$sesion_id) selected="selected" @endif>{{'Sesión #'.(sizeof($sesiones) - $i).':'}}</option>
+            @endfor
         </select>
     </form>
 </div>

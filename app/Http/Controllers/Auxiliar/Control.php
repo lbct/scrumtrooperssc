@@ -86,10 +86,12 @@ class Control extends Base
             ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_AUXILIAR.GRUPO_DOCENTE_ID')
             ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
             ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+            ->join('HORARIO', 'HORARIO.ID', '=', 'CLASE.HORARIO_ID')
             ->where('CLASE.GESTION_ID', '=', $id_gestion)
+            ->orderByRaw('CLASE.DIA asc, HORARIO.HORA_INICIO asc')
             ->select('CLASE.ID')
             ->get();
-
+            
             $clases = [];
             foreach($ids_clases as $id_clase){
                 array_push($clases, Clase::find($id_clase->ID));

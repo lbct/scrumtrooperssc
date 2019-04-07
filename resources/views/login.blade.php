@@ -15,7 +15,7 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-          <img src="{{asset('img/user.png')}}" id="icon" alt="User Icon" />
+          <img src="{{asset('img/user.svg')}}" id="icon" alt="User Icon" />
         </div>
 
         <!-- Login Form -->
