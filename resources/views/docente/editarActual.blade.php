@@ -1,8 +1,4 @@
-@extends('docente.plantilla')
-@section('titulo', 'Editar Docente')
-@section('contenido_barra')
-<h2>Docente</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <form method="POST" action="/docente/editar">
 {!! csrf_field() !!}

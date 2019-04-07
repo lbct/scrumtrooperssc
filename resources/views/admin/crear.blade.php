@@ -1,8 +1,4 @@
-@extends('admin.plantilla')
-@section('titulo', 'Nuevo Administrador')
-@section('contenido_barra')
-<h2>Administrador</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <br><br>
 <h3>Nuevo Administrador</h3>

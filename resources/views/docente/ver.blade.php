@@ -1,8 +1,4 @@
-@extends('admin.plantilla')
-@section('titulo', 'Ver Docente')
-@section('contenido_barra')
-<h2>Administrador</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <h1>Docente {{ $usuario->CODIGO_SIS }}</h1>
     <p>Nombre: {{ ($usuario->NOMBRE).' '.($usuario->APELLIDO) }}</p>

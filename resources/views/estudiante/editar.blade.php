@@ -1,8 +1,4 @@
-@extends('estudiante.plantilla')
-@section('contenido_barra')
-<h2 align="center">Estudiante</h2>
-
-@endsection
+@extends('layout')
 @section('contenido')
 <form method="POST" action="/estudiante/editar">
     {!! csrf_field() !!}

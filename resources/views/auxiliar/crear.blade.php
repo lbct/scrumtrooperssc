@@ -1,8 +1,4 @@
-@extends('docente.plantilla')
-@section('titulo', 'Nuevo Auxiliar')
-@section('contenido_barra')
-<h2>Docente</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">
 <form method="POST" action="/docente/crearAuxiliar">

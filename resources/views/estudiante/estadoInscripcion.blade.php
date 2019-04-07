@@ -1,8 +1,4 @@
-@extends('estudiante.plantilla')
-@section('contenido_barra')
-  <h2>Estudiante</h2>
-@endsection
-<!-- AQUI EL CONTENIDO :V-->
+@extends('layout')
 @section('contenido')
 <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">Materias Inscritas</h1>

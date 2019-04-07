@@ -1,8 +1,4 @@
-@extends('admin.plantilla')
-@section('titulo', 'Lista de Docentes')
-@section('contenido_barra')
-<h2>Administrador</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <div class="d-flex justify-content-between align-items-end mb-3">
         <h1 class="pb-1">Lista de Docentes</h1>

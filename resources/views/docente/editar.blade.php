@@ -1,8 +1,4 @@
-@extends('admin.plantilla')
-@section('titulo', 'Editar Docente')
-@section('contenido_barra')
-<h2>Administrador</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <form method="POST" action="{{route('administrador/editarDocente', $usuario->ID)}}">
 {!! csrf_field() !!}

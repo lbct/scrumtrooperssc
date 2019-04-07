@@ -1,7 +1,4 @@
-@extends('auxiliar.plantilla')
-@section('contenido_barra')
-  <h2>Auxiliar</h2>
-@endsection
+@extends('layout')
 @section('contenido')
 <link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">
 <link href="{{asset('/css/table_test.css')}}" rel="stylesheet" id="bootstrap-css">

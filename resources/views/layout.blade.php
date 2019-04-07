@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('titulo')</title>
+    <title>SESLAB</title>
 
     <!-- Custom fonts - images for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -51,8 +51,82 @@
                 Opciones principales
             </div>
 
-            @yield('opciones')
-
+            <!--Opciones estudiante-->
+            @if(App\Models\Estudiante::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/editar">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <span>Editar Datos</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/inscripcion">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <span>Inscripcion</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/estadoInscripcion">
+                    <i class="fa fa-fw fa-check-square"></i>
+                    <span>Estado de Inscripcion</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones auxiliar-->
+            @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/auxiliar/clases">
+                    <i class="fas fa-fw fa-th-list"></i>
+                    <span>Lista de clases</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones docente-->
+            @if(App\Models\Docente::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/editar">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <span>Editar Datos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/crearAuxiliar">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Crear Auxiliar</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones Administrador-->
+            @if(App\Models\Administrador::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Crear</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/administrador/crearDocente">Crear Docente</a>
+                    <a class="collapse-item" href="/administrador/crearAdmin">Crear Administrador</a>
+                    <a class="collapse-item" href="/administrador/crearGestion">Crear Gestión</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Listas</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/administrador/listaDocente">Lista de Docentes</a>
+                    <a class="collapse-item" href="/administrador">Lista de Administradores</a>
+                    <a class="collapse-item" href="/administrador">Lista de Gestiones</a>
+                    </div>
+                </div>
+            </li>
+            @endif
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -68,7 +142,10 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    @yield('contenido_barra')
+                    <h2>{{
+                        App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->NOMBRE.' '.
+                        App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->APELLIDO
+                    }}</h2>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                     </div>
                 </div>
