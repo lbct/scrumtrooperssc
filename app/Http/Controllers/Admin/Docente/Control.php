@@ -17,7 +17,7 @@ class Control extends Base
     {
         if( $this->rol->is($request) )
         {
-            return view('docente.crear');
+            return view('admin.docente.crear');
         }
         return redirect('login');
     }
@@ -25,7 +25,7 @@ class Control extends Base
     public function getEditarClave(Request $request, $id_usuario){
         if( $this->rol->is($request) )
         {
-            return view('admin.docente.cambiarClave')
+            return view('admin.docente.editar.clave')
             ->with('id_usuario', $id_usuario);
         }
         return redirect('login');
@@ -51,7 +51,7 @@ class Control extends Base
                 $usuario->PASSWORD = Hash::make($request->password);
                 $usuario->update();
                 $request->session()->flash('alert-success', 'La contraseña se cambió correctamente.');
-                return view('docente.editar')
+                return view('admin.docente.editar.usuario')
                 ->with('usuario', $usuario);
             }
         }
@@ -133,7 +133,7 @@ class Control extends Base
             {
                 array_push($usuarios, $docente -> usuario);
             }
-            return view('docente.lista')->with('usuarios', $usuarios);
+            return view('admin.docente.ver.lista')->with('usuarios', $usuarios);
         }
         
         return redirect('login');
@@ -144,7 +144,7 @@ class Control extends Base
         if( $this->rol->is($request))
         {
             $usuario = Usuario::find($id_usuario);
-            return view('docente.ver')->with('usuario', $usuario);
+            return view('admin.docente.ver.usuario')->with('usuario', $usuario);
         }
         return redirect('login');
     }
@@ -154,7 +154,7 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $usuario = Usuario::find($id_usuario);
-            return view('docente.editar') -> with('usuario', $usuario);
+            return view('admin.docente.editar.usuario') -> with('usuario', $usuario);
         }
         
         return redirect('login');

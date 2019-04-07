@@ -17,7 +17,7 @@ class Control extends Base
         if( $this->rol->is($request) )
         {
             $items = Periodo::all();
-            return view('gestion.crear')->with('items', $items);
+            return view('admin.gestion.crear')->with('items', $items);
         }
         
         return redirect('/login');

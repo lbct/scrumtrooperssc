@@ -58,7 +58,7 @@ class Control extends Base
                 array_push($estudiantes, $est_clase->estudiante);
             }
             if($sesion_id != -1){
-                return view('auxiliar.estudiante.lista')
+                return view('auxiliar.estudiante.ver.lista')
                 ->with('estudiantes', $estudiantes)
                 ->with('sesiones', $sesiones)
                 ->with('sesion_id', $sesion_id)
@@ -97,7 +97,7 @@ class Control extends Base
                 array_push($clases, Clase::find($id_clase->ID));
             }
 
-            return view('auxiliar.clases')
+            return view('auxiliar.ver.clases')
             ->with('id_gestion', $id_gestion)
             ->with('gestiones', $gestiones)
             ->with('clases', $clases);

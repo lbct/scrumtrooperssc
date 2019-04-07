@@ -26,7 +26,7 @@ class EstadoInscripcion extends Base
                     ->select("NOMBRE_MATERIA")
                     ->get();
            
-            return view('estudiante.estadoInscripcion')->with('materias', $materias);
+            return view('estudiante.ver.inscripcion')->with('materias', $materias);
         }
         
         return redirect('login');

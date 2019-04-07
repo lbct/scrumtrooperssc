@@ -28,7 +28,7 @@ class Control extends Base
         {
             $USUARIO_ID = $request->cookie('USUARIO_ID');
             $usuario    = Usuario::find($USUARIO_ID);
-            return view('docente.editarActual')->with('usuario', $usuario);
+            return view('docente.editar')->with('usuario', $usuario);
         }
         
         return redirect('login');
@@ -78,7 +78,7 @@ class Control extends Base
     {
         if( $this->rol->is($request)  )
         {
-            return view('auxiliar.crear');
+            return view('docente.auxiliar.crear');
         }
         
         return redirect('login');

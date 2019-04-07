@@ -42,7 +42,7 @@ class Inscripcion extends Base
             
             $materiasDisponibles = $materias->diff($materiasRegistradas);
             
-            return view('estudiante.inscripcion')->with('materias', $materiasDisponibles);
+            return view('estudiante.inscribir')->with('materias', $materiasDisponibles);
         }
             
         return redirect('login');
