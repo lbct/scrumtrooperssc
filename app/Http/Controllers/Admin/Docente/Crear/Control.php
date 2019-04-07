@@ -1,39 +1,30 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Docente\Crear;
 
 use App\Models\Usuario;
 use App\Models\AsignaRol;
-use App\Models\Administrador;
-use App\Classes\Rol;
+use App\Models\Docente;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class Control extends Base
 {
-    public function getVista(Request $request)
+    public function getRegistro(Request $request)
     {
         if( $this->rol->is($request) )
-            return view('admin.index');
-        
-        return redirect('login');
-    }
-    
-    public function getCrear(Request $request)
-    {
-        if( $this->rol->is($request)  )
         {
-            return view('admin.crear');
+            return view('admin.docente.crear');
         }
-        
         return redirect('login');
     }
     
-    public function postCrear(Request $request)
+    public function postRegistro(Request $request)
     {
-        if( $this->rol->is($request) )
+        if( $this->rol->is($request))
         {
             $validator = Validator::make($request->all(), [
                 'username'                  => 'required|min:2',
@@ -43,14 +34,14 @@ class Control extends Base
                 'apellido'                  => 'required|min:2',
                 'correo'                    => 'required|min:8',
             ]);
-            if($validator->fails() || $request->password != $request->password_confirmation) 
+            if($validator->fails() || $request->password != $request->password_confirmation)
             {
                 if($validator->fails())
-                    return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+                    return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
                 else
                 {
                     $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
-                    return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+                    return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
                 }
             }
             else
@@ -73,28 +64,26 @@ class Control extends Base
                     //Añadir rol de estudiante al usuario
                     $rolAsignado = new AsignaRol;
 
-                    $rolAsignado->ROL_ID        = 1;
+                    $rolAsignado->ROL_ID        = 2;
                     $rolAsignado->USUARIO_ID    = $usuario->ID;
 
                     $rolAsignado->save();
 
                     //Crear estudiante
-                    $administrador = new Administrador;
+                    $docente = new Docente;
 
-                    $administrador->USUARIO_ID = $usuario->ID;
+                    $docente->USUARIO_ID = $usuario->ID;
 
-                    $administrador->save();
+                    $docente->save();
                     
                     $request->session()->flash('alert-success', 'Cuenta Creada');
-                    
                     return redirect('administrador');
                 }
                 
                 $request->session()->flash('alert-danger', 'Usuario no válido');
-                return redirect('administrador/crearAdmin')->withErrors($validator)->withInput();
+                return redirect('administrador/crearDocente')->withErrors($validator)->withInput();
             }
         }
-        
         return redirect('login');
     }
 }

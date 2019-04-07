@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Estudiante\Crear;
 
 use App\Models\Usuario;
 use App\Models\AsignaRol;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class Registro extends Controller
+class Control extends Controller
 {
     public function getRegistro()
     {

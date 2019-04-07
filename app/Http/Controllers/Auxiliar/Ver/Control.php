@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Auxiliar;
+namespace App\Http\Controllers\Auxiliar\Ver;
 
 use App\Models\Usuario;
 use App\Models\Auxiliar;
@@ -18,11 +18,36 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
-{
-    public function getVista(Request $request)
+{    
+    public function getClases(Request $request, $id_gestion)
     {
-        if( $this->rol->is($request) )
-            return view('auxiliar.index');
+        if($this->rol->is($request))
+        {
+            $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
+            $id_auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first()->ID;
+
+            $grupos_docentes = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)->get();
+
+            $ids_clases = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)
+            ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_AUXILIAR.GRUPO_DOCENTE_ID')
+            ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
+            ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+            ->join('HORARIO', 'HORARIO.ID', '=', 'CLASE.HORARIO_ID')
+            ->where('CLASE.GESTION_ID', '=', $id_gestion)
+            ->orderByRaw('CLASE.DIA asc, HORARIO.HORA_INICIO asc')
+            ->select('CLASE.ID')
+            ->get();
+            
+            $clases = [];
+            foreach($ids_clases as $id_clase){
+                array_push($clases, Clase::find($id_clase->ID));
+            }
+
+            return view('auxiliar.ver.clases')
+            ->with('id_gestion', $id_gestion)
+            ->with('gestiones', $gestiones)
+            ->with('clases', $clases);
+        }
         return redirect('login');
     }
 
@@ -72,40 +97,8 @@ class Control extends Base
         }
         return redirect('login');
     }
-    
-    public function getClases(Request $request, $id_gestion)
-    {
-        if($this->rol->is($request))
-        {
-            $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
-            $id_auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first()->ID;
 
-            $grupos_docentes = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)->get();
-
-            $ids_clases = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)
-            ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_AUXILIAR.GRUPO_DOCENTE_ID')
-            ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
-            ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
-            ->join('HORARIO', 'HORARIO.ID', '=', 'CLASE.HORARIO_ID')
-            ->where('CLASE.GESTION_ID', '=', $id_gestion)
-            ->orderByRaw('CLASE.DIA asc, HORARIO.HORA_INICIO asc')
-            ->select('CLASE.ID')
-            ->get();
-            
-            $clases = [];
-            foreach($ids_clases as $id_clase){
-                array_push($clases, Clase::find($id_clase->ID));
-            }
-
-            return view('auxiliar.ver.clases')
-            ->with('id_gestion', $id_gestion)
-            ->with('gestiones', $gestiones)
-            ->with('clases', $clases);
-        }
-        return redirect('login');
-    }
-
-    public function getUltimaClase(Request $request)
+    public function getClasesUltimaGestion(Request $request)
     {
         if($this->rol->is($request))
         {

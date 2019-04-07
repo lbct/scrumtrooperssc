@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Estudiante\Ver;
 
 use App\Models\Usuario;
 use App\Models\EstudianteClase;
@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Estudiante\Base;
 
-class EstadoInscripcion extends Base
+class Control extends Base
 {
-    public function getLista(Request $request)
+    public function getMaterias(Request $request)
     {
         if( $this->rol->is($request) )
         

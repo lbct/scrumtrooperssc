@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Admin\Gestion;
+namespace App\Http\Controllers\Admin\Gestion\Crear;
 
 use App\Models\Gestion;
 use App\Models\Periodo;
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Control extends Base
 {
-    public function getCrear(Request $request)
+    public function getRegistro(Request $request)
     {
         if( $this->rol->is($request) )
         {
@@ -23,7 +23,7 @@ class Control extends Base
         return redirect('/login');
     }
     
-    public function postCrear(Request $request)
+    public function postRegistro(Request $request)
     {
         if( $this->rol->is($request) )
         {

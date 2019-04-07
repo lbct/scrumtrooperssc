@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Estudiante\Editar;
 
 use App\Models\Usuario;
 use App\Models\Estudiante;
@@ -11,14 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {
-    public function getVista(Request $request)
-    {
-        if( $this->rol->is($request) )
-            return view('estudiante.index');
-        return redirect('login');
-    }
-    
-    public function getEdit(Request $request)
+    public function getEditar(Request $request)
     {
         if( $this->rol->is($request) )
         {
@@ -31,7 +24,7 @@ class Control extends Base
         return redirect('login');
     }
 
-    public function postEdit(Request $request)
+    public function postEditar(Request $request)
     {
         if( $this->rol->is($request) )
         {

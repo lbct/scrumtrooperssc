@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sesion;
 
 use App\Models\Usuario;
 use App\Models\AsignaRol;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class IngresoUsuarioController extends Controller
+class Control extends Controller
 {
     public function getLogin(Request $request)
     {

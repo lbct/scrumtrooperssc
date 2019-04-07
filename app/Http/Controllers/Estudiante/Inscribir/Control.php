@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Estudiante;
+namespace App\Http\Controllers\Estudiante\Inscribir;
 
 use App\Models\Usuario;
 use App\Models\Estudiante;
@@ -16,9 +16,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class Inscripcion extends Base
+class Control extends Base
 {
-    public function getVista(Request $request)
+    public function getInscripcion(Request $request)
     {
         if( $this->rol->is($request) )
         {
@@ -124,5 +124,4 @@ class Inscripcion extends Base
         
         return redirect('login');
     }
-
 }
