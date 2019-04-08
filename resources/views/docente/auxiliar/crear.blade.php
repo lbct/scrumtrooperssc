@@ -3,7 +3,7 @@
 @section('contenido')
 <link href="{{asset('/css/form.css')}}" rel="stylesheet" id="bootstrap-css">
 <form method="POST" action="/docente/crearAuxiliar">
-{!! csrf_field() !!}
+    {!! csrf_field() !!}
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <div>
@@ -14,9 +14,11 @@
                         <h3>Nuevo Auxiliar</h3>
                         <br>
                         <div>
-                            <div class="ex1">
-                                <input type="number" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis Estudiante" tabindex="4" value="{{ old('codigo_sis') }}">
-                            </div>
+                            <center>
+                                <div class="ex1 form-group col-md-10">
+                                    <input type="number" name="codigo_sis" id="codigo_sis" class="form-control input-lg" placeholder="CodigoSis Estudiante" tabindex="4" value="{{ old('codigo_sis') }}">
+                                </div>
+                            </center>
                             <br>
                             <div>
                                 <input type="submit" value="Registrar" class="btn btn-primary" />
