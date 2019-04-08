@@ -1,3 +1,4 @@
+<!-- Vista de Materias Inscritas -->
 @extends('layout')
 @section('contenido')
 <div class="d-flex justify-content-between align-items-end mb-3">

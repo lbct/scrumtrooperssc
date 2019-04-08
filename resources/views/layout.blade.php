@@ -11,47 +11,47 @@
 
     <title>SESLAB</title>
 
-    <!-- Custom fonts - images for this template-->
+    <!-- Fuentes e Iconos-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
-    <!-- Custom styles for this template-->
+    <!-- Estilos -->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     
 </head>
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
+    <!-- Pagina -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
+        <!-- Barra de Navegacion Izquierda -->
         <ul class="navbar-nav bg-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
+            <!-- Logo -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/login">
                 <i class="fas fa-fw fa-home"></i>
                 <div class="sidebar-brand-text mx-3">SESLAB</div>
             </a>
 
-            <!-- Divider -->
+            <!-- Division -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Item - Cerrar Sesion -->
             <li class="nav-item">
                 <a class="nav-link" href="/logout">
                     <i class="fas fa-fw fa-power-off"></i>
                     <span>Cerrar sesión</span></a>
             </li>
 
-            <!-- Divider -->
+            <!-- Division -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+            <!-- Titulo -->
             <div class="sidebar-heading">
                 Opciones principales
             </div>
 
-            <!--Opciones estudiante-->
+            <!--Opciones de Estudiante-->
             @if(App\Models\Estudiante::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/editar">
@@ -74,7 +74,7 @@
                 </a>
             </li>
             @endif
-            <!--Opciones auxiliar-->
+            <!--Opciones de Auxiliar-->
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
             <li class="nav-item">
                 <a class="nav-link" href="/auxiliar/clases">
@@ -83,7 +83,7 @@
                 </a>
             </li>
             @endif
-            <!--Opciones docente-->
+            <!--Opciones de Docente-->
             @if(App\Models\Docente::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
             <li class="nav-item">
                 <a class="nav-link" href="/docente/editar">
@@ -98,7 +98,7 @@
                 </a>
             </li>
             @endif
-            <!--Opciones Administrador-->
+            <!--Opciones de Administrador-->
             @if(App\Models\Administrador::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -127,16 +127,16 @@
                 </div>
             </li>
             @endif
-            <!-- Divider -->
+            <!-- Division -->
             <hr class="sidebar-divider d-none d-md-block">
 
         </ul>
-        <!-- End of Sidebar -->
+        <!-- Fin de la Barra de Navegacion Izquierda -->
 
-        <!-- Content Wrapper -->
+        <!-- Contenedor -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
+            <!-- Vista Principal -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -156,7 +156,7 @@
                 </div>
             </nav>
 
-            <!-- Page Content -->
+            <!-- Contenido Variable -->
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -168,19 +168,19 @@
                     </div>
                 </div>
             </div>
-            <!-- End of Main Content -->
+            <!-- Fin del Contenido Variable -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- Fin del Contenedor -->
 
     </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
+    <!-- Fin de la Pagina -->
+    <!-- Boton de Scroll -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 

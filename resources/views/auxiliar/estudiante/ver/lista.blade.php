@@ -1,3 +1,4 @@
+<!-- Vista de Lista de Estudiantes de una Clase -->
 @extends('layout')
 @section('contenido')
 <link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">

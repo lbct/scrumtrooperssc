@@ -11,21 +11,20 @@
     {!! csrf_field() !!}
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <!-- Tabs Titles -->
 
-        <!-- Icon -->
+        <!-- Icono Usuario -->
         <div class="fadeIn first">
           <img src="{{asset('img/user.svg')}}" id="icon" alt="User Icon" />
         </div>
 
-        <!-- Login Form -->
+        <!-- Formulario de Login -->
         <form>
           <input type="text" id="username" name="username" class="fadeIn second" placeholder="Usuario" value="{{ old('username') }}">
           <input type="password" id="password" name="password" class="fadeIn third" placeholder="Contraseña">
           <input type="submit" class="fadeIn fourth btn-primary" value="Iniciar Sesion">
         </form>
 
-        <!-- Crear User -->
+        <!-- Registrar Estudiante -->
         <div id="formFooter">
           <a href="registro">Crear Cuenta?</a>
         </div>

@@ -1,5 +1,6 @@
-<html lang="en">
 
+<!-- Vista de la Pagina Inicial -->
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
@@ -9,14 +10,14 @@
 
     <title>SESLAB</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap CSS -->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- Barra de Navegacion Horizontal -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
         <div class="container">
             <a class="navbar-brand" href="/">SESLAB</a>
@@ -28,7 +29,7 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
+    <!-- Contenido de la Pagina -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -37,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap JavaScript -->
     <script src="{{asset('jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 

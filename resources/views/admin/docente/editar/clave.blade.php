@@ -1,3 +1,4 @@
+<!-- Vista de Editar Constraseña de Usuario-->
 @extends('layout')
 @section('contenido')
 <br><br>

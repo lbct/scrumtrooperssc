@@ -1,5 +1,6 @@
 @extends('layout')
 @section('contenido')
+<!-- Vista de Editar Perfil de Estudiante -->
 <form method="POST" action="/estudiante/editar">
     {!! csrf_field() !!}
     <link href="{{asset('/css/campos.css')}}" rel="stylesheet" id="bootstrap-css">

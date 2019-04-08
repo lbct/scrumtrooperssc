@@ -1,3 +1,4 @@
+<!-- Muestra mensajes de Alerta -->
 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
 @if(Session::has('alert-' . $msg))
 <div class="flash-message">

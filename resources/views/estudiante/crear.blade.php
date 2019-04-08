@@ -1,3 +1,5 @@
+<!-- Vista de Registro de Estudiante -->
+<!-- Estilos y Scripts -->
 <link href="{{asset('/css/form.css')}}" rel="stylesheet" id="bootstrap-css">
 <script src="{{asset('jquery/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>

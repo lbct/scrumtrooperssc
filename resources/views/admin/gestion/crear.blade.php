@@ -1,3 +1,4 @@
+<!-- Vista de Crear Gestion -->
 @extends('layout')
 @section('contenido')
 <br><br>

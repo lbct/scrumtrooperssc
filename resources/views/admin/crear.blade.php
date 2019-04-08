@@ -1,3 +1,4 @@
+<!-- Vista de Crear Administrador -->
 @extends('layout')
 @section('contenido')
 <br><br>

@@ -1,12 +1,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 @extends('layout')
 @section('contenido')
-<!-- AQUI EL CONTENIDO :V-->
-
+<!-- Vista de Inscripcion de Estudiante -->
 <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
-<div id="alertas">
-    
-</div>
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
         <div class="mb-5 p-4">

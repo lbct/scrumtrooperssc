@@ -1,3 +1,4 @@
+<!-- Vista Inicial de Administrador -->
 @extends('layout')
 @section('contenido')
 <div class="container">     

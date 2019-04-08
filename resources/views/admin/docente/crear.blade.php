@@ -1,3 +1,4 @@
+<!-- Vista de Crear Docente -->
 @extends('layout')
 @section('contenido')
 <br><br>

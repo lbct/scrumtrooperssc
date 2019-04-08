@@ -1,3 +1,4 @@
+<!-- Vista de Crear Auxiliar -->
 @extends('layout')
 @section('contenido')
 <link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">

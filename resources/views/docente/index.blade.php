@@ -1,4 +1,4 @@
 @extends('layout')
 @section('contenido')
-<!-- AQUI EL CONTENIDO :V-->
+<!-- AQUI EL CONTENIDO -->
 @endsection
