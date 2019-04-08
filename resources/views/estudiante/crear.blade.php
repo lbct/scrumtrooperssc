@@ -14,7 +14,7 @@
             <div>
                 <div class="col-xs-12 col-sm-offset-2 col-md-offset-3">
                     <form role="form">
-                        <h2>Crear Cuenta</h2>
+                        <h2 class="text-primary">Crear Cuenta</h2>
                         <div class="row">
                             <div class="form-group column2">
                                 <input type="text" name="nombre" id="nombre" class="form-control input-lg" placeholder="Nombre(s)" tabindex="1" value="{{ old('nombre') }}">
