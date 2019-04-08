@@ -5,24 +5,24 @@
             <div class="panel panel-default">
                 <div>
                     <br><br>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-10">
-                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre(s)" tabindex="1" value="{{ old('nombre') }}">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellidos" tabindex="2" value="{{ old('apellido') }}">
-                            </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-10">
+                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre(s)" tabindex="1" value="{{ old('nombre') }}">
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-4">
-                                <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" tabindex="3" value="{{ old('username') }}">
-                            </div>
+                        <div class="col-md-6 mb-4">
+                            <input type="text" name="apellido" id="apellido" class="form-control" placeholder="Apellidos" tabindex="2" value="{{ old('apellido') }}">
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-4">
-                                <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ old('correo') }}">
-                            </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-4">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" tabindex="3" value="{{ old('username') }}">
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-4">
+                            <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ old('correo') }}">
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <div class=" form-row">

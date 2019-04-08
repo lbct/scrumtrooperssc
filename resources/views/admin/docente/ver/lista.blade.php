@@ -3,20 +3,20 @@
 @section('contenido')
 <br><br>
 <div>
-        <h3 class="pb-1">Lista de Docentes</h3>
-    </div>
-    <br>
-    @if (sizeof($usuarios) > 0)
-    <table class="table">
-        <thead class="thead-dark">
+    <h3 class="pb-1">Lista de Docentes</h3>
+</div>
+<br>
+@if (sizeof($usuarios) > 0)
+<table class="table">
+    <thead class="thead-dark">
         <tr>
             <th scope="col">Username</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Acciones</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         @foreach($usuarios as $user)
         <tr>
             <td>{{ $user->USERNAME }}</td>
@@ -33,9 +33,9 @@
             </td>
         </tr>
         @endforeach
-        </tbody>
-    </table>
-    @else
-        <p>No hay usuarios registrados.</p>
-    @endif
+    </tbody>
+</table>
+@else
+<p>No hay usuarios registrados.</p>
+@endif
 @endsection
