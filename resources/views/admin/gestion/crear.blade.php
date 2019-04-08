@@ -15,9 +15,9 @@
             </select>
         </div>
         <div class="ex2">
-            <select class="form-control" name='anio_gestion'>
-                @for($anio=date("Y");$anio>=(date("Y")-4);$anio--)
-                <option value="{{$anio}}">{{'Año: '.$anio}}</option>
+            <select class="form-control" name='año_gestion'>
+                @for($año=date("Y");$año>=(date("Y")-4);$año--)
+                <option value="{{$año}}">{{'Año: '.$año}}</option>
                 @endfor
             </select>
         </div>

@@ -29,7 +29,7 @@ class Control extends Base
         {
             $validator = Validator::make($request->all(), [
                 'periodo'    => 'required',
-                'anio_gestion'       => 'required',
+                'año_gestion'       => 'required',
             ]);
             
             if($validator->fails()) 
@@ -39,7 +39,7 @@ class Control extends Base
             else
             {
                 try{
-                    $gestion = Gestion::whereRaw('PERIODO_ID='.($request->periodo).' and ANO_GESTION='.($request->anio_gestion))->firstOrFail();
+                    $gestion = Gestion::whereRaw('PERIODO_ID='.($request->periodo).' and ANO_GESTION='.($request->año_gestion))->firstOrFail();
                     $request->session()->flash('alert-danger', 'Ya existe la gestión.');
                     return redirect('/administrador/crearGestion');
                 }
@@ -47,7 +47,7 @@ class Control extends Base
                 {
                     $gestion = new Gestion();
                     $gestion->PERIODO_ID    = $request->periodo;
-                    $gestion->ANO_GESTION   = $request->anio_gestion;
+                    $gestion->ANO_GESTION   = $request->año_gestion;
                     $gestion->save();
                     $request->session()->flash('alert-success', 'Gestión creada con éxito');
                     return redirect('/administrador');

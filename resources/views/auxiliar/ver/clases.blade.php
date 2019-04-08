@@ -9,14 +9,14 @@
     <h2 class="pb-1">Lista de Clases</h2>
 </div>
 <div class="ex1">
-    <select class="form-control" id='anio_gestion' onchange="reload()">
+    <select class="form-control" id='año_gestion' onchange="reload()">
         @foreach($gestiones as $gestion)
             <option value="{{$gestion->ID}}" @if(($gestion->ID)==$id_gestion) selected="selected" @endif>{{'Gestión: '.($gestion->periodo->DESCRIPCION).' - '.$gestion->ANO_GESTION}}</option>
         @endforeach
         <script>
             function reload()
             {
-                var id = $("#anio_gestion").val();
+                var id = $("#año_gestion").val();
                 window.location = "/auxiliar/clases/"+id;
             }
         </script>
