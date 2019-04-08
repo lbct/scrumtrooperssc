@@ -11,7 +11,7 @@ class GrupoDocente extends Model
     
     public function materia()
     {
-        return $this->belongsTo('App\Models\MATERIA', 'MATERIA_ID');
+        return $this->belongsTo('App\Models\Materia', 'MATERIA_ID');
     }
     
     public function grupoADocente()
