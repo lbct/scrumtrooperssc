@@ -14,7 +14,6 @@ class IngresoUsuarioController extends Controller
     public function getLogin(Request $request)
     {
         $rol = $request->cookie('ROL');
-        
         if( $rol != null )
             return redirect('/'.$rol);
         

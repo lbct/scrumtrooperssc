@@ -1,11 +1,10 @@
 <?php
-use \App\Usuario;
-use \App\Administrador;
-use \App\Docente;
-use \App\Auxiliar;
-use \App\Estudiante;
-use \App\IniciarSesion;
-use \App\AsignaRol;
+use \App\Models\Docente;
+
+Route::get('test', function () {
+    $clases = Docente::all();
+    return $clases[0]->grupoADocente;
+});
 
 //Ruta Inicial Login
 Route::get('/', 'IngresoUsuarioController@getLogin');
@@ -20,6 +19,9 @@ Route::get('estudiante/editar','Estudiante\Control@getEdit');
 Route::post('estudiante/editar','Estudiante\Control@postEdit');
 Route::get('registro', 'Estudiante\Registro@getRegistro');
 Route::post('registro', 'Estudiante\Registro@postRegistro');
+Route::get('estudiante/inscripcion', 'Estudiante\Inscripcion@getVista');
+Route::post('estudiante/inscripcion', 'Estudiante\Inscripcion@postInscripcion');
+
 
 //Rutas Admin
 Route::get('administrador',[
@@ -44,6 +46,8 @@ Route::post('administrador/editarDocente/{id_usuario}',
     'as' => 'administrador/editarDocente',
     'uses' => 'Admin\Docente\Control@postEdit'
 ]);
+Route::get('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Control@getEditarClave');
+Route::post('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Control@postEditarClave');
 
 Route::get('administrador/crearAdmin','Admin\Control@getCrear');
 Route::post('administrador/crearAdmin','Admin\Control@postCrear');
@@ -59,6 +63,17 @@ Route::get('administrador/verDocente/{id_usuario}',
 
 //Rutas Auxiliar
 Route::get('auxiliar','Auxiliar\Control@getVista');
+Route::get('auxiliar/clases/{id_gestion}', 
+[
+    'as' => 'auxiliar/clases',
+    'uses' => 'Auxiliar\Control@getClases'
+]);
+Route::get('auxiliar/clases', 'Auxiliar\Control@getUltimaClase');
+Route::post('auxiliar/clases', 
+[
+    'as'   => 'auxiliar/clases',
+    'uses' => 'Auxiliar\Control@postClases'
+]);
 
 //Rutas Docente
 Route::get('docente','Docente\Control@getVista');

@@ -13,4 +13,9 @@ class Docente extends Model
     {
         return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
     }
+    
+    public function grupoADocente()
+    {
+        return $this->hasMany('App\Models\GrupoADocente', 'DOCENTE_ID', 'ID');
+    }
 }

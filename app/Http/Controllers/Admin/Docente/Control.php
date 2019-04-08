@@ -21,6 +21,42 @@ class Control extends Base
         }
         return redirect('login');
     }
+
+    public function getEditarClave(Request $request, $id_usuario){
+        if( $this->rol->is($request) )
+        {
+            return view('admin.docente.cambiarClave')
+            ->with('id_usuario', $id_usuario);
+        }
+        return redirect('login');
+    }
+
+    public function postEditarClave(Request $request, $id_usuario){
+        if( $this->rol->is($request) )
+        {
+            $validator = Validator::make($request->all(), [
+                'password'                  => 'required|min:2',
+                'password_confirmation'     => 'required|min:2',
+            ]);
+            if($validator->fails() || $request->password != $request->password_confirmation)
+            {
+                if($request->password != $request->password_confirmation)
+                    $request->session()->flash('alert-danger', 'Las contraseñas no coinciden');
+                return redirect('/administrador/editarDocente/'.$id_usuario.'/cambiarClave')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+            else{
+                $usuario = Usuario::find($id_usuario);
+                $usuario->PASSWORD = Hash::make($request->password);
+                $usuario->update();
+                $request->session()->flash('alert-success', 'La contraseña se cambió correctamente.');
+                return view('docente.editar')
+                ->with('usuario', $usuario);
+            }
+        }
+        return redirect('login');
+    }
     
     public function postCrear(Request $request)
     {
@@ -141,29 +177,24 @@ class Control extends Base
             }
             else
             {
-                $cuentaCreada = Usuario::where('USERNAME',($request->username))->get();
-                
-                
-                if( $cuentaCreada->isEmpty() || $cuentaCreada[0]->ID==$id_usuario)
-                {
-                    $usuario = Usuario::find($id_usuario);
-                
-                    $usuario->USERNAME          = $request->username;
-                    $usuario->NOMBRE            = $request->nombre;
-                    $usuario->APELLIDO          = $request->apellido;
-                    $usuario->CORREO            = $request->correo;
-                    
-                    $usuario->update();
-                    
+                $usuario_actual = Usuario::where('ID', $id_usuario)->first();
+                $existeCuenta = Usuario::where('USERNAME',($request->username))->first() != null 
+                && $usuario_actual->USERNAME != $request->username;
+                if($existeCuenta){
+                    $request->session()->flash('alert-danger', 'El nombre de usuario '.$request->username.' ya está siendo utilizado.');
+                    return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+                }
+                else{
+                    $usuario_actual->USERNAME          = $request->username;
+                    $usuario_actual->NOMBRE            = $request->nombre;
+                    $usuario_actual->APELLIDO          = $request->apellido;
+                    $usuario_actual->CORREO            = $request->correo;
+                    $usuario_actual->update();
                     $request->session()->flash('alert-success', 'Datos del docente actualizados');
                     return redirect('administrador');
-               // }
-                
-                //$request->session()->flash('alert-danger', 'Usuario ya existente');
-                //return redirect('administrador/editarDocente/'.$id_usuario)->withErrors($validator)->withInput();
+                }
             }
         }
-        
         return redirect('login');
     }
 }
