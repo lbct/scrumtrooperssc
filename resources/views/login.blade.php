@@ -1,6 +1,5 @@
 <link href="{{asset('/css/login.css')}}" rel="stylesheet" id="bootstrap-css">
-<script src="{{asset('jquery/jquery.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+
 
 @extends('inicio')
 
