@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {   
+    //Obtiene la vista de registro para nuevo Administrador
     public function getRegistro(Request $request)
     {
         if( $this->rol->is($request)  )
@@ -23,6 +24,7 @@ class Control extends Base
         return redirect('login');
     }
     
+    //Guarda los datos del registro del nuevo Administrador
     public function postRegistro(Request $request)
     {
         if( $this->rol->is($request) )

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class Control extends Base
 {
+    //Obtiene la vista para editar la clave del Docente seleccionado
     public function getClave(Request $request, $id_usuario){
         if( $this->rol->is($request) )
         {
@@ -22,6 +23,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Guarda la nueva clave del Docente seleccionado
     public function postClave(Request $request, $id_usuario){
         if( $this->rol->is($request) )
         {
@@ -49,6 +51,7 @@ class Control extends Base
         return redirect('login');
     }
     
+    //Obtiene la vista para editar los datos del Docente seleccionado
     public function getUsuario(Request $request, $id_usuario)
     {
         if( $this->rol->is($request) )
@@ -60,6 +63,7 @@ class Control extends Base
         return redirect('login');
     }
     
+    //Guarda los datos modificados del Docente seleccionado
     public function postUsuario(Request $request, $id_usuario)
     {
         if( $this->rol->is($request) )

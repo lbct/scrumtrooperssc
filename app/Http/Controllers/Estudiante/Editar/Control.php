@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {
+    //Obtiene la vista para editar los datos del Estudiante con sesión iniciada
     public function getEditar(Request $request)
     {
         if( $this->rol->is($request) )
@@ -24,6 +25,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Guarda los datos modificados del Estudiante con sesión iniciada
     public function postEditar(Request $request)
     {
         if( $this->rol->is($request) )

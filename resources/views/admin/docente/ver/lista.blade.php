@@ -1,12 +1,11 @@
 <!-- Vista de Lista de Docentes -->
 @extends('layout')
 @section('contenido')
-<div class="d-flex justify-content-between align-items-end mb-3">
-        <h1 class="pb-1">Lista de Docentes</h1>
-        <p>
-        </p>
+<br><br>
+<div>
+        <h3 class="pb-1">Lista de Docentes</h3>
     </div>
-
+    <br>
     @if (sizeof($usuarios) > 0)
     <table class="table">
         <thead class="thead-dark">

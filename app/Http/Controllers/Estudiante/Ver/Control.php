@@ -12,6 +12,7 @@ use App\Http\Controllers\Estudiante\Base;
 
 class Control extends Base
 {
+    //Obtiene la vista de las materias inscritas del Estudiante con sesión iniciada
     public function getMaterias(Request $request)
     {
         if( $this->rol->is($request) )

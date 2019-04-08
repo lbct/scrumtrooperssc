@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class Control extends Base
 {
+    //Obtiene la vista de la lista de Docentes
     public function getLista(Request $request)
     {
         if( $this->rol->is($request) )
@@ -28,6 +29,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Obtiene la vista para ver los datos del Docente seleccionado
     public function getUsuario(Request $request, $id_usuario)
     {
         if( $this->rol->is($request))

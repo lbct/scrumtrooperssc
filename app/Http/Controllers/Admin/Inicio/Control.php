@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {
+    //Obtiene la vista de inicio del Administrador
     public function getInicio(Request $request)
     {
         if( $this->rol->is($request) )

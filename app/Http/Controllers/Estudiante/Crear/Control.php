@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Controller
 {
+    //Obtiene el registro para crear un nuevo Estudiante
     public function getRegistro()
     {
         return view('estudiante.crear');
     }
     
+    //Registra un nuevo Estudiante
     public function postRegistro(Request $request)
     {   
         $validator = Validator::make($request->all(), [

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {   
+    //Obtiene la vista del registro para crear un nuevo Auxiliar
     public function getRegistro(Request $request)
     {
         if( $this->rol->is($request)  )
@@ -24,6 +25,7 @@ class Control extends Base
         return redirect('login');
     }
     
+    //Registra un nuevo Auxiliar
     public function postRegistro(Request $request)
     {
         if( $this->rol->is($request) )

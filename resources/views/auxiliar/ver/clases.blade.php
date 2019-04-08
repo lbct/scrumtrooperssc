@@ -1,14 +1,13 @@
 <!-- Vista de Clases de Auxiliar -->
 @extends('layout')
 @section('contenido')
-<link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">
-<link href="{{asset('/css/table_test.css')}}" rel="stylesheet" id="bootstrap-css">
 <div>
     <br>
     <br>
-    <h2 class="pb-1">Lista de Clases</h2>
+    <h3 class="pb-1">Lista de Clases</h3>
+    <br>
 </div>
-<div class="ex1">
+<div>
     <select class="form-control" id='año_gestion' onchange="reload()">
         @foreach($gestiones as $gestion)
             <option value="{{$gestion->ID}}" @if(($gestion->ID)==$id_gestion) selected="selected" @endif>{{'Gestión: '.($gestion->periodo->DESCRIPCION).' - '.$gestion->ANO_GESTION}}</option>
@@ -22,6 +21,7 @@
         </script>
     </select>
 </div>
+<br>
     @if(sizeof($clases) > 0)
     <table id="tabla_click">
         <thead class="thead-dark">
@@ -67,6 +67,6 @@
         </tbody>
     </table>
     @else
-    <h4>No tiene clases registradas para la gestión seleccionada</h4>
+    <p>No tiene clases registradas para la gestión seleccionada</p>
     @endif
 @endsection

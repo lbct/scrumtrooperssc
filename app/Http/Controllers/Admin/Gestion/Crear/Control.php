@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Control extends Base
 {
+    //Obtiene la vista para registrar una nueva Gestion
     public function getRegistro(Request $request)
     {
         if( $this->rol->is($request) )
@@ -22,7 +23,8 @@ class Control extends Base
         
         return redirect('/login');
     }
-    
+
+    //Crea una nueva Gestion
     public function postRegistro(Request $request)
     {
         if( $this->rol->is($request) )

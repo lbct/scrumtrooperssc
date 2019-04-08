@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {    
+    //Obtiene la vista de las clases del Auxiliar
     public function getClases(Request $request, $id_gestion)
     {
         if($this->rol->is($request))
@@ -51,6 +52,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Guarda la asistencia del estudiante
     public function postClases(Request $request)
     {
         if($this->rol->is($request))
@@ -98,6 +100,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Obtiene la vista de clases de la última Gestión
     public function getClasesUltimaGestion(Request $request)
     {
         if($this->rol->is($request))

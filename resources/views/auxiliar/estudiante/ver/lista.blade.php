@@ -1,14 +1,13 @@
 <!-- Vista de Lista de Estudiantes de una Clase -->
 @extends('layout')
 @section('contenido')
-<link href="{{asset('/css/campos_gestion.css')}}" rel="stylesheet" id="bootstrap-css">
-<link href="{{asset('/css/table_test.css')}}" rel="stylesheet" id="bootstrap-css">
 <div>
     <br>
     <br>
-    <h2 class="pb-1">Lista de Estudiantes</h2>
+    <h3 class="pb-1">Lista de Estudiantes</h3>
+    <br>
 </div>
-<div class="ex1">
+<div>
     <form action="{{route('auxiliar/clases')}}" method="POST">
         {!! csrf_field() !!}
         <input type="hidden" name="clase_id" value="{{$clase_id}}"/>
@@ -19,6 +18,7 @@
         </select>
     </form>
 </div>
+<br>
     @if(sizeof($estudiantes) > 0)
     <table>
         <thead>
@@ -56,7 +56,7 @@
         </tbody>
     </table>
     @else
-    <h4>No tiene estudiantes inscritos en la clase</h4>
+    <p>No tiene estudiantes inscritos en la clase</p>
     @endif
     <br><br>
 <div>

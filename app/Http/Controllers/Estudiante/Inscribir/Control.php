@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 class Control extends Base
 {
+    //Obtiene la vista para inscribir al Estudiante (con sesión iniciada) a una materia
     public function getInscripcion(Request $request)
     {
         if( $this->rol->is($request) )
@@ -48,6 +49,7 @@ class Control extends Base
         return redirect('login');
     }
 
+    //Registra la inscripción de las materias del Estudiante con sesión iniciada
     public function postInscripcion(Request $request)
     {
         if( $this->rol->is($request) )

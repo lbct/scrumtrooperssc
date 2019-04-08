@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Base
 {
+    //Obtiene la vista de Inicio del Estudiante
     public function getInicio(Request $request)
     {
         if( $this->rol->is($request) )

@@ -1,10 +1,11 @@
 <!-- Vista de Materias Inscritas -->
 @extends('layout')
 @section('contenido')
-<div class="d-flex justify-content-between align-items-end mb-3">
-        <h1 class="pb-1">Materias Inscritas</h1>
-        <p>
-        </p>
+<br>
+<br>
+<div>
+        <h3 class="pb-1">Materias Inscritas</h3>
+        <br>
     </div>
 
     @if (sizeof($materias) > 0)

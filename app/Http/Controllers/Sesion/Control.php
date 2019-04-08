@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class Control extends Controller
 {
+    //Obtiene la vista de Inicio de sesión
     public function getLogin(Request $request)
     {
         $rol = $request->cookie('ROL');
@@ -20,6 +21,7 @@ class Control extends Controller
         return view('login');
     }
     
+    //Inicia sesión
     public function postLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -51,6 +53,7 @@ class Control extends Controller
         return redirect('login')->withErrors($validator)->withInput();
     }
     
+    //Cierra sesión
     public function getLogout(Request $request)
     {        
         return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL'));
