@@ -7,19 +7,20 @@
     <h3 class="pb-1">Lista de Estudiantes</h3>
     <br>
 </div>
-<div>
-    <form action="{{route('auxiliar/clases')}}" method="POST">
-        {!! csrf_field() !!}
-        <input type="hidden" name="clase_id" value="{{$clase_id}}" />
-        <center>
-            <div class="form-group col-md-6">
-                <select class="form-control" id='sesiones_est' name='sesion_id' onchange="parentNode.submit();">
-                    @for($i=0;$i<sizeof($sesiones);$i++) <option value="{{$sesiones[$i]->ID}}" @if(($sesiones[$i]->ID)==$sesion_id) selected="selected" @endif>{{'Sesión #'.(sizeof($sesiones) - $i).':'}}</option>
-                        @endfor
-                </select>
-            </div>
-        </center>
-    </form>
+<div>       
+<center>
+    <div class="form-group col-md-6">
+        <form action="{{route('auxiliar/clases')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="clase_id" value="{{$clase_id}}" />
+            <select class="form-control" id='sesiones_est' name='sesion_id' onchange="parentNode.submit();">
+                @for($i=0;$i<sizeof($sesiones);$i++) <option value="{{$sesiones[$i]->ID}}" @if(($sesiones[$i]->ID)==$sesion_id) selected="selected" @endif>{{'Sesión #'.(sizeof($sesiones) - $i).':'}}</option>
+                    @endfor
+            </select>
+        </form>
+    </div>
+</center>
+    
 </div>
 <br>
 @if(sizeof($estudiantes) > 0)
