@@ -57,14 +57,10 @@
 @endif
 <br><br>
 <div>
-    <input type="submit" value="Volver a lista de Clases" onclick="volver();" class="btn btn-primary">
+    <input type="submit" value="Volver a lista de Clases" onclick="volver({{$id_gestion}});" class="btn btn-primary">
     <script>
-        function volver() {
-            window.location = "/auxiliar/clases/" + {
-                {
-                    $id_gestion
-                }
-            };
+        function volver(id_gestion) {
+            window.location = "/auxiliar/clases/" + id_gestion;
         }
     </script>
 </div>
