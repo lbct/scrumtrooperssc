@@ -10,5 +10,9 @@ class AuxiliarSeeder extends Seeder
         Auxiliar::create([
         	'USUARIO_ID' 		=>	4,
         ]);
+        
+        Auxiliar::create([
+        	'USUARIO_ID' 		=>	5,
+        ]);
     }
 }

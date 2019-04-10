@@ -19,6 +19,11 @@ class Sesion extends Model
         return $this->belongsTo('App\Models\Auxiliar', 'AUXILIAR_ID');
     }
     
+    public function guiaPractica()
+    {
+        return $this->belongsTo('App\Models\GuiaPractica', 'GUIA_PRACTICA_ID');
+    }
+    
     public function sesionEstudiante()
     {
         return $this->hasMany('App\Models\SesionEstudiante', 'SESION_ID', 'ID');
