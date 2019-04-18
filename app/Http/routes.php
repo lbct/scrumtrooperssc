@@ -77,18 +77,8 @@ Route::post('auxiliar/clases',
 ]);
 
 //Rutas Docente
-<<<<<<< HEAD
-Route::get('docente','Docente\Control@getVista');
-Route::get('docente/editar', 'Docente\Control@getEditar');
-Route::post('docente/editar', 'Docente\Control@postEditar');
-Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
-Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
-Route::get('docente/subirGuiaPractica', 'Docente\Control@getSubirGuiaPractica');
-=======
 Route::get('docente','Docente\Inicio\Control@getInicio');
 Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
 Route::post('docente/editar', 'Docente\Editar\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@getRegistro');
 Route::post('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@postRegistro');
->>>>>>> origin
-
