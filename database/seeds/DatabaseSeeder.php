@@ -30,10 +30,13 @@ class DatabaseSeeder extends Seeder
         
         $this->call(GrupoDocenteSeeder::class);
         $this->call(GrupoADocenteSeeder::class);
+        $this->call(GrupoDocenteAuxiliarSeeder::class);
         
         $this->call(AulaSeeder::class);
         $this->call(HorarioSeeder::class);
         $this->call(ClaseSeeder::class);
+        
+        $this->call(GuiaPracticaSeeder::class);
         
         $this->call(EstudianteClaseSeeder::class);
         

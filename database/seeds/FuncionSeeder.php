@@ -44,15 +44,27 @@ class FuncionSeeder extends Seeder
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Auxiliar',
+        	'DESCRIPCION' 		=>	'Añadir Auxiliar De Laboratorio',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Auxiliar',
+        	'DESCRIPCION' 		=>	'Editar Auxiliar De Laboratorio',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Auxiliar',
+        	'DESCRIPCION' 		=>	'Borrar Auxiliar De Laboratorio',
+        ]);
+        
+        Funcion::create([
+        	'DESCRIPCION' 		=>	'Añadir Auxiliar De Terminal',
+        ]);
+        
+        Funcion::create([
+        	'DESCRIPCION' 		=>	'Editar Auxiliar De Terminal',
+        ]);
+        
+        Funcion::create([
+        	'DESCRIPCION' 		=>	'Borrar Auxiliar De Terminal',
         ]);
         
         Funcion::create([

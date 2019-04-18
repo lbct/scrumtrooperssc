@@ -34,13 +34,22 @@ class UsuarioSeeder extends Seeder
             'CORREO'			=>	'rosemary@cs.umss.edu.bo',
         ]);
         
-        //Auxiliar
+        //Auxiliar Laboratorio
         Usuario::create([
         	'USERNAME' 		    =>	'WilliamVelasquez',
         	'PASSWORD'		    =>	Hash::make('texto'),
         	'NOMBRE'			=>	'William',
             'APELLIDO'			=>	'Velasquez',
-            'CORREO'			=>	'william.velasquez.umss@gmail.com',
+            'CORREO'			=>	'william.velasquez@gmail.com',
+        ]);
+        
+        //Auxiliar Terminal
+        Usuario::create([
+        	'USERNAME' 		    =>	'WilsonAlcocer',
+        	'PASSWORD'		    =>	Hash::make('texto'),
+        	'NOMBRE'			=>	'Wilson',
+            'APELLIDO'			=>	'Alcocer',
+            'CORREO'			=>	'wilson.alcocer@gmail.com',
         ]);
         
         //Estudiante
