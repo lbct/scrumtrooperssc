@@ -129,4 +129,11 @@ class Control extends Base
         
         return redirect('login');
     }
+    public function getSubirGuiaPractica(Request $request)
+    {
+        if( $this->rol->is($request) )
+            return view('docente.subirGuiaPractica');
+        
+        return redirect('login');
+    }
 }

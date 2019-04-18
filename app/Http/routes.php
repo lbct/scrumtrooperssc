@@ -80,4 +80,5 @@ Route::get('docente/editar', 'Docente\Control@getEditar');
 Route::post('docente/editar', 'Docente\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Control@getCrearAuxiliar');
 Route::post('docente/crearAuxiliar','Docente\Control@postCrearAuxiliar');
+Route::get('docente/subirGuiaPractica', 'Docente\Control@getSubirGuiaPractica');
 
