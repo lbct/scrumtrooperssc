@@ -1,7 +1,4 @@
-@extends('auxiliar.plantilla')
-@section('contenido_barra')
-  <h2>Auxiliar</h2>
-@endsection
+@extends('layout')
 @section('contenido')
-<!-- AQUI EL CONTENIDO :V-->
+<!-- AQUI EL CONTENIDO -->
 @endsection

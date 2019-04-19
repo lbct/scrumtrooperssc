@@ -13,17 +13,6 @@ class Rol
     {
         $this->rol = $rol;
     }
-    
-    /*public function is(Request $request)
-    {
-        $rolRequest = $request->cookie('ROL');
-        $is         = false;
-        
-        if( $this->rol == $rolRequest )
-            $is = true;
-        
-        return $is;
-    }*/
 
     public function is(Request $request)
     {

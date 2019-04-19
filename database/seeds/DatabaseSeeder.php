@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         $this->call(HorarioSeeder::class);
         $this->call(ClaseSeeder::class);
         
+        $this->call(GuiaPracticaSeeder::class);
+        
         $this->call(EstudianteClaseSeeder::class);
         
         $this->call(SesionSeeder::class);

@@ -16,7 +16,11 @@ class RolSeeder extends Seeder
         ]);
         
         Rol::create([
-        	'DESCRIPCION' 		=>	'Auxiliar',
+        	'DESCRIPCION' 		=>	'AuxiliarLaboratorio',
+        ]);
+        
+        Rol::create([
+        	'DESCRIPCION' 		=>	'AuxiliarTerminal',
         ]);
         
         Rol::create([

@@ -18,6 +18,7 @@ class CrearTablaClase extends Migration
             
             $table->string('DETALLE_CLASE',255);
             $table->tinyInteger('DIA');
+            $table->tinyInteger('SEMANA_ACTUAL_SESION');
             $table->timestamps();
             
             $table->foreign('GESTION_ID')->references('ID')->on('GESTION')->onDelete('cascade');
