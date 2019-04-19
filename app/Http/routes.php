@@ -78,6 +78,7 @@ Route::post('auxiliar/clases',
 
 //Rutas Docente
 Route::get('docente','Docente\Inicio\Control@getInicio');
+Route::get('docente','Docente\Guia\Control@getSubirGuiaPractica');
 Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
 Route::post('docente/editar', 'Docente\Editar\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@getRegistro');

@@ -97,6 +97,11 @@
                     <span>Crear Auxiliar</span>
                 </a>
             </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="/docente/subirGuiaPractica">
+                    <i style="font-size:20px" class="fa">&#xf1c1;</i>
+                    <span>Subir Guia Practica</span></a>
+            </li>
             @endif
             <!--Opciones de Administrador-->
             @if(App\Models\Administrador::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
