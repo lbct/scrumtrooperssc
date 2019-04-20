@@ -22,6 +22,7 @@ Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
+Route::get('estudiante/subirArchivo', 'Estudiante\Subir\Control@getSubir');
 
 
 //Rutas Admin
