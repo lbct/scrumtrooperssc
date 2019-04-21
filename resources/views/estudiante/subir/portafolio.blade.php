@@ -1,6 +1,6 @@
 @extends('layout')
 @section('contenido')
-<link href="{{asset('/css/upload.css')}}" rel="stylesheet" id="bootstrap-css">
+
 <link href="{{asset('/css/dropzone.css')}}" rel="stylesheet">
 <script src="{{asset('/js/dropzone.js')}}"></script>
 
@@ -11,10 +11,7 @@
 
         <!-- Drop Zone -->
         <div class="form-group m-4">            
-            <form action="#" class="dropzone" id="dropzone">
-
-
-            </form>
+                <div class="dropzone" id="dropzoneFileUpload"></div>
         </div>
 
         <!-- COMPONENT END -->
@@ -26,7 +23,25 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    var baseUrl = "{{ url('/') }}";
+    var token = "{{ Session::getToken() }}";
+    Dropzone.autoDiscover = false;
+    var myDropzone = new Dropzone("div#dropzoneFileUpload", {
+        url: "/estudiante/subirArchivo",
+        params: {
+            _token: token
+        }
+    });
+    Dropzone.options.myAwesomeDropzone = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 2, // MB
+        addRemoveLinks: true,
+        accept: function(file, done) {
 
+        },
+    };
+</script>
 
 
 
