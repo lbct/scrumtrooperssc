@@ -24,7 +24,7 @@ class Control extends Base
         $input = Input::all();
  
         $rules = array(
-            'file' => 'image|max:3000',
+            'file' => 'mimes:zip|max:3000',
         );
  
         $validation = Validator::make($input, $rules);
