@@ -80,6 +80,7 @@
         
         error:function(file, response)
         {
+            myDropzone.removeAllFiles();
             $alertas = document.getElementById('alertas');
             $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
         }
