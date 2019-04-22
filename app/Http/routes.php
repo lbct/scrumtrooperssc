@@ -22,14 +22,22 @@ Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
-Route::get('estudiante/subirArchivo', 'Estudiante\Subir\Control@getSubir');
-Route::post('estudiante/subirArchivo', 'Estudiante\Subir\Control@postSubir');
+
+Route::get('estudiante/clases/{id_sesion}',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@getSubir'
+]);
+
+Route::post('estudiante/clases/{id_sesion}',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@postSubir'
+]);
 
 //Rutas Admin
 Route::get('administrador',[
     'as' => 'administrador',
     'uses' => 'Admin\Inicio\Control@getInicio'
-    ]);
+]);
 
 Route::get('administrador/crearDocente','Admin\Docente\Crear\Control@getRegistro');
 Route::post('administrador/crearDocente','Admin\Docente\Crear\Control@postRegistro');
@@ -41,7 +49,6 @@ Route::get('administrador/editarDocente/{id_usuario}',
     'as' => 'administrador/editarDocente',
     'uses' => 'Admin\Docente\Editar\Control@getUsuario'
 ]);
-
 
 Route::post('administrador/editarDocente/{id_usuario}',
 [

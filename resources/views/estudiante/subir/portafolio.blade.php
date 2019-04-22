@@ -6,9 +6,17 @@
 
 <div class="py-5 d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
-        <h3>Semana 1:</h3>
-
+        <h2>{{ $sesion->clase->grupoADocente->grupoDocente->materia->NOMBRE_MATERIA }}</h2>
+        <h4>Semana: {{ $sesion->SEMANA }}</h4>
+        
+        <h4>Archivos subidos:</h4>
+            <p>
+                @foreach($envios as $envio)
+                    {{$envio->ARCHIVO}}
+                @endforeach
+            </p>
         <!-- Drop Zone -->
+        <div id="alertas"></div>
         <div class="form-group m-4">            
                 <div class="dropzone" id="dropzoneFileUpload"></div>
         </div>
@@ -18,7 +26,7 @@
             <button type="submit" class="m-3 btn btn-primary pull-right" id="enviarArchivo">Subir Archivo</button>
             <button type="submit" class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
         </div>
-
+        
     </div>
 </div>
 <script type="text/javascript">
@@ -26,7 +34,7 @@
     var token = "{{ Session::getToken() }}";
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#dropzoneFileUpload", {
-        url: "/estudiante/subirArchivo",
+        url: window.location.pathname,
         params: {
             _token: token
         },
@@ -54,14 +62,27 @@
             this.on("maxfilesexceeded", function(file){
                 myDropzone.removeAllFiles();
                 this.addFile(file);
-                alert("¡Archivo Reemplazado!");
+                
+                $alertas = document.getElementById('alertas');
+                $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-warning'>Nuevo archivo para subir.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
             });
         },
         
         accept: function(file, done) {
-            console.log("uploaded");
             done();
         },
+        
+        success:function(file, response)
+        {
+            $alertas = document.getElementById('alertas');
+            $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-success'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+        },
+        
+        error:function(file, response)
+        {
+            $alertas = document.getElementById('alertas');
+            $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+        }
     });
 </script>
 
