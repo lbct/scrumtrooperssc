@@ -83,4 +83,20 @@ Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
 Route::post('docente/editar', 'Docente\Editar\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@getRegistro');
 Route::post('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@postRegistro');
-
+Route::get('docente/subirPractica','Docente\Clases\Ver\Control@getClasesUltimaGestion');
+Route::post('docente/subirPractica',
+[
+    'as' => 'docente/subirPractica',
+    'uses' => 'Docente\Clases\Ver\Control@postClases'
+]);
+Route::post('docente/subirPractica/confirmar',
+[
+    'as' => 'docente/subirPractica/confirmar',
+    'uses' => 'Docente\Practica\Subir\Control@postConfirmar'
+]);
+Route::post('docente/subirPractica/subir',
+[
+    'as' => 'docente/subirPractica/subir',
+    'uses' => 'Docente\Practica\Subir\Control@postSubir'
+]);
+Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');

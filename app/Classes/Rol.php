@@ -7,11 +7,16 @@ use App\Models\Usuario;
 
 class Rol
 {
-    private $rol;
+    private $rol = [];
     
     public function __construct($rol)
     {
-        $this->rol = $rol;
+        $this->añadirRol($rol);
+    }
+
+    public function añadirRol($rol)
+    {
+        array_push($this->rol, $rol);
     }
 
     public function is(Request $request)
@@ -22,7 +27,10 @@ class Rol
             $roles = $usuario->asignaRol;
             $index = 0;
             while(!$contiene_rol && sizeof($roles) > $index){
-                $contiene_rol = strtolower($roles[$index]->rol->DESCRIPCION) == strtolower($this->rol);
+                foreach($this->rol as $r){
+                    if($contiene_rol === false)
+                        $contiene_rol = strtolower($roles[$index]->rol->DESCRIPCION) == strtolower($r);
+                }
                 $index++;
             }
         }
