@@ -73,6 +73,12 @@
                     <span>Estado de Inscripcion</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/formularioPortafolio">
+                    <i class="fa fa-fw fa-briefcase"></i>
+                    <span>Portafolio</span>
+                </a>
+            </li>
             @endif
             <!--Opciones de Auxiliar-->
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
