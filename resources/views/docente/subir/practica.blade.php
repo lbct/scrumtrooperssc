@@ -23,7 +23,7 @@
             <!-- COMPONENT END -->
             <div class="form-group">
                 <button type="submit" class="m-3 btn btn-primary pull-right">Confirmar</button>
-                <button type="reset" class="m-3 btn btn-danger">Cancelar</button>
+                <button type="reset" onclick="borrarArchivos();" class="m-3 btn btn-danger">Cancelar</button>
             </div>
         </form>
     </div>
@@ -51,5 +51,8 @@
             nombre_archivo: "{{$nombre_archivo}}"
         }
     });
+    function borrarArchivos(){
+        myDropzone.removeAllFiles(true);
+    }
 </script>
 @endsection
