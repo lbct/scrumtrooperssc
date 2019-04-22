@@ -16,14 +16,15 @@
             <input type="hidden" name="semana_valor" value="{{$semana_valor}}"/>
             <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}"/>
             <input type="hidden" name="gestion_id" value="{{$gestion_id}}"/>
+            <div id="alertas"></div>
             <div class="form-group m-4" id="dropzone">            
                     <div class="dropzone" id="dropzoneFileUpload"></div>
             </div>
 
             <!-- COMPONENT END -->
             <div class="form-group">
-                <button type="submit" class="m-3 btn btn-primary pull-right">Confirmar</button>
-                <button type="reset" onclick="borrarArchivos();" class="m-3 btn btn-danger">Cancelar</button>
+                <button type="submit" class="m-3 btn btn-primary pull-right" id="enviarArchivo">Confirmar</button>
+                <button type="reset"  class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
             </div>
         </form>
     </div>
@@ -35,16 +36,48 @@
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#dropzoneFileUpload", {
         url: "/docente/subirPractica/subir",
+        autoProcessQueue: false,
         maxFiles: 1,
         maxFilesize: 5,
         addRemoveLinks: true,
-        accept: function(file, done) {
+
+        init: function() {
+            var submitButton = document.querySelector("#enviarArchivo")
+                myDropzone = this;
             
+            submitButton.addEventListener("click", function() {
+                myDropzone.processQueue();
+            });
+            
+            var cancelButton = document.querySelector("#cancelar")
+                myDropzone = this;
+            
+            cancelButton.addEventListener("click", function() {
+                myDropzone.removeAllFiles();
+            });
+            
+            this.on("maxfilesexceeded", function(file){
+                myDropzone.removeAllFiles();
+                this.addFile(file);
+                
+                $alertas = document.getElementById('alertas');
+                $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-warning'>Nuevo archivo para subir.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+            });
+        },
+
+
+        accept: function(file, done) {
             done();
         },
         success: function (file) {
             var guia_id = document.getElementById("guia_practica_id");
             guia_id.setAttribute("value", "uploads/{{$nombre_archivo}}."+file.upload.filename.split('.').pop());
+        },
+        error:function(file, response)
+        {
+            myDropzone.removeAllFiles();
+            $alertas = document.getElementById('alertas');
+            $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
         },
         params: {
             _token: token,
