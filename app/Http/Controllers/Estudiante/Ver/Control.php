@@ -34,70 +34,77 @@ class Control extends Base
         return redirect('login');
     }
 
-    public function getVerPortafolio(Request $request)
+    public function getPortafolio(Request $request)
     {
-
         if ($this->rol->is($request)) {
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
-
-            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+            
+            $gestiones = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
                 ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                ->select("NOMBRE_MATERIA", "MATERIA.ID")
-                ->get();
-
-            $gestion = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                ->join("GESTION", "GESTION.ID", "=", "MATERIA.GESTION_ID")
-                ->join("PERIODO","PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("ANO_GESTION","PERIODO.ID")
-                ->get();
-
-            $periodo = Periodo::all();
+                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                ->select("GESTION.ANO_GESTION")
+                ->get()
+                ->unique();
 
             return view('estudiante/formularioPortafolio')
-                ->with('materias', $materias)
-                ->with('gestion', $gestion)
-                ->with('periodo', $periodo);
+                ->with('gestiones', $gestiones);
         }
+        
+        return redirect('login');
+    }
+    
+    public function postPortafolio(Request $request)
+    {
+        if ($this->rol->is($request)) 
+        {
+            $paso = $request->paso;
+            if($paso == 2)
+            {
+                $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+                
+                $anio_gestion = $request->gestion;
+                $periodos = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                    ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                    ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                    ->where("GESTION.ANO_GESTION", $anio_gestion)
+                    ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
+                    ->select("DESCRIPCION", "PERIODO_ID")
+                    ->get()
+                    ->unique();
+                
+                return $periodos;
+            }
+            else if($paso == 3)
+            {
+                $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+                
+                $anio_gestion = $request->gestion;
+                $periodo      = $request->periodo;
+                
+                $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                ->where("GESTION.ANO_GESTION", $anio_gestion)
+                ->where("GESTION.PERIODO_ID", $periodo)
+                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                ->select("NOMBRE_MATERIA", "CLASE_ID")
+                ->get();
+                
+                return $materias;
+            }
+        }
+        
         return redirect('login');
     }
 
-    public function getPortafolio(Request $request)
+    public function postVerPortafolio(Request $request)
     {
-
         if ($this->rol->is($request)) {
-            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
-
-            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                ->select("NOMBRE_MATERIA", "MATERIA.ID")
-                ->get();
-
-            $gestion = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                ->join("GESTION", "GESTION.ID", "=", "MATERIA.GESTION_ID")
-                ->join("PERIODO","PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("ANO_GESTION","PERIODO.ID")
-                ->get();
-
-            $periodo = Periodo::all();
-
-            return view('estudiante/formularioPortafolio')
-                ->with('materias', $materias)
-                ->with('gestion', $gestion)
-                ->with('periodo', $periodo);
+            $clase_id = $request->materia;
+            
+            return view('estudiante/ver/portafolio');
         }
         return redirect('login');
     }

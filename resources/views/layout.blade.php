@@ -74,7 +74,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/estudiante/formularioPortafolio">
+                <a class="nav-link" href="/estudiante/portafolio">
                     <i class="fa fa-fw fa-briefcase"></i>
                     <span>Portafolio</span>
                 </a>
