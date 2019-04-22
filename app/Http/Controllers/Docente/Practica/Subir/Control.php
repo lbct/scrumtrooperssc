@@ -28,25 +28,30 @@ class Control extends Base
         $auxiliar_id = $request->auxiliar_id;
         $gestion_id = $request->gestion_id;
 
-        $guiaPractica = GuiaPractica::where('ARCHIVO', '=', $ubicacion_archivo)->get()->first();
+        if($ubicacion_archivo != null){
+            $guiaPractica = GuiaPractica::where('ARCHIVO', '=', $ubicacion_archivo)->get()->first();
 
-        $sesiones = Sesion::whereRaw('CLASE_ID='.$clase_id.' AND SEMANA='.$semana_valor)->get();
-        
-        if($sesiones == null || sizeof($sesiones) == 0){
-            $sesion = new Sesion();
-            $sesion->CLASE_ID = $clase_id;
-            //$sesion->AUXILIAR_ID = $auxiliar_id;
-            $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
-            $sesion->SEMANA = $semana_valor;
-            $sesion->save();
+            $sesiones = Sesion::whereRaw('CLASE_ID='.$clase_id.' AND SEMANA='.$semana_valor)->get();
+            
+            if($sesiones == null || sizeof($sesiones) == 0){
+                $sesion = new Sesion();
+                $sesion->CLASE_ID = $clase_id;
+                //$sesion->AUXILIAR_ID = $auxiliar_id;
+                $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
+                $sesion->SEMANA = $semana_valor;
+                $sesion->save();
+            }
+            else{
+                $sesion = $sesiones->first();
+                //$sesion->AUXILIAR_ID = $auxiliar_id;
+                $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
+                $sesion->update();
+            }
+            $request->session()->flash('alert-success', 'Sesión Creada correctamente');
         }
-        else{
-            $sesion = $sesiones->first();
-            //$sesion->AUXILIAR_ID = $auxiliar_id;
-            $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
-            $sesion->update();
+        else {
+            $request->session()->flash('alert-danger', 'Debe subir un archivo para crear la sesión');
         }
-        $request->session()->flash('alert-success', 'Sesión Creada correctamente');
         return redirect('docente/subirPractica');
     }
 
