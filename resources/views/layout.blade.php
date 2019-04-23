@@ -61,16 +61,27 @@
             </li>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/estudiante/estadoInscripcion">
+                    <i class="fa fa-fw fa-check-square"></i>
+                    <span>Estado de Inscripcion</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/estudiante/inscripcion">
                     <i class="fas fa-fw fa-plus-circle"></i>
                     <span>Inscripcion</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/portafolio">
+                    <i class="fa fa-fw fa-briefcase"></i>
+                    <span>Portafolio</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/estudiante/estadoInscripcion">
-                    <i class="fa fa-fw fa-check-square"></i>
-                    <span>Estado de Inscripcion</span>
+                <a class="nav-link" href="/estudiante/clases/3">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
                 </a>
             </li>
             <li class="nav-item">
