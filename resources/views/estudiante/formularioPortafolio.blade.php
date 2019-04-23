@@ -22,23 +22,11 @@
       </select>
 
       <label for="Periodo">Seleccione un Periodo</label>
-      <select class="form-control" id="periodos" name="periodos" value="{{ old('periodos') }}" required>
-        <option disabled selected value>Selecciona un Periodo</option>
-        @foreach ($periodos as $periodos)
-        <option value={{$periodos->DESCRIPCION}}>
-          {{$periodos->DESCRIPCION}}
-        </option>
-        @endforeach
+      <select class="form-control" id="periodo" name="periodo" value="{{ old('periodos') }}" required>
       </select>
 
       <label for="Materia">Seleccione la Materia</label>
-      <select class="form-control" id="materias" name="materias" value="{{ old('materias') }}" required>
-        <option disabled selected value>Selecciona una Materia</option>
-        @foreach ($materias as $materias)
-        <option value={{$materias->NOMBRE_MATERIA}}>
-          {{$materias->NOMBRE_MATERIA}}
-        </option>
-        @endforeach
+      <select class="form-control" id="materia" name="materia" value="{{ old('materias') }}" required>
       </select>
 
       <div class="form-group row justify-content-center">
@@ -69,6 +57,7 @@
       },
       dataType: 'JSON',
       success: function(periodos) {
+        console.log(periodos);
         if (periodos.length > 0) {
           $periodo.html("<option disabled selected value>Selecciona una Gestión</option>");
           periodos.forEach(function(periodo) {
@@ -97,7 +86,7 @@
       dataType: 'JSON',
       success: function(materias) {
         if (materias.length > 0) {
-          $materia.html("<option disabled selected value>Selecciona una Gestión</option>");
+          $materia.html("<option disabled selected value>Selecciona una Materia</option>");
           materias.forEach(function(materia) {
             $materia.append(new Option(materia.NOMBRE_MATERIA, materia.CLASE_ID));
           });
