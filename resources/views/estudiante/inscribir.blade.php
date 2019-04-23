@@ -6,6 +6,7 @@
 
 <div class="container flex-grow-1 flex-shrink-0 py-5">
   <div class="mb-5 p-4">
+    <div id="alertas"></div>
     <h3>Formulario de Inscripcion</h3>
     @if (sizeof($materias) > 0)
     <div id="stepper" class="bs-stepper">

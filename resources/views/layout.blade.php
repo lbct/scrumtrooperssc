@@ -98,9 +98,16 @@
                 </a>
             </li>
             <li class="nav-item">
+<<<<<<< HEAD
                  <a class="nav-link" href="/docente/subirGuiaPractica">
                     <i style="font-size:20px" class="fa">&#xf1c1;</i>
                     <span>Subir Guia Practica</span></a>
+=======
+                <a class="nav-link" href="/docente/subirPractica">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
+                </a>
+>>>>>>> origin
             </li>
             @endif
             <!--Opciones de Administrador-->
