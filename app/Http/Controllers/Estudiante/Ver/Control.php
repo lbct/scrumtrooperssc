@@ -12,6 +12,7 @@ use App\Http\Controllers\Estudiante\Base;
 use App\Models\Estudiante;
 use App\Models\Periodo;
 use App\Models\SesionEstudiante;
+use App\Models\Clase;
 
 class Control extends Base
 {
@@ -45,7 +46,7 @@ class Control extends Base
                 ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
                 ->select("GESTION.ANO_GESTION")
                 ->get()
-                ->unique();
+                ->unique("GESTION.ANO_GESTION");
 
             return view('estudiante/formularioPortafolio')
                 ->with('gestiones', $gestiones);
@@ -69,7 +70,7 @@ class Control extends Base
                     ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
                     ->select("DESCRIPCION", "PERIODO_ID")
                     ->get()
-                    ->unique();
+                    ->unique("DESCRIPCION", "PERIODO_ID");
 
                 return $periodos;
             } else if ($paso == 3) {
@@ -103,132 +104,31 @@ class Control extends Base
 
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
 
-            $archivo = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "ENVIO_PRACTICA.ID")
-                ->select("ENVIO_PRACTICA.ARCHIVO")
-                ->get()
-                ->unique();
-
-            $fecha = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "ENVIO_PRACTICA.ID")
-                ->select("ENVIO_PRACTICA.LUGAR")
-                ->get()
-                ->unique();
-
-            $lugar = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "ENVIO_PRACTICA.ID")
-                ->select("ENVIO_PRACTICA.LUGAR")
-                ->get()
-                ->unique();
-
-            $gestion = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->select("GESTION.ANO_GESTION")
-                ->get()
-                ->unique();
-
-            $semestre = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+            $practicas = SesionEstudiante::where("ESTUDIANTE_ID", $estudiante->ID)
+                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "SESION_ESTUDIANTE.ID")
+                ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
+                ->join("CLASE", "CLASE.ID", "=", "SESION.CLASE_ID")
+                ->where("CLASE_ID", $clase_id)
+                ->select("ENVIO_PRACTICA.ARCHIVO", "SEMANA", "EN_LABORATORIO")
+                ->get();
+            
+            $materia = Clase::where("CLASE.ID", $clase_id)
+                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                ->join("GESTION", "GESTION.ID", "=", "MATERIA.GESTION_ID")
                 ->join("PERIODO", "PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("PERIODO.DESCRIPCION")
+                ->select("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION")
                 ->get()
-                ->unique();
-
-            $materia = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->join("MATERIA", "MATERIA.GESTION_ID", "=", "GESTION.ID")
-                ->select("MATERIA.NOMBRE_MATERIA")
-                ->get()
-                ->unique();
-                
+                ->unique("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION")
+                ->first();
+            
             return view('estudiante/ver/portafolio')
-                ->with('archivo', $archivo)
-                ->with('fecha', $fecha)
-                ->with('lugar', $lugar)
-                ->with('gestion', $gestion)
-                ->with('semestre', $semestre)
+                ->with('practicas', $practicas)
                 ->with('materia', $materia);
         }
         return redirect('login');
     }
-    
-    /*public function getVerPortafolio(Request $request)
-    {
-        if ($this->rol->is($request)) {
-            $clase_id = $request->materia;
-
-            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
-
-            $archivo = SesionEstudiante::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", " SESION_ESTUDIANTE.ID")
-                ->join("SESION", "SESION.ID", "=", " SESION_ESTUDIANTE.SESION_ID")
-                ->join("CLASE", "CLASE.ID", "=", "SESION.CLASE_ID")
-                ->where("CLASE_ID", $clase_id)
-                ->select("ENVIO_PRACTICA.ARCHIVO")
-                ->get();
-
-             $fecha = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "ENVIO_PRACTICA.ID")
-                ->select("ENVIO_PRACTICA.LUGAR")
-                ->get()
-                ->unique();
-
-            $lugar = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
-                ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
-                ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "ENVIO_PRACTICA.ID")
-                ->select("ENVIO_PRACTICA.LUGAR")
-                ->get()
-                ->unique();
-
-            $gestion = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->select("GESTION.ANO_GESTION")
-                ->get()
-                ->unique();
-
-            $semestre = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->join("PERIODO", "PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("PERIODO.DESCRIPCION")
-                ->get()
-                ->unique();
-
-            $materia = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->join("MATERIA", "MATERIA.GESTION_ID", "=", "GESTION.ID")
-                ->select("MATERIA.NOMBRE_MATERIA")
-                ->get()
-                ->unique();
-                
-            return view('estudiante/ver/portafolio')
-                ->with('archivo', $archivo)
-                ->with('materia', $materia)
-                ->with('semestre', $semestre)
-                ->with('gestion', $gestion)
-                ->with('fecha', $fecha);
-        }
-        return redirect('login');
-    }*/
 }
 
 

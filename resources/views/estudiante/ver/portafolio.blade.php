@@ -6,8 +6,7 @@
 <br>
 <h3 align="left">Portafolio</h3>
 <br>
-<h4 align="left">Gestion/Semestre/Materia</h4>
-<!--<h4 align="left">{{ $gestion->ANO_GESTION }}/{{ $periodo->DESCRIPCION }}/{{ $materia->NOMBRE_MATERIA }}</h4>-->
+<h4 align="left">{{ $materia->ANO_GESTION }}/{{ $materia->DESCRIPCION }}/{{ $materia->NOMBRE_MATERIA }}</h4>
 <br>
 <form>
     {!! csrf_field() !!}
@@ -18,7 +17,7 @@
             </tr>
         <tbody>
             <!--aca inicio del for 1
-            @foreach($practica as $practica)-->
+            @foreach($practicas as $practica)-->
             <tr>
                 <td>
                     <div class="panel-group" id="accordion">
