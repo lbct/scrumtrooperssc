@@ -32,6 +32,14 @@ Route::get('estudiante/clases/{id_sesion}',[
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
 
+<<<<<<< HEAD
+=======
+Route::get('estudiante/clases/{id_sesion}',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@getSubir'
+]);
+
+>>>>>>> origin
 Route::post('estudiante/clases/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@postSubir'

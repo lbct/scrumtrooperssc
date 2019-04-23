@@ -24,6 +24,7 @@
                             </script>
                         </select>
                     </div>
+<<<<<<< HEAD
                     <div class="ex1 form-group col-md-6">
                         <select name="semana_valor" class="form-control">
                             @for($i=1;$i<20;$i++)
@@ -31,6 +32,8 @@
                             @endfor
                         </select>
                     </div>
+=======
+>>>>>>> origin
                 </center>
                 <br>
                 @if(sizeof($materias) > 0)
