@@ -6,7 +6,8 @@
 <br>
 <h3 align="left">Portafolio</h3>
 <br>
-<h4 align="left">{{ $materia->ANO_GESTION }}/{{ $materia->DESCRIPCION }}/{{ $materia->NOMBRE_MATERIA }}</h4>
+<span>
+<h5 align="left">{{ $materia->NOMBRE_MATERIA}}/ Año {{ $materia->ANO_GESTION}} / {{ $materia->DESCRIPCION}}</h5></span>
 <br>
 <form>
     {!! csrf_field() !!}
@@ -16,8 +17,7 @@
                 <th scope="col">Semana</th>
             </tr>
         <tbody>
-            <!--aca inicio del for 1
-            @foreach($practicas as $practica)-->
+            @foreach($practicas as $practicas)
             <tr>
                 <td>
                     <div class="panel-group" id="accordion">
@@ -26,7 +26,7 @@
                                 <h4 class="panel-title">
                                     <!--esta paerte no estoy seguro que pasara <a data-toggle="collapse" data-parent="#accordion" href="#$practica" class="btn btn-primary btn-lg btn-block">-->
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="btn btn-primary btn-lg btn-block">
-                                    {{ $practica->PRACTICA_ID }}</a>
+                                    Practica {{ $practicas->SEMANA }}</a>
                                 </h4>
                             </div>
                             <!--<div id="$practica" class="panel-collapse collapse in">-->
@@ -40,18 +40,12 @@
                                                 <th scope="col">Lugar</th>
                                             </tr>
                                         <tbody>
-                                            <!--@foreach($practica as $practica)-->
                                             <tr>
 
-                                                <!--<td>{{ $archivo->ARCHIVO }}</td>
-                                                <td>{{ $fecha->FECHA }}</td>
-                                                <td>{{ $lugar->EN_LABORATORIO }}</td>
-                                                -->
                                                 <td>ARCHIVO 1</td>
                                                 <td>FECHA 1</td>
                                                 <td>LUGAR 1</td>
                                             </tr>
-                                            <!--@endforeach-->
                                         </tbody>
                                         </thead>
                                     </table>
@@ -62,8 +56,7 @@
                 </td>
             </tr>
             <br>
-            <!--@endforeach
-            aca fin del for 1-->
+            @endforeach
         </tbody>
         </thead>
     </table>
