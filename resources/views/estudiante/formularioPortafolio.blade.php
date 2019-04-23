@@ -50,7 +50,7 @@
   </form>
 </div>
 
-<script src="http://localhost/vendor/jquery/jquery.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script>
   var $gestion = $('#gestion');
   var $periodo = $('#periodo');
