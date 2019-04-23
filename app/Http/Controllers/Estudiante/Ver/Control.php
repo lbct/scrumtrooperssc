@@ -13,6 +13,7 @@ use App\Models\Estudiante;
 use App\Models\Periodo;
 use App\Models\SesionEstudiante;
 use App\Models\Clase;
+use App\Models\Sesion;
 
 class Control extends Base
 {
@@ -109,7 +110,7 @@ class Control extends Base
                 ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
                 ->join("CLASE", "CLASE.ID", "=", "SESION.CLASE_ID")
                 ->where("CLASE_ID", $clase_id)
-                ->select("ENVIO_PRACTICA.ARCHIVO", "SEMANA", "EN_LABORATORIO")
+                ->select("ENVIO_PRACTICA.ARCHIVO", "SEMANA", "EN_LABORATORIO", "ENVIO_PRACTICA.created_at")
                 ->get();
             
             $materia = Clase::where("CLASE.ID", $clase_id)
@@ -118,13 +119,22 @@ class Control extends Base
                 ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
                 ->join("GESTION", "GESTION.ID", "=", "MATERIA.GESTION_ID")
                 ->join("PERIODO", "PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION")
+                ->select("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION", "SEMANA_ACTUAL_SESION")
                 ->get()
-                ->unique("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION")
+                ->unique("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION", "SEMANA_ACTUAL_SESION")
                 ->first();
+            
+            $sesiones = SesionEstudiante::where("SESION_ESTUDIANTE.ESTUDIANTE_ID", $estudiante->ID)
+                        ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
+                        ->where("SESION.CLASE_ID",$clase_id)
+                        ->where("SESION.SEMANA","<=",$materia->SEMANA_ACTUAL_SESION)
+                        ->select("SESION.ID", "SEMANA", "COMENTARIO_AUXILIAR", "ASISTENCIA_SESION")
+                        ->orderBy("SEMANA")
+                        ->get();
             
             return view('estudiante/ver/portafolio')
                 ->with('practicas', $practicas)
+                ->with('sesiones', $sesiones)
                 ->with('materia', $materia);
         }
         return redirect('login');
