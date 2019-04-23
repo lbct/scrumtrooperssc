@@ -78,18 +78,6 @@
                     <span>Portafolio</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/estudiante/clases/3">
-                    <i class="fas fa-fw fa-upload"></i>
-                    <span>Subir Práctica</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/estudiante/portafolio">
-                    <i class="fa fa-fw fa-briefcase"></i>
-                    <span>Portafolio</span>
-                </a>
-            </li>
             @endif
             <!--Opciones de Auxiliar-->
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
