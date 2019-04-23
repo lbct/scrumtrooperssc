@@ -109,7 +109,7 @@ class Control extends Base
                 ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
                 ->join("CLASE", "CLASE.ID", "=", "SESION.CLASE_ID")
                 ->where("CLASE_ID", $clase_id)
-                ->select("ENVIO_PRACTICA.ARCHIVO", "SEMANA", "EN_LABORATORIO")
+                ->select("ENVIO_PRACTICA.ARCHIVO", "SEMANA", "EN_LABORATORIO", "SESION_ID")
                 ->get();
             
             $materia = Clase::where("CLASE.ID", $clase_id)
