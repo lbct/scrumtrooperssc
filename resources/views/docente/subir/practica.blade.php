@@ -12,10 +12,19 @@
             {!! csrf_field() !!}
             <!-- Drop Zone -->
             <input type="hidden" name="ubicacion_guia_practica" id="guia_practica_id"/>
-            <input type="hidden" name="clase_id" value="{{$clase_id}}"/>
-            <input type="hidden" name="semana_valor" value="{{$semana_valor}}"/>
+            <input type="hidden" name="grupo_a_docente_id" value="{{$grupo_a_docente_id}}"/>
             <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}"/>
             <input type="hidden" name="gestion_id" value="{{$gestion_id}}"/>
+            <center>
+                <div class="ex1 form-group col-md-6">
+                    <select name="semana_valor" class="form-control">
+                        @for($i=1;$i<=$semana_valor;$i++)
+                        <option value="{{$i}}" @if($i==$semana_valor) selected="selected" @endif>{{'Semana '.$i}}</option>
+                        @endfor
+                    </select>
+                </div>
+            </center>
+            <br>
             <div id="alertas"></div>
             <div class="form-group m-4" id="dropzone">            
                     <div class="dropzone" id="dropzoneFileUpload"></div>
