@@ -26,7 +26,7 @@
                     </div>
                     <div class="ex1 form-group col-md-6">
                         <select name="semana_valor" class="form-control">
-                            @for($i=1;$i<20;$i++)
+                            @for($i=1;$i<=$ultima_semana;$i++)
                             <option value="{{$i}}" @if($i==$ultima_semana) selected="selected" @endif>{{'Semana '.$i}}</option>
                             @endfor
                         </select>
