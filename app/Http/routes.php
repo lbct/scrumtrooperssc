@@ -22,16 +22,26 @@ Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
-
 Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
 Route::post('estudiante/portafolio', 'Estudiante\Ver\Control@postPortafolio');
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
+Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio');
+
+Route::get('estudiante/clases/{id_sesion}',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@getSubir'
+]);
+
+Route::post('estudiante/clases/{id_sesion}',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@postSubir'
+]);
 
 //Rutas Admin
 Route::get('administrador',[
     'as' => 'administrador',
     'uses' => 'Admin\Inicio\Control@getInicio'
-    ]);
+]);
 
 Route::get('administrador/crearDocente','Admin\Docente\Crear\Control@getRegistro');
 Route::post('administrador/crearDocente','Admin\Docente\Crear\Control@postRegistro');
@@ -43,7 +53,6 @@ Route::get('administrador/editarDocente/{id_usuario}',
     'as' => 'administrador/editarDocente',
     'uses' => 'Admin\Docente\Editar\Control@getUsuario'
 ]);
-
 
 Route::post('administrador/editarDocente/{id_usuario}',
 [
@@ -85,4 +94,20 @@ Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
 Route::post('docente/editar', 'Docente\Editar\Control@postEditar');
 Route::get('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@getRegistro');
 Route::post('docente/crearAuxiliar','Docente\Auxiliar\Crear\Control@postRegistro');
-
+Route::get('docente/subirPractica','Docente\Clases\Ver\Control@getClasesUltimaGestion');
+Route::post('docente/subirPractica',
+[
+    'as' => 'docente/subirPractica',
+    'uses' => 'Docente\Clases\Ver\Control@postClases'
+]);
+Route::post('docente/subirPractica/confirmar',
+[
+    'as' => 'docente/subirPractica/confirmar',
+    'uses' => 'Docente\Practica\Subir\Control@postConfirmar'
+]);
+Route::post('docente/subirPractica/subir',
+[
+    'as' => 'docente/subirPractica/subir',
+    'uses' => 'Docente\Practica\Subir\Control@postSubir'
+]);
+Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');

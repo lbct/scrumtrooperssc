@@ -12,7 +12,7 @@ class CrearTablaSesion extends Migration
             
             $table->increments('ID');
             $table->integer('CLASE_ID')->unsigned();
-            $table->integer('AUXILIAR_ID')->unsigned();
+            $table->integer('AUXILIAR_ID')->unsigned()->nullable();
             $table->integer('GUIA_PRACTICA_ID')->unsigned();
             
             $table->integer('SEMANA');

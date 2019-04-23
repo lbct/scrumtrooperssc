@@ -11,5 +11,6 @@ class Base extends Controller
     public function __construct()
     {
         $this->rol = new Rol('auxiliarterminal');
+        $this->rol->añadirRol('auxiliarlaboratorio');
     }
 }

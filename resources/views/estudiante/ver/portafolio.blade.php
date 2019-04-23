@@ -7,7 +7,7 @@
 <h3 align="left">Portafolio</h3>
 <br>
 <h4 align="left">Gestion/Semestre/Materia</h4>
-
+<!--<h4 align="left">{{ $gestion->ANO_GESTION }}/{{ $periodo->DESCRIPCION }}/{{ $materia->NOMBRE_MATERIA }}</h4>-->
 <br>
 <form>
     {!! csrf_field() !!}
@@ -17,19 +17,22 @@
                 <th scope="col">Semana</th>
             </tr>
         <tbody>
-            <!--aca inicio del for 1-->
+            <!--aca inicio del for 1
+            @foreach($practica as $practica)-->
             <tr>
                 <td>
                     <div class="panel-group" id="accordion">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="btn btn-primary btn-lg btn-block">
-                                        Practica 1</a>
+                                    <!--esta paerte no estoy seguro que pasara <a data-toggle="collapse" data-parent="#accordion" href="#$practica" class="btn btn-primary btn-lg btn-block">-->
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="btn btn-primary btn-lg btn-block">
+                                    {{ $practica->PRACTICA_ID }}</a>
                                 </h4>
                             </div>
+                            <!--<div id="$practica" class="panel-collapse collapse in">-->
                             <div id="collapse1" class="panel-collapse collapse in">
-                                <div class="panel-body">
+                            <div class="panel-body">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -38,22 +41,18 @@
                                                 <th scope="col">Lugar</th>
                                             </tr>
                                         <tbody>
+                                            <!--@foreach($practica as $practica)-->
                                             <tr>
-                                                <td id="gestion" name="gestion" value="{{ old('gestion') }}" required>
-                                                @foreach
-                                                    <option value={{$gestion->ANO_GESTION}}>
-                                                        {{$gestion->ANO_GESTION}}
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    <option value="0">dd/mm/aaaa</option>
-                                                    <option value="1">aaaa/mm/dd</option>
-                                                </td>
-                                                <td>
-                                                    <option value="0">en mi casa</option>
-                                                    <option value="1">en tu casa</option>
-                                                </td>
+
+                                                <!--<td>{{ $archivo->ARCHIVO }}</td>
+                                                <td>{{ $fecha->FECHA }}</td>
+                                                <td>{{ $lugar->EN_LABORATORIO }}</td>
+                                                -->
+                                                <td>ARCHIVO 1</td>
+                                                <td>FECHA 1</td>
+                                                <td>LUGAR 1</td>
                                             </tr>
+                                            <!--@endforeach-->
                                         </tbody>
                                         </thead>
                                     </table>
@@ -64,7 +63,8 @@
                 </td>
             </tr>
             <br>
-            <!--aca fin del for 1-->
+            <!--@endforeach
+            aca fin del for 1-->
         </tbody>
         </thead>
     </table>
