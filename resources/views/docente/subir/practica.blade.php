@@ -12,22 +12,6 @@
             {!! csrf_field() !!}
             <!-- Drop Zone -->
             <input type="hidden" name="ubicacion_guia_practica" id="guia_practica_id"/>
-<<<<<<< HEAD
-            <input type="hidden" name="clase_id" value="{{$clase_id}}"/>
-            <input type="hidden" name="semana_valor" value="{{$semana_valor}}"/>
-            <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}"/>
-            <input type="hidden" name="gestion_id" value="{{$gestion_id}}"/>
-            <div class="form-group m-4" id="dropzone">            
-                    <div class="dropzone" id="dropzoneFileUpload"></div>
-            </div>
-
-            <!-- COMPONENT END -->
-            <div class="form-group">
-                <button type="submit" class="m-3 btn btn-primary pull-right">Confirmar</button>
-                <button type="reset" onclick="borrarArchivos();" class="m-3 btn btn-danger">Cancelar</button>
-            </div>
-        </form>
-=======
             <input type="hidden" name="grupo_a_docente_id" value="{{$grupo_a_docente_id}}"/>
             <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}"/>
             <input type="hidden" name="gestion_id" value="{{$gestion_id}}"/>
@@ -50,7 +34,6 @@
             <button class="m-3 btn btn-primary pull-right" id="enviarArchivo">Confirmar</button>
             <button type="reset"  class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
         </div>
->>>>>>> origin
     </div>
 
 </div>
@@ -60,13 +43,6 @@
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("div#dropzoneFileUpload", {
         url: "/docente/subirPractica/subir",
-<<<<<<< HEAD
-        maxFiles: 1,
-        maxFilesize: 5,
-        addRemoveLinks: true,
-        accept: function(file, done) {
-            
-=======
         autoProcessQueue: false,
         maxFiles: 1,
         maxFilesize: 5,
@@ -98,14 +74,11 @@
 
 
         accept: function(file, done) {
->>>>>>> origin
             done();
         },
         success: function (file) {
             var guia_id = document.getElementById("guia_practica_id");
             guia_id.setAttribute("value", "uploads/{{$nombre_archivo}}."+file.upload.filename.split('.').pop());
-<<<<<<< HEAD
-=======
             var form = document.getElementById("form_clase");
             form.submit();
         },
@@ -114,7 +87,6 @@
             myDropzone.removeAllFiles();
             $alertas = document.getElementById('alertas');
             $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
->>>>>>> origin
         },
         params: {
             _token: token,
@@ -123,11 +95,8 @@
     });
     function borrarArchivos(){
         myDropzone.removeAllFiles(true);
-<<<<<<< HEAD
-=======
         var guia_id = document.getElementById("guia_practica_id");
         guia_id.setAttribute("value", "");
->>>>>>> origin
     }
 </script>
 @endsection
