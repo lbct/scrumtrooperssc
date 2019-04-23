@@ -20,13 +20,11 @@
             <div class="form-group m-4" id="dropzone">            
                     <div class="dropzone" id="dropzoneFileUpload"></div>
             </div>
-
-            <!-- COMPONENT END -->
-            <div class="form-group">
-                <button type="submit" class="m-3 btn btn-primary pull-right" id="enviarArchivo">Confirmar</button>
-                <button type="reset"  class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
-            </div>
         </form>
+        <div class="form-group">
+            <button class="m-3 btn btn-primary pull-right" id="enviarArchivo">Confirmar</button>
+            <button type="reset"  class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
+        </div>
     </div>
 
 </div>
@@ -72,6 +70,8 @@
         success: function (file) {
             var guia_id = document.getElementById("guia_practica_id");
             guia_id.setAttribute("value", "uploads/{{$nombre_archivo}}."+file.upload.filename.split('.').pop());
+            var form = document.getElementById("form_clase");
+            form.submit();
         },
         error:function(file, response)
         {
@@ -86,6 +86,8 @@
     });
     function borrarArchivos(){
         myDropzone.removeAllFiles(true);
+        var guia_id = document.getElementById("guia_practica_id");
+        guia_id.setAttribute("value", "");
     }
 </script>
 @endsection
