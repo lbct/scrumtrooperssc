@@ -96,7 +96,7 @@ class Control extends Base
         return redirect('login');
     }
 
-    /* public function postVerPortafolio(Request $request)
+    public function postVerPortafolio(Request $request)
     {
         if ($this->rol->is($request)) {
             $clase_id = $request->materia;
@@ -163,8 +163,8 @@ class Control extends Base
         }
         return redirect('login');
     }
-    */
-    public function getVerPortafolio(Request $request)
+    
+    /*public function getVerPortafolio(Request $request)
     {
         if ($this->rol->is($request)) {
             $clase_id = $request->materia;
@@ -179,7 +179,7 @@ class Control extends Base
                 ->select("ENVIO_PRACTICA.ARCHIVO")
                 ->get();
 
-             /*$fecha = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+             $fecha = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
                 ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
                 ->join("SESION", "SESION.CLASE_ID", "=", "CLASE.ID")
                 ->join("SESION_ESTUDIANTE", "SESION_ESTUDIANTE.SESION_ID", "=", "SESION.ID")
@@ -219,7 +219,7 @@ class Control extends Base
                 ->select("MATERIA.NOMBRE_MATERIA")
                 ->get()
                 ->unique();
-                */
+                
             return view('estudiante/ver/portafolio')
                 ->with('archivo', $archivo)
                 ->with('materia', $materia)
@@ -228,7 +228,7 @@ class Control extends Base
                 ->with('fecha', $fecha);
         }
         return redirect('login');
-    }
+    }*/
 }
 
 

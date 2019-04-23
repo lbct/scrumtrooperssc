@@ -86,7 +86,7 @@
       dataType: 'JSON',
       success: function(materias) {
         if (materias.length > 0) {
-          $materia.html("<option disabled selected value>Selecciona una Gestión</option>");
+          $materia.html("<option disabled selected value>Selecciona una Materia</option>");
           materias.forEach(function(materia) {
             $materia.append(new Option(materia.NOMBRE_MATERIA, materia.CLASE_ID));
           });
