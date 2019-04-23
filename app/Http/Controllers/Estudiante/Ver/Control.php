@@ -47,26 +47,8 @@ class Control extends Base
                 ->get()
                 ->unique();
 
-            $periodos = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->join("PERIODO", "PERIODO.ID", "=", "GESTION.PERIODO_ID")
-                ->select("PERIODO.DESCRIPCION")
-                ->get()
-                ->unique();
-
-            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->join("MATERIA", "MATERIA.GESTION_ID", "=", "GESTION.ID")
-                ->select("MATERIA.NOMBRE_MATERIA")
-                ->get()
-                ->unique();
-
             return view('estudiante/formularioPortafolio')
-                ->with('gestiones', $gestiones)
-                ->with('periodos', $periodos)
-                ->with('materias', $materias);
+                ->with('gestiones', $gestiones);
         }
 
         return redirect('login');
