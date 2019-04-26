@@ -32,11 +32,6 @@ Route::get('estudiante/clases/{id_sesion}',[
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
 
-Route::get('estudiante/clases/{id_sesion}',[
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@getSubir'
-]);
-
 Route::post('estudiante/clases/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@postSubir'
@@ -116,3 +111,8 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+
+Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
+Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
+Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
+Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
