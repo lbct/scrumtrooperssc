@@ -22,10 +22,10 @@ Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
+
 Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
-Route::post('estudiante/portafolio', 'Estudiante\Ver\Control@postPortafolio');
+Route::post('estudiante/portafolio/materias', 'Estudiante\Ver\Control@materiasPortafolio');
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
-Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio');
 
 Route::get('estudiante/clases/{id_sesion}',[
     'as' => 'estudiante',

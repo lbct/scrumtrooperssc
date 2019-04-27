@@ -25,7 +25,7 @@ use Response;
 
 class Control extends Base
 {
-    private function getClasesUltimaGestion(Request $request)
+    private function getClasesUltimaGestion()
     {
         $id_gestion = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
         return $id_gestion;
@@ -34,7 +34,7 @@ class Control extends Base
     public function verMaterias(Request $request){
         if( $this->rol->is($request) ){
             $id_usuario = $request->cookie('USUARIO_ID');
-            $id_gestion = $this->getClasesUltimaGestion($request);
+            $id_gestion = $this->getClasesUltimaGestion();
             $id_docente = Docente::where('USUARIO_ID', '=', $id_usuario)->get()->first()->ID;
             
             $gruposDocente = GrupoDocente::join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
@@ -56,7 +56,7 @@ class Control extends Base
         if( $this->rol->is($request) ){
             $grupo_docente = $request->grupo_docente_id;
             $id_usuario = $request->cookie('USUARIO_ID');
-            $id_gestion = $this->getClasesUltimaGestion($request);
+            $id_gestion = $this->getClasesUltimaGestion();
             $id_docente = Docente::where('USUARIO_ID', '=', $id_usuario)->get()->first()->ID;
             
             $clases_actuales     = Clase::where("CLASE.GESTION_ID", $id_gestion)
@@ -98,7 +98,7 @@ class Control extends Base
     public function verAulas(Request $request){
         if( $this->rol->is($request) ){
             $id_usuario = $request->cookie('USUARIO_ID');
-            $id_gestion = $this->getClasesUltimaGestion($request);
+            $id_gestion = $this->getClasesUltimaGestion();
             $id_docente = Docente::where('USUARIO_ID', '=', $id_usuario)->get()->first()->ID;
             $id_grupo_docente = $request->grupo_docente_id;
             $id_horario = $request->horario_id;
@@ -160,7 +160,7 @@ class Control extends Base
     public function postCrearClase(Request $request){
         if( $this->rol->is($request) ){
             $id_usuario = $request->cookie('USUARIO_ID');
-            $id_gestion = $this->getClasesUltimaGestion($request);
+            $id_gestion = $this->getClasesUltimaGestion();
             $id_docente = Docente::where('USUARIO_ID', '=', $id_usuario)->get()->first()->ID;
             $id_grupo_docente = $request->grupo_docente_id;
             $id_horario = $request->horario_id;
@@ -176,9 +176,6 @@ class Control extends Base
                                ->where("DOCENTE_ID", $id_docente)
                                ->first();
             
-            $sesiones_similares = Sesion::where("CLASE_ID", $clase_similar->ID)
-                                  ->get();
-            
             $clase = new Clase();
             $clase->GESTION_ID         = $id_gestion;
             $clase->AULA_ID            = $id_aula;
@@ -187,18 +184,24 @@ class Control extends Base
             $clase->DIA                = $dia;
             
             if( $clase_similar==null )
+            {
                 $clase->SEMANA_ACTUAL_SESION = 0;
+                $clase->save();
+            }   
             else
+            {
+                $sesiones_similares = Sesion::where("CLASE_ID", $clase_similar->ID)
+                                      ->get();
                 $clase->SEMANA_ACTUAL_SESION = $clase_similar->SEMANA_ACTUAL_SESION;
-            
-            $clase->save();
-            
-            foreach ($sesiones_similares as $sesion_similar) {
-                $sesion = new Sesion();
-                $sesion->CLASE_ID         = $clase->ID;
-                $sesion->GUIA_PRACTICA_ID = $sesion_similar->GUIA_PRACTICA_ID;
-                $sesion->SEMANA           = $sesion_similar->SEMANA;
-                $sesion->save();
+                $clase->save();
+                
+                foreach ($sesiones_similares as $sesion_similar) {
+                    $sesion = new Sesion();
+                    $sesion->CLASE_ID         = $clase->ID;
+                    $sesion->GUIA_PRACTICA_ID = $sesion_similar->GUIA_PRACTICA_ID;
+                    $sesion->SEMANA           = $sesion_similar->SEMANA;
+                    $sesion->save();
+                }
             }
             
             $request->session()->flash('alert-success', '¡Clase creada con éxito!');
