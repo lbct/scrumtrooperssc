@@ -116,3 +116,8 @@ Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase
 Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
 Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
 Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
+
+Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios');
+Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
+Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
+Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
