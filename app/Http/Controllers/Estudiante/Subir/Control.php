@@ -32,15 +32,6 @@ class Control extends Base
     {
         if ($this->rol->is($request)) {
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
-
-            $gestiones = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                         ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
-                         ->select("GESTION.ID", "GESTION.ANO_GESTION", "PERIODO.DESCRIPCION")
-                         ->orderBy("GESTION.ID", "desc")
-                         ->get()
-                         ->unique("GESTION.ID");
             
             $gestion_actual = $this->getUltimaGestion();
             
@@ -55,31 +46,7 @@ class Control extends Base
                          ->get();
             
             return view('estudiante.subir.clases')
-                   ->with('gestiones', $gestiones)
                    ->with('clases', $clases);
-        }
-
-        return redirect('login');
-    }
-
-    public function getClases(Request $request)
-    {
-        if ($this->rol->is($request)) {
-            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
-
-            $gestion_id = $request->gestion;
-
-            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                        ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                        ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                        ->where("GESTION.ID", $gestion_id)
-                        ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                        ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                        ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                        ->select("NOMBRE_MATERIA", "CLASE_ID")
-                        ->get();
-
-            return $materias;
         }
 
         return redirect('login');

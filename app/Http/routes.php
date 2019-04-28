@@ -28,7 +28,6 @@ Route::post('estudiante/portafolio/materias', 'Estudiante\Ver\Control@materiasPo
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
 
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
-Route::post('estudiante/subirPractica/clases', 'Estudiante\Subir\Control@getClases');
 Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
 Route::get('estudiante/subirPractica/{id_sesion}',[
     'as' => 'estudiante',
