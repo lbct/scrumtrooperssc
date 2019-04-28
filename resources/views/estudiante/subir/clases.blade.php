@@ -6,7 +6,7 @@
 
 <div id="alertas"></div>
 <div class="py-5 d-flex justify-content-center">
-  <form method="POST" id="form_clase" action="/estudiante/portafolio/ver">
+  <form method="POST" id="form_clase" action="/estudiante/subirPractica">
     {!! csrf_field() !!}
     <div class="col-md-12 col-md-offset-2">
       <h3>Seleccione una Materia</h3>
@@ -69,7 +69,7 @@
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
     $.ajax({
-      url: '/estudiante/portafolio/materias',
+      url: '/estudiante/subirPractica/clases',
       type: 'POST',
       data: {
         _token: CSRF_TOKEN,

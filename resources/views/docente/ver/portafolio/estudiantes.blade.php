@@ -9,7 +9,8 @@
   <form method="POST" id="form_clase" action="/docente/portafolio">
     {!! csrf_field() !!}
     <div class="col-md-12 col-md-offset-2">
-      <h3>Seleccione un Estudiante</h3>
+      <h3>Seleccione un Estudiante</h3><br>
+      <h4>{{$materia->NOMBRE_MATERIA}}</h4>
       <br>
       @if(sizeof($estudiantes) > 0)
         <table id="tabla_click">

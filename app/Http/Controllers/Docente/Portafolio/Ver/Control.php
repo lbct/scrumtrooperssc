@@ -16,6 +16,7 @@ use App\Models\Clase;
 use App\Models\Sesion;
 use App\Models\Gestion;
 use App\Models\GrupoADocente;
+use App\Models\GrupoDocente;
 
 class Control extends Base
 {
@@ -93,7 +94,7 @@ class Control extends Base
                            ->select("CODIGO_SIS", "USERNAME", "NOMBRE", "APELLIDO", "CLASE_ID", "ESTUDIANTE.ID AS ESTUDIANTE_ID")
                            ->get();
             
-            $materia = "Intro";
+            $materia = GrupoDocente::find($grupo_docente_id)->materia;
             
             return view('docente.ver.portafolio.estudiantes')
                    ->with('estudiantes', $estudiantes)
@@ -107,9 +108,14 @@ class Control extends Base
     {
         if ($this->rol->is($request)) {
             $clase_id = $request->clase_id;
-            $estudiante = $request->estudiante_id;
+            $estudiante_id = $request->estudiante_id;
+            
+            $estudiante = Estudiante::where("ESTUDIANTE.ID", $estudiante_id)
+                          ->join("USUARIO", "USUARIO.ID", "=", "ESTUDIANTE.USUARIO_ID")
+                          ->select("NOMBRE", "APELLIDO", "CODIGO_SIS", "ESTUDIANTE.ID")
+                          ->first();
 
-            $practicas = SesionEstudiante::where("ESTUDIANTE_ID", $estudiante)
+            $practicas = SesionEstudiante::where("ESTUDIANTE_ID", $estudiante_id)
                 ->join("ENVIO_PRACTICA", "ENVIO_PRACTICA.SESION_ESTUDIANTE_ID", "=", "SESION_ESTUDIANTE.ID")
                 ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
                 ->join("CLASE", "CLASE.ID", "=", "SESION.CLASE_ID")
@@ -128,7 +134,7 @@ class Control extends Base
                 ->unique("NOMBRE_MATERIA", "ANO_GESTION", "PERIODO.DESCRIPCION", "SEMANA_ACTUAL_SESION")
                 ->first();
             
-            $sesiones = SesionEstudiante::where("SESION_ESTUDIANTE.ESTUDIANTE_ID", $estudiante)
+            $sesiones = SesionEstudiante::where("SESION_ESTUDIANTE.ESTUDIANTE_ID", $estudiante_id)
                         ->join("SESION", "SESION.ID", "=", "SESION_ESTUDIANTE.SESION_ID")
                         ->where("SESION.CLASE_ID",$clase_id)
                         ->where("SESION.SEMANA","<=",$materia->SEMANA_ACTUAL_SESION)
@@ -139,7 +145,8 @@ class Control extends Base
             return view('docente.ver.portafolio.semanas')
                 ->with('practicas', $practicas)
                 ->with('sesiones', $sesiones)
-                ->with('materia', $materia);
+                ->with('materia', $materia)
+                ->with('estudiante', $estudiante);
         }
         return redirect('login');
     }

@@ -8,6 +8,7 @@ use App\Models\EstudianteClase;
 use App\Models\Sesion;
 use App\Models\SesionEstudiante;
 use App\Models\EnvioPractica;
+use App\Models\Gestion;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -19,7 +20,96 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
  
 class Control extends Base
-{
+{   
+    private function getUltimaGestion()
+    {
+        $id_gestion = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
+        return $id_gestion;
+    }
+    
+    //obtiene la vista del formulario para ver el portafolio del estudiante con sesion iniciada
+    public function verClases(Request $request)
+    {
+        if ($this->rol->is($request)) {
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+
+            $gestiones = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                         ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
+                         ->select("GESTION.ID", "GESTION.ANO_GESTION", "PERIODO.DESCRIPCION")
+                         ->orderBy("GESTION.ID", "desc")
+                         ->get()
+                         ->unique("GESTION.ID");
+            
+            $gestion_actual = $this->getUltimaGestion();
+            
+            $clases  = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                         ->where("GESTION.ID", $gestion_actual)
+                         ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                         ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                         ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                         ->select("NOMBRE_MATERIA", "CLASE_ID")
+                         ->get();
+            
+            return view('estudiante.subir.clases')
+                   ->with('gestiones', $gestiones)
+                   ->with('clases', $clases);
+        }
+
+        return redirect('login');
+    }
+
+    public function getClases(Request $request)
+    {
+        if ($this->rol->is($request)) {
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+
+            $gestion_id = $request->gestion;
+
+            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                        ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                        ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                        ->where("GESTION.ID", $gestion_id)
+                        ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                        ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                        ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                        ->select("NOMBRE_MATERIA", "CLASE_ID")
+                        ->get();
+
+            return $materias;
+        }
+
+        return redirect('login');
+    }
+    
+    public function getSesion(Request $request)
+    {
+        if ($this->rol->is($request)) {
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $clase_id = $request->clase_id;
+            
+            $estudianteClase = EstudianteClase::where('CLASE_ID', $clase_id)
+                               ->where('ESTUDIANTE_ID', $estudiante->ID);
+            
+            if($estudianteClase->exists())
+            {
+                $semana_actual = Clase::find($clase_id)->SEMANA_ACTUAL_SESION;
+                $sesion_id     = Sesion::where("CLASE_ID", $clase_id)
+                                 ->where("SEMANA", $semana_actual)
+                                 ->first()->ID;
+                
+                return redirect('/estudiante/subirPractica/'.strval($sesion_id));
+            }
+
+            return redirect('/estudiante/subirPractica');
+        }
+
+        return redirect('login');
+    }
+    
     public function getSubir(Request $request, $id_sesion)
     {
         if( $this->rol->is($request) )
@@ -39,12 +129,18 @@ class Control extends Base
                 
                 $envios = EnvioPractica::where('SESION_ESTUDIANTE_ID',$sesion_estudiante->ID)->get();
                 
-                return view('estudiante.subir.portafolio')
+                $semanas = Sesion::where("SESION.CLASE_ID", $sesion->CLASE_ID)
+                           ->orderBy("SESION.SEMANA", "DESC")
+                           ->where("SESION.SEMANA", "<=", $semana_actual)
+                           ->get();
+                
+                return view('estudiante.subir.practica')
                 ->with('sesion', $sesion)
-                ->with('envios', $envios);
+                ->with('envios', $envios)
+                ->with('semanas', $semanas);
             }
             
-            return redirect('/estudiante/clases');
+            return redirect('/estudiante/subirPractica');
         }
         
         return redirect('login');

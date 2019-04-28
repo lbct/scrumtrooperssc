@@ -10,12 +10,12 @@
 <h4 align="center">{{ $materia->NOMBRE_MATERIA}}</h4>
 <h5>Gestion: {{ $materia->DESCRIPCION}} - {{ $materia->ANO_GESTION}}</h5>
 <br>
-@foreach($sesiones as $sesion)
+@foreach($sesiones as $indice => $sesion)
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="btn btn-primary btn-lg btn-block">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$indice}}" class="btn btn-primary btn-lg btn-block">
                         Semana: {{ $sesion->SEMANA }} - 
                         @if ($sesion->ASISTENCIA_SESION)
                             Asistida
@@ -25,7 +25,7 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapse1" class="panel-collapse collapse @if ($sesion == $sesiones->last()) show @else in @endif">
+            <div id="collapse{{$indice}}" class="panel-collapse collapse in">
                 <p>
                    @if ($sesion->COMENTARIO_AUXILIAR != "") 
                     Comentario del auxiliar: {{$sesion->COMENTARIO_AUXILIAR}}
@@ -56,7 +56,6 @@
                         </tbody>
                         </thead>
                     </table>
-                    <a class="m-3 btn btn-primary pull-right" href="/estudiante/clases/{{$sesion->ID}}">Subir archivo</a>
                 </div>
             </div>
         </div>

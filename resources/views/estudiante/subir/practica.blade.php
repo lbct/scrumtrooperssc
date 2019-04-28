@@ -7,7 +7,17 @@
 <div class="py-5 d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
         <h2>{{ $sesion->clase->grupoADocente->grupoDocente->materia->NOMBRE_MATERIA }}</h2>
-        <h4>Semana: {{ $sesion->SEMANA }}</h4>
+        <center>
+            <div class="ex1 form-group col-md-6">
+              <select class="form-control" id="semana" name="semana" required>
+                @foreach ($semanas as $semana)
+                    <option value="{{$semana->ID}}" @if ($sesion->ID == $semana->ID) selected @endif">
+                      Semana: {{$semana->SEMANA}}
+                    </option>
+                @endforeach
+              </select>
+            </div>
+        </center>
         
         <h4>Archivos subidos:</h4>
             <p>
@@ -85,6 +95,17 @@
             $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
         }
     });
+</script>
+
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script>
+  var $semana = $('#semana');
+
+  $semana.change(function() {
+    $sesion_id = $semana.val()
+    console.log($sesion_id);
+    window.location.href = "/estudiante/subirPractica/"+$sesion_id;
+  });
 </script>
 
 @endsection
