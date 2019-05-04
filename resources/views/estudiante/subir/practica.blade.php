@@ -34,7 +34,7 @@
         <!-- COMPONENT END -->
         <div class="form-group">
             <button type="submit" class="m-3 btn btn-primary pull-right" id="enviarArchivo">Subir Archivo</button>
-            <button type="submit" class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
+            <button type="submit" class="m-3 btn btn-danger" id="cancelar" onclick="window.location='/estudiante/subirPractica'">Cancelar</button>
         </div>
         
     </div>
