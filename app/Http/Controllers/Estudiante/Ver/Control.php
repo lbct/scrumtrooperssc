@@ -14,9 +14,16 @@ use App\Models\Periodo;
 use App\Models\SesionEstudiante;
 use App\Models\Clase;
 use App\Models\Sesion;
+use App\Models\Gestion;
 
 class Control extends Base
 {
+    private function getUltimaGestion()
+    {
+        $id_gestion = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
+        return $id_gestion;
+    }
+    
     //Obtiene la vista de las materias inscritas del Estudiante con sesión iniciada
     public function getMaterias(Request $request)
     {
@@ -36,6 +43,7 @@ class Control extends Base
 
         return redirect('login');
     }
+    
     //obtiene la vista del formulario para ver el portafolio del estudiante con sesion iniciada
     public function getPortafolio(Request $request)
     {
@@ -43,56 +51,53 @@ class Control extends Base
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
 
             $gestiones = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                ->select("GESTION.ANO_GESTION")
-                ->get()
-                ->unique("GESTION.ANO_GESTION");
-
-            return view('estudiante/formularioPortafolio')
-                ->with('gestiones', $gestiones);
+                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                         ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
+                         ->select("GESTION.ID", "GESTION.ANO_GESTION", "PERIODO.DESCRIPCION")
+                         ->orderBy("GESTION.ID", "desc")
+                         ->get()
+                         ->unique("GESTION.ID");
+            
+            $gestion_actual = $this->getUltimaGestion();
+            
+            $clases  = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                         ->where("GESTION.ID", $gestion_actual)
+                         ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                         ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                         ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                         ->select("NOMBRE_MATERIA", "CLASE_ID")
+                         ->get();
+            
+            return view('estudiante.ver.portafolio.materias')
+                   ->with('gestiones', $gestiones)
+                   ->with('clases', $clases);
         }
 
         return redirect('login');
     }
 
-    public function postPortafolio(Request $request)
+    public function materiasPortafolio(Request $request)
     {
         if ($this->rol->is($request)) {
             $paso = $request->paso;
-            if ($paso == 2) {
-                $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
 
-                $anio_gestion = $request->gestion;
-                $periodos = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                    ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                    ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                    ->where("GESTION.ANO_GESTION", $anio_gestion)
-                    ->join("PERIODO", "GESTION.PERIODO_ID", "=", "PERIODO.ID")
-                    ->select("DESCRIPCION", "PERIODO_ID")
-                    ->get()
-                    ->unique("DESCRIPCION", "PERIODO_ID");
+            $gestion_id = $request->gestion;
 
-                return $periodos;
-            } else if ($paso == 3) {
-                $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                        ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                        ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                        ->where("GESTION.ID", $gestion_id)
+                        ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                        ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                        ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                        ->select("NOMBRE_MATERIA", "CLASE_ID")
+                        ->get();
 
-                $anio_gestion = $request->gestion;
-                $periodo      = $request->periodo;
-
-                $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                    ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                    ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                    ->where("GESTION.ANO_GESTION", $anio_gestion)
-                    ->where("GESTION.PERIODO_ID", $periodo)
-                    ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                    ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                    ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                    ->select("NOMBRE_MATERIA", "CLASE_ID")
-                    ->get();
-
-                return $materias;
-            }
+            return $materias;
         }
 
         return redirect('login');
@@ -101,7 +106,7 @@ class Control extends Base
     public function postVerPortafolio(Request $request)
     {
         if ($this->rol->is($request)) {
-            $clase_id = $request->materia;
+            $clase_id = $request->clase_id;
 
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
 
@@ -132,7 +137,7 @@ class Control extends Base
                         ->orderBy("SEMANA")
                         ->get();
             
-            return view('estudiante/ver/portafolio')
+            return view('estudiante.ver.portafolio.semanas')
                 ->with('practicas', $practicas)
                 ->with('sesiones', $sesiones)
                 ->with('materia', $materia);

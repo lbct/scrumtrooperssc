@@ -78,6 +78,12 @@
                     <span>Portafolio</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/subirPractica">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
+                </a>
+            </li>
             @endif
             <!--Opciones de Auxiliar-->
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
@@ -106,6 +112,18 @@
                 <a class="nav-link" href="/docente/subirPractica">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Subir Práctica</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/clases/crear">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Crear Clase</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/portafolios">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Portafolios</span>
                 </a>
             </li>
             @endif

@@ -11429,3 +11429,9 @@ input[type=checkbox]
       border-bottom: 0;
     }
   }
+
+.select_td:hover {
+    background-color: #343a40;
+    color: #f8f9fa;
+    cursor: pointer;
+}

@@ -4,10 +4,11 @@
 <!-- Vista de Inscripcion de Estudiante -->
 <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
 
+
 <div class="container flex-grow-1 flex-shrink-0 py-5">
+  <div id="alertas"></div>
   <div class="mb-5 p-4">
-    <div id="alertas"></div>
-    <h3>Formulario de Inscripcion</h3>
+    <h3>Formulario de Inscripcion</h3><br>
     @if (sizeof($materias) > 0)
     <div id="stepper" class="bs-stepper">
       <div class="bs-stepper-header" role="tablist">

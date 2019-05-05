@@ -22,22 +22,18 @@ Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
 Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
+
 Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
-Route::post('estudiante/portafolio', 'Estudiante\Ver\Control@postPortafolio');
+Route::post('estudiante/portafolio/materias', 'Estudiante\Ver\Control@materiasPortafolio');
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
-Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio');
 
-Route::get('estudiante/clases/{id_sesion}',[
+Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
+Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
+Route::get('estudiante/subirPractica/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
-
-Route::get('estudiante/clases/{id_sesion}',[
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@getSubir'
-]);
-
-Route::post('estudiante/clases/{id_sesion}',[
+Route::post('estudiante/subirPractica/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@postSubir'
 ]);
@@ -116,3 +112,13 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+
+Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
+Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
+Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
+Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
+
+Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios');
+Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
+Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
+Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
