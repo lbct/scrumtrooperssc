@@ -162,7 +162,7 @@ class Control extends Base
         {
             $id_gestion = Clase::find($request->clase_id)->gestion->ID;
             $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
-            $sesiones = Sesion::whereRaw('AUXILIAR_ID='.$auxiliar->ID.' AND CLASE_ID='.$request->clase_id)->orderBy('ID', 'DESC')->get();
+            $sesiones = Sesion::whereRaw('CLASE_ID='.$request->clase_id)->orderBy('ID', 'DESC')->get();
             $sesion_id = -1;
             if($request->sesion_id != null){
                 $sesion_id = $request->sesion_id;
@@ -174,17 +174,44 @@ class Control extends Base
             if($sesion_id != -1){
                 $sesion = Sesion::where('SESION.ID', '=', $sesion_id)->first();
                 $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion->GUIA_PRACTICA_ID)->first();
+                $permiso = -1;
+                if ($sesion->AUXILIAR_ID != null)
+                    if ($sesion->AUXILIAR_ID == $auxiliar->ID)
+                        $permiso = 1;
+                    else
+                        $permiso = 0; 
+
                 return view('auxiliar.practica.ver.lista')
                 ->with('practica', $practica)
                 ->with('sesiones', $sesiones)
                 ->with('sesion_id', $sesion_id)
                 ->with('clase_id', $request->clase_id)
-                ->with('id_gestion', $id_gestion);
+                ->with('id_gestion', $id_gestion)
+                ->with('auxiliar_id', $auxiliar->ID)
+                ->with('permiso', $permiso);
             }
             else{
                 $request->session()->flash('alert-danger', 'No existen sesiones para la clase seleccionada.');
                 return redirect('/auxiliar/practicas/'.$id_gestion);
             }
+        }
+        return redirect('login');
+    }
+
+    public function postSesion(Request $request)
+    {
+        if($this->rol->is($request))
+        {
+            $sesion = Sesion::where('SESION.ID', '=', $request->sesion_id)->first();
+
+            if ($sesion->AUXILIAR_ID == null){
+                $request->session()->flash('alert-success', 'Registrado Correctamente');
+                
+            }
+            else
+                $request->session()->flash('alert-danger', 'Ya existe alguien registrado como responsable');
+            
+            return redirect('auxiliar/practicas');
         }
         return redirect('login');
     }

@@ -23,7 +23,7 @@
     
 </div>
 <br>
-@if($practica != null)
+@if($permiso == 1)
 <table>
     <thead>
         <tr>
@@ -48,7 +48,19 @@
     </tbody>
 </table>
 @else
-<p>No tiene practicas para la sesion</p>
+    <h3>&nbsp</h3>
+    <h3>No tiene permiso para ver la practica</h3>
+    <h3>&nbsp</h3>
+    @if($permiso == -1)
+        <form action="{{route('auxiliar/asignar')}}" method="POST">
+            {!! csrf_field() !!}
+            <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}" />
+            <input type="hidden" name="sesion_id" value="{{$sesion_id}}" />
+            <input type="submit" value="Volverme responsable de la Sesion" class="m-3 btn btn-danger">
+        </form>
+        <h3>&nbsp</h3>
+        <h3>&nbsp</h3>
+    @endif
 @endif
 <br><br>
 <div>
