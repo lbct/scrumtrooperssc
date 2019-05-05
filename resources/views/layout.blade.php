@@ -93,6 +93,12 @@
                     <span>Lista de clases</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auxiliar/practicas">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Lista de Practicas</span>
+                </a>
+            </li>
             @endif
             <!--Opciones de Docente-->
             @if(App\Models\Docente::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)

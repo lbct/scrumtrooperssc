@@ -89,6 +89,19 @@ Route::post('auxiliar/clases',
     'uses' => 'Auxiliar\Ver\Control@postClases'
 ]);
 
+Route::get('auxiliar/practicas', 'Auxiliar\Ver\Control@getPracticasUltimaGestion');
+Route::get('auxiliar/practicas/{id_gestion}', 
+[
+    'as' => 'auxiliar/practicas',
+    'uses' => 'Auxiliar\Ver\Control@getPracticas'
+]);
+Route::post('auxiliar/practicas', 
+[
+    'as'   => 'auxiliar/practicas',
+    'uses' => 'Auxiliar\Ver\Control@postPracticas'
+]);
+
+
 //Rutas Docente
 Route::get('docente','Docente\Inicio\Control@getInicio');
 Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
@@ -122,3 +135,27 @@ Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios
 Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
 Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
 Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
+
+
+//Rutas de Descarga 'uploads'
+Route::get('download/uploads/{filename}', function($filename)
+{
+    // Verfificar que el archivo exista en /uploads
+    $file_path = (public_path()."/uploads/" . $filename);
+    
+    if (file_exists($file_path))
+    {
+        // Descarga
+        return Response::download($file_path, $filename, [
+            'Content-Length: '. filesize($file_path)
+        ]);
+    }
+    else
+    {
+        // Error
+        return Redirect::back()->withErrors(['No se encontro el Archivo']);
+    }
+});
+Route::get('download/{filename}', function($filename){
+    return Redirect::back()->withErrors(['No se encontro el Archivo']); 
+});
