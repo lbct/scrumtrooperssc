@@ -203,10 +203,11 @@ class Control extends Base
         if($this->rol->is($request))
         {
             $sesion = Sesion::where('SESION.ID', '=', $request->sesion_id)->first();
-
             if ($sesion->AUXILIAR_ID == null){
+                $sesion = Sesion::find($request->sesion_id);
+                $sesion->AUXILIAR_ID    =   $request->auxiliar_id;
+                $sesion->save();
                 $request->session()->flash('alert-success', 'Registrado Correctamente');
-                
             }
             else
                 $request->session()->flash('alert-danger', 'Ya existe alguien registrado como responsable');
