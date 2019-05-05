@@ -31,8 +31,8 @@
             </div>
         </form>
         <div class="form-group">
-            <button class="m-3 btn btn-primary pull-right" id="enviarArchivo">Confirmar</button>
-            <button type="reset"  class="m-3 btn btn-danger" id="cancelar">Cancelar</button>
+            <button class="m-3 btn btn-primary pull-right" id="enviarArchivo">Subir Archivo</button>
+            <button class="m-3 btn btn-danger" id="cancelar" onclick="window.location='/docente/subirPractica'">Cancelar</button>
         </div>
     </div>
 
