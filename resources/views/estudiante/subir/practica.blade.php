@@ -26,7 +26,7 @@
                 @endforeach
             </p>
         <!-- Drop Zone -->
-        <div id="alertas"></div>
+        <div id="alertas" role='alert'></div>
         <div class="form-group m-4">            
                 <div class="dropzone" id="dropzoneFileUpload"></div>
         </div>
@@ -39,6 +39,13 @@
         
     </div>
 </div>
+<script>
+    window.setTimeout(function() {
+       $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove(); 
+       });
+    }, 8000);
+ </script>
 <script type="text/javascript">
     var baseUrl = "{{ url('/') }}";
     var token = "{{ Session::getToken() }}";
@@ -59,7 +66,12 @@
                 myDropzone = this;
             
             submitButton.addEventListener("click", function() {
-                myDropzone.processQueue();
+                if (myDropzone.files.length == 0){
+                    $alertas = document.getElementById('alertas');
+                    $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-warning'>No existen archivos para subir.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+                }
+                else
+                    myDropzone.processQueue();
             });
             
             var cancelButton = document.querySelector("#cancelar")
@@ -74,7 +86,7 @@
                 this.addFile(file);
                 
                 $alertas = document.getElementById('alertas');
-                $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-warning'>Nuevo archivo para subir.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+                $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-warning'>Nuevo archivo para subir.<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
             });
         },
         
@@ -85,14 +97,14 @@
         success:function(file, response)
         {
             $alertas = document.getElementById('alertas');
-            $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-success'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+            $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-success'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
         },
         
         error:function(file, response)
         {
             myDropzone.removeAllFiles();
             $alertas = document.getElementById('alertas');
-            $alertas.innerHTML = "<div class='flash-message'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+            $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-danger'>"+response+"<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
         }
     });
 </script>
