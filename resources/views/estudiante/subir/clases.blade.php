@@ -37,7 +37,7 @@
                 form.submit();
             }
         </script>
-      @elseif (sizeof($clases) > 0)
+      @else
       <p>No tiene Materias Incritas</p>
       @endif
     </div>

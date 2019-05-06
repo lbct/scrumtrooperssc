@@ -100,6 +100,11 @@ Route::post('auxiliar/practicas',
     'as'   => 'auxiliar/practicas',
     'uses' => 'Auxiliar\Ver\Control@postPracticas'
 ]);
+Route::post('auxiliar/asignar', 
+[
+    'as' => 'auxiliar/asignar',
+    'uses' => 'Auxiliar\Ver\Control@postSesion'
+]);
 
 
 //Rutas Docente

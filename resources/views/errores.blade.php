@@ -7,6 +7,12 @@
         @foreach ($errors->all() as $error)
         <li>{!!$error!!}</li>
         @endforeach
-
 </div>
+<script>
+    window.setTimeout(function() {
+       $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove(); 
+       });
+    }, 8000);
+ </script>
 @endif

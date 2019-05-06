@@ -20,7 +20,7 @@
       <form>
         <input type="text" id="username" name="username" class="fadeIn second" placeholder="Usuario" value="{{ old('username') }}">
         <input type="password" id="password" name="password" class="fadeIn third" placeholder="Contraseña">
-        <input type="submit" class="fadeIn fourth btn-primary" value="Iniciar Sesion">
+        <input type="submit" class="fadeIn fourth btn btn-primary" value="Iniciar Sesion">
       </form>
 
       <!-- Registrar Estudiante -->
