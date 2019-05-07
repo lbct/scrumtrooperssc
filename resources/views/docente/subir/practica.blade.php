@@ -90,7 +90,7 @@
         },
         success: function (file) {
             var guia_id = document.getElementById("guia_practica_id");
-            guia_id.setAttribute("value", "uploads/{{$nombre_archivo}}."+file.upload.filename.split('.').pop());
+            guia_id.setAttribute("value", "{{$nombre_archivo}}."+file.upload.filename.split('.').pop());
             var form = document.getElementById("form_clase");
             form.submit();
         },
