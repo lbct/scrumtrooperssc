@@ -14,7 +14,7 @@
             {!! csrf_field() !!}
             <input type="hidden" name="clase_id" value="{{$clase_id}}" />
             <select class="form-control" id='sesiones_est' name='sesion_id' onchange="parentNode.submit();">
-                @for($i=0;$i<sizeof($sesiones);$i++) <option value="{{$sesiones[$i]->ID}}" @if(($sesiones[$i]->ID)==$sesion_id) selected="selected" @endif>{{'Sesión #'.(sizeof($sesiones) - $i).':'}}</option>
+                @for($i=0;$i<sizeof($sesiones);$i++) <option value="{{$sesiones[$i]->ID}}" @if(($sesiones[$i]->ID)==$sesion->ID) selected="selected" @endif>{{'Sesión #'.(sizeof($sesiones) - $i).':'}}</option>
                     @endfor
             </select>
         </form>
@@ -33,15 +33,15 @@
     </thead>
     <tbody>
         <tr>
-            <td>{{$practica->ID}}</td>
+            <td>{{$sesion->SEMANA}}</td>
             <td>
-                <a href="/download/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
+                <a href="/descargar/guia/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
             </td>
             <div>
                 <form action="{{route('auxiliar/practicas')}}" method="POST">
                     {!! csrf_field() !!}
                     <input type="hidden" name="clase_id" value="{{$clase_id}}" />
-                    <input type="hidden" name="sesion_id" value="{{$sesion_id}}" />
+                    <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
                 </form>
             </div>
         </tr>
@@ -55,7 +55,7 @@
         <form action="{{route('auxiliar/asignar')}}" method="POST">
             {!! csrf_field() !!}
             <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}" />
-            <input type="hidden" name="sesion_id" value="{{$sesion_id}}" />
+            <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
             <input type="submit" value="Volverme responsable de la Sesion" class="m-3 btn btn-danger">
         </form>
         <h3>&nbsp</h3>

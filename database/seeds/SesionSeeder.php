@@ -22,6 +22,13 @@ class SesionSeeder extends Seeder
             'SEMANA' 	                         =>	2,
         ]);
         
+        Sesion::create([
+            'CLASE_ID' 		                     =>	1,
+            'AUXILIAR_ID' 		                 =>	NULL,
+            'GUIA_PRACTICA_ID' 	                 =>	2,
+            'SEMANA' 	                         =>	3,
+        ]);
+        
         //Clase 2 - Introducción a la programación
         Sesion::create([
             'CLASE_ID' 		                     =>	2,
@@ -35,6 +42,13 @@ class SesionSeeder extends Seeder
             'AUXILIAR_ID' 		                 =>	2,
             'GUIA_PRACTICA_ID' 	                 =>	2,
             'SEMANA' 	                         =>	2,
+        ]);
+        
+        Sesion::create([
+            'CLASE_ID' 		                     =>	2,
+            'AUXILIAR_ID' 		                 =>	2,
+            'GUIA_PRACTICA_ID' 	                 =>	2,
+            'SEMANA' 	                         =>	3,
         ]);
         
         //Clase 3 - Introducción a la programación

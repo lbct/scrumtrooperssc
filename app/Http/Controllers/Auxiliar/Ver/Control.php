@@ -160,9 +160,14 @@ class Control extends Base
     {
         if($this->rol->is($request))
         {
+            $clase = Clase::find($request->clase_id);
             $id_gestion = Clase::find($request->clase_id)->gestion->ID;
             $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
-            $sesiones = Sesion::whereRaw('CLASE_ID='.$request->clase_id)->orderBy('ID', 'DESC')->get();
+            $sesiones = Sesion::whereRaw('CLASE_ID='.$request->clase_id)
+                        ->where('SEMANA', "<=", ($clase->SEMANA_ACTUAL_SESION)+1)
+                        ->orderBy('SEMANA', 'DESC')
+                        ->get();
+            
             $sesion_id = -1;
             if($request->sesion_id != null){
                 $sesion_id = $request->sesion_id;
@@ -184,7 +189,7 @@ class Control extends Base
                 return view('auxiliar.practica.ver.lista')
                 ->with('practica', $practica)
                 ->with('sesiones', $sesiones)
-                ->with('sesion_id', $sesion_id)
+                ->with('sesion', $sesion)
                 ->with('clase_id', $request->clase_id)
                 ->with('id_gestion', $id_gestion)
                 ->with('auxiliar_id', $auxiliar->ID)
@@ -212,7 +217,7 @@ class Control extends Base
             else
                 $request->session()->flash('alert-danger', 'Ya existe alguien registrado como responsable');
             
-            return redirect('auxiliar/practicas');
+            return redirect()->back()->withInput();
         }
         return redirect('login');
     }

@@ -143,10 +143,10 @@ Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio'
 
 
 //Rutas de Descarga 'uploads'
-Route::get('download/uploads/{filename}', function($filename)
+Route::get('descargar/guia/{filename}', function($filename)
 {
     // Verfificar que el archivo exista en /uploads
-    $file_path = (public_path()."/uploads/" . $filename);
+    $file_path = (public_path()."/uploads/guias practicas/" . $filename);
     
     if (file_exists($file_path))
     {
@@ -160,7 +160,4 @@ Route::get('download/uploads/{filename}', function($filename)
         // Error
         return Redirect::back()->withErrors(['No se encontro el Archivo']);
     }
-});
-Route::get('download/{filename}', function($filename){
-    return Redirect::back()->withErrors(['No se encontro el Archivo']); 
 });
