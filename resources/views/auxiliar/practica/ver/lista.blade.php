@@ -35,7 +35,7 @@
         <tr>
             <td>{{$practica->ID}}</td>
             <td>
-                <a href="/download/{{$practica->ARCHIVO}}" class="btn btn-lg">{{$practica->ARCHIVO}}</a>
+                <a href="/download/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
             </td>
             <div>
                 <form action="{{route('auxiliar/practicas')}}" method="POST">
