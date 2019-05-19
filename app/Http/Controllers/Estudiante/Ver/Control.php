@@ -148,22 +148,51 @@ class Control extends Base
     public function verHorario(Request $request)
     {
         if ($this->rol->is($request)) {
-            $paso = $request->paso;
+
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $gestion_id = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
 
-            $gestion_id = $request->gestion;
+            $estudiante_clase = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)->get();
+            $horario = array();
+            for ($i = 0; $i < 10; $i++)
+            {
+                for ($j = 0; $j < 6; $j++)
+                {
+                    $horario[$i][$j] = null;
+                }
+            }
 
-            $materias = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
-                        ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
-                        ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
-                        ->where("GESTION.ID", $gestion_id)
-                        ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
-                        ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
-                        ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
-                        ->select("NOMBRE_MATERIA", "CLASE_ID")
-                        ->get();
 
-            return view('estudiante.ver.horario');
+            foreach($estudiante_clase as $eclase){
+                $clase = Clase::where("CLASE.ID", $eclase->CLASE_ID)
+                                ->join("HORARIO", "HORARIO.ID", "=", "CLASE.HORARIO_ID")
+                                ->join("AULA", "AULA.ID", "=", "CLASE.AULA_ID")
+                                ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                                ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                                ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                                ->select("DIA", "HORA_INICIO", "NOMBRE_AULA", "NOMBRE_MATERIA")
+                                ->first();
+                $x = -1;
+                $y = ($clase->DIA)-1;
+                switch ($clase->HORA_INICIO){
+                    case "06:45:00":$x=0;break;
+                    case "08:15:00":$x=1;break;
+                    case "09:45:00":$x=2;break;
+                    case "11:15:00":$x=3;break;
+                    case "12:45:00":$x=4;break;
+                    case "14:15:00":$x=5;break;
+                    case "15:45:00":$x=6;break;
+                    case "17:15:00":$x=7;break;
+                    case "18:45:00":$x=8;break;
+                    case "20:15:00":$x=9;break;
+                }
+
+                $horario[$x][$y] = $clase;
+            }
+
+            //return $horario;
+            return view('estudiante.ver.horario')
+                    ->with('horario', $horario);
         }
 
         return redirect('login');
