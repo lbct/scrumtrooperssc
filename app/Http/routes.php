@@ -27,6 +27,8 @@ Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
 Route::post('estudiante/portafolio/materias', 'Estudiante\Ver\Control@materiasPortafolio');
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
 
+Route::get('estudiante/horario', 'Estudiante\Ver\Control@verHorario');
+
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
 Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
 Route::get('estudiante/subirPractica/{id_sesion}',[
