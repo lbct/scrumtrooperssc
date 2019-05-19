@@ -77,18 +77,18 @@ class Control extends Base
         }
 
         
-        $destinationPath = 'uploads'; // upload path
+        $destinationPath = 'uploads/guias practicas'; // upload path
         $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension
         $fileName = $request->nombre_archivo. '.' . $extension; // renameing image
         
         $upload_success = Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
         
         if ($upload_success) {
-            $existe = GuiaPractica::where('ARCHIVO', '=', $destinationPath.'/'.$fileName)
+            $existe = GuiaPractica::where('ARCHIVO', '=', $fileName)
             ->get();
             if($existe == null || sizeof($existe) == 0){
                 $guiaPractica = new GuiaPractica();
-                $guiaPractica->ARCHIVO = $destinationPath.'/'.$fileName;
+                $guiaPractica->ARCHIVO = $fileName;
                 $guiaPractica->save();
             }
             return Response::json('success', 200);

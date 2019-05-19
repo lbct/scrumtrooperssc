@@ -19,9 +19,6 @@
                     <option value="{{$gestion->ID}}">
                       Gestion: {{$gestion->DESCRIPCION}} - {{$gestion->ANO_GESTION}}
                     </option>
-                    <option value="{{$gestion->ID}}">
-                      Gestion: {{$gestion->DESCRIPCION}} - {{$gestion->ANO_GESTION}}
-                    </option>
                 @endforeach
               </select>
             </div>
