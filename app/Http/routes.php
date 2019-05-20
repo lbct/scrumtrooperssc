@@ -105,7 +105,17 @@ Route::post('auxiliar/asignar',
     'as' => 'auxiliar/asignar',
     'uses' => 'Auxiliar\Ver\Control@postSesion'
 ]);
+Route::post('auxiliar/clases/estudiante', 
+[
+    'as' => 'auxiliar/clases/estudiante',
+    'uses' => 'Auxiliar\Estudiante\Ver\Control@postEstudiante'
+]);
 
+Route::post('auxiliar/clases/estudiante/practica', 
+[
+    'as' => 'auxiliar/clases/estudiante/practica',
+    'uses' => 'Auxiliar\Estudiante\Ver\Control@postPractica'
+]);
 
 //Rutas Docente
 Route::get('docente','Docente\Inicio\Control@getInicio');
