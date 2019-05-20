@@ -47,7 +47,7 @@
                     <form id="form_estudiante" action="{{route('auxiliar/clases/estudiante')}}" method="POST">
                         {!! csrf_field() !!}
                         @if($sesion_est != null && App\Models\EnvioPractica::where('SESION_ESTUDIANTE_ID', $sesion_est->ID)->first() != null)
-                            <input type="button" class="btn btn-primary" value="Comentar práctica" onclick="submitPractica();">
+                            <a class="btn btn-link" onclick="submitPractica();" ><span class="fas fa-comment-alt"></span> Comentar </a>
                             <script>
                                 function submitPractica() {
                                     var form = document.getElementById("form_estudiante");
