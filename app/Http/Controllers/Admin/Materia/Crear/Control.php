@@ -32,7 +32,7 @@ class Control extends Base
     //Crea una nueva Materia
     public function postRegistro(Request $request)
     {
-        $gestion = $request->gestion;
+        $gestion_id = $request->gestion_id;
         if ($this->rol->is($request)) {
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
@@ -41,15 +41,17 @@ class Control extends Base
             if ($validator->fails()) {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
             } else {
-                try {
-                    $materia = Materia::whereRaw('CODIGO_MATERIA='.($request->codigo_materia).'and NOMBRE_MATERIA='.($request->nombre_materia))->firstOrFail();
+                $materia = Materia::whereRaw('CODIGO_MATERIA=\''.($request->codigo_materia).'\' and NOMBRE_MATERIA=\''.($request->nombre_materia).'\'')->first();
+                if($materia != null)
+                {
                     $request->session()->flash('alert-danger', 'Ya existe la Materia.');
                     return redirect('/administrador/crearMateria');
-                } catch (ModelNotFoundException $e) {
+                }
+                else{
                     $materia = new Materia();
                     $materia->CODIGO_MATERIA    = $request->codigo_materia;
                     $materia->NOMBRE_MATERIA    = $request->nombre_materia;
-                    $materia->GESTION_ID        = $request->gestion;
+                    $materia->GESTION_ID        = $request->gestion_id;
                     $materia->save();
                     $request->session()->flash('alert-success', 'Materia creada con éxito');
                     return redirect('/administrador');
