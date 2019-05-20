@@ -145,6 +145,7 @@
                         <a class="collapse-item" href="/administrador/crearDocente">Crear Docente</a>
                         <a class="collapse-item" href="/administrador/crearAdmin">Crear Administrador</a>
                         <a class="collapse-item" href="/administrador/crearGestion">Crear Gestión</a>
+                        <a class="collapse-item" href="/administrador/crearMateria">Crear Materia</a>
                     </div>
                 </div>
             </li>
@@ -224,7 +225,7 @@
 
 </html>
 <script>
-$('#toggler').click(function() {
-    $('#accordionSidebar').toggle();
-});
+    $('#toggler').click(function() {
+        $('#accordionSidebar').toggle();
+    });
 </script>
