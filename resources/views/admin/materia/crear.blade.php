@@ -22,7 +22,7 @@
                         </div>
                         <center>
                             <div class="col-md-11 mb-11">
-                                <textarea class="form-control " id="validationTextarea" placeholder="Detalle de la Materia" required value="{{ old('comentario') }}"></textarea>
+                                <textarea class="form-control " name="comentario" id="comentario" placeholder="Detalle de la Materia" required value="{{ old('comentario') }}"></textarea>
                                 <div class="invalid-feedback">
                                 </div>
                             </div>

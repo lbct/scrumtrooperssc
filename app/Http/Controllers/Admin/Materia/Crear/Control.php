@@ -32,30 +32,30 @@ class Control extends Base
     //Crea una nueva Materia
     public function postRegistro(Request $request)
     {
-        $gestion = $request->gestion;
+        $gestion_id = $request->gestion_id;
         if ($this->rol->is($request)) {
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
                 'codigo_materia'    => 'required',
+                'comentario'        => 'required',
             ]);
-            $materiaA = Materia::where('CODIGO_MATERIA', $request->codigo_materia)->count();
-            $materiaB = Materia::where('NOMBRE_MATERIA', $request->nombre_materia)->count();
-            //return $materiaA;
 
             if ($validator->fails()) {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
-            }else {
-                $request->session()->flash('alert-danger', 'Ya existe la Materia.');
-                return view('docente.index')->withErrors($validator)->withInput();
-            }
-            if ($materiaA == 0 && $materiaB == 0) {
+            } else {
+                //$request->session()->flash('alert-danger', 'Ya existe la Materia.');
+                //return view('docente.index')->withErrors($validator)->withInput();
+                //}
+
                 $materia = new Materia();
                 $materia->CODIGO_MATERIA    = $request->codigo_materia;
                 $materia->NOMBRE_MATERIA    = $request->nombre_materia;
                 $materia->GESTION_ID        = $request->gestion_id;
+                $materia->DETALLE_MATERIA   = $request->comentario;
                 $materia->save();
                 $request->session()->flash('alert-success', 'Materia creada con exito');
-            } 
+                return view('admin.index');
+            }
         }
         return redirect('/login');
     }
