@@ -34,7 +34,7 @@
             @endforeach
         </tr>
         <tr>
-            <td>08:15/08:45</td>
+            <td>08:15/09:45</td>
             @foreach ($horario[1] as $clase)
                 @if($clase != null)
                 <td>
