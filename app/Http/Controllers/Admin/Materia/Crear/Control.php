@@ -43,6 +43,7 @@ class Control extends Base
             if ($validator->fails()) {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
             } else {
+<<<<<<< HEAD
                 //$request->session()->flash('alert-danger', 'Ya existe la Materia.');
                 //return view('docente.index')->withErrors($validator)->withInput();
                 //}
@@ -55,6 +56,23 @@ class Control extends Base
                 $materia->save();
                 $request->session()->flash('alert-success', 'Materia creada con exito');
                 return view('admin.index');
+=======
+                $materia = Materia::whereRaw('CODIGO_MATERIA=\''.($request->codigo_materia).'\' and NOMBRE_MATERIA=\''.($request->nombre_materia).'\'')->first();
+                if($materia != null)
+                {
+                    $request->session()->flash('alert-danger', 'Ya existe la Materia.');
+                    return redirect('/administrador/crearMateria');
+                }
+                else{
+                    $materia = new Materia();
+                    $materia->CODIGO_MATERIA    = $request->codigo_materia;
+                    $materia->NOMBRE_MATERIA    = $request->nombre_materia;
+                    $materia->GESTION_ID        = $request->gestion_id;
+                    $materia->save();
+                    $request->session()->flash('alert-success', 'Materia creada con éxito');
+                    return redirect('/administrador');
+                }
+>>>>>>> ed8ffa573f0b76b70e61691c87d6c26f030980cd
             }
         }
         return redirect('/login');
