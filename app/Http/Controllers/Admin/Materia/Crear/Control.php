@@ -38,25 +38,25 @@ class Control extends Base
                 'nombre_materia'    => 'required',
                 'codigo_materia'    => 'required',
             ]);
+            $materiaA = Materia::where('CODIGO_MATERIA', $request->codigo_materia)->count();
+            $materiaB = Materia::where('NOMBRE_MATERIA', $request->nombre_materia)->count();
+            //return $materiaA;
+
             if ($validator->fails()) {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
-            } else {
-                try {
-                    $materia = Materia::whereRaw('CODIGO_MATERIA='.($request->codigo_materia).'and NOMBRE_MATERIA='.($request->nombre_materia))->firstOrFail();
-                    $request->session()->flash('alert-danger', 'Ya existe la Materia.');
-                    return redirect('/administrador/crearMateria');
-                } catch (ModelNotFoundException $e) {
-                    $materia = new Materia();
-                    $materia->CODIGO_MATERIA    = $request->codigo_materia;
-                    $materia->NOMBRE_MATERIA    = $request->nombre_materia;
-                    $materia->GESTION_ID        = $request->gestion;
-                    $materia->save();
-                    $request->session()->flash('alert-success', 'Materia creada con éxito');
-                    return redirect('/administrador');
-                }
+            }else {
+                $request->session()->flash('alert-danger', 'Ya existe la Materia.');
+                return view('docente.index')->withErrors($validator)->withInput();
             }
+            if ($materiaA == 0 && $materiaB == 0) {
+                $materia = new Materia();
+                $materia->CODIGO_MATERIA    = $request->codigo_materia;
+                $materia->NOMBRE_MATERIA    = $request->nombre_materia;
+                $materia->GESTION_ID        = $request->gestion_id;
+                $materia->save();
+                $request->session()->flash('alert-success', 'Materia creada con exito');
+            } 
         }
-
         return redirect('/login');
     }
 }
