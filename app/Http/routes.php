@@ -27,15 +27,11 @@ Route::post('estudiante/portafolio', 'Estudiante\Ver\Control@postPortafolio');
 Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
 Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio');
 
-<<<<<<< HEAD
-Route::get('estudiante/clases/{id_sesion}',[
-=======
 Route::get('estudiante/horario', 'Estudiante\Ver\Control@verHorario');
 
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
 Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
 Route::get('estudiante/subirPractica/{id_sesion}',[
->>>>>>> 506847d7f2de6ca89afd61a6a214783b11346844
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
@@ -99,8 +95,6 @@ Route::post('auxiliar/clases',
     'uses' => 'Auxiliar\Ver\Control@postClases'
 ]);
 
-<<<<<<< HEAD
-=======
 Route::get('auxiliar/practicas', 'Auxiliar\Ver\Control@getPracticasUltimaGestion');
 Route::get('auxiliar/practicas/{id_gestion}', 
 [
@@ -129,7 +123,6 @@ Route::post('auxiliar/clases/estudiante/practica',
     'uses' => 'Auxiliar\Estudiante\Ver\Control@postPractica'
 ]);
 
->>>>>>> 506847d7f2de6ca89afd61a6a214783b11346844
 //Rutas Docente
 Route::get('docente','Docente\Inicio\Control@getInicio');
 Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
