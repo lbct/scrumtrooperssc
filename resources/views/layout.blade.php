@@ -133,6 +133,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/docente/listas">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Ver Estudiantes Inscritos</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/docente/portafolios">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Portafolios</span>
