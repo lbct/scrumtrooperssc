@@ -72,10 +72,23 @@
                     <span>Inscripcion</span>
                 </a>
             </li>
+<<<<<<< HEAD
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/portafolio">
                     <i class="fa fa-fw fa-briefcase"></i>
                     <span>Portafolio</span>
+=======
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/portafolio">
+                    <i class="fa fa-fw fa-briefcase"></i>
+                    <span>Portafolio</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/subirPractica">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
+>>>>>>> origin
                 </a>
             </li>
             @endif
@@ -85,6 +98,12 @@
                 <a class="nav-link" href="/auxiliar/clases">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Lista de clases</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auxiliar/practicas">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Lista de Practicas</span>
                 </a>
             </li>
             @endif
@@ -106,6 +125,18 @@
                 <a class="nav-link" href="/docente/subirPractica">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Subir Práctica</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/clases/crear">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Crear Clase</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/portafolios">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Portafolios</span>
                 </a>
             </li>
             @endif
@@ -150,7 +181,7 @@
             <!-- Vista Principal -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
                 <div class="container">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <h4 class="text-light">
@@ -199,3 +230,8 @@
 </body>
 
 </html>
+<script>
+$('#toggler').click(function() {
+    $('#accordionSidebar').toggle();
+});
+</script>

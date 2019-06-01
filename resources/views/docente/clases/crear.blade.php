@@ -6,25 +6,10 @@
 
 <div class="py-5 d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
-            <form id="form_clase" action="{{route('docente/subirPractica')}}" method="POST">
+            <form id="form_clase" action="/docente/clases/crear/horario" method="POST">
                 {!! csrf_field() !!}
                 <h3>Seleccione una Materia</h3>
                 <br>
-                <center>
-                    <div class="ex1 form-group col-md-6">
-                        <select name="gestion_id" class="form-control" id='año_gestion' onchange="reload()">
-                            @foreach($gestiones as $gestion)
-                            <option value="{{$gestion->ID}}" @if(($gestion->ID)==$id_gestion) selected="selected" @endif>{{'Gestión: '.($gestion->periodo->DESCRIPCION).' - '.$gestion->ANO_GESTION}}</option>
-                            @endforeach
-                            <script>
-                                function reload() {
-                                    var id = $("#año_gestion").val();
-                                    window.location = "/docente/subirPractica/" + id;
-                                }
-                            </script>
-                        </select>
-                    </div>
-                </center>
                 <br>
                 @if(sizeof($materias) > 0)
                 <table id="tabla_click">

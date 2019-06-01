@@ -23,12 +23,17 @@ Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcio
 Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
 Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
 
-Route::get('estudiante/clases/{id_sesion}',[
+Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
+Route::post('estudiante/portafolio/materias', 'Estudiante\Ver\Control@materiasPortafolio');
+Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
+
+Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
+Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
+Route::get('estudiante/subirPractica/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
-
-Route::post('estudiante/clases/{id_sesion}',[
+Route::post('estudiante/subirPractica/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@postSubir'
 ]);
@@ -84,6 +89,24 @@ Route::post('auxiliar/clases',
     'uses' => 'Auxiliar\Ver\Control@postClases'
 ]);
 
+Route::get('auxiliar/practicas', 'Auxiliar\Ver\Control@getPracticasUltimaGestion');
+Route::get('auxiliar/practicas/{id_gestion}', 
+[
+    'as' => 'auxiliar/practicas',
+    'uses' => 'Auxiliar\Ver\Control@getPracticas'
+]);
+Route::post('auxiliar/practicas', 
+[
+    'as'   => 'auxiliar/practicas',
+    'uses' => 'Auxiliar\Ver\Control@postPracticas'
+]);
+Route::post('auxiliar/asignar', 
+[
+    'as' => 'auxiliar/asignar',
+    'uses' => 'Auxiliar\Ver\Control@postSesion'
+]);
+
+
 //Rutas Docente
 Route::get('docente','Docente\Inicio\Control@getInicio');
 Route::get('docente','Docente\Guia\Control@getSubirGuiaPractica');
@@ -108,3 +131,34 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+
+Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
+Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
+Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
+Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
+
+Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios');
+Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
+Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
+Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
+
+
+//Rutas de Descarga 'uploads'
+Route::get('descargar/guia/{filename}', function($filename)
+{
+    // Verfificar que el archivo exista en /uploads
+    $file_path = (public_path()."/uploads/guias practicas/" . $filename);
+    
+    if (file_exists($file_path))
+    {
+        // Descarga
+        return Response::download($file_path, $filename, [
+            'Content-Length: '. filesize($file_path)
+        ]);
+    }
+    else
+    {
+        // Error
+        return Redirect::back()->withErrors(['No se encontro el Archivo']);
+    }
+});

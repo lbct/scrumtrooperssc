@@ -27,8 +27,8 @@ class Control extends Base
                        ->orderBy('ANO_GESTION','desc')
                        ->first();
             
-            $materias = Materia::select('MATERIA.ID', 'NOMBRE_MATERIA')
-                        ->where('GESTION_ID',$gestion->ID)
+            $materias = Materia::where('GESTION_ID',$gestion->ID)
+                        ->select('MATERIA.ID', 'NOMBRE_MATERIA')
                         ->get();
             
             $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
@@ -37,8 +37,8 @@ class Control extends Base
                     ->join("GRUPO_A_DOCENTE","GRUPO_A_DOCENTE.ID","=","CLASE.GRUPO_A_DOCENTE_ID")
                     ->join("GRUPO_DOCENTE","GRUPO_DOCENTE.ID","=","GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
                     ->join("MATERIA","MATERIA.ID","=","GRUPO_DOCENTE.MATERIA_ID")
-                    ->select("MATERIA.ID","NOMBRE_MATERIA")
                     ->where('MATERIA.GESTION_ID',$gestion->ID)
+                    ->select("MATERIA.ID","NOMBRE_MATERIA")
                     ->get();
             
             $materiasDisponibles = $materias->diff($materiasRegistradas);

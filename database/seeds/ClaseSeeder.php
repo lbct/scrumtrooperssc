@@ -15,7 +15,7 @@ class ClaseSeeder extends Seeder
         'GRUPO_A_DOCENTE_ID' 	         =>	1,
         'DETALLE_CLASE' 	             =>	'',
         'DIA' 	                         =>	1,
-        'SEMANA_ACTUAL_SESION' 	         =>	1,
+        'SEMANA_ACTUAL_SESION' 	         =>	2,
         ]);
         
         //Leticia Blanco Introducción a la programación 9:45 - 11:15 LAB0003 2019 Primer Semestre
