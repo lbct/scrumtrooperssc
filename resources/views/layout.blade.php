@@ -61,16 +61,21 @@
             </li>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/estudiante/estadoInscripcion">
+                    <i class="fa fa-fw fa-check-square"></i>
+                    <span>Estado de Inscripcion</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/estudiante/inscripcion">
                     <i class="fas fa-fw fa-plus-circle"></i>
                     <span>Inscripcion</span>
                 </a>
             </li>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="/estudiante/estadoInscripcion">
-                    <i class="fa fa-fw fa-check-square"></i>
-                    <span>Estado de Inscripcion</span>
+                <a class="nav-link" href="/estudiante/portafolio">
+                    <i class="fa fa-fw fa-briefcase"></i>
+                    <span>Portafolio</span>
                 </a>
             </li>
             @endif
@@ -98,16 +103,10 @@
                 </a>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
-                 <a class="nav-link" href="/docente/subirGuiaPractica">
-                    <i style="font-size:20px" class="fa">&#xf1c1;</i>
-                    <span>Subir Guia Practica</span></a>
-=======
                 <a class="nav-link" href="/docente/subirPractica">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Subir Práctica</span>
                 </a>
->>>>>>> origin
             </li>
             @endif
             <!--Opciones de Administrador-->
