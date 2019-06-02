@@ -197,6 +197,51 @@ class Control extends Base
 
         return redirect('login');
     }
+
+    public function verPracticas(Request $request){
+
+        if ($this->rol->is($request)) {
+
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            
+            $gestion_actual = $this->getUltimaGestion();
+            
+            $clases  = EstudianteClase::where("ESTUDIANTE_ID", $estudiante->ID)
+                         ->join("CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
+                         ->join("GESTION", "CLASE.GESTION_ID", "=", "GESTION.ID")
+                         ->where("GESTION.ID", $gestion_actual)
+                         ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.ID", "=", "CLASE.GRUPO_A_DOCENTE_ID")
+                         ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID")
+                         ->join("MATERIA", "MATERIA.ID", "=", "GRUPO_DOCENTE.MATERIA_ID")
+                         ->select("NOMBRE_MATERIA", "CLASE_ID")
+                         ->get();
+
+            return view('estudiante.ver.practicas.materias')
+                    ->with('clases', $clases)
+                    ->with('gestion', $gestion_actual);
+        }
+        return redirect('login');
+    }
+
+    public function verPracticasMateria(Request $request)
+    {
+        if ($this->rol->is($request)) {
+            $clase_id = $request->clase_id;
+            $clase = Clase::find($clase_id);
+            $estudiante = Usuario::find($request->cookie('USUARIO_ID'))->estudiante;
+            $practicas = Sesion::where('CLASE_ID', '=', $clase_id)
+                            ->join('GUIA_PRACTICA', 'GUIA_PRACTICA.ID' ,'=' , 'SESION.GUIA_PRACTICA_ID')
+                            ->where('SEMANA', "<=", ($clase->SEMANA_ACTUAL_SESION))
+                            ->select('SEMANA', 'ARCHIVO', 'DETALLE')
+                            ->orderBy('SEMANA', 'ASC')
+                            ->get();
+            
+            return view('estudiante.ver.practicas.ver')
+                    ->with('practicas', $practicas);
+        }
+        return redirect('login');
+    }
+    
 }
 
 
