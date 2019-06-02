@@ -4,7 +4,7 @@
 
 <div class="py-5 d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
-        <h3>Lista de Estudiantes<h3>
+        <h3>Lista de Estudiantes</h3>
         <br>
         <br>
         @if(sizeof($nombres) > 0)
