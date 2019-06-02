@@ -73,6 +73,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/estudiante/verPracticas">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Ver Prácticas</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/estudiante/portafolio">
                     <i class="fa fa-fw fa-briefcase"></i>
                     <span>Portafolio</span>
