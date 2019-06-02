@@ -64,11 +64,12 @@ class Control extends Base
             if($estudianteClase->exists())
             {
                 $semana_actual = Clase::find($clase_id)->SEMANA_ACTUAL_SESION;
-                $sesion_id     = Sesion::where("CLASE_ID", $clase_id)
+                //return $clase_id.' '.$semana_actual;
+                $sesion     = Sesion::where("CLASE_ID", $clase_id)
                                  ->where("SEMANA", $semana_actual)
-                                 ->first()->ID;
-                
-                return redirect('/estudiante/subirPractica/'.strval($sesion_id));
+                                 ->first();
+                if($sesion != null)
+                    return redirect('/estudiante/subirPractica/'.strval($sesion->ID));
             }
 
             return redirect('/estudiante/subirPractica');
@@ -93,18 +94,19 @@ class Control extends Base
                 $sesion_estudiante = SesionEstudiante::where('SESION_ID',$id_sesion)
                                      ->where('ESTUDIANTE_ID',$id_estudiante)
                                      ->first();
-                
-                $envios = EnvioPractica::where('SESION_ESTUDIANTE_ID',$sesion_estudiante->ID)->get();
-                
-                $semanas = Sesion::where("SESION.CLASE_ID", $sesion->CLASE_ID)
-                           ->orderBy("SESION.SEMANA", "DESC")
-                           ->where("SESION.SEMANA", "<=", $semana_actual)
-                           ->get();
-                
-                return view('estudiante.subir.practica')
-                ->with('sesion', $sesion)
-                ->with('envios', $envios)
-                ->with('semanas', $semanas);
+                if($sesion_estudiante != null){
+                    $envios = EnvioPractica::where('SESION_ESTUDIANTE_ID',$sesion_estudiante->ID)->get();
+                    
+                    $semanas = Sesion::where("SESION.CLASE_ID", $sesion->CLASE_ID)
+                            ->orderBy("SESION.SEMANA", "DESC")
+                            ->where("SESION.SEMANA", "<=", $semana_actual)
+                            ->get();
+                    
+                    return view('estudiante.subir.practica')
+                    ->with('sesion', $sesion)
+                    ->with('envios', $envios)
+                    ->with('semanas', $semanas);
+                }
             }
             
             return redirect('/estudiante/subirPractica');

@@ -91,6 +91,12 @@
 >>>>>>> origin
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/horario">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Ver Horario</span>
+                </a>
+            </li>
             @endif
             <!--Opciones de Auxiliar-->
             @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
@@ -152,6 +158,7 @@
                         <a class="collapse-item" href="/administrador/crearDocente">Crear Docente</a>
                         <a class="collapse-item" href="/administrador/crearAdmin">Crear Administrador</a>
                         <a class="collapse-item" href="/administrador/crearGestion">Crear Gestión</a>
+                        <a class="collapse-item" href="/administrador/crearMateria">Crear Materia</a>
                     </div>
                 </div>
             </li>
@@ -231,7 +238,7 @@
 
 </html>
 <script>
-$('#toggler').click(function() {
-    $('#accordionSidebar').toggle();
-});
+    $('#toggler').click(function() {
+        $('#accordionSidebar').toggle();
+    });
 </script>
