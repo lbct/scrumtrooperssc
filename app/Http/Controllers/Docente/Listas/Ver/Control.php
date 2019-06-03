@@ -65,7 +65,7 @@ class Control extends Base
         foreach ($clases as $clase) {
             $estudiantes = EstudianteClase::where('CLASE_ID', '=', $clase->ID)->get();
             foreach ($estudiantes as $estudiante){
-                $nombre = Estudiante::where('ESTUDIANTE.ID', '=', $estudiante->ID)
+                $nombre = Estudiante::where('ESTUDIANTE.ID', '=', $estudiante->ESTUDIANTE_ID)
                             ->join('USUARIO', 'USUARIO.ID', '=', 'ESTUDIANTE.USUARIO_ID')
                             ->select('NOMBRE', 'APELLIDO', 'CODIGO_SIS')
                             ->first();
