@@ -146,3 +146,4 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+Route::get('docente/informes', 'Docente\Informes\Ver\Control@getInformes');

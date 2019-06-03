@@ -138,6 +138,12 @@
                     <span>Portafolios</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/informes">
+                    <i class="fas fa-fw fa-percent"></i>
+                    <span>Informe Asistencia</span>
+                </a>
+            </li>
             @endif
             <!--Opciones de Administrador-->
             @if(App\Models\Administrador::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
