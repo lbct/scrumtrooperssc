@@ -54,7 +54,7 @@ class Control extends Base
                     $materia->GESTION_ID        = $request->gestion_id;
                     $materia->save();
                     $request->session()->flash('alert-success', 'Materia creada con exito');
-                    return view('/admin/Materia/crear');
+                    return redirect('/administrador/crearMateria')->withInput();
                 }
             }
         }
