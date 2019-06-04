@@ -38,7 +38,6 @@ class Control extends Base
                 'codigo_materia'    => 'required',
                 'detalle_materia'   => 'required',
             ]);
-
             
             if ($validator->fails()) 
             {
