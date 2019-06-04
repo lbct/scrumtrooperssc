@@ -32,21 +32,30 @@ class Control extends Base
     public function postRegistro(Request $request)
     {
         $gestion_id = $request->gestion_id;
-        if ($this->rol->is($request)) {
+        if ($this->rol->is($request)) {            
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
-                'codigo_materia'    => 'required|unique:Materia',
+                'codigo_materia'    => 'required',
                 'detalle_materia'   => 'required',
             ]);
 
-            if ($validator->fails()) {
+            
+            if ($validator->fails()) 
+            {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
-            } else {
-                $materia = Materia::whereRaw('CODIGO_MATERIA=\'' . ($request->codigo_materia) . '\' and NOMBRE_MATERIA=\'' . ($request->nombre_materia) . '\'')->first();
-                if ($materia != null ) {
+            } 
+            else 
+            {
+                $registrada = Materia::where("CODIGO_MATERIA", $request->codigo_materia)
+                              ->where('GESTION_ID', $gestion_id)
+                              ->first();
+                if($registrada != null)
+                {
                     $request->session()->flash('alert-danger', 'Ya existe la Materia.');
-                    return redirect('/administrador/crearMateria');
-                } else {
+                    return redirect('/administrador/crearMateria')->withInput();
+                } 
+                else 
+                {
                     $materia = new Materia();
                     $materia->CODIGO_MATERIA    = $request->codigo_materia;
                     $materia->NOMBRE_MATERIA    = $request->nombre_materia;
