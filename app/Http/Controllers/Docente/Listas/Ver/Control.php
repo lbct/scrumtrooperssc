@@ -45,7 +45,7 @@ class Control extends Base
             ->join('MATERIA', 'MATERIA.ID', '=', 'GRUPO_DOCENTE.MATERIA_ID')
             ->where('GRUPO_A_DOCENTE.DOCENTE_ID', '=', $docenteId)
             ->where('MATERIA.GESTION_ID', '=', $id_gestion)
-            ->select('GRUPO_DOCENTE.ID', 'GRUPO_DOCENTE.DETALLE_GRUPO_DOCENTE', 'MATERIA.NOMBRE_MATERIA', 'MATERIA.CODIGO_MATERIA')
+            ->select('GRUPO_A_DOCENTE.ID', 'GRUPO_DOCENTE.DETALLE_GRUPO_DOCENTE', 'MATERIA.NOMBRE_MATERIA', 'MATERIA.CODIGO_MATERIA')
             ->get();
 
             return view('docente.ver.estudiantes.materias')
@@ -59,7 +59,7 @@ class Control extends Base
     public function getListas(Request $request){
         $gestionID = $request->gestion_id;
         $grupoDocenteID = $request->grupo_docente_id;
-
+        return $request;
         $clases = Clase::where('GRUPO_A_DOCENTE_ID', '=', $grupoDocenteID)->get();
         $nombres = [];
         foreach ($clases as $clase) {

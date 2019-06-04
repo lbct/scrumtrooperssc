@@ -44,7 +44,7 @@
                                 var form = document.getElementById("form_clase");
                                 var hiddenField = document.createElement("input");
                                 hiddenField.setAttribute("type", "hidden");
-                                hiddenField.setAttribute("name", 'grupo_docente_id');
+                                hiddenField.setAttribute("name", 'grupo_a_docente_id');
                                 hiddenField.setAttribute("value", materia_id);
                                 form.appendChild(hiddenField);
                                 form.submit();
