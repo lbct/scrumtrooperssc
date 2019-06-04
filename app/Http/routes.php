@@ -40,7 +40,11 @@ Route::post('estudiante/clases/{id_sesion}',[
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@postSubir'
 ]);
-
+Route::get('estudiante/verPracticas', 'Estudiante\Ver\Control@verPracticas');
+Route::post('estudiante/verPracticas',[
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Ver\Control@verPracticasMateria'
+]);
 //Rutas Admin
 Route::get('administrador',[
     'as' => 'administrador',
@@ -146,6 +150,7 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+
 Route::get('docente/informes', 
 [
     'as' => 'docente/informes',
@@ -162,3 +167,31 @@ Route::post('docente/informes',
     'as' => 'docente/informes',
     'uses' => 'Docente\Informes\Ver\Control@getListas'
 ]);
+
+Route::get('docente/listas', 'Docente\Listas\Ver\Control@getClasesUltimaGestion');
+Route::post('docente/listas', 
+[
+    'as' => 'docente/listas',
+    'uses' => 'Docente\Listas\Ver\Control@getListas'
+
+]);
+
+//Rutas de Descarga 'uploads'
+Route::get('descargar/guia/{filename}', function($filename)
+{
+    // Verfificar que el archivo exista en /uploads
+    $file_path = (public_path()."/uploads/guias practicas/" . $filename);
+    
+    if (file_exists($file_path))
+    {
+        // Descarga
+        return Response::download($file_path, $filename, [
+            'Content-Length: '. filesize($file_path)
+        ]);
+    }
+    else
+    {
+        // Error
+        return Redirect::back()->withErrors(['No se encontro el Archivo']);
+    }
+}); 
