@@ -35,7 +35,7 @@ class Control extends Base
         if ($this->rol->is($request)) {
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
-                'codigo_materia'    => 'required|unique:materia',
+                'codigo_materia'    => 'required|unique:Materia',
                 'detalle_materia'   => 'required',
             ]);
 
