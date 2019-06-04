@@ -146,4 +146,19 @@ Route::post('docente/subirPractica/subir',
     'uses' => 'Docente\Practica\Subir\Control@postSubir'
 ]);
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
-Route::get('docente/informes', 'Docente\Informes\Ver\Control@getInformes');
+Route::get('docente/informes', 
+[
+    'as' => 'docente/informes',
+    'uses' => 'Docente\Informes\Ver\Control@getClasesUltimaGestion'
+]);
+Route::get('docente/informes/{id_gestion}', 'Docente\Informes\Ver\Control@getClases');
+Route::post('docente/informes/sesion', 
+[
+    'as' => 'docente/informes/sesion',
+    'uses' => 'Docente\Informes\Sesion\Ver\Control@getSesion'
+]);
+Route::post('docente/informes', 
+[
+    'as' => 'docente/informes',
+    'uses' => 'Docente\Informes\Ver\Control@getListas'
+]);
