@@ -63,7 +63,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/estadoInscripcion">
                     <i class="fa fa-fw fa-check-square"></i>
-                    <span>Estado de Inscripcion</span>
+                    <span>Estado Inscripcion</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/ver/retirar">
+                    <i class="fa fa-fw fa-times"></i>
+                    <span>Retirar Materia</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -86,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/horario">
-                    <i class="fas fa-fw fa-upload"></i>
+                    <i class="fas fa-fw fa-calendar"></i>
                     <span>Ver Horario</span>
                 </a>
             </li>
