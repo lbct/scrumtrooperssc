@@ -9,6 +9,9 @@
 </div>
 
 @if (sizeof($materias) > 0)
+<form id="form_check" action="{{route('estudiante/ver/retirar')}}" method="POST">
+{!! csrf_field() !!}
+<input type="hidden" name="estudiante_id" value="{{$estudiante_id}}" />
 <center>
     <table>
     <thead>
@@ -24,9 +27,7 @@
             <td>{{ $materia->CODIGO_MATERIA}}</th>
             <td>{{ $materia->NOMBRE_MATERIA}}</td>
             <td>
-                <form id="form_check" action="{{route('auxiliar/clases')}}" method="POST">
-                <input type="checkbox" name='retirar' value="1">    
-                </form>
+                <input type="checkbox" name="{{$materia->ID}}" value="1">
             </td>
         </tr>
         @endforeach
@@ -35,6 +36,7 @@
     <div class="column2"><input type="SUBMIT"  value="Confirmar" class="btn btn-primary" tabindex="7" style="margin:10px"></div>
     </div>
 </center>
+</form>
 @else
 <p>No tienes Materias Inscritas.</p>
 @endif

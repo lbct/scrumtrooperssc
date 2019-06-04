@@ -30,7 +30,11 @@ Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio
 Route::get('estudiante/horario', 'Estudiante\Ver\Control@verHorario');
 
 Route::get('estudiante/ver/retirar','Estudiante\Retirar\Control@getRetirar');
-Route::post('estudiante/ver/retirar','Estudiante\Retirar\Control@postRetirar');
+Route::post('estudiante/ver/retirar',
+[
+    'as' => 'estudiante/ver/retirar',
+    'uses' => 'Estudiante\Retirar\Control@postRetirar'
+]);
 
 
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
