@@ -234,8 +234,4 @@ Route::get('descargar/guia/{filename}', function ($filename) {
         // Error
         return Redirect::back()->withErrors(['No se encontro el Archivo']);
     }
-<<<<<<< HEAD
 });
-=======
-}); 
->>>>>>> 77c6b6755c8a124bfd2edc8d80f1c31a4e215fe1
