@@ -193,6 +193,23 @@ Route::post(
 );
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
 
+Route::get('docente/informes', 
+[
+    'as' => 'docente/informes',
+    'uses' => 'Docente\Informes\Ver\Control@getClasesUltimaGestion'
+]);
+Route::get('docente/informes/{id_gestion}', 'Docente\Informes\Ver\Control@getClases');
+Route::post('docente/informes/sesion', 
+[
+    'as' => 'docente/informes/sesion',
+    'uses' => 'Docente\Informes\Sesion\Ver\Control@getSesion'
+]);
+Route::post('docente/informes', 
+[
+    'as' => 'docente/informes',
+    'uses' => 'Docente\Informes\Ver\Control@getListas'
+]);
+
 Route::get('docente/listas', 'Docente\Listas\Ver\Control@getClasesUltimaGestion');
 Route::post(
     'docente/listas',
@@ -217,4 +234,8 @@ Route::get('descargar/guia/{filename}', function ($filename) {
         // Error
         return Redirect::back()->withErrors(['No se encontro el Archivo']);
     }
+<<<<<<< HEAD
 });
+=======
+}); 
+>>>>>>> 77c6b6755c8a124bfd2edc8d80f1c31a4e215fe1

@@ -1,9 +1,8 @@
 @extends('layout')
 @section('contenido')
-
 <div class="py-5 d-flex justify-content-center">
     <div class="col-md-8 col-md-offset-2">
-            <form id="form_clase" action="{{route('docente/listas')}}" method="POST">
+            <form id="form_clase" action="{{route('docente/informes')}}" method="POST">
                 {!! csrf_field() !!}
                 <h3>Seleccione una Materia</h3>
                 <br>
@@ -16,7 +15,7 @@
                             <script>
                                 function reload() {
                                     var id = $("#año_gestion").val();
-                                    window.location = "/docente/listas/" + id;
+                                    window.location = "/docente/informes/" + id;
                                 }
                             </script>
                         </select>
@@ -30,6 +29,8 @@
                             <th scope="col">Código</th>
                             <th scope="col">Materia</th>
                             <th scope="col">Grupo Docente</th>
+                            <th scope="col">N° Inscritos</th>
+                            <th scope="col">% Asistencia</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,13 +39,15 @@
                             <td>{{$materia->CODIGO_MATERIA}}</td>
                             <td>{{$materia->NOMBRE_MATERIA}}</td>
                             <td>{{$materia->DETALLE_GRUPO_DOCENTE}}</td>
+                            <td>{{$inscritos[$materia->MATERIA_ID]}}</td>
+                            <td>{{$asistencias[$materia->MATERIA_ID]}}</td>
                         </tr>
                         <script>
                             function submit(materia_id) {
                                 var form = document.getElementById("form_clase");
                                 var hiddenField = document.createElement("input");
                                 hiddenField.setAttribute("type", "hidden");
-                                hiddenField.setAttribute("name", 'grupo_a_docente_id');
+                                hiddenField.setAttribute("name", 'grupo_docente_id');
                                 hiddenField.setAttribute("value", materia_id);
                                 form.appendChild(hiddenField);
                                 form.submit();

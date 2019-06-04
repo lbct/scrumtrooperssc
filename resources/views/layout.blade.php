@@ -74,7 +74,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/verPracticas">
-                    <i class="fas fa-fw fa-upload"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>Ver Prácticas</span>
                 </a>
             </li>
@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/estudiante/horario">
-                    <i class="fas fa-fw fa-upload"></i>
+                    <i class="fas fa-fw fa-calendar"></i>
                     <span>Ver Horario</span>
                 </a>
             </li>
@@ -140,7 +140,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/docente/listas">
-                    <i class="fas fa-fw fa-upload"></i>
+                    <i class="fas fa-fw fa-list-ul"></i>
                     <span>Ver Estudiantes Inscritos</span>
                 </a>
             </li>
@@ -148,6 +148,12 @@
                 <a class="nav-link" href="/docente/portafolios">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Portafolios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/informes">
+                    <i class="fas fa-fw fa-percent"></i>
+                    <span>Informe Asistencia</span>
                 </a>
             </li>
             @endif
