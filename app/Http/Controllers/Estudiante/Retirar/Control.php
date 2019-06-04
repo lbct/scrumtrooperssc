@@ -57,6 +57,7 @@ class Control extends Base
                 ->select("MATERIA.ID","NOMBRE_MATERIA","CODIGO_MATERIA")
                 ->get();
             $datos = array_keys($request->all());
+            $contador = 0;
             foreach($datos as $dato){
                 $materia = Materia::find($dato);
                 if($materia != null){
@@ -71,9 +72,13 @@ class Control extends Base
 
                     $eliminar = EstudianteClase::find($id_est_clase->ID);
                     $eliminar->delete();
+                    $contador++;
                 }
             }
-            $request->session()->flash('alert-success', 'Ha retirado sus materias Satisfactoriamente');
+            if($contador > 0)
+                $request->session()->flash('alert-success', 'Ha retirado '.$contador.' materia(s) Satisfactoriamente');
+            else
+                $request->session()->flash('alert-danger', 'Debe seleccionar una o varias materias para retirarlas');
             return redirect('estudiante/ver/retirar')
             ->with('materias', $materias)
             ->with('estudiante_id', $request->estudiante_id);
