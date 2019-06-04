@@ -22,7 +22,7 @@
                         </div>
                         <center>
                             <div class="col-md-11 mb-11">
-                                <textarea class="form-control " name="comentario" id="comentario" placeholder="Detalle de la Materia" required value="{{ old('comentario') }}"></textarea>
+                                <textarea type="text" name="detalle_materia" id="detalle_materia" class="form-control"  placeholder="Detalle de la Materia" tabindex="3" value="{{ old('detalle_materia') }}"></textarea>
                                 <div class="invalid-feedback">
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <script>
                                         function reload() {
                                             var id = $("#año_gestion").val();
-                                            window.location = "/docente/subirPractica/" + id;
+                                            window.location = "/Admin/Materia/crear" + id;
                                         }
                                     </script>
                                 </select>

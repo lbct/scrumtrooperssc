@@ -20,8 +20,7 @@ class Control extends Base
             $items = Gestion::all();
             $id_gestion = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
             $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
-            return view('admin.materia.crear')
-                ->with('items', $items)
+            return view('Admin.Materia.crear')
                 ->with('id_gestion', $id_gestion)
                 ->with('gestiones', $gestiones);
         }
@@ -36,27 +35,26 @@ class Control extends Base
         if ($this->rol->is($request)) {
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
-                'codigo_materia'    => 'required',
-                'comentario'        => 'required',
+                'codigo_materia'    => 'required|unique:materia',
+                'detalle_materia'   => 'required',
             ]);
 
             if ($validator->fails()) {
                 return redirect('/administrador/crearMateria')->withErrors($validator)->withInput();
             } else {
-                $materia = Materia::whereRaw('CODIGO_MATERIA=\''.($request->codigo_materia).'\' and NOMBRE_MATERIA=\''.($request->nombre_materia).'\'')->first();
-                if($materia != null)
-                {
+                $materia = Materia::whereRaw('CODIGO_MATERIA=\'' . ($request->codigo_materia) . '\' and NOMBRE_MATERIA=\'' . ($request->nombre_materia) . '\'')->first();
+                if ($materia != null ) {
                     $request->session()->flash('alert-danger', 'Ya existe la Materia.');
                     return redirect('/administrador/crearMateria');
-                }
-                else{
+                } else {
                     $materia = new Materia();
                     $materia->CODIGO_MATERIA    = $request->codigo_materia;
                     $materia->NOMBRE_MATERIA    = $request->nombre_materia;
+                    $materia->DETALLE_MATERIA   = $request->detalle_materia;
                     $materia->GESTION_ID        = $request->gestion_id;
                     $materia->save();
-                    $request->session()->flash('alert-success', 'Materia creada con éxito');
-                    return redirect('/administrador');
+                    $request->session()->flash('alert-success', 'Materia creada con exito');
+                    return view('/admin/Materia/crear');
                 }
             }
         }
