@@ -35,7 +35,10 @@ class Control extends Base
             if($estudiante_id != null && $practica->sesionEstudiante->ESTUDIANTE_ID == $estudiante_id)
             {
                 $practica->delete();
+                return "success";
             }
         }
+        
+        return "Acción no válida";
     }
 }

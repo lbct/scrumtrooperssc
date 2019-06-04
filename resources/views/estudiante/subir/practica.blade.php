@@ -25,7 +25,7 @@
             @foreach($envios as $envio)
             <div id="envio_{{$envio->ID}}">
                 {{$envio->ARCHIVO}}
-                <button class="btn btn-danger" onclick="erase({{$envio->ID}})" type="button">
+                <button class="btn btn-danger" onclick="eliminar_archivo({{$envio->ID}})" type="button">
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
@@ -44,6 +44,26 @@
             <button type="submit" class="m-3 btn btn-danger" id="cancelar" onclick="window.location='/estudiante/subirPractica'">Cancelar</button>
         </div>
     </div>
+</div>
+
+<div class="modal fade danger" id="eliminar_practica_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Borrar Archivo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Esto borrará permanente el archivo.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger" id="confirmar_eliminar_archivo">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -122,7 +142,12 @@
         window.location.href = "/estudiante/subirPractica/" + $sesion_id;
     });
     
-    function erase($id){
+    function eliminar_archivo($id){
+        $('#eliminar_practica_modal').modal('show');
+        $('#confirmar_eliminar_archivo').attr('onclick', 'confirmar_eliminar_archivo('+$id+')');
+    }
+    
+    function confirmar_eliminar_archivo($id){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         
         $.ajax({
@@ -133,9 +158,12 @@
             url: '/estudiante/eliminarPractica',
             type: 'DELETE',
             success: function(result) {
-                var $envio = $('#envio_'+$id);
-                $envio.remove();
-                console.log(result);
+                if(result == "success")
+                {
+                    var $envio = $('#envio_'+$id);
+                    $envio.remove();
+                    $('#eliminar_practica_modal').modal('hide');
+                }
             }
         });
     }
