@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @extends('layout')
 @section('contenido')
 
@@ -22,12 +23,12 @@
         <h4>Archivos subidos:</h4>
         <p>
             @foreach($envios as $envio)
-            {{$envio->ARCHIVO}}
-            <a href="/estudiante/subirPractica/{{$envio_archivo->ID}}" class="btn btn-info">{{$envio_->ID}}</a>
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" id="eliminar" class="btn btn-danger" data-toggle="modal" data-target="#DeleteConfirmationModal">
-                <i class="fas fa-trash" onclick="window.location='/estudiante/subirPractica/'"></i>
-            </button>
+            <div id="envio_{{$envio->ID}}">
+                {{$envio->ARCHIVO}}
+                <button class="btn btn-danger" onclick="erase({{$envio->ID}})" type="button">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
             @endforeach
         </p>
 
@@ -42,9 +43,9 @@
             <button type="submit" class="m-3 btn btn-primary pull-right" id="enviarArchivo">Subir Archivo</button>
             <button type="submit" class="m-3 btn btn-danger" id="cancelar" onclick="window.location='/estudiante/subirPractica'">Cancelar</button>
         </div>
-
     </div>
 </div>
+
 <script>
     window.setTimeout(function() {
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
@@ -111,7 +112,6 @@
         }
     });
 </script>
-
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script>
     var $semana = $('#semana');
@@ -121,14 +121,24 @@
         console.log($sesion_id);
         window.location.href = "/estudiante/subirPractica/" + $sesion_id;
     });
-</script>
-
-<script>
-    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
+    
+    function erase($id){
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        
+        $.ajax({
+            data: {
+                _token: CSRF_TOKEN,
+                archivo_id: $id,
+            },
+            url: '/estudiante/eliminarPractica',
+            type: 'DELETE',
+            success: function(result) {
+                var $envio = $('#envio_'+$id);
+                $envio.remove();
+                console.log(result);
+            }
         });
-    }, 8000);
+    }
 </script>
 
 @endsection

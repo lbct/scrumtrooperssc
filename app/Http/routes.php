@@ -58,6 +58,9 @@ Route::post('estudiante/verPracticas', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Ver\Control@verPracticasMateria'
 ]);
+
+Route::delete('estudiante/eliminarPractica', 'Estudiante\Eliminar\Control@deletePracticaSubida');
+
 //Rutas Admin
 Route::get('administrador', [
     'as' => 'administrador',
