@@ -58,8 +58,7 @@ class Control extends Base
 
     public function getListas(Request $request){
         $gestionID = $request->gestion_id;
-        $grupoDocenteID = $request->grupo_docente_id;
-        return $request;
+        $grupoDocenteID = $request->grupo_a_docente_id;
         $clases = Clase::where('GRUPO_A_DOCENTE_ID', '=', $grupoDocenteID)->get();
         $nombres = [];
         foreach ($clases as $clase) {
