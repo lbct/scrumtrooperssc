@@ -71,6 +71,11 @@ class Control extends Base
                 array_push($nombres, $nombre);
             }
         }
+        
+        usort($nombres, function($a, $b) {
+            return $a['APELLIDO'] <=> $b['APELLIDO'];
+        });
+        
         return view('docente.ver.estudiantes.listas')
         ->with('nombres', $nombres);
     }
