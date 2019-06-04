@@ -25,7 +25,34 @@ use Response;
 
 class Control extends Base
 {
-    public function getSesion(Request $request, $id_sesion){
-        return 'Hola mundo';
+    public function getSesion(Request $request){
+        $estudiantes = Sesion::where('SESION.ID', '=', $request->sesion_id)
+        ->join('CLASE', 'SESION.CLASE_ID', '=', 'CLASE.ID')
+        ->join('ESTUDIANTE_CLASE', 'ESTUDIANTE_CLASE.CLASE_ID', '=', 'CLASE.ID')
+        ->join('ESTUDIANTE', 'ESTUDIANTE.ID', '=', 'ESTUDIANTE_CLASE.ESTUDIANTE_ID')
+        ->join('USUARIO', 'USUARIO.ID', '=', 'ESTUDIANTE.USUARIO_ID')
+        ->select('ESTUDIANTE.ID', 'ESTUDIANTE.CODIGO_SIS', 'USUARIO.NOMBRE', 'USUARIO.APELLIDO')
+        ->get();
+
+        $asistencia = [];
+        $comentario = [];
+        foreach($estudiantes as $estudiante){
+            $sesion_est = SesionEstudiante::where('SESION_ID', $request->sesion_id)
+            ->where('ESTUDIANTE_ID', '=', $estudiante->ID)
+            ->get()->first();
+            if($sesion_est != null){
+                $asistencia[$estudiante->ID] = $sesion_est->ASISTENCIA_SESION == 1 ? 'Asiste' : 'No Asiste';
+                $comentario[$estudiante->ID] = $sesion_est->COMENTARIO_AUXILIAR;
+            }
+            else{
+                $asistencia[$estudiante->ID] = 'No Asiste';
+                $comentario[$estudiante->ID] = '';
+            }
+        }
+
+        return view('docente.informes.estudiantes.lista')
+        ->with('estudiantes', $estudiantes)
+        ->with('asistencia', $asistencia)
+        ->with('comentario', $comentario);
     }
 }

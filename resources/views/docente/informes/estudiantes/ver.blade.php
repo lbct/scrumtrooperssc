@@ -21,6 +21,7 @@
                 </thead>
                 <tbody>
                     @foreach($asistencias as $asistencia)
+                    <tr href="javascript:;" onclick="submit({{$asistencia['IdSesion']}});">
                         <td>{{$asistencia['Dia']}}</td>
                         <td>{{$asistencia['Hora']}}</td>
                         <td>{{$asistencia['NSemana']}}</td>
@@ -28,6 +29,17 @@
                         <td>{{$asistencia['NEstudiantes']}}</td>
                         <td>{{$asistencia['Porcentaje']}}</td>
                     </tr>
+                    <script>
+                        function submit(sesion_id) {
+                            var form = document.getElementById("form_clase");
+                            var hiddenField = document.createElement("input");
+                            hiddenField.setAttribute("type", "hidden");
+                            hiddenField.setAttribute("name", 'sesion_id');
+                            hiddenField.setAttribute("value", sesion_id);
+                            form.appendChild(hiddenField);
+                            form.submit();
+                        }
+                    </script>
                     @endforeach
                 </tbody>
             </table>
