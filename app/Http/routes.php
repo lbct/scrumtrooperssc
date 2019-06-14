@@ -40,12 +40,7 @@ Route::get('estudiante/subirPractica/{ID}', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@eliminarArchivo'
 ]);
-Route::get('estudiante/subirPractica/{ID}', function ($ID) 
-{
-    $envio = EnvioPractica::find($ID);
-    $envio->delete();
-    return Redirect::route('/estudiante/subirPractica');
-});
+
 
 Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');
 
@@ -58,9 +53,6 @@ Route::post('estudiante/verPracticas', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Ver\Control@verPracticasMateria'
 ]);
-
-Route::delete('estudiante/eliminarPractica', 'Estudiante\Eliminar\Control@deletePracticaSubida');
-
 //Rutas Admin
 Route::get('administrador', [
     'as' => 'administrador',
@@ -192,32 +184,6 @@ Route::post(
     ]
 );
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
-
-Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
-Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
-Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
-Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
-Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios');
-Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
-Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
-Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
-
-Route::get('docente/informes', 
-[
-    'as' => 'docente/informes',
-    'uses' => 'Docente\Informes\Ver\Control@getClasesUltimaGestion'
-]);
-Route::get('docente/informes/{id_gestion}', 'Docente\Informes\Ver\Control@getClases');
-Route::post('docente/informes/sesion', 
-[
-    'as' => 'docente/informes/sesion',
-    'uses' => 'Docente\Informes\Sesion\Ver\Control@getSesion'
-]);
-Route::post('docente/informes', 
-[
-    'as' => 'docente/informes',
-    'uses' => 'Docente\Informes\Ver\Control@getListas'
-]);
 
 Route::get('docente/listas', 'Docente\Listas\Ver\Control@getClasesUltimaGestion');
 Route::post(

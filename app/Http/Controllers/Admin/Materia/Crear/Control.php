@@ -35,7 +35,7 @@ class Control extends Base
         if ($this->rol->is($request)) {
             $validator = Validator::make($request->all(), [
                 'nombre_materia'    => 'required',
-                'codigo_materia'    => 'required|unique:materia',
+                'codigo_materia'    => 'required|unique:Materia',
                 'detalle_materia'   => 'required',
             ]);
 
@@ -54,7 +54,7 @@ class Control extends Base
                     $materia->GESTION_ID        = $request->gestion_id;
                     $materia->save();
                     $request->session()->flash('alert-success', 'Materia creada con exito');
-                    return view('/admin/Materia/crear');
+                    return redirect('/administrador/crearMateria')->withInput();
                 }
             }
         }
