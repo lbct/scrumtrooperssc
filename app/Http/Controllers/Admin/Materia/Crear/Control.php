@@ -20,7 +20,7 @@ class Control extends Base
             $items = Gestion::all();
             $id_gestion = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
             $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
-            return view('Admin.Materia.crear')
+            return view('admin.materia.crear')
                 ->with('id_gestion', $id_gestion)
                 ->with('gestiones', $gestiones);
         }
