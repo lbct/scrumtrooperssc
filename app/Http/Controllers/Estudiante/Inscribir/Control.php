@@ -63,21 +63,23 @@ class Control extends Base
                                     ->join('GRUPO_A_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID')
                                     ->join('DOCENTE', 'GRUPO_A_DOCENTE.DOCENTE_ID', '=', 'DOCENTE.ID')
                                     ->join('USUARIO', 'DOCENTE.USUARIO_ID', '=', 'USUARIO.ID')
-                                    ->select('GRUPO_DOCENTE.ID', 'NOMBRE', 'APELLIDO')
+                                    ->select('GRUPO_DOCENTE.ID', 'DOCENTE_ID', 'NOMBRE', 'APELLIDO')
                                     ->get();
 
                 return $gruposdocentes;
             }
             else if($paso == 3 && $request->horario==null)
             {
-                $grupoDocente = $request->docente;
-                $clases =   GrupoDocente::where('GRUPO_DOCENTE.ID', $grupoDocente)
-                            ->join('GRUPO_A_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID')
-                            ->join('CLASE', 'GRUPO_A_DOCENTE.ID', '=', 'CLASE.GRUPO_A_DOCENTE_ID')
-                            ->join('HORARIO', 'CLASE.HORARIO_ID', '=', 'HORARIO.ID')
-                            ->join('AULA', 'CLASE.AULA_ID', '=', 'AULA.ID')
-                            ->select('CLASE.ID', 'NOMBRE_AULA', 'HORA_INICIO', 'HORA_FIN', 'DIA')
-                            ->get();
+                $docente_id = $request->docente;
+                $materia_id = $request->materia;
+                $clases     = GrupoDocente::where('GRUPO_DOCENTE.MATERIA_ID', $materia_id)
+                              ->join('GRUPO_A_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID')
+                              ->where('GRUPO_A_DOCENTE.DOCENTE_ID', $docente_id)
+                              ->join('CLASE', 'GRUPO_A_DOCENTE.ID', '=', 'CLASE.GRUPO_A_DOCENTE_ID')
+                              ->join('HORARIO', 'CLASE.HORARIO_ID', '=', 'HORARIO.ID')
+                              ->join('AULA', 'CLASE.AULA_ID', '=', 'AULA.ID')
+                              ->select('CLASE.ID', 'NOMBRE_AULA', 'HORA_INICIO', 'HORA_FIN', 'DIA')
+                              ->get();
                 
                 return $clases;
             }
