@@ -189,6 +189,7 @@
                         <a class="collapse-item" href="/administrador/listaDocente">Lista de Docentes</a>
                         <a class="collapse-item" href="/administrador">Lista de Administradores</a>
                         <a class="collapse-item" href="/administrador">Lista de Gestiones</a>
+                        <a class="collapse-item" href="/administrador/verGruposDocentes">Grupos de Docentes</a>
                     </div>
                 </div>
             </li>

@@ -112,6 +112,24 @@ Route::get(
     ]
 );
 
+Route::get('administrador/verGruposDocentes', 'Admin\Crear\Control@getListaGrupoDocentes');
+Route::get('administrador/crearGrupoDocentes', 'Admin\Docente\Crear\Control@getGrupoDocentesForm');
+Route::post('administrador/crearGrupoDocentes', 'Admin\Docente\Crear\Control@postGrupoDocentesForm');
+Route::get(
+    'administrador/editarGrupoDocente/{grupo_docente_id}',
+    [
+        'as' => 'administrador/editarGrupoDocente',
+        'uses' => 'Admin\Docente\Editar\Control@getDocentesGrupo'
+    ]
+);
+Route::post(
+    'administrador/editarGrupoDocente',
+    [
+        'as' => 'administrador/editarGrupoDocente',
+        'uses' => 'Admin\Docente\Editar\Control@postDocentesGrupo'
+    ]
+);
+
 Route::get('administrador/crearMateria', 'Admin\Materia\Crear\Control@getRegistro');
 Route::post('administrador/crearMateria', 'Admin\Materia\Crear\Control@postRegistro');
 
