@@ -110,7 +110,7 @@ class Control extends Base
             $lista = GrupoADocente::where('GRUPO_DOCENTE_ID' , '=', $grupo_docente_id)
                     ->join('DOCENTE', 'DOCENTE.ID', '=', 'GRUPO_A_DOCENTE.DOCENTE_ID')
                     ->join('USUARIO', 'USUARIO.ID', '=', 'DOCENTE.USUARIO_ID')
-                    ->select('DOCENTE_ID', 'NOMBRE', 'APELLIDO', 'GRUPO_DOCENTE_ID')
+                    ->select('DOCENTE_ID', 'NOMBRE', 'APELLIDO', 'GRUPO_DOCENTE_ID', 'USUARIO_ID')
                     ->get();
 
             $docentes = Docente::join('USUARIO','USUARIO.ID','=','USUARIO_ID')

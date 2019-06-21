@@ -23,7 +23,7 @@
             <td>{{ $docente->NOMBRE }}</td>
             <td>{{ $docente->APELLIDO }}</td>
             <td>
-                <a href="{{route('administrador/verDocente', $docente->DOCENTE_ID)}}" class="btn btn-link"><span class="fas fa-fw fa-eye"></span></a>
+                <a href="{{route('administrador/verDocente', $docente->USUARIO_ID)}}" class="btn btn-link"><span class="fas fa-fw fa-eye"></span></a>
                 <a class="btn btn-link"><span class="fas fa-trash"></span></a>
             </td>
         </tr>
