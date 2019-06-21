@@ -9,19 +9,19 @@ class EstudianteSeeder extends Seeder
     {
         //WilliamVelasquez
         Estudiante::create([
-        	'USUARIO_ID' 		=>	4,
+        	'USUARIO_ID' 		=>	5,
             'CODIGO_SIS' 		=>	'201400991',
         ]);
         
         //CesarQuiroga
         Estudiante::create([
-        	'USUARIO_ID' 		=>	5,
+        	'USUARIO_ID' 		=>	6,
             'CODIGO_SIS' 		=>	'201400043',
         ]);
         
         //AlexCardona
         Estudiante::create([
-        	'USUARIO_ID' 		=>	6,
+        	'USUARIO_ID' 		=>	7,
             'CODIGO_SIS' 		=>	'201400929',
         ]);
         
