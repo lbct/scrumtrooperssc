@@ -5,6 +5,10 @@ use App\Models\Usuario;
 use App\Models\AsignaRol;
 use App\Models\Auxiliar;
 use App\Models\Estudiante;
+use App\Models\Docente;
+use App\Models\GrupoADocente;
+use App\Models\GrupoDocenteAuxiliar;
+use App\Models\Gestion;
 use App\Classes\Rol;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Docente\Base;
@@ -19,7 +23,20 @@ class Control extends Base
     {
         if( $this->rol->is($request)  )
         {
-            return view('docente.auxiliar.crear');
+            $gestion_id = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->first()->ID;
+            $usuario_id = $request->cookie('USUARIO_ID');
+            $docente    = Docente::where("USUARIO_ID", $usuario_id)->first();
+            
+            $grupos_docentes = GrupoADocente::where("DOCENTE_ID", $docente->ID)
+                             ->join("GRUPO_DOCENTE", "GRUPO_DOCENTE.ID", "=", "GRUPO_DOCENTE_ID")
+                             ->join("MATERIA", "MATERIA_ID", "=", "MATERIA.ID")
+                             ->where("GESTION_ID", $gestion_id)
+                             ->get();
+            
+            //return $grupos_docentes;
+        
+            return view('docente.auxiliar.crear')
+                   ->with("grupos_docentes", $grupos_docentes);
         }
         
         return redirect('login');
@@ -29,42 +46,47 @@ class Control extends Base
     public function postRegistro(Request $request)
     {
         if( $this->rol->is($request) )
-        {
+        {            
             $validator = Validator::make($request->all(), [
-                'codigo_sis'                => 'required|size:9',
+                'username'                => 'required|min:3',
+                'grupo_docente_id'        => 'required'
             ]);
-            if($validator->fails()) {
+            
+            if($validator->fails()){
                 return redirect('docente/crearAuxiliar')->withErrors($validator)->withInput();
             }
             else
             {
-                $estudiante = Estudiante::where('CODIGO_SIS', '=', $request->codigo_sis)->first();
-                if($estudiante == null){
-                    $request->session()->flash('alert-danger', 'Codigo SIS no válido');
-                    return redirect('docente/crearAuxiliar')->withErrors($validator)->withInput();
+                $grupo_docente_id = $request->grupo_docente_id;
+                $username = $request->username;
+                $usuario  = Usuario::where("USERNAME", $username)->first();
+                
+                if($usuario!=null){
+                    if($usuario->tieneRol(4)){
+                        if( !$usuario->auxiliar->esAuxiliarLaboratorio($grupo_docente_id) ){
+                            $auxiliar_terminal = new GrupoDocenteAuxiliar();
+                            
+                            $auxiliar_terminal->GRUPO_DOCENTE_ID = $grupo_docente_id;
+                            $auxiliar_terminal->AUXILIAR_ID = $usuario->auxiliar->ID;
+                            
+                            $auxiliar_terminal->save();
+                                
+                            $request->session()->flash('alert-success', 'El usuario ha sido registrado con éxito');
+                            return redirect('docente/crearAuxiliar');
+                        }
+                        else{
+                            $request->session()->flash('alert-danger', 'El usuario ya está registrado en ese grupo');
+                            return redirect('docente/crearAuxiliar');
+                        }
+                    }
+                    else{
+                        $request->session()->flash('alert-danger', 'El usuario indicado no tiene el rol requerido');
+                        return redirect('docente/crearAuxiliar');
+                    }
                 }
-                else
-                {
-                    $usuario = $estudiante->usuario;
-                    if(Auxiliar::where('USUARIO_ID', '=', $usuario->ID)->first() == null)
-                    {
-                        $rol = new AsignaRol();
-                        $rol -> USUARIO_ID = $usuario->ID;
-                        $rol -> ROL_ID = 3;
-                        $rol -> save();
-
-                        $aux = new Auxiliar();
-                        $aux -> USUARIO_ID = $usuario->ID;
-                        $aux -> save();
-
-                        $request->session()->flash('alert-success', 'Auxiliar registrado correctamente.');
-                        return redirect('docente');
-                    }
-                    else
-                    {
-                        $request->session()->flash('alert-danger', 'Ya existe un Auxiliar registrado con el mismo CódigoSis');
-                        return redirect('docente/crearAuxiliar')->withErrors($validator)->withInput();
-                    }
+                else{
+                    $request->session()->flash('alert-danger', 'No se ha encontrado al usuario indicado');
+                    return redirect('docente/crearAuxiliar');
                 }
             }
         }
