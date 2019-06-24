@@ -38,9 +38,9 @@
         <form id="form_clase" action="{{route('auxiliar/practicas')}}" method="POST">
             {!! csrf_field() !!}
             <tr href="javascript:;" onclick="submit({{$clase->ID}});">
-                <td>{{$clase->aula->NOMBRE_AULA}}</td>
-                <td>{{$clase->grupoADocente->grupoDocente->materia->NOMBRE_MATERIA}}</td>
-                <td>{{$clase->horario->HORA_INICIO}}</td>
+                <td>{{$clase->NOMBRE_AULA}}</td>
+                <td>{{$clase->NOMBRE_MATERIA}}</td>
+                <td>{{$clase->HORA_INICIO}}</td>
                 <td>
                     @if($clase->DIA == 1) Lunes @endif
                     @if($clase->DIA == 2) Martes @endif

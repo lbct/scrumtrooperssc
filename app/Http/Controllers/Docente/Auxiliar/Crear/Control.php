@@ -32,8 +32,6 @@ class Control extends Base
                              ->join("MATERIA", "MATERIA_ID", "=", "MATERIA.ID")
                              ->where("GESTION_ID", $gestion_id)
                              ->get();
-            
-            //return $grupos_docentes;
         
             return view('docente.auxiliar.crear')
                    ->with("grupos_docentes", $grupos_docentes);
