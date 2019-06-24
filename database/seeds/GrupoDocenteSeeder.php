@@ -9,12 +9,7 @@ class GrupoDocenteSeeder extends Seeder
     {
         GrupoDocente::create([
             'MATERIA_ID' 		        =>	1,
-            'DETALLE_GRUPO_DOCENTE' 	=>	'INTRODUCCION A LA PROGRAMACION - Leticia Blanco, Rosemary Torrico',
-        ]);
-        
-        GrupoDocente::create([
-            'MATERIA_ID' 		        =>	2,
-            'DETALLE_GRUPO_DOCENTE' 	=>	'ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS - Leticia Blanco',
+            'DETALLE_GRUPO_DOCENTE' 	=>	'Leticia Blanco, Vladimir Costas, Corina Flores',
         ]);
     }
 }

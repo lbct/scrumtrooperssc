@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Crear;
 use App\Models\Usuario;
 use App\Models\AsignaRol;
 use App\Models\Administrador;
+use App\Models\Docente;
+use App\Models\GrupoADocente;
+use App\Models\GrupoDocente;
 use App\Classes\Rol;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
@@ -91,4 +94,18 @@ class Control extends Base
         
         return redirect('login');
     }
+
+    public function getListaGrupoDocentes(Request $request){
+        if( $this->rol->is($request) )
+        {
+            $gruposDocentes = GrupoDocente::select('DETALLE_GRUPO_DOCENTE', 'ID')
+                            ->get();
+            //return $gruposDocentes;
+            return view('admin.docente.ver.grupos')
+                    ->with('lista', $gruposDocentes);
+        }
+        
+        return redirect('login');
+    }
+
 }

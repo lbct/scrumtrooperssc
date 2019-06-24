@@ -63,8 +63,11 @@ class Control extends Base
                                  ->join("GESTION", "GESTION.ID", "=", "CLASE.GESTION_ID")
                                  ->join("HORARIO", "HORARIO.ID", "=", "CLASE.HORARIO_ID")
                                  ->join("AULA", "AULA.ID", "=", "CLASE.AULA_ID")
-                                 ->select("AULA_ID", "NOMBRE_AULA", "HORARIO_ID", "HORA_INICIO", "HORA_FIN", "DIA")
-                                 ->get();
+                                 ->select("GESTION_ID","AULA_ID", "NOMBRE_AULA", "HORARIO_ID", "HORA_INICIO", "HORA_FIN", "DIA")
+                                 ->get()
+                                 ->unique(function ($item) {
+                                        return $item['GESTION_ID'].$item['AULA_ID'].$item['HORARIO_ID'].$item['DIA'];
+                                 });
             
             $horarios = Horario::orderBy("HORA_INICIO")
                         ->get();
@@ -172,35 +175,36 @@ class Control extends Base
                              ->join("CLASE", "CLASE.GRUPO_A_DOCENTE_ID", "=", "GRUPO_A_DOCENTE.ID")
                              ->first();
             
-            $grupo_a_docente = GrupoADocente::where("GRUPO_DOCENTE_ID", $id_grupo_docente)
-                               ->where("DOCENTE_ID", $id_docente)
-                               ->first();
+            $grupos_a_docentes =  GrupoADocente::where("GRUPO_DOCENTE_ID", $id_grupo_docente)
+                                  ->get();
             
-            $clase = new Clase();
-            $clase->GESTION_ID         = $id_gestion;
-            $clase->AULA_ID            = $id_aula;
-            $clase->HORARIO_ID         = $id_horario;
-            $clase->GRUPO_A_DOCENTE_ID = $grupo_a_docente->ID;
-            $clase->DIA                = $dia;
-            
-            if( $clase_similar==null )
-            {
-                $clase->SEMANA_ACTUAL_SESION = 0;
-                $clase->save();
-            }   
-            else
-            {
-                $sesiones_similares = Sesion::where("CLASE_ID", $clase_similar->ID)
-                                      ->get();
-                $clase->SEMANA_ACTUAL_SESION = $clase_similar->SEMANA_ACTUAL_SESION;
-                $clase->save();
-                
-                foreach ($sesiones_similares as $sesion_similar) {
-                    $sesion = new Sesion();
-                    $sesion->CLASE_ID         = $clase->ID;
-                    $sesion->GUIA_PRACTICA_ID = $sesion_similar->GUIA_PRACTICA_ID;
-                    $sesion->SEMANA           = $sesion_similar->SEMANA;
-                    $sesion->save();
+            foreach ($grupos_a_docentes as $grupo_a_docente) {
+                $clase = new Clase();
+                $clase->GESTION_ID         = $id_gestion;
+                $clase->AULA_ID            = $id_aula;
+                $clase->HORARIO_ID         = $id_horario;
+                $clase->GRUPO_A_DOCENTE_ID = $grupo_a_docente->ID;
+                $clase->DIA                = $dia;
+
+                if( $clase_similar==null )
+                {
+                    $clase->SEMANA_ACTUAL_SESION = 0;
+                    $clase->save();
+                }   
+                else
+                {
+                    $sesiones_similares = Sesion::where("CLASE_ID", $clase_similar->ID)
+                                          ->get();
+                    $clase->SEMANA_ACTUAL_SESION = $clase_similar->SEMANA_ACTUAL_SESION;
+                    $clase->save();
+
+                    foreach ($sesiones_similares as $sesion_similar) {
+                        $sesion = new Sesion();
+                        $sesion->CLASE_ID         = $clase->ID;
+                        $sesion->GUIA_PRACTICA_ID = $sesion_similar->GUIA_PRACTICA_ID;
+                        $sesion->SEMANA           = $sesion_similar->SEMANA;
+                        $sesion->save();
+                    }
                 }
             }
             

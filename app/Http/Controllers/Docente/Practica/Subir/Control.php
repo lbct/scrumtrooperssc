@@ -8,6 +8,8 @@ use App\Models\Materia;
 use App\Models\Auxiliar;
 use App\Models\Docente;
 use App\Models\Gestion;
+use App\Models\GrupoADocente;
+use App\Models\GrupoDocente;
 use App\Classes\Rol;
 use App\Models\Clase;
 use App\Http\Controllers\Controller;
@@ -30,7 +32,14 @@ class Control extends Base
 
         if($ubicacion_archivo != null){
             $guiaPractica = GuiaPractica::where('ARCHIVO', '=', $ubicacion_archivo)->get()->first();
-            $clases = Clase::where('CLASE.GRUPO_A_DOCENTE_ID', '=', $grupo_a_docente_id)->get();
+            
+            $grupo_docente_id = GrupoADocente::find($grupo_a_docente_id)->GRUPO_DOCENTE_ID;
+            $clases = GrupoDocente::where('GRUPO_DOCENTE.ID', $grupo_docente_id)
+                      ->join("GRUPO_A_DOCENTE", "GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID", "=", "GRUPO_DOCENTE.ID")
+                      ->join("CLASE", "CLASE.GRUPO_A_DOCENTE_ID", "=", "GRUPO_A_DOCENTE.ID")
+                      ->select("CLASE.ID AS ID")
+                      ->get();
+            
             $actualizacion = false;
             foreach($clases as $clase){
                 $sesiones = Sesion::whereRaw('CLASE_ID='.$clase->ID.' AND SEMANA='.$semana_valor)->get();
@@ -75,7 +84,6 @@ class Control extends Base
         if ($validation->fails()) {
             return Response::make($validation->errors()->first(), 400);
         }
-
         
         $destinationPath = 'uploads/guias practicas'; // upload path
         $extension = Input::file('file')->getClientOriginalExtension(); // getting file extension

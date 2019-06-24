@@ -14,5 +14,9 @@ class DocenteSeeder extends Seeder
         Docente::create([
         	'USUARIO_ID' 		=>	3,
         ]);
+        
+        Docente::create([
+        	'USUARIO_ID' 		=>	4,
+        ]);
     }
 }

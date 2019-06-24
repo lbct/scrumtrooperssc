@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin\Docente\Editar;
 use App\Models\Usuario;
 use App\Models\AsignaRol;
 use App\Models\Docente;
+use App\Models\GrupoDocente;
+use App\Models\GrupoADocente;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
@@ -100,5 +102,54 @@ class Control extends Base
             }
         }
         return redirect('login');
+    }
+
+    public function getDocentesGrupo(Request $request, $grupo_docente_id){
+        if( $this->rol->is($request) )
+        {
+            $lista = GrupoADocente::where('GRUPO_DOCENTE_ID' , '=', $grupo_docente_id)
+                    ->join('DOCENTE', 'DOCENTE.ID', '=', 'GRUPO_A_DOCENTE.DOCENTE_ID')
+                    ->join('USUARIO', 'USUARIO.ID', '=', 'DOCENTE.USUARIO_ID')
+                    ->select('DOCENTE_ID', 'NOMBRE', 'APELLIDO', 'GRUPO_DOCENTE_ID', 'USUARIO_ID')
+                    ->get();
+
+            $docentes = Docente::join('USUARIO','USUARIO.ID','=','USUARIO_ID')
+                            ->select('DOCENTE.ID', 'NOMBRE', 'APELLIDO')
+                            ->get();
+
+            $materia = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupo_docente_id)
+                                    ->join('MATERIA', 'MATERIA.ID', '=', 'MATERIA_ID')
+                                    ->select('MATERIA_ID', 'NOMBRE_MATERIA', 'CODIGO_MATERIA')
+                                    ->first();
+            return view('admin.docente.editar.grupos')
+                    ->with('lista', $lista)
+                    ->with('docentes', $docentes)
+                    ->with('grupo_id', $grupo_docente_id)
+                    ->with('materia', $materia);
+        }
+        return redirect('login');
+    }
+
+    public function postDocentesGrupo(Request $request){
+        $materia = GrupoDocente::where('ID', '=', $request->grupo_id)->first();
+        $consulta = GrupoADocente::where('DOCENTE_ID', '=', $request->docente)
+                                    ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_ID')
+                                    ->where('MATERIA_ID', '=', $materia->MATERIA_ID)
+                                    ->first();
+            if (isset($consulta))
+            {
+                $request->session()->flash('alert-danger', 'El Docente Seleccionado ya pertenece a un Grupo para esta Materia');
+                return redirect('/administrador/editarGrupoDocente/'.$request->grupo_id);
+            }
+            else
+            {
+                $grupoADocente = new GrupoADocente();
+                $grupoADocente->GRUPO_DOCENTE_ID    = $request->grupo_id;
+                $grupoADocente->DOCENTE_ID   = $request->docente;
+                $grupoADocente->save();
+
+                $request->session()->flash('alert-success', 'Docente añadido con éxito');
+                return redirect('administrador/editarGrupoDocente/'.$request->grupo_id);    
+            }
     }
 }

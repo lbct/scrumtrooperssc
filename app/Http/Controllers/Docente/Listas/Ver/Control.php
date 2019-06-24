@@ -73,7 +73,9 @@ class Control extends Base
         }
         
         usort($nombres, function($a, $b) {
-            return $a['APELLIDO'] <=> $b['APELLIDO'];
+            $a = mb_strtolower($a);
+            $b = mb_strtolower($b);
+            return strcmp($a, $b);
         });
         
         return view('docente.ver.estudiantes.listas')

@@ -133,20 +133,28 @@ class Control extends Base
 
             $grupos_docentes = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)->get();
 
-            $ids_clases = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)
+            $todas_las_clases = GrupoDocenteAuxiliar::where('AUXILIAR_ID', '=', $id_auxiliar)
             ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_AUXILIAR.GRUPO_DOCENTE_ID')
             ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
             ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
             ->join('HORARIO', 'HORARIO.ID', '=', 'CLASE.HORARIO_ID')
+            ->join('AULA', 'AULA.ID', '=', 'CLASE.AULA_ID')
+            ->join('MATERIA', 'MATERIA.ID', '=', 'GRUPO_DOCENTE.MATERIA_ID')
             ->where('CLASE.GESTION_ID', '=', $id_gestion)
-            ->orderByRaw('CLASE.DIA asc, HORARIO.HORA_INICIO asc')
-            ->select('CLASE.ID')
+            //->orderByRaw('CLASE.DIA asc, HORARIO.HORA_INICIO asc')
+            ->select('CLASE.ID', 'CLASE.HORARIO_ID', 'CLASE.AULA_ID', 'CLASE.DIA', 'CLASE.GESTION_ID', 'HORA_INICIO', 'HORA_FIN', 'NOMBRE_AULA', 'NOMBRE_MATERIA')
             ->get();
             
-            $clases = [];
+            $clases = $todas_las_clases->unique(function ($item) {
+                            return $item['HORARIO_ID'].$item['AULA_ID'].$item['DIA'].$item['GESTION_ID'];
+                      });
+            
+            //return $clases;
+            
+            /*$clases = [];
             foreach($ids_clases as $id_clase){
                 array_push($clases, Clase::find($id_clase->ID));
-            }
+            }*/
 
             return view('auxiliar.ver.practicas')
             ->with('id_gestion', $id_gestion)

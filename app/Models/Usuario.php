@@ -38,4 +38,18 @@ class Usuario extends Model
     {
         return $this->hasMany('App\Models\AsignaRol', 'USUARIO_ID', 'ID');
     }
+    
+    public function tieneRol($rol)
+    {
+        $tiene_rol = false;
+        
+        $rol = AsignaRol::where("ROL_ID", $rol)
+               ->where("USUARIO_ID", $this->ID)
+               ->first();
+        
+        if($rol!=null)
+            $tiene_rol = true;
+        
+        return $tiene_rol;
+    }
 }

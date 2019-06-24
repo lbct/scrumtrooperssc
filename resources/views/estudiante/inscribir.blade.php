@@ -126,7 +126,7 @@
           opcionesDocente = "";
 
           docentes.forEach(function(docente) {
-            opcionesDocente += '<option value=' + docente.ID + '>' + docente.NOMBRE + ' ' + docente.APELLIDO + '</option>';
+            opcionesDocente += '<option value=' + docente.DOCENTE_ID + '>' + docente.NOMBRE + ' ' + docente.APELLIDO + '</option>';
           });
 
           selectDocente.innerHTML = opcionesDocente;
@@ -149,7 +149,8 @@
       data: {
         _token: CSRF_TOKEN,
         paso: 3,
-        docente: document.getElementById('docente').value
+        docente: document.getElementById('docente').value,
+        materia: document.getElementById('materia').value
       },
       dataType: 'JSON',
       success: function(horarios) {

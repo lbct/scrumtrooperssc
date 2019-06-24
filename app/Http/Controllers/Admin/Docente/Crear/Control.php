@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Docente\Crear;
 use App\Models\Usuario;
 use App\Models\AsignaRol;
 use App\Models\Docente;
+use App\Models\GrupoADocente;
+use App\Models\GrupoDocente;
+use App\Models\Materia;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\Base;
 use Illuminate\Support\Facades\Hash;
@@ -87,5 +90,52 @@ class Control extends Base
             }
         }
         return redirect('login');
+    }
+
+    public function getGrupoDocentesForm(Request $request){
+        if( $this->rol->is($request))
+        {
+            $materias = Materia::select('ID', 'CODIGO_MATERIA', 'NOMBRE_MATERIA')
+                                ->get();
+            $docentes = Docente::join('USUARIO','USUARIO.ID','=','USUARIO_ID')
+                                ->select('DOCENTE.ID', 'NOMBRE', 'APELLIDO')
+                                ->get();
+            return view('admin.docente.ver.grupoform')
+                    ->with('materias', $materias)
+                    ->with('docentes', $docentes);
+        }
+        return view('login');
+    }
+
+    public function postGrupoDocentesForm(Request $request){
+        if( $this->rol->is($request))
+        {
+            $consulta = GrupoADocente::where('DOCENTE_ID', '=', $request->docente)
+                                    ->join('GRUPO_DOCENTE', 'GRUPO_DOCENTE.ID', '=', 'GRUPO_DOCENTE_ID')
+                                    ->where('MATERIA_ID', '=', $request->materia)
+                                    ->first();
+            if (isset($consulta))
+            {
+                $request->session()->flash('alert-danger', 'El Docente Seleccionado ya pertenece a un Grupo Docente para la Materia');
+                return redirect('/administrador/crearGrupoDocentes');
+            }
+            else
+            {
+                $materia = Materia::where('MATERIA.ID', '=', $request->materia)->first();
+                $grupoDocente = new GrupoDocente();
+                $grupoDocente->MATERIA_ID = $request->materia;
+                $grupoDocente->DETALLE_GRUPO_DOCENTE = $materia->NOMBRE_MATERIA;  
+                $grupoDocente->save();              
+
+                
+                $grupoADocente = new GrupoADocente();
+                $grupoADocente->GRUPO_DOCENTE_ID    = $grupoDocente->ID;
+                $grupoADocente->DOCENTE_ID   = $request->docente;
+                $grupoADocente->save();
+                $request->session()->flash('alert-success', 'Grupo Docente creado con éxito');
+                return redirect('administrador/verGruposDocentes');
+            }
+        }
+        return view('login');
     }
 }
