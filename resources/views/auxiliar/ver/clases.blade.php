@@ -31,6 +31,7 @@
             <th scope="col">Materia</th>
             <th scope="col">Hora</th>
             <th scope="col">Día</th>
+            <th scope="col">Docente</th>
         </tr>
     </thead>
     <tbody>
@@ -50,6 +51,7 @@
                     @if($clase->DIA == 6) Sábado @endif
                     @if($clase->DIA == 7) Domingo @endif
                 </td>
+                <td>{{($clase->grupoADocente->docente->usuario->NOMBRE).' '.($clase->grupoADocente->docente->usuario->APELLIDO)}}</td>
             </tr>
             <script>
                 function submit(clase_id) {
