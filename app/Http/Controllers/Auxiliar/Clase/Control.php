@@ -27,23 +27,37 @@ class Control extends Base
         {
             $sesion = Sesion::find($request->sesion_id);
             $clases = getListaClases($request->sesion_id);
+            $existeSesion = false;
             foreach($clases as $clase){
                 $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
                                         ->where('SEMANA', '=', $sesion->SEMANA)
                                         ->first();
-
-                $estudiantes = EstudianteClase::where('CLASE_ID', '=', $clase->ID)->get();
-                foreach($estudiantes as $estudiante){
-                    $sesionEstudiante = new SesionEstudiante();
-                    $sesionEstudiante->ESTUDIANTE_ID = $estudiante->ID;
-                    $sesionEstudiante->SESION_ID = $sesion_temp->ID;
-                    $sesionEstudiante->ASISTENCIA_SESION = false;
-                    $sesionEstudiante->COMENTARIO_AUXILIAR = "";
-                    $sesionEstudiante->save();
-                }
+                $existeSesion = $existeSesion || null != (SesionEstudiante::where('SESION_ID', '=', $sesion_temp->ID)->first());
             }
-            $request->session()->flash('alert-success', 'Registrado Correctamente');
+
+            if (!$existeSesion){
+                foreach($clases as $clase){
+                    $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
+                                            ->where('SEMANA', '=', $sesion->SEMANA)
+                                            ->first();
+
+                    $estudiantes = EstudianteClase::where('CLASE_ID', '=', $clase->ID)->get();
+                    foreach($estudiantes as $estudiante){
+                        $sesionEstudiante = new SesionEstudiante();
+                        $sesionEstudiante->ESTUDIANTE_ID = $estudiante->ESTUDIANTE_ID;
+                        $sesionEstudiante->SESION_ID = $sesion_temp->ID;
+                        $sesionEstudiante->ASISTENCIA_SESION = false;
+                        $sesionEstudiante->COMENTARIO_AUXILIAR = "";
+                        $sesionEstudiante->save();
+                    }
+                }
+                $request->session()->flash('alert-success', 'Clase Iniciada Correctamente');
+            }
+            else {
+                $request->session()->flash('alert-danger', 'La Clase ya fue Iniciada.');
+            }
             return redirect('auxiliar/practicas')->withInput();
+            
         }
         return redirect('login');
     }
