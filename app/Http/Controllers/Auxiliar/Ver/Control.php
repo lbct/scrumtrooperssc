@@ -184,14 +184,8 @@ class Control extends Base
             if($sesion_id != -1){
                 $sesion = Sesion::where('SESION.ID', '=', $sesion_id)->first();
                 $clases = getListaClases($sesion_id);
-                $practicas = [];
-                foreach($clases as $clase){
-                    $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
-                                    ->where('SEMANA', '=', $sesion->SEMANA)
-                                    ->first();
-                    $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion_temp->GUIA_PRACTICA_ID)->first();
-                    array_push($practicas, $practica);
-                }
+                $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion->GUIA_PRACTICA_ID)->first();
+
                 $permiso = -1;
                 if ($sesion->AUXILIAR_ID != null)
                     if ($sesion->AUXILIAR_ID == $auxiliar->ID)
@@ -200,7 +194,7 @@ class Control extends Base
                         $permiso = 0; 
 
                 return view('auxiliar.practica.ver.lista')
-                ->with('practicas', $practicas)
+                ->with('practica', $practica)
                 ->with('sesiones', $sesiones)
                 ->with('sesion', $sesion)
                 ->with('clase_id', $request->clase_id)

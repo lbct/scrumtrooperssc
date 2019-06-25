@@ -45,14 +45,12 @@
         </tr>
     </thead>
     <tbody>
-            @foreach($practicas as $practica)
         <tr>
             <td>{{$sesion->SEMANA}}</td>
             <td>
                 <a href="/descargar/guia/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
             </td>            
         </tr>
-        @endforeach
     </tbody>
 </table>
 @else
