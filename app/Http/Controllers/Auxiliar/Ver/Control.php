@@ -149,13 +149,10 @@ class Control extends Base
                             return $item['HORARIO_ID'].$item['AULA_ID'].$item['DIA'].$item['GESTION_ID'];
                       });
             
-            //return $clases;
-            
             /*$clases = [];
             foreach($ids_clases as $id_clase){
                 array_push($clases, Clase::find($id_clase->ID));
             }*/
-
             return view('auxiliar.ver.practicas')
             ->with('id_gestion', $id_gestion)
             ->with('gestiones', $gestiones)
@@ -186,7 +183,15 @@ class Control extends Base
             
             if($sesion_id != -1){
                 $sesion = Sesion::where('SESION.ID', '=', $sesion_id)->first();
-                $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion->GUIA_PRACTICA_ID)->first();
+                $clases = getListaClases($sesion_id);
+                $practicas = [];
+                foreach($clases as $clase){
+                    $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
+                                    ->where('SEMANA', '=', $sesion->SEMANA)
+                                    ->first();
+                    $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion_temp->GUIA_PRACTICA_ID)->first();
+                    array_push($practicas, $practica);
+                }
                 $permiso = -1;
                 if ($sesion->AUXILIAR_ID != null)
                     if ($sesion->AUXILIAR_ID == $auxiliar->ID)
@@ -195,7 +200,7 @@ class Control extends Base
                         $permiso = 0; 
 
                 return view('auxiliar.practica.ver.lista')
-                ->with('practica', $practica)
+                ->with('practicas', $practicas)
                 ->with('sesiones', $sesiones)
                 ->with('sesion', $sesion)
                 ->with('clase_id', $request->clase_id)
@@ -216,11 +221,19 @@ class Control extends Base
         if($this->rol->is($request))
         {
             $sesion = Sesion::where('SESION.ID', '=', $request->sesion_id)->first();
+            $clases = getListaClases($request->sesion_id);
+
             if ($sesion->AUXILIAR_ID == null){
-                $sesion = Sesion::find($request->sesion_id);
-                $sesion->AUXILIAR_ID    =   $request->auxiliar_id;
-                $sesion->save();
-                $request->session()->flash('alert-success', 'Registrado Correctamente');
+
+                foreach($clases as $clase){
+                    $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
+                                    ->where('SEMANA', '=', $sesion->SEMANA)
+                                    ->first();
+                    $sesion_temp->AUXILIAR_ID    =   $request->auxiliar_id;
+                    $sesion_temp->save();
+                    $request->session()->flash('alert-success', 'Registrado Correctamente');
+                }
+                
             }
             else
                 $request->session()->flash('alert-danger', 'Ya existe alguien registrado como responsable');
@@ -229,4 +242,19 @@ class Control extends Base
         }
         return redirect('login');
     }
+}
+
+function getListaClases($sesion_id){
+
+    $grupo = Sesion::where('SESION.ID', '=', $sesion_id)
+        ->join('CLASE', 'CLASE.ID', '=', 'SESION.CLASE_ID')
+        ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.ID', '=', 'CLASE.GRUPO_A_DOCENTE_ID')
+        ->select('GRUPO_DOCENTE_ID')
+        ->first();
+
+    $clases = GrupoADocente::where('GRUPO_DOCENTE_ID', '=', $grupo->GRUPO_DOCENTE_ID)
+        ->join('CLASE', 'GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+        ->get();
+
+    return $clases;
 }

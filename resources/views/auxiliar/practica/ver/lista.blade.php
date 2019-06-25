@@ -18,9 +18,22 @@
                     @endfor
             </select>
         </form>
+        <div>
+            <form action="{{route('auxiliar/practicas')}}" method="POST">
+                {!! csrf_field() !!}
+                <input type="hidden" name="clase_id" value="{{$clase_id}}" />
+                <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
+            </form>
+        </div>
     </div>
 </center>
-    
+<div>
+    <form action="{{route('auxiliar/iniciarClase')}}" method="POST">
+        {!! csrf_field() !!}
+        <input type="hidden" name="sesion_id" value="{{$sesion->ID}}"/>
+        <input type="submit" class="btn btn-info" value="Iniciar Clase"/>
+    </form>
+</div>
 </div>
 <br>
 @if($permiso == 1)
@@ -32,19 +45,14 @@
         </tr>
     </thead>
     <tbody>
+            @foreach($practicas as $practica)
         <tr>
             <td>{{$sesion->SEMANA}}</td>
             <td>
                 <a href="/descargar/guia/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
-            </td>
-            <div>
-                <form action="{{route('auxiliar/practicas')}}" method="POST">
-                    {!! csrf_field() !!}
-                    <input type="hidden" name="clase_id" value="{{$clase_id}}" />
-                    <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
-                </form>
-            </div>
+            </td>            
         </tr>
+        @endforeach
     </tbody>
 </table>
 @else

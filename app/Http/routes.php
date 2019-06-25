@@ -135,6 +135,12 @@ Route::post('administrador/crearMateria', 'Admin\Materia\Crear\Control@postRegis
 
 //Rutas Auxiliar
 Route::get('auxiliar', 'Auxiliar\Inicio\Control@getInicio');
+Route::post('auxiliar/iniciarClase',
+    [
+    'as' => 'auxiliar/iniciarClase',
+    'uses' =>'Auxiliar\Clase\Control@postIniciarClase',
+    ]
+);
 Route::get(
     'auxiliar/clases/{id_gestion}',
     [
