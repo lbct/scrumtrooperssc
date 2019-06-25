@@ -37,6 +37,11 @@ class Control extends Base
 
             if (!$existeSesion){
                 foreach($clases as $clase){
+
+                    $nueva_clase = Clase::find($clase->ID);
+                    $nueva_clase->SEMANA_ACTUAL_SESION++;
+                    $nueva_clase->save();
+
                     $sesion_temp = Sesion::where('CLASE_ID', '=', $clase->ID)
                                             ->where('SEMANA', '=', $sesion->SEMANA)
                                             ->first();
