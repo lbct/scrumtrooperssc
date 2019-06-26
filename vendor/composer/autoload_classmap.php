@@ -30,7 +30,6 @@ return array(
     'CrearTablaGuiaPractica' => $baseDir . '/database/migrations/2019_03_23_000016_crear_tabla_guia_practica.php',
     'CrearTablaHorario' => $baseDir . '/database/migrations/2019_03_23_000014_crear_tabla_horario.php',
     'CrearTablaIniciarSesion' => $baseDir . '/database/migrations/2019_03_23_000008_crear_tabla_iniciar_sesion.php',
-    'CrearTablaInscripcion' => $baseDir . '/database/migrations/2019_03_23_000016_crear_tabla_inscripcion.php',
     'CrearTablaMateria' => $baseDir . '/database/migrations/2019_03_22_000003_crear_tabla_materia.php',
     'CrearTablaPeriodo' => $baseDir . '/database/migrations/2019_03_22_000001_crear_tabla_periodo.php',
     'CrearTablaRol' => $baseDir . '/database/migrations/2019_03_23_000009_crear_tabla_rol.php',
