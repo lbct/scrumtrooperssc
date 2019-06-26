@@ -224,6 +224,7 @@ Route::post(
     ]
 );
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+Route::get('docente/practicaSemana/{grupo_a_docente_id}/{semana}', 'Docente\Practica\Subir\Control@practicaSemana');
 
 Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
 Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
@@ -260,6 +261,8 @@ Route::post(
 
     ]
 );
+
+Route::get('auxiliarterminal','Auxiliar\Inicio\Control@getInicio');
 
 //Rutas de Descarga 'uploads'
 Route::get('descargar/guia/{filename}', function ($filename) {

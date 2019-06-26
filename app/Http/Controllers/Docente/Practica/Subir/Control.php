@@ -22,6 +22,26 @@ use Response;
 
 class Control extends Base
 {
+    public function practicaSemana(Request $request, $grupo_a_docente_id, $semana){
+        if( $this->rol->is($request) ){
+            $usuario_id = $request->cookie('USUARIO_ID');
+            $docente = Docente::where("USUARIO_ID", $usuario_id)->first();
+            $grupo_a_docente = GrupoADocente::find($grupo_a_docente_id);
+            
+            if($grupo_a_docente->DOCENTE_ID == $docente->ID){
+                $clase_id = $grupo_a_docente->clase->first()->ID;
+                $sesion = Sesion::where("CLASE_ID", $clase_id)
+                          ->where("SEMANA", $semana)
+                          ->first();
+                
+                if($sesion!=null)
+                    return $sesion->GuiaPractica->ARCHIVO;
+                else
+                    return null;
+            }
+        }
+    }
+    
     public function postConfirmar(Request $request){
         $usuarioId = $request->cookie('USUARIO_ID');
         $ubicacion_archivo = $request->ubicacion_guia_practica;

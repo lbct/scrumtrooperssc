@@ -12,17 +12,18 @@
             {!! csrf_field() !!}
             <!-- Drop Zone -->
             <input type="hidden" name="ubicacion_guia_practica" id="guia_practica_id"/>
-            <input type="hidden" name="grupo_a_docente_id" value="{{$grupo_a_docente_id}}"/>
+            <input type="hidden" id="grupo_a_docente_id" name="grupo_a_docente_id" value="{{$grupo_a_docente_id}}"/>
             <input type="hidden" name="auxiliar_id" value="{{$auxiliar_id}}"/>
             <input type="hidden" name="gestion_id" value="{{$gestion_id}}"/>
             <center>
                 <div class="ex1 form-group col-md-6">
-                    <select name="semana_valor" class="form-control">
+                    <select id="semana_valor" name="semana_valor" class="form-control">
                         @for($i=1;$i<=$semana_valor;$i++)
                         <option value="{{$i}}" @if($i==$semana_valor) selected="selected" @endif>{{'Semana '.$i}}</option>
                         @endfor
                     </select>
                 </div>
+                <div id="practica_actual" class="ex1 form-group col-md-6"></div>
             </center>
             <br>
             <div id="alertas" role='alert'></div>
@@ -37,6 +38,7 @@
     </div>
 
 </div>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script>
     window.setTimeout(function() {
        $(".alert").fadeTo(500, 0).slideUp(500, function(){
@@ -105,10 +107,23 @@
             nombre_archivo: "{{$nombre_archivo}}"
         }
     });
+    
     function borrarArchivos(){
         myDropzone.removeAllFiles(true);
         var guia_id = document.getElementById("guia_practica_id");
         guia_id.setAttribute("value", "");
     }
+    
+    $("#semana_valor").change(function() {
+        var semana=$("#semana_valor").val();
+        var grupo_a_docente_id=$("#grupo_a_docente_id").val();
+        
+        $.get("/docente/practicaSemana/"+grupo_a_docente_id+"/"+semana, function( data ) {
+            $practica_actual = document.getElementById('practica_actual');
+            if(data != null)
+                $practica_actual.innerHTML = "<a href='/descargar/guia/"+data+"' class='btn btn-info'>"+data+"</a>";
+        });
+        
+    });
 </script>
 @endsection

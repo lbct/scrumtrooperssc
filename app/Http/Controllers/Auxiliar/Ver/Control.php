@@ -165,7 +165,8 @@ class Control extends Base
     {
         if($this->rol->is($request))
         {
-            $clase = Clase::find($request->clase_id);
+            $clase_id = $request->clase_id;
+            $clase = Clase::find($clase_id);
             $id_gestion = Clase::find($request->clase_id)->gestion->ID;
             $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
             $sesiones = Sesion::whereRaw('CLASE_ID='.$request->clase_id)
@@ -181,10 +182,18 @@ class Control extends Base
                 $sesion_id = $sesiones->first()->ID;
             }
             
+            
+            
             if($sesion_id != -1){
                 $sesion = Sesion::where('SESION.ID', '=', $sesion_id)->first();
                 $clases = getListaClases($sesion_id);
                 $practica = GuiaPractica::where('GUIA_PRACTICA.ID', '=', $sesion->GUIA_PRACTICA_ID)->first();
+                
+                $semana_actual = $clase->SEMANA_ACTUAL_SESION;
+                $iniciar_sesion_permiso = false;
+                
+                if(($sesion->SEMANA)-1 == ($clase->SEMANA_ACTUAL_SESION))
+                    $iniciar_sesion_permiso = true;                    
 
                 $permiso = -1;
                 if ($sesion->AUXILIAR_ID != null)
@@ -200,7 +209,8 @@ class Control extends Base
                 ->with('clase_id', $request->clase_id)
                 ->with('id_gestion', $id_gestion)
                 ->with('auxiliar_id', $auxiliar->ID)
-                ->with('permiso', $permiso);
+                ->with('permiso', $permiso)
+                ->with('iniciar_sesion_permiso', $iniciar_sesion_permiso);
             }
             else{
                 $request->session()->flash('alert-danger', 'No existen sesiones para la clase seleccionada.');

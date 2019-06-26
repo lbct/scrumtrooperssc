@@ -27,6 +27,7 @@
         </div>
     </div>
 </center>
+@if($iniciar_sesion_permiso)
 <div>
     <form action="{{route('auxiliar/iniciarClase')}}" method="POST">
         {!! csrf_field() !!}
@@ -34,6 +35,7 @@
         <input type="submit" class="btn btn-info" value="Iniciar Clase"/>
     </form>
 </div>
+@endif
 </div>
 <br>
 @if($permiso == 1)

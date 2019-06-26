@@ -263,6 +263,7 @@ class ComposerStaticInit32dd5706d1dd8dd2b2af22d0610bed94
         'CrearTablaGuiaPractica' => __DIR__ . '/../..' . '/database/migrations/2019_03_23_000016_crear_tabla_guia_practica.php',
         'CrearTablaHorario' => __DIR__ . '/../..' . '/database/migrations/2019_03_23_000014_crear_tabla_horario.php',
         'CrearTablaIniciarSesion' => __DIR__ . '/../..' . '/database/migrations/2019_03_23_000008_crear_tabla_iniciar_sesion.php',
+        'CrearTablaInscripcion' => __DIR__ . '/../..' . '/database/migrations/2019_03_23_000016_crear_tabla_inscripcion.php',
         'CrearTablaMateria' => __DIR__ . '/../..' . '/database/migrations/2019_03_22_000003_crear_tabla_materia.php',
         'CrearTablaPeriodo' => __DIR__ . '/../..' . '/database/migrations/2019_03_22_000001_crear_tabla_periodo.php',
         'CrearTablaRol' => __DIR__ . '/../..' . '/database/migrations/2019_03_23_000009_crear_tabla_rol.php',
