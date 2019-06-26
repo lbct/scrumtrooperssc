@@ -61,7 +61,16 @@ class Control extends Base
             $est_clases = EstudianteClase::where('CLASE_ID', '=', $request->clase_id)->get();
             $id_gestion = Clase::find($request->clase_id)->gestion->ID;
             $auxiliar = Auxiliar::where('USUARIO_ID', '=', $request->cookie('USUARIO_ID'))->first();
-            $sesiones = Sesion::whereRaw('AUXILIAR_ID='.$auxiliar->ID.' AND CLASE_ID='.$request->clase_id)->orderBy('ID', 'DESC')->get();
+            
+            $clase = Clase::find($request->clase_id);
+            $semana_actual = $clase->SEMANA_ACTUAL_SESION;
+            
+            $sesiones = Sesion::where('AUXILIAR_ID', $auxiliar->ID)
+                        ->where('CLASE_ID', $request->clase_id)
+                        ->where('SEMANA', '<=', $semana_actual)
+                        ->orderBy('ID', 'DESC')
+                        ->get();
+            
             $sesion_id = -1;
             if($request->sesion_id != null){
                 $sesion_id = $request->sesion_id;
@@ -94,7 +103,7 @@ class Control extends Base
                 ->with('id_gestion', $id_gestion);
             }
             else{
-                $request->session()->flash('alert-danger', 'No existen sesiones para la clase seleccionada.');
+                $request->session()->flash('alert-danger', 'No existen sesiones iniciadas para la clase seleccionada.');
                 return redirect('/auxiliar/clases/'.$id_gestion);
             }
         }

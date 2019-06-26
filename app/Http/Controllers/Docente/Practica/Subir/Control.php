@@ -66,7 +66,6 @@ class Control extends Base
                 if($sesiones == null || sizeof($sesiones) == 0){
                     $sesion = new Sesion();
                     $sesion->CLASE_ID = $clase->ID;
-                    //$sesion->AUXILIAR_ID = $auxiliar_id;
                     $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
                     $sesion->SEMANA = $semana_valor;
                     $sesion->save();
@@ -74,7 +73,6 @@ class Control extends Base
                 else{
                     $actualizacion = true;
                     $sesion = $sesiones->first();
-                    //$sesion->AUXILIAR_ID = $auxiliar_id;
                     $sesion->GUIA_PRACTICA_ID = $guiaPractica->ID;
                     $sesion->update();
                 }

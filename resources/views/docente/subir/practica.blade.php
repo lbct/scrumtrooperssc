@@ -120,8 +120,10 @@
         
         $.get("/docente/practicaSemana/"+grupo_a_docente_id+"/"+semana, function( data ) {
             $practica_actual = document.getElementById('practica_actual');
-            if(data != null)
+            if(data != "")
                 $practica_actual.innerHTML = "<a href='/descargar/guia/"+data+"' class='btn btn-info'>"+data+"</a>";
+            else
+                $practica_actual.innerHTML = "";
         });
         
     });
