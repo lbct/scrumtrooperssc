@@ -22,14 +22,16 @@
 
         <h4>Archivos subidos:</h4>
         <p>
-            @foreach($envios as $envio)
-            <div id="envio_{{$envio->ID}}">
-                {{$envio->ARCHIVO}}
-                <button class="btn btn-danger" onclick="eliminar_archivo({{$envio->ID}})" type="button">
-                    <i class="fas fa-trash"></i>
-                </button>
+            <div id="archivos_subidos">
+                @foreach($envios as $envio)
+                <div id="envio_{{$envio->ID}}">
+                    {{$envio->ARCHIVO}}
+                    <button class="btn btn-danger" onclick="eliminar_archivo({{$envio->ID}})" type="button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                @endforeach
             </div>
-            @endforeach
         </p>
 
         <!-- Drop Zone -->
@@ -122,7 +124,10 @@
 
         success: function(file, response) {
             $alertas = document.getElementById('alertas');
-            $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-success'>" + response + "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+            $alertas.innerHTML = "<div class='flash-message' role='alert'><p class='alert alert-success'>Se ha subido correctamente el archivo<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a></p></div>";
+            
+            $archivos_subidos = document.getElementById('archivos_subidos');
+            $archivos_subidos.innerHTML =  $archivos_subidos.innerHTML+"<div id='envio_"+response.ID+"'>"+response.ARCHIVO+" <button class='btn btn-danger' onclick='eliminar_archivo("+response.ID+")' type='button'><i class='fas fa-trash'></i></button></div>";
         },
 
         error: function(file, response) {

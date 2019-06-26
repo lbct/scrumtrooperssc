@@ -34,6 +34,10 @@ class Control extends Base
             
             if($estudiante_id != null && $practica->sesionEstudiante->ESTUDIANTE_ID == $estudiante_id)
             {
+                $sesion_id = $practica->sesionEstudiante->SESION_ID;
+                $fileName = "/".$sesion_id."/".$estudiante_id."/".$practica->ARCHIVO;
+                
+                Storage::disk('practicasEstudiantes')->delete($fileName);
                 $practica->delete();
                 return "success";
             }

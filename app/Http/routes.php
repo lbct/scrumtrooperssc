@@ -39,15 +39,22 @@ Route::post('estudiante/ver/retirar',
 
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
 Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
+
 Route::get('estudiante/subirPractica/{id_sesion}', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
 
-Route::get('estudiante/subirPractica/{ID}', [
+Route::post('estudiante/subirPractica/{id_sesion}', [
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@postSubir'
+]);
+
+/*Route::get('estudiante/subirPractica/{ID}', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@eliminarArchivo'
 ]);
+
 Route::get('estudiante/subirPractica/{ID}', function ($ID) 
 {
     $envio = EnvioPractica::find($ID);
@@ -55,7 +62,7 @@ Route::get('estudiante/subirPractica/{ID}', function ($ID)
     return Redirect::route('/estudiante/subirPractica');
 });
 
-Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');
+Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');*/
 
 Route::post('estudiante/clases/{id_sesion}', [
     'as' => 'estudiante',
