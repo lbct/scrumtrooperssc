@@ -14,7 +14,6 @@ class CrearTablaAsignaFuncion extends Migration
             $table->integer('ROL_ID')->unsigned();
             $table->integer('FUNCION_ID')->unsigned();
             
-            $table->dateTime('FECHA');
             $table->timestamps();
             
             $table->foreign('ROL_ID')->references('ID')->on('ROL')->onDelete('cascade');

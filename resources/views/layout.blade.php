@@ -9,72 +9,221 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('titulo')</title>
+    <title>SESLAB</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Fuentes e Iconos-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Estilos -->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
 
-    <!-- Page Wrapper -->
+    <!-- Pagina -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Barra de Navegacion Izquierda -->
+        <ul class="navbar-nav bg-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
+            <!-- Logo -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/login">
                 <i class="fas fa-fw fa-home"></i>
                 <div class="sidebar-brand-text mx-3">SESLAB</div>
             </a>
 
-            <!-- Divider -->
+            <!-- Division -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Item - Cerrar Sesion -->
             <li class="nav-item">
                 <a class="nav-link" href="/logout">
-                    <i class="fas fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-power-off"></i>
                     <span>Cerrar sesión</span></a>
             </li>
 
-            <!-- Divider -->
+            <!-- Division -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+            <!-- Titulo -->
             <div class="sidebar-heading">
                 Opciones principales
             </div>
 
-            @yield('opciones')
-
-            <!-- Divider -->
+            <!--Opciones de Estudiante-->
+            @if(App\Models\Estudiante::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/editar">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <span>Editar Datos</span>
+                </a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/estadoInscripcion">
+                    <i class="fa fa-fw fa-check-square"></i>
+                    <span>Estado Inscripcion</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/ver/retirar">
+                    <i class="fa fa-fw fa-times"></i>
+                    <span>Retirar Materia</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/inscripcion">
+                    <i class="fas fa-fw fa-plus-circle"></i>
+                    <span>Inscripcion</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/verPracticas">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Ver Prácticas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/portafolio">
+                    <i class="fa fa-fw fa-briefcase"></i>
+                    <span>Portafolio</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/subirPractica">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/estudiante/horario">
+                    <i class="fas fa-fw fa-calendar"></i>
+                    <span>Ver Horario</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones de Auxiliar-->
+            @if(App\Models\Auxiliar::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/auxiliar/clases">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Lista de clases</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auxiliar/practicas">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Lista de Practicas</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones de Docente-->
+            @if(App\Models\Docente::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/editar">
+                    <i class="fas fa-fw fa-pencil-alt"></i>
+                    <span>Editar Datos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/crearAuxiliar">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Crear Auxiliar</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/subirPractica">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Subir Práctica</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/clases/crear">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Crear Clase</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/listas">
+                    <i class="fas fa-fw fa-list-ul"></i>
+                    <span>Ver Estudiantes Inscritos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/portafolios">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Portafolios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/docente/informes">
+                    <i class="fas fa-fw fa-percent"></i>
+                    <span>Informe Asistencia</span>
+                </a>
+            </li>
+            @endif
+            <!--Opciones de Administrador-->
+            @if(App\Models\Administrador::where('USUARIO_ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first() != null)
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Crear</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/administrador/crearDocente">Crear Docente</a>
+                        <a class="collapse-item" href="/administrador/crearAdmin">Crear Administrador</a>
+                        <a class="collapse-item" href="/administrador/crearGestion">Crear Gestión</a>
+                        <a class="collapse-item" href="/administrador/crearMateria">Crear Materia</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Listas</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/administrador/listaDocente">Lista de Docentes</a>
+                        <a class="collapse-item" href="/administrador">Lista de Administradores</a>
+                        <a class="collapse-item" href="/administrador">Lista de Gestiones</a>
+                        <a class="collapse-item" href="/administrador/verGruposDocentes">Grupos de Docentes</a>
+                    </div>
+                </div>
+            </li>
+            @endif
+            <!-- Division -->
             <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
         </ul>
-        <!-- End of Sidebar -->
+        <!-- Fin de la Barra de Navegacion Izquierda -->
 
-        <!-- Content Wrapper -->
+        <!-- Contenedor -->
         <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <!-- Vista Principal -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
                 <div class="container">
-                    @yield('contenido_barra')
+                    <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <h4 class="text-light">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>
+                            {{
+                            App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->NOMBRE.' '.
+                            App\Models\Usuario::where('ID', '=', \Illuminate\Support\Facades\Cookie::get('USUARIO_ID'))->first()->APELLIDO
+                        }}
+                        </span>
+                    </h4>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                    </div>
                 </div>
             </nav>
 
-            <!-- Page Content -->
+            <!-- Contenido Variable -->
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -86,47 +235,28 @@
                     </div>
                 </div>
             </div>
-            <!-- End of Main Content -->
+            <!-- Fin del Contenido Variable -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- Fin del Contenedor -->
 
     </div>
-    <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
+    <!-- Fin de la Pagina -->
+    <!-- Boton de Scroll -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
 </body>
 
-</html> 
+</html>
+<script>
+    $('#toggler').click(function() {
+        $('#accordionSidebar').toggle();
+    });
+</script>

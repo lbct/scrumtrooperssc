@@ -13,12 +13,5 @@ class MateriaSeeder extends Seeder
             'NOMBRE_MATERIA' 		=> 'INTRODUCCION A LA PROGRAMACION',
             'DETALLE_MATERIA' 		=> 'INTRODUCCION A LA PROGRAMACION',
         ]);
-        
-        Materia::create([
-            'GESTION_ID'            => 1,
-            'CODIGO_MATERIA' 		=> '2010003',
-            'NOMBRE_MATERIA' 		=> 'ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS',
-            'DETALLE_MATERIA' 		=> 'ELEM. DE PROGRAMACION Y ESTRUC. DE DATOS',
-        ]);
     }
 }
