@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gestion extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table    = 'GESTION';
+    protected $primaryKey = 'id';
+    protected $table    = 'gestion';
     
     public function periodo()
     {
-        return $this->belongsTo('App\Models\Periodo', 'PERIODO_ID');
+        return $this->belongsTo('App\Models\Periodo', 'periodo_id');
     }
     
     public function materia()
     {
-        return $this->hasMany('App\Models\Materia', 'GESTION_ID', 'ID');
+        return $this->hasMany('App\Models\Materia', 'gestion_id', 'id');
     }
     
     public function clase()
     {
-        return $this->hasMany('App\Models\Clase', 'GESTION_ID', 'ID');
+        return $this->hasMany('App\Models\Clase', 'gestion_id', 'id');
     }
 }

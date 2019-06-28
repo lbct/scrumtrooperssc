@@ -206,6 +206,7 @@
             <!-- Vista Principal -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
                 <div class="container">
+                    
                     <button id="toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -250,7 +251,6 @@
     <!-- Bootstrap JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
 
 </body>
 

@@ -14,10 +14,6 @@ class Control extends Controller
     //Obtiene la vista de Inicio de sesión
     public function getLogin(Request $request)
     {
-        $rol = $request->cookie('ROL');
-        if( $rol != null )
-            return redirect('/'.$rol);
-        
         return view('login');
     }
     
@@ -31,20 +27,16 @@ class Control extends Controller
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario = Usuario::where('USERNAME',($request->username))->get();
+            $usuario  = Usuario::where('username',($request->username))->first();
+            $password = $request->password;
             
-            if(!$usuario->isEmpty())
+            if( $usuario!==null && $usuario->revisarPassword($password) )
             {
-                $usuario = $usuario[0];
-                if( Hash::check($request->password, $usuario->PASSWORD) )
-                {
-                    $rol        = strtolower($usuario->asignaRol[0]->rol->DESCRIPCION);
-                    $usuarioID  = cookie('USUARIO_ID', $usuario->ID, 90);
-                    $rolUsuario = cookie('ROL', $rol, 90);
-                    
-                    //Redirije a la ruta iniclal del Rol
-                    return redirect('/'.$rol)->withCookie($usuarioID)->withCookie($rolUsuario);
-                }
+                //inicia la sesion
+                session(['usuario_id' => $usuario->id]);
+
+                //Redirije al panel
+                return redirect('/panel');
             }
             
             $request->session()->flash('alert-danger', 'Usuario o Contraseña Incorrecta');
@@ -56,6 +48,7 @@ class Control extends Controller
     //Cierra sesión
     public function getLogout(Request $request)
     {        
-        return redirect('/login')->withCookie(\Cookie::forget('USUARIO_ID'))->withCookie(\Cookie::forget('ROL'));
+        $request->session()->flush();
+        return redirect('/login');
     }
 }

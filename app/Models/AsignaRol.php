@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class AsignaRol extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'ASIGNA_ROL';
+    protected $primaryKey = 'id';
+    protected $table = 'asigna_rol';
     
     public function usuario()
     {
-        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
     
     public function rol()
     {
-        return $this->belongsTo('App\Models\Rol', 'ROL_ID');
+        return $this->belongsTo('App\Models\Rol', 'rol_id');
     }
 }

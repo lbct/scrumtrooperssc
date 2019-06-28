@@ -9,9 +9,9 @@ class Clase extends Model
     protected $primaryKey = 'ID';
     protected $table = 'CLASE';
     
-    public function grupoADocente()
+    public function grupoDocente()
     {
-        return $this->belongsTo('App\Models\GrupoADocente', 'GRUPO_A_DOCENTE_ID');
+        return $this->belongsTo('App\Models\GrupoDocente', 'GRUPO_DOCENTE_ID');
     }
     
     public function gestion()

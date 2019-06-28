@@ -6,16 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class EstudianteClase extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'ESTUDIANTE_CLASE';
+    protected $primaryKey = 'id';
+    protected $table = 'estudiante_clase';
     
     public function clase()
     {
-        return $this->belongsTo('App\Models\Clase', 'CLASE_ID');
+        return $this->belongsTo('App\Models\Clase', 'clase_id');
+    }
+    
+    public function grupoADocente()
+    {
+        return $this->belongsTo('App\Models\GrupoADocente', 'grupo_a_docente_id');
     }
     
     public function estudiante()
     {
-        return $this->belongsTo('App\Models\Estudiante', 'ESTUDIANTE_ID');
+        return $this->belongsTo('App\Models\Estudiante', 'estudiante_id');
     }
 }

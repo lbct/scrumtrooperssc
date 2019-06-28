@@ -21,7 +21,7 @@ class Rol
 
     public function is(Request $request)
     {
-        $usuario = Usuario::find($request->cookie('USUARIO_ID'));
+        $usuario = Usuario::find(session('usuario_id'));
         $contiene_rol = false;
         if($usuario != null){
             $roles = $usuario->asignaRol;

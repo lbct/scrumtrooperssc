@@ -1,9 +1,71 @@
 <?php
-use \App\Models\Docente;
+use \App\Models\Usuario;
+use \App\Classes\Sesion;
+use \App\Classes\Gestiones;
+use Illuminate\Http\Request;
 
-Route::get('test', function () {
-    $clases = Docente::all();
-    return $clases[0]->grupoADocente;
+Route::get('/panel/{any}', function (Request $request) { 
+    return view('test'); }
+)->where('any', '^(.*)$');
+
+Route::get('usuario/informacion', function (Request $request) {
+    if(Sesion::iniciado($request)){
+        $usuario_id = session('usuario_id');
+        $usuario = Usuario::find($usuario_id);
+        
+        return $usuario;
+    }
+});
+
+Route::put('usuario/editar', function (Request $request) {
+    if(Sesion::iniciado($request)){
+        $usuario_id = session('usuario_id');
+        $usuario = Usuario::find($usuario_id);
+        $usuario_form = $request->usuario;
+        
+        if($usuario_form['id'] == $usuario_id){
+            $usuario->NOMBRE   = $usuario_form['nombre'];
+            $usuario->APELLIDO = $usuario_form['apellido'];
+            $usuario->CORREO   = $usuario_form['correo'];
+            $usuario->save();
+            
+            return response()->json(['exito'=>["Datos cambiados con éxito"]], 200);
+        }
+        else
+            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
+    }
+});
+
+Route::put('usuario/editar/password', function (Request $request) {
+    if(Sesion::iniciado($request)){
+        $usuario_id = session('usuario_id');
+        $usuario = Usuario::find($usuario_id);
+        $usuario_form = $request->usuario;
+        
+        if($usuario_form['id'] == $usuario_id){
+            $old_password = $usuario_form['old_password'];
+            $new_passowrd = $usuario_form['password'];
+            
+            if( Hash::check($old_password, $usuario->password) ){
+                $usuario->password = Hash::make($new_passowrd);
+                $usuario->save();
+                return response()->json(['exito'=>["Contraseña cambiada con éxito"]], 200);
+            }
+            else
+                return response()->json(['error'=>["Contraseña actual incorrecta"]], 200);
+        }
+        else
+            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
+    }
+});
+
+use \App\Models\Estudiante;
+
+Route::get('estudiante/materias/inscritas', function (Request $request) {
+        $usuario_id = session('usuario_id');        
+        $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
+        
+        return $estudiante->inscripcionActual();
 });
 
 //Ruta Inicial Login

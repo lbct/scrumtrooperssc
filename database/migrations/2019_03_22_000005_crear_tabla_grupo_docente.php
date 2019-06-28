@@ -7,21 +7,21 @@ class CrearTablaGrupoDocente extends Migration
 {
     public function up()
     {
-        Schema::create('GRUPO_DOCENTE', function (Blueprint $table) {
+        Schema::create('grupo_docente', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('MATERIA_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('materia_id')->unsigned();
             
-            $table->string('DETALLE_GRUPO_DOCENTE',255);
+            $table->string('detalle_grupo_docente',255);
             $table->timestamps();
             
-            $table->foreign('MATERIA_ID')->references('ID')->on('MATERIA')->onDelete('cascade');
+            $table->foreign('materia_id')->references('id')->on('materia')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('GRUPO_DOCENTE');
+        Schema::drop('grupo_docente');
     }
 }

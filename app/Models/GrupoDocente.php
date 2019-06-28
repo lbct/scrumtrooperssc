@@ -18,4 +18,9 @@ class GrupoDocente extends Model
     {
         return $this->hasMany('App\Models\GrupoADocente', 'GRUPO_DOCENTE_ID', 'ID');
     }
+    
+    public function clase()
+    {
+        return $this->hasMany('App\Models\Clase', 'GRUPO_DOCENTE_ID', 'ID');
+    }
 }
