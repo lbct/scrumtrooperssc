@@ -8,10 +8,10 @@ class MateriaSeeder extends Seeder
     public function run()
     {
         Materia::create([
-            'GESTION_ID'            => 1,
-            'CODIGO_MATERIA' 		=> '2010010',
-            'NOMBRE_MATERIA' 		=> 'INTRODUCCION A LA PROGRAMACION',
-            'DETALLE_MATERIA' 		=> 'INTRODUCCION A LA PROGRAMACION',
+            'gestion_id'            => 1,
+            'codigo_materia' 		=> '2010010',
+            'nombre_materia' 		=> 'INTRODUCCION A LA PROGRAMACION',
+            'detalle_materia' 		=> 'INTRODUCCION A LA PROGRAMACION',
         ]);
     }
 }

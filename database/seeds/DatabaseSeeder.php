@@ -46,6 +46,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call(EnvioPracticaSeeder::class);
         
+        $this->call(FechaInscripcionSeeder::class);
+        
         Model::reguard();
     }
 }

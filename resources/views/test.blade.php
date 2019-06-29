@@ -21,6 +21,7 @@
 
     <!-- Estilos -->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 
 </head>
@@ -75,6 +76,7 @@
     <!-- Bootstrap JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('js/bs-stepper.min.js')}}"></script>
     
     <!-- VueJS JavaScript-->
     <script src="{{asset('js/app.js')}}"></script>

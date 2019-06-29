@@ -11,10 +11,12 @@
         </a>
         <div id="inscripcion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <router-link :to="{ name: 'EstudianteEstadoInscription' }"  class="collapse-item">
+                <router-link :to="{ name: 'EstudianteEstadoInscripcion' }"  class="collapse-item">
                     Estado Inscripción
                 </router-link>
-                <a class="collapse-item" href="">Incribirme</a>
+                <router-link :to="{ name: 'EstudianteInscripcion' }"  class="collapse-item">
+                    Incribirme
+                </router-link>
             </div>
         </div>
     </li>
@@ -27,14 +29,16 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="">Ver Prácticas</a>
                 <a class="collapse-item" href="">Subir Prácticas</a>
-                <a class="collapse-item" href="">Portafolio</a>
+                <router-link :to="{ name: 'EstudiantePortafolio' }" class="collapse-item">
+                    Portafolio
+                </router-link>    
             </div>
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/estudiante/horario">
+        <router-link :to="{ name: 'EstudianteHorario' }" class="nav-link">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Ver Horario</span>
-        </a>
+        </router-link>
     </li>
 @endif

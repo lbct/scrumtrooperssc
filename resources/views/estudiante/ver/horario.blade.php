@@ -153,7 +153,4 @@
     </tbody>
 </table>
 
-
-
-
 @endsection

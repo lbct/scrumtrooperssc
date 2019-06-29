@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'HORARIO';
+    protected $primaryKey = 'id';
+    protected $table = 'horario';
     
     public function clase()
     {
-        return $this->hasMany('App\Models\Clase', 'HORARIO_ID', 'ID');
+        return $this->hasMany('App\Models\Clase', 'horario_id', 'id');
     }
 }

@@ -7,20 +7,20 @@ class CrearTablaAula extends Migration
 {
     public function up()
     {
-        Schema::create('AULA', function (Blueprint $table) {
+        Schema::create('aula', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('CODIGO_AULA',25)->unique();
-            $table->string('NOMBRE_AULA',50);
-            $table->string('DETALLE_AULA',255);
+            $table->string('codigo_aula',25)->unique();
+            $table->string('nombre_aula',50);
+            $table->string('detalle_aula',255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('AULA');
+        Schema::drop('aula');
     }
 }

@@ -2,336 +2,43 @@
 use \App\Models\Usuario;
 use \App\Classes\Sesion;
 use \App\Classes\Gestiones;
+use \App\Classes\FechasInscripciones;
 use Illuminate\Http\Request;
 
-Route::get('/panel/{any}', function (Request $request) { 
-    return view('test'); }
-)->where('any', '^(.*)$');
-
-Route::get('usuario/informacion', function (Request $request) {
-    if(Sesion::iniciado($request)){
-        $usuario_id = session('usuario_id');
-        $usuario = Usuario::find($usuario_id);
-        
-        return $usuario;
-    }
-});
-
-Route::put('usuario/editar', function (Request $request) {
-    if(Sesion::iniciado($request)){
-        $usuario_id = session('usuario_id');
-        $usuario = Usuario::find($usuario_id);
-        $usuario_form = $request->usuario;
-        
-        if($usuario_form['id'] == $usuario_id){
-            $usuario->NOMBRE   = $usuario_form['nombre'];
-            $usuario->APELLIDO = $usuario_form['apellido'];
-            $usuario->CORREO   = $usuario_form['correo'];
-            $usuario->save();
-            
-            return response()->json(['exito'=>["Datos cambiados con éxito"]], 200);
-        }
-        else
-            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
-    }
-});
-
-Route::put('usuario/editar/password', function (Request $request) {
-    if(Sesion::iniciado($request)){
-        $usuario_id = session('usuario_id');
-        $usuario = Usuario::find($usuario_id);
-        $usuario_form = $request->usuario;
-        
-        if($usuario_form['id'] == $usuario_id){
-            $old_password = $usuario_form['old_password'];
-            $new_passowrd = $usuario_form['password'];
-            
-            if( Hash::check($old_password, $usuario->password) ){
-                $usuario->password = Hash::make($new_passowrd);
-                $usuario->save();
-                return response()->json(['exito'=>["Contraseña cambiada con éxito"]], 200);
-            }
-            else
-                return response()->json(['error'=>["Contraseña actual incorrecta"]], 200);
-        }
-        else
-            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
-    }
-});
-
-use \App\Models\Estudiante;
-
-Route::get('estudiante/materias/inscritas', function (Request $request) {
-        $usuario_id = session('usuario_id');        
-        $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
-        
-        return $estudiante->inscripcionActual();
-});
-
-//Ruta Inicial Login
+//Rutas Login
 Route::get('/', 'Sesion\Control@getLogin');
 
 Route::get('login', 'Sesion\Control@getLogin');
 Route::post('login', 'Sesion\Control@postLogin');
 Route::get('logout', 'Sesion\Control@getLogout');
 
-//Rutas Estudiante
-Route::get('estudiante', 'Estudiante\Inicio\Control@getInicio');
-Route::get('estudiante/editar', 'Estudiante\Editar\Control@getEditar');
-Route::post('estudiante/editar', 'Estudiante\Editar\Control@postEditar');
-Route::get('registro', 'Estudiante\Crear\Control@getRegistro');
-Route::post('registro', 'Estudiante\Crear\Control@postRegistro');
-Route::get('estudiante/inscripcion', 'Estudiante\Inscribir\Control@getInscripcion');
-Route::post('estudiante/inscripcion', 'Estudiante\Inscribir\Control@postInscripcion');
-Route::get('estudiante/estadoInscripcion', 'Estudiante\Ver\Control@getMaterias');
-Route::get('estudiante/portafolio', 'Estudiante\Ver\Control@getPortafolio');
-Route::post('estudiante/portafolio', 'Estudiante\Ver\Control@postPortafolio');
-Route::post('estudiante/portafolio/ver', 'Estudiante\Ver\Control@postVerPortafolio');
-Route::get('estudiante/portafolio/ver', 'Estudiante\Ver\Control@getVerPortafolio');
-
-Route::get('estudiante/horario', 'Estudiante\Ver\Control@verHorario');
-
-Route::get('estudiante/ver/retirar','Estudiante\Retirar\Control@getRetirar');
-Route::post('estudiante/ver/retirar',
-[
-    'as' => 'estudiante/ver/retirar',
-    'uses' => 'Estudiante\Retirar\Control@postRetirar'
-]);
-
-
-Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
-Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
-
-Route::get('estudiante/subirPractica/{id_sesion}', [
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@getSubir'
-]);
-
-Route::post('estudiante/subirPractica/{id_sesion}', [
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@postSubir'
-]);
-
-/*Route::get('estudiante/subirPractica/{ID}', [
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@eliminarArchivo'
-]);
-
-Route::get('estudiante/subirPractica/{ID}', function ($ID) 
-{
-    $envio = EnvioPractica::find($ID);
-    $envio->delete();
-    return Redirect::route('/estudiante/subirPractica');
+//Rutas Panel
+Route::get('/panel', function (Request $request) { 
+    return view('test'); 
 });
 
-Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');*/
+Route::get('/panel/{any}', function (Request $request) { 
+    return view('test'); 
+})->where('any', '^(.*)$');
 
-Route::post('estudiante/clases/{id_sesion}', [
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Subir\Control@postSubir'
-]);
-Route::get('estudiante/verPracticas', 'Estudiante\Ver\Control@verPracticas');
-Route::post('estudiante/verPracticas', [
-    'as' => 'estudiante',
-    'uses' => 'Estudiante\Ver\Control@verPracticasMateria'
-]);
+//Ruta estado Inscripcion
+Route::get('/inscripcion/activa', function (Request $request) {
+    $activa = FechasInscripciones::fechaActiva();
+    return response()->json(['activa'=>$activa], 200);
+});
 
-Route::delete('estudiante/eliminarPractica', 'Estudiante\Eliminar\Control@deletePracticaSubida');
+//Rutas Usuario
+Route::get('usuario', 'Usuario\Control@informacion');
+Route::put('usuario', 'Usuario\Control@editar');
+Route::put('usuario/password', 'Usuario\Control@editarPassword');
 
-//Rutas Admin
-Route::get('administrador', [
-    'as' => 'administrador',
-    'uses' => 'Admin\Inicio\Control@getInicio'
-]);
-
-Route::get('administrador/crearDocente', 'Admin\Docente\Crear\Control@getRegistro');
-Route::post('administrador/crearDocente', 'Admin\Docente\Crear\Control@postRegistro');
-
-Route::get('administrador/listaDocente', 'Admin\Docente\Ver\Control@getLista');  //Mostrar lista de docentes registrados
-
-Route::get(
-    'administrador/editarDocente/{id_usuario}',
-    [
-        'as' => 'administrador/editarDocente',
-        'uses' => 'Admin\Docente\Editar\Control@getUsuario'
-    ]
-);
-
-Route::post(
-    'administrador/editarDocente/{id_usuario}',
-    [
-        'as' => 'administrador/editarDocente',
-        'uses' => 'Admin\Docente\Editar\Control@postUsuario'
-    ]
-);
-Route::get('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Editar\Control@getClave');
-Route::post('administrador/editarDocente/{id_usuario}/cambiarClave', 'Admin\Docente\Editar\Control@postClave');
-
-Route::get('administrador/crearAdmin', 'Admin\Crear\Control@getRegistro');
-Route::post('administrador/crearAdmin', 'Admin\Crear\Control@postRegistro');
-
-Route::get('administrador/crearGestion', 'Admin\Gestion\Crear\Control@getRegistro');
-Route::post('administrador/crearGestion', 'Admin\Gestion\Crear\Control@postRegistro');
-
-Route::get(
-    'administrador/verDocente/{id_usuario}',
-    [
-        'as' => 'administrador/verDocente',
-        'uses' => 'Admin\Docente\Ver\Control@getUsuario'
-    ]
-);
-
-Route::get('administrador/verGruposDocentes', 'Admin\Crear\Control@getListaGrupoDocentes');
-Route::get('administrador/crearGrupoDocentes', 'Admin\Docente\Crear\Control@getGrupoDocentesForm');
-Route::post('administrador/crearGrupoDocentes', 'Admin\Docente\Crear\Control@postGrupoDocentesForm');
-Route::get(
-    'administrador/editarGrupoDocente/{grupo_docente_id}',
-    [
-        'as' => 'administrador/editarGrupoDocente',
-        'uses' => 'Admin\Docente\Editar\Control@getDocentesGrupo'
-    ]
-);
-Route::post(
-    'administrador/editarGrupoDocente',
-    [
-        'as' => 'administrador/editarGrupoDocente',
-        'uses' => 'Admin\Docente\Editar\Control@postDocentesGrupo'
-    ]
-);
-
-Route::get('administrador/crearMateria', 'Admin\Materia\Crear\Control@getRegistro');
-Route::post('administrador/crearMateria', 'Admin\Materia\Crear\Control@postRegistro');
-
-//Rutas Auxiliar
-Route::get('auxiliar', 'Auxiliar\Inicio\Control@getInicio');
-Route::post('auxiliar/iniciarClase',
-    [
-    'as' => 'auxiliar/iniciarClase',
-    'uses' =>'Auxiliar\Clase\Control@postIniciarClase',
-    ]
-);
-Route::get(
-    'auxiliar/clases/{id_gestion}',
-    [
-        'as' => 'auxiliar/clases',
-        'uses' => 'Auxiliar\Ver\Control@getClases'
-    ]
-);
-Route::get('auxiliar/clases', 'Auxiliar\Ver\Control@getClasesUltimaGestion');
-Route::post(
-    'auxiliar/clases',
-    [
-        'as'   => 'auxiliar/clases',
-        'uses' => 'Auxiliar\Ver\Control@postClases'
-    ]
-);
-
-Route::get('auxiliar/practicas', 'Auxiliar\Ver\Control@getPracticasUltimaGestion');
-Route::get(
-    'auxiliar/practicas/{id_gestion}',
-    [
-        'as' => 'auxiliar/practicas',
-        'uses' => 'Auxiliar\Ver\Control@getPracticas'
-    ]
-);
-Route::post(
-    'auxiliar/practicas',
-    [
-        'as'   => 'auxiliar/practicas',
-        'uses' => 'Auxiliar\Ver\Control@postPracticas'
-    ]
-);
-Route::post(
-    'auxiliar/asignar',
-    [
-        'as' => 'auxiliar/asignar',
-        'uses' => 'Auxiliar\Ver\Control@postSesion'
-    ]
-);
-Route::post(
-    'auxiliar/clases/estudiante',
-    [
-        'as' => 'auxiliar/clases/estudiante',
-        'uses' => 'Auxiliar\Estudiante\Ver\Control@postEstudiante'
-    ]
-);
-
-Route::post(
-    'auxiliar/clases/estudiante/practica',
-    [
-        'as' => 'auxiliar/clases/estudiante/practica',
-        'uses' => 'Auxiliar\Estudiante\Ver\Control@postPractica'
-    ]
-);
-
-//Rutas Docente
-Route::get('docente', 'Docente\Inicio\Control@getInicio');
-Route::get('docente/editar', 'Docente\Editar\Control@getEditar');
-Route::post('docente/editar', 'Docente\Editar\Control@postEditar');
-Route::get('docente/crearAuxiliar', 'Docente\Auxiliar\Crear\Control@getRegistro');
-Route::post('docente/crearAuxiliar', 'Docente\Auxiliar\Crear\Control@postRegistro');
-Route::get('docente/subirPractica', 'Docente\Clases\Ver\Control@getClasesUltimaGestion');
-Route::post(
-    'docente/subirPractica',
-    [
-        'as' => 'docente/subirPractica',
-        'uses' => 'Docente\Clases\Ver\Control@postClases'
-    ]
-);
-Route::post(
-    'docente/subirPractica/confirmar',
-    [
-        'as' => 'docente/subirPractica/confirmar',
-        'uses' => 'Docente\Practica\Subir\Control@postConfirmar'
-    ]
-);
-Route::post(
-    'docente/subirPractica/subir',
-    [
-        'as' => 'docente/subirPractica/subir',
-        'uses' => 'Docente\Practica\Subir\Control@postSubir'
-    ]
-);
-Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
-Route::get('docente/practicaSemana/{grupo_a_docente_id}/{semana}', 'Docente\Practica\Subir\Control@practicaSemana');
-
-Route::post('docente/clases/crear', 'Docente\Clases\Crear\Control@postCrearClase');
-Route::get('docente/clases/crear', 'Docente\Clases\Crear\Control@verMaterias');
-Route::post('docente/clases/crear/horario', 'Docente\Clases\Crear\Control@verHorarios');
-Route::post('docente/clases/crear/aula', 'Docente\Clases\Crear\Control@verAulas');
-Route::get('docente/portafolios', 'Docente\Portafolio\Ver\Control@getPortafolios');
-Route::post('docente/portafolios/materias', 'Docente\Portafolio\Ver\Control@verMaterias');
-Route::post('docente/portafolios/estudiantes', 'Docente\Portafolio\Ver\Control@verEstudiantes');
-Route::post('docente/portafolio', 'Docente\Portafolio\Ver\Control@verPortafolio');
-
-Route::get('docente/informes', 
-[
-    'as' => 'docente/informes',
-    'uses' => 'Docente\Informes\Ver\Control@getClasesUltimaGestion'
-]);
-Route::get('docente/informes/{id_gestion}', 'Docente\Informes\Ver\Control@getClases');
-Route::post('docente/informes/sesion', 
-[
-    'as' => 'docente/informes/sesion',
-    'uses' => 'Docente\Informes\Sesion\Ver\Control@getSesion'
-]);
-Route::post('docente/informes', 
-[
-    'as' => 'docente/informes',
-    'uses' => 'Docente\Informes\Ver\Control@getListas'
-]);
-
-Route::get('docente/listas', 'Docente\Listas\Ver\Control@getClasesUltimaGestion');
-Route::post(
-    'docente/listas',
-    [
-        'as' => 'docente/listas',
-        'uses' => 'Docente\Listas\Ver\Control@getListas'
-
-    ]
-);
-
-Route::get('auxiliarterminal','Auxiliar\Inicio\Control@getInicio');
+//Rutas Estudiante
+Route::get('estudiante/materias/inscritas', 'Estudiante\Materia\Control@inscritas');
+Route::delete('estudiante/materias/inscritas', 'Estudiante\Materia\Control@retirar');
+Route::get('estudiante/materias/disponibles', 'Estudiante\Materia\Control@materiasHabilitadas');
+Route::get('estudiante/materia/{materia_id}/docentes', 'Estudiante\Materia\Control@docentesMateria');
+Route::get('estudiante/materia/{grupo_a_docente_id}/clases', 'Estudiante\Materia\Control@clasesMateria');
+Route::post('estudiante/materia', 'Estudiante\Materia\Control@nuevaMateria');
 
 //Rutas de Descarga 'uploads'
 Route::get('descargar/guia/{filename}', function ($filename) {

@@ -2,9 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Schedule from 'vue-schedule'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
+Vue.use(Schedule)
 
 import App from './views/App'
 import Alertas from './components/Alertas'
@@ -16,7 +18,10 @@ import UsuarioEditarDatos from './views/Usuario/EditarDatos'
 
 //Estudiantes
 import EstudianteInicio from './views/Estudiante/Inicio'
-import EstudianteEstadoInscription from './views/Estudiante/EstadoInscription'
+import EstudianteEstadoInscripcion from './views/Estudiante/EstadoInscripcion'
+import EstudianteInscripcion from './views/Estudiante/Inscripcion'
+import EstudiantePortafolio from './views/Estudiante/Portafolio'
+import EstudianteHorario from './views/Estudiante/Horario'
 
 const router = new VueRouter({
     mode: 'history',
@@ -33,8 +38,23 @@ const router = new VueRouter({
         },
         {
             path: '/panel/estudiante/EstadoInscripcion',
-            name: 'EstudianteEstadoInscription',
-            component: EstudianteEstadoInscription,
+            name: 'EstudianteEstadoInscripcion',
+            component: EstudianteEstadoInscripcion,
+        },
+        {
+            path: '/panel/estudiante/Inscripcion',
+            name: 'EstudianteInscripcion',
+            component: EstudianteInscripcion,
+        },
+        {
+            path: '/panel/estudiante/Portafolio',
+            name: 'EstudiantePortafolio',
+            component: EstudiantePortafolio,
+        },
+        {
+            path: '/panel/estudiante/Horario',
+            name: 'EstudianteHorario',
+            component: EstudianteHorario,
         },
     ],
 });

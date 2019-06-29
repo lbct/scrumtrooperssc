@@ -70,7 +70,7 @@
                   </div>
 
                   <div class="modal-footer">
-                    <button v-on:click="cambiarPassword()" type="button" class="m-3 btn btn-primary pull-left">Cambiar Contraseña</button>
+                    <button v-on:click="cambiarPassword()" type="button" class="m-3 btn btn-primary pull-left">Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                   </div>
                 </form>
@@ -100,7 +100,7 @@
         methods:{
             init(){
                 this.axios
-                    .get('/usuario/informacion')
+                    .get('/usuario')
                     .then((response)=>{
                         this.usuario.id       = response.data.id;
                         this.usuario.nombre   = response.data.nombre;
@@ -119,7 +119,7 @@
                 
                 const params = {'usuario': this.usuario};
                 this.axios
-                    .put('/usuario/editar', params)
+                    .put('/usuario', params)
                     .then((respuesta)=>{
                         var datos = respuesta.data;
                     
@@ -161,7 +161,7 @@
                 if(this.mensajes_password.length == 0){
                     const params = {'usuario': this.usuario};
                     this.axios
-                    .put('/usuario/editar/password', params)
+                    .put('/usuario/password', params)
                     .then((respuesta)=>{
                         var datos = respuesta.data;
                     

@@ -7,19 +7,19 @@ class CrearTablaHorario extends Migration
 {
     public function up()
     {
-        Schema::create('HORARIO', function (Blueprint $table) {
+        Schema::create('horario', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->time('HORA_INICIO');
-            $table->time('HORA_FIN');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('HORARIO');
+        Schema::drop('horario');
     }
 }
