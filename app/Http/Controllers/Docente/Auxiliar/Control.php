@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Docente\Auxiliar;
 
 use App\Models\Usuario;
+use App\Models\Docente;
 use App\Models\AsignaRol;
 use App\Models\GrupoDocenteAuxiliar;
 use App\Http\Controllers\Controller;
@@ -40,5 +41,20 @@ class Control extends Base
         $registro->save();
         
         return response()->json(['exito'=>['Auxiliar asignado con éxito']], 200);
+    }
+    
+    public function asignados(Request $request, $gestion_id){
+        $usuario_id = session('usuario_id');        
+        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+        
+        return $docente->auxiliaresAginados($gestion_id);
+    }
+    
+    public function retirar(Request $request){
+        $grupo_docente_auxiliar_id = $request->grupo_docente_auxiliar_id;
+        $registro = GrupoDocenteAuxiliar::find($grupo_docente_auxiliar_id);
+        $registro->delete();
+        
+        return response()->json(['exito'=>['Auxiliar retirado con éxito']], 200);
     }
 }

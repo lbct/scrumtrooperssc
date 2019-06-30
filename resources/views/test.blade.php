@@ -20,7 +20,7 @@
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Estilos -->
-    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{asset('css/bs-stepper.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 

@@ -84,7 +84,7 @@
     export default {        
         data() {
             return {
-                mensajes: '',
+                mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
                 

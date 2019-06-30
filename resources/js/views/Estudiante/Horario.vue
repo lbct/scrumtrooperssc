@@ -1,29 +1,31 @@
 <template>
     <div>
-        <table :key="key_horario" class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Lunes</th>
-                    <th scope="col">Martes</th>
-                    <th scope="col">Miercoles</th>
-                    <th scope="col">Jueves</th>
-                    <th scope="col">Viernes</th>
-                    <th scope="col">Sabado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(horario, index) in horarios">
-                    <td>{{horas[index]}}</td>
-                    <td v-for="materia in horarios[index]">
-                        <div v-if="materia">
-                            {{materia.nombre_materia}}
-                            {{materia.nombre_aula}}
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table :key="key_horario" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Lunes</th>
+                        <th scope="col">Martes</th>
+                        <th scope="col">Miercoles</th>
+                        <th scope="col">Jueves</th>
+                        <th scope="col">Viernes</th>
+                        <th scope="col">Sabado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(horario, index) in horarios">
+                        <td>{{horas[index]}}</td>
+                        <td v-for="materia in horarios[index]">
+                            <div v-if="materia" class="table-info custom-td">
+                                {{materia.nombre_materia}}<br>
+                                {{materia.nombre_aula}}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -50,7 +52,6 @@
     
         methods:{
             init(){
-                var $this = this;
                 for(var i=0; i<10; i++) {
                     this.horarios[i] = new Array(6);
                 }
@@ -59,8 +60,8 @@
                     .get('/estudiante/materias/inscritas')
                     .then((response)=>{
                         var datos = response.data;
-                        datos.forEach(function(materia) {
-                            $this.horarios[materia.horario_id-1][materia.dia-1] = materia;
+                        datos.forEach((materia)=>{
+                            this.horarios[materia.horario_id-1][materia.dia-1] = materia;
                         });
                         this.key_horario++;
                     })

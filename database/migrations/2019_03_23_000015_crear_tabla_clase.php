@@ -18,13 +18,15 @@ class CrearTablaClase extends Migration
             
             $table->string('detalle_clase',255);
             $table->tinyInteger('dia');
-            $table->tinyInteger('semana_actual_sesion');
+            $table->tinyInteger('semana_actual_sesion')->default(0);
             $table->timestamps();
             
             $table->foreign('gestion_id')->references('id')->on('gestion')->onDelete('cascade');
             $table->foreign('aula_id')->references('id')->on('aula')->onDelete('cascade');
             $table->foreign('horario_id')->references('id')->on('horario')->onDelete('cascade');
             $table->foreign('grupo_docente_id')->references('id')->on('grupo_docente')->onDelete('cascade');
+            
+            $table->unique(['gestion_id', 'aula_id', 'horario_id', 'dia']);
         });
     }
 

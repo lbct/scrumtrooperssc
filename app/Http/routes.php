@@ -40,11 +40,20 @@ Route::get('estudiante/materia/{materia_id}/docentes', 'Estudiante\Materia\Contr
 Route::get('estudiante/materia/{grupo_a_docente_id}/clases', 'Estudiante\Materia\Control@clasesMateria');
 Route::post('estudiante/materia', 'Estudiante\Materia\Control@nuevaMateria');
 
+Route::get('estudiante/sesiones/{estudiante_clase_id}', 'Estudiante\Sesion\Control@cursadas');
+
 //Rutas Docente
+Route::get('docente/gestiones', 'Docente\Gestion\Control@disponibles');
+
 Route::get('docente/materias', 'Docente\Materia\Control@materias');
 Route::get('docente/materias/{gestion_id}', 'Docente\Materia\Control@materiasGestion');
+
+Route::get('docente/clases/{gestion_id}', 'Docente\Clase\Control@clasesGestion');
+
 Route::get('docente/auxiliares/disponibles/{grupo_docente_id}', 'Docente\Auxiliar\Control@disponibles');
 Route::post('docente/auxiliares', 'Docente\Auxiliar\Control@asignar');
+Route::get('docente/auxiliares/{gestion_id}', 'Docente\Auxiliar\Control@asignados');
+Route::delete('docente/auxiliares', 'Docente\Auxiliar\Control@retirar');
 
 //Rutas de Descarga 'uploads'
 Route::get('descargar/guia/{filename}', function ($filename) {

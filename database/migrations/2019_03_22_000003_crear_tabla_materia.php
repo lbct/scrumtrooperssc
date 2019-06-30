@@ -14,8 +14,8 @@ class CrearTablaMateria extends Migration
             $table->integer('gestion_id')->unsigned();
             
             $table->string('codigo_materia',15);
-            $table->string('nombre_materia',31);
-            $table->string('detalle_materia',255);
+            $table->string('nombre_materia',255);
+            $table->string('detalle_materia',1023);
             $table->timestamps();
             
             $table->foreign('gestion_id')->references('id')->on('gestion')->onDelete('cascade');

@@ -1,27 +1,29 @@
 <template>
     <div>
         <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-        <table v-if="materias.length > 0">
-            <thead>
-                <tr>
-                    <th scope="col">Código</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Docente</th>
-                    <th v-if="inscripcion_activa" scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(materia, index) in materias">
-                    <td>{{materia.codigo_materia}}</td>
-                    <td>{{materia.nombre_materia}}</td>
-                    <td>{{materia.nombre_docente}} {{materia.apellido_docente}}</td>
-                    <td v-if="inscripcion_activa">
-                        <i class="fas fa-trash-alt clickleable" 
-                           v-on:click="mostrarRetirarMateria(index)"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div v-if="materias.length > 0" class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Docente</th>
+                        <th v-if="inscripcion_activa" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(materia, index) in materias">
+                        <td>{{materia.codigo_materia}}</td>
+                        <td>{{materia.nombre_materia}}</td>
+                        <td>{{materia.nombre_docente}} {{materia.apellido_docente}}</td>
+                        <td v-if="inscripcion_activa">
+                            <i class="fas fa-trash-alt clickleable" 
+                               v-on:click="mostrarRetirarMateria(index)"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <p v-else>No tienes Materias Inscritas.</p>
         
         <router-link :to="{ name: 'EstudianteInscripcion' }" v-if="inscripcion_activa"
@@ -60,7 +62,7 @@
     export default {        
         data() {
             return {
-                mensajes: '',
+                mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
                 
@@ -107,11 +109,15 @@
                     .then((response)=>{
                         var datos = response.data;
                         
-                        if(datos.exito!=null){
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
                             this.materias.splice(index,1);
+                            
                             $('#modal-retiro-incripcion').modal('hide');
                         }
-                        else if(datos.error!=null){
+                        else if(datos.error){
                             this.inscripcion_activa = false;
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
