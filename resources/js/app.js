@@ -2,11 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import Schedule from 'vue-schedule'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
-Vue.use(Schedule)
 
 import App from './views/App'
 import Alertas from './components/Alertas'
@@ -23,6 +21,12 @@ import EstudianteInscripcion from './views/Estudiante/Inscripcion'
 import EstudiantePortafolio from './views/Estudiante/Portafolio'
 import EstudianteHorario from './views/Estudiante/Horario'
 
+//Docente
+import DocenteInicio from './views/Docente/Inicio'
+import DocenteVerClases from './views/Docente/VerClases'
+import DocenteVerAuxiliares from './views/Docente/VerAuxiliares'
+import DocenteAsignarAuxiliar from './views/Docente/AsignarAuxiliar'
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -31,6 +35,7 @@ const router = new VueRouter({
             name: 'UsuarioEditarDatos',
             component: UsuarioEditarDatos,
         },
+        //Estudiante
         {
             path: '/panel/estudiante',
             name: 'EstudianteInicio',
@@ -55,6 +60,27 @@ const router = new VueRouter({
             path: '/panel/estudiante/Horario',
             name: 'EstudianteHorario',
             component: EstudianteHorario,
+        },
+        //Docente
+        {
+            path: '/panel/docente',
+            name: 'DocenteInicio',
+            component: DocenteInicio,
+        },
+        {
+            path: '/panel/docente/VerClases',
+            name: 'DocenteVerClases',
+            component: DocenteVerClases,
+        },
+        {
+            path: '/panel/docente/VerAuxiliares',
+            name: 'DocenteVerAuxiliares',
+            component: DocenteVerAuxiliares,
+        },
+        {
+            path: '/panel/docente/AsignarAuxiliar',
+            name: 'DocenteAsignarAuxiliar',
+            component: DocenteAsignarAuxiliar,
         },
     ],
 });

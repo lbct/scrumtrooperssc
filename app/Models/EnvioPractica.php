@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class EnvioPractica extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'ENVIO_PRACTICA';
+    protected $primaryKey = 'id';
+    protected $table = 'envio_practica';
     
     public function sesionEstudiante()
     {
-        return $this->belongsTo('App\Models\SesionEstudiante', 'SESION_ESTUDIANTE_ID');
+        return $this->belongsTo('App\Models\SesionEstudiante', 'sesion_estudiante_id');
     }
 }

@@ -6,36 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clase extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'CLASE';
+    protected $primaryKey = 'id';
+    protected $table = 'clase';
     
     public function grupoDocente()
     {
-        return $this->belongsTo('App\Models\GrupoDocente', 'GRUPO_DOCENTE_ID');
+        return $this->belongsTo('App\Models\GrupoDocente', 'grupo_docente_id');
     }
     
     public function gestion()
     {
-        return $this->belongsTo('App\Models\Gestion', 'GESTION_ID');
+        return $this->belongsTo('App\Models\Gestion', 'gestion_id');
     }
     
     public function aula()
     {
-        return $this->belongsTo('App\Models\Aula', 'AULA_ID');
+        return $this->belongsTo('App\Models\Aula', 'aula_id');
     }
     
     public function horario()
     {
-        return $this->belongsTo('App\Models\Horario', 'HORARIO_ID');
+        return $this->belongsTo('App\Models\Horario', 'horario_id');
     }
     
     public function sesion()
     {
-        return $this->hasMany('App\Models\Sesion', 'CLASE_ID', 'ID');
+        return $this->hasMany('App\Models\Sesion', 'clase_id', 'id');
     }
     
     public function estudianteClase()
     {
-        return $this->hasMany('App\Models\EstudianteClase', 'CLASE_ID', 'ID');
+        return $this->hasMany('App\Models\EstudianteClase', 'clase_id', 'id');
     }
 }

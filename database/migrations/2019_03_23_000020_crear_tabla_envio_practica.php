@@ -7,22 +7,22 @@ class CrearTablaEnvioPractica extends Migration
 {
     public function up()
     {
-        Schema::create('ENVIO_PRACTICA', function (Blueprint $table) {
+        Schema::create('envio_practica', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('SESION_ESTUDIANTE_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('sesion_estudiante_id')->unsigned();
             
-            $table->boolean('EN_LABORATORIO');
-            $table->string('ARCHIVO',255);
+            $table->boolean('en_laboratorio');
+            $table->string('archivo',255);
             $table->timestamps();
             
-            $table->foreign('SESION_ESTUDIANTE_ID')->references('ID')->on('SESION_ESTUDIANTE')->onDelete('cascade');
+            $table->foreign('sesion_estudiante_id')->references('id')->on('sesion_estudiante')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('ENVIO_PRACTICA');
+        Schema::drop('envio_practica');
     }
 }

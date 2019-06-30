@@ -5,7 +5,6 @@
           <div class="form-group form-group col-md-6">
                 <label for="materia">Selecciona la Materia</label>
                 <select v-model="materia.id" class="form-control" v-on:change="obetnerPortafolio()">
-                    <option disabled value="">Por favor elige una materia</option>
                     <option v-for="(materia, index) in materias" 
                             v-bind:value="materia.id" :selected="true">
                         {{materia.nombre_materia}}
@@ -72,6 +71,9 @@
                     .then((response)=>{
                         var datos = response.data;
                         this.materias = datos;
+                        
+                        if(this.materias.length)
+                            this.materia.id = this.materias[0].id;
                     })
                     .catch(function (error) {
                         console.log(error);

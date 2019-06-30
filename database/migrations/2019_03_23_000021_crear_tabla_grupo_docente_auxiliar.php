@@ -7,22 +7,22 @@ class CrearTablaGrupoDocenteAuxiliar extends Migration
 {
     public function up()
     {
-        Schema::create('GRUPO_DOCENTE_AUXILIAR', function (Blueprint $table) {
+        Schema::create('grupo_docente_auxiliar', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('GRUPO_DOCENTE_ID')->unsigned();
-            $table->integer('AUXILIAR_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('grupo_docente_id')->unsigned();
+            $table->integer('auxiliar_id')->unsigned();
             
             $table->timestamps();
             
-            $table->foreign('GRUPO_DOCENTE_ID')->references('ID')->on('GRUPO_DOCENTE')->onDelete('cascade');
-            $table->foreign('AUXILIAR_ID')->references('ID')->on('AUXILIAR')->onDelete('cascade');
+            $table->foreign('grupo_docente_id')->references('id')->on('grupo_docente')->onDelete('cascade');
+            $table->foreign('auxiliar_id')->references('id')->on('auxiliar')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('GRUPO_DOCENTE_AUXILIAR');
+        Schema::drop('grupo_docente_auxiliar');
     }
 }

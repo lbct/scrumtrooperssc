@@ -11,10 +11,10 @@
         </a>
         <div id="inscripcion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <router-link :to="{ name: 'EstudianteEstadoInscripcion' }"  class="collapse-item">
+                <router-link :to="{ name: 'EstudianteEstadoInscripcion' }" class="collapse-item">
                     Estado Inscripción
                 </router-link>
-                <router-link :to="{ name: 'EstudianteInscripcion' }"  class="collapse-item">
+                <router-link :to="{ name: 'EstudianteInscripcion' }" class="collapse-item">
                     Incribirme
                 </router-link>
             </div>

@@ -8,8 +8,8 @@ class GrupoDocenteSeeder extends Seeder
     public function run()
     {
         GrupoDocente::create([
-            'MATERIA_ID' 		        =>	1,
-            'DETALLE_GRUPO_DOCENTE' 	=>	'Leticia Blanco, Vladimir Costas, Corina Flores',
+            'materia_id' 		        =>	1,
+            'detalle_grupo_docente' 	=>	'Leticia Blanco, Vladimir Costas, Corina Flores',
         ]);
     }
 }

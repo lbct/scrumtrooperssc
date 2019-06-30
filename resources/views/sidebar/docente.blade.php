@@ -5,10 +5,10 @@
     <div class="sidebar-heading">Docente</div>
 
     <li class="nav-item">
-        <a class="nav-link" href="/docente/crearAuxiliar">
-            <i class="fas fa-fw fa-plus"></i>
-            <span>Asignar Auxiliar</span>
-        </a>
+        <router-link :to="{ name: 'DocenteVerClases' }" class="nav-link">
+            <i class="fas fa-fw fa-briefcase"></i>
+            <span>Clases</span>
+        </router-link>
     </li>
 
     <li class="nav-item">
@@ -20,20 +20,24 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clases_docente" aria-expanded="true" aria-controls="clases_docente">
-            <i class="fas fa-fw fa-pen-square"></i>
-            <span>Clases</span>
+            <i class="fas fa-users"></i>
+            <span>Auxiliares</span>
         </a>
         <div id="clases_docente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Ver Clases</a>
-                <a class="collapse-item" href="">Crear Clase</a>
+                <router-link :to="{ name: 'DocenteVerAuxiliares' }" class="collapse-item">
+                    Ver Auxiliares
+                </router-link>
+                <router-link :to="{ name: 'DocenteAsignarAuxiliar' }" class="collapse-item">
+                    Asignar Auxiliar
+                </router-link>
             </div>
         </div>
     </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#estudiantes" aria-expanded="true" aria-controls="estudiantes">
-            <i class="fa fa-fw fa-check-square"></i>
+            <i class="fas fa-fw fa-pen-square"></i>
             <span>Estudiantes</span>
         </a>
         <div id="estudiantes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

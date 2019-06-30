@@ -7,23 +7,21 @@ class CrearTablaIniciarSesion extends Migration
 {
     public function up()
     {
-        Schema::create('INICIAR_SESION', function (Blueprint $table) {
+        Schema::create('iniciar_sesion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('USUARIO_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('usuario_id')->unsigned();
             
-            $table->integer('PID');
-            $table->dateTime('FECHA_INICIO');
-            $table->dateTime('FECHA_FIN');
+            $table->dateTime('fecha');
             $table->timestamps();
             
-            $table->foreign('USUARIO_ID')->references('ID')->on('USUARIO')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('INICIAR_SESION');
+        Schema::drop('iniciar_sesion');
     }
 }

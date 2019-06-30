@@ -8,15 +8,15 @@ class DocenteSeeder extends Seeder
     public function run()
     {
         Docente::create([
-        	'USUARIO_ID' 		=>	2,
+        	'usuario_id' 		=>	2,
         ]);
         
         Docente::create([
-        	'USUARIO_ID' 		=>	3,
+        	'usuario_id' 		=>	3,
         ]);
         
         Docente::create([
-        	'USUARIO_ID' 		=>	4,
+        	'usuario_id' 		=>	4,
         ]);
     }
 }

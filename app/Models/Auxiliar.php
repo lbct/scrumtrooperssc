@@ -7,29 +7,29 @@ use App\Models\GrupoDocenteAuxiliar;
 
 class Auxiliar extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'AUXILIAR';
+    protected $primaryKey = 'id';
+    protected $table = 'auxiliar';
     
     public function usuario()
     {
-        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
     
     public function sesion()
     {
-        return $this->hasMany('App\Models\Sesion', 'AUXILIAR_ID', 'ID');
+        return $this->hasMany('App\Models\Sesion', 'auxiliar_id', 'id');
     }
     
-    public function esAuxiliarLaboratorio($grupo_docente_id){
-        $esAuxiliarLaboratorio = false;
+    public function esAuxiliarTerminal($grupo_docente_id){
+        $esAuxiliarTerminal = false;
         
-        $registrado = GrupoDocenteAuxiliar::where("AUXILIAR_ID", $this->ID)
-                      ->where('GRUPO_DOCENTE_ID', $grupo_docente_id)
+        $registrado = GrupoDocenteAuxiliar::where("auxiliar_id", $this->id)
+                      ->where('grupo_docente_id', $grupo_docente_id)
                       ->first();
         
         if($registrado!=null)
-            $esAuxiliarLaboratorio = true;
+            $esAuxiliarTerminal = true;
         
-        return $esAuxiliarLaboratorio;
+        return $esAuxiliarTerminal;
     }
 }

@@ -8,19 +8,19 @@ class PeriodoSeeder extends Seeder
     public function run()
     {
         Periodo::create([
-            'DESCRIPCION' 		=>	'Primer Semestre',
+            'descripcion' 		=>	'Primer Semestre',
         ]);
         
         Periodo::create([
-            'DESCRIPCION' 		=>	'Segundo Semestre',
+            'descripcion' 		=>	'Segundo Semestre',
         ]);
         
         Periodo::create([
-            'DESCRIPCION' 		=>	'Invierno',
+            'descripcion' 		=>	'Invierno',
         ]);
         
         Periodo::create([
-            'DESCRIPCION' 		=>	'Verano',
+            'descripcion' 		=>	'Verano',
         ]);
     }
 }

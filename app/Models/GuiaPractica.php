@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class GuiaPractica extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'GUIA_PRACTICA';
+    protected $primaryKey = 'id';
+    protected $table = 'guia_practica';
     
     public function sesion()
     {
-        return $this->hasMany('App\Models\Sesion', 'GUIA_PRACTICA_ID', 'ID');
+        return $this->hasMany('App\Models\Sesion', 'guia_practica_id', 'id');
     }
 }

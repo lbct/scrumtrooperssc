@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gestion extends Model
 {
     protected $primaryKey = 'id';
-    protected $table    = 'gestion';
+    protected $table      = 'gestion';
     
     public function periodo()
     {

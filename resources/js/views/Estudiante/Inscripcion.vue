@@ -36,10 +36,9 @@
               <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                 <center v-if="materias.length > 0">
                   <div class="form-group form-group col-md-6">
-                        <label for="materia">Selecciona la Materia</label>
-                        <select v-model="materia.id" class="form-control" required>
-                            <option disabled value="">Por favor elige una materia</option>
-                            <option v-for="materia in materias" v-bind:value="materia.id">
+                        <label>Selecciona la Materia</label>
+                        <select v-model="materia" class="form-control" required>
+                            <option v-for="materia in materias" :value="materia">
                                 {{materia.nombre_materia}}
                             </option>
                         </select>
@@ -55,10 +54,9 @@
               <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                 <center v-if="docentes.length > 0">
                   <div class="form-group form-group col-md-6">
-                    <label for="docente">Selecciona tu Docente</label>
-                    <select v-model="docente.id" class="form-control" required>
-                        <option disabled value="">Por favor elige un docente</option>
-                        <option v-for="docente in docentes" v-bind:value="docente.id">
+                    <label>Selecciona tu Docente</label>
+                    <select v-model="docente" class="form-control" required>
+                        <option v-for="docente in docentes" :value="docente">
                             {{docente.nombre_docente}} {{docente.apellido_docente}}
                         </option>
                     </select>
@@ -75,10 +73,9 @@
               <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger3">
                 <center v-if="clases.length > 0">
                   <div class="form-group form-group col-md-6">
-                    <label for="horario" if="titulo_horario">Selecciona un Horario</label>
-                    <select v-model="clase.id" class="form-control" required>
-                        <option disabled value="">Por favor elige un horario</option>
-                        <option v-for="clase in clases" v-bind:value="clase.id">
+                    <label>Selecciona un Horario</label>
+                    <select v-model="clase" class="form-control" required>
+                        <option v-for="clase in clases" :value="clase">
                             {{clase.descripcion}}
                         </option>
                     </select>
@@ -162,8 +159,11 @@
                     .get('/estudiante/materias/disponibles')
                     .then((response)=>{
                         var datos = response.data;
-                        if(datos.exito)
+                        if(datos.exito){
                             this.materias = datos.exito;
+                            if(this.materias.length)
+                                this.materia = this.materias[0];
+                        }
                         else{
                             this.inscripcion_activa = false;
                         }
@@ -178,19 +178,21 @@
             },
             
             verDocentes(){
-                if(this.materia.id){
+                if(this.materia){
                     this.mensajes = [];
                     this.tipo_mensaje = '';
                     this.key_mensajes++;
-                    
-                    this.materia = this.materias.find( materia => materia.id === this.materia.id );
                     
                     this.axios
                         .get('/estudiante/materia/'+this.materia.id+'/docentes')
                         .then((response)=>{
                             var datos = response.data;
-                            this.docentes = datos.exito;
-                            this.formulario_inscripcion.next();                            
+                            if(datos.exito){
+                                this.docentes = datos.exito;
+                                if(this.docentes.length)
+                                    this.docente  = this.docentes[0];
+                                this.formulario_inscripcion.next();
+                            }                     
                         })
                         .catch(function (error) {
                             console.log(error);
@@ -204,19 +206,21 @@
             },
             
             verClases(){
-                if(this.docente.id){
+                if(this.docente){
                     this.mensajes = [];
                     this.tipo_mensaje = '';
                     this.key_mensajes++;
-                    
-                    this.docente = this.docentes.find( docente => docente.id === this.docente.id );
                     
                     this.axios
                         .get('/estudiante/materia/'+this.docente.id+'/clases')
                         .then((response)=>{
                             var datos = response.data;
-                            this.clases = datos.exito;
-                            this.formulario_inscripcion.next();
+                            if(datos.exito){
+                                this.clases = datos.exito;
+                                if(this.clases.length)
+                                    this.clase  = this.clases[0];
+                                this.formulario_inscripcion.next();
+                            }
                         })
                         .catch(function (error) {
                             console.log(error);
@@ -230,8 +234,7 @@
             },
             
             comprobar(){
-                if(this.clase.id){                    
-                    this.clase = this.clases.find( clase => clase.id === this.clase.id );
+                if(this.clase){
                     this.formulario_inscripcion.next();
                 }
                 else{
@@ -263,7 +266,6 @@
                     .catch(function (error) {
                         console.log(error);
                     });
-                
             },
             
             otraMateria(){
