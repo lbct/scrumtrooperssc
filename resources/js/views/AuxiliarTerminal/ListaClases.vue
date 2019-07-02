@@ -222,11 +222,33 @@
             },
             
             cancelarClase(){
-                this.mensajes = ['Clase cancelada'];
-                this.tipo_mensaje = 'success';
-                this.key_mensajes++;
-                this.clase.semana_actual_sesion--;
-                this.clase.en_curso = false;
+                const params = {
+                    'clase_id': this.clase.id,
+                };
+                this.axios
+                    .delete('/auxiliarterminal/sesion', { data: params })
+                    .then((response)=>{
+                        var datos = response.data;
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            this.clase.semana_actual_sesion--;
+                            this.clase.en_curso = false;
+                        }
+                        else{
+                            this.mensajes = datos.error.mensaje;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                            
+                            var codigo_error = datos.error.codigo;
+                            if(codigo_error==1){
+                                this.clase.siguiente_sesion = datos.error.siguiente_sesion;
+                                this.clase.en_curso = false;
+                            }
+                        }
+                    });
             }
         },            
         

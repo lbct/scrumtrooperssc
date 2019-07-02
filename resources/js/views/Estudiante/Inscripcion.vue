@@ -278,9 +278,11 @@
             this.init();
             this.$parent.$parent.section = 'Formulario de Inscripción';
             
-            this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
-                linear: true
-            });
+            if(this.inscripcion_activa){
+                this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
+                    linear: true
+                });
+            }
         },
         
         

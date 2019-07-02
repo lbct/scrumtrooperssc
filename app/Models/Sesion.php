@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\InicioClase;
+use App\Models\SesionEstudiante;
+use App\Models\EstudianteClase;
 use Carbon\Carbon;
 
 class Sesion extends Model
@@ -52,10 +54,33 @@ class Sesion extends Model
         $inicio_sesion = $fecha_actual->toDateTimeString();
         $fin_sesion    = $fecha_actual->addMinutes(105)->toDateTimeString();
         
+        $estudiantes_clase = EstudianteClase::where('clase_id', $this->clase_id)
+                             ->select('estudiante_clase.id')
+                             ->get();
+        
+        foreach ($estudiantes_clase as $estudiante_clase){
+            $sesion_estudiante = new SesionEstudiante;
+            $sesion_estudiante->estudiante_clase_id = $estudiante_clase->id;
+            $sesion_estudiante->sesion_id           = $this->id;
+            $sesion_estudiante->save();
+        }
+        
         $inicio_clase = new InicioClase;
         $inicio_clase->sesion_id        = $this->id;
         $inicio_clase->inicio_sesion    = $inicio_sesion;
         $inicio_clase->fin_sesion       = $fin_sesion;
         $inicio_clase->save();
+    }
+    
+    public function detener()
+    {
+        $this->auxiliar_terminal_id = null;
+        $this->save();
+        
+        $sesiones_estudiante = SesionEstudiante::where('sesion_id', $this->id)
+                               ->delete();
+        
+        $inicio_clase = InicioClase::where('sesion_id', $this->id);
+        $inicio_clase->delete();
     }
 }

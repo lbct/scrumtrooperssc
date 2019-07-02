@@ -65,3 +65,4 @@ Route::get('auxiliarterminal/clases/{grupo_docente_id}', 'AuxiliarTerminal\Clase
 Route::get('auxiliarterminal/clase/{clase_id}', 'AuxiliarTerminal\Clase\Control@informacion');
 
 Route::post('auxiliarterminal/sesion', 'AuxiliarTerminal\Sesion\Control@iniciarClase');
+Route::delete('auxiliarterminal/sesion', 'AuxiliarTerminal\Sesion\Control@detenerClase');

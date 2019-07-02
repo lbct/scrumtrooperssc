@@ -40,7 +40,8 @@ class Docente extends Model
                   ->where('clase.gestion_id', $gestion_id)
                   ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                   ->join('aula', 'aula.id', '=', 'clase.aula_id')
-                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion')
+                  ->join('horario', 'horario.id', '=', 'clase.horario_id')
+                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion', 'hora_inicio', 'hora_fin')
                   ->get();
             
         return $clases;

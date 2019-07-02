@@ -33,7 +33,7 @@ class Control extends Base
         }
     }
     
-    public function informacion(Request $request, $clase_id){
+    public function informacion(Request $request, $clase_id){        
         $usuario_id = session('usuario_id');        
         $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
         

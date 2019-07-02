@@ -2025,11 +2025,34 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cancelarClase: function cancelarClase() {
-      this.mensajes = ['Clase cancelada'];
-      this.tipo_mensaje = 'success';
-      this.key_mensajes++;
-      this.clase.semana_actual_sesion--;
-      this.clase.en_curso = false;
+      var _this5 = this;
+
+      var params = {
+        'clase_id': this.clase.id
+      };
+      this.axios["delete"]('/auxiliarterminal/sesion', {
+        data: params
+      }).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+          _this5.clase.semana_actual_sesion--;
+          _this5.clase.en_curso = false;
+        } else {
+          _this5.mensajes = datos.error.mensaje;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
+          var codigo_error = datos.error.codigo;
+
+          if (codigo_error == 1) {
+            _this5.clase.siguiente_sesion = datos.error.siguiente_sesion;
+            _this5.clase.en_curso = false;
+          }
+        }
+      });
     }
   },
   mounted: function mounted() {
@@ -2846,7 +2869,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3444,9 +3466,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.init();
     this.$parent.$parent.section = 'Formulario de Inscripción';
-    this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
-      linear: true
-    });
+
+    if (this.inscripcion_activa) {
+      this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
+        linear: true
+      });
+    }
   }
 });
 
@@ -6025,6 +6050,15 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-body" }, [
+                      _vm.materia.semana_actual_sesion
+                        ? _c("h3", [
+                            _vm._v(
+                              "Semana: " +
+                                _vm._s(_vm.materia.semana_actual_sesion)
+                            )
+                          ])
+                        : _c("h3", [_vm._v("Clase sin iniciar")]),
+                      _vm._v(" "),
                       _c("p", [
                         _vm._v("Materia: " + _vm._s(_vm.materia.nombre_materia))
                       ]),
@@ -6040,15 +6074,14 @@ var render = function() {
                         _vm._v("Aula: " + _vm._s(_vm.materia.nombre_aula))
                       ]),
                       _vm._v(" "),
-                      _vm.materia.semana_actual_sesion
-                        ? _c("p", [
-                            _vm._v(
-                              "\n                        Semana en curso: " +
-                                _vm._s(_vm.materia.semana_actual_sesion) +
-                                "\n                    "
-                            )
-                          ])
-                        : _c("p", [_vm._v("Clase sin iniciar")])
+                      _c("p", [
+                        _vm._v(
+                          "Horario: " +
+                            _vm._s(_vm.materia.hora_inicio) +
+                            " - " +
+                            _vm._s(_vm.materia.hora_fin)
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _vm._m(2)

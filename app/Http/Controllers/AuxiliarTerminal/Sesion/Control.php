@@ -39,4 +39,24 @@ class Control extends Base
             return response()->json(['error'=>['codigo'=>'1', 'mensaje'=>['La clase ya fue iniciada']]], 200);
         }
     }
+    
+    public function detenerClase(Request $request){
+        $usuario_id = session('usuario_id');        
+        $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
+        $clase_id   = $request->clase_id;
+        
+        if($auxiliar->accesoClase($clase_id)){
+            $clase = Clase::find($clase_id);
+            
+            if( $clase->sesionEnCurso() ){
+                $sesion = $clase->sesionActual();
+                $sesion->detener();
+                $clase->semana_actual_sesion = $clase->semana_actual_sesion-1;
+                $clase->save();
+
+                return response()->json(['exito'=>['Clase cancelada con éxito']], 200);
+            }
+            return response()->json(['error'=>['codigo'=>'1', 'mensaje'=>['La clase no está en curso'], 'siguiente_sesion'=>$clase->siguienteSesion()]], 200);
+        }
+    }
 }

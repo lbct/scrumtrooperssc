@@ -53,13 +53,12 @@
                     </button>
                   </div>
                       <div class="modal-body">
+                        <h3 v-if="materia.semana_actual_sesion">Semana: {{materia.semana_actual_sesion}}</h3>
+                        <h3 v-else>Clase sin iniciar</h3>
                         <p>Materia: {{materia.nombre_materia}}</p>
                         <p>Grupo Docente: {{materia.detalle_grupo_docente}}</p>
                         <p>Aula: {{materia.nombre_aula}}</p>
-                        <p v-if="materia.semana_actual_sesion">
-                            Semana en curso: {{materia.semana_actual_sesion}}
-                        </p>
-                        <p v-else>Clase sin iniciar</p>
+                        <p>Horario: {{materia.hora_inicio}} - {{materia.hora_fin}}</p>
                       </div>
 
                       <div class="modal-footer">
