@@ -101,15 +101,15 @@
                   </div>
                 </center>
                 <button v-if="!inscrito"
-                        v-on:click="anteriorPaso()" class="btn btn-primary mt-5" type="button">
+                        v-on:click="anteriorPaso()" class="btn btn-primary" type="button">
                     Anterior
                 </button>
                 <button v-if="!inscrito" 
-                        v-on:click="inscribirse()" class="btn btn-primary mt-5" type="button">
+                        v-on:click="inscribirse()" class="btn btn-primary" type="button">
                     Inscribirse
                 </button>
                 <button v-if="inscrito" 
-                        v-on:click="otraMateria()" class="btn btn-primary mt-5" type="button">
+                        v-on:click="otraMateria()" class="btn btn-primary" type="button">
                     Añadir otra materia
                 </button>
               </div>

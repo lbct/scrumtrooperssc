@@ -27,7 +27,9 @@
         </a>
         <div id="practicas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Ver Prácticas</a>
+                <router-link :to="{ name: 'EstudianteVerPractica' }" class="collapse-item">
+                    Ver Prácticas
+                </router-link>
                 <a class="collapse-item" href="">Subir Prácticas</a>
                 <router-link :to="{ name: 'EstudiantePortafolio' }" class="collapse-item">
                     Portafolio

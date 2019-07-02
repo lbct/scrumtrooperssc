@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Clase;
 
 class Clase extends Model
 {
@@ -38,4 +39,34 @@ class Clase extends Model
     {
         return $this->hasMany('App\Models\EstudianteClase', 'clase_id', 'id');
     }
+    
+    public function sesionActual()
+    {
+        $sesion = Sesion::where('clase_id', $this->id)
+                  ->where('sesion.semana', '=', $this->semana_actual_sesion)
+                  ->first();
+        
+        return $sesion;
+    }
+    
+    public function siguienteSesion()
+    {
+        $siguiente_sesion = Sesion::where('clase_id', $this->id)
+                            ->where('sesion.semana', '=', $this->semana_actual_sesion+1)
+                            ->select('sesion.id', 'guia_practica_id')
+                            ->first();
+            
+        return $siguiente_sesion;
+    }
+    
+    public function sesionEnCurso()
+    {
+        $sesion_en_curso = false;
+        $sesion = $this->sesionActual();
+        
+        if($sesion && $sesion->enCurso())
+            $sesion_en_curso = true;
+        
+        return $sesion_en_curso;
+    }   
 }

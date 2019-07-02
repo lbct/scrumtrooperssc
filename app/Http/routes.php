@@ -42,6 +42,8 @@ Route::post('estudiante/materia', 'Estudiante\Materia\Control@nuevaMateria');
 
 Route::get('estudiante/sesiones/{estudiante_clase_id}', 'Estudiante\Sesion\Control@cursadas');
 
+Route::get('estudiante/practicas/{estudiante_clase_id}', 'Estudiante\Practica\Control@descargables');
+
 //Rutas Docente
 Route::get('docente/gestiones', 'Docente\Gestion\Control@disponibles');
 
@@ -55,18 +57,11 @@ Route::post('docente/auxiliares', 'Docente\Auxiliar\Control@asignar');
 Route::get('docente/auxiliares/{gestion_id}', 'Docente\Auxiliar\Control@asignados');
 Route::delete('docente/auxiliares', 'Docente\Auxiliar\Control@retirar');
 
-//Rutas de Descarga 'uploads'
-Route::get('descargar/guia/{filename}', function ($filename) {
-    // Verfificar que el archivo exista en /uploads
-    $file_path = (public_path() . "/uploads/guias practicas/" . $filename);
+//Rutas Auxiliar Terminal
+Route::get('auxiliarterminal/materias', 'AuxiliarTerminal\Materia\Control@materias');
+Route::get('auxiliarterminal/practicas/{grupo_docente_id}', 'AuxiliarTerminal\Practica\Control@descargables');
 
-    if (file_exists($file_path)) {
-        // Descarga
-        return Response::download($file_path, $filename, [
-            'Content-Length: ' . filesize($file_path)
-        ]);
-    } else {
-        // Error
-        return Redirect::back()->withErrors(['No se encontro el Archivo']);
-    }
-});
+Route::get('auxiliarterminal/clases/{grupo_docente_id}', 'AuxiliarTerminal\Clase\Control@disponibles');
+Route::get('auxiliarterminal/clase/{clase_id}', 'AuxiliarTerminal\Clase\Control@informacion');
+
+Route::post('auxiliarterminal/sesion', 'AuxiliarTerminal\Sesion\Control@iniciarClase');

@@ -20,6 +20,7 @@ import EstudianteEstadoInscripcion from './views/Estudiante/EstadoInscripcion'
 import EstudianteInscripcion from './views/Estudiante/Inscripcion'
 import EstudiantePortafolio from './views/Estudiante/Portafolio'
 import EstudianteHorario from './views/Estudiante/Horario'
+import EstudianteVerPractica from './views/Estudiante/VerPractica'
 
 //Docente
 import DocenteInicio from './views/Docente/Inicio'
@@ -27,9 +28,17 @@ import DocenteVerClases from './views/Docente/VerClases'
 import DocenteVerAuxiliares from './views/Docente/VerAuxiliares'
 import DocenteAsignarAuxiliar from './views/Docente/AsignarAuxiliar'
 
+//Auxiliar Terminal
+import AuxiliarTerminalInicio from './views/AuxiliarTerminal/Inicio'
+import AuxiliarTerminalListaClases from './views/AuxiliarTerminal/ListaClases'
+import AuxiliarTerminalListaPracticas from './views/AuxiliarTerminal/ListaPracticas'
+import AuxiliarTerminalListaEstudiantes from './views/AuxiliarTerminal/ListaEstudiantes'
+import AuxiliarTerminalListaEstudiantesClase from './views/AuxiliarTerminal/ListaEstudiantesClase'
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
+        //Cualquier Usuario
         {
             path: '/panel/usuario/EditarDatos',
             name: 'UsuarioEditarDatos',
@@ -61,6 +70,11 @@ const router = new VueRouter({
             name: 'EstudianteHorario',
             component: EstudianteHorario,
         },
+        {
+            path: '/panel/estudiante/Practicas',
+            name: 'EstudianteVerPractica',
+            component: EstudianteVerPractica,
+        },
         //Docente
         {
             path: '/panel/docente',
@@ -81,6 +95,33 @@ const router = new VueRouter({
             path: '/panel/docente/AsignarAuxiliar',
             name: 'DocenteAsignarAuxiliar',
             component: DocenteAsignarAuxiliar,
+        },
+        //Auxiliar Terminal
+        {
+            path: '/panel/auxiliarterminal',
+            name: 'AuxiliarTerminalInicio',
+            component: AuxiliarTerminalInicio,
+        },
+        {
+            path: '/panel/auxiliarterminal/Clases',
+            name: 'AuxiliarTerminalListaClases',
+            component: AuxiliarTerminalListaClases,
+        },
+        {
+            path: '/panel/auxiliarterminal/Practicas',
+            name: 'AuxiliarTerminalListaPracticas',
+            component: AuxiliarTerminalListaPracticas,
+        },
+        {
+            path: '/panel/auxiliarterminal/Estudiantes',
+            name: 'AuxiliarTerminalListaEstudiantes',
+            component: AuxiliarTerminalListaEstudiantes,
+        },
+        {
+            path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
+            name: 'AuxiliarTerminalListaEstudiantesClase',
+            component: AuxiliarTerminalListaEstudiantesClase,
+            props: true,
         },
     ],
 });

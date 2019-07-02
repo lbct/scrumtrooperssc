@@ -7,5 +7,9 @@ class GrupoDocenteAuxiliarSeeder extends Seeder
 {
     public function run()
     {
+        GrupoDocenteAuxiliar::create([
+        	'grupo_docente_id' 		=>	1,
+        	'auxiliar_id'		    =>	4,
+        ]);
     }
 }

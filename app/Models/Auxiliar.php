@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\GrupoDocenteAuxiliar;
+use App\Models\Clase;
 
 class Auxiliar extends Model
 {
@@ -21,15 +22,27 @@ class Auxiliar extends Model
     }
     
     public function esAuxiliarTerminal($grupo_docente_id){
-        $esAuxiliarTerminal = false;
+        $es_auxiliar_terminal = false;
         
         $registrado = GrupoDocenteAuxiliar::where("auxiliar_id", $this->id)
                       ->where('grupo_docente_id', $grupo_docente_id)
                       ->first();
         
-        if($registrado!=null)
-            $esAuxiliarTerminal = true;
+        if($registrado)
+            $es_auxiliar_terminal = true;
         
-        return $esAuxiliarTerminal;
+        return $es_auxiliar_terminal;
+    }
+    
+    public function accesoClase($clase_id){
+        $acceso_clase = false;
+        
+        $clase = Clase::find($clase_id);
+        if($clase){
+            $grupo_docente_id = Clase::find($clase_id)->grupo_docente_id;
+            $acceso_clase = $this->esAuxiliarTerminal($grupo_docente_id);
+        }
+        
+        return $acceso_clase;
     }
 }

@@ -15,7 +15,7 @@ class CrearTablaSesionEstudiante extends Migration
             $table->integer('estudiante_clase_id')->unsigned();
             
             $table->string('comentario_auxiliar',1023);
-            $table->boolean('asistencia_sesion');
+            $table->boolean('asistencia_sesion')->default(false);
             $table->timestamps();
             
             $table->foreign('sesion_id')->references('id')->on('sesion')->onDelete('cascade');

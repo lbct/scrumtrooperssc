@@ -13,7 +13,7 @@
                     </select> 
               </div>
             </center>
-            <div class="table-responsive">
+            <div v-if="horarios.length > 0" class="table-responsive">
                 <table :key="key_clases" class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -41,6 +41,7 @@
                     </tbody>
                 </table>
             </div>
+            <p v-else>No se tiene ninguna clase disponible</p>
             
             <div class="modal fade" id="modal-ver-mas-clase">
               <div class="modal-dialog">
@@ -90,6 +91,7 @@
                     "18:45/20:15",
                     "20:15/21:45",
                 ],
+                horarios: [],
                 clases: [[[]]],
                 key_clases: 0,
                 materia: {nombre_aula:'', nombre_materia:'', detalle_grupo_docente:'', semana_actual_sesion:''},
@@ -126,6 +128,7 @@
                     .get('/docente/clases/'+this.gestion.id)
                     .then((response)=>{
                         var datos = response.data;
+                        this.horarios = datos;
                         datos.forEach((materia)=>{
                             var horario = materia.horario_id-1;
                             var dia     = materia.dia-1;
