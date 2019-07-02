@@ -134,7 +134,7 @@
                 clase: {id:'', descripcion:''},
                 
                 formulario_inscripcion: '',
-                inscripcion_activa: true,
+                inscripcion_activa: false,
                 inscrito: false,
             }
         },

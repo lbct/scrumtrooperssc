@@ -3322,7 +3322,7 @@ __webpack_require__.r(__webpack_exports__);
         descripcion: ''
       },
       formulario_inscripcion: '',
-      inscripcion_activa: true,
+      inscripcion_activa: false,
       inscrito: false
     };
   },
