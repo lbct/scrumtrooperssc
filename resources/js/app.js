@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -10,6 +12,7 @@ import App from './views/App'
 import Alertas from './components/Alertas'
 
 Vue.component('Alertas', Alertas)
+Vue.component('vueDropzone', vue2Dropzone)
 
 //Usuarios
 import UsuarioEditarDatos from './views/Usuario/EditarDatos'
@@ -21,6 +24,7 @@ import EstudianteInscripcion from './views/Estudiante/Inscripcion'
 import EstudiantePortafolio from './views/Estudiante/Portafolio'
 import EstudianteHorario from './views/Estudiante/Horario'
 import EstudianteVerPractica from './views/Estudiante/VerPractica'
+import EstudianteSubirPractica from './views/Estudiante/SubirPractica'
 
 //Docente
 import DocenteInicio from './views/Docente/Inicio'
@@ -71,9 +75,14 @@ const router = new VueRouter({
             component: EstudianteHorario,
         },
         {
-            path: '/panel/estudiante/Practicas',
+            path: '/panel/estudiante/GuiasPracticas',
             name: 'EstudianteVerPractica',
             component: EstudianteVerPractica,
+        },
+        {
+            path: '/panel/estudiante/SubirPractica',
+            name: 'EstudianteSubirPractica',
+            component: EstudianteSubirPractica,
         },
         //Docente
         {

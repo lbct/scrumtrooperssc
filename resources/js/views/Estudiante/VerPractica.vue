@@ -25,7 +25,12 @@
                     <tbody>
                         <tr v-for="practica in practicas">
                             <td>{{practica.semana}}</td>
-                            <td><a :href="'/estudiante/archivos/' + practica.id" class="btn btn-primary">{{practica.archivo}}</a></td>
+                            <td>
+                                <a :href="'/estudiante/archivos/' + practica.id" 
+                                   target="_blank" class="btn btn-primary">
+                                   {{practica.archivo}}
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -83,7 +88,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Practicas';
+            this.$parent.$parent.section = 'Guías Practicas';
         },
     }
 </script>

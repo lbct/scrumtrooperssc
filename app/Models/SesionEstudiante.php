@@ -23,4 +23,15 @@ class SesionEstudiante extends Model
     {
         return $this->hasMany('App\Models\EnvioPractica', 'sesion_estudiante_id', 'id');
     }
+    
+    public function estaEnLaboratorio()
+    {
+        $en_laboratorio = false;
+        $sesion = Sesion::find($this->sesion_id);
+        
+        if($this->asistencia_sesion && $sesion->enCurso())
+            $en_laboratorio = true;
+        
+        return $en_laboratorio;
+    }
 }

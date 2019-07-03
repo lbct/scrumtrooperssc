@@ -42,7 +42,9 @@ Route::post('estudiante/materia', 'Estudiante\Materia\Control@nuevaMateria');
 
 Route::get('estudiante/sesiones/{estudiante_clase_id}', 'Estudiante\Sesion\Control@cursadas');
 
-Route::get('estudiante/practicas/{estudiante_clase_id}', 'Estudiante\Practica\Control@descargables');
+Route::get('estudiante/practicas/{estudiante_clase_id}', 'Estudiante\Practica\Control@guias');
+Route::post('estudiante/practica', 'Estudiante\Practica\Control@subir');
+Route::delete('estudiante/practica', 'Estudiante\Practica\Control@borrar');
 
 //Rutas Docente
 Route::get('docente/gestiones', 'Docente\Gestion\Control@disponibles');

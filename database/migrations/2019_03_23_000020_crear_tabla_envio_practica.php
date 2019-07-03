@@ -13,7 +13,7 @@ class CrearTablaEnvioPractica extends Migration
             $table->increments('id');
             $table->integer('sesion_estudiante_id')->unsigned();
             
-            $table->boolean('en_laboratorio');
+            $table->boolean('en_laboratorio')->default(false);
             $table->string('archivo',255);
             $table->timestamps();
             

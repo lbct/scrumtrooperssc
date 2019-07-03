@@ -5,6 +5,8 @@ namespace App\Models;
 use \App\Classes\Gestiones;
 use \App\Models\EstudianteClase;
 use \App\Models\Materia;
+use \App\Models\SesionEstudiante;
+use \App\Models\EnvioPractica;
 use Illuminate\Database\Eloquent\Model;
 
 class Estudiante extends Model
@@ -66,10 +68,50 @@ class Estudiante extends Model
                     ->where("estudiante_id", $this->id)
                     ->first();
         
-        if($registro != null)
+        if($registro)
             $inscrito = true;
         
         return $inscrito;
+    }
+    
+    public function accesoSesion($sesion_id)
+    {
+        $acceso = false;
+        
+        $sesiones_estudiantes = SesionEstudiante::where('sesion_id', $sesion_id)
+                                ->get();
+        
+        foreach($sesiones_estudiantes as $sesion_estudiante){
+            $acceso = $this->estaInscrito($sesion_estudiante->estudiante_clase_id);
+            if($acceso)
+                break;
+        }
+        
+        return $acceso;
+    }
+    
+    public function accesoSesionEstudiante($sesion_estudiante_id)
+    {
+        $acceso = false;
+        
+        $sesiones_estudiantes = SesionEstudiante::find($sesion_estudiante_id);
+        
+        if($sesiones_estudiantes)
+            $acceso = $this->accesoSesion($sesiones_estudiantes->sesion_id);
+                                
+        return $acceso;
+    }
+    
+    public function accesoEnvioPractica($envio_practica_id)
+    {
+        $acceso = false;
+        
+        $envio_practica = EnvioPractica::find($envio_practica_id);
+        
+        if($envio_practica)
+            $acceso = $this->accesoSesionEstudiante($envio_practica->sesion_estudiante_id);
+        
+        return $acceso;
     }
     
     public function retirar($estudiante_clase_id)
