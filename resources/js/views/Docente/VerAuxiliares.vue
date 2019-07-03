@@ -15,7 +15,7 @@
             </center>
             
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-            <div v-if="auxiliares.length > 0" class="container-fluid">
+            <div v-if="auxiliares.length > 0" class="container-fluid table-responsive">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>

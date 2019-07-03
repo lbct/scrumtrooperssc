@@ -13,6 +13,8 @@ class CrearTablaSesionEstudiante extends Migration
             $table->increments('id');
             $table->integer('sesion_id')->unsigned();
             $table->integer('estudiante_clase_id')->unsigned();
+            $table->integer('auxiliar_comentario_id')->unsigned()->nullable();
+            $table->integer('auxiliar_lista_id')->unsigned()->nullable();
             
             $table->string('comentario_auxiliar',1023)->nullable();
             $table->boolean('asistencia_sesion')->default(false);
@@ -20,6 +22,8 @@ class CrearTablaSesionEstudiante extends Migration
             
             $table->foreign('sesion_id')->references('id')->on('sesion')->onDelete('cascade');
             $table->foreign('estudiante_clase_id')->references('id')->on('estudiante_clase')->onDelete('cascade');
+            $table->foreign('auxiliar_comentario_id')->references('id')->on('auxiliar')->onDelete('cascade');
+            $table->foreign('auxiliar_lista_id')->references('id')->on('auxiliar')->onDelete('cascade');
             
             $table->unique(['sesion_id', 'estudiante_clase_id']);
         });

@@ -40,6 +40,16 @@ class Clase extends Model
         return $this->hasMany('App\Models\EstudianteClase', 'clase_id', 'id');
     }
     
+    public function sesionesDisponibles()
+    {        
+        $sesiones = Sesion::where('clase_id', $this->id)
+                    ->where('sesion.semana', '<=', $this->semana_actual_sesion)
+                    ->orderBy('sesion.semana', 'desc')
+                    ->get();
+        
+        return $sesiones;
+    }
+    
     public function sesionActual()
     {
         $sesion = Sesion::where('clase_id', $this->id)
@@ -51,12 +61,16 @@ class Clase extends Model
     
     public function siguienteSesion()
     {
+        $siguiente = false;
+        
         $siguiente_sesion = Sesion::where('clase_id', $this->id)
                             ->where('sesion.semana', '=', $this->semana_actual_sesion+1)
-                            ->select('sesion.id', 'guia_practica_id')
                             ->first();
             
-        return $siguiente_sesion;
+        if($siguiente_sesion)
+            $siguiente = true;
+        
+        return $siguiente;
     }
     
     public function sesionEnCurso()

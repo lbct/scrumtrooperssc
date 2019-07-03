@@ -1910,12 +1910,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1991,8 +1985,18 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    iniciarClase: function iniciarClase() {
+    recargarClase: function recargarClase() {
       var _this4 = this;
+
+      this.axios.get('/auxiliarterminal/clase/' + this.clase.id).then(function (response) {
+        var datos = response.data;
+        _this4.clase = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    iniciarClase: function iniciarClase() {
+      var _this5 = this;
 
       var params = {
         'clase_id': this.clase.id
@@ -2001,31 +2005,24 @@ __webpack_require__.r(__webpack_exports__);
         var datos = response.data;
 
         if (datos.exito) {
-          _this4.mensajes = datos.exito;
-          _this4.tipo_mensaje = 'success';
-          _this4.key_mensajes++;
-          _this4.clase.semana_actual_sesion++;
-          _this4.clase.en_curso = true;
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+          _this5.clase.semana_actual_sesion++;
+          _this5.clase.en_curso = true;
         } else {
-          _this4.mensajes = datos.error.mensaje;
-          _this4.tipo_mensaje = 'danger';
-          _this4.key_mensajes++;
-          var codigo_error = datos.error.codigo;
+          _this5.mensajes = datos.error;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
 
-          if (codigo_error == 1) {
-            _this4.clase.semana_actual_sesion++;
-            _this4.clase.en_curso = true;
-          } else if (codigo_error == 2) {
-            _this4.clase.semana_actual_sesion++;
-            _this4.clase.siguiente_sesion = null;
-          }
+          _this5.recargarClase();
         }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     cancelarClase: function cancelarClase() {
-      var _this5 = this;
+      var _this6 = this;
 
       var params = {
         'clase_id': this.clase.id
@@ -2036,21 +2033,18 @@ __webpack_require__.r(__webpack_exports__);
         var datos = response.data;
 
         if (datos.exito) {
-          _this5.mensajes = datos.exito;
-          _this5.tipo_mensaje = 'success';
-          _this5.key_mensajes++;
-          _this5.clase.semana_actual_sesion--;
-          _this5.clase.en_curso = false;
+          _this6.mensajes = datos.exito;
+          _this6.tipo_mensaje = 'success';
+          _this6.key_mensajes++;
+          _this6.clase.semana_actual_sesion--;
+          _this6.clase.en_curso = false;
+          _this6.clase.siguiente_sesion = true;
         } else {
-          _this5.mensajes = datos.error.mensaje;
-          _this5.tipo_mensaje = 'danger';
-          _this5.key_mensajes++;
-          var codigo_error = datos.error.codigo;
+          _this6.mensajes = datos.error;
+          _this6.tipo_mensaje = 'danger';
+          _this6.key_mensajes++;
 
-          if (codigo_error == 1) {
-            _this5.clase.siguiente_sesion = datos.error.siguiente_sesion;
-            _this5.clase.en_curso = false;
-          }
+          _this6.recargarClase();
         }
       });
     }
@@ -2233,10 +2227,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['clase_id'],
   data: function data() {
     return {
+      busqueda: '',
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
@@ -2244,11 +2317,15 @@ __webpack_require__.r(__webpack_exports__);
         id: '',
         semana: ''
       },
-      sesiones: [{
-        id: 1,
-        semana: 1
-      }],
-      clase: {}
+      sesiones: [],
+      clase: {},
+      estudiantes_filtrados: [],
+      estudiantes: [],
+      estudiante: {
+        id: '',
+        comentario_auxiliar: '',
+        index: ''
+      }
     };
   },
   methods: {
@@ -2286,12 +2363,87 @@ __webpack_require__.r(__webpack_exports__);
       return dia_literal;
     },
     obtenerSesiones: function obtenerSesiones() {
-      if (this.sesiones.length) {
-        this.sesion = this.sesiones[0];
-        this.obtenerEstudiantes();
-      }
+      var _this2 = this;
+
+      this.axios.get('/auxiliarterminal/sesion/' + this.clase_id).then(function (response) {
+        var datos = response.data;
+        _this2.sesiones = datos;
+
+        if (_this2.sesiones.length) {
+          _this2.sesion = _this2.sesiones[0];
+
+          _this2.obtenerEstudiantes();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
-    obtenerEstudiantes: function obtenerEstudiantes() {}
+    obtenerEstudiantes: function obtenerEstudiantes() {
+      var _this3 = this;
+
+      this.axios.get('/auxiliarterminal/sesion/estudiantes/' + this.sesion.id).then(function (response) {
+        var datos = response.data;
+        _this3.estudiantes = datos;
+        _this3.estudiantes_filtrados = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    filtrar: function filtrar() {
+      var _this4 = this;
+
+      this.estudiantes_filtrados = this.estudiantes.filter(function (estudiante) {
+        var nombre = estudiante.nombre + ' ' + estudiante.apellido;
+        return nombre.toLowerCase().includes(_this4.busqueda.toLowerCase());
+      });
+    },
+    asistencia: function asistencia(estudiante) {
+      var asistencia_sesion = true;
+      if (estudiante.asistencia_sesion) asistencia_sesion = false;
+      var params = {
+        'sesion_estudiante_id': estudiante.id,
+        'asistencia_sesion': asistencia_sesion
+      };
+      this.axios.put('/auxiliarterminal/sesion/estudiante/asistencia', params).then(function (respuesta) {
+        var datos = respuesta.data;
+        estudiante.asistencia_sesion = asistencia_sesion;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    comentar: function comentar(estudiante, index) {
+      this.estudiante.id = estudiante.id;
+      this.estudiante.comentario_auxiliar = estudiante.comentario_auxiliar;
+      this.estudiante.index = index;
+      $('#modal-comentar-a-estudiante').modal('show');
+    },
+    borrarComentario: function borrarComentario(estudiante) {
+      var params = {
+        'sesion_estudiante_id': estudiante.id,
+        'comentario_auxiliar': ''
+      };
+      this.axios.put('/auxiliarterminal/sesion/estudiante/comentario', params).then(function (respuesta) {
+        var datos = respuesta.data;
+        estudiante.comentario_auxiliar = '';
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    guardarComentario: function guardarComentario() {
+      var _this5 = this;
+
+      var params = {
+        'sesion_estudiante_id': this.estudiante.id,
+        'comentario_auxiliar': this.estudiante.comentario_auxiliar
+      };
+      this.axios.put('/auxiliarterminal/sesion/estudiante/comentario', params).then(function (respuesta) {
+        var datos = respuesta.data;
+        _this5.estudiantes_filtrados[_this5.estudiante.index].comentario_auxiliar = _this5.estudiante.comentario_auxiliar;
+        $('#modal-comentar-a-estudiante').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   mounted: function mounted() {
     this.init();
@@ -3344,7 +3496,7 @@ __webpack_require__.r(__webpack_exports__);
         descripcion: ''
       },
       formulario_inscripcion: '',
-      inscripcion_activa: false,
+      inscripcion_activa: true,
       inscrito: false
     };
   },
@@ -3466,12 +3618,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.init();
     this.$parent.$parent.section = 'Formulario de Inscripción';
-
-    if (this.inscripcion_activa) {
-      this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
-        linear: true
-      });
-    }
+    this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
+      linear: true
+    });
   }
 });
 
@@ -4743,31 +4892,10 @@ var render = function() {
                         _vm._v(" "),
                         _vm.clase.en_curso
                           ? _c("div", { staticClass: "mt-2" }, [
-                              _c("div", [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "btn btn-primary",
-                                    attrs: {
-                                      href:
-                                        "/auxiliarterminal/archivos/" +
-                                        _vm.clase.siguiente_sesion
-                                          .guia_practica_id,
-                                      target: "_blank"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                Descargar Guía Practica\n                            "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-danger mt-2",
+                                  staticClass: "btn btn-danger",
                                   attrs: { type: "button" },
                                   on: {
                                     click: function($event) {
@@ -5130,18 +5258,300 @@ var render = function() {
                           )
                         ]
                       )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _vm.estudiantes.length > 0
+                      ? _c("div", [
+                          _c("div", { staticClass: "text-left" }, [
+                            _c("div", { staticClass: "col-xs-12 col-lg-4" }, [
+                              _c("label", [_vm._v("Nombre del estudiante")]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.busqueda,
+                                    expression: "busqueda"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.busqueda },
+                                on: {
+                                  keyup: function($event) {
+                                    return _vm.filtrar()
+                                  },
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.busqueda = $event.target.value
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("br")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "table-responsive" }, [
+                            _c("table", { staticClass: "table table-hover" }, [
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.estudiantes_filtrados, function(
+                                  estudiante,
+                                  index
+                                ) {
+                                  return _c("tr", [
+                                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(estudiante.nombre) +
+                                          " " +
+                                          _vm._s(estudiante.apellido)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    estudiante.comentario_auxiliar
+                                      ? _c("td", [
+                                          _vm._v(
+                                            "\n                                " +
+                                              _vm._s(
+                                                estudiante.comentario_auxiliar
+                                              ) +
+                                              "   \n                                "
+                                          ),
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-edit clickleable",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.comentar(
+                                                  estudiante,
+                                                  index
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-trash-alt clickleable",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.borrarComentario(
+                                                  estudiante
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ])
+                                      : _c("td", [
+                                          estudiante.asistencia_sesion
+                                            ? _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-primary",
+                                                  attrs: { type: "button" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.comentar(
+                                                        estudiante,
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                    Comentar\n                                "
+                                                  )
+                                                ]
+                                              )
+                                            : _vm._e()
+                                        ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.asistencia(estudiante)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          estudiante.asistencia_sesion
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-toggle-on fa-2x"
+                                              })
+                                            : _c("i", {
+                                                staticClass:
+                                                  "fas fa-toggle-off fa-2x"
+                                              })
+                                        ]
+                                      )
+                                    ])
+                                  ])
+                                }),
+                                0
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: { id: "modal-comentar-a-estudiante" }
+                            },
+                            [
+                              _c("div", { staticClass: "modal-dialog" }, [
+                                _c("div", { staticClass: "modal-content" }, [
+                                  _vm._m(1),
+                                  _vm._v(" "),
+                                  _c("form", [
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c("div", { staticClass: "form-group" }, [
+                                        _c("label", [
+                                          _vm._v(
+                                            "Por favor escriba el comentario"
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.estudiante
+                                                  .comentario_auxiliar,
+                                              expression:
+                                                "estudiante.comentario_auxiliar"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          attrs: { type: "text", required: "" },
+                                          domProps: {
+                                            value:
+                                              _vm.estudiante.comentario_auxiliar
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.estudiante,
+                                                "comentario_auxiliar",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-footer" }, [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "m-3 btn btn-primary pull-left",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.guardarComentario()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Guardar")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-danger",
+                                          attrs: {
+                                            type: "button",
+                                            "data-dismiss": "modal"
+                                          }
+                                        },
+                                        [_vm._v("Cancelar")]
+                                      )
+                                    ])
+                                  ])
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      : _vm._e()
                   ],
                   1
                 )
-              : _c("p", [_vm._v("No se tiene semanas para esta clase")])
+              : _c("h3", [
+                  _vm._v("No se tiene sesiones de laboratorio para esta clase")
+                ])
           ])
-        : _c("p", [_vm._v("No tienes acceso a esta clase")])
+        : _c("h3", [_vm._v("No tienes acceso a esta clase")])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nº")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre de Estudiante")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Comentario del Auxiliar")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Asistencia")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("Comentario del Auxiliar")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -5738,7 +6148,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm.auxiliares.length > 0
-              ? _c("div", { staticClass: "container-fluid" }, [
+              ? _c("div", { staticClass: "container-fluid table-responsive" }, [
                   _c("table", { staticClass: "table" }, [
                     _c("thead", { staticClass: "thead-dark" }, [
                       _c("tr", [

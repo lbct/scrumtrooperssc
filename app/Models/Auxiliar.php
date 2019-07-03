@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\GrupoDocenteAuxiliar;
 use App\Models\Clase;
+use App\Models\Sesion;
+use App\Models\SesionEstudiante;
 
 class Auxiliar extends Model
 {
@@ -44,5 +46,25 @@ class Auxiliar extends Model
         }
         
         return $acceso_clase;
+    }
+    
+    public function accesoSesion($sesion_id){
+        $acceso_sesion = false;
+        $sesion = Sesion::find($sesion_id);
+        
+        if($sesion)
+            $acceso_sesion = $this->accesoClase($sesion->clase_id);
+        
+        return $acceso_sesion;
+    }
+    
+    public function accesoSesionEstudiante($sesion_estudiante_id){
+        $acceso_sesion_estudiante = false;
+        $sesion_estudiante = SesionEstudiante::find($sesion_estudiante_id);
+        
+        if($sesion_estudiante)
+            $acceso_sesion_estudiante = $this->accesoSesion($sesion_estudiante->sesion_id);
+        
+        return $acceso_sesion_estudiante;
     }
 }

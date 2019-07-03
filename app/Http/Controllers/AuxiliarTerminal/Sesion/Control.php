@@ -16,7 +16,7 @@ use App\Http\Controllers\AuxiliarTerminal\Base;
 
 class Control extends Base
 {    
-    public function iniciarClase(Request $request){
+    public function iniciarSesion(Request $request){
         $usuario_id = session('usuario_id');        
         $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
         $clase_id   = $request->clase_id;
@@ -34,13 +34,13 @@ class Control extends Base
                     
                     return response()->json(['exito'=>['Clase iniciada con éxito']], 200);
                 }
-                return response()->json(['error'=>['codigo'=>'2', 'mensaje'=>['No se dispone de nuevas clases']]], 200);
+                return response()->json(['error'=>['No se dispone de nuevas sesiones']], 200);
             }
-            return response()->json(['error'=>['codigo'=>'1', 'mensaje'=>['La clase ya fue iniciada']]], 200);
+            return response()->json(['error'=>['La sesion ya fue iniciada']], 200);
         }
     }
     
-    public function detenerClase(Request $request){
+    public function detenerSesion(Request $request){
         $usuario_id = session('usuario_id');        
         $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
         $clase_id   = $request->clase_id;
@@ -56,7 +56,32 @@ class Control extends Base
 
                 return response()->json(['exito'=>['Clase cancelada con éxito']], 200);
             }
-            return response()->json(['error'=>['codigo'=>'1', 'mensaje'=>['La clase no está en curso'], 'siguiente_sesion'=>$clase->siguienteSesion()]], 200);
+            return response()->json(['error'=>['No ha sido posible cancelar la sesión']], 200);
+        }
+    }
+    
+    public function disponibles(Request $request, $clase_id){
+        $usuario_id = session('usuario_id');        
+        $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
+        
+        if($auxiliar->accesoClase($clase_id)){
+            $clase = Clase::find($clase_id);
+            
+            $sesiones = $clase->sesionesDisponibles();
+            return $sesiones;
+        }
+    }
+    
+    public function estudiantes(Request $request, $sesion_id){
+        $usuario_id = session('usuario_id');        
+        $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
+        
+        if($auxiliar->accesoSesion($sesion_id)){
+            $sesion = Sesion::find($sesion_id);
+            
+            if($sesion->accesible()){
+                return $sesion->estudiantes();
+            }
         }
     }
 }

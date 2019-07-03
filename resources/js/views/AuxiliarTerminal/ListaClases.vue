@@ -72,13 +72,7 @@
                             </router-link>
                         </div>
                         <div v-if="clase.en_curso" class="mt-2">
-                            <div>
-                                <a :href="'/auxiliarterminal/archivos/'+clase.siguiente_sesion.guia_practica_id"
-                                   class="btn btn-primary" target="_blank">
-                                    Descargar Guía Practica
-                                </a>
-                            </div>
-                            <button v-on:click="cancelarClase()" type="button" class="btn btn-danger mt-2">
+                            <button v-on:click="cancelarClase()" type="button" class="btn btn-danger">
                                 Cancelar Clase
                             </button>
                         </div>
@@ -185,6 +179,18 @@
                     });
             },
             
+            recargarClase(){
+                this.axios
+                    .get('/auxiliarterminal/clase/'+this.clase.id)
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.clase = datos;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
             iniciarClase(){
                 const params = {
                     'clase_id': this.clase.id,
@@ -202,18 +208,10 @@
                             this.clase.semana_actual_sesion++;
                             this.clase.en_curso = true;
                         }else{
-                            this.mensajes = datos.error.mensaje;
+                            this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
                             this.key_mensajes++;
-                            
-                            var codigo_error = datos.error.codigo;
-                            if(codigo_error==1){
-                                this.clase.semana_actual_sesion++;
-                                this.clase.en_curso = true;
-                            }else if(codigo_error==2){
-                                this.clase.semana_actual_sesion++;
-                                this.clase.siguiente_sesion = null;
-                            }
+                            this.recargarClase();
                         }
                     })
                     .catch(function (error) {
@@ -236,17 +234,13 @@
                             this.key_mensajes++;
                             this.clase.semana_actual_sesion--;
                             this.clase.en_curso = false;
+                            this.clase.siguiente_sesion = true;
                         }
                         else{
-                            this.mensajes = datos.error.mensaje;
+                            this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
                             this.key_mensajes++;
-                            
-                            var codigo_error = datos.error.codigo;
-                            if(codigo_error==1){
-                                this.clase.siguiente_sesion = datos.error.siguiente_sesion;
-                                this.clase.en_curso = false;
-                            }
+                            this.recargarClase();
                         }
                     });
             }

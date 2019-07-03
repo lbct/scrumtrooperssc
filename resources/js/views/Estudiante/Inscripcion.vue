@@ -134,7 +134,7 @@
                 clase: {id:'', descripcion:''},
                 
                 formulario_inscripcion: '',
-                inscripcion_activa: false,
+                inscripcion_activa: true,
                 inscrito: false,
             }
         },
@@ -278,11 +278,9 @@
             this.init();
             this.$parent.$parent.section = 'Formulario de Inscripción';
             
-            if(this.inscripcion_activa){
-                this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
+            this.formulario_inscripcion = new Stepper(document.querySelector('#formulario_inscripcion'), {
                     linear: true
-                });
-            }
+            });
         },
         
         

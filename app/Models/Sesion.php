@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Clase;
 use App\Models\InicioClase;
 use App\Models\SesionEstudiante;
 use App\Models\EstudianteClase;
@@ -31,6 +32,17 @@ class Sesion extends Model
     public function sesionEstudiante()
     {
         return $this->hasMany('App\Models\SesionEstudiante', 'sesion_id', 'id');
+    }
+    
+    public function accesible()
+    {
+        $accesible = false;
+        $clase = Clase::find($this->clase_id);
+        
+        if($clase->semana_actual_sesion >= $this->semana)
+            $accesible = true;
+            
+        return $accesible;
     }
     
     public function enCurso()
@@ -82,5 +94,17 @@ class Sesion extends Model
         
         $inicio_clase = InicioClase::where('sesion_id', $this->id);
         $inicio_clase->delete();
+    }
+    
+    public function estudiantes()
+    {
+        $estudiantes_sesion = SesionEstudiante::where('sesion_id', $this->id)
+                              ->join('estudiante_clase', 'estudiante_clase.id', '=', 'sesion_estudiante.estudiante_clase_id')
+                              ->join('estudiante', 'estudiante.id', '=', 'estudiante_clase.estudiante_id')
+                              ->join('usuario', 'usuario.id', '=', 'estudiante.usuario_id')
+                              ->select('sesion_estudiante.id', 'comentario_auxiliar', 'asistencia_sesion', 'nombre', 'apellido', 'codigo_sis')
+                              ->get();
+        
+        return $estudiantes_sesion;
     }
 }
