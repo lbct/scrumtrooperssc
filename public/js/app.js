@@ -5639,7 +5639,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.practicas.length > 0
-                ? _c("div", { staticClass: "container-fluid" }, [
+                ? _c("div", { staticClass: "table-responsive" }, [
                     _c("table", { staticClass: "table" }, [
                       _vm._m(0),
                       _vm._v(" "),
@@ -6148,7 +6148,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm.auxiliares.length > 0
-              ? _c("div", { staticClass: "container-fluid table-responsive" }, [
+              ? _c("div", { staticClass: "table-responsive" }, [
                   _c("table", { staticClass: "table" }, [
                     _c("thead", { staticClass: "thead-dark" }, [
                       _c("tr", [
@@ -7568,7 +7568,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.sesiones.length > 0
-                ? _c("div", { staticClass: "container-fluid" }, [
+                ? _c("div", { staticClass: "table-responsive" }, [
                     _c("table", { staticClass: "table" }, [
                       _vm._m(0),
                       _vm._v(" "),
@@ -7762,7 +7762,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _vm.practicas.length > 0
-                ? _c("div", { staticClass: "container-fluid" }, [
+                ? _c("div", { staticClass: "table-responsive" }, [
                     _c("table", { staticClass: "table" }, [
                       _vm._m(0),
                       _vm._v(" "),

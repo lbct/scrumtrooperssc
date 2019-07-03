@@ -14,7 +14,7 @@
               </div>
             </center>
             
-            <div v-if="practicas.length > 0" class="container-fluid">
+            <div v-if="practicas.length > 0" class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
