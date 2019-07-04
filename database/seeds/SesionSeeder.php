@@ -7,7 +7,7 @@ class SesionSeeder extends Seeder
 {
     public function run()
     {
-        Sesion::create([
+        /*Sesion::create([
         	'clase_id' 		        =>	1,
         	'auxiliar_terminal_id'  =>	null,
         	'guia_practica_id'	    =>	1,
@@ -19,6 +19,6 @@ class SesionSeeder extends Seeder
         	'auxiliar_terminal_id'  =>	null,
         	'guia_practica_id'	    =>	1,
             'semana'			    =>	2,
-        ]);
+        ]);*/
     }
 }

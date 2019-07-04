@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Clase;
 use App\Models\GrupoADocente;
+use App\Models\GrupoDocente;
 use Illuminate\Database\Eloquent\Model;
 
 class Docente extends Model
@@ -19,6 +20,18 @@ class Docente extends Model
     public function grupoADocente()
     {
         return $this->hasMany('App\Models\GrupoADocente', 'docente_id', 'id');
+    }
+    
+    public function accesoGrupoDocente($grupo_docente_id){
+        $acceso = false;
+        $grupo_a_docente = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                           ->where('docente_id', $this->id)
+                           ->first();
+        
+        if($grupo_a_docente)
+            $acceso = true;
+        
+        return $acceso;
     }
     
     public function materias($gestion_id)

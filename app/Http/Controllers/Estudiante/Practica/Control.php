@@ -70,7 +70,7 @@ class Control extends Base
                 else
                     return response()->json(['error'=>['Ya subiste un archivo con ese nombre']], 400);
             }
-            return Response::make($validation->errors()->first(), 400);
+            return response()->json(['error'=>['Archivo no válido']], 400);
         }
     }
     

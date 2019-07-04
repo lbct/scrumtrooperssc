@@ -26,7 +26,7 @@
                         <tr v-for="practica in practicas">
                             <td>{{practica.semana}}</td>
                             <td>
-                                <a :href="'/estudiante/archivos/' + practica.id" 
+                                <a :href="'/estudiante/archivos/guia_practica/'+practica.id" 
                                    target="_blank" class="btn btn-primary">
                                    {{practica.archivo}}
                                 </a>

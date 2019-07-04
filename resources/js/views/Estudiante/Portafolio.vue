@@ -32,7 +32,7 @@
                             <td>{{sesion.comentario_auxiliar}}</td>
                             <td v-if="sesion.archivos.length">
                                 <div v-for="archivo in sesion.archivos">
-                                    <a :href="'/estudiante/archivos/' + archivo.id">{{archivo.archivo}} <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i></a>
+                                    <a :href="'/estudiante/archivos/practicas/' + archivo.id">{{archivo.archivo}} <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i></a>
                                 </div>
                             </td>
                             <td v-else>Sin Archivos</td>

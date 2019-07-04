@@ -3,7 +3,12 @@
     <!-- Division -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Estudiante</div>
-
+    <li class="nav-item">
+        <router-link :to="{ name: 'EstudianteInicio' }" class="nav-link">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Inicio</span>
+        </router-link>
+    </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#inscripcion" aria-expanded="true" aria-controls="inscripcion">
             <i class="fa fa-fw fa-check-square"></i>

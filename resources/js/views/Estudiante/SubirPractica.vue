@@ -17,7 +17,7 @@
                 <center>
                   <div class="form-group form-group col-md-6">
                         <label>Selecciona una Semana</label>
-                        <select v-model="sesion" class="form-control" v-on:change="obtenerSesiones()">
+                        <select v-model="sesion" class="form-control">
                             <option v-for="(sesion, index) in sesiones" 
                                     v-bind:value="sesion">
                                 Semana: {{sesion.semana}}
@@ -90,7 +90,7 @@
                     autoProcessQueue: false,
                     addRemoveLinks: true,
                     uploadMultiple: false,
-                    //acceptedFiles: "application/zip",
+                    acceptedFiles: "",
                     dictDefaultMessage: "Sube el .zip desde acá",
                     dictInvalidFileType: "No puedes subir archivos de ese tipo",
                     dictRemoveFile: "Retirar",

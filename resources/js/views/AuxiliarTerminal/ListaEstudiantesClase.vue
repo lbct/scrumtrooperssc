@@ -17,6 +17,12 @@
                         </select>
                   </div>
                 </center>
+                <p>
+                    <a :href="'/auxiliarterminal/archivos/guia_practica/'+sesion.guia_practica_id"
+                       target="_blank" class="btn btn-primary">
+                        Descargar Guía Práctica
+                    </a>
+                </p>
                 <div v-if="estudiantes.length > 0">
                 <div class="text-left">
                     <div class="col-xs-12 col-lg-4">

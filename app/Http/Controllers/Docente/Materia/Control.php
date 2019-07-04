@@ -16,13 +16,13 @@ class Control extends Base
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
         $gestion_actual = Gestiones::gestionActiva();
         
-        return response()->json(['exito'=>$docente->materias($gestion_actual->id)], 200);
+        return $docente->materias($gestion_actual->id);
     }
     
     public function materiasGestion(Request $request, $gestion_id){
         $usuario_id = session('usuario_id'); 
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
         
-        return response()->json(['exito'=>$docente->materias($gestion_id)], 200);
+        return $docente->materias($gestion_id);
     }
 }

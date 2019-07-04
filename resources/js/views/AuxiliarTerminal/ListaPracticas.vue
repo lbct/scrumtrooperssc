@@ -25,7 +25,7 @@
                     <tbody>
                         <tr v-for="practica in practicas">
                             <td>{{practica.semana}}</td>
-                            <td><a :href="'/auxiliarterminal/archivos/' + practica.id" class="btn btn-primary" target="_blank">{{practica.archivo}}</a></td>
+                            <td><a :href="'/auxiliarterminal/archivos/guia_practica/' + practica.id" class="btn btn-primary" target="_blank">{{practica.archivo}}</a></td>
                         </tr>
                     </tbody>
                 </table>

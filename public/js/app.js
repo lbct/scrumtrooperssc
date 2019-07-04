@@ -2305,6 +2305,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['clase_id'],
   data: function data() {
@@ -2655,11 +2661,8 @@ __webpack_require__.r(__webpack_exports__);
       this.asignado = false;
       this.axios.get('/docente/materias').then(function (response) {
         var datos = response.data;
-
-        if (datos.exito) {
-          _this.grupos_docente = datos.exito;
-          if (_this.grupos_docente.length) _this.grupo_docente_id = _this.grupos_docente[0].id;
-        } else {}
+        _this.grupos_docente = datos;
+        if (_this.grupos_docente.length) _this.grupo_docente_id = _this.grupos_docente[0].id;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2672,13 +2675,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.axios.get('/docente/auxiliares/disponibles/' + this.grupo_docente_id).then(function (response) {
         var datos = response.data;
+        _this2.auxiliares_terminal = datos;
+        if (_this2.auxiliares_terminal.length) _this2.auxiliar_terminal_id = _this2.auxiliares_terminal[0].id;
 
-        if (datos.exito) {
-          _this2.auxiliares_terminal = datos.exito;
-          if (_this2.auxiliares_terminal.length) _this2.auxiliar_terminal_id = _this2.auxiliares_terminal[0].id;
-
-          _this2.formulario_asignar_auxiliar.next();
-        } else {}
+        _this2.formulario_asignar_auxiliar.next();
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2716,6 +2716,233 @@ __webpack_require__.r(__webpack_exports__);
     this.formulario_asignar_auxiliar = new Stepper(document.querySelector('#formulario_asignar_auxiliar'), {
       linear: true
     });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mensajes: [],
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      materias: [],
+      materia: {
+        'id': '',
+        'nombre_materia': ''
+      },
+      sesiones: [],
+      sesion: {
+        'sesion_estudiante_id': '',
+        semana: '',
+        archivos: []
+      },
+      practicas: [],
+      dropzoneOptions: {
+        url: '/docente/sesion',
+        headers: {
+          "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
+        },
+        parallelUploads: 1,
+        maxFiles: 1,
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        uploadMultiple: false,
+        acceptedFiles: "",
+        dictDefaultMessage: "Sube el archivo acá",
+        dictInvalidFileType: "No puedes subir archivos de ese tipo",
+        dictRemoveFile: "Retirar",
+        maxFilesize: 5,
+        init: function init() {
+          var prevFile;
+          this.on('addedfile', function (file) {
+            if (typeof prevFile !== "undefined") this.removeFile(prevFile);
+            prevFile = file;
+          });
+        }
+      }
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/docente/materias').then(function (response) {
+        var datos = response.data;
+        _this.materias = datos;
+
+        if (_this.materias.length) {
+          _this.materia = _this.materias[0];
+
+          _this.obtenerSesiones();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    obtenerSesiones: function obtenerSesiones() {
+      var _this2 = this;
+
+      this.axios.get('/docente/sesiones/' + this.materia.id).then(function (response) {
+        var datos = response.data;
+        _this2.sesiones = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    confirmarSubida: function confirmarSubida() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.$refs.subirGuiaPractica.processQueue();
+    },
+    enviarDatosExtra: function enviarDatosExtra(file, xhr, formData) {
+      formData.append('grupo_docente_id', this.materia.id);
+    },
+    subidaExitosa: function subidaExitosa(file, response) {
+      this.mensajes = response.exito;
+      this.tipo_mensaje = 'success';
+      this.key_mensajes++;
+      this.$refs.subirGuiaPractica.removeAllFiles();
+      this.obtenerSesiones();
+      $('#modal-agregar-sesion').modal('hide');
+    },
+    subidaError: function subidaError(file, response) {
+      console.log(response);
+      this.mensajes = response.error;
+      this.tipo_mensaje = 'danger';
+      this.key_mensajes++;
+      this.$refs.subirGuiaPractica.removeAllFiles();
+    },
+    borrarArchivo: function borrarArchivo(index) {
+      var _this3 = this;
+
+      var envio_practica = this.sesion.archivos[index];
+      var params = {
+        'envio_practica_id': envio_practica.id
+      };
+      this.axios["delete"]('/estudiante/practica', {
+        data: params
+      }).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this3.sesion.archivos.splice(index, 1);
+
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+        } else if (datos.error) {
+          _this3.mensajes = datos.error;
+          _this3.tipo_mensaje = 'danger';
+          _this3.key_mensajes++;
+        }
+      });
+    },
+    verAgregarSesion: function verAgregarSesion() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      $('#modal-agregar-sesion').modal('show');
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Guias Prácticas';
   }
 });
 
@@ -2885,7 +3112,7 @@ __webpack_require__.r(__webpack_exports__);
     cambiarGestion: function cambiarGestion() {
       var _this2 = this;
 
-      this.axios.get('http://localhost/docente/auxiliares/' + this.gestion.id).then(function (response) {
+      this.axios.get('/docente/auxiliares/' + this.gestion.id).then(function (response) {
         _this2.auxiliares = response.data;
 
         _this2.calcularClasesCursadas();
@@ -3866,7 +4093,7 @@ __webpack_require__.r(__webpack_exports__);
         autoProcessQueue: false,
         addRemoveLinks: true,
         uploadMultiple: false,
-        //acceptedFiles: "application/zip",
+        acceptedFiles: "",
         dictDefaultMessage: "Sube el .zip desde acá",
         dictInvalidFileType: "No puedes subir archivos de ese tipo",
         dictRemoveFile: "Retirar",
@@ -6093,6 +6320,26 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
+                    _c("p", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: {
+                            href:
+                              "/auxiliarterminal/archivos/guia_practica/" +
+                              _vm.sesion.guia_practica_id,
+                            target: "_blank"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Descargar Guía Práctica\n                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
                     _vm.estudiantes.length > 0
                       ? _c("div", [
                           _c("div", { staticClass: "text-left" }, [
@@ -6489,7 +6736,7 @@ var render = function() {
                                   staticClass: "btn btn-primary",
                                   attrs: {
                                     href:
-                                      "/auxiliarterminal/archivos/" +
+                                      "/auxiliarterminal/archivos/guia_practica/" +
                                       practica.id,
                                     target: "_blank"
                                   }
@@ -6861,6 +7108,266 @@ var staticRenderFns = [
         )
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.materias.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona la Materia")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.materia,
+                        expression: "materia"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.materia = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.obtenerSesiones()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.materias, function(materia, index) {
+                    return _c("option", { domProps: { value: materia } }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(materia.nombre_materia) +
+                          "\n                    "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("Alertas", {
+              key: _vm.key_mensajes,
+              attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+            }),
+            _vm._v(" "),
+            _c("p", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.verAgregarSesion()
+                    }
+                  }
+                },
+                [_vm._v("\n                Añadir Semana\n            ")]
+              )
+            ]),
+            _vm._v(" "),
+            _vm.sesiones.length > 0
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.sesiones, function(sesion) {
+                        return _c("tr", [
+                          _c("td", [_vm._v(_vm._s(sesion.semana))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: {
+                                  href:
+                                    "/docente/archivos/guia_practica/" +
+                                    sesion.guia_practica_id,
+                                  target: "_blank"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                               " +
+                                    _vm._s(sesion.archivo) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c("i", { staticClass: "fas fa-edit" }),
+                            _vm._v(" "),
+                            sesion.borrable
+                              ? _c("i", { staticClass: "fas fa-trash-alt" })
+                              : _vm._e()
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ])
+                ])
+              : _c("h3", [_vm._v("No se ha subido ninguna semana")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-agregar-sesion" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [
+                        _c("Alertas", {
+                          key: _vm.key_mensajes,
+                          attrs: {
+                            mensajes: _vm.mensajes,
+                            tipo: _vm.tipo_mensaje
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("vue-dropzone", {
+                          ref: "subirGuiaPractica",
+                          staticClass: "text-center",
+                          attrs: {
+                            id: "subirGuiaPractica",
+                            options: _vm.dropzoneOptions
+                          },
+                          on: {
+                            "vdropzone-sending": _vm.enviarDatosExtra,
+                            "vdropzone-success": _vm.subidaExitosa,
+                            "vdropzone-error": _vm.subidaError
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.confirmarSubida()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Guardar\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      : _c("h3", [_vm._v("No tienes materias inscritas")])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Semana")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Archivo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Añadir Semana")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -8433,7 +8940,7 @@ var render = function() {
                                         {
                                           attrs: {
                                             href:
-                                              "/estudiante/archivos/" +
+                                              "/estudiante/archivos/practicas/" +
                                               archivo.id
                                           }
                                         },
@@ -8609,25 +9116,20 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               on: {
-                                change: [
-                                  function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.sesion = $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  },
-                                  function($event) {
-                                    return _vm.obtenerSesiones()
-                                  }
-                                ]
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.sesion = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                }
                               }
                             },
                             _vm._l(_vm.sesiones, function(sesion, index) {
@@ -8889,7 +9391,9 @@ var render = function() {
                                 {
                                   staticClass: "btn btn-primary",
                                   attrs: {
-                                    href: "/estudiante/archivos/" + practica.id,
+                                    href:
+                                      "/estudiante/archivos/guia_practica/" +
+                                      practica.id,
                                     target: "_blank"
                                   }
                                 },
@@ -24149,11 +24653,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Docente_VerClases__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./views/Docente/VerClases */ "./resources/js/views/Docente/VerClases.vue");
 /* harmony import */ var _views_Docente_VerAuxiliares__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./views/Docente/VerAuxiliares */ "./resources/js/views/Docente/VerAuxiliares.vue");
 /* harmony import */ var _views_Docente_AsignarAuxiliar__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./views/Docente/AsignarAuxiliar */ "./resources/js/views/Docente/AsignarAuxiliar.vue");
-/* harmony import */ var _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/AuxiliarTerminal/Inicio */ "./resources/js/views/AuxiliarTerminal/Inicio.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaClases */ "./resources/js/views/AuxiliarTerminal/ListaClases.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaPracticas */ "./resources/js/views/AuxiliarTerminal/ListaPracticas.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantes */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantes.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantesClase */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantesClase.vue");
+/* harmony import */ var _views_Docente_GuiasPracticas__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/Docente/GuiasPracticas */ "./resources/js/views/Docente/GuiasPracticas.vue");
+/* harmony import */ var _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./views/AuxiliarTerminal/Inicio */ "./resources/js/views/AuxiliarTerminal/Inicio.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaClases */ "./resources/js/views/AuxiliarTerminal/ListaClases.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaPracticas */ "./resources/js/views/AuxiliarTerminal/ListaPracticas.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantes */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantes.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantesClase */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantesClase.vue");
 
 
 
@@ -24176,6 +24681,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vueDropzone', vue2_dropzon
 
 
  //Docente
+
 
 
 
@@ -24240,27 +24746,31 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/panel/docente/AsignarAuxiliar',
     name: 'DocenteAsignarAuxiliar',
     component: _views_Docente_AsignarAuxiliar__WEBPACK_IMPORTED_MODULE_19__["default"]
+  }, {
+    path: '/panel/docente/GuiasPracticas',
+    name: 'DocenteGuiasPracticas',
+    component: _views_Docente_GuiasPracticas__WEBPACK_IMPORTED_MODULE_20__["default"]
   }, //Auxiliar Terminal
   {
     path: '/panel/auxiliarterminal',
     name: 'AuxiliarTerminalInicio',
-    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_20__["default"]
+    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_21__["default"]
   }, {
     path: '/panel/auxiliarterminal/Clases',
     name: 'AuxiliarTerminalListaClases',
-    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_21__["default"]
+    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_22__["default"]
   }, {
     path: '/panel/auxiliarterminal/Practicas',
     name: 'AuxiliarTerminalListaPracticas',
-    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_22__["default"]
+    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_23__["default"]
   }, {
     path: '/panel/auxiliarterminal/Estudiantes',
     name: 'AuxiliarTerminalListaEstudiantes',
-    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_23__["default"]
+    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_24__["default"]
   }, {
     path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
     name: 'AuxiliarTerminalListaEstudiantesClase',
-    component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_24__["default"],
+    component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_25__["default"],
     props: true
   }]
 });
@@ -24836,6 +25346,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AsignarAuxiliar_vue_vue_type_template_id_53404f16___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AsignarAuxiliar_vue_vue_type_template_id_53404f16___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/GuiasPracticas.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/views/Docente/GuiasPracticas.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GuiasPracticas.vue?vue&type=template&id=78ca3d8b& */ "./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b&");
+/* harmony import */ var _GuiasPracticas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GuiasPracticas.vue?vue&type=script&lang=js& */ "./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GuiasPracticas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Docente/GuiasPracticas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GuiasPracticas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./GuiasPracticas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GuiasPracticas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./GuiasPracticas.vue?vue&type=template&id=78ca3d8b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/GuiasPracticas.vue?vue&type=template&id=78ca3d8b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GuiasPracticas_vue_vue_type_template_id_78ca3d8b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

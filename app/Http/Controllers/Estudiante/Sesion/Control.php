@@ -24,6 +24,7 @@ class Control extends Base
             $sesiones = SesionEstudiante::where('estudiante_clase_id', '=', $estudiante_clase_id)
                         ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
                         ->select('sesion_estudiante.id as sesion_estudiante_id', 'asistencia_sesion', 'comentario_auxiliar', 'semana', 'guia_practica_id')
+                        ->orderBy('semana', 'desc')
                         ->get();
             
             $sesiones = $sesiones->map(function ($sesion) {

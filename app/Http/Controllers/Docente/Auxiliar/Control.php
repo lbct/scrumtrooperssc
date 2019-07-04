@@ -28,7 +28,7 @@ class Control extends Base
                                                 return $obj_a['id'] - $obj_b['id'];
                                             });
         
-        return response()->json(['exito'=>$auxiliares_disponibles], 200);
+        return $auxiliares_disponibles;
     }
     
     public function asignar(Request $request){

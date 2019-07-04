@@ -5,6 +5,13 @@
     <div class="sidebar-heading">Docente</div>
 
     <li class="nav-item">
+        <router-link :to="{ name: 'DocenteInicio' }" class="nav-link">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Inicio</span>
+        </router-link>
+    </li>
+
+    <li class="nav-item">
         <router-link :to="{ name: 'DocenteVerClases' }" class="nav-link">
             <i class="fas fa-fw fa-briefcase"></i>
             <span>Clases</span>
@@ -12,10 +19,10 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="/docente/subirPractica">
+        <router-link :to="{ name: 'DocenteGuiasPracticas' }" class="nav-link">
             <i class="fas fa-fw fa-upload"></i>
-            <span>Subir Prácticas</span>
-        </a>
+            <span>Guías Prácticas</span>
+        </router-link>
     </li>
 
     <li class="nav-item">

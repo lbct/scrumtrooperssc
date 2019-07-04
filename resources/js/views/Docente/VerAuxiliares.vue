@@ -108,7 +108,7 @@
             
             cambiarGestion(){
                  this.axios
-                    .get('http://localhost/docente/auxiliares/'+this.gestion.id)
+                    .get('/docente/auxiliares/'+this.gestion.id)
                     .then((response)=>{
                         this.auxiliares = response.data;
                         this.calcularClasesCursadas();

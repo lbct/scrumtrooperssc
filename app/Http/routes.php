@@ -52,6 +52,9 @@ Route::get('docente/gestiones', 'Docente\Gestion\Control@disponibles');
 Route::get('docente/materias', 'Docente\Materia\Control@materias');
 Route::get('docente/materias/{gestion_id}', 'Docente\Materia\Control@materiasGestion');
 
+Route::get('docente/sesiones/{grupo_docente_id}', 'Docente\Sesion\Control@sesiones');
+Route::post('docente/sesion', 'Docente\Sesion\Control@agregar');
+
 Route::get('docente/clases/{gestion_id}', 'Docente\Clase\Control@clasesGestion');
 
 Route::get('docente/auxiliares/disponibles/{grupo_docente_id}', 'Docente\Auxiliar\Control@disponibles');

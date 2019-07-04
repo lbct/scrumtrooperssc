@@ -31,6 +31,7 @@ import DocenteInicio from './views/Docente/Inicio'
 import DocenteVerClases from './views/Docente/VerClases'
 import DocenteVerAuxiliares from './views/Docente/VerAuxiliares'
 import DocenteAsignarAuxiliar from './views/Docente/AsignarAuxiliar'
+import DocenteGuiasPracticas from './views/Docente/GuiasPracticas'
 
 //Auxiliar Terminal
 import AuxiliarTerminalInicio from './views/AuxiliarTerminal/Inicio'
@@ -104,6 +105,11 @@ const router = new VueRouter({
             path: '/panel/docente/AsignarAuxiliar',
             name: 'DocenteAsignarAuxiliar',
             component: DocenteAsignarAuxiliar,
+        },
+        {
+            path: '/panel/docente/GuiasPracticas',
+            name: 'DocenteGuiasPracticas',
+            component: DocenteGuiasPracticas,
         },
         //Auxiliar Terminal
         {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Clase;
+use App\Models\Sesion;
 
 class Clase extends Model
 {
@@ -38,6 +39,27 @@ class Clase extends Model
     public function estudianteClase()
     {
         return $this->hasMany('App\Models\EstudianteClase', 'clase_id', 'id');
+    }
+    
+    public function sesiones()
+    {
+        $sesiones = Sesion::where('clase_id', $this->id)
+                    ->join('guia_practica', 'guia_practica.id', '=', 'sesion.guia_practica_id')
+                    ->orderBy('semana', 'desc')
+                    ->get();
+        
+        if($sesiones){        
+            $sesiones = $sesiones->map(function ($sesion) {
+                        if($sesion->semana > $this->semana_actual_sesion)
+                            $sesion['borrable'] = true;
+                        else
+                            $sesion['borrable'] = false;
+                            
+                        return $sesion;
+                      });
+        }
+        
+        return $sesiones;
     }
     
     public function sesionesDisponibles()
@@ -82,5 +104,22 @@ class Clase extends Model
             $sesion_en_curso = true;
         
         return $sesion_en_curso;
-    }   
+    }
+    
+    public function maximaSemana()
+    {
+        $semana = Sesion::where('clase_id', $this->id)
+                  ->max('semana');
+        
+        return $semana;
+    }
+    
+    public function agregarSesion($guia_practica_id, $semana)
+    {
+        $sesion = new Sesion;
+        $sesion->clase_id         = $this->id;
+        $sesion->guia_practica_id = $guia_practica_id;
+        $sesion->semana           = $semana;
+        $sesion->save();
+    }
 }

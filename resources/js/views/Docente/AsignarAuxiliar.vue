@@ -99,14 +99,9 @@
                     .get('/docente/materias')
                     .then((response)=>{
                         var datos = response.data;
-                        if(datos.exito){
-                            this.grupos_docente   = datos.exito;
-                            if(this.grupos_docente.length)
-                                this.grupo_docente_id =  this.grupos_docente[0].id;
-                        }
-                        else{
-                            
-                        }
+                        this.grupos_docente = datos;
+                        if(this.grupos_docente.length)
+                            this.grupo_docente_id =  this.grupos_docente[0].id;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -122,16 +117,11 @@
                     .get('/docente/auxiliares/disponibles/'+this.grupo_docente_id)
                     .then((response)=>{
                         var datos = response.data;
-                        if(datos.exito){
-                            this.auxiliares_terminal = datos.exito;
-                            if(this.auxiliares_terminal.length)
-                                this.auxiliar_terminal_id = this.auxiliares_terminal[0].id;
+                        this.auxiliares_terminal = datos;
+                        if(this.auxiliares_terminal.length)
+                            this.auxiliar_terminal_id = this.auxiliares_terminal[0].id;
                             
-                            this.formulario_asignar_auxiliar.next(); 
-                        }
-                        else{
-                            
-                        }
+                        this.formulario_asignar_auxiliar.next(); 
                     })
                     .catch(function (error) {
                         console.log(error);
