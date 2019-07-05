@@ -26,6 +26,13 @@
     </li>
 
     <li class="nav-item">
+        <router-link :to="{ name: 'DocenteEstudiantesInscritos' }" class="nav-link">
+            <i class="fas fa-fw fa-pen-square"></i>
+            <span>Estudiantes</span>
+        </router-link>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clases_docente" aria-expanded="true" aria-controls="clases_docente">
             <i class="fas fa-users"></i>
             <span>Auxiliares</span>
@@ -38,19 +45,6 @@
                 <router-link :to="{ name: 'DocenteAsignarAuxiliar' }" class="collapse-item">
                     Asignar Auxiliar
                 </router-link>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#estudiantes" aria-expanded="true" aria-controls="estudiantes">
-            <i class="fas fa-fw fa-pen-square"></i>
-            <span>Estudiantes</span>
-        </a>
-        <div id="estudiantes" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Inscritos</a>
-                <a class="collapse-item" href="">Portafolios</a>
             </div>
         </div>
     </li>

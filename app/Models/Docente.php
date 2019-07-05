@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Clase;
 use App\Models\GrupoADocente;
 use App\Models\GrupoDocente;
+use App\Models\EstudianteClase;
 use App\Models\Sesion;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,6 +43,20 @@ class Docente extends Model
         if($grupo_a_docente)
             $acceso = true;
         
+        return $acceso;
+    }
+    
+    public function accesoEstudianteClase($estudiante_clase_id){
+        $acceso = false;
+        $estudiante_clase = EstudianteClase::find($estudiante_clase_id);
+        
+        if($estudiante_clase){
+            $grupo_a_docente = GrupoADocente::find($estudiante_clase->grupo_a_docente_id);
+            
+            if($grupo_a_docente->docente_id == $this->id)
+                $acceso = true;
+        }
+
         return $acceso;
     }
     

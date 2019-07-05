@@ -38,7 +38,7 @@ class Control extends Base
         $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
         
         if($auxiliar->accesoClase($clase_id)){
-            $clase = Clase::find($clase_id)
+            $clase = Clase::where('clase.id', $this->clase_id)
                      ->join('grupo_docente', 'grupo_docente.id', '=', 'clase.grupo_docente_id')
                      ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                      ->join('horario', 'horario.id', '=', 'clase.horario_id')

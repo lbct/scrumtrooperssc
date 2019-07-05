@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\GrupoDocente;
+use App\Models\EstudianteClase;
 use Illuminate\Database\Eloquent\Model;
 
 class GrupoADocente extends Model
@@ -35,5 +36,23 @@ class GrupoADocente extends Model
                   ->get();
         
         return $clases;
+    }
+    
+    public function estudiantes()
+    {
+        $estudiantes = EstudianteClase::where('grupo_a_docente_id', $this->id)
+                       ->join('estudiante', 'estudiante.id', '=', 'estudiante_clase.estudiante_id')
+                       ->join('usuario', 'usuario.id', '=', 'estudiante.usuario_id')
+                       ->select('estudiante_clase.id as id','codigo_sis', 'nombre', 'apellido', 'correo')
+                       ->get();
+        
+        $estudiantes = $estudiantes->map(function ($estudiante) {
+                        $estudiante_clase = EstudianteClase::find($estudiante->id);
+                        $estudiante['semanas_asistidas'] = $estudiante_clase->semanasAsistidas()->count();
+                        $estudiante['semanas_totales'] = $estudiante_clase->semanasTotales()->count();
+                        return $estudiante;
+                       });
+        
+        return $estudiantes;
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-        <div v-if="clase.id">
+        <div v-if="clase">
             <h4>{{clase.nombre_materia}}</h4>
             <h5>({{clase.detalle_grupo_docente}})</h5>
             <p>Aula: {{clase.nombre_aula}} - Horario: {{numeroDia(clase.dia)}} ({{clase.hora_inicio}} - {{clase.hora_fin}})</p>
@@ -45,7 +45,7 @@
                         <tbody>
                             <tr v-for="(estudiante, index) in estudiantes_filtrados">
                                 <td>{{index+1}}</td>
-                                <td>{{estudiante.nombre}} {{estudiante.apellido}}</td>
+                                <td>{{estudiante.apellido}} {{estudiante.nombre}}</td>
                                 <td v-if="estudiante.comentario_auxiliar">
                                     {{estudiante.comentario_auxiliar}}&nbsp;&nbsp;&nbsp;
                                     <i v-on:click="comentar(estudiante, index)" 

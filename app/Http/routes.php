@@ -64,6 +64,9 @@ Route::post('docente/auxiliares', 'Docente\Auxiliar\Control@asignar');
 Route::get('docente/auxiliares/{gestion_id}', 'Docente\Auxiliar\Control@asignados');
 Route::delete('docente/auxiliares', 'Docente\Auxiliar\Control@retirar');
 
+Route::get('docente/estudiantes/{grupo_docente_id}', 'Docente\Estudiante\Control@estudiantes');
+Route::get('docente/estudiante/{estudiante_clase_id}', 'Docente\Estudiante\Control@estudiante');
+
 //Rutas Auxiliar Terminal
 Route::get('auxiliarterminal/materias', 'AuxiliarTerminal\Materia\Control@materias');
 Route::get('auxiliarterminal/practicas/{grupo_docente_id}', 'AuxiliarTerminal\Practica\Control@descargables');
