@@ -37,8 +37,12 @@
                                 </a>
                             </td>
                             <td>
-                                <i class="fas fa-edit"></i>
-                                <i v-if="sesion.borrable" class="fas fa-trash-alt"></i>
+                                <i v-on:click="mostrarEditar(sesion)"
+                                   class="fas fa-edit clickleable">
+                                </i>
+                                <i v-if="sesion.borrable" 
+                                   v-on:click="mostrarBorrar(sesion)" class="fas fa-trash-alt clickleable">
+                                </i>
                             </td>
                         </tr>
                     </tbody>
@@ -57,12 +61,13 @@
                   </div>
                       <div class="modal-body">
                         <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
+                        <p>Añade una nueva semana con su guía práctica de laboratorio</p>
                         <vue-dropzone ref="subirGuiaPractica"
                                       id="subirGuiaPractica"
-                                      :options="dropzoneOptions"
-                                      v-on:vdropzone-sending="enviarDatosExtra" 
-                                      v-on:vdropzone-success="subidaExitosa" 
-                                      v-on:vdropzone-error="subidaError" 
+                                      :options="dropzoneOptionsAgregar"
+                                      v-on:vdropzone-sending="enviarDatosExtraAgregar" 
+                                      v-on:vdropzone-success="subidaExitosaAgregar" 
+                                      v-on:vdropzone-error="subidaErrorAgregar" 
                                       class="text-center">
                         </vue-dropzone>
                       </div>
@@ -71,6 +76,63 @@
                         <button v-on:click="confirmarSubida()" 
                                 type="button" class="btn btn-primary">
                             Guardar
+                        </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal fade" id="modal-editar-sesion">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Semana {{sesion.semana}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                      <div class="modal-body">
+                        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
+                        <p>Esta acción reemplazará el archivo de la semana {{sesion.semana}}</p>
+                        <vue-dropzone ref="editarGuiaPractica"
+                                      id="editarGuiaPractica"
+                                      :options="dropzoneOptionsEditar"
+                                      v-on:vdropzone-sending="enviarDatosExtraEditar" 
+                                      v-on:vdropzone-success="subidaExitosaEditar" 
+                                      v-on:vdropzone-error="subidaErrorEditar" 
+                                      class="text-center">
+                        </vue-dropzone>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button v-on:click="confirmarEdicion()" 
+                                type="button" class="btn btn-primary">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal fade" id="modal-confirmar-borrar-sesion">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Semana {{sesion.semana}}</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                      <div class="modal-body">
+                        ¿Estás seguro de borrar la semana {{sesion.semana}}?
+                      </div>
+
+                      <div class="modal-footer">
+                        <button v-on:click="confirmarBorrar()" 
+                                type="button" class="btn btn-primary">
+                            Borrar
                         </button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                       </div>
@@ -93,10 +155,10 @@
                 materias: [],
                 materia: {'id':'','nombre_materia':''},
                 sesiones: [],
-                sesion: {'sesion_estudiante_id':'', semana:'', archivos: []},
+                sesion: {'sesion_estudiante_id':'', semana:'', archivo: ''},
                 practicas: [],
                 
-                dropzoneOptions: {
+                dropzoneOptionsAgregar: {
                     url: '/docente/sesion',
                     headers: { "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content },
                     parallelUploads: 1,
@@ -118,7 +180,31 @@
                             prevFile = file;
                         });
                     }
-                }
+                },
+                
+                dropzoneOptionsEditar: {
+                    url: '/docente/sesion',
+                    headers: { "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content },
+                    parallelUploads: 1,
+                    maxFiles: 1,
+                    autoProcessQueue: false,
+                    addRemoveLinks: true,
+                    uploadMultiple: false,
+                    acceptedFiles: "",
+                    dictDefaultMessage: "Sube el archivo acá",
+                    dictInvalidFileType: "No puedes subir archivos de ese tipo",
+                    dictRemoveFile: "Retirar",
+                    maxFilesize: 5,
+                    init: function() {
+                        var prevFile;
+                        this.on('addedfile', function(file) {
+                            if (typeof prevFile !== "undefined")
+                                this.removeFile(prevFile);
+
+                            prevFile = file;
+                        });
+                    }
+                },
             }
         },
     
@@ -152,6 +238,14 @@
                     });
             },
             
+            verAgregarSesion(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                $('#modal-agregar-sesion').modal('show');
+            },
+            
             confirmarSubida(){
                 this.mensajes = [];
                 this.tipo_mensaje = '';
@@ -159,11 +253,11 @@
                 this.$refs.subirGuiaPractica.processQueue();
             },
             
-            enviarDatosExtra(file, xhr, formData) {
+            enviarDatosExtraAgregar(file, xhr, formData) {
                 formData.append('grupo_docente_id', this.materia.id);
             },
             
-            subidaExitosa(file, response){
+            subidaExitosaAgregar(file, response){
                 this.mensajes = response.exito;
                 this.tipo_mensaje = 'success';
                 this.key_mensajes++;
@@ -172,45 +266,86 @@
                 $('#modal-agregar-sesion').modal('hide');
             },
             
-            subidaError(file, response){
-                console.log(response);
+            subidaErrorAgregar(file, response){
                 this.mensajes = response.error;
                 this.tipo_mensaje = 'danger';
                 this.key_mensajes++;
                 this.$refs.subirGuiaPractica.removeAllFiles();
             },
             
-            borrarArchivo(index){
-                var envio_practica = this.sesion.archivos[index];
+            mostrarBorrar(sesion){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                this.sesion = sesion;
+                $('#modal-confirmar-borrar-sesion').modal('show');
+            },
+            
+            confirmarBorrar(){
                 const params = {
-                    'envio_practica_id': envio_practica.id,
+                    'sesion_id': this.sesion.id,
                 };
                 this.axios
-                    .delete('/estudiante/practica', { data: params })
+                    .delete('/docente/sesion', { data: params })
                     .then((response)=>{
                         var datos = response.data;
                         
                         if(datos.exito){
-                            this.sesion.archivos.splice(index, 1);
                             this.mensajes = datos.exito;
                             this.tipo_mensaje = 'success';
                             this.key_mensajes++;
+                            this.obtenerSesiones();
+                            $('#modal-confirmar-borrar-sesion').modal('hide');
                         }
                         else if(datos.error){
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
                             this.key_mensajes++;
+                            this.obtenerSesiones();
+                            $('#modal-confirmar-borrar-sesion').modal('hide');
                         }
                     });
             },
             
-            verAgregarSesion(){
+            mostrarEditar(sesion){
                 this.mensajes = [];
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
                 
-                $('#modal-agregar-sesion').modal('show');
-            }
+                this.sesion = sesion;
+                var file = { size: 5500000, name: this.sesion.archivo, type: "zip" };
+                var url = "";
+                this.$refs.editarGuiaPractica.manuallyAddFile(file, url);
+                $('#modal-editar-sesion').modal('show');
+            },
+            
+            confirmarEdicion(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                this.$refs.editarGuiaPractica.processQueue();
+            },
+            
+            enviarDatosExtraEditar(file, xhr, formData) {
+                formData.append('sesion_id', this.sesion.id);
+                formData.append('_method', 'PUT');
+            },
+            
+            subidaExitosaEditar(file, response){
+                this.mensajes = response.exito;
+                this.tipo_mensaje = 'success';
+                this.key_mensajes++;
+                this.$refs.editarGuiaPractica.removeAllFiles();
+                this.obtenerSesiones();                
+                $('#modal-editar-sesion').modal('hide');
+            },
+            
+            subidaErrorEditar(file, response){
+                this.mensajes = response.error;
+                this.tipo_mensaje = 'danger';
+                this.key_mensajes++;
+                this.$refs.editarGuiaPractica.removeAllFiles();
+            },
         },            
         
         mounted(){

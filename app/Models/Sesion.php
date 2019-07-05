@@ -34,6 +34,23 @@ class Sesion extends Model
         return $this->hasMany('App\Models\SesionEstudiante', 'sesion_id', 'id');
     }
     
+    public function esBorrable()
+    {
+        $borrable = true;
+        
+        $clases = Clase::where('grupo_docente_id', $this->clase->grupo_docente_id)
+                  ->get();
+        
+        foreach($clases as $clase){
+            if($clase->semana_actual_sesion >= $this->semana){
+                $borrable = false;
+                break;
+            } 
+        }
+        
+        return $borrable;
+    }
+    
     public function accesible()
     {
         $accesible = false;

@@ -46,6 +46,7 @@ class Clase extends Model
         $sesiones = Sesion::where('clase_id', $this->id)
                     ->join('guia_practica', 'guia_practica.id', '=', 'sesion.guia_practica_id')
                     ->orderBy('semana', 'desc')
+                    ->select('sesion.id as id', 'semana', 'guia_practica_id', 'archivo')
                     ->get();
         
         if($sesiones){        

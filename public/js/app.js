@@ -2814,6 +2814,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2829,10 +2891,33 @@ __webpack_require__.r(__webpack_exports__);
       sesion: {
         'sesion_estudiante_id': '',
         semana: '',
-        archivos: []
+        archivo: ''
       },
       practicas: [],
-      dropzoneOptions: {
+      dropzoneOptionsAgregar: {
+        url: '/docente/sesion',
+        headers: {
+          "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
+        },
+        parallelUploads: 1,
+        maxFiles: 1,
+        autoProcessQueue: false,
+        addRemoveLinks: true,
+        uploadMultiple: false,
+        acceptedFiles: "",
+        dictDefaultMessage: "Sube el archivo acá",
+        dictInvalidFileType: "No puedes subir archivos de ese tipo",
+        dictRemoveFile: "Retirar",
+        maxFilesize: 5,
+        init: function init() {
+          var prevFile;
+          this.on('addedfile', function (file) {
+            if (typeof prevFile !== "undefined") this.removeFile(prevFile);
+            prevFile = file;
+          });
+        }
+      },
+      dropzoneOptionsEditar: {
         url: '/docente/sesion',
         headers: {
           "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
@@ -2884,16 +2969,22 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    verAgregarSesion: function verAgregarSesion() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      $('#modal-agregar-sesion').modal('show');
+    },
     confirmarSubida: function confirmarSubida() {
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
       this.$refs.subirGuiaPractica.processQueue();
     },
-    enviarDatosExtra: function enviarDatosExtra(file, xhr, formData) {
+    enviarDatosExtraAgregar: function enviarDatosExtraAgregar(file, xhr, formData) {
       formData.append('grupo_docente_id', this.materia.id);
     },
-    subidaExitosa: function subidaExitosa(file, response) {
+    subidaExitosaAgregar: function subidaExitosaAgregar(file, response) {
       this.mensajes = response.exito;
       this.tipo_mensaje = 'success';
       this.key_mensajes++;
@@ -2901,43 +2992,86 @@ __webpack_require__.r(__webpack_exports__);
       this.obtenerSesiones();
       $('#modal-agregar-sesion').modal('hide');
     },
-    subidaError: function subidaError(file, response) {
-      console.log(response);
+    subidaErrorAgregar: function subidaErrorAgregar(file, response) {
       this.mensajes = response.error;
       this.tipo_mensaje = 'danger';
       this.key_mensajes++;
       this.$refs.subirGuiaPractica.removeAllFiles();
     },
-    borrarArchivo: function borrarArchivo(index) {
+    mostrarBorrar: function mostrarBorrar(sesion) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.sesion = sesion;
+      $('#modal-confirmar-borrar-sesion').modal('show');
+    },
+    confirmarBorrar: function confirmarBorrar() {
       var _this3 = this;
 
-      var envio_practica = this.sesion.archivos[index];
       var params = {
-        'envio_practica_id': envio_practica.id
+        'sesion_id': this.sesion.id
       };
-      this.axios["delete"]('/estudiante/practica', {
+      this.axios["delete"]('/docente/sesion', {
         data: params
       }).then(function (response) {
         var datos = response.data;
 
         if (datos.exito) {
-          _this3.sesion.archivos.splice(index, 1);
-
           _this3.mensajes = datos.exito;
           _this3.tipo_mensaje = 'success';
           _this3.key_mensajes++;
+
+          _this3.obtenerSesiones();
+
+          $('#modal-confirmar-borrar-sesion').modal('hide');
         } else if (datos.error) {
           _this3.mensajes = datos.error;
           _this3.tipo_mensaje = 'danger';
           _this3.key_mensajes++;
+
+          _this3.obtenerSesiones();
+
+          $('#modal-confirmar-borrar-sesion').modal('hide');
         }
       });
     },
-    verAgregarSesion: function verAgregarSesion() {
+    mostrarEditar: function mostrarEditar(sesion) {
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
-      $('#modal-agregar-sesion').modal('show');
+      this.sesion = sesion;
+      var file = {
+        size: 5500000,
+        name: this.sesion.archivo,
+        type: "zip"
+      };
+      var url = "";
+      this.$refs.editarGuiaPractica.manuallyAddFile(file, url);
+      $('#modal-editar-sesion').modal('show');
+    },
+    confirmarEdicion: function confirmarEdicion() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.$refs.editarGuiaPractica.processQueue();
+    },
+    enviarDatosExtraEditar: function enviarDatosExtraEditar(file, xhr, formData) {
+      formData.append('sesion_id', this.sesion.id);
+      formData.append('_method', 'PUT');
+    },
+    subidaExitosaEditar: function subidaExitosaEditar(file, response) {
+      this.mensajes = response.exito;
+      this.tipo_mensaje = 'success';
+      this.key_mensajes++;
+      this.$refs.editarGuiaPractica.removeAllFiles();
+      this.obtenerSesiones();
+      $('#modal-editar-sesion').modal('hide');
+    },
+    subidaErrorEditar: function subidaErrorEditar(file, response) {
+      this.mensajes = response.error;
+      this.tipo_mensaje = 'danger';
+      this.key_mensajes++;
+      this.$refs.editarGuiaPractica.removeAllFiles();
     }
   },
   mounted: function mounted() {
@@ -7241,10 +7375,24 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("td", [
-                            _c("i", { staticClass: "fas fa-edit" }),
+                            _c("i", {
+                              staticClass: "fas fa-edit clickleable",
+                              on: {
+                                click: function($event) {
+                                  return _vm.mostrarEditar(sesion)
+                                }
+                              }
+                            }),
                             _vm._v(" "),
                             sesion.borrable
-                              ? _c("i", { staticClass: "fas fa-trash-alt" })
+                              ? _c("i", {
+                                  staticClass: "fas fa-trash-alt clickleable",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.mostrarBorrar(sesion)
+                                    }
+                                  }
+                                })
                               : _vm._e()
                           ])
                         ])
@@ -7278,17 +7426,23 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "Añade una nueva semana con su guía práctica de laboratorio"
+                          )
+                        ]),
+                        _vm._v(" "),
                         _c("vue-dropzone", {
                           ref: "subirGuiaPractica",
                           staticClass: "text-center",
                           attrs: {
                             id: "subirGuiaPractica",
-                            options: _vm.dropzoneOptions
+                            options: _vm.dropzoneOptionsAgregar
                           },
                           on: {
-                            "vdropzone-sending": _vm.enviarDatosExtra,
-                            "vdropzone-success": _vm.subidaExitosa,
-                            "vdropzone-error": _vm.subidaError
+                            "vdropzone-sending": _vm.enviarDatosExtraAgregar,
+                            "vdropzone-success": _vm.subidaExitosaAgregar,
+                            "vdropzone-error": _vm.subidaErrorAgregar
                           }
                         })
                       ],
@@ -7310,6 +7464,150 @@ var render = function() {
                         [
                           _vm._v(
                             "\n                        Guardar\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-editar-sesion" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("h4", { staticClass: "modal-title" }, [
+                        _vm._v("Semana " + _vm._s(_vm.sesion.semana))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2)
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "modal-body" },
+                      [
+                        _c("Alertas", {
+                          key: _vm.key_mensajes,
+                          attrs: {
+                            mensajes: _vm.mensajes,
+                            tipo: _vm.tipo_mensaje
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "Esta acción reemplazará el archivo de la semana " +
+                              _vm._s(_vm.sesion.semana)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("vue-dropzone", {
+                          ref: "editarGuiaPractica",
+                          staticClass: "text-center",
+                          attrs: {
+                            id: "editarGuiaPractica",
+                            options: _vm.dropzoneOptionsEditar
+                          },
+                          on: {
+                            "vdropzone-sending": _vm.enviarDatosExtraEditar,
+                            "vdropzone-success": _vm.subidaExitosaEditar,
+                            "vdropzone-error": _vm.subidaErrorEditar
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.confirmarEdicion()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Editar\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-confirmar-borrar-sesion" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("h4", { staticClass: "modal-title" }, [
+                        _vm._v("Semana " + _vm._s(_vm.sesion.semana))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3)
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm._v(
+                        "\n                    ¿Estás seguro de borrar la semana " +
+                          _vm._s(_vm.sesion.semana) +
+                          "?\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.confirmarBorrar()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Borrar\n                    "
                           )
                         ]
                       ),
@@ -7368,6 +7666,40 @@ var staticRenderFns = [
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

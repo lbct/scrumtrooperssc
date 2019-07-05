@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Clase;
 use App\Models\GrupoADocente;
 use App\Models\GrupoDocente;
+use App\Models\Sesion;
 use Illuminate\Database\Eloquent\Model;
 
 class Docente extends Model
@@ -20,6 +21,16 @@ class Docente extends Model
     public function grupoADocente()
     {
         return $this->hasMany('App\Models\GrupoADocente', 'docente_id', 'id');
+    }
+    
+    public function accesoSesion($sesion_id){
+        $acceso = false;
+        $sesion = Sesion::find($sesion_id);
+        
+        if($sesion)
+            $acceso = $this->accesoGrupoDocente($sesion->clase->grupo_docente_id);
+        
+        return $acceso;
     }
     
     public function accesoGrupoDocente($grupo_docente_id){

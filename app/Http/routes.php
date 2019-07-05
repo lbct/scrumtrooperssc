@@ -54,6 +54,8 @@ Route::get('docente/materias/{gestion_id}', 'Docente\Materia\Control@materiasGes
 
 Route::get('docente/sesiones/{grupo_docente_id}', 'Docente\Sesion\Control@sesiones');
 Route::post('docente/sesion', 'Docente\Sesion\Control@agregar');
+Route::put('docente/sesion', 'Docente\Sesion\Control@editar');
+Route::delete('docente/sesion', 'Docente\Sesion\Control@borrar');
 
 Route::get('docente/clases/{gestion_id}', 'Docente\Clase\Control@clasesGestion');
 
