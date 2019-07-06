@@ -10,6 +10,11 @@ class Gestiones
     {
         $gestion = Gestion::where("activa", true)->first();
         
+        if(!$gestion){
+            $gestion = new Gestion;
+            $gestion->id = 0;
+        }
+            
         return $gestion;
     }
 }
