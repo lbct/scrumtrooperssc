@@ -31,7 +31,7 @@
                         </select> 
                   </div>
                 </center>
-                <p v-else>No tienes materias disponibles</p>
+                <p v-else>No tienes materias disponibles para la gestión activa</p>
                 <button v-if="grupos_docente.length > 0" 
                         v-on:click="auxiliares()" class="btn btn-primary" type="button">
                     Siguiente

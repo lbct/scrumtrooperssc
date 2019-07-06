@@ -27,7 +27,7 @@
         <p v-else>No tienes Materias Inscritas.</p>
         
         <router-link :to="{ name: 'EstudianteInscripcion' }" v-if="inscripcion_activa"
-                class="m-3 btn btn-primary pull-left">
+                class="mb-3 btn btn-primary pull-left">
             Inscribirme
         </router-link>
         

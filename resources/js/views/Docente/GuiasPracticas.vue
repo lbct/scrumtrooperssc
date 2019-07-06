@@ -140,7 +140,7 @@
               </div>
             </div>
         </div>
-        <p v-else>No tienes materias inscritas</p>
+        <p v-else>No tienes materias asignadas para la gestión activa</p>
     </div>
 </template>
 

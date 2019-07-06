@@ -32,6 +32,15 @@ Route::get('usuario', 'Usuario\Control@informacion');
 Route::put('usuario', 'Usuario\Control@editar');
 Route::put('usuario/password', 'Usuario\Control@editarPassword');
 
+//Rutas Administrador
+Route::get('administrador/gestiones', 'Administrador\Gestion\Control@todas');
+Route::post('administrador/gestion', 'Administrador\Gestion\Control@agregar');
+Route::put('administrador/gestion', 'Administrador\Gestion\Control@editar');
+Route::delete('administrador/gestion', 'Administrador\Gestion\Control@borrar');
+Route::put('administrador/gestion/activa', 'Administrador\Gestion\Control@cambiarActiva');
+
+Route::get('administrador/periodos/{anho_gestions}', 'Administrador\Periodo\Control@disponibles');
+
 //Rutas Estudiante
 Route::get('estudiante/materias/inscritas', 'Estudiante\Materia\Control@inscritas');
 Route::delete('estudiante/materias/inscritas', 'Estudiante\Materia\Control@retirar');

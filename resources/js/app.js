@@ -46,6 +46,10 @@ import AuxiliarTerminalListaEstudiantesClase from './views/AuxiliarTerminal/List
 import AuxiliarLaboratorioListaEstudiantes from './views/AuxiliarLaboratorio/ListaEstudiantes'
 import AuxiliarLaboratorioListaEstudiantesClase from './views/AuxiliarLaboratorio/ListaEstudiantesClase'
 
+//Administrador
+import AdministradorInicio from './views/Administrador/Inicio'
+import AdministradorGestiones from './views/Administrador/Gestiones'
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -166,6 +170,17 @@ const router = new VueRouter({
             name: 'AuxiliarLaboratorioListaEstudiantesClase',
             component: AuxiliarLaboratorioListaEstudiantesClase,
             props: true,
+        },
+        //Administrador
+        {
+            path: '/panel/administrador',
+            name: 'AdministradorInicio',
+            component: AdministradorInicio,
+        },
+        {
+            path: '/panel/administrador/Gestiones',
+            name: 'AdministradorGestiones',
+            component: AdministradorGestiones,
         },
     ],
 });

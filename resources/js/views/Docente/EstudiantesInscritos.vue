@@ -96,9 +96,14 @@
                     .get('/docente/gestiones')
                     .then((response)=>{
                         this.gestiones = response.data;
-                        if(this.gestiones.length){
+                        if(this.gestiones.length > 0){
                             const gestion = this.gestiones.find(gestion => gestion.activa == true);
-                            this.gestion = gestion;
+                            
+                            if(gestion)
+                                this.gestion = gestion;
+                            else
+                                this.gestion = this.gestiones[0];
+                                    
                             this.cambiarGestion();
                         }
                     })
