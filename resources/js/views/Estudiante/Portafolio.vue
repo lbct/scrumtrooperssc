@@ -42,7 +42,7 @@
                 <h4 class="text-left">Porcentaje de asistencia: {{pocentaje_asistencia}}% ({{asistido}}/{{total_sesiones}})</h4>
                 <p class="text-left">Arhivos subidos: {{total_arhivos_subidos}} (En laboratorio: {{archivos_laboratorio}})</p>
             </div>
-            <h3 v-else>No se ha avanzado ninguna práctica</h3>
+            <p v-else>No se ha avanzado ninguna práctica</p>
         </div>
         <p v-else>No tienes materias inscritas</p>
     </div>

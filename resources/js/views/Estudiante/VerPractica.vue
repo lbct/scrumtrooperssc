@@ -35,7 +35,7 @@
                     </tbody>
                 </table>
             </div>
-            <h3 v-else>No se ha avanzado ninguna práctica</h3>
+            <p v-else>No se ha avanzado ninguna práctica</p>
         </div>
         <p v-else>No tienes materias inscritas</p>
     </div>

@@ -41,7 +41,7 @@
                     </tbody>
                 </table>
             </div>
-            <h3 v-else>No se tiene ninguna clase disponible</h3>
+            <p v-else>No se tiene ninguna clase disponible</p>
         </div>
         <p v-else>No eres auxiliar en ninguna materia</p>
     </div>

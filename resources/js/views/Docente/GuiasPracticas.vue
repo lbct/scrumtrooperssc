@@ -48,7 +48,7 @@
                     </tbody>
                 </table>
             </div>
-            <h3 v-else>No se ha subido ninguna semana</h3>
+            <p v-else>No se ha subido ninguna semana</p>
             
             <div class="modal fade" id="modal-agregar-sesion">
               <div class="modal-dialog">
@@ -140,7 +140,7 @@
               </div>
             </div>
         </div>
-        <h3 v-else>No tienes materias inscritas</h3>
+        <p v-else>No tienes materias inscritas</p>
     </div>
 </template>
 

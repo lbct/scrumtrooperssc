@@ -81,3 +81,11 @@ Route::get('auxiliarterminal/sesion/estudiantes/{sesion_id}', 'AuxiliarTerminal\
 
 Route::put('auxiliarterminal/sesion/estudiante/asistencia', 'AuxiliarTerminal\SesionEstudiante\Control@cambiarAsistencia');
 Route::put('auxiliarterminal/sesion/estudiante/comentario', 'AuxiliarTerminal\SesionEstudiante\Control@cambiarComentario');
+
+//Rutas Auxiliar Laboratorio
+Route::get('auxiliarlaboratorio/clases', 'AuxiliarLaboratorio\Clase\Control@disponibles');
+Route::get('auxiliarlaboratorio/clase/{sesion_id}', 'AuxiliarLaboratorio\Clase\Control@informacion');
+
+Route::get('auxiliarlaboratorio/sesion/estudiantes/{sesion_id}', 'AuxiliarLaboratorio\Sesion\Control@estudiantes');
+
+Route::put('auxiliarlaboratorio/sesion/estudiante/asistencia', 'AuxiliarLaboratorio\SesionEstudiante\Control@cambiarAsistencia');

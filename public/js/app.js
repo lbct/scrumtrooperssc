@@ -1776,6 +1776,260 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mensajes: [],
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      materias: [],
+      materia: {
+        id: '',
+        nombre_materia: ''
+      },
+      horarios: [],
+      clases: [[[]]],
+      key_clases: 0,
+      horas: ["06:45/08:15", "08:15/09:45", "09:45/11:15", "11:15/12:45", "12:45/14:15", "14:15/15:45", "15:45/17:15", "17:15/18:45", "18:45/20:15", "20:15/21:45"]
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      for (var i = 0; i < 10; i++) {
+        this.clases[i] = [[], [], [], [], [], []];
+      }
+
+      this.axios.get('/auxiliarlaboratorio/clases').then(function (response) {
+        var datos = response.data;
+        _this.horarios = datos;
+        datos.forEach(function (materia) {
+          var horario = materia.horario_id - 1;
+          var dia = materia.dia - 1;
+          if (_this.clases[horario][dia].lenght) _this.clases[horario][dia] = [materia];else _this.clases[horario][dia].push(materia);
+        });
+        _this.key_clases++;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    verSesion: function verSesion(sesion) {
+      this.$router.push({
+        name: 'AuxiliarLaboratorioListaEstudiantesClase',
+        params: {
+          sesion_id: sesion.id
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Lista de Clases';
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['sesion_id'],
+  data: function data() {
+    return {
+      busqueda: '',
+      mensajes: [],
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      clase: {},
+      estudiantes_filtrados: [],
+      estudiantes: [],
+      estudiante: {
+        id: '',
+        comentario_auxiliar: '',
+        index: ''
+      }
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/auxiliarlaboratorio/clase/' + this.sesion_id).then(function (response) {
+        var datos = response.data;
+        _this.clase = datos;
+
+        _this.obtenerEstudiantes();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    numeroDia: function numeroDia(dia) {
+      var dia_literal = '';
+
+      if (dia == 1) {
+        dia_literal = 'Lunes';
+      } else if (dia == 2) {
+        dia_literal = 'Martes';
+      } else if (dia == 3) {
+        dia_literal = 'Miercoles';
+      } else if (dia == 4) {
+        dia_literal = 'Jueves';
+      } else if (dia == 5) {
+        dia_literal = 'Viernes';
+      } else if (dia == 6) {
+        dia_literal = 'Sabado';
+      } else if (dia == 7) {
+        dia_literal = 'Domingo';
+      }
+
+      return dia_literal;
+    },
+    obtenerEstudiantes: function obtenerEstudiantes() {
+      var _this2 = this;
+
+      this.axios.get('/auxiliarlaboratorio/sesion/estudiantes/' + this.sesion_id).then(function (response) {
+        var datos = response.data;
+        _this2.estudiantes = datos;
+        _this2.estudiantes_filtrados = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    filtrar: function filtrar() {
+      var _this3 = this;
+
+      this.estudiantes_filtrados = this.estudiantes.filter(function (estudiante) {
+        var nombre = estudiante.nombre + ' ' + estudiante.apellido;
+        return nombre.toLowerCase().includes(_this3.busqueda.toLowerCase());
+      });
+    },
+    asistencia: function asistencia(estudiante) {
+      var asistencia_sesion = true;
+      if (estudiante.asistencia_sesion) asistencia_sesion = false;
+      var params = {
+        'sesion_estudiante_id': estudiante.id,
+        'asistencia_sesion': asistencia_sesion
+      };
+      this.axios.put('/auxiliarlaboratorio/sesion/estudiante/asistencia', params).then(function (response) {
+        var datos = response.data;
+        estudiante.asistencia_sesion = asistencia_sesion;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Lista de Estudiantes';
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarTerminal/Inicio.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarTerminal/Inicio.vue?vue&type=script&lang=js& ***!
@@ -2311,6 +2565,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['clase_id'],
   data: function data() {
@@ -2730,6 +2986,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3383,6 +3643,17 @@ __webpack_require__.r(__webpack_exports__);
         _this.sesiones = datos.sesiones;
         _this.clase = datos.clase;
         _this.estudiante = datos.estudiante;
+        _this.total_sesiones = _this.sesiones.length;
+
+        _this.sesiones.forEach(function (sesion) {
+          if (sesion.asistencia_sesion) _this.asistido++;
+          _this.total_arhivos_subidos += sesion.archivos.length;
+          sesion.archivos.forEach(function (archivo) {
+            if (archivo.en_laboratorio) _this.archivos_laboratorio++;
+          });
+        });
+
+        _this.pocentaje_asistencia = Math.round(_this.asistido * 100 / _this.total_sesiones);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3429,6 +3700,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -6116,6 +6389,271 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.horarios.length > 0
+      ? _c("div", { staticClass: "table-responsive" }, [
+          _c("table", { key: _vm.key_clases, staticClass: "table" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.clases, function(clase, index) {
+                return _c(
+                  "tr",
+                  [
+                    _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
+                    _vm._v(" "),
+                    _vm._l(clase, function(horario) {
+                      return _c(
+                        "td",
+                        _vm._l(horario, function(materia) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass: "clickleable table-info custom-td",
+                              on: {
+                                click: function($event) {
+                                  return _vm.verSesion(materia)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(materia.nombre_materia)
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                            (" +
+                                  _vm._s(materia.detalle_grupo_docente) +
+                                  ")"
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(materia.nombre_aula)
+                              ),
+                              _c("br")
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    })
+                  ],
+                  2
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      : _c("p", [_vm._v("No se tiene ninguna clase disponible")])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Lunes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Martes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miercoles")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jueves")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Viernes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sabado")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
+      _vm._v(" "),
+      _vm.clase
+        ? _c("div", [
+            _c("h4", [_vm._v(_vm._s(_vm.clase.nombre_materia))]),
+            _vm._v(" "),
+            _c("h5", [
+              _vm._v("(" + _vm._s(_vm.clase.detalle_grupo_docente) + ")")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Aula: " +
+                  _vm._s(_vm.clase.nombre_aula) +
+                  " - Horario: " +
+                  _vm._s(_vm.numeroDia(_vm.clase.dia)) +
+                  " (" +
+                  _vm._s(_vm.clase.hora_inicio) +
+                  " - " +
+                  _vm._s(_vm.clase.hora_fin) +
+                  ")"
+              )
+            ]),
+            _vm._v(" "),
+            _vm.estudiantes.length > 0
+              ? _c("div", [
+                  _c("div", { staticClass: "text-left" }, [
+                    _c("div", { staticClass: "col-xs-12 col-lg-4" }, [
+                      _c("label", [_vm._v("Nombre del estudiante")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.busqueda,
+                            expression: "busqueda"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.busqueda },
+                        on: {
+                          keyup: function($event) {
+                            return _vm.filtrar()
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.busqueda = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("br")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table table-hover" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.estudiantes_filtrados, function(
+                          estudiante,
+                          index
+                        ) {
+                          return _c("tr", [
+                            _c("td", [_vm._v(_vm._s(index + 1))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(estudiante.nombre))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(estudiante.apellido))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.asistencia(estudiante)
+                                    }
+                                  }
+                                },
+                                [
+                                  estudiante.asistencia_sesion
+                                    ? _c("i", {
+                                        staticClass: "fas fa-toggle-on fa-2x"
+                                      })
+                                    : _c("i", {
+                                        staticClass: "fas fa-toggle-off fa-2x"
+                                      })
+                                ]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ])
+                ])
+              : _c("p", [_vm._v("No se tiene estudiantes en esta clase")])
+          ])
+        : _c("p", [_vm._v("No tienes acceso a esta clase")])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nº")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Asistencia")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarTerminal/Inicio.vue?vue&type=template&id=47282a96&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/AuxiliarTerminal/Inicio.vue?vue&type=template&id=47282a96& ***!
@@ -6275,7 +6813,7 @@ var render = function() {
                     )
                   ])
                 ])
-              : _c("h3", [_vm._v("No se tiene ninguna clase disponible")]),
+              : _c("p", [_vm._v("No se tiene ninguna clase disponible")]),
             _vm._v(" "),
             _c(
               "div",
@@ -6612,7 +7150,7 @@ var render = function() {
                     )
                   ])
                 ])
-              : _c("h3", [_vm._v("No se tiene ninguna clase disponible")])
+              : _c("p", [_vm._v("No se tiene ninguna clase disponible")])
           ],
           1
         )
@@ -6827,11 +7365,11 @@ var render = function() {
                                     _c("td", [_vm._v(_vm._s(index + 1))]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _vm._v(
-                                        _vm._s(estudiante.apellido) +
-                                          " " +
-                                          _vm._s(estudiante.nombre)
-                                      )
+                                      _vm._v(_vm._s(estudiante.nombre))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(estudiante.apellido))
                                     ]),
                                     _vm._v(" "),
                                     estudiante.comentario_auxiliar
@@ -7018,11 +7556,11 @@ var render = function() {
                   ],
                   1
                 )
-              : _c("h3", [
+              : _c("p", [
                   _vm._v("No se tiene sesiones de laboratorio para esta clase")
                 ])
           ])
-        : _c("h3", [_vm._v("No tienes acceso a esta clase")])
+        : _c("p", [_vm._v("No tienes acceso a esta clase")])
     ],
     1
   )
@@ -7036,7 +7574,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nº")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre de Estudiante")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [
           _vm._v("Comentario del Auxiliar")
@@ -7188,7 +7728,7 @@ var render = function() {
                       )
                     ])
                   ])
-                : _c("h3", [_vm._v("No se tiene ninguna práctica")])
+                : _c("p", [_vm._v("No se tiene ninguna práctica")])
             ],
             1
           )
@@ -7693,6 +8233,15 @@ var render = function() {
                     _vm._v(" "),
                     _vm.estudiantes.length > 0
                       ? _c("div", { staticClass: "table-responsive" }, [
+                          _c("div", { staticClass: "text-right" }, [
+                            _c("h4", [
+                              _vm._v(
+                                "Total de estudiantes: " +
+                                  _vm._s(_vm.estudiantes.length)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
                           _c("div", { staticClass: "text-left" }, [
                             _c("div", { staticClass: "col-xs-12 col-lg-4" }, [
                               _c("label", [_vm._v("Nombre del estudiante")]),
@@ -7751,11 +8300,11 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _vm._v(
-                                        _vm._s(estudiante.apellido) +
-                                          " " +
-                                          _vm._s(estudiante.nombre)
-                                      )
+                                      _vm._v(_vm._s(estudiante.nombre))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(_vm._s(estudiante.apellido))
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
@@ -7773,13 +8322,6 @@ var render = function() {
                                 )
                               }),
                               0
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("h4", { staticClass: "text-left" }, [
-                            _vm._v(
-                              "Total de estudiantes: " +
-                                _vm._s(_vm.estudiantes.length)
                             )
                           ])
                         ])
@@ -7808,6 +8350,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Código SIS")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Correo")]),
         _vm._v(" "),
@@ -7973,7 +8517,7 @@ var render = function() {
                     )
                   ])
                 ])
-              : _c("h3", [_vm._v("No se ha subido ninguna semana")]),
+              : _c("p", [_vm._v("No se ha subido ninguna semana")]),
             _vm._v(" "),
             _c(
               "div",
@@ -8200,7 +8744,7 @@ var render = function() {
           ],
           1
         )
-      : _c("h3", [_vm._v("No tienes materias inscritas")])
+      : _c("p", [_vm._v("No tienes materias inscritas")])
   ])
 }
 var staticRenderFns = [
@@ -8439,9 +8983,9 @@ var render = function() {
                   )
                 ])
               ])
-            : _c("h3", [_vm._v("No se ha avanzado ninguna práctica")])
+            : _c("p", [_vm._v("No se ha avanzado ninguna práctica")])
         ])
-      : _c("h3", [_vm._v("No tienes acceso a este estudiante")])
+      : _c("p", [_vm._v("No tienes acceso a este estudiante")])
   ])
 }
 var staticRenderFns = [
@@ -8558,7 +9102,11 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Nombre del auxiliar")
+                          _vm._v("Nombre")
+                        ]),
+                        _vm._v(" "),
+                        _c("th", { attrs: { scope: "col" } }, [
+                          _vm._v("Apellido")
                         ]),
                         _vm._v(" "),
                         _c("th", { attrs: { scope: "col" } }, [
@@ -8583,13 +9131,9 @@ var render = function() {
                         return _c("tr", [
                           _c("td", [_vm._v(_vm._s(auxiliar.nombre_materia))]),
                           _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(auxiliar.nombre) +
-                                " " +
-                                _vm._s(auxiliar.apellido)
-                            )
-                          ]),
+                          _c("td", [_vm._v(_vm._s(auxiliar.nombre))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(auxiliar.apellido))]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(auxiliar.correo))]),
                           _vm._v(" "),
@@ -10047,7 +10591,7 @@ var render = function() {
                       )
                     ])
                   ])
-                : _c("h3", [_vm._v("No se ha avanzado ninguna práctica")])
+                : _c("p", [_vm._v("No se ha avanzado ninguna práctica")])
             ],
             1
           )
@@ -10341,11 +10885,11 @@ var render = function() {
                   ],
                   1
                 )
-              : _c("h3", [_vm._v("No se ha avanzado ninguna clase")])
+              : _c("p", [_vm._v("No se ha avanzado ninguna clase")])
           ],
           1
         )
-      : _c("h3", [_vm._v("No tienes materias inscritas")])
+      : _c("p", [_vm._v("No tienes materias inscritas")])
   ])
 }
 var staticRenderFns = []
@@ -10473,7 +11017,7 @@ var render = function() {
                       )
                     ])
                   ])
-                : _c("h3", [_vm._v("No se ha avanzado ninguna práctica")])
+                : _c("p", [_vm._v("No se ha avanzado ninguna práctica")])
             ],
             1
           )
@@ -25722,6 +26266,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaPracticas */ "./resources/js/views/AuxiliarTerminal/ListaPracticas.vue");
 /* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantes */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantes.vue");
 /* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantesClase */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantesClase.vue");
+/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantes */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue");
+/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantesClase */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue");
 
 
 
@@ -25755,6 +26301,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vueDropzone', vue2_dropzon
 
 
 
+
+
+ //Auxiliar Laboratorio
 
 
 
@@ -25845,6 +26394,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
     name: 'AuxiliarTerminalListaEstudiantesClase',
     component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_27__["default"],
+    props: true
+  }, //Auxiliar Laboratorio
+  {
+    path: '/panel/auxiliarlaboratorio',
+    name: 'AuxiliarLaboratorioListaEstudiantes',
+    component: _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_28__["default"]
+  }, {
+    path: '/panel/auxiliarlaboratorio/Estudiantes/:sesion_id',
+    name: 'AuxiliarLaboratorioListaEstudiantesClase',
+    component: _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_29__["default"],
     props: true
   }]
 });
@@ -26006,6 +26565,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_91ac6b5c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListaEstudiantes.vue?vue&type=template&id=280e555a& */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a&");
+/* harmony import */ var _ListaEstudiantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListaEstudiantes.vue?vue&type=script&lang=js& */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListaEstudiantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListaEstudiantes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListaEstudiantes.vue?vue&type=template&id=280e555a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue?vue&type=template&id=280e555a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantes_vue_vue_type_template_id_280e555a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2& */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2&");
+/* harmony import */ var _ListaEstudiantesClase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListaEstudiantesClase.vue?vue&type=script&lang=js& */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListaEstudiantesClase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantesClase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListaEstudiantesClase.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantesClase_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue?vue&type=template&id=2975ddf2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListaEstudiantesClase_vue_vue_type_template_id_2975ddf2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

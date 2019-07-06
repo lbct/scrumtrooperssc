@@ -24,6 +24,7 @@ class Control extends Base
         
         if($auxiliar->accesoSesionEstudiante($sesion_estudiante_id)){
             $sesion_estudiante = SesionEstudiante::find($sesion_estudiante_id);
+            $sesion_estudiante->auxiliar_lista_id = $auxiliar->id;
             $sesion_estudiante->asistencia_sesion = $asistencia_sesion;
             $sesion_estudiante->save();
         }

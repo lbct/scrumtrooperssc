@@ -44,6 +44,7 @@ class GrupoADocente extends Model
                        ->join('estudiante', 'estudiante.id', '=', 'estudiante_clase.estudiante_id')
                        ->join('usuario', 'usuario.id', '=', 'estudiante.usuario_id')
                        ->select('estudiante_clase.id as id','codigo_sis', 'nombre', 'apellido', 'correo')
+                       ->orderBy('apellido')
                        ->get();
         
         $estudiantes = $estudiantes->map(function ($estudiante) {

@@ -5,9 +5,9 @@
     <div class="sidebar-heading">Auxiliar de Laboratorio</div>
 
     <li class="nav-item">
-        <a class="nav-link" href="/auxiliar/clases">
+        <router-link :to="{ name: 'AuxiliarLaboratorioListaEstudiantes' }" class="nav-link">
             <i class="fas fa-fw fa-list"></i>
             <span>Lista de clases</span>
-        </a>
+        </router-link>
     </li>
 @endif

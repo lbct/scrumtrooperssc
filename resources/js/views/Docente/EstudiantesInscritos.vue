@@ -27,6 +27,9 @@
                   </div>
                 </center>
                 <div v-if="estudiantes.length > 0" class="table-responsive">
+                    <div class="text-right">
+                        <h4>Total de estudiantes: {{estudiantes.length}}</h4>
+                    </div>
                     <div class="text-left">
                         <div class="col-xs-12 col-lg-4">
                             <label>Nombre del estudiante</label>
@@ -39,6 +42,7 @@
                             <tr>
                                 <th scope="col">Código SIS</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Semanas Asistidas</th>
                             </tr>
@@ -48,13 +52,13 @@
                                 v-on:click="irAPortafolio(estudiante)"
                                 class = "clickleable">
                                 <td>{{estudiante.codigo_sis}}</td>
-                                <td>{{estudiante.apellido}} {{estudiante.nombre}}</td>
+                                <td>{{estudiante.nombre}}</td>
+                                <td>{{estudiante.apellido}}</td> 
                                 <td>{{estudiante.correo}}</td>
                                 <td>{{estudiante.semanas_asistidas}}/{{estudiante.semanas_totales}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <h4 class="text-left">Total de estudiantes: {{estudiantes.length}}</h4>
                 </div>
                 <p v-else>No tienes estudiantes inscritos a esta materia</p>
             </div>

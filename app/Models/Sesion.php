@@ -120,6 +120,7 @@ class Sesion extends Model
                               ->join('estudiante', 'estudiante.id', '=', 'estudiante_clase.estudiante_id')
                               ->join('usuario', 'usuario.id', '=', 'estudiante.usuario_id')
                               ->select('sesion_estudiante.id', 'comentario_auxiliar', 'asistencia_sesion', 'nombre', 'apellido', 'codigo_sis')
+                              ->orderBy('apellido')
                               ->get();
         
         return $estudiantes_sesion;

@@ -37,7 +37,8 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Nº</th>
-                                <th scope="col">Nombre de Estudiante</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
                                 <th scope="col">Comentario del Auxiliar</th>
                                 <th scope="col">Asistencia</th>
                             </tr>
@@ -45,7 +46,8 @@
                         <tbody>
                             <tr v-for="(estudiante, index) in estudiantes_filtrados">
                                 <td>{{index+1}}</td>
-                                <td>{{estudiante.apellido}} {{estudiante.nombre}}</td>
+                                <td>{{estudiante.nombre}}</td>
+                                <td>{{estudiante.apellido}}</td>
                                 <td v-if="estudiante.comentario_auxiliar">
                                     {{estudiante.comentario_auxiliar}}&nbsp;&nbsp;&nbsp;
                                     <i v-on:click="comentar(estudiante, index)" 
@@ -102,9 +104,9 @@
                 </div>
                 </div>
             </div>
-            <h3 v-else>No se tiene sesiones de laboratorio para esta clase</h3>
+            <p v-else>No se tiene sesiones de laboratorio para esta clase</p>
         </div>
-        <h3 v-else>No tienes acceso a esta clase</h3>
+        <p v-else>No tienes acceso a esta clase</p>
     </div>
 </template>
 

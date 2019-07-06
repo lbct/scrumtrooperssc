@@ -62,9 +62,9 @@
                     </button>
                 </div>
             </div>
-            <h3 v-else>No se ha avanzado ninguna clase</h3>
+            <p v-else>No se ha avanzado ninguna clase</p>
         </div>
-        <h3 v-else>No tienes materias inscritas</h3>
+        <p v-else>No tienes materias inscritas</p>
     </div>
 </template>
 

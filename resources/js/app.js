@@ -42,6 +42,10 @@ import AuxiliarTerminalListaPracticas from './views/AuxiliarTerminal/ListaPracti
 import AuxiliarTerminalListaEstudiantes from './views/AuxiliarTerminal/ListaEstudiantes'
 import AuxiliarTerminalListaEstudiantesClase from './views/AuxiliarTerminal/ListaEstudiantesClase'
 
+//Auxiliar Laboratorio
+import AuxiliarLaboratorioListaEstudiantes from './views/AuxiliarLaboratorio/ListaEstudiantes'
+import AuxiliarLaboratorioListaEstudiantesClase from './views/AuxiliarLaboratorio/ListaEstudiantesClase'
+
 const router = new VueRouter({
     mode: 'history',
     routes: [
@@ -149,6 +153,18 @@ const router = new VueRouter({
             path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
             name: 'AuxiliarTerminalListaEstudiantesClase',
             component: AuxiliarTerminalListaEstudiantesClase,
+            props: true,
+        },
+        //Auxiliar Laboratorio
+        {
+            path: '/panel/auxiliarlaboratorio',
+            name: 'AuxiliarLaboratorioListaEstudiantes',
+            component: AuxiliarLaboratorioListaEstudiantes,
+        },
+        {
+            path: '/panel/auxiliarlaboratorio/Estudiantes/:sesion_id',
+            name: 'AuxiliarLaboratorioListaEstudiantesClase',
+            component: AuxiliarLaboratorioListaEstudiantesClase,
             props: true,
         },
     ],

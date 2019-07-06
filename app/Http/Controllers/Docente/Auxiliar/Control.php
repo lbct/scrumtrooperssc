@@ -17,6 +17,7 @@ class Control extends Base
                                ->join('usuario', 'usuario.id', '=', 'asigna_rol.usuario_id')
                                ->join('auxiliar', 'auxiliar.usuario_id', '=', 'usuario.id')
                                ->select("auxiliar.id as id", "nombre", "apellido", "username")
+                               ->orderBy('apellido')
                                ->get();
         
         $auxiliares_registrados = GrupoDocenteAuxiliar::where('grupo_docente_id', $grupo_docente_id)

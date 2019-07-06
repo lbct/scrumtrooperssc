@@ -20,7 +20,8 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Materia</th>
-                            <th scope="col">Nombre del auxiliar</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
                             <th scope="col">Correo</th>
                             <th scope="col">Clases cursadas</th>
                             <th scope="col" v-if="gestion.activa">Acciones</th>
@@ -29,7 +30,8 @@
                     <tbody>
                         <tr v-for="(auxiliar, index) in auxiliares">
                             <td>{{auxiliar.nombre_materia}}</td>
-                            <td>{{auxiliar.nombre}} {{auxiliar.apellido}}</td>
+                            <td>{{auxiliar.nombre}}</td>
+                            <td>{{auxiliar.apellido}}</td>
                             <td>{{auxiliar.correo}}</td>
                             <td>{{auxiliar.clases_cursadas}}</td>
                             <td v-if="gestion.activa">

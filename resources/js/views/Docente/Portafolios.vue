@@ -34,9 +34,9 @@
                 <h4 class="text-left">Porcentaje de asistencia: {{pocentaje_asistencia}}% ({{asistido}}/{{total_sesiones}})</h4>
                 <p class="text-left">Arhivos subidos: {{total_arhivos_subidos}} (En laboratorio: {{archivos_laboratorio}})</p>
             </div>
-            <h3 v-else>No se ha avanzado ninguna práctica</h3>
+            <p v-else>No se ha avanzado ninguna práctica</p>
         </div>
-        <h3 v-else>No tienes acceso a este estudiante</h3>
+        <p v-else>No tienes acceso a este estudiante</p>
     </div>
 </template>
 
@@ -68,7 +68,23 @@
                         var datos = response.data;
                         this.sesiones   = datos.sesiones;
                         this.clase      = datos.clase;
-                        this.estudiante = datos.estudiante; 
+                        this.estudiante = datos.estudiante;
+                    
+                        this.total_sesiones = this.sesiones.length;
+                    
+                        this.sesiones.forEach((sesion)=>{
+                            if(sesion.asistencia_sesion)
+                                this.asistido++;
+
+                            this.total_arhivos_subidos += sesion.archivos.length;
+
+                            sesion.archivos.forEach((archivo)=>{
+                                if(archivo.en_laboratorio)
+                                    this.archivos_laboratorio++;
+                            });
+                        });
+
+                        this.pocentaje_asistencia = Math.round(this.asistido*100/this.total_sesiones);
                     })
                     .catch(function (error) {
                         console.log(error);
