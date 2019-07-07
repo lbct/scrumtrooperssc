@@ -12,14 +12,12 @@ use Illuminate\Support\Facades\Validator;
 class Control extends Controller
 {
     //Obtiene la vista de Inicio de sesión
-    public function getLogin(Request $request)
-    {
+    public function getLogin(Request $request){
         return view('login');
     }
     
     //Inicia sesión
-    public function postLogin(Request $request)
-    {
+    public function postLogin(Request $request){
         $validator = Validator::make($request->all(), [
             'username'                => 'required|min:2',
             'password'                => 'required|min:2',

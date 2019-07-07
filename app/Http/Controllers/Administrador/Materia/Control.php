@@ -1,28 +1,61 @@
 <?php
-namespace App\Http\Controllers\Docente\Materia;
+namespace App\Http\Controllers\Administrador\Materia;
 
 use App\Models\Usuario;
-use App\Models\Docente;
-use App\Classes\Gestiones;
+use App\Models\Materia;
+use App\Models\FechaInscripcion;
+use App\Models\Gestion;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Docente\Base;
+use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Collection;
 
 class Control extends Base
 {
-    public function materias(Request $request){
-        $usuario_id = session('usuario_id'); 
-        $docente    = Docente::where("usuario_id", $usuario_id)->first();
-        $gestion_actual = Gestiones::gestionActiva();
+    public function todas(Request $request, $gestion_id){
+        $materias = Materia::where('gestion_id', $gestion_id)
+                    ->select('id', 'codigo_materia', 'nombre_materia', 'detalle_materia')
+                    ->get();
         
-        return $docente->materias($gestion_actual->id);
+        return $materias;
     }
     
-    public function materiasGestion(Request $request, $gestion_id){
-        $usuario_id = session('usuario_id'); 
-        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+    public function agregar(Request $request){
+        $codigo_materia    = $request->codigo_materia;
+        $nombre_materia    = $request->nombre_materia;
+        $detalle_materia   = $request->detalle_materia;
         
-        return $docente->materias($gestion_id);
+        $materia = new Materia;
+        $materia->codigo_materia   = $codigo_materia;
+        $materia->nombre_materia   = $nombre_materia;
+        $materia->detalle_materia  = $detalle_materia;
+        $materia->save();        
+        
+        return $materia;
+    }
+    
+    public function editar(Request $request){
+        $materia_id        = $request->materia_id;
+        $codigo_materia    = $request->codigo_materia;
+        $nombre_materia    = $request->nombre_materia;
+        $detalle_materia   = $request->detalle_materia;
+        
+        $materia = Aula::Materia($materia_id);
+        $materia->codigo_materia   = $codigo_materia;
+        $materia->nombre_materia   = $nombre_materia;
+        $materia->detalle_materia  = $detalle_materia;
+        $materia->save();    
+        
+        return $aula;
+    }
+    
+    public function borrar(Request $request){
+        $materia_id        = $request->materia_id;
+        
+        $materia = Materia::find($materia_id);
+        $materia->delete();        
+        
+        return $aula;
     }
 }

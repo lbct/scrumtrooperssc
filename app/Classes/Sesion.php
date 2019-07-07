@@ -12,17 +12,17 @@ class Sesion
         $iniciado = false;
         $usuario_id = session('usuario_id');
         
-        if( $usuario_id !==null )
+        if( $usuario_id )
             $iniciado = true;
         
-        return $usuario_id;
+        return $iniciado;
     }
     
-    public static function autorizado($rol_id)
+    public static function autorizado(Request $request, $rol_id)
     {
         $autorizado = false;
         
-        if( Sesion::logged($request) )
+        if( Sesion::iniciado($request) )
         {
             $usuario_id = session('usuario_id');
             $usuario    = Usuario::find($usuario_id);

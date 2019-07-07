@@ -60,7 +60,7 @@ class Usuario extends Model
                ->where("usuario_id", $this->id)
                ->first();
         
-        if($rol!=null)
+        if($rol)
             $tiene_rol = true;
         
         return $tiene_rol;

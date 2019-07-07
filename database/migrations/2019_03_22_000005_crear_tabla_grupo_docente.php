@@ -13,7 +13,7 @@ class CrearTablaGrupoDocente extends Migration
             $table->increments('id');
             $table->integer('materia_id')->unsigned();
             
-            $table->string('detalle_grupo_docente',255);
+            $table->string('detalle_grupo_docente',255)->nullable();
             $table->timestamps();
             
             $table->foreign('materia_id')->references('id')->on('materia')->onDelete('cascade');
