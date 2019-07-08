@@ -1,8 +1,8 @@
 <!-- Navegación superior -->
 <nav class="navbar navbar-expand bg-primary topbar mb-4 static-top">
-  <a id="toggler" type="button" class="boton_menu">
+  <button id="toggler" type="button" class="btn">
     <i class="fas fa-bars text-white"></i>
-  </a>
+  </button>
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
     <!-- Nav Item - Información de Usuario -->

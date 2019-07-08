@@ -91,19 +91,6 @@
             $('#accordionSidebar').toggle();
         });
     </script>
-    <script>
-        window.onload = function() {
-            if($(window).width() <= 768){
-                $(".accordionSidebar").toggle();
-            }
-
-            $(window).resize(function() {
-                if($(window).width() <= 768){
-                    $(".accordionSidebar").toggle();
-                }
-            });
-        };
-    </script>
 </body>
 </html>
 @else
