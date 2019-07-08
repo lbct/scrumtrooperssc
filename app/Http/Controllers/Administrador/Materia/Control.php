@@ -22,11 +22,13 @@ class Control extends Base
     }
     
     public function agregar(Request $request){
+        $gestion_id        = $request->gestion_id;
         $codigo_materia    = $request->codigo_materia;
         $nombre_materia    = $request->nombre_materia;
         $detalle_materia   = $request->detalle_materia;
         
         $materia = new Materia;
+        $materia->gestion_id       = $gestion_id;
         $materia->codigo_materia   = $codigo_materia;
         $materia->nombre_materia   = $nombre_materia;
         $materia->detalle_materia  = $detalle_materia;
@@ -41,21 +43,21 @@ class Control extends Base
         $nombre_materia    = $request->nombre_materia;
         $detalle_materia   = $request->detalle_materia;
         
-        $materia = Aula::Materia($materia_id);
+        $materia = Materia::find($materia_id);
         $materia->codigo_materia   = $codigo_materia;
         $materia->nombre_materia   = $nombre_materia;
         $materia->detalle_materia  = $detalle_materia;
         $materia->save();    
         
-        return $aula;
+        return $materia;
     }
     
     public function borrar(Request $request){
-        $materia_id        = $request->materia_id;
+        $materia_id = $request->materia_id;
         
         $materia = Materia::find($materia_id);
         $materia->delete();        
         
-        return $aula;
+        return $materia;
     }
 }

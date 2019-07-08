@@ -49,6 +49,9 @@ import AuxiliarLaboratorioListaEstudiantesClase from './views/AuxiliarLaboratori
 //Administrador
 import AdministradorInicio from './views/Administrador/Inicio'
 import AdministradorGestiones from './views/Administrador/Gestiones'
+import AdministradorFechasInscripcion from './views/Administrador/FechasInscripcion'
+import AdministradorAulas from './views/Administrador/Aulas'
+import AdministradorMaterias from './views/Administrador/Materias'
 
 const router = new VueRouter({
     mode: 'history',
@@ -181,6 +184,21 @@ const router = new VueRouter({
             path: '/panel/administrador/Gestiones',
             name: 'AdministradorGestiones',
             component: AdministradorGestiones,
+        },
+        {
+            path: '/panel/administrador/FechasInscripcion',
+            name: 'AdministradorFechasInscripcion',
+            component: AdministradorFechasInscripcion,
+        },
+        {
+            path: '/panel/administrador/Aulas',
+            name: 'AdministradorAulas',
+            component: AdministradorAulas,
+        },
+        {
+            path: '/panel/administrador/Materias',
+            name: 'AdministradorMaterias',
+            component: AdministradorMaterias,
         },
     ],
 });

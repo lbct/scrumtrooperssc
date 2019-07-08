@@ -8,16 +8,16 @@ Route::put('administrador/gestion/activa', 'Administrador\Gestion\Control@cambia
 
 Route::get('administrador/periodos/{anho_gestions}', 'Administrador\Periodo\Control@disponibles');
 
-Route::get('administrador/fechas/inscripcion', 'Administrador\FechasInscripcion\Control@todas');
-Route::post('administrador/fechas/inscripcion', 'Administrador\FechasInscripcion\Control@agregar');
-Route::delete('administrador/fechas/inscripcion', 'Administrador\FechasInscripcion\Control@borrar');
+Route::get('administrador/fechasinscripcion', 'Administrador\FechasInscripcion\Control@todas');
+Route::post('administrador/fechasinscripcion', 'Administrador\FechasInscripcion\Control@agregar');
+Route::delete('administrador/fechasinscripcion', 'Administrador\FechasInscripcion\Control@borrar');
 
 Route::get('administrador/aulas', 'Administrador\Aula\Control@todas');
 Route::post('administrador/aula', 'Administrador\Aula\Control@agregar');
 Route::put('administrador/aula', 'Administrador\Aula\Control@editar');
 Route::delete('administrador/aula', 'Administrador\Aula\Control@borrar');
 
-Route::get('administrador/materia/{gestion_id}', 'Administrador\Materia\Control@todas');
+Route::get('administrador/materias/{gestion_id}', 'Administrador\Materia\Control@todas');
 Route::post('administrador/materia', 'Administrador\Materia\Control@agregar');
 Route::put('administrador/materia', 'Administrador\Materia\Control@editar');
 Route::delete('administrador/materia', 'Administrador\Materia\Control@borrar');

@@ -47,22 +47,9 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usuarios" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-users"></i>
             <span>Usuarios</span>
-        </a>
-        <div id="usuarios" class="collapse" aria-labelledby="usuarios" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/administrador/crearAdmin">Crear Usuario</a>
-                <a class="collapse-item" href="/administrador">Todos los Usuarios</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Listas</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -70,6 +57,7 @@
                 <a class="collapse-item" href="/administrador/listaDocente">Docentes</a>
                 <a class="collapse-item" href="/administrador/listaDocente">Auxiliares de Terminal</a>
                 <a class="collapse-item" href="/administrador/listaDocente">Auxiliares de Laboratorio</a>
+                <a class="collapse-item" href="/administrador/listaDocente">Estudiantes</a>
             </div>
         </div>
     </li>

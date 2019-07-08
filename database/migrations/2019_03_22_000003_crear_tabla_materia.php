@@ -19,8 +19,6 @@ class CrearTablaMateria extends Migration
             $table->timestamps();
             
             $table->foreign('gestion_id')->references('id')->on('gestion')->onDelete('cascade');
-            
-            $table->unique(['codigo_materia', 'gestion_id']);
         });
     }
 

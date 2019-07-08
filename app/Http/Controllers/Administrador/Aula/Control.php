@@ -26,9 +26,9 @@ class Control extends Base
         $detalle_aula   = $request->detalle_aula;
         
         $aula = new Aula;
-        $aula->inicio_inscripcion = $codigo_aula;
-        $aula->nombre_aula        = $nombre_aula;
-        $aula->detalle_aula       = $detalle_aula;
+        $aula->codigo_aula   = $codigo_aula;
+        $aula->nombre_aula   = $nombre_aula;
+        $aula->detalle_aula  = $detalle_aula;
         $aula->save();        
         
         return $aula;
@@ -41,9 +41,9 @@ class Control extends Base
         $detalle_aula   = $request->detalle_aula;
         
         $aula = Aula::find($aula_id);
-        $aula->inicio_inscripcion = $codigo_aula;
-        $aula->nombre_aula        = $nombre_aula;
-        $aula->detalle_aula       = $detalle_aula;
+        $aula->codigo_aula   = $codigo_aula;
+        $aula->nombre_aula   = $nombre_aula;
+        $aula->detalle_aula  = $detalle_aula;
         $aula->save();        
         
         return $aula;

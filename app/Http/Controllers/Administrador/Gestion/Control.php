@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrador\Gestion;
 use App\Models\Usuario;
 use App\Models\Administrador;
 use App\Models\Gestion;
+use App\Models\Materia;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
@@ -28,10 +29,27 @@ class Control extends Base
         $anho_gestion  = $request->anho_gestion;
         $periodo_id    = $request->periodo_id;
         
+        $ultima_gestion = Gestion::orderBy('id', 'desc')
+                          ->first();         
+        
         $gestion = new Gestion;
         $gestion->anho_gestion = $anho_gestion;
         $gestion->periodo_id   = $periodo_id;
         $gestion->save();
+        
+        if($ultima_gestion){
+            $materias = Materia::where('gestion_id', $ultima_gestion->id)
+                        ->get();
+            
+            foreach($materias as $materia){
+                $nueva_materia = new Materia;
+                $nueva_materia->gestion_id = $gestion->id;
+                $nueva_materia->codigo_materia = $materia->codigo_materia;
+                $nueva_materia->nombre_materia = $materia->nombre_materia;
+                $nueva_materia->detalle_materia = $materia->detalle_materia;
+                $nueva_materia->save();
+            }
+        }
     }
     
     public function editar(Request $request){
