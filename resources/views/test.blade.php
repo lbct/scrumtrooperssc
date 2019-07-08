@@ -51,6 +51,8 @@
 
             <!-- Contenedor -->
             <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                
                 @include('navbar')
                 
                 <!-- Contenido Variable -->
@@ -62,6 +64,7 @@
                     </div>
                 </div>
                 <!-- Fin del Contenido Variable -->
+                </div>
             </div>
             <!-- Fin del Contenedor -->
 
