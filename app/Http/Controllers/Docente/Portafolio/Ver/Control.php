@@ -87,6 +87,7 @@ class Control extends Base
             $grupo_docente_id = $request->grupo_docente_id;
 
             $estudiantes = GrupoADocente::where("GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID",$grupo_docente_id)
+                           ->where("GRUPO_A_DOCENTE.DOCENTE_ID", $docente->ID)
                            ->join("CLASE", "CLASE.GRUPO_A_DOCENTE_ID", "=", "GRUPO_A_DOCENTE.ID")
                            ->join("ESTUDIANTE_CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
                            ->join("ESTUDIANTE", "ESTUDIANTE.ID", "=", "ESTUDIANTE_CLASE.ESTUDIANTE_ID")

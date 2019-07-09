@@ -131,7 +131,6 @@ class Control extends Base
             {
                 $id_grupoDocente = $sesion->clase->grupoADocente->grupoDocente->ID;
                 $id_clase        = $sesion->clase->ID;
-                $user            = $request->cookie('USUARIO_ID');
 
                 $input = Input::all();
 
@@ -147,7 +146,7 @@ class Control extends Base
 
                 $trabajo = Input::file('file');
 
-                $destinationPath = "/".$id_grupoDocente."/".$id_clase."/".$id_sesion."/".$user."/";
+                $destinationPath = "/".$id_sesion."/".$id_estudiante."/";
 
                 $fileName  = $destinationPath.$trabajo->getClientOriginalName();
                 $exists    = Storage::disk('practicasEstudiantes')->exists($fileName);
@@ -170,7 +169,7 @@ class Control extends Base
                     
 
                     if ($upload_success) {
-                        return Response::json('Exito al subir el archivo.', 200);
+                        return Response::json($envio_practica, 200);
                     } else {
                         return Response::json('No se pudo subir el archivo.', 400);
                     }

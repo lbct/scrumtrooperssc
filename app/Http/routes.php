@@ -39,18 +39,33 @@ Route::post('estudiante/ver/retirar',
 
 Route::get('estudiante/subirPractica', 'Estudiante\Subir\Control@verClases');
 Route::post('estudiante/subirPractica', 'Estudiante\Subir\Control@getSesion');
+
 Route::get('estudiante/subirPractica/{id_sesion}', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@getSubir'
 ]);
 
-Route::get('estudiante/subirPractica/{ID}', [
+Route::post('estudiante/subirPractica/{id_sesion}', [
+    'as' => 'estudiante',
+    'uses' => 'Estudiante\Subir\Control@postSubir'
+]);
+
+/*Route::get('estudiante/subirPractica/{ID}', [
     'as' => 'estudiante',
     'uses' => 'Estudiante\Subir\Control@eliminarArchivo'
 ]);
 
+<<<<<<< HEAD
+=======
+Route::get('estudiante/subirPractica/{ID}', function ($ID) 
+{
+    $envio = EnvioPractica::find($ID);
+    $envio->delete();
+    return Redirect::route('/estudiante/subirPractica');
+});
+>>>>>>> origin
 
-Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');
+Route::post('estudiante/subirPractica/{{$envio->ARCHIVO}}', 'Estudiante\Ver\Control@destroy');*/
 
 Route::post('estudiante/clases/{id_sesion}', [
     'as' => 'estudiante',
@@ -127,6 +142,12 @@ Route::post('administrador/crearMateria', 'Admin\Materia\Crear\Control@postRegis
 
 //Rutas Auxiliar
 Route::get('auxiliar', 'Auxiliar\Inicio\Control@getInicio');
+Route::post('auxiliar/iniciarClase',
+    [
+    'as' => 'auxiliar/iniciarClase',
+    'uses' =>'Auxiliar\Clase\Control@postIniciarClase',
+    ]
+);
 Route::get(
     'auxiliar/clases/{id_gestion}',
     [
@@ -210,6 +231,7 @@ Route::post(
     ]
 );
 Route::get('docente/subirPractica/{id_gestion}', 'Docente\Clases\Ver\Control@getClases');
+Route::get('docente/practicaSemana/{grupo_a_docente_id}/{semana}', 'Docente\Practica\Subir\Control@practicaSemana');
 
 Route::get('docente/listas', 'Docente\Listas\Ver\Control@getClasesUltimaGestion');
 Route::post(
@@ -220,6 +242,8 @@ Route::post(
 
     ]
 );
+
+Route::get('auxiliarterminal','Auxiliar\Inicio\Control@getInicio');
 
 //Rutas de Descarga 'uploads'
 Route::get('descargar/guia/{filename}', function ($filename) {

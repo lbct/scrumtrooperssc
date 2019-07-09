@@ -48,7 +48,7 @@ class Control extends Base
             $usuarioId = $request->cookie('USUARIO_ID');
             $docenteId = Docente::where('USUARIO_ID', '=', $usuarioId)->get()->first()->ID;
             $gestiones = Gestion::select()->orderByRaw('ANO_GESTION desc, ID desc')->get();
-
+            
             $gruposDocente = GrupoDocente::join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
             ->join('MATERIA', 'MATERIA.ID', '=', 'GRUPO_DOCENTE.MATERIA_ID')
             ->where('GRUPO_A_DOCENTE.DOCENTE_ID', '=', $docenteId)
@@ -59,39 +59,39 @@ class Control extends Base
             $asistencias = [];
             $inscritos = [];
             foreach($gruposDocente as $grupoDocente){
-
-                $clasesId = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupoDocente->ID)
+                $registrados = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupoDocente->ID)
                 ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
                 ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
-                ->groupBy('CLASE.ID')
-                ->select('CLASE.ID as ID')
+                ->join("ESTUDIANTE_CLASE", "ESTUDIANTE_CLASE.CLASE_ID", "=", "CLASE.ID")
                 ->get();
-
-                $total = 0;
-                $suma = 0;
-                foreach ($clasesId as $claseId){
-                    $sesiones = Sesion::where('CLASE_ID', '=', $claseId->ID)->get();
-                    if($sesiones != null && sizeof($sesiones)>0){
-                        $estudiantes = EstudianteClase::where('CLASE_ID', '=', $claseId->ID)->get();
-                        foreach($sesiones as $sesion){
-                            if($sesion->AUXILIAR_ID != null){
-                                foreach($estudiantes as $estudiante){
-                                    $sesion_est = SesionEstudiante::where('SESION_ID', '=', $sesion->ID)
-                                    ->where('ESTUDIANTE_ID', '=', $estudiante->ESTUDIANTE_ID)
-                                    ->get()
-                                    ->first();
-                                    if($sesion_est != null && $sesion_est->ASISTENCIA_SESION == 1){
-                                        $suma = $suma + 1;
-                                    }
-                                    $total++;
-                                }
-                            }
-                        }
-                    }
-                }
-                $asistencias[$grupoDocente->MATERIA_ID] = round((($suma/($total == 0 ? 1 : $total))*100), 2).'%';
-                $inscritos[$grupoDocente->MATERIA_ID] = $total;
-                //array_push($asistencias, [$grupoDocente->MATERIA_ID => (($suma/$total)*100)]);
+                
+                $total_asistencias = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupoDocente->ID)
+                ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
+                ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+                ->join('SESION', 'SESION.CLASE_ID', '=', 'CLASE.ID')
+                ->join('SESION_ESTUDIANTE', 'SESION_ESTUDIANTE.SESION_ID', '=', 'SESION.ID')
+                ->get();
+                
+                $asistencia = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupoDocente->ID)
+                ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
+                ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
+                ->join('SESION', 'SESION.CLASE_ID', '=', 'CLASE.ID')
+                ->join('SESION_ESTUDIANTE', 'SESION_ESTUDIANTE.SESION_ID', '=', 'SESION.ID')
+                ->where('SESION_ESTUDIANTE.ASISTENCIA_SESION', true)
+                ->get();
+                
+                $inscrito   = $registrados->count();
+                $t_asistido = $total_asistencias->count();
+                $asistido   = $asistencia->count();
+                $asistencia = 100.00;
+                
+                if($t_asistido!=0)
+                    $asistencia = round($asistido*100/$t_asistido, 2);
+                else
+                    $asistencia = "Clases sin empezar";
+                
+                $asistencias[$grupoDocente->MATERIA_ID] = $asistencia;
+                $inscritos[$grupoDocente->MATERIA_ID] = $inscrito;
             }
             return view('docente.informes.materias.ver')
                 ->with('id_gestion', $id_gestion)
@@ -110,14 +110,18 @@ class Control extends Base
         $clasesId = GrupoDocente::where('GRUPO_DOCENTE.ID', '=', $grupoDocente->ID)
         ->join('GRUPO_A_DOCENTE', 'GRUPO_A_DOCENTE.GRUPO_DOCENTE_ID', '=', 'GRUPO_DOCENTE.ID')
         ->join('CLASE', 'CLASE.GRUPO_A_DOCENTE_ID', '=', 'GRUPO_A_DOCENTE.ID')
-        ->groupBy('CLASE.ID')
         ->select('CLASE.ID as ID')
         ->get();
 
         $asistencias = [];
         foreach ($clasesId as $claseId) {
             $clase = Clase::find($claseId->ID);
-            $sesiones = Sesion::where('CLASE_ID', '=', $clase->ID)->get();
+            $semana_actual = $clase->SEMANA_ACTUAL_SESION;
+            
+            $sesiones = Sesion::where('CLASE_ID', '=', $clase->ID)
+                        ->where('SESION.SEMANA', '<=', $semana_actual)
+                        ->get();
+            
             if($sesiones != null && sizeof($sesiones)>0){
                 $estudiantes = EstudianteClase::where('CLASE_ID', '=', $clase->ID)->get();
                 foreach($sesiones as $sesion){

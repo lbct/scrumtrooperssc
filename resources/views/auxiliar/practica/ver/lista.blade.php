@@ -18,9 +18,24 @@
                     @endfor
             </select>
         </form>
+        <div>
+            <form action="{{route('auxiliar/practicas')}}" method="POST">
+                {!! csrf_field() !!}
+                <input type="hidden" name="clase_id" value="{{$clase_id}}" />
+                <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
+            </form>
+        </div>
     </div>
 </center>
-    
+@if($iniciar_sesion_permiso)
+<div>
+    <form action="{{route('auxiliar/iniciarClase')}}" method="POST">
+        {!! csrf_field() !!}
+        <input type="hidden" name="sesion_id" value="{{$sesion->ID}}"/>
+        <input type="submit" class="btn btn-info" value="Iniciar Clase"/>
+    </form>
+</div>
+@endif
 </div>
 <br>
 @if($permiso == 1)
@@ -36,14 +51,7 @@
             <td>{{$sesion->SEMANA}}</td>
             <td>
                 <a href="/descargar/guia/{{$practica->ARCHIVO}}" class="btn btn-info">{{$practica->ARCHIVO}}</a>
-            </td>
-            <div>
-                <form action="{{route('auxiliar/practicas')}}" method="POST">
-                    {!! csrf_field() !!}
-                    <input type="hidden" name="clase_id" value="{{$clase_id}}" />
-                    <input type="hidden" name="sesion_id" value="{{$sesion->ID}}" />
-                </form>
-            </div>
+            </td>            
         </tr>
     </tbody>
 </table>
