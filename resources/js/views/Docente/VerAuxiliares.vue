@@ -15,7 +15,8 @@
             </center>
             
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-            <div v-if="auxiliares.length > 0" class="table-responsive">
+            <div v-if="auxiliares.length > 0" >
+            <div class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
@@ -40,6 +41,7 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
                 <h4 class="text-left">Total de clases cursadas: {{clases_cursadas}}</h4>
             </div>
             <p v-else>No cuentas con auxiliares asignados</p>

@@ -11,11 +11,11 @@ Route::get('logout', 'Sesion\Control@getLogout');
 
 //Rutas Panel
 Route::get('/panel', function (Request $request) { 
-    return view('test'); 
+    return view('layout'); 
 });
 
 Route::get('/panel/{any}', function (Request $request) { 
-    return view('test'); 
+    return view('layout'); 
 })->where('any', '^(.*)$');
 
 //Ruta Estado Inscripcion

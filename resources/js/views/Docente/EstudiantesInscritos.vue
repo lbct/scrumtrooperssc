@@ -26,17 +26,18 @@
                         </select>
                   </div>
                 </center>
-                <div v-if="estudiantes.length > 0" class="table-responsive">
-                    <div class="text-right">
-                        <h4>Total de estudiantes: {{estudiantes.length}}</h4>
+                <div v-if="estudiantes.length > 0">
+                <div class="text-right">
+                    <h4>Total de estudiantes: {{estudiantes.length}}</h4>
+                </div>
+                <div class="text-left">
+                    <div class="col-xs-12 col-lg-4">
+                        <label>Nombre del estudiante</label>
+                        <input v-model="busqueda" type="text" v-on:keyup="filtrar()" class="form-control">
                     </div>
-                    <div class="text-left">
-                        <div class="col-xs-12 col-lg-4">
-                            <label>Nombre del estudiante</label>
-                            <input v-model="busqueda" type="text" v-on:keyup="filtrar()" class="form-control">
-                        </div>
-                        <br>
-                    </div>
+                    <br>
+                </div>
+                <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="thead-dark">
                             <tr>
@@ -59,6 +60,7 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
                 </div>
                 <p v-else>No tienes estudiantes inscritos a esta materia</p>
             </div>

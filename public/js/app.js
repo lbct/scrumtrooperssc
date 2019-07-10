@@ -4165,6 +4165,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4809,6 +4811,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -11274,7 +11278,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _vm.estudiantes.length > 0
-                      ? _c("div", { staticClass: "table-responsive" }, [
+                      ? _c("div", [
                           _c("div", { staticClass: "text-right" }, [
                             _c("h4", [
                               _vm._v(
@@ -11317,54 +11321,56 @@ var render = function() {
                             _c("br")
                           ]),
                           _vm._v(" "),
-                          _c("table", { staticClass: "table table-hover" }, [
-                            _vm._m(0),
-                            _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(_vm.estudiantes_filtrados, function(
-                                estudiante,
-                                index
-                              ) {
-                                return _c(
-                                  "tr",
-                                  {
-                                    staticClass: "clickleable",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.irAPortafolio(estudiante)
+                          _c("div", { staticClass: "table-responsive" }, [
+                            _c("table", { staticClass: "table table-hover" }, [
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.estudiantes_filtrados, function(
+                                  estudiante,
+                                  index
+                                ) {
+                                  return _c(
+                                    "tr",
+                                    {
+                                      staticClass: "clickleable",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.irAPortafolio(estudiante)
+                                        }
                                       }
-                                    }
-                                  },
-                                  [
-                                    _c("td", [
-                                      _vm._v(_vm._s(estudiante.codigo_sis))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(estudiante.nombre))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(estudiante.apellido))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(estudiante.correo))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(estudiante.semanas_asistidas) +
-                                          "/" +
-                                          _vm._s(estudiante.semanas_totales)
-                                      )
-                                    ])
-                                  ]
-                                )
-                              }),
-                              0
-                            )
+                                    },
+                                    [
+                                      _c("td", [
+                                        _vm._v(_vm._s(estudiante.codigo_sis))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(estudiante.nombre))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(estudiante.apellido))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(estudiante.correo))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(estudiante.semanas_asistidas) +
+                                            "/" +
+                                            _vm._s(estudiante.semanas_totales)
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ])
                           ])
                         ])
                       : _c("p", [
@@ -12135,71 +12141,75 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm.auxiliares.length > 0
-              ? _c("div", { staticClass: "table-responsive" }, [
-                  _c("table", { staticClass: "table" }, [
-                    _c("thead", { staticClass: "thead-dark" }, [
-                      _c("tr", [
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Materia")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Nombre")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Apellido")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Correo")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { attrs: { scope: "col" } }, [
-                          _vm._v("Clases cursadas")
-                        ]),
-                        _vm._v(" "),
-                        _vm.gestion.activa
-                          ? _c("th", { attrs: { scope: "col" } }, [
-                              _vm._v("Acciones")
-                            ])
-                          : _vm._e()
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.auxiliares, function(auxiliar, index) {
-                        return _c("tr", [
-                          _c("td", [_vm._v(_vm._s(auxiliar.nombre_materia))]),
+              ? _c("div", [
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c("table", { staticClass: "table" }, [
+                      _c("thead", { staticClass: "thead-dark" }, [
+                        _c("tr", [
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("Materia")
+                          ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(auxiliar.nombre))]),
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("Nombre")
+                          ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(auxiliar.apellido))]),
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("Apellido")
+                          ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(auxiliar.correo))]),
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("Correo")
+                          ]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(auxiliar.clases_cursadas))]),
+                          _c("th", { attrs: { scope: "col" } }, [
+                            _vm._v("Clases cursadas")
+                          ]),
                           _vm._v(" "),
                           _vm.gestion.activa
-                            ? _c("td", [
-                                _c("i", {
-                                  staticClass: "fas fa-trash-alt clickleable",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.mostrarRetirarAuxiliar(
-                                        auxiliar,
-                                        index
-                                      )
-                                    }
-                                  }
-                                })
+                            ? _c("th", { attrs: { scope: "col" } }, [
+                                _vm._v("Acciones")
                               ])
                             : _vm._e()
                         ])
-                      }),
-                      0
-                    )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.auxiliares, function(auxiliar, index) {
+                          return _c("tr", [
+                            _c("td", [_vm._v(_vm._s(auxiliar.nombre_materia))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(auxiliar.nombre))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(auxiliar.apellido))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(auxiliar.correo))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(auxiliar.clases_cursadas))
+                            ]),
+                            _vm._v(" "),
+                            _vm.gestion.activa
+                              ? _c("td", [
+                                  _c("i", {
+                                    staticClass: "fas fa-trash-alt clickleable",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.mostrarRetirarAuxiliar(
+                                          auxiliar,
+                                          index
+                                        )
+                                      }
+                                    }
+                                  })
+                                ])
+                              : _vm._e()
+                          ])
+                        }),
+                        0
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("h4", { staticClass: "text-left" }, [

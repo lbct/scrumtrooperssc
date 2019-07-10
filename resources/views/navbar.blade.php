@@ -1,29 +1,31 @@
-<!-- Navegación superior -->
-<nav class="navbar navbar-expand bg-primary topbar mb-4 static-top">
-  <button id="toggler" type="button" class="btn">
-    <i class="fas fa-bars text-white"></i>
-  </button>
-  <!-- Topbar Navbar -->
-  <ul class="navbar-nav ml-auto">
-    <!-- Nav Item - Información de Usuario -->
-    <li class="nav-item dropdown no-arrow">
-      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-fw fa-user text-white"></i>
-        <span class="text-white small">&nbsp{{$usuario->nombre}} {{$usuario->apellido}}</span>
-      </a>
-
-      <!-- Dropdown - Información de Usuario -->
-      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-        <router-link :to="{ name: 'UsuarioEditarDatos' }"  class="dropdown-item">
-          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            Editar Perfil
-        </router-link>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/logout">
-          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-          Cerrar Sesión
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+    <a class="navbar-brand brand-logo" href="/panel">SESLAB</a>
+    <a class="navbar-brand brand-logo-mini" href="index.html">SL</a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item nav-profile dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+          <i class="fas fa-fw fa-user text-white"></i> {{$usuario->nombre}} {{$usuario->apellido}}
         </a>
-      </div>
-    </li>
-  </ul>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+          <router-link :to="{ name: 'UsuarioEditarDatos' }" class="dropdown-item">
+            <i class="ti-settings text-primary"></i>
+            Editar Perfil
+          </router-link>
+          <a class="dropdown-item" href="/logout">
+            <i class="ti-power-off text-primary"></i>
+            Cerrar Sesión
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 </nav>
