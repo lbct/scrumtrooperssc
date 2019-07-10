@@ -25,12 +25,17 @@
     },
     "dependencies": {
         "acorn": "^6.1.1",
+        "luxon": "^1.16.1",
         "object-assign": "^4.1.1",
         "vue-axios": "^2.1.4",
+        "vue-ctk-date-time-picker": "^2.1.1",
+        "vue-datetime": "^1.0.0-beta.10",
+        "vue-hotel-datepicker": "^2.6.4",
         "vue-router": "^3.0.6",
         "vue-router-back-button": "^1.2.1",
         "vue-schedule": "^2.0.4",
         "vue-upload-component": "^2.8.20",
-        "vue2-dropzone": "^3.5.9"
+        "vue2-dropzone": "^3.5.9",
+        "weekstart": "^1.0.0"
     }
 }

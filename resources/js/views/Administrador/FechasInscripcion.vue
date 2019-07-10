@@ -43,6 +43,26 @@
                 <form>
                   <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
+                      <label>Fecha de Inicio:</label>
+                      <datetime type="datetime"
+                                input-class="form-control"
+                                v-model="fecha_inicio" 
+                                format="yyyy-MM-dd HH:mm:ss"
+                                value-zone="America/La_Paz"
+                                zone="America/La_Paz"
+                                :phrases="{ok: 'Continuar', cancel: 'Cancelar'}">
+                      </datetime>
+                      <br>
+                      <label>Fecha de Fin:</label>
+                      <datetime type="datetime"
+                                input-class="form-control"
+                                v-model="fecha_fin" 
+                                format="yyyy-MM-dd HH:mm:ss"
+                                value-zone="America/La_Paz"
+                                zone="America/La_Paz"
+                                :phrases="{ok: 'Continuar', cancel: 'Cancelar'}"
+                                :min-datetime="fecha_inicio">
+                      </datetime>
                   </div>
 
                   <div class="modal-footer">
@@ -92,6 +112,8 @@
                 key_mensajes: 0,
                 fechas: [],
                 fecha: {id:'', inicio_inscripcion:'', fin_inscripcion:''},
+                fecha_inicio: '',
+                fecha_fin:    '',
             }
         },
     
@@ -116,21 +138,21 @@
             },
             
             mostrarAgregar(){
-                this.fecha = {id:'', inicio_inscripcion:'', fin_inscripcion:''};
+                this.fecha_inicio = '';
+                this.fecha_fin    = '';
                 $('#modal-agregar-fecha').modal('show');
             },
             
             agregar(){
                 const params = {
-                    'inicio_inscripcion': this.fecha.inicio_inscripcion,
-                    'fin_inscripcion': this.fecha.fin_inscripcion,
+                    'inicio_inscripcion': this.fecha_inicio,
+                    'fin_inscripcion': this.fecha_fin,
                 };
                 this.axios
-                    .post('/administrador/fecha', params)
+                    .post('/administrador/fechasinscripcion', params)
                     .then((response)=>{
                         var fecha = response.data;
-                        this.fechas.push(fecha);
-                        this.fechas.push(response.data);
+                        this.obtenerFechas();
                         $('#modal-agregar-fecha').modal('hide');
                     })
                     .catch(function (error) {

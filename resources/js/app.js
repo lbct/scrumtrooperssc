@@ -4,9 +4,12 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
+Vue.use(Datetime)
 
 import App from './views/App'
 import Alertas from './components/Alertas'
