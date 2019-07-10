@@ -25,7 +25,7 @@
       </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-      <i class="fas fa-bars"></i>
+      &nbsp;&nbsp;&nbsp;<i class="fas fa-bars"></i>&nbsp;&nbsp;
     </button>
   </div>
 </nav>
