@@ -39,7 +39,7 @@ class Materia extends Model
         $tiene = false;
         $docente = GrupoDocente::where('materia_id', $this->id)
                    ->join('grupo_a_docente', 'grupo_a_docente.grupo_docente_id', '=', 'grupo_docente.id')
-                   ->where('grupo_a_docente', $docente_id)
+                   ->where('grupo_a_docente.docente_id', $docente_id)
                    ->first();
         
         if($docente)

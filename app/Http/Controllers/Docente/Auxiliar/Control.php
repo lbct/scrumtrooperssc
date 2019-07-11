@@ -29,7 +29,13 @@ class Control extends Base
                                                 return $obj_a['id'] - $obj_b['id'];
                                             });
         
-        return $auxiliares_disponibles;
+        $auxiliares = collect();
+        
+        foreach($auxiliares_disponibles as $auxiliar_disponible){
+            $auxiliares->push($auxiliar_disponible);
+        }
+        
+        return $auxiliares;
     }
     
     public function asignar(Request $request){

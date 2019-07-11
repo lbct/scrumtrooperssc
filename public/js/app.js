@@ -2530,6 +2530,350 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mensajes: [],
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      gestiones: [],
+      gestion: {
+        id: '',
+        activa: false
+      },
+      materias: [],
+      materia: {
+        id: '',
+        codigo_materia: '',
+        nombre_materia: '',
+        detalle_materia: ''
+      },
+      grupos_docentes: [],
+      grupo_docente: {
+        id: '',
+        materia_id: '',
+        detalle_grupo_docente: ''
+      },
+      docentes: [],
+      docente: {
+        id: '',
+        nombre: '',
+        apellido: ''
+      },
+      docentes_posibles: [{
+        id: 1,
+        nombre: 'Leticia',
+        apellido: 'Blanco'
+      }]
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/administrador/gestiones').then(function (response) {
+        _this.gestiones = response.data;
+
+        if (_this.gestiones.length > 0) {
+          var gestion = _this.gestiones.find(function (gestion) {
+            return gestion.activa == true;
+          });
+
+          if (gestion) _this.gestion = gestion;else _this.gestion = _this.gestiones[0];
+
+          _this.cambiarGestion();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarGestion: function cambiarGestion() {
+      var _this2 = this;
+
+      this.axios.get('/administrador/materias/' + this.gestion.id).then(function (response) {
+        _this2.materias = response.data;
+
+        if (_this2.materias.length) {
+          _this2.materia = _this2.materias[0];
+
+          _this2.cambiarMateria();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarMateria: function cambiarMateria() {
+      var _this3 = this;
+
+      this.axios.get('/administrador/gruposdocentes/' + this.materia.id).then(function (response) {
+        _this3.grupos_docentes = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    mostrarAgregar: function mostrarAgregar() {
+      var _this4 = this;
+
+      this.axios.get('/administrador/docentes/disponibles/' + this.materia.id).then(function (response) {
+        _this4.docentes = [];
+        _this4.docentes_posibles = response.data;
+        if (_this4.docentes_posibles.length) _this4.docente = _this4.docentes_posibles[0];
+        $('#modal-agregar-grupodocente').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    agregar: function agregar() {
+      var _this5 = this;
+
+      var params = {
+        'materia_id': this.materia.id,
+        'docentes': this.docentes
+      };
+      this.axios.post('/administrador/grupodocente', params).then(function (response) {
+        _this5.cambiarMateria();
+
+        $('#modal-agregar-grupodocente').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    mostrarEditar: function mostrarEditar(grupo_docente, index) {
+      $('#modal-editar-grupodocente').modal('show');
+    },
+    editar: function editar() {},
+    mostrarBorrar: function mostrarBorrar(grupo_docente, index) {
+      this.grupo_docente = grupo_docente;
+      this.grupo_docente.index = index;
+      $('#modal-borrar-grupodocente').modal('show');
+    },
+    borrar: function borrar() {
+      var _this6 = this;
+
+      var params = {
+        'grupo_docente_id': this.grupo_docente.id
+      };
+      this.axios["delete"]('/administrador/grupodocente', {
+        data: params
+      }).then(function (response) {
+        _this6.grupos_docentes.splice(_this6.grupo_docente.index, 1);
+
+        $('#modal-borrar-grupodocente').modal('hide');
+      });
+    },
+    agregarDocente: function agregarDocente() {
+      var _this7 = this;
+
+      this.docentes.push(this.docente);
+      var index = this.docentes_posibles.findIndex(function (docente) {
+        return _this7.docente == docente;
+      });
+      this.docentes_posibles.splice(index, 1);
+      if (this.docentes_posibles.length) this.docente = this.docentes_posibles[0];
+    },
+    borrarDocente: function borrarDocente(index) {
+      this.docentes_posibles.push(this.docentes[index]);
+      this.docentes.splice(index, 1);
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Grupos Docentes';
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/Inicio.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/Inicio.vue?vue&type=script&lang=js& ***!
@@ -17843,6 +18187,662 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Eliminar Gestión")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.gestiones.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona una Gestión")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.gestion,
+                        expression: "gestion"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.gestion = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.cambiarGestion()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.gestiones, function(gestion, index) {
+                    return _c("option", { domProps: { value: gestion } }, [
+                      _vm._v(
+                        "\n                        Gestion: " +
+                          _vm._s(gestion.anho_gestion) +
+                          " - " +
+                          _vm._s(gestion.periodo) +
+                          "\n                    "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.materias.length > 0
+              ? _c(
+                  "div",
+                  [
+                    _c("center", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-group col-md-6" },
+                        [
+                          _c("label", [_vm._v("Selecciona una Materia")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia,
+                                  expression: "materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.materia = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  },
+                                  function($event) {
+                                    return _vm.cambiarMateria()
+                                  }
+                                ]
+                              }
+                            },
+                            _vm._l(_vm.materias, function(materia, index) {
+                              return _c(
+                                "option",
+                                { domProps: { value: materia } },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(materia.nombre_materia) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "mb-3 btn btn-primary pull-left",
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarAgregar()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                Añadir Grupo Docente\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.grupos_docentes.length > 0
+                      ? _c("div", [
+                          _c("div", { staticClass: "table-responsive" }, [
+                            _c("table", { staticClass: "table table-hover" }, [
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.grupos_docentes, function(
+                                  grupo_docente,
+                                  index
+                                ) {
+                                  return _c("tr", [
+                                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        _vm._s(
+                                          grupo_docente.detalle_grupo_docente
+                                        )
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(
+                                            grupo_docente.cantidad_horarios
+                                          ) +
+                                          "\n                                "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(1, true),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c("i", {
+                                        staticClass: "fas fa-edit clickleable",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.mostrarEditar(
+                                              grupo_docente,
+                                              index
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("i", {
+                                        staticClass:
+                                          "fas fa-trash-alt clickleable",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.mostrarBorrar(
+                                              grupo_docente,
+                                              index
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ])
+                                }),
+                                0
+                              )
+                            ])
+                          ])
+                        ])
+                      : _c("h5", [
+                          _vm._v("No se tiene ningún grupo docente disponible")
+                        ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "modal-agregar-grupodocente" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _c(
+                              "form",
+                              [
+                                _c("Alertas", {
+                                  key: _vm.key_mensajes,
+                                  attrs: {
+                                    mensajes: _vm.mensajes,
+                                    tipo: _vm.tipo_mensaje
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-body" }, [
+                                  _c("label", [_vm._v("Docente Añadidos")]),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _vm.docentes.length > 0
+                                    ? _c(
+                                        "div",
+                                        _vm._l(_vm.docentes, function(
+                                          docente,
+                                          index
+                                        ) {
+                                          return _c("p", [
+                                            _vm._v(
+                                              "\n                                    " +
+                                                _vm._s(docente.nombre) +
+                                                " " +
+                                                _vm._s(docente.apellido) +
+                                                " \n                                    "
+                                            ),
+                                            _c("i", {
+                                              staticClass:
+                                                "fas fa-trash-alt clickleable",
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.borrarDocente(
+                                                    index
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ])
+                                        }),
+                                        0
+                                      )
+                                    : _c("p", [
+                                        _vm._v("No has agregado un docente")
+                                      ]),
+                                  _vm._v(" "),
+                                  _vm.docentes_posibles.length > 0
+                                    ? _c("div", [
+                                        _c("label", [
+                                          _vm._v("Agregar Docente")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "select",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.docente,
+                                                expression: "docente"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            on: {
+                                              change: function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.docente = $event.target
+                                                  .multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              }
+                                            }
+                                          },
+                                          _vm._l(
+                                            _vm.docentes_posibles,
+                                            function(docente, index) {
+                                              return _c(
+                                                "option",
+                                                {
+                                                  domProps: { value: docente }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                        " +
+                                                      _vm._s(docente.nombre) +
+                                                      " " +
+                                                      _vm._s(docente.apellido) +
+                                                      " \n                                    "
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
+                                          0
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "mt-3 btn btn-primary",
+                                            attrs: { type: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.agregarDocente()
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                    Agregar\n                                "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _c("p", [
+                                        _vm._v(
+                                          "No hay más docentes disponibles para esta materia"
+                                        )
+                                      ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-footer" }, [
+                                  _vm.docentes.length > 0
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "m-3 btn btn-primary pull-left",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.agregar()
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                            Añadir\n                        "
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      attrs: {
+                                        type: "button",
+                                        "data-dismiss": "modal"
+                                      }
+                                    },
+                                    [_vm._v("Cancelar")]
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "modal-editar-grupodocente" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c(
+                              "form",
+                              [
+                                _c("Alertas", {
+                                  key: _vm.key_mensajes,
+                                  attrs: {
+                                    mensajes: _vm.mensajes,
+                                    tipo: _vm.tipo_mensaje
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-body" }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-footer" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "m-3 btn btn-primary pull-left",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editar()
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            Editar\n                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      attrs: {
+                                        type: "button",
+                                        "data-dismiss": "modal"
+                                      }
+                                    },
+                                    [_vm._v("Cancelar")]
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "modal-borrar-grupodocente" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(4),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("p", [
+                                _vm._v(
+                                  "¿Estás seguro de eliminar el grupo docente de " +
+                                    _vm._s(
+                                      _vm.grupo_docente.detalle_grupo_docente
+                                    ) +
+                                    "?"
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "m-3 btn btn-primary pull-left",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.borrar()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Eliminar\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  }
+                                },
+                                [_vm._v("Cancelar")]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _c("p", [_vm._v("No se tiene ninguna materia disponible")])
+          ],
+          1
+        )
+      : _c("p", [_vm._v("No existen gestiones disponibles")])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nº")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Detalle")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cantidad de Horarios")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Horarios")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _vm._v(
+          "\n                                        Ver Horarios\n                                    "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("Añadir Grupo Docente")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("Editar Grupo Docente")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("Eliminar Grupo Docente")
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -38813,6 +39813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./views/Administrador/FechasInscripcion */ "./resources/js/views/Administrador/FechasInscripcion.vue");
 /* harmony import */ var _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/Administrador/Aulas */ "./resources/js/views/Administrador/Aulas.vue");
 /* harmony import */ var _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/Administrador/Materias */ "./resources/js/views/Administrador/Materias.vue");
+/* harmony import */ var _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/Administrador/GruposDocentes */ "./resources/js/views/Administrador/GruposDocentes.vue");
 
 
 
@@ -38855,6 +39856,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vueDropzone', vue2_dropzon
 
 
  //Administrador
+
 
 
 
@@ -38980,6 +39982,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/panel/administrador/Materias',
     name: 'AdministradorMaterias',
     component: _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_36__["default"]
+  }, {
+    path: '/panel/administrador/GruposDocentes',
+    name: 'AdministradorGruposDocentes',
+    component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -39278,6 +40284,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Gestiones_vue_vue_type_template_id_b8405dd4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Gestiones_vue_vue_type_template_id_b8405dd4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/GruposDocentes.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/views/Administrador/GruposDocentes.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GruposDocentes.vue?vue&type=template&id=2c464c88& */ "./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88&");
+/* harmony import */ var _GruposDocentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GruposDocentes.vue?vue&type=script&lang=js& */ "./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GruposDocentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Administrador/GruposDocentes.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GruposDocentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./GruposDocentes.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GruposDocentes_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./GruposDocentes.vue?vue&type=template&id=2c464c88& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/GruposDocentes.vue?vue&type=template&id=2c464c88&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GruposDocentes_vue_vue_type_template_id_2c464c88___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -8,6 +8,7 @@ use App\Models\Docente;
 use App\Models\FechaInscripcion;
 use App\Models\Gestion;
 use App\Models\Materia;
+use App\Models\Clase;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
@@ -20,6 +21,11 @@ class Control extends Base
         $grupos_docentes = GrupoDocente::where('materia_id', $materia_id)
                            ->select('id', 'materia_id', 'detalle_grupo_docente')
                            ->get();
+        
+        foreach($grupos_docentes as $grupo_docente){
+            $cantidad_horarios = Clase::where('grupo_docente_id', $grupo_docente->id)->count();
+            $grupo_docente['cantidad_horarios'] = $cantidad_horarios;
+        }
         
         return $grupos_docentes;
     }
@@ -52,7 +58,13 @@ class Control extends Base
                                                 return $obj_a['id'] - $obj_b['id'];
                                             });
         
-        return $docentes_disponibles;        
+        $docentes = collect();
+        
+        foreach($docentes_disponibles as $docente_disponible){
+            $docentes->push($docente_disponible);
+        }
+        
+        return $docentes;        
     }
     
     public function agregarGrupoDocente(Request $request){
@@ -63,15 +75,31 @@ class Control extends Base
         $grupo_docente->materia_id = $materia_id;
         $grupo_docente->save();
         
+        $detalle_docente = '';
+        
         $materia = Materia::find($materia_id);
         foreach($docentes as $docente){
             if(!$materia->tieneDocente($docente['id'])){
                 $grupo_a_docente = new GrupoADocente;
-                $grupo_a_docente->grupo_docente_id = $grupo_docente_id;
-                $grupo_a_docente->$docente_id      = $docente_id;
+                $grupo_a_docente->grupo_docente_id = $grupo_docente->id;
+                $grupo_a_docente->docente_id       = $docente['id'];
                 $grupo_a_docente->save();
+                
+                $nombre = $docente['nombre'].' '.$docente['apellido'];
+                if($detalle_docente != '')
+                    $detalle_docente = $detalle_docente.', '.$nombre;
+                else
+                    $detalle_docente = $nombre;
             }
         }
+        
+        if($detalle_docente != ''){
+            $grupo_docente->detalle_grupo_docente = $detalle_docente;
+            $grupo_docente->save();
+        }
+        else
+            $grupo_docente->delete();
+            
     }
     
     public function borrarGrupoDocente(Request $request){
