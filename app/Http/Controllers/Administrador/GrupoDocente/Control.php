@@ -32,10 +32,21 @@ class Control extends Base
     
     public function informacion(Request $request, $grupo_docente_id){
         $grupo_docente = GrupoDocente::where('grupo_docente.id', $grupo_docente_id)
+                         ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
+                         ->join('gestion', 'gestion.id', '=', 'materia.gestion_id')
+                         ->join('periodo', 'periodo.id', '=', 'gestion.periodo_id')
+                         ->select('grupo_docente.id', 'detalle_grupo_docente', 'codigo_materia', 'nombre_materia', 'anho_gestion', 'periodo.descripcion as periodo', 'gestion_id')
+                         ->first();
+        
+        return $grupo_docente;        
+    }
+    
+    public function docentes(Request $request, $grupo_docente_id){
+        $grupo_docente = GrupoDocente::where('grupo_docente.id', $grupo_docente_id)
                          ->join('grupo_a_docente', 'grupo_a_docente.grupo_docente_id', '=', 'grupo_docente.id')
                          ->join('docente', 'docente.id', '=', 'grupo_a_docente.docente_id')
                          ->join('usuario', 'usuario.id', '=', 'docente.usuario_id')
-                         ->select('grupo_docente_id', 'docente_id', 'nombre', 'apellido', 'grupo_a_docente.id')
+                         ->select('docente.id', 'nombre', 'apellido')
                          ->get();
         
         return $grupo_docente;        
@@ -84,14 +95,10 @@ class Control extends Base
                 $grupo_a_docente->grupo_docente_id = $grupo_docente->id;
                 $grupo_a_docente->docente_id       = $docente['id'];
                 $grupo_a_docente->save();
-                
-                $nombre = $docente['nombre'].' '.$docente['apellido'];
-                if($detalle_docente != '')
-                    $detalle_docente = $detalle_docente.', '.$nombre;
-                else
-                    $detalle_docente = $nombre;
             }
         }
+        
+        $detalle_docente = $grupo_docente->generarDetalle();
         
         if($detalle_docente != ''){
             $grupo_docente->detalle_grupo_docente = $detalle_docente;
@@ -112,30 +119,59 @@ class Control extends Base
         return $grupo_docente;
     }
     
-    public function agregarDocente(Request $request){
+    public function editarGrupoDocente(Request $request){
         $grupo_docente_id = $request->grupo_docente_id;
-        $docente_id       = $request->docente_id;
+        $docentes         = $request->docentes;
         
         $grupo_docente = GrupoDocente::find($grupo_docente_id);
         
         if($grupo_docente){
-            $materia_id = $grupo_docente->materia_id;
+            $materia = Materia::find($grupo_docente->materia_id);
+            $grupos_a_docentes = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                 ->get();
             
-            $materia = Materia::find($materia_id);
-            if(!$materia->tieneDocente($docente_id)){
-                $grupo_a_docente = new GrupoADocente;
-                $grupo_a_docente->grupo_docente_id = $grupo_docente_id;
-                $grupo_a_docente->$docente_id      = $docente_id;
-                $grupo_a_docente->save();
+            $docentes_eliminados = collect();
+            
+            foreach($grupos_a_docentes as $grupo_a_docente){
+                $encontrado = false;
+                
+                foreach($docentes as $docente){
+                    if($grupo_a_docente->docente_id == $docente['id']){
+                        $encontrado = true;
+                        break;
+                    }
+                }
+                
+                if(!$encontrado){
+                    $docentes_eliminados->push($grupo_a_docente->docente_id);
+                    $registro = GrupoADocente::find($grupo_a_docente->id);
+                    $registro->delete();
+                } 
             }
-        }
-    }
-    
-    public function retirarDocente(Request $request){
-        $grupo_a_docente_id = $request->grupo_a_docente_id;
+            
+            foreach($docentes as $docente){
+                $grupo_a_docente = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                   ->where('docente_id', $docente['id'])
+                                   ->first();
+                
+                if(!$grupo_a_docente){
+                    if(!$materia->tieneDocente($docente['id'])){
+                        $grupo_a_docente = new GrupoADocente;
+                        $grupo_a_docente->grupo_docente_id = $grupo_docente_id;
+                        $grupo_a_docente->docente_id       = $docente['id'];
+                        $grupo_a_docente->save();
+                    }
+                }
+            }
+            
+            $detalle_docente = $grupo_docente->generarDetalle();
         
-        $grupo_a_docente = GrupoADocente::find($grupo_a_docente_id);
-        if($grupo_a_docente)
-            $grupo_a_docente->delete();
+            if($detalle_docente != ''){
+                $grupo_docente->detalle_grupo_docente = $detalle_docente;
+                $grupo_docente->save();
+            }
+            else
+                $grupo_docente->delete();
+        }
     }
 }

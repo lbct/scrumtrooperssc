@@ -51,9 +51,10 @@
                                         {{grupo_docente.cantidad_horarios}}
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary">
+                                        <router-link :to="{ name:'AdministradorClases', params: {grupo_docente_id: grupo_docente.id } }" 
+                                                     class="btn btn-primary">
                                             Ver Horarios
-                                        </button>
+                                        </router-link>
                                     </td>
                                     <td>
                                         <i v-on:click="mostrarEditar(grupo_docente, index)"
@@ -135,10 +136,37 @@
                         <form>
                           <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                           <div class="modal-body">
+                                <label>Docente Añadidos</label><br>
+                                <div v-if="docentes.length > 0" >
+                                    <p v-for="(docente, index) in docentes">
+                                        {{docente.nombre}} {{docente.apellido}} 
+                                        <i v-on:click="borrarDocente(index)" 
+                                           class="fas fa-trash-alt clickleable">
+                                        </i>
+                                    </p>
+                                </div>
+                                <p v-else>No has agregado un docente</p>
+                              
+                                <div v-if="docentes_posibles.length > 0">
+                                    <label>Agregar Docente</label>
+                                    <select v-model="docente" 
+                                            class="form-control" >
+                                        <option v-for="(docente, index) in docentes_posibles"
+                                                :value="docente">
+                                            {{docente.nombre}} {{docente.apellido}} 
+                                        </option>
+                                    </select> 
+                                    <button v-on:click="agregarDocente()" 
+                                            type="button" class="mt-3 btn btn-primary">
+                                        Agregar
+                                    </button>
+                                </div>
+                                <p v-else>No hay más docentes disponibles para esta materia</p>
                           </div>
 
                           <div class="modal-footer">
-                            <button v-on:click="editar()" 
+                            <button v-if="docentes.length > 0"
+                                    v-on:click="editar()" 
                                     type="button" class="m-3 btn btn-primary pull-left">
                                 Editar
                             </button>
@@ -194,7 +222,7 @@
                 grupo_docente: {id:'',materia_id:'',detalle_grupo_docente:''},
                 docentes: [],
                 docente: {id:'', nombre:'', apellido:''},
-                docentes_posibles: [{id:1, nombre:'Leticia', apellido:'Blanco'}],
+                docentes_posibles: [],
             }
         },
     
@@ -279,11 +307,35 @@
                     });
             },
             
-            mostrarEditar(grupo_docente, index){            
-                $('#modal-editar-grupodocente').modal('show');
+            mostrarEditar(grupo_docente, index){
+                this.grupo_docente = grupo_docente;
+                this.grupo_docente.index = index;
+                
+                this.axios
+                    .get('/administrador/grupodocente/docentes/'+grupo_docente.id)
+                    .then((response)=>{
+                        this.docentes = response.data;
+                        this.editarDocentesDisponibles();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             
             editar(){
+                const params = {
+                    'grupo_docente_id': this.grupo_docente.id,
+                    'docentes': this.docentes,
+                };
+                this.axios
+                    .put('/administrador/grupodocente', params)
+                    .then((response)=>{
+                        this.cambiarMateria();
+                        $('#modal-editar-grupodocente').modal('hide');
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             
             mostrarBorrar(grupo_docente, index){
@@ -317,7 +369,24 @@
             
             borrarDocente(index){
                 this.docentes_posibles.push(this.docentes[index]);
+                this.docente = this.docentes_posibles[0];
                 this.docentes.splice(index, 1);
+            },
+            
+            editarDocentesDisponibles(){
+                this.axios
+                    .get('/administrador/docentes/disponibles/'+this.materia.id)
+                    .then((response)=>{
+                        this.docentes_posibles = response.data;
+                    
+                        if(this.docentes_posibles.length)
+                            this.docente = this.docentes_posibles[0];
+                            
+                        $('#modal-editar-grupodocente').modal('show');
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
         },            
         

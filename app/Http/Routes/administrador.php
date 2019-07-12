@@ -26,8 +26,11 @@ Route::get('administrador/docentes/disponibles/{materia_id}', 'Administrador\Gru
 
 Route::get('administrador/gruposdocentes/{materia_id}', 'Administrador\GrupoDocente\Control@todos');
 Route::get('administrador/grupodocente/{grupo_docente_id}', 'Administrador\GrupoDocente\Control@informacion');
+Route::get('administrador/grupodocente/docentes/{grupo_docente_id}', 'Administrador\GrupoDocente\Control@docentes');
 Route::post('administrador/grupodocente', 'Administrador\GrupoDocente\Control@agregarGrupoDocente');
+Route::put('administrador/grupodocente', 'Administrador\GrupoDocente\Control@editarGrupoDocente');
 Route::delete('administrador/grupodocente', 'Administrador\GrupoDocente\Control@borrarGrupoDocente');
 
-Route::post('administrador/grupodocente/docente', 'Administrador\GrupoDocente\Control@agregarDocente');
-Route::delete('administrador/grupodocente/docente', 'Administrador\GrupoDocente\Control@retirarDocente');
+Route::get('administrador/clases/{grupo_docente_id}', 'Administrador\Clase\Control@todas');
+Route::get('administrador/clases/disponibles/{gestion_id}/{horario_id}/{dia}', 'Administrador\Clase\Control@disponibles');
+Route::post('administrador/clase', 'Administrador\Clase\Control@agregar');

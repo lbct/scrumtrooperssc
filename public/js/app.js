@@ -2004,6 +2004,184 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['grupo_docente_id'],
+  data: function data() {
+    return {
+      mensajes: '',
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      grupo_docente: {},
+      horas: ["06:45/08:15", "08:15/09:45", "09:45/11:15", "11:15/12:45", "12:45/14:15", "14:15/15:45", "15:45/17:15", "17:15/18:45", "18:45/20:15", "20:15/21:45"],
+      key_clases: 0,
+      horarios: [[[]]],
+      clases: [],
+      aulas_disponibles: [],
+      aula: {},
+      horario_id: -1,
+      dia: -1
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/administrador/grupodocente/' + this.grupo_docente_id).then(function (response) {
+        var datos = response.data;
+        _this.grupo_docente = datos;
+
+        _this.obtenerHorarios();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    obtenerHorarios: function obtenerHorarios() {
+      var _this2 = this;
+
+      for (var i = 0; i < 10; i++) {
+        this.horarios[i] = [[], [], [], [], [], []];
+      }
+
+      this.axios.get('/administrador/clases/' + this.grupo_docente_id).then(function (response) {
+        var datos = response.data;
+        _this2.clases = datos;
+
+        _this2.clases.forEach(function (clase) {
+          var horario = clase.horario_id - 1;
+          var dia = clase.dia - 1;
+          if (_this2.horarios[horario][dia].lenght) _this2.horarios[horario][dia] = [clase];else _this2.horarios[horario][dia].push(clase);
+        });
+
+        _this2.key_clases++;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    mostrarAgregar: function mostrarAgregar(hora, dia) {
+      var _this3 = this;
+
+      this.horario_id = hora + 1;
+      this.dia = dia + 1;
+      this.aula = {};
+      this.axios.get('/administrador/clases/disponibles/' + this.grupo_docente.gestion_id + '/' + this.horario_id + '/' + this.dia).then(function (response) {
+        _this3.aulas_disponibles = response.data;
+        if (_this3.aulas_disponibles.length > 0) _this3.aula = _this3.aulas_disponibles[0];
+        $('#modal-agregar-clase').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    agregar: function agregar() {
+      var _this4 = this;
+
+      var params = {
+        'horario_id': this.horario_id,
+        'dia': this.dia,
+        'aula_id': this.aula.id,
+        'grupo_docente_id': this.grupo_docente_id
+      };
+      this.axios.post('/administrador/clase', params).then(function (response) {
+        _this4.obtenerHorarios();
+
+        $('#modal-agregar-clase').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Clases';
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/FechasInscripcion.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/FechasInscripcion.vue?vue&type=script&lang=js& ***!
@@ -2720,6 +2898,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2750,11 +2956,7 @@ __webpack_require__.r(__webpack_exports__);
         nombre: '',
         apellido: ''
       },
-      docentes_posibles: [{
-        id: 1,
-        nombre: 'Leticia',
-        apellido: 'Blanco'
-      }]
+      docentes_posibles: []
     };
   },
   methods: {
@@ -2829,16 +3031,40 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarEditar: function mostrarEditar(grupo_docente, index) {
-      $('#modal-editar-grupodocente').modal('show');
+      var _this6 = this;
+
+      this.grupo_docente = grupo_docente;
+      this.grupo_docente.index = index;
+      this.axios.get('/administrador/grupodocente/docentes/' + grupo_docente.id).then(function (response) {
+        _this6.docentes = response.data;
+
+        _this6.editarDocentesDisponibles();
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
-    editar: function editar() {},
+    editar: function editar() {
+      var _this7 = this;
+
+      var params = {
+        'grupo_docente_id': this.grupo_docente.id,
+        'docentes': this.docentes
+      };
+      this.axios.put('/administrador/grupodocente', params).then(function (response) {
+        _this7.cambiarMateria();
+
+        $('#modal-editar-grupodocente').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     mostrarBorrar: function mostrarBorrar(grupo_docente, index) {
       this.grupo_docente = grupo_docente;
       this.grupo_docente.index = index;
       $('#modal-borrar-grupodocente').modal('show');
     },
     borrar: function borrar() {
-      var _this6 = this;
+      var _this8 = this;
 
       var params = {
         'grupo_docente_id': this.grupo_docente.id
@@ -2846,24 +3072,36 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/grupodocente', {
         data: params
       }).then(function (response) {
-        _this6.grupos_docentes.splice(_this6.grupo_docente.index, 1);
+        _this8.grupos_docentes.splice(_this8.grupo_docente.index, 1);
 
         $('#modal-borrar-grupodocente').modal('hide');
       });
     },
     agregarDocente: function agregarDocente() {
-      var _this7 = this;
+      var _this9 = this;
 
       this.docentes.push(this.docente);
       var index = this.docentes_posibles.findIndex(function (docente) {
-        return _this7.docente == docente;
+        return _this9.docente == docente;
       });
       this.docentes_posibles.splice(index, 1);
       if (this.docentes_posibles.length) this.docente = this.docentes_posibles[0];
     },
     borrarDocente: function borrarDocente(index) {
       this.docentes_posibles.push(this.docentes[index]);
+      this.docente = this.docentes_posibles[0];
       this.docentes.splice(index, 1);
+    },
+    editarDocentesDisponibles: function editarDocentesDisponibles() {
+      var _this10 = this;
+
+      this.axios.get('/administrador/docentes/disponibles/' + this.materia.id).then(function (response) {
+        _this10.docentes_posibles = response.data;
+        if (_this10.docentes_posibles.length) _this10.docente = _this10.docentes_posibles[0];
+        $('#modal-editar-grupodocente').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {
@@ -17330,6 +17568,277 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
+      _vm._v(" "),
+      _vm.grupo_docente.id
+        ? _c("div", [
+            _c("h4", [
+              _vm._v(
+                _vm._s(_vm.grupo_docente.codigo_materia) +
+                  " - " +
+                  _vm._s(_vm.grupo_docente.nombre_materia)
+              )
+            ]),
+            _vm._v(" "),
+            _c("h5", [
+              _vm._v(
+                "(" + _vm._s(_vm.grupo_docente.detalle_grupo_docente) + ")"
+              )
+            ]),
+            _vm._v(" "),
+            _c("h6", [
+              _vm._v(
+                _vm._s(_vm.grupo_docente.anho_gestion) +
+                  " - " +
+                  _vm._s(_vm.grupo_docente.periodo)
+              )
+            ]),
+            _vm._v(" "),
+            _c("table", { key: _vm.key_clases, staticClass: "table" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.horarios, function(horario, hora) {
+                  return _c(
+                    "tr",
+                    [
+                      _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
+                      _vm._v(" "),
+                      _vm._l(horario, function(clase, dia) {
+                        return _c(
+                          "td",
+                          [
+                            _vm._l(clase, function(aula) {
+                              return _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "clickleable table-info custom-td"
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                             " +
+                                      _vm._s(aula.nombre_aula) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.mostrarAgregar(hora, dia)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fas fa-plus clickleable"
+                                })
+                              ]
+                            )
+                          ],
+                          2
+                        )
+                      })
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-agregar-clase" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm.aulas_disponibles.length > 0
+                        ? _c("div", [
+                            _c("label", [_vm._v("Aulas disponibles")]),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.aula,
+                                    expression: "aula"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.aula = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.aulas_disponibles, function(
+                                aula,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: aula } },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Aula: " +
+                                        _vm._s(aula.nombre_aula) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "No se cuenta con aulas disponibles para este horario"
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _vm.aula.id
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "m-3 btn btn-primary pull-left",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.agregar()
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Añadir\n                        "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cancelar")]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        : _c("p", [_vm._v("No existe el grupo docente")])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Lunes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Martes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miercoles")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jueves")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Viernes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sabado")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Añadir Clase")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/FechasInscripcion.vue?vue&type=template&id=cbc3865c&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/FechasInscripcion.vue?vue&type=template&id=cbc3865c& ***!
@@ -18396,7 +18905,32 @@ var render = function() {
                                       )
                                     ]),
                                     _vm._v(" "),
-                                    _vm._m(1, true),
+                                    _c(
+                                      "td",
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "btn btn-primary",
+                                            attrs: {
+                                              to: {
+                                                name: "AdministradorClases",
+                                                params: {
+                                                  grupo_docente_id:
+                                                    grupo_docente.id
+                                                }
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                        Ver Horarios\n                                    "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
                                     _vm._v(" "),
                                     _c("td", [
                                       _c("i", {
@@ -18444,7 +18978,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "modal-dialog" }, [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(2),
+                            _vm._m(1),
                             _vm._v(" "),
                             _c(
                               "form",
@@ -18635,7 +19169,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "modal-dialog" }, [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(3),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c(
                               "form",
@@ -18648,27 +19182,154 @@ var render = function() {
                                   }
                                 }),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "modal-body" }),
+                                _c("div", { staticClass: "modal-body" }, [
+                                  _c("label", [_vm._v("Docente Añadidos")]),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _vm.docentes.length > 0
+                                    ? _c(
+                                        "div",
+                                        _vm._l(_vm.docentes, function(
+                                          docente,
+                                          index
+                                        ) {
+                                          return _c("p", [
+                                            _vm._v(
+                                              "\n                                    " +
+                                                _vm._s(docente.nombre) +
+                                                " " +
+                                                _vm._s(docente.apellido) +
+                                                " \n                                    "
+                                            ),
+                                            _c("i", {
+                                              staticClass:
+                                                "fas fa-trash-alt clickleable",
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.borrarDocente(
+                                                    index
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ])
+                                        }),
+                                        0
+                                      )
+                                    : _c("p", [
+                                        _vm._v("No has agregado un docente")
+                                      ]),
+                                  _vm._v(" "),
+                                  _vm.docentes_posibles.length > 0
+                                    ? _c("div", [
+                                        _c("label", [
+                                          _vm._v("Agregar Docente")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "select",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.docente,
+                                                expression: "docente"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            on: {
+                                              change: function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.docente = $event.target
+                                                  .multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              }
+                                            }
+                                          },
+                                          _vm._l(
+                                            _vm.docentes_posibles,
+                                            function(docente, index) {
+                                              return _c(
+                                                "option",
+                                                {
+                                                  domProps: { value: docente }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                        " +
+                                                      _vm._s(docente.nombre) +
+                                                      " " +
+                                                      _vm._s(docente.apellido) +
+                                                      " \n                                    "
+                                                  )
+                                                ]
+                                              )
+                                            }
+                                          ),
+                                          0
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "mt-3 btn btn-primary",
+                                            attrs: { type: "button" },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.agregarDocente()
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                    Agregar\n                                "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    : _c("p", [
+                                        _vm._v(
+                                          "No hay más docentes disponibles para esta materia"
+                                        )
+                                      ])
+                                ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "modal-footer" }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "m-3 btn btn-primary pull-left",
-                                      attrs: { type: "button" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editar()
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                            Editar\n                        "
+                                  _vm.docentes.length > 0
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "m-3 btn btn-primary pull-left",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.editar()
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                            Editar\n                        "
+                                          )
+                                        ]
                                       )
-                                    ]
-                                  ),
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c(
                                     "button",
@@ -18699,7 +19360,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "modal-dialog" }, [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(4),
+                            _vm._m(3),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c("p", [
@@ -18774,18 +19435,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Horarios")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _vm._v(
-          "\n                                        Ver Horarios\n                                    "
-        )
       ])
     ])
   },
@@ -39814,6 +40463,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/Administrador/Aulas */ "./resources/js/views/Administrador/Aulas.vue");
 /* harmony import */ var _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/Administrador/Materias */ "./resources/js/views/Administrador/Materias.vue");
 /* harmony import */ var _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/Administrador/GruposDocentes */ "./resources/js/views/Administrador/GruposDocentes.vue");
+/* harmony import */ var _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/Administrador/Clases */ "./resources/js/views/Administrador/Clases.vue");
 
 
 
@@ -39856,6 +40506,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vueDropzone', vue2_dropzon
 
 
  //Administrador
+
 
 
 
@@ -39986,6 +40637,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/panel/administrador/GruposDocentes',
     name: 'AdministradorGruposDocentes',
     component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__["default"]
+  }, {
+    path: '/panel/administrador/Clases/:grupo_docente_id',
+    name: 'AdministradorClases',
+    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_38__["default"],
+    props: true
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -40146,6 +40802,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Aulas_vue_vue_type_template_id_6bd80da9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Aulas_vue_vue_type_template_id_6bd80da9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/Clases.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/views/Administrador/Clases.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Clases.vue?vue&type=template&id=22c0afcc& */ "./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc&");
+/* harmony import */ var _Clases_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Clases.vue?vue&type=script&lang=js& */ "./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Clases_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Administrador/Clases.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Clases.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/Clases.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Clases.vue?vue&type=template&id=22c0afcc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/Clases.vue?vue&type=template&id=22c0afcc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

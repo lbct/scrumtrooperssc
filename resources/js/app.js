@@ -56,6 +56,7 @@ import AdministradorFechasInscripcion from './views/Administrador/FechasInscripc
 import AdministradorAulas from './views/Administrador/Aulas'
 import AdministradorMaterias from './views/Administrador/Materias'
 import AdministradorGruposDocentes from './views/Administrador/GruposDocentes'
+import AdministradorClases from './views/Administrador/Clases'
 
 const router = new VueRouter({
     mode: 'history',
@@ -208,6 +209,12 @@ const router = new VueRouter({
             path: '/panel/administrador/GruposDocentes',
             name: 'AdministradorGruposDocentes',
             component: AdministradorGruposDocentes,
+        },
+        {
+            path: '/panel/administrador/Clases/:grupo_docente_id',
+            name: 'AdministradorClases',
+            component: AdministradorClases,
+            props: true,
         },
     ],
 });
