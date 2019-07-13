@@ -1,87 +1,130 @@
 <template>
     <div>
         <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-        <div v-if="grupo_docente.id">
-            <h4>{{grupo_docente.codigo_materia}} - {{grupo_docente.nombre_materia}}</h4>
-            <h5>({{grupo_docente.detalle_grupo_docente}})</h5>
-            <h6>{{grupo_docente.anho_gestion}} - {{grupo_docente.periodo}}</h6>
+        <div v-if="gestiones.length > 0">
+            <center>
+              <div class="form-group form-group col-md-6">
+                    <label>Selecciona una Gestión</label>
+                    <select v-model="gestion" 
+                            v-on:change="cambiarGestion()" class="form-control" >
+                        <option v-for="(gestion, index) in gestiones"
+                                :value="gestion">
+                            Gestion: {{gestion.anho_gestion}} - {{gestion.periodo}}
+                        </option>
+                    </select> 
+              </div>
+            </center>
             
-            <table :key="key_clases" class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Lunes</th>
-                        <th scope="col">Martes</th>
-                        <th scope="col">Miercoles</th>
-                        <th scope="col">Jueves</th>
-                        <th scope="col">Viernes</th>
-                        <th scope="col">Sabado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(horario, hora) in horarios">
-                        <td>{{horas[hora]}}</td>
-                        <td v-for="(clase, dia) in horario">
-                            <div v-for="aula in clase"
-                                 class="clickleable table-info custom-td">
-                                 {{aula.nombre_aula}}
-                            </div>
-                            <button v-on:click="mostrarAgregar(hora, dia)"
-                                    class="btn">
-                                <i class="fas fa-plus clickleable"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table :key="key_clases" class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Lunes</th>
+                            <th scope="col">Martes</th>
+                            <th scope="col">Miercoles</th>
+                            <th scope="col">Jueves</th>
+                            <th scope="col">Viernes</th>
+                            <th scope="col">Sabado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(horario, hora) in horarios">
+                            <td>{{horas[hora]}}</td>
+                            <td v-for="(clase, dia) in horario">
+                                <div v-for="aula in clase">
+                                     <div class="clickleable table-info custom-td">
+                                          {{aula.nombre_aula}}<br>
+                                          {{aula.nombre_materia}}<br>
+                                          ({{aula.detalle_grupo_docente}})
+                                     </div>
+                                </div>
+                                <button v-if="clase.length < cantidad_aulas"
+                                        v-on:click="mostrarAgregar(hora, dia)"
+                                        class="btn">
+                                    <i class="fas fa-plus clickleable"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
             <div class="modal fade" id="modal-agregar-clase">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Añadir Clase</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                          <div class="modal-body">
-                              <div v-if="aulas_disponibles.length > 0">
-                                <label>Aulas disponibles</label>
-                                <select v-model="aula" 
-                                        class="form-control" >
-                                    <option v-for="(aula, index) in aulas_disponibles"
-                                            :value="aula">
-                                        Aula: {{aula.nombre_aula}}
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Añadir Clase</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                      <div class="modal-body">
+                        <div v-if="aulas_disponibles.length > 0">
+                            <label>Aulas disponibles</label>
+                            <select v-model="aula" 
+                                    class="form-control" >
+                                <option v-for="(aula, index) in aulas_disponibles"
+                                        :value="aula">
+                                    Aula: {{aula.nombre_aula}}
+                                </option>
+                            </select>
+                            
+                            <div v-if="materias.length > 0">
+                                <label>Selecciona una Materia</label>
+                                <select v-model="materia" 
+                                        v-on:change="cambiarMateria()" class="form-control" >
+                                    <option v-for="(materia, index) in materias"
+                                            :value="materia">
+                                        {{materia.nombre_materia}}
                                     </option>
                                 </select> 
-                              </div>
-                              <p>No se cuenta con aulas disponibles para este horario</p>
-                          </div>
+                                <div v-if="grupos_docentes.length > 0">
+                                    <label>Selecciona un Grupo Docente</label>
+                                    <select v-model="grupo_docente" 
+                                            v-on:change="cambiarMateria()" class="form-control" >
+                                        <option v-for="(grupo_docente, index) in grupos_docentes"
+                                                :value="grupo_docente">
+                                            {{grupo_docente.detalle_grupo_docente}}
+                                        </option>
+                                    </select> 
+                                </div>
+                                <p v-else><br>No se tiene ningún grupo docente disponible</p>
+                            </div> 
+                            <p v-else><br>No se tiene ninguna materia disponible</p>
+                        </div>
+                        <p v-else>No se cuenta con aulas disponibles para este horario</p>
+                      </div>
 
-                          <div class="modal-footer">
-                            <button v-if="aula.id"
-                                    v-on:click="agregar()" 
-                                    type="button" class="m-3 btn btn-primary pull-left">
-                                Añadir
-                            </button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                          </div>
-                    </div>
-                  </div>
+                      <div class="modal-footer">
+                        <button v-if="grupo_docente.id && aula.id"
+                                v-on:click="agregar()" 
+                                type="button" class="m-3 btn btn-primary pull-left">
+                            Añadir
+                        </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      </div>
                 </div>
+              </div>
+            </div>
         </div>
-        <p v-else>No existe el grupo docente</p>
+        <p v-else>No existen gestiones disponibles</p>
     </div>
 </template>
 
 <script>    
     export default {
-        props: ['grupo_docente_id'],
         data() {
             return {
                 mensajes: '',
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                gestiones: [],
+                gestion: {id:'', activa:false},
+                materias: [],
+                materia: {},
+                grupos_docentes: [],
                 grupo_docente: {},
                 
                 horas: [
@@ -103,17 +146,40 @@
                 aula: {},
                 horario_id: -1,
                 dia: -1,
+                
+                cantidad_aulas: 0,
             }
         },
     
         methods:{
             init(){
                 this.axios
-                    .get('/administrador/grupodocente/'+this.grupo_docente_id)
+                    .get('/administrador/gestiones')
+                    .then((response)=>{
+                        this.gestiones = response.data;
+                        if(this.gestiones.length > 0){
+                            const gestion = this.gestiones.find(gestion => gestion.activa == true);
+                            
+                            if(gestion)
+                                this.gestion = gestion;
+                            else
+                                this.gestion = this.gestiones[0];
+                                    
+                            this.cambiarGestion();
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
+            cambiarGestion(){
+                this.axios
+                    .get('/administrador/aulas/cantidad')
                     .then((response)=>{
                         var datos = response.data;
-                        this.grupo_docente = datos;
-                            this.obtenerHorarios();                   
+                        this.cantidad_aulas = datos;                        
+                        this.obtenerHorarios();                   
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -126,7 +192,7 @@
                 }
                 
                 this.axios
-                    .get('/administrador/clases/'+this.grupo_docente_id)
+                    .get('/administrador/clases/'+this.gestion.id)
                     .then((response)=>{
                         var datos = response.data;
                         this.clases = datos;
@@ -152,15 +218,44 @@
                 
                 this.axios
                     .get('/administrador/clases/disponibles/'+
-                         this.grupo_docente.gestion_id+'/'+
+                         this.gestion.id+'/'+
                          this.horario_id+'/'+
                          this.dia)
                     .then((response)=>{
                         this.aulas_disponibles = response.data;
                         if(this.aulas_disponibles.length > 0)
                             this.aula = this.aulas_disponibles[0];
-                            
+                        this.obtenerMaterias();
                         $('#modal-agregar-clase').modal('show');
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
+            obtenerMaterias(){
+                this.axios
+                    .get('/administrador/materias/'+this.gestion.id)
+                    .then((response)=>{
+                        this.materias = response.data;
+                        if(this.materias.length){
+                            this.materia = this.materias[0];
+                            this.cambiarMateria();
+                        }
+                        
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
+            cambiarMateria(){
+                this.axios
+                    .get('/administrador/gruposdocentes/'+this.materia.id)
+                    .then((response)=>{
+                        this.grupos_docentes = response.data;
+                        if(this.grupos_docentes.length)
+                            this.grupo_docente = this.grupos_docentes[0];
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -172,7 +267,7 @@
                     'horario_id': this.horario_id,
                     'dia': this.dia,
                     'aula_id': this.aula.id,
-                    'grupo_docente_id': this.grupo_docente_id,
+                    'grupo_docente_id': this.grupo_docente.id,
                 };
                 this.axios
                     .post('/administrador/clase', params)

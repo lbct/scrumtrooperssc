@@ -13,6 +13,7 @@ Route::post('administrador/fechasinscripcion', 'Administrador\FechasInscripcion\
 Route::delete('administrador/fechasinscripcion', 'Administrador\FechasInscripcion\Control@borrar');
 
 Route::get('administrador/aulas', 'Administrador\Aula\Control@todas');
+Route::get('administrador/aulas/cantidad', 'Administrador\Aula\Control@cantidad');
 Route::post('administrador/aula', 'Administrador\Aula\Control@agregar');
 Route::put('administrador/aula', 'Administrador\Aula\Control@editar');
 Route::delete('administrador/aula', 'Administrador\Aula\Control@borrar');

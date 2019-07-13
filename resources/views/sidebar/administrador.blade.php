@@ -45,6 +45,13 @@
     </li>
 
     <li class="nav-item">
+        <router-link :to="{ name: 'AdministradorClases' }" class="nav-link">
+            <i class="fas fa-graduation-cap menu-icon"></i>
+            <span class="menu-title">Clases</span>
+        </router-link>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#administrador_usuarios" aria-expanded="false" aria-controls="administrador_usuarios">
           <i class="fas fa-users menu-icon"></i>
           <span class="menu-title">Usuarios</span>

@@ -20,6 +20,12 @@ class Control extends Base
         return $aulas;
     }
     
+    public function cantidad(Request $request){
+        $aulas = Aula::all();
+        $cantidad = $aulas->count();
+        return $cantidad;
+    }
+    
     public function agregar(Request $request){
         $codigo_aula    = $request->codigo_aula;
         $nombre_aula    = $request->nombre_aula;

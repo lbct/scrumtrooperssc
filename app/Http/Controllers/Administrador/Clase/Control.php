@@ -17,9 +17,11 @@ use Illuminate\Support\Collection;
 
 class Control extends Base
 {
-    public function todas(Request $request, $grupo_docente_id){
-        $clases = Clase::where('grupo_docente_id', $grupo_docente_id)
+    public function todas(Request $request, $gestion_id){
+        $clases = Clase::where('clase.gestion_id', $gestion_id)
                   ->join('aula', 'aula.id', '=', 'clase.aula_id')
+                  ->join('grupo_docente', 'grupo_docente.id', '=', 'clase.grupo_docente_id')
+                  ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                   ->get();
         
         return $clases;

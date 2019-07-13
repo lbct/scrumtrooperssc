@@ -2089,6 +2089,282 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mensajes: '',
+      tipo_mensaje: '',
+      key_mensajes: 0,
+      gestiones: [],
+      gestion: {
+        id: '',
+        activa: false
+      },
+      materias: [],
+      materia: {},
+      grupos_docentes: [],
+      grupo_docente: {},
+      horas: ["06:45/08:15", "08:15/09:45", "09:45/11:15", "11:15/12:45", "12:45/14:15", "14:15/15:45", "15:45/17:15", "17:15/18:45", "18:45/20:15", "20:15/21:45"],
+      key_clases: 0,
+      horarios: [[[]]],
+      clases: [],
+      aulas_disponibles: [],
+      aula: {},
+      horario_id: -1,
+      dia: -1,
+      cantidad_aulas: 0
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/administrador/gestiones').then(function (response) {
+        _this.gestiones = response.data;
+
+        if (_this.gestiones.length > 0) {
+          var gestion = _this.gestiones.find(function (gestion) {
+            return gestion.activa == true;
+          });
+
+          if (gestion) _this.gestion = gestion;else _this.gestion = _this.gestiones[0];
+
+          _this.cambiarGestion();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarGestion: function cambiarGestion() {
+      var _this2 = this;
+
+      this.axios.get('/administrador/aulas/cantidad').then(function (response) {
+        var datos = response.data;
+        _this2.cantidad_aulas = datos;
+
+        _this2.obtenerHorarios();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    obtenerHorarios: function obtenerHorarios() {
+      var _this3 = this;
+
+      for (var i = 0; i < 10; i++) {
+        this.horarios[i] = [[], [], [], [], [], []];
+      }
+
+      this.axios.get('/administrador/clases/' + this.gestion.id).then(function (response) {
+        var datos = response.data;
+        _this3.clases = datos;
+
+        _this3.clases.forEach(function (clase) {
+          var horario = clase.horario_id - 1;
+          var dia = clase.dia - 1;
+          if (_this3.horarios[horario][dia].lenght) _this3.horarios[horario][dia] = [clase];else _this3.horarios[horario][dia].push(clase);
+        });
+
+        _this3.key_clases++;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    mostrarAgregar: function mostrarAgregar(hora, dia) {
+      var _this4 = this;
+
+      this.horario_id = hora + 1;
+      this.dia = dia + 1;
+      this.aula = {};
+      this.axios.get('/administrador/clases/disponibles/' + this.gestion.id + '/' + this.horario_id + '/' + this.dia).then(function (response) {
+        _this4.aulas_disponibles = response.data;
+        if (_this4.aulas_disponibles.length > 0) _this4.aula = _this4.aulas_disponibles[0];
+
+        _this4.obtenerMaterias();
+
+        $('#modal-agregar-clase').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    obtenerMaterias: function obtenerMaterias() {
+      var _this5 = this;
+
+      this.axios.get('/administrador/materias/' + this.gestion.id).then(function (response) {
+        _this5.materias = response.data;
+
+        if (_this5.materias.length) {
+          _this5.materia = _this5.materias[0];
+
+          _this5.cambiarMateria();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarMateria: function cambiarMateria() {
+      var _this6 = this;
+
+      this.axios.get('/administrador/gruposdocentes/' + this.materia.id).then(function (response) {
+        _this6.grupos_docentes = response.data;
+        if (_this6.grupos_docentes.length) _this6.grupo_docente = _this6.grupos_docentes[0];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    agregar: function agregar() {
+      var _this7 = this;
+
+      var params = {
+        'horario_id': this.horario_id,
+        'dia': this.dia,
+        'aula_id': this.aula.id,
+        'grupo_docente_id': this.grupo_docente.id
+      };
+      this.axios.post('/administrador/clase', params).then(function (response) {
+        _this7.obtenerHorarios();
+
+        $('#modal-agregar-clase').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Clases';
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['grupo_docente_id'],
   data: function data() {
@@ -2104,7 +2380,8 @@ __webpack_require__.r(__webpack_exports__);
       aulas_disponibles: [],
       aula: {},
       horario_id: -1,
-      dia: -1
+      dia: -1,
+      cantidad_aulas: 0
     };
   },
   methods: {
@@ -2115,49 +2392,61 @@ __webpack_require__.r(__webpack_exports__);
         var datos = response.data;
         _this.grupo_docente = datos;
 
-        _this.obtenerHorarios();
+        _this.obtenerCantidadAulas();
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    obtenerCantidadAulas: function obtenerCantidadAulas() {
+      var _this2 = this;
+
+      this.axios.get('/administrador/aulas/cantidad').then(function (response) {
+        var datos = response.data;
+        _this2.cantidad_aulas = datos;
+
+        _this2.obtenerHorarios();
       })["catch"](function (error) {
         console.log(error);
       });
     },
     obtenerHorarios: function obtenerHorarios() {
-      var _this2 = this;
+      var _this3 = this;
 
       for (var i = 0; i < 10; i++) {
         this.horarios[i] = [[], [], [], [], [], []];
       }
 
-      this.axios.get('/administrador/clases/' + this.grupo_docente_id).then(function (response) {
+      this.axios.get('/administrador/clases/' + this.grupo_docente.gestion_id).then(function (response) {
         var datos = response.data;
-        _this2.clases = datos;
+        _this3.clases = datos;
 
-        _this2.clases.forEach(function (clase) {
+        _this3.clases.forEach(function (clase) {
           var horario = clase.horario_id - 1;
           var dia = clase.dia - 1;
-          if (_this2.horarios[horario][dia].lenght) _this2.horarios[horario][dia] = [clase];else _this2.horarios[horario][dia].push(clase);
+          if (_this3.horarios[horario][dia].lenght) _this3.horarios[horario][dia] = [clase];else _this3.horarios[horario][dia].push(clase);
         });
 
-        _this2.key_clases++;
+        _this3.key_clases++;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarAgregar: function mostrarAgregar(hora, dia) {
-      var _this3 = this;
+      var _this4 = this;
 
       this.horario_id = hora + 1;
       this.dia = dia + 1;
       this.aula = {};
       this.axios.get('/administrador/clases/disponibles/' + this.grupo_docente.gestion_id + '/' + this.horario_id + '/' + this.dia).then(function (response) {
-        _this3.aulas_disponibles = response.data;
-        if (_this3.aulas_disponibles.length > 0) _this3.aula = _this3.aulas_disponibles[0];
+        _this4.aulas_disponibles = response.data;
+        if (_this4.aulas_disponibles.length > 0) _this4.aula = _this4.aulas_disponibles[0];
         $('#modal-agregar-clase').modal('show');
       })["catch"](function (error) {
         console.log(error);
       });
     },
     agregar: function agregar() {
-      var _this4 = this;
+      var _this5 = this;
 
       var params = {
         'horario_id': this.horario_id,
@@ -2166,7 +2455,7 @@ __webpack_require__.r(__webpack_exports__);
         'grupo_docente_id': this.grupo_docente_id
       };
       this.axios.post('/administrador/clase', params).then(function (response) {
-        _this4.obtenerHorarios();
+        _this5.obtenerHorarios();
 
         $('#modal-agregar-clase').modal('hide');
       })["catch"](function (error) {
@@ -17591,6 +17880,490 @@ var render = function() {
         attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
       }),
       _vm._v(" "),
+      _vm.gestiones.length > 0
+        ? _c(
+            "div",
+            [
+              _c("center", [
+                _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                  _c("label", [_vm._v("Selecciona una Gestión")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.gestion,
+                          expression: "gestion"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.gestion = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          function($event) {
+                            return _vm.cambiarGestion()
+                          }
+                        ]
+                      }
+                    },
+                    _vm._l(_vm.gestiones, function(gestion, index) {
+                      return _c("option", { domProps: { value: gestion } }, [
+                        _vm._v(
+                          "\n                        Gestion: " +
+                            _vm._s(gestion.anho_gestion) +
+                            " - " +
+                            _vm._s(gestion.periodo) +
+                            "\n                    "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c(
+                  "table",
+                  { key: _vm.key_clases, staticClass: "table table-hover" },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.horarios, function(horario, hora) {
+                        return _c(
+                          "tr",
+                          [
+                            _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
+                            _vm._v(" "),
+                            _vm._l(horario, function(clase, dia) {
+                              return _c(
+                                "td",
+                                [
+                                  _vm._l(clase, function(aula) {
+                                    return _c("div", [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "clickleable table-info custom-td"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                      " +
+                                              _vm._s(aula.nombre_aula)
+                                          ),
+                                          _c("br"),
+                                          _vm._v(
+                                            "\n                                      " +
+                                              _vm._s(aula.nombre_materia)
+                                          ),
+                                          _c("br"),
+                                          _vm._v(
+                                            "\n                                      (" +
+                                              _vm._s(
+                                                aula.detalle_grupo_docente
+                                              ) +
+                                              ")\n                                 "
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  }),
+                                  _vm._v(" "),
+                                  clase.length < _vm.cantidad_aulas
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.mostrarAgregar(
+                                                hora,
+                                                dia
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-plus clickleable"
+                                          })
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ],
+                                2
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: { id: "modal-agregar-clase" }
+                },
+                [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _vm.aulas_disponibles.length > 0
+                          ? _c("div", [
+                              _c("label", [_vm._v("Aulas disponibles")]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.aula,
+                                      expression: "aula"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.aula = $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    }
+                                  }
+                                },
+                                _vm._l(_vm.aulas_disponibles, function(
+                                  aula,
+                                  index
+                                ) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: aula } },
+                                    [
+                                      _vm._v(
+                                        "\n                                Aula: " +
+                                          _vm._s(aula.nombre_aula) +
+                                          "\n                            "
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              ),
+                              _vm._v(" "),
+                              _vm.materias.length > 0
+                                ? _c("div", [
+                                    _c("label", [
+                                      _vm._v("Selecciona una Materia")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.materia,
+                                            expression: "materia"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        on: {
+                                          change: [
+                                            function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.materia = $event.target
+                                                .multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            },
+                                            function($event) {
+                                              return _vm.cambiarMateria()
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      _vm._l(_vm.materias, function(
+                                        materia,
+                                        index
+                                      ) {
+                                        return _c(
+                                          "option",
+                                          { domProps: { value: materia } },
+                                          [
+                                            _vm._v(
+                                              "\n                                    " +
+                                                _vm._s(materia.nombre_materia) +
+                                                "\n                                "
+                                            )
+                                          ]
+                                        )
+                                      }),
+                                      0
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.grupos_docentes.length > 0
+                                      ? _c("div", [
+                                          _c("label", [
+                                            _vm._v(
+                                              "Selecciona un Grupo Docente"
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.grupo_docente,
+                                                  expression: "grupo_docente"
+                                                }
+                                              ],
+                                              staticClass: "form-control",
+                                              on: {
+                                                change: [
+                                                  function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.grupo_docente = $event
+                                                      .target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  },
+                                                  function($event) {
+                                                    return _vm.cambiarMateria()
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            _vm._l(
+                                              _vm.grupos_docentes,
+                                              function(grupo_docente, index) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: {
+                                                      value: grupo_docente
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                        " +
+                                                        _vm._s(
+                                                          grupo_docente.detalle_grupo_docente
+                                                        ) +
+                                                        "\n                                    "
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            0
+                                          )
+                                        ])
+                                      : _c("p", [
+                                          _c("br"),
+                                          _vm._v(
+                                            "No se tiene ningún grupo docente disponible"
+                                          )
+                                        ])
+                                  ])
+                                : _c("p", [
+                                    _c("br"),
+                                    _vm._v(
+                                      "No se tiene ninguna materia disponible"
+                                    )
+                                  ])
+                            ])
+                          : _c("p", [
+                              _vm._v(
+                                "No se cuenta con aulas disponibles para este horario"
+                              )
+                            ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _vm.grupo_docente.id && _vm.aula.id
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "m-3 btn btn-primary pull-left",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.agregar()
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                        Añadir\n                    "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Cancelar")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        : _c("p", [_vm._v("No existen gestiones disponibles")])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Lunes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Martes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Miercoles")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Jueves")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Viernes")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sabado")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Añadir Clase")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
+      _vm._v(" "),
       _vm.grupo_docente.id
         ? _c("div", [
             _c("h4", [
@@ -17615,63 +18388,76 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("table", { key: _vm.key_clases, staticClass: "table" }, [
-              _vm._m(0),
-              _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
               _c(
-                "tbody",
-                _vm._l(_vm.horarios, function(horario, hora) {
-                  return _c(
-                    "tr",
-                    [
-                      _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
-                      _vm._v(" "),
-                      _vm._l(horario, function(clase, dia) {
-                        return _c(
-                          "td",
-                          [
-                            _vm._l(clase, function(aula) {
-                              return _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "clickleable table-info custom-td"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                             " +
-                                      _vm._s(aula.nombre_aula) +
-                                      "\n                        "
-                                  )
-                                ]
-                              )
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.mostrarAgregar(hora, dia)
-                                  }
-                                }
-                              },
+                "table",
+                { key: _vm.key_clases, staticClass: "table table-hover" },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.horarios, function(horario, hora) {
+                      return _c(
+                        "tr",
+                        [
+                          _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
+                          _vm._v(" "),
+                          _vm._l(horario, function(clase, dia) {
+                            return _c(
+                              "td",
                               [
-                                _c("i", {
-                                  staticClass: "fas fa-plus clickleable"
-                                })
-                              ]
+                                _vm._l(clase, function(aula) {
+                                  return _c("div", [
+                                    aula.grupo_docente_id ==
+                                    _vm.grupo_docente_id
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "clickleable table-info custom-td"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                     " +
+                                                _vm._s(aula.nombre_aula) +
+                                                "\n                                 "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                }),
+                                _vm._v(" "),
+                                clase.length < _vm.cantidad_aulas
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.mostrarAgregar(hora, dia)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-plus clickleable"
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              2
                             )
-                          ],
-                          2
-                        )
-                      })
-                    ],
-                    2
+                          })
+                        ],
+                        2
+                      )
+                    }),
+                    0
                   )
-                }),
-                0
+                ]
               )
             ]),
             _vm._v(" "),
@@ -17739,13 +18525,11 @@ var render = function() {
                               0
                             )
                           ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "No se cuenta con aulas disponibles para este horario"
-                        )
-                      ])
+                        : _c("p", [
+                            _vm._v(
+                              "No se cuenta con aulas disponibles para este horario"
+                            )
+                          ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
@@ -18914,7 +19698,8 @@ var render = function() {
                                             staticClass: "btn btn-primary",
                                             attrs: {
                                               to: {
-                                                name: "AdministradorClases",
+                                                name:
+                                                  "AdministradorClasesGrupoDocente",
                                                 params: {
                                                   grupo_docente_id:
                                                     grupo_docente.id
@@ -18924,7 +19709,7 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                        Ver Horarios\n                                    "
+                                              "\n                                        Ver Clases\n                                    "
                                             )
                                           ]
                                         )
@@ -19430,9 +20215,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Detalle")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cantidad de Horarios")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cantidad de Clases")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Horarios")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Clases")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
       ])
@@ -40463,7 +41248,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/Administrador/Aulas */ "./resources/js/views/Administrador/Aulas.vue");
 /* harmony import */ var _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/Administrador/Materias */ "./resources/js/views/Administrador/Materias.vue");
 /* harmony import */ var _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/Administrador/GruposDocentes */ "./resources/js/views/Administrador/GruposDocentes.vue");
-/* harmony import */ var _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/Administrador/Clases */ "./resources/js/views/Administrador/Clases.vue");
+/* harmony import */ var _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/Administrador/ClasesGrupoDocente */ "./resources/js/views/Administrador/ClasesGrupoDocente.vue");
+/* harmony import */ var _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./views/Administrador/Clases */ "./resources/js/views/Administrador/Clases.vue");
 
 
 
@@ -40506,6 +41292,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vueDropzone', vue2_dropzon
 
 
  //Administrador
+
 
 
 
@@ -40638,9 +41425,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'AdministradorGruposDocentes',
     component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_37__["default"]
   }, {
-    path: '/panel/administrador/Clases/:grupo_docente_id',
+    path: '/panel/administrador/Clases',
     name: 'AdministradorClases',
-    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_38__["default"],
+    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_39__["default"]
+  }, {
+    path: '/panel/administrador/Clases/:grupo_docente_id',
+    name: 'AdministradorClasesGrupoDocente',
+    component: _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_38__["default"],
     props: true
   }]
 });
@@ -40871,6 +41662,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Clases_vue_vue_type_template_id_22c0afcc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/ClasesGrupoDocente.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/views/Administrador/ClasesGrupoDocente.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba& */ "./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba&");
+/* harmony import */ var _ClasesGrupoDocente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClasesGrupoDocente.vue?vue&type=script&lang=js& */ "./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ClasesGrupoDocente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Administrador/ClasesGrupoDocente.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClasesGrupoDocente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClasesGrupoDocente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ClasesGrupoDocente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Administrador/ClasesGrupoDocente.vue?vue&type=template&id=96d3e3ba&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ClasesGrupoDocente_vue_vue_type_template_id_96d3e3ba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

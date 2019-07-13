@@ -38,8 +38,8 @@
                                 <tr>
                                     <th scope="col">Nº</th>
                                     <th scope="col">Detalle</th>
-                                    <th scope="col">Cantidad de Horarios</th>
-                                    <th scope="col">Horarios</th>
+                                    <th scope="col">Cantidad de Clases</th>
+                                    <th scope="col">Clases</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -51,9 +51,9 @@
                                         {{grupo_docente.cantidad_horarios}}
                                     </td>
                                     <td>
-                                        <router-link :to="{ name:'AdministradorClases', params: {grupo_docente_id: grupo_docente.id } }" 
+                                        <router-link :to="{ name:'AdministradorClasesGrupoDocente', params: {grupo_docente_id: grupo_docente.id } }" 
                                                      class="btn btn-primary">
-                                            Ver Horarios
+                                            Ver Clases
                                         </router-link>
                                     </td>
                                     <td>
