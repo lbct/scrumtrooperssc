@@ -69,6 +69,13 @@ class Docente extends Model
                     ->select("grupo_docente_id as id", "nombre_materia")
                     ->get();
         
+        $materias = $materias->map(function ($materia) {
+                        $grupo_docente_id = $materia['id'];
+                        $grupo_docente = GrupoDocente::find($grupo_docente_id);
+                        $materia['tiene_clases'] = $grupo_docente->tieneClases();
+                        return $materia;
+                     });
+        
         return $materias;
     }
     

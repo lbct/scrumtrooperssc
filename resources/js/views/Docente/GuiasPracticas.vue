@@ -13,11 +13,13 @@
               </div>
             </center>
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-            <p>
-                <button v-on:click="verAgregarSesion()" class="btn btn-primary">
+            <div>
+                <button v-if="materia.tiene_clases"
+                        v-on:click="verAgregarSesion()" class="mb-3 btn btn-primary">
                     Añadir Semana
                 </button>
-            </p>
+                <p v-else>No se tiene clases disponibles</p>
+            </div>
             <div v-if="sesiones.length > 0" class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">

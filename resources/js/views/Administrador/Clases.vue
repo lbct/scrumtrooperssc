@@ -33,7 +33,8 @@
                             <td>{{horas[hora]}}</td>
                             <td v-for="(clase, dia) in horario">
                                 <div v-for="aula in clase">
-                                     <div class="clickleable table-info custom-td">
+                                     <div v-on:click="verMas(aula)"
+                                          v-bind:class="'clickleable custom-td '+colorGrupoDocente(aula.grupo_docente_id)">
                                           {{aula.nombre_aula}}<br>
                                           {{aula.nombre_materia}}<br>
                                           ({{aula.detalle_grupo_docente}})
@@ -82,7 +83,7 @@
                                 <div v-if="grupos_docentes.length > 0">
                                     <label>Selecciona un Grupo Docente</label>
                                     <select v-model="grupo_docente" 
-                                            v-on:change="cambiarMateria()" class="form-control" >
+                                            class="form-control" >
                                         <option v-for="(grupo_docente, index) in grupos_docentes"
                                                 :value="grupo_docente">
                                             {{grupo_docente.detalle_grupo_docente}}
@@ -103,6 +104,38 @@
                             Añadir
                         </button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="modal fade" id="modal-editar-clase">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Clase</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                      <div class="modal-body">
+                          <div>
+                              <h5>Materia: {{aula.nombre_materia}}</h5>
+                              <h6>Grupo Docente: {{aula.detalle_grupo_docente}}</h6>
+                              <h6>Aula: {{aula.nombre_aula}}</h6>
+                              <p v-if="aula.semana_actual_sesion">Semana: {{aula.semana_actual_sesion}}</p>
+                              <div v-else>
+                                  <p>Clase sin iniciar</p>
+                                  <button v-on:click="borrar()" 
+                                          type="button" class="m-2 btn btn-danger">
+                                        Eliminar Clase
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                       </div>
                 </div>
               </div>
@@ -250,6 +283,9 @@
             },
             
             cambiarMateria(){
+                this.grupos_docentes = [];
+                this.grupo_docente = {};
+                
                 this.axios
                     .get('/administrador/gruposdocentes/'+this.materia.id)
                     .then((response)=>{
@@ -279,7 +315,45 @@
                         console.log(error);
                     });
             },
-        },            
+            
+            verMas(aula){
+                this.aula = aula;
+                $('#modal-editar-clase').modal('show');
+            },
+            
+            borrar(){
+                const params = {
+                    'clase_id': this.aula.id,
+                };
+                this.axios
+                    .delete('/administrador/clase', { data: params })
+                    .then((response)=>{
+                        this.obtenerHorarios();
+                        $('#modal-editar-clase').modal('hide');
+                    });
+            },
+            
+            colorGrupoDocente(grupo_docente_id) {
+                var grupo_docente = grupo_docente_id%8;
+                
+                if(grupo_docente == 1)
+                    return 'table-primary';
+                else if(grupo_docente == 2)
+                    return 'table-secondary';
+                else if(grupo_docente == 3)
+                    return 'table-success';
+                else if(grupo_docente == 4)
+                    return 'table-danger';
+                else if(grupo_docente == 5)
+                    return 'table-warning';
+                else if(grupo_docente == 6)
+                    return 'table-info';
+                else if(grupo_docente == 7)
+                    return 'table-light';
+                else if(grupo_docente == 8)
+                    return 'table-dark';
+            },
+        },           
         
         mounted(){
             this.init();

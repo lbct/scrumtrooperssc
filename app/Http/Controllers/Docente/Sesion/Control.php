@@ -31,7 +31,7 @@ class Control extends Base
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
         $grupo_docente_id = $request->grupo_docente_id;
         
-        if($docente->accesoGrupoDocente($grupo_docente_id)){
+        if($docente->accesoGrupoDocente($grupo_docente_id)){            
             $archivos = Input::all();
             $reglas = array(
                 'file' => 'required|mimes:zip,rar,pdf|max:5000',
@@ -42,21 +42,24 @@ class Control extends Base
                 $grupo_docente     = GrupoDocente::find($grupo_docente_id);
                 $file              = $request->file('file');
                 $nombre_archivo    = $file->getClientOriginalName();
-                $semana            = $grupo_docente->maximaSemana()+1;
                 
-                $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;                
-                $archivo = Storage::disk('guiasPracticas')->put($ruta_destino, \File::get($file));
+                if($grupo_docente->tieneClases()){
+                    $semana            = $grupo_docente->maximaSemana()+1;
+                    $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;                
+                    $archivo = Storage::disk('guiasPracticas')->put($ruta_destino, \File::get($file));
 
-                $guia_practica = new GuiaPractica;
-                $guia_practica->archivo = $nombre_archivo;
-                $guia_practica->save();
-                
-                $clases = $grupo_docente->clase;
-                foreach($clases as $clase){
-                    $clase->agregarSesion($guia_practica->id, $semana);
+                    $guia_practica = new GuiaPractica;
+                    $guia_practica->archivo = $nombre_archivo;
+                    $guia_practica->save();
+
+                    $clases = $grupo_docente->clase;
+                    foreach($clases as $clase){
+                        $clase->agregarSesion($guia_practica->id, $semana);
+                    }
+
+                    return response()->json(['exito'=>['Guía Práctica añadida con éxito']], 200);
                 }
-
-                return response()->json(['exito'=>['Guía Práctica añadida con éxito']], 200);
+                return response()->json(['error'=>['No se tiene clases disponibles']], 400);
             }
             return response()->json(['error'=>['Archivo no válido']], 400);
         }

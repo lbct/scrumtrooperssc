@@ -10,8 +10,15 @@ class MateriaSeeder extends Seeder
         Materia::create([
             'gestion_id'            => 1,
             'codigo_materia' 		=> '2010010',
-            'nombre_materia' 		=> 'INTRODUCCION A LA PROGRAMACION',
-            'detalle_materia' 		=> 'INTRODUCCION A LA PROGRAMACION',
+            'nombre_materia' 		=> 'Introducción a la programación',
+            'detalle_materia' 		=> 'Primer semestre informática y sistemas',
+        ]);
+        
+        Materia::create([
+            'gestion_id'            => 1,
+            'codigo_materia' 		=> '2010012',
+            'nombre_materia' 		=> 'Elementos de Programación',
+            'detalle_materia' 		=> 'Segundo semestre informática y sistemas',
         ]);
     }
 }

@@ -31,20 +31,40 @@ class GrupoDocente extends Model
     
     public function sesiones()
     {
+        $sesiones = [];
         $clase = Clase::where('grupo_docente_id', $this->id)
                  ->orderBy('semana_actual_sesion', 'desc')
                  ->first();
         
-        return $clase->sesiones();
+        if($clase)
+            $sesiones = $clase->sesiones();
+        
+        return $sesiones;
+    }
+    
+    public function tieneClases()
+    {
+        $tiene = false;
+        $clase = Clase::where('grupo_docente_id', $this->id)
+                 ->first();
+        
+        if($clase)
+            $tiene = true;
+        
+        return $tiene;
     }
     
     public function maximaSemana()
     {
-        $clases = Clase::where('grupo_docente_id', $this->id)
+        $maxima_semana = -1;
+        $clase = Clase::where('grupo_docente_id', $this->id)
                   ->orderBy('semana_actual_sesion', 'desc')
                   ->first();
         
-        return $clases->maximaSemana();
+        if($clase)
+            $maxima_semana = $clase->maximaSemana();
+        
+        return $maxima_semana;
     }
     
     public function generarDetalle()
