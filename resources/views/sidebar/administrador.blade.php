@@ -70,12 +70,12 @@
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'AdministradorAuxliaresTerminal' }" class="nav-link">
+                <router-link :to="{ name: 'AdministradorAuxiliaresTerminal' }" class="nav-link">
                     Auxiliares de Terminal
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'AdministradorAuxliaresLaboratorio' }" class="nav-link">
+                <router-link :to="{ name: 'AdministradorAuxiliaresLaboratorio' }" class="nav-link">
                     Auxiliares de Laboratorio
                 </router-link>
             </li>

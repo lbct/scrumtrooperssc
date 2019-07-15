@@ -13,7 +13,7 @@ class CrearTablaEstudiante extends Migration
             $table->increments('id');
             $table->integer('usuario_id')->unsigned();
             
-            $table->string('codigo_sis', 15)->unique();;
+            $table->string('codigo_sis', 15)->default('');
             $table->timestamps();
             
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');

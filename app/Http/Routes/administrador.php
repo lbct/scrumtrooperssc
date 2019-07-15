@@ -36,3 +36,17 @@ Route::get('administrador/clases/{gestion_id}', 'Administrador\Clase\Control@tod
 Route::get('administrador/clases/disponibles/{gestion_id}/{horario_id}/{dia}', 'Administrador\Clase\Control@disponibles');
 Route::post('administrador/clase', 'Administrador\Clase\Control@agregar');
 Route::delete('administrador/clase', 'Administrador\Clase\Control@borrar');
+
+Route::get('administrador/usuario/{usuario_id}', 'Administrador\Usuarios\Control@informacion');
+Route::put('administrador/usuario', 'Administrador\Usuarios\Control@editar');
+Route::put('administrador/usuario/password', 'Administrador\Usuarios\Control@editarPassword');
+Route::delete('administrador/usuario', 'Administrador\Usuarios\Control@borrar');
+
+Route::get('administrador/usuarios/administradores', 'Administrador\Usuarios\Administrador@todos');
+Route::get('administrador/usuarios/docentes', 'Administrador\Usuarios\Docente@todos');
+Route::get('administrador/usuarios/auxiliareslaboratorio', 'Administrador\Usuarios\AuxiliarLaboratorio@todos');
+Route::get('administrador/usuarios/auxiliaresterminal', 'Administrador\Usuarios\AuxiliarTerminal@todos');
+Route::get('administrador/usuarios/estudiantes', 'Administrador\Usuarios\Estudiante@todos');
+
+Route::get('administrador/roles/usuario/disponibles/{usuario_id}', 'Administrador\Rol\Control@disponibles');
+Route::put('administrador/rol/usuario', 'Administrador\Rol\Control@editar');

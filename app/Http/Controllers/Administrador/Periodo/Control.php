@@ -5,6 +5,7 @@ use App\Models\Usuario;
 use App\Models\Administrador;
 use App\Models\Periodo;
 use App\Models\Gestion;
+use App\Classes\Colecciones;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
@@ -21,18 +22,9 @@ class Control extends Base
                             ->select('periodo_id as id')
                             ->get();
         
-        $periodos = Periodo::all();
+        $todos_periodos = Periodo::all();
         
-        $periodos_diff = array_udiff($periodos->toArray(), $periodos_gestion->toArray(),
-                                    function ($obj_a, $obj_b) {
-                                        return $obj_a['id'] - $obj_b['id'];
-                                    });
-        
-        $periodos_disponibles = collect();
-        
-        foreach($periodos_diff as $periodo_diff){
-            $periodos_disponibles->push($periodo_diff);
-        }
+        $periodos_disponibles = Colecciones::diferenciaPorId($todos_periodos, $periodos_gestion);
         
         return $periodos_disponibles;
     }

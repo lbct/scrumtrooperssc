@@ -9,6 +9,7 @@ use App\Models\FechaInscripcion;
 use App\Models\Gestion;
 use App\Models\Materia;
 use App\Models\Clase;
+use App\Classes\Colecciones;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
@@ -64,18 +65,9 @@ class Control extends Base
                                 ->select('docente.id', 'nombre', 'apellido')
                                 ->get();
         
-        $docentes_disponibles = array_udiff($todos_docentes->toArray(), $docentes_registrados->toArray(),
-                                            function ($obj_a, $obj_b) {
-                                                return $obj_a['id'] - $obj_b['id'];
-                                            });
+        $docentes_disponibles = Colecciones::diferenciaPorId($todos_docentes, $docentes_registrados);
         
-        $docentes = collect();
-        
-        foreach($docentes_disponibles as $docente_disponible){
-            $docentes->push($docente_disponible);
-        }
-        
-        return $docentes;        
+        return $docentes_disponibles;        
     }
     
     public function agregarGrupoDocente(Request $request){

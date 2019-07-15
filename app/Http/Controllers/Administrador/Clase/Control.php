@@ -10,6 +10,7 @@ use App\Models\Gestion;
 use App\Models\Aula;
 use App\Models\Clase;
 use App\Models\Sesion;
+use App\Classes\Colecciones;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
@@ -42,18 +43,9 @@ class Control extends Base
             
             $todas_aulas    = Aula::all();
             
-            $aulas_disponibles = array_udiff($todas_aulas->toArray(), $aulas_ocupadas->toArray(),
-                                            function ($obj_a, $obj_b) {
-                                                return $obj_a['id'] - $obj_b['id'];
-                                            });
-        
-            $aulas = collect();
-
-            foreach($aulas_disponibles as $aula_disponible){
-                $aulas->push($aula_disponible);
-            }
+            $aulas_disponibles = Colecciones::diferenciaPorId($todas_aulas, $aulas_ocupadas);
             
-            return $aulas;
+            return $aulas_disponibles;
         }
     }
     

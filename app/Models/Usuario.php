@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\AsignaRol;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
 
@@ -64,5 +66,15 @@ class Usuario extends Model
             $tiene_rol = true;
         
         return $tiene_rol;
+    }
+    
+    public function roles()
+    {
+        $roles = AsignaRol::where('usuario_id', $this->id)
+                     ->join('rol', 'rol.id', '=', 'asigna_rol.rol_id')
+                     ->select('rol_id as id', 'descripcion')
+                     ->get();
+        
+        return $roles;
     }
 }

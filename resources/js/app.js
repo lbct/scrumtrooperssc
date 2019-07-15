@@ -13,8 +13,10 @@ Vue.use(Datetime)
 
 import App from './views/App'
 import Alertas from './components/Alertas'
+import AdministradorUsuarios from './components/AdministradorUsuarios'
 
 Vue.component('Alertas', Alertas)
+Vue.component('AdministradorUsuarios', AdministradorUsuarios)
 Vue.component('vueDropzone', vue2Dropzone)
 
 //Usuarios
@@ -58,7 +60,12 @@ import AdministradorMaterias from './views/Administrador/Materias'
 import AdministradorGruposDocentes from './views/Administrador/GruposDocentes'
 import AdministradorClasesGrupoDocente from './views/Administrador/ClasesGrupoDocente'
 import AdministradorClases from './views/Administrador/Clases'
-import AdministradorAdministradores from './views/Administrador/Administradores'
+import AdministradorAdministradores from './views/Administrador/Usuarios/Administradores'
+import AdministradorDocentes from './views/Administrador/Usuarios/Docentes'
+import AdministradorAuxiliaresTerminal from './views/Administrador/Usuarios/AuxiliaresTerminal'
+import AdministradorAuxiliaresLaboratorio from './views/Administrador/Usuarios/AuxiliaresLaboratorio'
+import AdministradorEstudiantes from './views/Administrador/Usuarios/Estudiantes'
+import AdministradorUsuario from './views/Administrador/Usuarios/Usuario'
 
 const router = new VueRouter({
     mode: 'history',
@@ -227,6 +234,32 @@ const router = new VueRouter({
             path: '/panel/administrador/Administradores',
             name: 'AdministradorAdministradores',
             component: AdministradorAdministradores,
+        },
+        {
+            path: '/panel/administrador/Docentes',
+            name: 'AdministradorDocentes',
+            component: AdministradorDocentes,
+        },
+        {
+            path: '/panel/administrador/AuxiliaresTerminal',
+            name: 'AdministradorAuxiliaresTerminal',
+            component: AdministradorAuxiliaresTerminal,
+        },
+        {
+            path: '/panel/administrador/AuxiliaresLaboratorio',
+            name: 'AdministradorAuxiliaresLaboratorio',
+            component: AdministradorAuxiliaresLaboratorio,
+        },
+        {
+            path: '/panel/administrador/Estudiantes',
+            name: 'AdministradorEstudiantes',
+            component: AdministradorEstudiantes,
+        },
+        {
+            path: '/panel/administrador/Usuario/:usuario_id',
+            name: 'AdministradorUsuario',
+            component: AdministradorUsuario,
+            props: true,
         },
     ],
 });
