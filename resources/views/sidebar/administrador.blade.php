@@ -60,6 +60,11 @@
         <div class="collapse" id="administrador_usuarios">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
+                <router-link :to="{ name: 'AdministradorAgregarUsuario' }" class="nav-link">
+                    Añadir Usuario
+                </router-link>
+            </li>
+            <li class="nav-item">
                 <router-link :to="{ name: 'AdministradorAdministradores' }" class="nav-link">
                     Administradores
                 </router-link>

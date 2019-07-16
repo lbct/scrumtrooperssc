@@ -66,6 +66,7 @@ import AdministradorAuxiliaresTerminal from './views/Administrador/Usuarios/Auxi
 import AdministradorAuxiliaresLaboratorio from './views/Administrador/Usuarios/AuxiliaresLaboratorio'
 import AdministradorEstudiantes from './views/Administrador/Usuarios/Estudiantes'
 import AdministradorUsuario from './views/Administrador/Usuarios/Usuario'
+import AdministradorAgregarUsuario from './views/Administrador/Usuarios/AgregarUsuario'
 
 const router = new VueRouter({
     mode: 'history',
@@ -260,6 +261,11 @@ const router = new VueRouter({
             name: 'AdministradorUsuario',
             component: AdministradorUsuario,
             props: true,
+        },
+        {
+            path: '/panel/administrador/AgregarUsuario',
+            name: 'AdministradorAgregarUsuario',
+            component: AdministradorAgregarUsuario,
         },
     ],
 });

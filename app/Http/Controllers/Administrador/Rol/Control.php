@@ -18,6 +18,12 @@ use Illuminate\Support\Collection;
 
 class Control extends Base
 {
+    public function todos(Request $request){
+        $todos_roles = Rol::select('id', 'descripcion')->get();
+        
+        return $todos_roles;
+    }
+    
     public function disponibles(Request $request, $usuario_id){
         $usuario = Usuario::find($usuario_id);
         $roles_disponibles = collect();
