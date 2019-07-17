@@ -24,8 +24,8 @@ class Control extends Base
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
         
         if($docente->accesoGuiaPractica($guia_practica_id)){
-            $guia_practica = GuiaPractica::find($guia_practica_id);
-            $ruta_archivo = $guia_practica->rutaArchivo();
+            $guia_practica  = GuiaPractica::find($guia_practica_id);
+            $ruta_archivo   = $guia_practica->rutaArchivo();
             $existe_archivo = Storage::disk('guiasPracticas')->exists($ruta_archivo);
             
             if($existe_archivo){
