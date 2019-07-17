@@ -6642,6 +6642,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['estudiante_clase_id'],
   data: function data() {
@@ -7663,6 +7667,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7746,6 +7754,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -26151,12 +26160,17 @@ var render = function() {
                                     {
                                       attrs: {
                                         href:
-                                          "/estudiante/archivos/practicas/" +
-                                          archivo.id
+                                          "/docente/archivos/enviospracticas/" +
+                                          archivo.id,
+                                        target: "_blank"
                                       }
                                     },
                                     [
-                                      _vm._v(_vm._s(archivo.archivo) + " "),
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(archivo.archivo) +
+                                          " \n                                    "
+                                      ),
                                       archivo.en_laboratorio
                                         ? _c("i", {
                                             staticClass: "fas fa-vial"
@@ -26174,6 +26188,8 @@ var render = function() {
                     0
                   )
                 ]),
+                _vm._v(" "),
+                _c("br"),
                 _vm._v(" "),
                 _c("h4", { staticClass: "text-left" }, [
                   _vm._v(
@@ -27764,11 +27780,16 @@ var render = function() {
                                           attrs: {
                                             href:
                                               "/estudiante/archivos/practicas/" +
-                                              archivo.id
+                                              archivo.id,
+                                            target: "_blank"
                                           }
                                         },
                                         [
-                                          _vm._v(_vm._s(archivo.archivo) + " "),
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(archivo.archivo) +
+                                              " \n                                    "
+                                          ),
                                           archivo.en_laboratorio
                                             ? _c("i", {
                                                 staticClass: "fas fa-vial"
@@ -27786,6 +27807,8 @@ var render = function() {
                         0
                       )
                     ]),
+                    _vm._v(" "),
+                    _c("br"),
                     _vm._v(" "),
                     _c("h4", { staticClass: "text-left" }, [
                       _vm._v(
@@ -28020,7 +28043,8 @@ var render = function() {
                                     attrs: {
                                       href:
                                         "/estudiante/archivos/practicas/" +
-                                        archivo.id
+                                        archivo.id,
+                                      target: "_blank"
                                     }
                                   },
                                   [

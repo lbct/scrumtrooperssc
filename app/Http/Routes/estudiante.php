@@ -12,3 +12,7 @@ Route::get('estudiante/sesiones/{estudiante_clase_id}', 'Estudiante\Sesion\Contr
 Route::get('estudiante/practicas/{estudiante_clase_id}', 'Estudiante\Practica\Control@guias');
 Route::post('estudiante/practica', 'Estudiante\Practica\Control@subir');
 Route::delete('estudiante/practica', 'Estudiante\Practica\Control@borrar');
+
+Route::get('estudiante/archivos/practicas/{envio_practica_id}', 'Estudiante\Practica\Control@descargar');
+
+Route::get('estudiante/archivos/guia_practica/{guia_practica_id}', 'Estudiante\GuiaPractica\Control@descargar');

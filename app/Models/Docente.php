@@ -7,6 +7,7 @@ use App\Models\GrupoADocente;
 use App\Models\GrupoDocente;
 use App\Models\EstudianteClase;
 use App\Models\Sesion;
+use App\Models\EnvioPractica;
 use Illuminate\Database\Eloquent\Model;
 
 class Docente extends Model
@@ -141,5 +142,36 @@ class Docente extends Model
                            ->count();
         
         return $clases_cursadas;
+    }
+    
+    public function accesoGuiaPractica($guia_practica_id)
+    {
+        $acceso = false;
+        
+        $grupo_a_docente = GrupoADocente::where('docente_id', $this->id)
+                           ->join('grupo_docente', 'grupo_docente.id', '=', 'grupo_a_docente.grupo_docente_id')
+                           ->join('clase', 'clase.grupo_docente_id', '=', 'grupo_docente.id')
+                           ->join('sesion', 'sesion.clase_id', '=', 'clase.id')
+                           ->where('sesion.guia_practica_id', $guia_practica_id)
+                           ->first();
+        
+        if($grupo_a_docente)
+            $acceso = true;
+        
+        return $acceso;
+    }
+    
+    public function accesoEnvioPractica($envio_practica_id)
+    {
+        $acceso = false;
+        
+        $envio_practica = EnvioPractica::where('envio_practica.id', $envio_practica_id)
+                          ->join('sesion_estudiante', 'sesion_estudiante.id', '=', 'envio_practica.sesion_estudiante_id')
+                          ->first();
+        
+        if($envio_practica)
+            $acceso = $this->accesoSesion($envio_practica->sesion_id);
+            
+        return $acceso;
     }
 }

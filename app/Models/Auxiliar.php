@@ -7,6 +7,7 @@ use App\Models\GrupoDocenteAuxiliar;
 use App\Models\Clase;
 use App\Models\Sesion;
 use App\Models\SesionEstudiante;
+use App\Models\GuiaPractica;
 
 class Auxiliar extends Model
 {
@@ -52,7 +53,7 @@ class Auxiliar extends Model
         $acceso_sesion = false;
         $sesion = Sesion::find($sesion_id);
         
-        if($sesion)
+        if($sesion && $sesion->semana <= $sesion->clase->semana_actual_sesion+1)
             $acceso_sesion = $this->accesoClase($sesion->clase_id);
         
         return $acceso_sesion;
@@ -66,5 +67,16 @@ class Auxiliar extends Model
             $acceso_sesion_estudiante = $this->accesoSesion($sesion_estudiante->sesion_id);
         
         return $acceso_sesion_estudiante;
+    }
+    
+    public function accesoGuiaPractica($guia_practica_id){
+        $acceso = false;
+        $sesion = Sesion::where('guia_practica_id', $guia_practica_id)
+                  ->first();
+        
+        if($sesion && $this->accesoSesion($sesion->id))
+            $acceso = true;
+        
+        return $acceso;
     }
 }

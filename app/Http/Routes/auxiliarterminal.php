@@ -13,3 +13,5 @@ Route::get('auxiliarterminal/sesion/estudiantes/{sesion_id}', 'AuxiliarTerminal\
 
 Route::put('auxiliarterminal/sesion/estudiante/asistencia', 'AuxiliarTerminal\SesionEstudiante\Control@cambiarAsistencia');
 Route::put('auxiliarterminal/sesion/estudiante/comentario', 'AuxiliarTerminal\SesionEstudiante\Control@cambiarComentario');
+
+Route::get('auxiliarterminal/archivos/guia_practica/{guia_practica_id}', 'AuxiliarTerminal\GuiaPractica\Control@descargar');

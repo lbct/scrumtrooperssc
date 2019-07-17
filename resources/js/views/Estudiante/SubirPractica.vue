@@ -36,7 +36,8 @@
                 <div v-if="sesion.archivos.length">
                     <div v-for="(archivo, index) in sesion.archivos">
                         <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i> 
-                        <a :href="'/estudiante/archivos/practicas/' + archivo.id">
+                        <a :href="'/estudiante/archivos/practicas/' + archivo.id"
+                           target="_blank">
                             {{archivo.archivo}}
                         </a> 
                         <i v-on:click="borrarArchivo(index)" class="fas fa-trash-alt clickleable"></i> 

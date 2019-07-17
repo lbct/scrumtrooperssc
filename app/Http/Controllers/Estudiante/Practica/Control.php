@@ -91,4 +91,20 @@ class Control extends Base
         
         return response()->json(['error'=>['No tienes acceso']], 200);
     }
+    
+    public function descargar(Request $request, $envio_practica_id)
+    {
+        $usuario_id = session('usuario_id');        
+        $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
+
+        if($estudiante->accesoEnvioPractica($envio_practica_id)){
+            $envio_practica = EnvioPractica::find($envio_practica_id);
+            $ruta_archivo   = $envio_practica->rutaArchivo();
+            $existe_acrhivo = Storage::disk('practicasEstudiantes')->exists($ruta_archivo);
+            
+            if($existe_acrhivo){
+                return response()->download(storage_path('app/practicasEstudiantes'.$ruta_archivo));
+            }            
+        }
+    }
 }

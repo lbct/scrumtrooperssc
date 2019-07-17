@@ -19,3 +19,7 @@ Route::delete('docente/auxiliares', 'Docente\Auxiliar\Control@retirar');
 
 Route::get('docente/estudiantes/{grupo_docente_id}', 'Docente\Estudiante\Control@estudiantes');
 Route::get('docente/estudiante/{estudiante_clase_id}', 'Docente\Estudiante\Control@estudiante');
+
+Route::get('docente/archivos/guia_practica/{guia_practica_id}', 'Docente\GuiaPractica\Control@descargar');
+
+Route::get('docente/archivos/enviospracticas/{envio_practica_id}', 'Docente\EnvioPractica\Control@descargar');
