@@ -30,7 +30,7 @@ class Control extends Base
                   ->join('aula', 'aula.id', '=', 'clase.aula_id')
                   ->join('grupo_docente', 'grupo_docente.id', '=', 'clase.grupo_docente_id')
                   ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
-                  ->select('sesion_id as id', 'nombre_materia', 'nombre_aula', 'horario_id', 'dia', 'detalle_grupo_docente', 'semana')
+                  ->select('sesion_id as id', 'nombre_materia', 'nombre_aula', 'horario_id', 'dia', 'detalle_grupo_docente', 'semana', 'clase.grupo_docente_id')
                   ->get();
         
         return $clases;

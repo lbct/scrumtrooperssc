@@ -19,7 +19,7 @@
                         <td v-for="horario in clase">
                             <div v-for="materia in horario"
                                  v-on:click="verSesion(materia)"
-                                 class="clickleable table-info custom-td">
+                                 v-bind:class="'clickleable custom-td '+colorGrupoDocente(materia.grupo_docente_id)">
                                 {{materia.nombre_materia}}<br>
                                 ({{materia.detalle_grupo_docente}})<br>
                                 {{materia.nombre_aula}}<br>
@@ -90,6 +90,27 @@
             
             verSesion(sesion){
                 this.$router.push({ name: 'AuxiliarLaboratorioListaEstudiantesClase', params: { sesion_id: sesion.id } });
+            },
+            
+            colorGrupoDocente(grupo_docente_id) {
+                var grupo_docente = grupo_docente_id%8;
+                
+                if(grupo_docente == 1)
+                    return 'table-primary';
+                else if(grupo_docente == 2)
+                    return 'table-secondary';
+                else if(grupo_docente == 3)
+                    return 'table-success';
+                else if(grupo_docente == 4)
+                    return 'table-danger';
+                else if(grupo_docente == 5)
+                    return 'table-warning';
+                else if(grupo_docente == 6)
+                    return 'table-info';
+                else if(grupo_docente == 7)
+                    return 'table-light';
+                else if(grupo_docente == 8)
+                    return 'table-dark';
             },
         },            
         

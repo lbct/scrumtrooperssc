@@ -33857,6 +33857,10 @@ __webpack_require__.r(__webpack_exports__);
           sesion_id: sesion.id
         }
       });
+    },
+    colorGrupoDocente: function colorGrupoDocente(grupo_docente_id) {
+      var grupo_docente = grupo_docente_id % 8;
+      if (grupo_docente == 1) return 'table-primary';else if (grupo_docente == 2) return 'table-secondary';else if (grupo_docente == 3) return 'table-success';else if (grupo_docente == 4) return 'table-danger';else if (grupo_docente == 5) return 'table-warning';else if (grupo_docente == 6) return 'table-info';else if (grupo_docente == 7) return 'table-light';else if (grupo_docente == 8) return 'table-dark';
     }
   },
   mounted: function mounted() {
@@ -53274,7 +53278,9 @@ var render = function() {
                           return _c(
                             "div",
                             {
-                              staticClass: "clickleable table-info custom-td",
+                              class:
+                                "clickleable custom-td " +
+                                _vm.colorGrupoDocente(materia.grupo_docente_id),
                               on: {
                                 click: function($event) {
                                   return _vm.verSesion(materia)

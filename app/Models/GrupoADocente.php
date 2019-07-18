@@ -28,7 +28,7 @@ class GrupoADocente extends Model
     
     public function clases()
     {
-        $clases = GrupoDocente::find($this->grupo_docente_id)
+        $clases = GrupoDocente::where('grupo_docente.id', $this->grupo_docente_id)
                   ->join("clase", "clase.grupo_docente_id", "=", "grupo_docente.id")
                   ->join("aula", "aula.id", "=", "clase.aula_id")
                   ->join("horario", "horario.id", "=", "clase.horario_id")
