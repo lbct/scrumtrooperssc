@@ -3662,16 +3662,179 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
-      key_mensajes: 0
+      key_mensajes: 0,
+      numero_materias: 0,
+      numero_docentes: 0,
+      numero_estudiantes: 0,
+      numero_aulas: 0,
+      materias: [],
+      materia: {
+        nombre: '',
+        grupos: []
+      },
+      grupo: {
+        docentes: '',
+        inscritos: 0,
+        porcentaje: 0,
+        style: ''
+      }
     };
   },
   methods: {
-    init: function init() {}
+    init: function init() {
+      this.getDatos();
+      this.getTablaGrupos();
+    },
+    getDatos: function getDatos() {
+      var _this = this;
+
+      this.axios.get('/administrador/estadisticas/datos').then(function (response) {
+        _this.numero_materias = response.data[0];
+        _this.numero_docentes = response.data[1];
+        _this.numero_estudiantes = response.data[2];
+        _this.numero_aulas = response.data[3];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getTablaGrupos: function getTablaGrupos() {
+      var _this2 = this;
+
+      this.axios.get('/administrador/estadisticas/tablaGrupos').then(function (response) {
+        for (var c = 0; c < response.data.length; c++) {
+          var m = {
+            nombre: '',
+            grupos: []
+          };
+          m.nombre = response.data[c][0];
+          var inscritos_en_materia = 0;
+          if (response.data[c].length > 1) for (var x = 1; x < response.data[c].length; x++) {
+            var temp = {
+              docentes: '',
+              inscritos: 0
+            };
+            temp.docentes = response.data[c][x][0];
+            temp.inscritos = response.data[c][x][1];
+            inscritos_en_materia += temp.inscritos;
+            m.grupos.push(temp);
+          }
+
+          for (var x = 0; x < m.grupos.length; x++) {
+            m.grupos[c].porcentaje = (100 * temp.inscritos / inscritos_en_materia).toFixed();
+            m.grupos[c].style = "width: " + temp.porcentaje + "%";
+          }
+
+          _this2.materias.push(m);
+
+          console.log(m.nombre);
+        }
+
+        console.log(_this2.materias);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   mounted: function mounted() {
     this.init();
@@ -8262,7 +8425,7 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-fade-enter-active,\n.vdatetime-fade-leave-active {\n  transition: opacity .4s;\n}\n\n.vdatetime-fade-enter,\n.vdatetime-fade-leave-to {\n  opacity: 0;\n}\n\n.vdatetime-overlay {\n  z-index: 999;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgba(0, 0, 0, .5);\n  transition: opacity .5s;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-popup {\n  box-sizing: border-box;\n  z-index: 1000;\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  width: 340px;\n  max-width: calc(100% - 30px);\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);\n  color: #444;\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  line-height: 1.18;\n  background: #fff;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)\n}\n\n.vdatetime-popup * {\n    box-sizing: border-box\n}\n\n.vdatetime-popup__header {\n  padding: 18px 30px;\n  background: #424242;\n  color: #fff;\n  font-size: 32px;\n}\n\n.vdatetime-popup__title {\n  margin-bottom: 8px;\n  font-size: 21px;\n  font-weight: 300;\n}\n\n.vdatetime-popup__year {\n  font-weight: 300;\n  font-size: 14px;\n  opacity: 0.7;\n  cursor: pointer;\n  transition: opacity .3s\n}\n\n.vdatetime-popup__year:hover {\n    opacity: 1\n}\n\n.vdatetime-popup__date {\n  line-height: 1;\n  cursor: pointer;\n}\n\n.vdatetime-popup__actions {\n  padding: 0 20px 10px 30px;\n  text-align: right;\n}\n\n.vdatetime-popup__actions__button {\n  display: inline-block;\n  border: none;\n  padding: 10px 20px;\n  background: transparent;\n  font-size: 16px;\n  color: #3f51b5;\n  cursor: pointer;\n  transition: color .3s\n}\n\n.vdatetime-popup__actions__button:hover {\n    color: #444\n}\n.vdatetime-calendar__navigation--previous:hover svg path, .vdatetime-calendar__navigation--next:hover svg path {\n    stroke: #888;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-calendar__navigation,\n.vdatetime-calendar__navigation * {\n  box-sizing: border-box;\n}\n\n.vdatetime-calendar__navigation {\n  position: relative;\n  margin: 15px 0;\n  padding: 0 30px;\n  width: 100%;\n}\n\n.vdatetime-calendar__navigation--previous,\n.vdatetime-calendar__navigation--next {\n  position: absolute;\n  top: 0;\n  padding: 0 5px;\n  width: 18px;\n  cursor: pointer\n}\n\n.vdatetime-calendar__navigation--previous svg, .vdatetime-calendar__navigation--next svg {\n    width: 8px;\n}\n\n.vdatetime-calendar__navigation--previous svg path, .vdatetime-calendar__navigation--next svg path {\n      transition: stroke .3s;\n}\n\n.vdatetime-calendar__navigation--previous {\n  left: 25px;\n}\n\n.vdatetime-calendar__navigation--next {\n  right: 25px;\n  -webkit-transform: scaleX(-1);\n          transform: scaleX(-1);\n}\n\n.vdatetime-calendar__current--month {\n  text-align: center;\n  text-transform: capitalize;\n}\n\n.vdatetime-calendar__month {\n  padding: 0 20px;\n  transition: height .2s;\n}\n\n.vdatetime-calendar__month__weekday,\n.vdatetime-calendar__month__day {\n  display: inline-block;\n  width: 14.28571%;\n  line-height: 36px;\n  text-align: center;\n  font-size: 15px;\n  font-weight: 300;\n  cursor: pointer\n}\n\n.vdatetime-calendar__month__weekday > span, .vdatetime-calendar__month__day > span {\n    display: block;\n    width: 100%;\n    position: relative;\n    height: 0;\n    padding: 0 0 100%;\n    overflow: hidden;\n}\n\n.vdatetime-calendar__month__weekday > span > span, .vdatetime-calendar__month__day > span > span {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: center;\n          -ms-flex-pack: center;\n              justify-content: center;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      border: 0;\n      border-radius: 50%;\n      transition: background-color .3s, color .3s;\n}\n\n.vdatetime-calendar__month__weekday {\n  font-weight: bold;\n}\n\n.vdatetime-calendar__month__day:hover > span > span {\n  background: #eee;\n}\n\n.vdatetime-calendar__month__day--selected {\n}\n\n.vdatetime-calendar__month__day--selected > span > span,\n  .vdatetime-calendar__month__day--selected:hover > span > span {\n    color: #fff;\n    background: #3f51b5;\n}\n\n.vdatetime-calendar__month__day--disabled {\n  opacity: 0.4;\n  cursor: default\n}\n\n.vdatetime-calendar__month__day--disabled:hover > span > span {\n    color: inherit;\n    background: transparent;\n}\n.vdatetime-time-picker__list::-webkit-scrollbar-thumb {\n    background: #ccc\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-time-picker__list::-webkit-scrollbar-track {\n    background: #efefef\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-time-picker * {\n    box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-time-picker {\n  box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-time-picker::after {\n    content: '';\n    display: table;\n    clear: both\n}\n\n.vdatetime-time-picker__list {\n  float: left;\n  width: 50%;\n  height: 305px;\n  overflow-y: scroll\n}\n\n.vdatetime-time-picker__list::-webkit-scrollbar {\n    width: 3px\n}\n\n.vdatetime-time-picker__with-suffix .vdatetime-time-picker__list {\n  width: 33.3%;\n}\n\n.vdatetime-time-picker__item {\n  padding: 10px 0;\n  font-size: 20px;\n  text-align: center;\n  cursor: pointer;\n  transition: font-size .3s;\n}\n\n.vdatetime-time-picker__item:hover {\n  font-size: 32px;\n}\n\n.vdatetime-time-picker__item--selected {\n  color: #3f51b5;\n  font-size: 32px;\n}\n\n.vdatetime-time-picker__item--disabled {\n  opacity: 0.4;\n  cursor: default;\n  font-size: 20px !important;\n}\n.vdatetime-year-picker__list::-webkit-scrollbar-thumb {\n    background: #ccc\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-year-picker__list::-webkit-scrollbar-track {\n    background: #efefef\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-year-picker * {\n    box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-year-picker {\n  box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-year-picker::after {\n    content: '';\n    display: table;\n    clear: both\n}\n\n.vdatetime-year-picker__list {\n  float: left;\n  width: 100%;\n  height: 305px;\n  overflow-y: scroll\n}\n\n.vdatetime-year-picker__list::-webkit-scrollbar {\n    width: 3px\n}\n\n.vdatetime-year-picker__item {\n  padding: 10px 0;\n  font-size: 20px;\n  text-align: center;\n  cursor: pointer;\n  transition: font-size .3s;\n}\n\n.vdatetime-year-picker__item:hover {\n  font-size: 32px;\n}\n\n.vdatetime-year-picker__item--selected {\n  color: #3f51b5;\n  font-size: 32px;\n}\n\n.vdatetime-year-picker__item--disabled {\n  opacity: 0.4;\n  cursor: default\n}\n\n.vdatetime-year-picker__item--disabled:hover {\n    color: inherit;\n    background: transparent\n}\n.vdatetime-month-picker__list::-webkit-scrollbar-thumb {\n    background: #ccc\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-month-picker__list::-webkit-scrollbar-track {\n    background: #efefef\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-month-picker * {\n    box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-month-picker {\n  box-sizing: border-box\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n.vdatetime-month-picker::after {\n    content: '';\n    display: table;\n    clear: both\n}\n\n.vdatetime-month-picker__list {\n  float: left;\n  width: 100%;\n  height: 305px;\n  overflow-y: scroll\n}\n\n.vdatetime-month-picker__list::-webkit-scrollbar {\n    width: 3px\n}\n\n.vdatetime-month-picker__item {\n  padding: 10px 0;\n  font-size: 20px;\n  text-align: center;\n  cursor: pointer;\n  transition: font-size .3s;\n}\n\n.vdatetime-month-picker__item:hover {\n  font-size: 32px;\n}\n\n.vdatetime-month-picker__item--selected {\n  color: #3f51b5;\n  font-size: 32px;\n}\n\n.vdatetime-month-picker__item--disabled {\n  opacity: 0.4;\n  cursor: default\n}\n\n.vdatetime-month-picker__item--disabled:hover {\n    color: inherit;\n    background: transparent\n}\n", ""]);
+exports.push([module.i, "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-fade-enter-active,\r\n.vdatetime-fade-leave-active {\r\n  transition: opacity .4s;\r\n}\r\n\r\n.vdatetime-fade-enter,\r\n.vdatetime-fade-leave-to {\r\n  opacity: 0;\r\n}\r\n\r\n.vdatetime-overlay {\r\n  z-index: 999;\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  background: rgba(0, 0, 0, .5);\r\n  transition: opacity .5s;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-popup {\r\n  box-sizing: border-box;\r\n  z-index: 1000;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  -webkit-transform: translate(-50%, -50%);\r\n          transform: translate(-50%, -50%);\r\n  width: 340px;\r\n  max-width: calc(100% - 30px);\r\n  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);\r\n  color: #444;\r\n  font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", \"Roboto\", \"Oxygen\", \"Ubuntu\", \"Cantarell\", \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif;\r\n  line-height: 1.18;\r\n  background: #fff;\r\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)\r\n}\r\n\r\n.vdatetime-popup * {\r\n    box-sizing: border-box\r\n}\r\n\r\n.vdatetime-popup__header {\r\n  padding: 18px 30px;\r\n  background: #424242;\r\n  color: #fff;\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-popup__title {\r\n  margin-bottom: 8px;\r\n  font-size: 21px;\r\n  font-weight: 300;\r\n}\r\n\r\n.vdatetime-popup__year {\r\n  font-weight: 300;\r\n  font-size: 14px;\r\n  opacity: 0.7;\r\n  cursor: pointer;\r\n  transition: opacity .3s\r\n}\r\n\r\n.vdatetime-popup__year:hover {\r\n    opacity: 1\r\n}\r\n\r\n.vdatetime-popup__date {\r\n  line-height: 1;\r\n  cursor: pointer;\r\n}\r\n\r\n.vdatetime-popup__actions {\r\n  padding: 0 20px 10px 30px;\r\n  text-align: right;\r\n}\r\n\r\n.vdatetime-popup__actions__button {\r\n  display: inline-block;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  background: transparent;\r\n  font-size: 16px;\r\n  color: #3f51b5;\r\n  cursor: pointer;\r\n  transition: color .3s\r\n}\r\n\r\n.vdatetime-popup__actions__button:hover {\r\n    color: #444\r\n}\r\n.vdatetime-calendar__navigation--previous:hover svg path, .vdatetime-calendar__navigation--next:hover svg path {\r\n    stroke: #888;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-calendar__navigation,\r\n.vdatetime-calendar__navigation * {\r\n  box-sizing: border-box;\r\n}\r\n\r\n.vdatetime-calendar__navigation {\r\n  position: relative;\r\n  margin: 15px 0;\r\n  padding: 0 30px;\r\n  width: 100%;\r\n}\r\n\r\n.vdatetime-calendar__navigation--previous,\r\n.vdatetime-calendar__navigation--next {\r\n  position: absolute;\r\n  top: 0;\r\n  padding: 0 5px;\r\n  width: 18px;\r\n  cursor: pointer\r\n}\r\n\r\n.vdatetime-calendar__navigation--previous svg, .vdatetime-calendar__navigation--next svg {\r\n    width: 8px;\r\n}\r\n\r\n.vdatetime-calendar__navigation--previous svg path, .vdatetime-calendar__navigation--next svg path {\r\n      transition: stroke .3s;\r\n}\r\n\r\n.vdatetime-calendar__navigation--previous {\r\n  left: 25px;\r\n}\r\n\r\n.vdatetime-calendar__navigation--next {\r\n  right: 25px;\r\n  -webkit-transform: scaleX(-1);\r\n          transform: scaleX(-1);\r\n}\r\n\r\n.vdatetime-calendar__current--month {\r\n  text-align: center;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.vdatetime-calendar__month {\r\n  padding: 0 20px;\r\n  transition: height .2s;\r\n}\r\n\r\n.vdatetime-calendar__month__weekday,\r\n.vdatetime-calendar__month__day {\r\n  display: inline-block;\r\n  width: 14.28571%;\r\n  line-height: 36px;\r\n  text-align: center;\r\n  font-size: 15px;\r\n  font-weight: 300;\r\n  cursor: pointer\r\n}\r\n\r\n.vdatetime-calendar__month__weekday > span, .vdatetime-calendar__month__day > span {\r\n    display: block;\r\n    width: 100%;\r\n    position: relative;\r\n    height: 0;\r\n    padding: 0 0 100%;\r\n    overflow: hidden;\r\n}\r\n\r\n.vdatetime-calendar__month__weekday > span > span, .vdatetime-calendar__month__day > span > span {\r\n      display: -webkit-box;\r\n      display: -ms-flexbox;\r\n      display: flex;\r\n      -webkit-box-pack: center;\r\n          -ms-flex-pack: center;\r\n              justify-content: center;\r\n      -webkit-box-align: center;\r\n          -ms-flex-align: center;\r\n              align-items: center;\r\n      position: absolute;\r\n      top: 0;\r\n      right: 0;\r\n      bottom: 0;\r\n      left: 0;\r\n      border: 0;\r\n      border-radius: 50%;\r\n      transition: background-color .3s, color .3s;\r\n}\r\n\r\n.vdatetime-calendar__month__weekday {\r\n  font-weight: bold;\r\n}\r\n\r\n.vdatetime-calendar__month__day:hover > span > span {\r\n  background: #eee;\r\n}\r\n\r\n.vdatetime-calendar__month__day--selected {\r\n}\r\n\r\n.vdatetime-calendar__month__day--selected > span > span,\r\n  .vdatetime-calendar__month__day--selected:hover > span > span {\r\n    color: #fff;\r\n    background: #3f51b5;\r\n}\r\n\r\n.vdatetime-calendar__month__day--disabled {\r\n  opacity: 0.4;\r\n  cursor: default\r\n}\r\n\r\n.vdatetime-calendar__month__day--disabled:hover > span > span {\r\n    color: inherit;\r\n    background: transparent;\r\n}\r\n.vdatetime-time-picker__list::-webkit-scrollbar-thumb {\r\n    background: #ccc\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-time-picker__list::-webkit-scrollbar-track {\r\n    background: #efefef\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-time-picker * {\r\n    box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-time-picker {\r\n  box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-time-picker::after {\r\n    content: '';\r\n    display: table;\r\n    clear: both\r\n}\r\n\r\n.vdatetime-time-picker__list {\r\n  float: left;\r\n  width: 50%;\r\n  height: 305px;\r\n  overflow-y: scroll\r\n}\r\n\r\n.vdatetime-time-picker__list::-webkit-scrollbar {\r\n    width: 3px\r\n}\r\n\r\n.vdatetime-time-picker__with-suffix .vdatetime-time-picker__list {\r\n  width: 33.3%;\r\n}\r\n\r\n.vdatetime-time-picker__item {\r\n  padding: 10px 0;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: font-size .3s;\r\n}\r\n\r\n.vdatetime-time-picker__item:hover {\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-time-picker__item--selected {\r\n  color: #3f51b5;\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-time-picker__item--disabled {\r\n  opacity: 0.4;\r\n  cursor: default;\r\n  font-size: 20px !important;\r\n}\r\n.vdatetime-year-picker__list::-webkit-scrollbar-thumb {\r\n    background: #ccc\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-year-picker__list::-webkit-scrollbar-track {\r\n    background: #efefef\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-year-picker * {\r\n    box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-year-picker {\r\n  box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-year-picker::after {\r\n    content: '';\r\n    display: table;\r\n    clear: both\r\n}\r\n\r\n.vdatetime-year-picker__list {\r\n  float: left;\r\n  width: 100%;\r\n  height: 305px;\r\n  overflow-y: scroll\r\n}\r\n\r\n.vdatetime-year-picker__list::-webkit-scrollbar {\r\n    width: 3px\r\n}\r\n\r\n.vdatetime-year-picker__item {\r\n  padding: 10px 0;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: font-size .3s;\r\n}\r\n\r\n.vdatetime-year-picker__item:hover {\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-year-picker__item--selected {\r\n  color: #3f51b5;\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-year-picker__item--disabled {\r\n  opacity: 0.4;\r\n  cursor: default\r\n}\r\n\r\n.vdatetime-year-picker__item--disabled:hover {\r\n    color: inherit;\r\n    background: transparent\r\n}\r\n.vdatetime-month-picker__list::-webkit-scrollbar-thumb {\r\n    background: #ccc\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-month-picker__list::-webkit-scrollbar-track {\r\n    background: #efefef\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-month-picker * {\r\n    box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-month-picker {\r\n  box-sizing: border-box\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n.vdatetime-month-picker::after {\r\n    content: '';\r\n    display: table;\r\n    clear: both\r\n}\r\n\r\n.vdatetime-month-picker__list {\r\n  float: left;\r\n  width: 100%;\r\n  height: 305px;\r\n  overflow-y: scroll\r\n}\r\n\r\n.vdatetime-month-picker__list::-webkit-scrollbar {\r\n    width: 3px\r\n}\r\n\r\n.vdatetime-month-picker__item {\r\n  padding: 10px 0;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  transition: font-size .3s;\r\n}\r\n\r\n.vdatetime-month-picker__item:hover {\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-month-picker__item--selected {\r\n  color: #3f51b5;\r\n  font-size: 32px;\r\n}\r\n\r\n.vdatetime-month-picker__item--disabled {\r\n  opacity: 0.4;\r\n  cursor: default\r\n}\r\n\r\n.vdatetime-month-picker__item--disabled:hover {\r\n    color: inherit;\r\n    background: transparent\r\n}\r\n", ""]);
 
 // exports
 
@@ -8281,7 +8444,7 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 
 // module
-exports.push([module.i, "/*\n * The MIT License\n * Copyright (c) 2012 Matias Meno <m@tias.me>\n */\n@-webkit-keyframes passing-through {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30%, 70% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    -moz-transform: translateY(-40px);\n    -ms-transform: translateY(-40px);\n    -o-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n@-moz-keyframes passing-through {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30%, 70% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    -moz-transform: translateY(-40px);\n    -ms-transform: translateY(-40px);\n    -o-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n@keyframes passing-through {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30%, 70% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); }\n  100% {\n    opacity: 0;\n    -webkit-transform: translateY(-40px);\n    -moz-transform: translateY(-40px);\n    -ms-transform: translateY(-40px);\n    -o-transform: translateY(-40px);\n    transform: translateY(-40px); } }\n@-webkit-keyframes slide-in {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); } }\n@-moz-keyframes slide-in {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); } }\n@keyframes slide-in {\n  0% {\n    opacity: 0;\n    -webkit-transform: translateY(40px);\n    -moz-transform: translateY(40px);\n    -ms-transform: translateY(40px);\n    -o-transform: translateY(40px);\n    transform: translateY(40px); }\n  30% {\n    opacity: 1;\n    -webkit-transform: translateY(0px);\n    -moz-transform: translateY(0px);\n    -ms-transform: translateY(0px);\n    -o-transform: translateY(0px);\n    transform: translateY(0px); } }\n@-webkit-keyframes pulse {\n  0% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); }\n  10% {\n    -webkit-transform: scale(1.1);\n    -moz-transform: scale(1.1);\n    -ms-transform: scale(1.1);\n    -o-transform: scale(1.1);\n    transform: scale(1.1); }\n  20% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); } }\n@-moz-keyframes pulse {\n  0% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); }\n  10% {\n    -webkit-transform: scale(1.1);\n    -moz-transform: scale(1.1);\n    -ms-transform: scale(1.1);\n    -o-transform: scale(1.1);\n    transform: scale(1.1); }\n  20% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); } }\n@keyframes pulse {\n  0% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); }\n  10% {\n    -webkit-transform: scale(1.1);\n    -moz-transform: scale(1.1);\n    -ms-transform: scale(1.1);\n    -o-transform: scale(1.1);\n    transform: scale(1.1); }\n  20% {\n    -webkit-transform: scale(1);\n    -moz-transform: scale(1);\n    -ms-transform: scale(1);\n    -o-transform: scale(1);\n    transform: scale(1); } }\n.dropzone, .dropzone * {\n  box-sizing: border-box; }\n\n.dropzone {\n  min-height: 150px;\n  border: 2px solid rgba(0, 0, 0, 0.3);\n  background: white;\n  padding: 20px 20px; }\n  .dropzone.dz-clickable {\n    cursor: pointer; }\n    .dropzone.dz-clickable * {\n      cursor: default; }\n    .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {\n      cursor: pointer; }\n  .dropzone.dz-started .dz-message {\n    display: none; }\n  .dropzone.dz-drag-hover {\n    border-style: solid; }\n    .dropzone.dz-drag-hover .dz-message {\n      opacity: 0.5; }\n  .dropzone .dz-message {\n    text-align: center;\n    margin: 2em 0; }\n  .dropzone .dz-preview {\n    position: relative;\n    display: inline-block;\n    vertical-align: top;\n    margin: 16px;\n    min-height: 100px; }\n    .dropzone .dz-preview:hover {\n      z-index: 1000; }\n      .dropzone .dz-preview:hover .dz-details {\n        opacity: 1; }\n    .dropzone .dz-preview.dz-file-preview .dz-image {\n      border-radius: 20px;\n      background: #999;\n      background: linear-gradient(to bottom, #eee, #ddd); }\n    .dropzone .dz-preview.dz-file-preview .dz-details {\n      opacity: 1; }\n    .dropzone .dz-preview.dz-image-preview {\n      background: white; }\n      .dropzone .dz-preview.dz-image-preview .dz-details {\n        -webkit-transition: opacity 0.2s linear;\n        -moz-transition: opacity 0.2s linear;\n        -ms-transition: opacity 0.2s linear;\n        -o-transition: opacity 0.2s linear;\n        transition: opacity 0.2s linear; }\n    .dropzone .dz-preview .dz-remove {\n      font-size: 14px;\n      text-align: center;\n      display: block;\n      cursor: pointer;\n      border: none; }\n      .dropzone .dz-preview .dz-remove:hover {\n        text-decoration: underline; }\n    .dropzone .dz-preview:hover .dz-details {\n      opacity: 1; }\n    .dropzone .dz-preview .dz-details {\n      z-index: 20;\n      position: absolute;\n      top: 0;\n      left: 0;\n      opacity: 0;\n      font-size: 13px;\n      min-width: 100%;\n      max-width: 100%;\n      padding: 2em 1em;\n      text-align: center;\n      color: rgba(0, 0, 0, 0.9);\n      line-height: 150%; }\n      .dropzone .dz-preview .dz-details .dz-size {\n        margin-bottom: 1em;\n        font-size: 16px; }\n      .dropzone .dz-preview .dz-details .dz-filename {\n        white-space: nowrap; }\n        .dropzone .dz-preview .dz-details .dz-filename:hover span {\n          border: 1px solid rgba(200, 200, 200, 0.8);\n          background-color: rgba(255, 255, 255, 0.8); }\n        .dropzone .dz-preview .dz-details .dz-filename:not(:hover) {\n          overflow: hidden;\n          text-overflow: ellipsis; }\n          .dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {\n            border: 1px solid transparent; }\n      .dropzone .dz-preview .dz-details .dz-filename span, .dropzone .dz-preview .dz-details .dz-size span {\n        background-color: rgba(255, 255, 255, 0.4);\n        padding: 0 0.4em;\n        border-radius: 3px; }\n    .dropzone .dz-preview:hover .dz-image img {\n      -webkit-transform: scale(1.05, 1.05);\n      -moz-transform: scale(1.05, 1.05);\n      -ms-transform: scale(1.05, 1.05);\n      -o-transform: scale(1.05, 1.05);\n      transform: scale(1.05, 1.05);\n      -webkit-filter: blur(8px);\n      filter: blur(8px); }\n    .dropzone .dz-preview .dz-image {\n      border-radius: 20px;\n      overflow: hidden;\n      width: 120px;\n      height: 120px;\n      position: relative;\n      display: block;\n      z-index: 10; }\n      .dropzone .dz-preview .dz-image img {\n        display: block; }\n    .dropzone .dz-preview.dz-success .dz-success-mark {\n      -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -moz-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -ms-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -o-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\n      animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1); }\n    .dropzone .dz-preview.dz-error .dz-error-mark {\n      opacity: 1;\n      -webkit-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -moz-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -ms-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\n      -o-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\n      animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1); }\n    .dropzone .dz-preview .dz-success-mark, .dropzone .dz-preview .dz-error-mark {\n      pointer-events: none;\n      opacity: 0;\n      z-index: 500;\n      position: absolute;\n      display: block;\n      top: 50%;\n      left: 50%;\n      margin-left: -27px;\n      margin-top: -27px; }\n      .dropzone .dz-preview .dz-success-mark svg, .dropzone .dz-preview .dz-error-mark svg {\n        display: block;\n        width: 54px;\n        height: 54px; }\n    .dropzone .dz-preview.dz-processing .dz-progress {\n      opacity: 1;\n      -webkit-transition: all 0.2s linear;\n      -moz-transition: all 0.2s linear;\n      -ms-transition: all 0.2s linear;\n      -o-transition: all 0.2s linear;\n      transition: all 0.2s linear; }\n    .dropzone .dz-preview.dz-complete .dz-progress {\n      opacity: 0;\n      -webkit-transition: opacity 0.4s ease-in;\n      -moz-transition: opacity 0.4s ease-in;\n      -ms-transition: opacity 0.4s ease-in;\n      -o-transition: opacity 0.4s ease-in;\n      transition: opacity 0.4s ease-in; }\n    .dropzone .dz-preview:not(.dz-processing) .dz-progress {\n      -webkit-animation: pulse 6s ease infinite;\n      -moz-animation: pulse 6s ease infinite;\n      -ms-animation: pulse 6s ease infinite;\n      -o-animation: pulse 6s ease infinite;\n      animation: pulse 6s ease infinite; }\n    .dropzone .dz-preview .dz-progress {\n      opacity: 1;\n      z-index: 1000;\n      pointer-events: none;\n      position: absolute;\n      height: 16px;\n      left: 50%;\n      top: 50%;\n      margin-top: -8px;\n      width: 80px;\n      margin-left: -40px;\n      background: rgba(255, 255, 255, 0.9);\n      -webkit-transform: scale(1);\n      border-radius: 8px;\n      overflow: hidden; }\n      .dropzone .dz-preview .dz-progress .dz-upload {\n        background: #333;\n        background: linear-gradient(to bottom, #666, #444);\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 0;\n        -webkit-transition: width 300ms ease-in-out;\n        -moz-transition: width 300ms ease-in-out;\n        -ms-transition: width 300ms ease-in-out;\n        -o-transition: width 300ms ease-in-out;\n        transition: width 300ms ease-in-out; }\n    .dropzone .dz-preview.dz-error .dz-error-message {\n      display: block; }\n    .dropzone .dz-preview.dz-error:hover .dz-error-message {\n      opacity: 1;\n      pointer-events: auto; }\n    .dropzone .dz-preview .dz-error-message {\n      pointer-events: none;\n      z-index: 1000;\n      position: absolute;\n      display: block;\n      display: none;\n      opacity: 0;\n      -webkit-transition: opacity 0.3s ease;\n      -moz-transition: opacity 0.3s ease;\n      -ms-transition: opacity 0.3s ease;\n      -o-transition: opacity 0.3s ease;\n      transition: opacity 0.3s ease;\n      border-radius: 8px;\n      font-size: 13px;\n      top: 130px;\n      left: -10px;\n      width: 140px;\n      background: #be2626;\n      background: linear-gradient(to bottom, #be2626, #a92222);\n      padding: 0.5em 1.2em;\n      color: white; }\n      .dropzone .dz-preview .dz-error-message:after {\n        content: '';\n        position: absolute;\n        top: -6px;\n        left: 64px;\n        width: 0;\n        height: 0;\n        border-left: 6px solid transparent;\n        border-right: 6px solid transparent;\n        border-bottom: 6px solid #be2626; }\n.vue-dropzone{border:2px solid #e5e5e5;font-family:Arial,sans-serif;letter-spacing:.2px;color:#777;transition:.2s linear}.vue-dropzone:hover{background-color:#f6f6f6}.vue-dropzone>i{color:#ccc}.vue-dropzone>.dz-preview .dz-image{border-radius:0;width:100%;height:100%}.vue-dropzone>.dz-preview .dz-image img:not([src]){width:200px;height:200px}.vue-dropzone>.dz-preview .dz-image:hover img{transform:none;-webkit-filter:none}.vue-dropzone>.dz-preview .dz-details{bottom:0;top:0;color:#fff;background-color:rgba(33,150,243,.8);transition:opacity .2s linear;text-align:left}.vue-dropzone>.dz-preview .dz-details .dz-filename{overflow:hidden}.vue-dropzone>.dz-preview .dz-details .dz-filename span,.vue-dropzone>.dz-preview .dz-details .dz-size span{background-color:transparent}.vue-dropzone>.dz-preview .dz-details .dz-filename:not(:hover) span{border:none}.vue-dropzone>.dz-preview .dz-details .dz-filename:hover span{background-color:transparent;border:none}.vue-dropzone>.dz-preview .dz-progress .dz-upload{background:#ccc}.vue-dropzone>.dz-preview .dz-remove{position:absolute;z-index:30;color:#fff;margin-left:15px;padding:10px;top:inherit;bottom:15px;border:2px #fff solid;text-decoration:none;text-transform:uppercase;font-size:.8rem;font-weight:800;letter-spacing:1.1px;opacity:0}.vue-dropzone>.dz-preview:hover .dz-remove{opacity:1}.vue-dropzone>.dz-preview .dz-error-mark,.vue-dropzone>.dz-preview .dz-success-mark{margin-left:auto;margin-top:auto;width:100%;top:35%;left:0}.vue-dropzone>.dz-preview .dz-error-mark svg,.vue-dropzone>.dz-preview .dz-success-mark svg{margin-left:auto;margin-right:auto}.vue-dropzone>.dz-preview .dz-error-message{margin-left:auto;margin-right:auto;left:0;top:5%;width:100%;text-align:center}.vue-dropzone>.dz-preview .dz-error-message:after{display:none}", ""]);
+exports.push([module.i, "/*\r\n * The MIT License\r\n * Copyright (c) 2012 Matias Meno <m@tias.me>\r\n */\r\n@-webkit-keyframes passing-through {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30%, 70% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); }\r\n  100% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(-40px);\r\n    -moz-transform: translateY(-40px);\r\n    -ms-transform: translateY(-40px);\r\n    -o-transform: translateY(-40px);\r\n    transform: translateY(-40px); } }\r\n@-moz-keyframes passing-through {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30%, 70% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); }\r\n  100% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(-40px);\r\n    -moz-transform: translateY(-40px);\r\n    -ms-transform: translateY(-40px);\r\n    -o-transform: translateY(-40px);\r\n    transform: translateY(-40px); } }\r\n@keyframes passing-through {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30%, 70% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); }\r\n  100% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(-40px);\r\n    -moz-transform: translateY(-40px);\r\n    -ms-transform: translateY(-40px);\r\n    -o-transform: translateY(-40px);\r\n    transform: translateY(-40px); } }\r\n@-webkit-keyframes slide-in {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); } }\r\n@-moz-keyframes slide-in {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); } }\r\n@keyframes slide-in {\r\n  0% {\r\n    opacity: 0;\r\n    -webkit-transform: translateY(40px);\r\n    -moz-transform: translateY(40px);\r\n    -ms-transform: translateY(40px);\r\n    -o-transform: translateY(40px);\r\n    transform: translateY(40px); }\r\n  30% {\r\n    opacity: 1;\r\n    -webkit-transform: translateY(0px);\r\n    -moz-transform: translateY(0px);\r\n    -ms-transform: translateY(0px);\r\n    -o-transform: translateY(0px);\r\n    transform: translateY(0px); } }\r\n@-webkit-keyframes pulse {\r\n  0% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); }\r\n  10% {\r\n    -webkit-transform: scale(1.1);\r\n    -moz-transform: scale(1.1);\r\n    -ms-transform: scale(1.1);\r\n    -o-transform: scale(1.1);\r\n    transform: scale(1.1); }\r\n  20% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); } }\r\n@-moz-keyframes pulse {\r\n  0% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); }\r\n  10% {\r\n    -webkit-transform: scale(1.1);\r\n    -moz-transform: scale(1.1);\r\n    -ms-transform: scale(1.1);\r\n    -o-transform: scale(1.1);\r\n    transform: scale(1.1); }\r\n  20% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); } }\r\n@keyframes pulse {\r\n  0% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); }\r\n  10% {\r\n    -webkit-transform: scale(1.1);\r\n    -moz-transform: scale(1.1);\r\n    -ms-transform: scale(1.1);\r\n    -o-transform: scale(1.1);\r\n    transform: scale(1.1); }\r\n  20% {\r\n    -webkit-transform: scale(1);\r\n    -moz-transform: scale(1);\r\n    -ms-transform: scale(1);\r\n    -o-transform: scale(1);\r\n    transform: scale(1); } }\r\n.dropzone, .dropzone * {\r\n  box-sizing: border-box; }\r\n\r\n.dropzone {\r\n  min-height: 150px;\r\n  border: 2px solid rgba(0, 0, 0, 0.3);\r\n  background: white;\r\n  padding: 20px 20px; }\r\n  .dropzone.dz-clickable {\r\n    cursor: pointer; }\r\n    .dropzone.dz-clickable * {\r\n      cursor: default; }\r\n    .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {\r\n      cursor: pointer; }\r\n  .dropzone.dz-started .dz-message {\r\n    display: none; }\r\n  .dropzone.dz-drag-hover {\r\n    border-style: solid; }\r\n    .dropzone.dz-drag-hover .dz-message {\r\n      opacity: 0.5; }\r\n  .dropzone .dz-message {\r\n    text-align: center;\r\n    margin: 2em 0; }\r\n  .dropzone .dz-preview {\r\n    position: relative;\r\n    display: inline-block;\r\n    vertical-align: top;\r\n    margin: 16px;\r\n    min-height: 100px; }\r\n    .dropzone .dz-preview:hover {\r\n      z-index: 1000; }\r\n      .dropzone .dz-preview:hover .dz-details {\r\n        opacity: 1; }\r\n    .dropzone .dz-preview.dz-file-preview .dz-image {\r\n      border-radius: 20px;\r\n      background: #999;\r\n      background: linear-gradient(to bottom, #eee, #ddd); }\r\n    .dropzone .dz-preview.dz-file-preview .dz-details {\r\n      opacity: 1; }\r\n    .dropzone .dz-preview.dz-image-preview {\r\n      background: white; }\r\n      .dropzone .dz-preview.dz-image-preview .dz-details {\r\n        -webkit-transition: opacity 0.2s linear;\r\n        -moz-transition: opacity 0.2s linear;\r\n        -ms-transition: opacity 0.2s linear;\r\n        -o-transition: opacity 0.2s linear;\r\n        transition: opacity 0.2s linear; }\r\n    .dropzone .dz-preview .dz-remove {\r\n      font-size: 14px;\r\n      text-align: center;\r\n      display: block;\r\n      cursor: pointer;\r\n      border: none; }\r\n      .dropzone .dz-preview .dz-remove:hover {\r\n        text-decoration: underline; }\r\n    .dropzone .dz-preview:hover .dz-details {\r\n      opacity: 1; }\r\n    .dropzone .dz-preview .dz-details {\r\n      z-index: 20;\r\n      position: absolute;\r\n      top: 0;\r\n      left: 0;\r\n      opacity: 0;\r\n      font-size: 13px;\r\n      min-width: 100%;\r\n      max-width: 100%;\r\n      padding: 2em 1em;\r\n      text-align: center;\r\n      color: rgba(0, 0, 0, 0.9);\r\n      line-height: 150%; }\r\n      .dropzone .dz-preview .dz-details .dz-size {\r\n        margin-bottom: 1em;\r\n        font-size: 16px; }\r\n      .dropzone .dz-preview .dz-details .dz-filename {\r\n        white-space: nowrap; }\r\n        .dropzone .dz-preview .dz-details .dz-filename:hover span {\r\n          border: 1px solid rgba(200, 200, 200, 0.8);\r\n          background-color: rgba(255, 255, 255, 0.8); }\r\n        .dropzone .dz-preview .dz-details .dz-filename:not(:hover) {\r\n          overflow: hidden;\r\n          text-overflow: ellipsis; }\r\n          .dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {\r\n            border: 1px solid transparent; }\r\n      .dropzone .dz-preview .dz-details .dz-filename span, .dropzone .dz-preview .dz-details .dz-size span {\r\n        background-color: rgba(255, 255, 255, 0.4);\r\n        padding: 0 0.4em;\r\n        border-radius: 3px; }\r\n    .dropzone .dz-preview:hover .dz-image img {\r\n      -webkit-transform: scale(1.05, 1.05);\r\n      -moz-transform: scale(1.05, 1.05);\r\n      -ms-transform: scale(1.05, 1.05);\r\n      -o-transform: scale(1.05, 1.05);\r\n      transform: scale(1.05, 1.05);\r\n      -webkit-filter: blur(8px);\r\n      filter: blur(8px); }\r\n    .dropzone .dz-preview .dz-image {\r\n      border-radius: 20px;\r\n      overflow: hidden;\r\n      width: 120px;\r\n      height: 120px;\r\n      position: relative;\r\n      display: block;\r\n      z-index: 10; }\r\n      .dropzone .dz-preview .dz-image img {\r\n        display: block; }\r\n    .dropzone .dz-preview.dz-success .dz-success-mark {\r\n      -webkit-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -moz-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -ms-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -o-animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      animation: passing-through 3s cubic-bezier(0.77, 0, 0.175, 1); }\r\n    .dropzone .dz-preview.dz-error .dz-error-mark {\r\n      opacity: 1;\r\n      -webkit-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -moz-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -ms-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      -o-animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1);\r\n      animation: slide-in 3s cubic-bezier(0.77, 0, 0.175, 1); }\r\n    .dropzone .dz-preview .dz-success-mark, .dropzone .dz-preview .dz-error-mark {\r\n      pointer-events: none;\r\n      opacity: 0;\r\n      z-index: 500;\r\n      position: absolute;\r\n      display: block;\r\n      top: 50%;\r\n      left: 50%;\r\n      margin-left: -27px;\r\n      margin-top: -27px; }\r\n      .dropzone .dz-preview .dz-success-mark svg, .dropzone .dz-preview .dz-error-mark svg {\r\n        display: block;\r\n        width: 54px;\r\n        height: 54px; }\r\n    .dropzone .dz-preview.dz-processing .dz-progress {\r\n      opacity: 1;\r\n      -webkit-transition: all 0.2s linear;\r\n      -moz-transition: all 0.2s linear;\r\n      -ms-transition: all 0.2s linear;\r\n      -o-transition: all 0.2s linear;\r\n      transition: all 0.2s linear; }\r\n    .dropzone .dz-preview.dz-complete .dz-progress {\r\n      opacity: 0;\r\n      -webkit-transition: opacity 0.4s ease-in;\r\n      -moz-transition: opacity 0.4s ease-in;\r\n      -ms-transition: opacity 0.4s ease-in;\r\n      -o-transition: opacity 0.4s ease-in;\r\n      transition: opacity 0.4s ease-in; }\r\n    .dropzone .dz-preview:not(.dz-processing) .dz-progress {\r\n      -webkit-animation: pulse 6s ease infinite;\r\n      -moz-animation: pulse 6s ease infinite;\r\n      -ms-animation: pulse 6s ease infinite;\r\n      -o-animation: pulse 6s ease infinite;\r\n      animation: pulse 6s ease infinite; }\r\n    .dropzone .dz-preview .dz-progress {\r\n      opacity: 1;\r\n      z-index: 1000;\r\n      pointer-events: none;\r\n      position: absolute;\r\n      height: 16px;\r\n      left: 50%;\r\n      top: 50%;\r\n      margin-top: -8px;\r\n      width: 80px;\r\n      margin-left: -40px;\r\n      background: rgba(255, 255, 255, 0.9);\r\n      -webkit-transform: scale(1);\r\n      border-radius: 8px;\r\n      overflow: hidden; }\r\n      .dropzone .dz-preview .dz-progress .dz-upload {\r\n        background: #333;\r\n        background: linear-gradient(to bottom, #666, #444);\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        bottom: 0;\r\n        width: 0;\r\n        -webkit-transition: width 300ms ease-in-out;\r\n        -moz-transition: width 300ms ease-in-out;\r\n        -ms-transition: width 300ms ease-in-out;\r\n        -o-transition: width 300ms ease-in-out;\r\n        transition: width 300ms ease-in-out; }\r\n    .dropzone .dz-preview.dz-error .dz-error-message {\r\n      display: block; }\r\n    .dropzone .dz-preview.dz-error:hover .dz-error-message {\r\n      opacity: 1;\r\n      pointer-events: auto; }\r\n    .dropzone .dz-preview .dz-error-message {\r\n      pointer-events: none;\r\n      z-index: 1000;\r\n      position: absolute;\r\n      display: block;\r\n      display: none;\r\n      opacity: 0;\r\n      -webkit-transition: opacity 0.3s ease;\r\n      -moz-transition: opacity 0.3s ease;\r\n      -ms-transition: opacity 0.3s ease;\r\n      -o-transition: opacity 0.3s ease;\r\n      transition: opacity 0.3s ease;\r\n      border-radius: 8px;\r\n      font-size: 13px;\r\n      top: 130px;\r\n      left: -10px;\r\n      width: 140px;\r\n      background: #be2626;\r\n      background: linear-gradient(to bottom, #be2626, #a92222);\r\n      padding: 0.5em 1.2em;\r\n      color: white; }\r\n      .dropzone .dz-preview .dz-error-message:after {\r\n        content: '';\r\n        position: absolute;\r\n        top: -6px;\r\n        left: 64px;\r\n        width: 0;\r\n        height: 0;\r\n        border-left: 6px solid transparent;\r\n        border-right: 6px solid transparent;\r\n        border-bottom: 6px solid #be2626; }\r\n.vue-dropzone{border:2px solid #e5e5e5;font-family:Arial,sans-serif;letter-spacing:.2px;color:#777;transition:.2s linear}.vue-dropzone:hover{background-color:#f6f6f6}.vue-dropzone>i{color:#ccc}.vue-dropzone>.dz-preview .dz-image{border-radius:0;width:100%;height:100%}.vue-dropzone>.dz-preview .dz-image img:not([src]){width:200px;height:200px}.vue-dropzone>.dz-preview .dz-image:hover img{transform:none;-webkit-filter:none}.vue-dropzone>.dz-preview .dz-details{bottom:0;top:0;color:#fff;background-color:rgba(33,150,243,.8);transition:opacity .2s linear;text-align:left}.vue-dropzone>.dz-preview .dz-details .dz-filename{overflow:hidden}.vue-dropzone>.dz-preview .dz-details .dz-filename span,.vue-dropzone>.dz-preview .dz-details .dz-size span{background-color:transparent}.vue-dropzone>.dz-preview .dz-details .dz-filename:not(:hover) span{border:none}.vue-dropzone>.dz-preview .dz-details .dz-filename:hover span{background-color:transparent;border:none}.vue-dropzone>.dz-preview .dz-progress .dz-upload{background:#ccc}.vue-dropzone>.dz-preview .dz-remove{position:absolute;z-index:30;color:#fff;margin-left:15px;padding:10px;top:inherit;bottom:15px;border:2px #fff solid;text-decoration:none;text-transform:uppercase;font-size:.8rem;font-weight:800;letter-spacing:1.1px;opacity:0}.vue-dropzone>.dz-preview:hover .dz-remove{opacity:1}.vue-dropzone>.dz-preview .dz-error-mark,.vue-dropzone>.dz-preview .dz-success-mark{margin-left:auto;margin-top:auto;width:100%;top:35%;left:0}.vue-dropzone>.dz-preview .dz-error-mark svg,.vue-dropzone>.dz-preview .dz-success-mark svg{margin-left:auto;margin-right:auto}.vue-dropzone>.dz-preview .dz-error-message{margin-left:auto;margin-right:auto;left:0;top:5%;width:100%;text-align:center}.vue-dropzone>.dz-preview .dz-error-message:after{display:none}", ""]);
 
 // exports
 
@@ -21794,12 +21957,342 @@ var render = function() {
       _c("Alertas", {
         key: _vm.key_mensajes,
         attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-3 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "p",
+                { staticClass: "card-title text-md-center text-xl-left" },
+                [_vm._v("Materias")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
+                },
+                [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
+                    },
+                    [_vm._v(_vm._s(_vm.numero_materias))]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass:
+                      "fa fa-university icon-md text-muted mb-0 mb-md-3 mb-xl-0"
+                  })
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "p",
+                { staticClass: "card-title text-md-center text-xl-left" },
+                [_vm._v("Docentes")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
+                },
+                [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
+                    },
+                    [_vm._v(_vm._s(_vm.numero_docentes))]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass:
+                      "fa fa-users icon-md text-muted mb-0 mb-md-3 mb-xl-0"
+                  })
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "p",
+                { staticClass: "card-title text-md-center text-xl-left" },
+                [_vm._v("Estudiantes")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
+                },
+                [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
+                    },
+                    [_vm._v(_vm._s(_vm.numero_estudiantes))]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass:
+                      "fa fa-users icon-md text-muted mb-0 mb-md-3 mb-xl-0"
+                  })
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "p",
+                { staticClass: "card-title text-md-center text-xl-left" },
+                [_vm._v("Aulas")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
+                },
+                [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
+                    },
+                    [_vm._v(_vm._s(_vm.numero_aulas))]
+                  ),
+                  _vm._v(" "),
+                  _c("i", {
+                    staticClass:
+                      "fa fa-desktop icon-md text-muted mb-0 mb-md-3 mb-xl-0"
+                  })
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Uso de Laboratorios por Semana")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ml-xl-4" }, [
+                _c("div", [
+                  _c("div", { staticClass: "table-responsive mb-3 mb-md-0" }, [
+                    _c(
+                      "table",
+                      { staticClass: "table table-borderless report-table" },
+                      [
+                        _c(
+                          "tbody",
+                          _vm._l(_vm.materias, function(materia) {
+                            return _c(
+                              "div",
+                              [
+                                _c("tr", [
+                                  _c("td", [_vm._v(_vm._s(materia.nombre))])
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(materia.grupos, function(grupo) {
+                                  return _c("tr", [
+                                    _c("td", { staticClass: "text-muted" }, [
+                                      _vm._v(_vm._s(grupo.docentes))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "w-100 px-0" }, [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "progress progress-md mx-4"
+                                        },
+                                        [
+                                          _c("div", {
+                                            staticClass:
+                                              "progress-bar bg-primary",
+                                            style: grupo.style,
+                                            attrs: {
+                                              role: "progressbar",
+                                              "aria-valuenow": grupo.porcentaje,
+                                              "aria-valuemin": "0",
+                                              "aria-valuemax": "100"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "h5",
+                                        {
+                                          staticClass: "font-weight-bold mb-0"
+                                        },
+                                        [_vm._v(_vm._s(grupo.inscritos))]
+                                      )
+                                    ])
+                                  ])
+                                })
+                              ],
+                              2
+                            )
+                          }),
+                          0
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+      _c("div", { staticClass: "card position-relative" }, [
+        _c("div", { staticClass: "card-body align-items-center" }, [
+          _c("p", { staticClass: "card-title" }, [
+            _vm._v("Uso de Laboratorios por Semana")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ml-xl-4" }, [
+            _c("div", { staticClass: "chartjs-size-monitor" }, [
+              _c("div", { staticClass: "chartjs-size-monitor-expand" }, [
+                _c("div", {})
+              ]),
+              _c("div", { staticClass: "chartjs-size-monitor-shrink" }, [
+                _c("div", {})
+              ])
+            ]),
+            _vm._v(" "),
+            _c("canvas", {
+              staticClass: "chartjs-render-monitor",
+              staticStyle: {
+                display: "block",
+                width: "350px",
+                height: "150px"
+              },
+              attrs: { id: "north-america-chart", width: "350", height: "150" }
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "north-america-legend" } }, [
+              _c("div", { staticClass: "report-chart" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _c("div", {
+                        staticClass: "mr-3",
+                        staticStyle: {
+                          width: "20px",
+                          height: "20px",
+                          "border-radius": "50%",
+                          "background-color": "#71c016"
+                        }
+                      }),
+                      _c("p", { staticClass: "mb-0" }, [
+                        _vm._v("Offline sales")
+                      ])
+                    ]),
+                    _c("p", { staticClass: "mb-0" }, [_vm._v("22789")])
+                  ]
+                ),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _c("div", {
+                        staticClass: "mr-3",
+                        staticStyle: {
+                          width: "20px",
+                          height: "20px",
+                          "border-radius": "50%",
+                          "background-color": "#8caaff"
+                        }
+                      }),
+                      _c("p", { staticClass: "mb-0" }, [_vm._v("Online sales")])
+                    ]),
+                    _c("p", { staticClass: "mb-0" }, [_vm._v("94678")])
+                  ]
+                ),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _c("div", {
+                        staticClass: "mr-3",
+                        staticStyle: {
+                          width: "20px",
+                          height: "20px",
+                          "border-radius": "50%",
+                          "background-color": "#248afd"
+                        }
+                      }),
+                      _c("p", { staticClass: "mb-0" }, [_vm._v("Returns")])
+                    ]),
+                    _c("p", { staticClass: "mb-0" }, [_vm._v("12097")])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -46941,7 +47434,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\test\Documents\Github\scrumtrooperssc\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

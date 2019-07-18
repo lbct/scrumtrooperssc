@@ -52,3 +52,6 @@ Route::get('administrador/usuarios/estudiantes', 'Administrador\Usuarios\Estudia
 Route::get('administrador/roles', 'Administrador\Rol\Control@todos');
 Route::get('administrador/roles/usuario/disponibles/{usuario_id}', 'Administrador\Rol\Control@disponibles');
 Route::put('administrador/rol/usuario', 'Administrador\Rol\Control@editar');
+
+Route::get('administrador/estadisticas/datos', 'Administrador\Estadisticas\Control@getDatos');
+Route::get('administrador/estadisticas/tablaGrupos', 'Administrador\Estadisticas\Control@getTablaGrupos');
