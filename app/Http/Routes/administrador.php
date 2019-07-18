@@ -55,3 +55,4 @@ Route::put('administrador/rol/usuario', 'Administrador\Rol\Control@editar');
 
 Route::get('administrador/estadisticas/datos', 'Administrador\Estadisticas\Control@getDatos');
 Route::get('administrador/estadisticas/tablaGrupos', 'Administrador\Estadisticas\Control@getTablaGrupos');
+Route::get('administrador/estadisticas/chartAulas', 'Administrador\Estadisticas\Control@getChartAulas');

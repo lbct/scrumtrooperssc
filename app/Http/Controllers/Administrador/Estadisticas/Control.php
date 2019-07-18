@@ -74,4 +74,17 @@ class Control extends Base
 
         return $datos;
     }
+
+    public function getChartAulas(Request $request){
+        $datos = [];
+        $count = [];
+        $nombres = [];
+        $aulas = Aula::get();
+        foreach($aulas as $aula){
+            array_push($count, Clase::where('aula_id', '=', $aula->id)->count());
+            array_push($nombres, $aula->nombre_aula);
+        }
+        array_push($datos, $nombres, $count);
+        return $datos;
+    }
 }

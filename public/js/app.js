@@ -32711,11 +32711,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -32736,13 +32731,18 @@ __webpack_require__.r(__webpack_exports__);
         inscritos: 0,
         porcentaje: 0,
         style: ''
-      }
+      },
+      options: {
+        labels: ["a", "s"]
+      },
+      series: []
     };
   },
   methods: {
     init: function init() {
       this.getDatos();
       this.getTablaGrupos();
+      this.getChartAulas();
     },
     getDatos: function getDatos() {
       var _this = this;
@@ -32783,12 +32783,22 @@ __webpack_require__.r(__webpack_exports__);
             m.grupos[c].style = "width: " + temp.porcentaje + "%";
           }
 
-          _this2.materias.push(m);
+          _this2.materias.push(m); //console.log(m.nombre);
 
-          console.log(m.nombre);
-        }
+        } //console.log(this.materias);
 
-        console.log(_this2.materias);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getChartAulas: function getChartAulas() {
+      var _this3 = this;
+
+      this.axios.get('/administrador/estadisticas/chartAulas').then(function (response) {
+        _this3.options = {
+          labels: response.data[0]
+        };
+        _this3.series = response.data[1];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -51745,11 +51755,11 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "col-md-7 grid-margin stretch-card" }, [
           _c("div", { staticClass: "card position-relative" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("p", { staticClass: "card-title" }, [
-                _vm._v("Uso de Laboratorios por Semana")
+                _vm._v("Distribución de Alumnos en Grupos Docentes")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "ml-xl-4" }, [
@@ -51824,122 +51834,38 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "col-md-5 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Uso de Laboratorios por Semana")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "chart-wrap" },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      id: "chartAulas",
+                      width: "500",
+                      type: "donut",
+                      options: _vm.options,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ])
       ])
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
-      _c("div", { staticClass: "card position-relative" }, [
-        _c("div", { staticClass: "card-body align-items-center" }, [
-          _c("p", { staticClass: "card-title" }, [
-            _vm._v("Uso de Laboratorios por Semana")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ml-xl-4" }, [
-            _c("div", { staticClass: "chartjs-size-monitor" }, [
-              _c("div", { staticClass: "chartjs-size-monitor-expand" }, [
-                _c("div", {})
-              ]),
-              _c("div", { staticClass: "chartjs-size-monitor-shrink" }, [
-                _c("div", {})
-              ])
-            ]),
-            _vm._v(" "),
-            _c("canvas", {
-              staticClass: "chartjs-render-monitor",
-              staticStyle: {
-                display: "block",
-                width: "350px",
-                height: "150px"
-              },
-              attrs: { id: "north-america-chart", width: "350", height: "150" }
-            }),
-            _vm._v(" "),
-            _c("div", { attrs: { id: "north-america-legend" } }, [
-              _c("div", { staticClass: "report-chart" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
-                  },
-                  [
-                    _c("div", { staticClass: "d-flex align-items-center" }, [
-                      _c("div", {
-                        staticClass: "mr-3",
-                        staticStyle: {
-                          width: "20px",
-                          height: "20px",
-                          "border-radius": "50%",
-                          "background-color": "#71c016"
-                        }
-                      }),
-                      _c("p", { staticClass: "mb-0" }, [
-                        _vm._v("Offline sales")
-                      ])
-                    ]),
-                    _c("p", { staticClass: "mb-0" }, [_vm._v("22789")])
-                  ]
-                ),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
-                  },
-                  [
-                    _c("div", { staticClass: "d-flex align-items-center" }, [
-                      _c("div", {
-                        staticClass: "mr-3",
-                        staticStyle: {
-                          width: "20px",
-                          height: "20px",
-                          "border-radius": "50%",
-                          "background-color": "#8caaff"
-                        }
-                      }),
-                      _c("p", { staticClass: "mb-0" }, [_vm._v("Online sales")])
-                    ]),
-                    _c("p", { staticClass: "mb-0" }, [_vm._v("94678")])
-                  ]
-                ),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-between mx-4 mx-xl-5 mt-3"
-                  },
-                  [
-                    _c("div", { staticClass: "d-flex align-items-center" }, [
-                      _c("div", {
-                        staticClass: "mr-3",
-                        staticStyle: {
-                          width: "20px",
-                          height: "20px",
-                          "border-radius": "50%",
-                          "background-color": "#248afd"
-                        }
-                      }),
-                      _c("p", { staticClass: "mb-0" }, [_vm._v("Returns")])
-                    ]),
-                    _c("p", { staticClass: "mb-0" }, [_vm._v("12097")])
-                  ]
-                )
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
