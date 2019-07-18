@@ -216,7 +216,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Docente';
+            this.$parent.$parent.section = 'Informes de asistencia';
         },
     }
 </script>

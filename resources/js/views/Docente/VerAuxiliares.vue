@@ -16,32 +16,33 @@
             
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             <div v-if="auxiliares.length > 0" >
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Materia</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Correo</th>
-                            <th scope="col">Clases cursadas</th>
-                            <th scope="col" v-if="gestion.activa">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(auxiliar, index) in auxiliares">
-                            <td>{{auxiliar.nombre_materia}}</td>
-                            <td>{{auxiliar.nombre}}</td>
-                            <td>{{auxiliar.apellido}}</td>
-                            <td>{{auxiliar.correo}}</td>
-                            <td>{{auxiliar.clases_cursadas}}</td>
-                            <td v-if="gestion.activa">
-                                <i v-on:click="mostrarRetirarAuxiliar(auxiliar, index)" class="fas fa-trash-alt clickleable"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Materia</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Clases cursadas</th>
+                                <th scope="col" v-if="gestion.activa">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(auxiliar, index) in auxiliares">
+                                <td>{{auxiliar.nombre_materia}}</td>
+                                <td>{{auxiliar.nombre}}</td>
+                                <td>{{auxiliar.apellido}}</td>
+                                <td>{{auxiliar.correo}}</td>
+                                <td>{{auxiliar.clases_cursadas}}</td>
+                                <td v-if="gestion.activa">
+                                    <i v-on:click="mostrarRetirarAuxiliar(auxiliar, index)" class="fas fa-trash-alt clickleable"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
                 <h4 class="text-left">Total de clases cursadas: {{clases_cursadas}}</h4>
             </div>
             <p v-else>No cuentas con auxiliares asignados</p>
