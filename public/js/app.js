@@ -35590,32 +35590,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
       key_mensajes: 0,
-      options: {
-        chart: {
-          id: 'vuechart-example'
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        }
-      },
-      series: [{
-        name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 151]
-      }]
+      materias_envios: [],
+      opciones_envios_chart: [],
+      series_envios_chart: [],
+      materias_asistencia: [],
+      opciones_asistencia_chart: [],
+      series_asistencia_chart: [],
+      grupos_docentes: 0,
+      guias_practicas: 0,
+      estudiantes_inscritos: 0,
+      envios_totales: 0
     };
   },
   methods: {
-    init: function init() {}
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/docente/estadisticas/enviospracticas').then(function (response) {
+        var datos = response.data;
+        _this.materias_envios = datos;
+
+        _this.materias_envios.forEach(function (materia) {
+          var semanas = [];
+
+          for (var semana = 1; semana <= materia.semanas; semana++) {
+            semanas.push('Semana ' + semana);
+          }
+
+          _this.opciones_envios_chart.push({
+            chart: {
+              stacked: true
+            },
+            xaxis: {
+              categories: semanas
+            }
+          });
+
+          _this.series_envios_chart.push([{
+            name: 'Fuera laboratorio',
+            data: materia.fuera_laboratorio
+          }, {
+            name: 'En laboratorio',
+            data: materia.en_laboratorio
+          }]);
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/asistencia').then(function (response) {
+        var datos = response.data;
+        _this.materias_asistencia = datos;
+
+        _this.materias_asistencia.forEach(function (materia) {
+          var semanas = [];
+
+          for (var semana = 1; semana <= materia.semanas; semana++) {
+            semanas.push('Semana ' + semana);
+          }
+
+          _this.opciones_asistencia_chart.push({
+            chart: {
+              stacked: true,
+              stackType: '100%'
+            },
+            xaxis: {
+              categories: semanas
+            }
+          });
+
+          _this.series_asistencia_chart.push([{
+            name: 'Sin asistencia',
+            data: materia.no_asistencia
+          }, {
+            name: 'Asistencia',
+            data: materia.asistencia
+          }]);
+        });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/gruposdocentes').then(function (response) {
+        var datos = response.data;
+        _this.grupos_docentes = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/guiaspracticas').then(function (response) {
+        var datos = response.data;
+        _this.guias_practicas = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/estudiantesinscritos').then(function (response) {
+        var datos = response.data;
+        _this.estudiantes_inscritos = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/enviostotales').then(function (response) {
+        var datos = response.data;
+        _this.envios_totales = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   mounted: function mounted() {
     this.init();
@@ -55400,125 +55484,124 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row" },
-      [
-        _c("tarjeta-reducida", {
-          attrs: { titulo: "Grupos Docentes", valor: "1", icono: "grupo" }
-        }),
-        _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: { titulo: "Guías Prácticas", valor: "1", icono: "archivo" }
-        }),
-        _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: {
-            titulo: "Estudiantes Inscritos",
-            valor: "1",
-            icono: "usuarios"
-          }
-        }),
-        _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: { titulo: "Envíos de estudiantes", valor: "1", icono: "subir" }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
-        _c("div", { staticClass: "card" }, [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("p", { staticClass: "card-title" }, [
-                _vm._v("Envíos de estudiantes por mes")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-muted font-weight-light" }, [
-                _vm._v(
-                  "\n                  Estos son los envíos realizados en los últimos 6 meses\n              "
-                )
-              ]),
-              _vm._v(" "),
-              _c("apexchart", {
-                attrs: {
-                  width: "100%",
-                  type: "bar",
-                  options: _vm.options,
-                  series: _vm.series
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
+  return _c(
+    "div",
+    [
+      _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
-        _c("div", { staticClass: "card" }, [
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("p", { staticClass: "card-title" }, [
-                _vm._v("Asistencia a clases por mes")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "text-muted font-weight-light" }, [
-                _vm._v(
-                  "\n                  Esta es la asistencia de los estudiantes en los últimos 6 meses\n              "
-                )
-              ]),
-              _vm._v(" "),
-              _c("apexchart", {
-                attrs: {
-                  width: "100%",
-                  type: "bar",
-                  options: _vm.options,
-                  series: _vm.series
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("p", { staticClass: "card-title" }, [
-              _vm._v("Envíos de estudiantes por mes")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-muted font-weight-light" }, [
-              _vm._v(
-                "\n                  Estos son los envíos realizados en los últimos 6 meses\n              "
+      _c(
+        "div",
+        { staticClass: "row" },
+        [
+          _c("tarjeta-reducida", {
+            attrs: {
+              titulo: "Grupos Docentes",
+              valor: _vm.grupos_docentes,
+              icono: "grupo"
+            }
+          }),
+          _vm._v(" "),
+          _c("tarjeta-reducida", {
+            attrs: {
+              titulo: "Guías Prácticas",
+              valor: _vm.guias_practicas,
+              icono: "archivo"
+            }
+          }),
+          _vm._v(" "),
+          _c("tarjeta-reducida", {
+            attrs: {
+              titulo: "Estudiantes Inscritos",
+              valor: _vm.estudiantes_inscritos,
+              icono: "usuarios"
+            }
+          }),
+          _vm._v(" "),
+          _c("tarjeta-reducida", {
+            attrs: {
+              titulo: "Envíos de estudiantes",
+              valor: _vm.envios_totales,
+              icono: "subir"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.materias_envios, function(materia, index) {
+        return _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(materia.nombre_materia))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-muted font-weight-light" }, [
+                    _vm._v(
+                      "\n                  (Envíos de estudiantes por semana)\n              "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("apexchart", {
+                    attrs: {
+                      width: "100%",
+                      height: "300px",
+                      type: "bar",
+                      options: _vm.opciones_envios_chart[index],
+                      series: _vm.series_envios_chart[index]
+                    }
+                  })
+                ],
+                1
               )
             ])
           ])
         ])
-      ])
-    ])
-  }
-]
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.materias_asistencia, function(materia, index) {
+        return _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
+            _c("div", { staticClass: "card" }, [
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(materia.nombre_materia))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-muted font-weight-light" }, [
+                    _vm._v(
+                      "\n                  (Asistencia de estudiantes por semana)\n              "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("apexchart", {
+                    attrs: {
+                      width: "100%",
+                      height: "300px",
+                      type: "bar",
+                      options: _vm.opciones_asistencia_chart[index],
+                      series: _vm.series_asistencia_chart[index]
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

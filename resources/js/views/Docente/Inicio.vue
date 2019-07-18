@@ -4,63 +4,59 @@
         <div class="row">
             <tarjeta-reducida 
                 titulo = "Grupos Docentes"
-                valor  = "1"
+                :valor  = "grupos_docentes"
                 icono  = "grupo">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Guías Prácticas"
-                valor  = "1"
+                :valor  = "guias_practicas"
                 icono  = "archivo">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Estudiantes Inscritos"
-                valor  = "1"
+                :valor  = "estudiantes_inscritos"
                 icono  = "usuarios">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Envíos de estudiantes"
-                valor  = "1"
+                :valor  = "envios_totales"
                 icono  = "subir">
             </tarjeta-reducida>
         </div>
         
-        <div class ="row">
+        <div v-for="(materia,index) in materias_envios" class ="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Envíos de estudiantes por mes</p>
+                  <p class="card-title">{{materia.nombre_materia}}</p>
                   <p class="text-muted font-weight-light">
-                      Estos son los envíos realizados en los últimos 6 meses
+                      (Envíos de estudiantes por semana)
                   </p>
+                  <apexchart width="100%" height="300px" 
+                             type="bar" 
+                             :options="opciones_envios_chart[index]" :series="series_envios_chart[index]">
+                  </apexchart>
                 </div>
               </div>
             </div>
         </div>
         
-        <div class ="row">
-            <div class="col-md-6 grid-margin stretch-card">
+        <div v-for="(materia,index) in materias_asistencia" class ="row">
+            <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <p class="card-title">Envíos de estudiantes por mes</p>
+                  <p class="card-title">{{materia.nombre_materia}}</p>
                   <p class="text-muted font-weight-light">
-                      Estos son los envíos realizados en los últimos 6 meses
+                      (Asistencia de estudiantes por semana)
                   </p>
-                  <apexchart width="100%" type="bar" :options="options" :series="series"></apexchart>
-                </div>
-              </div>
-            </div>
-        
-            <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">Asistencia a clases por mes</p>
-                  <p class="text-muted font-weight-light">
-                      Esta es la asistencia de los estudiantes en los últimos 6 meses
-                  </p>
-                  <apexchart width="100%" type="bar" :options="options" :series="series"></apexchart>
+                  <apexchart width="100%" height="300px" 
+                             type="bar" 
+                             :options="opciones_asistencia_chart[index]" 
+                             :series="series_asistencia_chart[index]">
+                  </apexchart>
                 </div>
               </div>
             </div>
@@ -75,23 +71,140 @@
                 mensajes: '',
                 tipo_mensaje: '',
                 key_mensajes: 0,
-                options: {
-                    chart: {
-                      id: 'vuechart-example'
-                    },
-                    xaxis: {
-                      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-                    }
-                },
-                series: [{
-                    name: 'series-1',
-                    data: [30, 40, 45, 50, 49, 60, 70, 151]
-                }],
+                
+                materias_envios: [],
+                opciones_envios_chart: [],
+                series_envios_chart: [],
+                
+                materias_asistencia: [],
+                opciones_asistencia_chart: [],
+                series_asistencia_chart: [],
+                
+                grupos_docentes: 0,
+                guias_practicas: 0,
+                estudiantes_inscritos: 0,
+                envios_totales:  0,
             }
         },
     
         methods:{
             init(){
+                this.axios
+                    .get('/docente/estadisticas/enviospracticas')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.materias_envios = datos;
+                    
+                        this.materias_envios.forEach((materia)=>{
+                            var semanas = [];
+                            
+                            for(var semana=1; semana<=materia.semanas; semana++){
+                                semanas.push('Semana '+semana);
+                            }
+                            
+                            this.opciones_envios_chart.push({
+                                chart: {
+                                    stacked: true,
+                                },
+                                xaxis: {
+                                    categories: semanas
+                                },
+                            });
+                            
+                            this.series_envios_chart.push([
+                                {
+                                    name: 'Fuera laboratorio',
+                                    data: materia.fuera_laboratorio
+                                },
+                                {
+                                    name: 'En laboratorio',
+                                    data: materia.en_laboratorio
+                                },
+                            ]);
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/asistencia')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.materias_asistencia = datos;
+                    
+                        this.materias_asistencia.forEach((materia)=>{
+                            var semanas = [];
+                            
+                            for(var semana=1; semana<=materia.semanas; semana++){
+                                semanas.push('Semana '+semana);
+                            }
+                            
+                            this.opciones_asistencia_chart.push({
+                                chart: {
+                                    stacked: true,
+                                    stackType: '100%'
+                                },
+                                xaxis: {
+                                    categories: semanas
+                                },
+                            });
+                            
+                            this.series_asistencia_chart.push([
+                                {
+                                    name: 'Sin asistencia',
+                                    data: materia.no_asistencia,
+                                },
+                                {
+                                    name: 'Asistencia',
+                                    data: materia.asistencia,
+                                },
+                            ]);
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/gruposdocentes')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.grupos_docentes = datos;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/guiaspracticas')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.guias_practicas = datos;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/estudiantesinscritos')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.estudiantes_inscritos = datos;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/enviostotales')
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.envios_totales = datos;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
         },            
         
