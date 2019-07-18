@@ -32,7 +32,7 @@
                             <td v-for="horario in clase">
                                 <div v-for="materia in horario"
                                      v-on:click="verMasMateria(materia)"
-                                     class="clickleable table-info custom-td">
+                                     v-bind:class="'clickleable custom-td '+colorGrupoDocente(materia.id)">
                                     {{materia.nombre_materia}}<br>
                                     {{materia.nombre_aula}}<br>
                                 </div>
@@ -151,7 +151,28 @@
             verMasMateria(materia){
                 this.materia = materia;
                 $('#modal-ver-mas-clase').modal('show');
-            }
+            },
+            
+            colorGrupoDocente(grupo_docente_id) {
+                var grupo_docente = grupo_docente_id%8;
+                
+                if(grupo_docente == 1)
+                    return 'table-primary';
+                else if(grupo_docente == 2)
+                    return 'table-secondary';
+                else if(grupo_docente == 3)
+                    return 'table-success';
+                else if(grupo_docente == 4)
+                    return 'table-danger';
+                else if(grupo_docente == 5)
+                    return 'table-warning';
+                else if(grupo_docente == 6)
+                    return 'table-info';
+                else if(grupo_docente == 7)
+                    return 'table-light';
+                else if(grupo_docente == 8)
+                    return 'table-dark';
+            },
         },            
         
         mounted(){

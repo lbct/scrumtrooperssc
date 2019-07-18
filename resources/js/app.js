@@ -6,18 +6,23 @@ import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
+import VueApexCharts from 'vue-apexcharts'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
+Vue.use(VueApexCharts)
 Vue.use(Datetime)
 
 import App from './views/App'
 import Alertas from './components/Alertas'
 import AdministradorUsuarios from './components/AdministradorUsuarios'
+import TarjetaReducida from './components/TarjetaReducida'
 
 Vue.component('Alertas', Alertas)
 Vue.component('AdministradorUsuarios', AdministradorUsuarios)
+Vue.component('TarjetaReducida', TarjetaReducida)
 Vue.component('vueDropzone', vue2Dropzone)
+Vue.component('apexchart', VueApexCharts)
 
 //Usuarios
 import UsuarioEditarDatos from './views/Usuario/EditarDatos'
@@ -39,6 +44,7 @@ import DocenteAsignarAuxiliar from './views/Docente/AsignarAuxiliar'
 import DocenteGuiasPracticas from './views/Docente/GuiasPracticas'
 import DocenteEstudiantesInscritos from './views/Docente/EstudiantesInscritos'
 import DocentePortafolios from './views/Docente/Portafolios'
+import DocenteInformesAsistencia from './views/Docente/InformesAsistencia'
 
 //Auxiliar Terminal
 import AuxiliarTerminalInicio from './views/AuxiliarTerminal/Inicio'
@@ -149,6 +155,11 @@ const router = new VueRouter({
             name: 'DocentePortafolios',
             component: DocentePortafolios,
             props: true,
+        },
+        {
+            path: '/panel/docente/InformesAsistencia',
+            name: 'DocenteInformesAsistencia',
+            component: DocenteInformesAsistencia,
         },
         //Auxiliar Terminal
         {

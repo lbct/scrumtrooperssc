@@ -54,6 +54,11 @@
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('js/bs-stepper.min.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script>
+    if($(window).width() > 990){
+        $("#toggler_menu_lg").hide();
+    }
+</script>
 </body>
 </html>
 @else

@@ -60,7 +60,7 @@
         <div class="collapse" id="docente_reportes">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteVerAuxiliares' }" class="nav-link">
+                <router-link :to="{ name: 'DocenteInformesAsistencia' }" class="nav-link">
                     Informes de Asistencia
                 </router-link>
             </li>

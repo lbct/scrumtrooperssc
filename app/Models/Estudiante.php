@@ -114,6 +114,22 @@ class Estudiante extends Model
         return $acceso;
     }
     
+    public function accesoGuiaPractica($guia_practica_id)
+    {
+        $acceso = false;
+        
+        $estudiante_clase = EstudianteClase::where('estudiante_id', $this->id)
+                            ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                            ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
+                            ->where('sesion.guia_practica_id', $guia_practica_id)
+                            ->first();
+        
+        if($estudiante_clase)
+            $acceso = true;
+        
+        return $acceso;
+    }
+    
     public function retirar($estudiante_clase_id)
     {
         $registro = EstudianteClase::find($estudiante_clase_id);

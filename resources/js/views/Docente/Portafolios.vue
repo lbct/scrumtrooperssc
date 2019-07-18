@@ -24,13 +24,17 @@
                             <td>{{sesion.comentario_auxiliar}}</td>
                             <td v-if="sesion.archivos.length">
                                 <div v-for="archivo in sesion.archivos">
-                                    <a :href="'/estudiante/archivos/practicas/' + archivo.id">{{archivo.archivo}} <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i></a>
+                                    <a :href="'/docente/archivos/enviospracticas/' + archivo.id" target="_blank">
+                                        {{archivo.archivo}} 
+                                        <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i>
+                                    </a>
                                 </div>
                             </td>
                             <td v-else>Sin Archivos</td>
                         </tr>
                     </tbody>
                 </table>
+                <br>
                 <h4 class="text-left">Porcentaje de asistencia: {{pocentaje_asistencia}}% ({{asistido}}/{{total_sesiones}})</h4>
                 <p class="text-left">Arhivos subidos: {{total_arhivos_subidos}} (En laboratorio: {{archivos_laboratorio}})</p>
             </div>

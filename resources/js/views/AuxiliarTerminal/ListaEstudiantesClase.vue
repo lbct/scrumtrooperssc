@@ -103,6 +103,7 @@
                   </div>
                 </div>
                 </div>
+                <p v-else>No se tiene estudiantes en esta clase</p>
             </div>
             <p v-else>No se tiene sesiones de laboratorio para esta clase</p>
         </div>
