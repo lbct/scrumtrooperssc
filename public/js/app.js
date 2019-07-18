@@ -34559,6 +34559,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['clase_id'],
   data: function data() {
@@ -54189,7 +54190,9 @@ var render = function() {
                             ]
                           )
                         ])
-                      : _vm._e()
+                      : _c("p", [
+                          _vm._v("No se tiene estudiantes en esta clase")
+                        ])
                   ],
                   1
                 )

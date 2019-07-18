@@ -40,11 +40,14 @@ class Control extends Base
             $clase = Clase::where('grupo_docente_id', $grupo_docente->id)
                      ->first();
             
-            $semanas = Sesion::where('clase_id', $clase->id)
-                       ->orderBy('semana', 'desc')
-                       ->first();
-            
-            $total+=$semanas->semana;
+            if($clase){
+                $semanas = Sesion::where('clase_id', $clase->id)
+                           ->orderBy('semana', 'desc')
+                           ->first();
+                
+                if($semanas)
+                    $total+=$semanas->semana;
+            }
         }
         
         return $total;
@@ -101,7 +104,7 @@ class Control extends Base
         $estadisticas = collect();
         
         foreach($grupos_docentes as $grupo_docente){
-            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemana();
+            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemanaActual();
             
             $fuera  = collect();
             $en_lab = collect();
@@ -148,7 +151,7 @@ class Control extends Base
         $estadisticas = collect();
         
         foreach($grupos_docentes as $grupo_docente){
-            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemana();
+            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemanaActual();
             
             $no_asistencia  = collect();
             $asistencia     = collect();

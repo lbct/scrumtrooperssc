@@ -54,6 +54,19 @@ class GrupoDocente extends Model
         return $tiene;
     }
     
+    public function maximaSemanaActual()
+    {
+        $maxima_semana_actual = 0;
+        $clase = Clase::where('grupo_docente_id', $this->id)
+                  ->orderBy('semana_actual_sesion', 'desc')
+                  ->first();
+        
+        if($clase)
+            $maxima_semana_actual = $clase->semana_actual_sesion;
+        
+        return $maxima_semana_actual;
+    }
+    
     public function maximaSemana()
     {
         $maxima_semana = -1;

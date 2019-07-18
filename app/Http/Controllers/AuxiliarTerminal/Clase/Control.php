@@ -21,7 +21,7 @@ class Control extends Base
         $auxiliar   = Auxiliar::where("usuario_id", $usuario_id)->first();
         
         if($auxiliar->esAuxiliarTerminal($grupo_docente_id)){
-            $clases = GrupoDocente::find($grupo_docente_id)
+            $clases = GrupoDocente::where('grupo_docente.id', $grupo_docente_id)
                       ->join('clase', 'clase.grupo_docente_id', '=', 'grupo_docente.id')
                       ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                       ->join('aula', 'aula.id', '=', 'clase.aula_id')
