@@ -95,23 +95,19 @@ class Control extends Base
         return $total;
     }
     
-    public function enviospracticas(Request $request){
+    public function enviospracticas(Request $request, $grupo_docente_id){
         $usuario_id = session('usuario_id'); 
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
-        $gestion_actual = Gestiones::gestionActiva();
-        
-        $grupos_docentes = $docente->materias($gestion_actual->id);
         $estadisticas = collect();
         
-        foreach($grupos_docentes as $grupo_docente){
-            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemanaActual();
-            
+        if($docente->accesoGrupoDocente($grupo_docente_id)){
+            $semana_maxima = GrupoDocente::find($grupo_docente_id)->maximaSemanaActual();
             $fuera  = collect();
             $en_lab = collect();
             
             for($semana=1; $semana<=$semana_maxima; $semana++){
                 $cantidad_fuera = GrupoADocente::where('docente_id', $docente->id)
-                                  ->where('grupo_docente_id', $grupo_docente->id)
+                                  ->where('grupo_docente_id', $grupo_docente_id)
                                   ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
                                   ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
                                   ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
@@ -122,7 +118,7 @@ class Control extends Base
                 $fuera->push($cantidad_fuera);
                 
                 $cantidad_en_lab = GrupoADocente::where('docente_id', $docente->id)
-                                   ->where('grupo_docente_id', $grupo_docente->id)
+                                   ->where('grupo_docente_id', $grupo_docente_id)
                                    ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
                                    ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
                                    ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
@@ -132,33 +128,68 @@ class Control extends Base
                                    ->count();
                 $en_lab->push($cantidad_en_lab);
             }
-                
-            $grupo_docente['fuera_laboratorio'] = $fuera;
-            $grupo_docente['en_laboratorio']    = $en_lab;
-            $grupo_docente['semanas']           = $semana_maxima;
-            $estadisticas->push($grupo_docente);
+            
+            $estadisticas['fuera_laboratorio'] = $fuera;
+            $estadisticas['en_laboratorio']    = $en_lab;
+            $estadisticas['semanas']           = $semana_maxima;
         }
         
         return $estadisticas;
     }
     
-    public function asistencia(Request $request){
+    public function enviospracticasgrupo(Request $request, $grupo_docente_id){
         $usuario_id = session('usuario_id'); 
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
-        $gestion_actual = Gestiones::gestionActiva();
-        
-        $grupos_docentes = $docente->materias($gestion_actual->id);
         $estadisticas = collect();
         
-        foreach($grupos_docentes as $grupo_docente){
-            $semana_maxima = GrupoDocente::find($grupo_docente->id)->maximaSemanaActual();
-            
-            $no_asistencia  = collect();
-            $asistencia     = collect();
+        if($docente->accesoGrupoDocente($grupo_docente_id)){
+            $semana_maxima = GrupoDocente::find($grupo_docente_id)->maximaSemanaActual();
+            $fuera  = collect();
+            $en_lab = collect();
             
             for($semana=1; $semana<=$semana_maxima; $semana++){
+                $cantidad_fuera = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                  ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
+                                  ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                                  ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
+                                  ->where('sesion.semana', $semana)
+                                  ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                  ->where('envio_practica.en_laboratorio', false)
+                                  ->count();
+                $fuera->push($cantidad_fuera);
+                
+                $cantidad_en_lab = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                   ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
+                                   ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                                   ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
+                                   ->where('sesion.semana', $semana)
+                                   ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                   ->where('envio_practica.en_laboratorio', true)
+                                   ->count();
+                $en_lab->push($cantidad_en_lab);
+            }
+            
+            $estadisticas['fuera_laboratorio'] = $fuera;
+            $estadisticas['en_laboratorio']    = $en_lab;
+            $estadisticas['semanas']           = $semana_maxima;
+        }
+        
+        return $estadisticas;
+    }
+    
+    public function asistencia(Request $request, $grupo_docente_id){
+        $usuario_id = session('usuario_id'); 
+        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+        $estadisticas = collect();
+        
+        if($docente->accesoGrupoDocente($grupo_docente_id)){
+            $semana_maxima = GrupoDocente::find($grupo_docente_id)->maximaSemanaActual();
+            $no_asistencia  = collect();
+            $asistencia     = collect();
+
+            for($semana=1; $semana<=$semana_maxima; $semana++){
                 $cantidad_no_asistencia = GrupoADocente::where('docente_id', $docente->id)
-                                          ->where('grupo_docente_id', $grupo_docente->id)
+                                          ->where('grupo_docente_id', $grupo_docente_id)
                                           ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
                                           ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
                                           ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
@@ -168,7 +199,7 @@ class Control extends Base
                 $no_asistencia->push($cantidad_no_asistencia);
                 
                 $cantidad_asistencia = GrupoADocente::where('docente_id', $docente->id)
-                                       ->where('grupo_docente_id', $grupo_docente->id)
+                                       ->where('grupo_docente_id', $grupo_docente_id)
                                        ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
                                        ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
                                        ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
@@ -178,10 +209,47 @@ class Control extends Base
                 $asistencia->push($cantidad_asistencia);
             }
                 
-            $grupo_docente['no_asistencia'] = $no_asistencia;
-            $grupo_docente['asistencia']    = $asistencia;
-            $grupo_docente['semanas']       = $semana_maxima;
-            $estadisticas->push($grupo_docente);
+            $estadisticas['no_asistencia'] = $no_asistencia;
+            $estadisticas['asistencia']    = $asistencia;
+            $estadisticas['semanas']       = $semana_maxima;
+        }
+        
+        return $estadisticas;
+    }
+    
+    public function asistenciagrupo(Request $request, $grupo_docente_id){
+        $usuario_id = session('usuario_id'); 
+        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+        $estadisticas = collect();
+        
+        if($docente->accesoGrupoDocente($grupo_docente_id)){
+            $semana_maxima = GrupoDocente::find($grupo_docente_id)->maximaSemanaActual();
+            $no_asistencia  = collect();
+            $asistencia     = collect();
+
+            for($semana=1; $semana<=$semana_maxima; $semana++){
+                $cantidad_no_asistencia = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                          ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
+                                          ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                                          ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
+                                          ->where('sesion.semana', $semana)
+                                          ->where('sesion_estudiante.asistencia_sesion', false)
+                                          ->count();
+                $no_asistencia->push($cantidad_no_asistencia);
+                
+                $cantidad_asistencia = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                                       ->join('estudiante_clase', 'estudiante_clase.grupo_a_docente_id', '=', 'grupo_a_docente.id')
+                                       ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                                       ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
+                                       ->where('sesion.semana', $semana)
+                                       ->where('sesion_estudiante.asistencia_sesion', true)
+                                       ->count();
+                $asistencia->push($cantidad_asistencia);
+            }
+                
+            $estadisticas['no_asistencia'] = $no_asistencia;
+            $estadisticas['asistencia']    = $asistencia;
+            $estadisticas['semanas']       = $semana_maxima;
         }
         
         return $estadisticas;

@@ -61,12 +61,12 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
                 <router-link :to="{ name: 'DocenteInformesAsistencia' }" class="nav-link">
-                    Informes de Asistencia
+                    Asistencia
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteAsignarAuxiliar' }" class="nav-link">
-                    Estadísticas de Prácticas
+                <router-link :to="{ name: 'DocenteInformesEnvios' }" class="nav-link">
+                    Envíos
                 </router-link>
             </li>
           </ul>

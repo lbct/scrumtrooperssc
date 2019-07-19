@@ -73,7 +73,8 @@ class Docente extends Model
         $materias = $materias->map(function ($materia) {
                         $grupo_docente_id = $materia['id'];
                         $grupo_docente = GrupoDocente::find($grupo_docente_id);
-                        $materia['tiene_clases'] = $grupo_docente->tieneClases();
+                        $materia['tiene_clases']  = $grupo_docente->tieneClases();
+                        $materia['maxima_semana'] = $grupo_docente->maximaSemanaActual();
                         return $materia;
                      });
         

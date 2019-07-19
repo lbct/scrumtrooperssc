@@ -35600,113 +35600,99 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      mensajes: '',
-      tipo_mensaje: '',
-      key_mensajes: 0,
-      materias_envios: [],
-      opciones_envios_chart: [],
-      series_envios_chart: [],
-      materias_asistencia: [],
-      opciones_asistencia_chart: [],
+      gestiones: [],
+      gestion: {
+        id: '',
+        activa: false
+      },
+      series_asistencia_grupodocente_chart: [],
+      opciones_asistencia_chart: {},
       series_asistencia_chart: [],
-      grupos_docentes: 0,
-      guias_practicas: 0,
-      estudiantes_inscritos: 0,
-      envios_totales: 0
+      materias: [],
+      materia: {
+        id: '',
+        nombre_materia: '',
+        maxima_semana: 0
+      }
     };
   },
   methods: {
     init: function init() {
       var _this = this;
 
-      this.axios.get('/docente/estadisticas/enviospracticas').then(function (response) {
-        var datos = response.data;
-        _this.materias_envios = datos;
+      this.axios.get('/docente/gestiones').then(function (response) {
+        _this.gestiones = response.data;
 
-        _this.materias_envios.forEach(function (materia) {
-          var semanas = [];
-
-          for (var semana = 1; semana <= materia.semanas; semana++) {
-            semanas.push('Semana ' + semana);
-          }
-
-          _this.opciones_envios_chart.push({
-            chart: {
-              stacked: true
-            },
-            xaxis: {
-              categories: semanas
-            }
+        if (_this.gestiones.length > 0) {
+          var gestion = _this.gestiones.find(function (gestion) {
+            return gestion.activa == true;
           });
 
-          _this.series_envios_chart.push([{
-            name: 'Fuera laboratorio',
-            data: materia.fuera_laboratorio
-          }, {
-            name: 'En laboratorio',
-            data: materia.en_laboratorio
-          }]);
-        });
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      this.axios.get('/docente/estadisticas/asistencia').then(function (response) {
-        var datos = response.data;
-        _this.materias_asistencia = datos;
+          if (gestion) _this.gestion = gestion;else _this.gestion = _this.gestiones[0];
 
-        _this.materias_asistencia.forEach(function (materia) {
-          var semanas = [];
+          _this.cambiarGestion();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarGestion: function cambiarGestion() {
+      var _this2 = this;
 
-          for (var semana = 1; semana <= materia.semanas; semana++) {
-            semanas.push('Semana ' + semana);
-          }
+      this.axios.get('/docente/materias/' + this.gestion.id).then(function (response) {
+        _this2.materias = response.data;
 
-          _this.opciones_asistencia_chart.push({
-            chart: {
-              stacked: true,
-              stackType: '100%'
-            },
-            xaxis: {
-              categories: semanas
-            }
-          });
+        if (_this2.materias.length) {
+          _this2.materia = _this2.materias[0];
 
-          _this.series_asistencia_chart.push([{
-            name: 'Sin asistencia',
-            data: materia.no_asistencia
-          }, {
-            name: 'Asistencia',
-            data: materia.asistencia
-          }]);
-        });
+          _this2.cambiarMateria();
+        }
       })["catch"](function (error) {
         console.log(error);
       });
-      this.axios.get('/docente/estadisticas/gruposdocentes').then(function (response) {
+    },
+    cambiarMateria: function cambiarMateria() {
+      var _this3 = this;
+
+      var semanas = [];
+
+      for (var semana = 1; semana <= this.materia.maxima_semana; semana++) {
+        semanas.push('Semana ' + semana);
+      }
+
+      this.opciones_asistencia_chart = {
+        chart: {
+          stacked: true,
+          stackType: '100%'
+        },
+        xaxis: {
+          categories: semanas
+        }
+      };
+      this.axios.get('/docente/estadisticas/asistencia/' + this.materia.id).then(function (response) {
         var datos = response.data;
-        _this.grupos_docentes = datos;
+        _this3.series_asistencia_chart = [{
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
+        }, {
+          name: 'Asistencia',
+          data: datos.asistencia
+        }];
       })["catch"](function (error) {
         console.log(error);
       });
-      this.axios.get('/docente/estadisticas/guiaspracticas').then(function (response) {
+      this.axios.get('/docente/estadisticas/asistencia/grupo/' + this.materia.id).then(function (response) {
         var datos = response.data;
-        _this.guias_practicas = datos;
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      this.axios.get('/docente/estadisticas/estudiantesinscritos').then(function (response) {
-        var datos = response.data;
-        _this.estudiantes_inscritos = datos;
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      this.axios.get('/docente/estadisticas/enviostotales').then(function (response) {
-        var datos = response.data;
-        _this.envios_totales = datos;
+        _this3.series_asistencia_grupodocente_chart = [{
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
+        }, {
+          name: 'Asistencia',
+          data: datos.asistencia
+        }];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -35714,7 +35700,191 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.init();
-    this.$parent.$parent.section = 'Informes de asistencia';
+    this.$parent.$parent.section = 'Asistencia';
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      gestiones: [],
+      gestion: {
+        id: '',
+        activa: false
+      },
+      opciones_envios_chart: {},
+      series_envios_chart: [],
+      series_envios_grupodocente_chart: [],
+      materias: [],
+      materia: {
+        id: '',
+        nombre_materia: '',
+        maxima_semana: 0
+      }
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      this.axios.get('/docente/gestiones').then(function (response) {
+        _this.gestiones = response.data;
+
+        if (_this.gestiones.length > 0) {
+          var gestion = _this.gestiones.find(function (gestion) {
+            return gestion.activa == true;
+          });
+
+          if (gestion) _this.gestion = gestion;else _this.gestion = _this.gestiones[0];
+
+          _this.cambiarGestion();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarGestion: function cambiarGestion() {
+      var _this2 = this;
+
+      this.axios.get('/docente/materias/' + this.gestion.id).then(function (response) {
+        _this2.materias = response.data;
+
+        if (_this2.materias.length) {
+          _this2.materia = _this2.materias[0];
+
+          _this2.cambiarMateria();
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarMateria: function cambiarMateria() {
+      var _this3 = this;
+
+      var semanas = [];
+
+      for (var semana = 1; semana <= this.materia.maxima_semana; semana++) {
+        semanas.push('Semana ' + semana);
+      }
+
+      this.opciones_envios_chart = {
+        chart: {
+          stacked: true
+        },
+        xaxis: {
+          categories: semanas
+        }
+      };
+      this.axios.get('/docente/estadisticas/enviospracticas/' + this.materia.id).then(function (response) {
+        var datos = response.data;
+        _this3.series_envios_chart = [{
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
+        }, {
+          name: 'En laboratorio',
+          data: datos.en_laboratorio
+        }];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/enviospracticas/grupo/' + this.materia.id).then(function (response) {
+        var datos = response.data;
+        _this3.series_envios_grupodocente_chart = [{
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
+        }, {
+          name: 'En laboratorio',
+          data: datos.en_laboratorio
+        }];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+    this.$parent.$parent.section = 'Envíos';
   }
 });
 
@@ -35801,88 +35971,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
       key_mensajes: 0,
-      materias_envios: [],
-      opciones_envios_chart: [],
+      opciones_envios_chart: {},
       series_envios_chart: [],
-      materias_asistencia: [],
-      opciones_asistencia_chart: [],
+      opciones_asistencia_chart: {},
       series_asistencia_chart: [],
       grupos_docentes: 0,
       guias_practicas: 0,
       estudiantes_inscritos: 0,
-      envios_totales: 0
+      envios_totales: 0,
+      materias: [],
+      materia: {
+        id: '',
+        nombre_materia: '',
+        maxima_semana: 0
+      }
     };
   },
   methods: {
     init: function init() {
       var _this = this;
 
-      this.axios.get('/docente/estadisticas/enviospracticas').then(function (response) {
-        var datos = response.data;
-        _this.materias_envios = datos;
+      this.axios.get('/docente/materias').then(function (response) {
+        _this.materias = response.data;
 
-        _this.materias_envios.forEach(function (materia) {
-          var semanas = [];
+        if (_this.materias.length) {
+          _this.materia = _this.materias[0];
 
-          for (var semana = 1; semana <= materia.semanas; semana++) {
-            semanas.push('Semana ' + semana);
-          }
-
-          _this.opciones_envios_chart.push({
-            chart: {
-              stacked: true
-            },
-            xaxis: {
-              categories: semanas
-            }
-          });
-
-          _this.series_envios_chart.push([{
-            name: 'Fuera laboratorio',
-            data: materia.fuera_laboratorio
-          }, {
-            name: 'En laboratorio',
-            data: materia.en_laboratorio
-          }]);
-        });
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      this.axios.get('/docente/estadisticas/asistencia').then(function (response) {
-        var datos = response.data;
-        _this.materias_asistencia = datos;
-
-        _this.materias_asistencia.forEach(function (materia) {
-          var semanas = [];
-
-          for (var semana = 1; semana <= materia.semanas; semana++) {
-            semanas.push('Semana ' + semana);
-          }
-
-          _this.opciones_asistencia_chart.push({
-            chart: {
-              stacked: true,
-              stackType: '100%'
-            },
-            xaxis: {
-              categories: semanas
-            }
-          });
-
-          _this.series_asistencia_chart.push([{
-            name: 'Sin asistencia',
-            data: materia.no_asistencia
-          }, {
-            name: 'Asistencia',
-            data: materia.asistencia
-          }]);
-        });
+          _this.cambiarMateria();
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -35907,6 +36039,57 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/enviostotales').then(function (response) {
         var datos = response.data;
         _this.envios_totales = datos;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    cambiarMateria: function cambiarMateria() {
+      var _this2 = this;
+
+      var semanas = [];
+
+      for (var semana = 1; semana <= this.materia.maxima_semana; semana++) {
+        semanas.push('Semana ' + semana);
+      }
+
+      this.opciones_envios_chart = {
+        chart: {
+          stacked: true
+        },
+        xaxis: {
+          categories: semanas
+        }
+      };
+      this.opciones_asistencia_chart = {
+        chart: {
+          stacked: true,
+          stackType: '100%'
+        },
+        xaxis: {
+          categories: semanas
+        }
+      };
+      this.axios.get('/docente/estadisticas/enviospracticas/' + this.materia.id).then(function (response) {
+        var datos = response.data;
+        _this2.series_envios_chart = [{
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
+        }, {
+          name: 'En laboratorio',
+          data: datos.en_laboratorio
+        }];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      this.axios.get('/docente/estadisticas/asistencia/' + this.materia.id).then(function (response) {
+        var datos = response.data;
+        _this2.series_asistencia_chart = [{
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
+        }, {
+          name: 'Asistencia',
+          data: datos.asistencia
+        }];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -55704,132 +55887,467 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Grupos Docentes",
-              valor: _vm.grupos_docentes,
-              icono: "grupo"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Guías Prácticas",
-              valor: _vm.guias_practicas,
-              icono: "archivo"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Estudiantes Inscritos",
-              valor: _vm.estudiantes_inscritos,
-              icono: "usuarios"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Envíos de estudiantes",
-              valor: _vm.envios_totales,
-              icono: "subir"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.materias_envios, function(materia, index) {
-        return _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(materia.nombre_materia))
-                ]),
+  return _c("div", [
+    _vm.gestiones.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona una Gestión")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-muted font-weight-light" }, [
-                  _vm._v(
-                    "\n                  (Envíos de estudiantes por semana)\n              "
-                  )
-                ]),
-                _vm._v(" "),
-                materia.semanas
-                  ? _c(
-                      "div",
-                      [
-                        _c("apexchart", {
-                          attrs: {
-                            width: "100%",
-                            height: "300px",
-                            type: "bar",
-                            options: _vm.opciones_envios_chart[index],
-                            series: _vm.series_envios_chart[index]
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  : _c("h5", { staticClass: "text-muted" }, [
-                      _vm._v("No hay semanas disponibles")
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.gestion,
+                        expression: "gestion"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.gestion = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.cambiarGestion()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.gestiones, function(gestion, index) {
+                    return _c("option", { domProps: { value: gestion } }, [
+                      _vm._v(
+                        "\n                        Gestion: " +
+                          _vm._s(gestion.anho_gestion) +
+                          " - " +
+                          _vm._s(gestion.periodo) +
+                          "\n                    "
+                      )
                     ])
+                  }),
+                  0
+                )
               ])
-            ])
-          ])
-        ])
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.materias_asistencia, function(materia, index) {
-        return _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(materia.nombre_materia))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted font-weight-light" }, [
-                  _vm._v(
-                    "\n                  (Asistencia de estudiantes por semana)\n              "
-                  )
-                ]),
-                _vm._v(" "),
-                materia.semanas
-                  ? _c(
+            ]),
+            _vm._v(" "),
+            _vm.materias.length > 0
+              ? _c(
+                  "div",
+                  [
+                    _c("center", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-group col-md-6" },
+                        [
+                          _c("label", [_vm._v("Selecciona una Materia")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia,
+                                  expression: "materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.materia = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  },
+                                  function($event) {
+                                    return _vm.cambiarMateria()
+                                  }
+                                ]
+                              }
+                            },
+                            _vm._l(_vm.materias, function(materia, index) {
+                              return _c(
+                                "option",
+                                { domProps: { value: materia } },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(materia.nombre_materia) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
                       "div",
+                      { staticClass: "col-md-12 grid-margin stretch-card" },
                       [
-                        _c("apexchart", {
-                          attrs: {
-                            width: "100%",
-                            height: "300px",
-                            type: "bar",
-                            options: _vm.opciones_asistencia_chart[index],
-                            series: _vm.series_asistencia_chart[index]
-                          }
-                        })
-                      ],
-                      1
+                        _c("div", { staticClass: "card" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("p", { staticClass: "card-title" }, [
+                              _vm._v("Asistencia de estudiantes por semana")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "text-muted font-weight-light" },
+                              [
+                                _vm._v(
+                                  "\n                      (Estudiantes registrados con el docente)\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.materia.maxima_semana
+                              ? _c(
+                                  "div",
+                                  [
+                                    _c("apexchart", {
+                                      attrs: {
+                                        width: "100%",
+                                        height: "300px",
+                                        type: "bar",
+                                        options: _vm.opciones_asistencia_chart,
+                                        series: _vm.series_asistencia_chart
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _c("h5", { staticClass: "text-muted" }, [
+                                  _vm._v("No hay semanas disponibles")
+                                ])
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-12 grid-margin stretch-card" },
+                      [
+                        _c("div", { staticClass: "card" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("p", { staticClass: "card-title" }, [
+                              _vm._v("Asistencia de estudiantes por semana")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "text-muted font-weight-light" },
+                              [
+                                _vm._v(
+                                  "\n                      (Estudiantes inscritos en el grupo docente)\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.materia.maxima_semana
+                              ? _c(
+                                  "div",
+                                  [
+                                    _c("apexchart", {
+                                      attrs: {
+                                        width: "100%",
+                                        height: "300px",
+                                        type: "bar",
+                                        options: _vm.opciones_asistencia_chart,
+                                        series:
+                                          _vm.series_asistencia_grupodocente_chart
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _c("h5", { staticClass: "text-muted" }, [
+                                  _vm._v("No hay semanas disponibles")
+                                ])
+                          ])
+                        ])
+                      ]
                     )
-                  : _c("h5", { staticClass: "text-muted" }, [
-                      _vm._v("No hay semanas disponibles")
+                  ],
+                  1
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.gestiones.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona una Gestión")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.gestion,
+                        expression: "gestion"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.gestion = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.cambiarGestion()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.gestiones, function(gestion, index) {
+                    return _c("option", { domProps: { value: gestion } }, [
+                      _vm._v(
+                        "\n                        Gestion: " +
+                          _vm._s(gestion.anho_gestion) +
+                          " - " +
+                          _vm._s(gestion.periodo) +
+                          "\n                    "
+                      )
                     ])
+                  }),
+                  0
+                )
               ])
-            ])
-          ])
-        ])
-      })
-    ],
-    2
-  )
+            ]),
+            _vm._v(" "),
+            _vm.materias.length > 0
+              ? _c(
+                  "div",
+                  [
+                    _c("center", [
+                      _c(
+                        "div",
+                        { staticClass: "form-group form-group col-md-6" },
+                        [
+                          _c("label", [_vm._v("Selecciona una Materia")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia,
+                                  expression: "materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: [
+                                  function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.materia = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  },
+                                  function($event) {
+                                    return _vm.cambiarMateria()
+                                  }
+                                ]
+                              }
+                            },
+                            _vm._l(_vm.materias, function(materia, index) {
+                              return _c(
+                                "option",
+                                { domProps: { value: materia } },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(materia.nombre_materia) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-12 grid-margin stretch-card" },
+                      [
+                        _c("div", { staticClass: "card" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("p", { staticClass: "card-title" }, [
+                              _vm._v("Envíos de estudiantes por semana")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "text-muted font-weight-light" },
+                              [
+                                _vm._v(
+                                  "\n                      (Estudiantes registrados con el docente)\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.materia.maxima_semana
+                              ? _c(
+                                  "div",
+                                  [
+                                    _c("apexchart", {
+                                      attrs: {
+                                        width: "100%",
+                                        height: "300px",
+                                        type: "bar",
+                                        options: _vm.opciones_envios_chart,
+                                        series: _vm.series_envios_chart
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _c("h5", { staticClass: "text-muted" }, [
+                                  _vm._v("No hay semanas disponibles")
+                                ])
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-12 grid-margin stretch-card" },
+                      [
+                        _c("div", { staticClass: "card" }, [
+                          _c("div", { staticClass: "card-body" }, [
+                            _c("p", { staticClass: "card-title" }, [
+                              _vm._v("Envíos de estudiantes por semana")
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              { staticClass: "text-muted font-weight-light" },
+                              [
+                                _vm._v(
+                                  "\n                      (Estudiantes inscritos en el grupo docente)\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm.materia.maxima_semana
+                              ? _c(
+                                  "div",
+                                  [
+                                    _c("apexchart", {
+                                      attrs: {
+                                        width: "100%",
+                                        height: "300px",
+                                        type: "bar",
+                                        options: _vm.opciones_envios_chart,
+                                        series:
+                                          _vm.series_envios_grupodocente_chart
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _c("h5", { staticClass: "text-muted" }, [
+                                  _vm._v("No hay semanas disponibles")
+                                ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55853,132 +56371,183 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Grupos Docentes",
-              valor: _vm.grupos_docentes,
-              icono: "grupo"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Guías Prácticas",
-              valor: _vm.guias_practicas,
-              icono: "archivo"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Estudiantes Inscritos",
-              valor: _vm.estudiantes_inscritos,
-              icono: "usuarios"
-            }
-          }),
-          _vm._v(" "),
-          _c("tarjeta-reducida", {
-            attrs: {
-              titulo: "Envíos de estudiantes",
-              valor: _vm.envios_totales,
-              icono: "subir"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._l(_vm.materias_envios, function(materia, index) {
-        return _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(materia.nombre_materia))
-                ]),
+  return _c("div", [
+    _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Grupos Docentes",
+            valor: _vm.grupos_docentes,
+            icono: "grupo"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Guías Prácticas",
+            valor: _vm.guias_practicas,
+            icono: "archivo"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Estudiantes Inscritos",
+            valor: _vm.estudiantes_inscritos,
+            icono: "usuarios"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Envíos de estudiantes",
+            valor: _vm.envios_totales,
+            icono: "subir"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.materias.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona una Materia")]),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-muted font-weight-light" }, [
-                  _vm._v(
-                    "\n                  (Envíos de estudiantes por semana)\n              "
-                  )
-                ]),
-                _vm._v(" "),
-                materia.semanas
-                  ? _c(
-                      "div",
-                      [
-                        _c("apexchart", {
-                          attrs: {
-                            width: "100%",
-                            height: "300px",
-                            type: "bar",
-                            options: _vm.opciones_envios_chart[index],
-                            series: _vm.series_envios_chart[index]
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  : _c("h5", { staticClass: "text-muted" }, [
-                      _vm._v("No hay semanas disponibles")
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.materia,
+                        expression: "materia"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.materia = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.cambiarMateria()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.materias, function(materia, index) {
+                    return _c("option", { domProps: { value: materia } }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(materia.nombre_materia) +
+                          "\n                    "
+                      )
                     ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v("Envíos de estudiantes por semana")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-muted font-weight-light" }, [
+                    _vm._v(
+                      "\n                  (" +
+                        _vm._s(_vm.materia.nombre_materia) +
+                        ")\n              "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.materia.maxima_semana
+                    ? _c(
+                        "div",
+                        [
+                          _c("apexchart", {
+                            attrs: {
+                              width: "100%",
+                              height: "300px",
+                              type: "bar",
+                              options: _vm.opciones_envios_chart,
+                              series: _vm.series_envios_chart
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _c("h5", { staticClass: "text-muted" }, [
+                        _vm._v("No hay semanas disponibles")
+                      ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
+              _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v("Asistencia de estudiantes por semana")
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-muted font-weight-light" }, [
+                    _vm._v(
+                      "\n                  (" +
+                        _vm._s(_vm.materia.nombre_materia) +
+                        ")\n              "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.materia.maxima_semana
+                    ? _c(
+                        "div",
+                        [
+                          _c("apexchart", {
+                            attrs: {
+                              width: "100%",
+                              height: "300px",
+                              type: "bar",
+                              options: _vm.opciones_asistencia_chart,
+                              series: _vm.series_asistencia_chart
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _c("h5", { staticClass: "text-muted" }, [
+                        _vm._v("No hay semanas disponibles")
+                      ])
+                ])
               ])
             ])
-          ])
-        ])
-      }),
-      _vm._v(" "),
-      _vm._l(_vm.materias_asistencia, function(materia, index) {
-        return _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-title" }, [
-                  _vm._v(_vm._s(materia.nombre_materia))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted font-weight-light" }, [
-                  _vm._v(
-                    "\n                  (Asistencia de estudiantes por semana)\n              "
-                  )
-                ]),
-                _vm._v(" "),
-                materia.semanas
-                  ? _c(
-                      "div",
-                      [
-                        _c("apexchart", {
-                          attrs: {
-                            width: "100%",
-                            height: "300px",
-                            type: "bar",
-                            options: _vm.opciones_asistencia_chart[index],
-                            series: _vm.series_asistencia_chart[index]
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  : _c("h5", { staticClass: "text-muted" }, [
-                      _vm._v("No hay semanas disponibles")
-                    ])
-              ])
-            ])
-          ])
-        ])
-      })
-    ],
-    2
-  )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -73891,28 +74460,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Docente_EstudiantesInscritos__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./views/Docente/EstudiantesInscritos */ "./resources/js/views/Docente/EstudiantesInscritos.vue");
 /* harmony import */ var _views_Docente_Portafolios__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./views/Docente/Portafolios */ "./resources/js/views/Docente/Portafolios.vue");
 /* harmony import */ var _views_Docente_InformesAsistencia__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./views/Docente/InformesAsistencia */ "./resources/js/views/Docente/InformesAsistencia.vue");
-/* harmony import */ var _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./views/AuxiliarTerminal/Inicio */ "./resources/js/views/AuxiliarTerminal/Inicio.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaClases */ "./resources/js/views/AuxiliarTerminal/ListaClases.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaPracticas */ "./resources/js/views/AuxiliarTerminal/ListaPracticas.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantes */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantes.vue");
-/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantesClase */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantesClase.vue");
-/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantes */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue");
-/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantesClase */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue");
-/* harmony import */ var _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/Administrador/Inicio */ "./resources/js/views/Administrador/Inicio.vue");
-/* harmony import */ var _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/Administrador/Gestiones */ "./resources/js/views/Administrador/Gestiones.vue");
-/* harmony import */ var _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/Administrador/FechasInscripcion */ "./resources/js/views/Administrador/FechasInscripcion.vue");
-/* harmony import */ var _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./views/Administrador/Aulas */ "./resources/js/views/Administrador/Aulas.vue");
-/* harmony import */ var _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./views/Administrador/Materias */ "./resources/js/views/Administrador/Materias.vue");
-/* harmony import */ var _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./views/Administrador/GruposDocentes */ "./resources/js/views/Administrador/GruposDocentes.vue");
-/* harmony import */ var _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./views/Administrador/ClasesGrupoDocente */ "./resources/js/views/Administrador/ClasesGrupoDocente.vue");
-/* harmony import */ var _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./views/Administrador/Clases */ "./resources/js/views/Administrador/Clases.vue");
-/* harmony import */ var _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Administradores */ "./resources/js/views/Administrador/Usuarios/Administradores.vue");
-/* harmony import */ var _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Docentes */ "./resources/js/views/Administrador/Usuarios/Docentes.vue");
-/* harmony import */ var _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AuxiliaresTerminal */ "./resources/js/views/Administrador/Usuarios/AuxiliaresTerminal.vue");
-/* harmony import */ var _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AuxiliaresLaboratorio */ "./resources/js/views/Administrador/Usuarios/AuxiliaresLaboratorio.vue");
-/* harmony import */ var _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Estudiantes */ "./resources/js/views/Administrador/Usuarios/Estudiantes.vue");
-/* harmony import */ var _views_Administrador_Usuarios_Usuario__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Usuario */ "./resources/js/views/Administrador/Usuarios/Usuario.vue");
-/* harmony import */ var _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AgregarUsuario */ "./resources/js/views/Administrador/Usuarios/AgregarUsuario.vue");
+/* harmony import */ var _views_Docente_InformesEnvios__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./views/Docente/InformesEnvios */ "./resources/js/views/Docente/InformesEnvios.vue");
+/* harmony import */ var _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./views/AuxiliarTerminal/Inicio */ "./resources/js/views/AuxiliarTerminal/Inicio.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaClases */ "./resources/js/views/AuxiliarTerminal/ListaClases.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaPracticas */ "./resources/js/views/AuxiliarTerminal/ListaPracticas.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantes */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantes.vue");
+/* harmony import */ var _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./views/AuxiliarTerminal/ListaEstudiantesClase */ "./resources/js/views/AuxiliarTerminal/ListaEstudiantesClase.vue");
+/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantes */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantes.vue");
+/* harmony import */ var _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./views/AuxiliarLaboratorio/ListaEstudiantesClase */ "./resources/js/views/AuxiliarLaboratorio/ListaEstudiantesClase.vue");
+/* harmony import */ var _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./views/Administrador/Inicio */ "./resources/js/views/Administrador/Inicio.vue");
+/* harmony import */ var _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./views/Administrador/Gestiones */ "./resources/js/views/Administrador/Gestiones.vue");
+/* harmony import */ var _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./views/Administrador/FechasInscripcion */ "./resources/js/views/Administrador/FechasInscripcion.vue");
+/* harmony import */ var _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./views/Administrador/Aulas */ "./resources/js/views/Administrador/Aulas.vue");
+/* harmony import */ var _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./views/Administrador/Materias */ "./resources/js/views/Administrador/Materias.vue");
+/* harmony import */ var _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./views/Administrador/GruposDocentes */ "./resources/js/views/Administrador/GruposDocentes.vue");
+/* harmony import */ var _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./views/Administrador/ClasesGrupoDocente */ "./resources/js/views/Administrador/ClasesGrupoDocente.vue");
+/* harmony import */ var _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./views/Administrador/Clases */ "./resources/js/views/Administrador/Clases.vue");
+/* harmony import */ var _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Administradores */ "./resources/js/views/Administrador/Usuarios/Administradores.vue");
+/* harmony import */ var _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Docentes */ "./resources/js/views/Administrador/Usuarios/Docentes.vue");
+/* harmony import */ var _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AuxiliaresTerminal */ "./resources/js/views/Administrador/Usuarios/AuxiliaresTerminal.vue");
+/* harmony import */ var _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AuxiliaresLaboratorio */ "./resources/js/views/Administrador/Usuarios/AuxiliaresLaboratorio.vue");
+/* harmony import */ var _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Estudiantes */ "./resources/js/views/Administrador/Usuarios/Estudiantes.vue");
+/* harmony import */ var _views_Administrador_Usuarios_Usuario__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./views/Administrador/Usuarios/Usuario */ "./resources/js/views/Administrador/Usuarios/Usuario.vue");
+/* harmony import */ var _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./views/Administrador/Usuarios/AgregarUsuario */ "./resources/js/views/Administrador/Usuarios/AgregarUsuario.vue");
 
 
 
@@ -73945,6 +74515,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('apexchart', vue_apexcharts
 
 
  //Docente
+
 
 
 
@@ -74049,101 +74620,105 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/panel/docente/InformesAsistencia',
     name: 'DocenteInformesAsistencia',
     component: _views_Docente_InformesAsistencia__WEBPACK_IMPORTED_MODULE_28__["default"]
+  }, {
+    path: '/panel/docente/InformesEnvios',
+    name: 'DocenteInformesEnvios',
+    component: _views_Docente_InformesEnvios__WEBPACK_IMPORTED_MODULE_29__["default"]
   }, //Auxiliar Terminal
   {
     path: '/panel/auxiliarterminal',
     name: 'AuxiliarTerminalInicio',
-    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_29__["default"]
+    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_30__["default"]
   }, {
     path: '/panel/auxiliarterminal/Clases',
     name: 'AuxiliarTerminalListaClases',
-    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_30__["default"]
+    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_31__["default"]
   }, {
     path: '/panel/auxiliarterminal/Practicas',
     name: 'AuxiliarTerminalListaPracticas',
-    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_31__["default"]
+    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_32__["default"]
   }, {
     path: '/panel/auxiliarterminal/Estudiantes',
     name: 'AuxiliarTerminalListaEstudiantes',
-    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_32__["default"]
+    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_33__["default"]
   }, {
     path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
     name: 'AuxiliarTerminalListaEstudiantesClase',
-    component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_33__["default"],
+    component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_34__["default"],
     props: true
   }, //Auxiliar Laboratorio
   {
     path: '/panel/auxiliarlaboratorio',
     name: 'AuxiliarLaboratorioListaEstudiantes',
-    component: _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_34__["default"]
+    component: _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_35__["default"]
   }, {
     path: '/panel/auxiliarlaboratorio/Estudiantes/:sesion_id',
     name: 'AuxiliarLaboratorioListaEstudiantesClase',
-    component: _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_35__["default"],
+    component: _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_36__["default"],
     props: true
   }, //Administrador
   {
     path: '/panel/administrador',
     name: 'AdministradorInicio',
-    component: _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_36__["default"]
+    component: _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_37__["default"]
   }, {
     path: '/panel/administrador/Gestiones',
     name: 'AdministradorGestiones',
-    component: _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_37__["default"]
+    component: _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_38__["default"]
   }, {
     path: '/panel/administrador/FechasInscripcion',
     name: 'AdministradorFechasInscripcion',
-    component: _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_38__["default"]
+    component: _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_39__["default"]
   }, {
     path: '/panel/administrador/Aulas',
     name: 'AdministradorAulas',
-    component: _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_39__["default"]
+    component: _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_40__["default"]
   }, {
     path: '/panel/administrador/Materias',
     name: 'AdministradorMaterias',
-    component: _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_40__["default"]
+    component: _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_41__["default"]
   }, {
     path: '/panel/administrador/GruposDocentes',
     name: 'AdministradorGruposDocentes',
-    component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_41__["default"]
+    component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_42__["default"]
   }, {
     path: '/panel/administrador/Clases',
     name: 'AdministradorClases',
-    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_43__["default"]
+    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_44__["default"]
   }, {
     path: '/panel/administrador/Clases/:grupo_docente_id',
     name: 'AdministradorClasesGrupoDocente',
-    component: _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_42__["default"],
+    component: _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_43__["default"],
     props: true
   }, {
     path: '/panel/administrador/Administradores',
     name: 'AdministradorAdministradores',
-    component: _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_44__["default"]
+    component: _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_45__["default"]
   }, {
     path: '/panel/administrador/Docentes',
     name: 'AdministradorDocentes',
-    component: _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_45__["default"]
+    component: _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_46__["default"]
   }, {
     path: '/panel/administrador/AuxiliaresTerminal',
     name: 'AdministradorAuxiliaresTerminal',
-    component: _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_46__["default"]
+    component: _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_47__["default"]
   }, {
     path: '/panel/administrador/AuxiliaresLaboratorio',
     name: 'AdministradorAuxiliaresLaboratorio',
-    component: _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_47__["default"]
+    component: _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_48__["default"]
   }, {
     path: '/panel/administrador/Estudiantes',
     name: 'AdministradorEstudiantes',
-    component: _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_48__["default"]
+    component: _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_49__["default"]
   }, {
     path: '/panel/administrador/Usuario/:usuario_id',
     name: 'AdministradorUsuario',
-    component: _views_Administrador_Usuarios_Usuario__WEBPACK_IMPORTED_MODULE_49__["default"],
+    component: _views_Administrador_Usuarios_Usuario__WEBPACK_IMPORTED_MODULE_50__["default"],
     props: true
   }, {
     path: '/panel/administrador/AgregarUsuario',
     name: 'AdministradorAgregarUsuario',
-    component: _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_50__["default"]
+    component: _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_51__["default"]
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -76236,6 +76811,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesAsistencia_vue_vue_type_template_id_3ca63d2d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesAsistencia_vue_vue_type_template_id_3ca63d2d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/InformesEnvios.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/views/Docente/InformesEnvios.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InformesEnvios.vue?vue&type=template&id=69c2275a& */ "./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a&");
+/* harmony import */ var _InformesEnvios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InformesEnvios.vue?vue&type=script&lang=js& */ "./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InformesEnvios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Docente/InformesEnvios.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesEnvios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./InformesEnvios.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/InformesEnvios.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesEnvios_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./InformesEnvios.vue?vue&type=template&id=69c2275a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Docente/InformesEnvios.vue?vue&type=template&id=69c2275a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InformesEnvios_vue_vue_type_template_id_69c2275a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

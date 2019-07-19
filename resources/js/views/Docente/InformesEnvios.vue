@@ -30,15 +30,14 @@
                 <div class="col-md-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <p class="card-title">Asistencia de estudiantes por semana</p>
+                      <p class="card-title">Envíos de estudiantes por semana</p>
                       <p class="text-muted font-weight-light">
                           (Estudiantes registrados con el docente)
                       </p>
                       <div v-if="materia.maxima_semana">
                           <apexchart width="100%" height="300px" 
                                      type="bar" 
-                                     :options="opciones_asistencia_chart" 
-                                     :series="series_asistencia_chart">
+                                     :options="opciones_envios_chart" :series="series_envios_chart">
                           </apexchart>
                       </div>
                       <h5 v-else class="text-muted">No hay semanas disponibles</h5>
@@ -49,15 +48,15 @@
                 <div class="col-md-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <p class="card-title">Asistencia de estudiantes por semana</p>
+                      <p class="card-title">Envíos de estudiantes por semana</p>
                       <p class="text-muted font-weight-light">
                           (Estudiantes inscritos en el grupo docente)
                       </p>
                       <div v-if="materia.maxima_semana">
                           <apexchart width="100%" height="300px" 
                                      type="bar" 
-                                     :options="opciones_asistencia_chart" 
-                                     :series="series_asistencia_grupodocente_chart">
+                                     :options="opciones_envios_chart" 
+                                     :series="series_envios_grupodocente_chart">
                           </apexchart>
                       </div>
                       <h5 v-else class="text-muted">No hay semanas disponibles</h5>
@@ -76,10 +75,10 @@
                 gestiones: [],
                 gestion: {id:'', activa:false},
                 
-                series_asistencia_grupodocente_chart: [],
+                opciones_envios_chart: {},
+                series_envios_chart: [],
                 
-                opciones_asistencia_chart: {},
-                series_asistencia_chart: [],
+                series_envios_grupodocente_chart: [],
                 
                 materias: [],
                 materia: {id:'', nombre_materia:'', maxima_semana:0},
@@ -129,10 +128,9 @@
                     semanas.push('Semana '+semana);
                 }
                 
-                this.opciones_asistencia_chart = {
+                this.opciones_envios_chart = {
                     chart: {
                         stacked: true,
-                        stackType: '100%'
                     },
                     xaxis: {
                         categories: semanas
@@ -140,17 +138,18 @@
                 };
                 
                 this.axios
-                    .get('/docente/estadisticas/asistencia/'+this.materia.id)
+                    .get('/docente/estadisticas/enviospracticas/'+this.materia.id)
                     .then((response)=>{
                         var datos = response.data;
-                        this.series_asistencia_chart = [
+                    
+                        this.series_envios_chart = [
                             {
-                                name: 'Sin asistencia',
-                                data: datos.no_asistencia,
+                                name: 'Fuera laboratorio',
+                                data: datos.fuera_laboratorio,
                             },
                             {
-                                name: 'Asistencia',
-                                data: datos.asistencia,
+                                name: 'En laboratorio',
+                                data: datos.en_laboratorio,
                             },
                         ];
                     })
@@ -159,17 +158,18 @@
                     });
                 
                 this.axios
-                    .get('/docente/estadisticas/asistencia/grupo/'+this.materia.id)
+                    .get('/docente/estadisticas/enviospracticas/grupo/'+this.materia.id)
                     .then((response)=>{
                         var datos = response.data;
-                        this.series_asistencia_grupodocente_chart = [
+                    
+                        this.series_envios_grupodocente_chart = [
                             {
-                                name: 'Sin asistencia',
-                                data: datos.no_asistencia,
+                                name: 'Fuera laboratorio',
+                                data: datos.fuera_laboratorio,
                             },
                             {
-                                name: 'Asistencia',
-                                data: datos.asistencia,
+                                name: 'En laboratorio',
+                                data: datos.en_laboratorio,
                             },
                         ];
                     })
@@ -181,7 +181,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Asistencia';
+            this.$parent.$parent.section = 'Envíos';
         },
     }
 </script>

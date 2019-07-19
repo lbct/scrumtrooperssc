@@ -45,6 +45,7 @@ import DocenteGuiasPracticas from './views/Docente/GuiasPracticas'
 import DocenteEstudiantesInscritos from './views/Docente/EstudiantesInscritos'
 import DocentePortafolios from './views/Docente/Portafolios'
 import DocenteInformesAsistencia from './views/Docente/InformesAsistencia'
+import DocenteInformesEnvios from './views/Docente/InformesEnvios'
 
 //Auxiliar Terminal
 import AuxiliarTerminalInicio from './views/AuxiliarTerminal/Inicio'
@@ -160,6 +161,11 @@ const router = new VueRouter({
             path: '/panel/docente/InformesAsistencia',
             name: 'DocenteInformesAsistencia',
             component: DocenteInformesAsistencia,
+        },
+        {
+            path: '/panel/docente/InformesEnvios',
+            name: 'DocenteInformesEnvios',
+            component: DocenteInformesEnvios,
         },
         //Auxiliar Terminal
         {
