@@ -31,6 +31,8 @@ Route::get('docente/estadisticas/enviostotales', 'Docente\Estadistica\Control@en
 
 Route::get('docente/estadisticas/enviospracticas/{grupo_docente_id}', 'Docente\Estadistica\Control@enviospracticas');
 Route::get('docente/estadisticas/enviospracticas/grupo/{grupo_docente_id}', 'Docente\Estadistica\Control@enviospracticasgrupo');
+Route::get('docente/estadisticas/enviospracticas/clase/{clase_id}', 'Docente\Estadistica\Control@enviospracticasclase');
 
 Route::get('docente/estadisticas/asistencia/{grupo_docente_id}', 'Docente\Estadistica\Control@asistencia');
 Route::get('docente/estadisticas/asistencia/grupo/{grupo_docente_id}', 'Docente\Estadistica\Control@asistenciagrupo');
+Route::get('docente/estadisticas/asistencia/clase/{clase_id}', 'Docente\Estadistica\Control@asistenciaclase');

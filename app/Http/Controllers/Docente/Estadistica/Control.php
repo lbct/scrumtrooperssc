@@ -177,6 +177,43 @@ class Control extends Base
         return $estadisticas;
     }
     
+    public function enviospracticasclase(Request $request, $clase_id){
+        $usuario_id = session('usuario_id'); 
+        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+        $estadisticas = collect();
+        
+        if($docente->accesoClase($clase_id)){
+            $clase = Clase::find($clase_id);
+            $semana_maxima = $clase->semana_actual_sesion;
+            $fuera  = collect();
+            $en_lab = collect();
+            
+            for($semana=1; $semana<=$semana_maxima; $semana++){
+                $cantidad_fuera = Sesion::where('clase_id', $clase_id)
+                                  ->where('sesion.semana', $semana)
+                                  ->join('sesion_estudiante', 'sesion_estudiante.sesion_id', '=', 'sesion.id')
+                                  ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                  ->where('envio_practica.en_laboratorio', false)
+                                  ->count();
+                $fuera->push($cantidad_fuera);
+                
+                $cantidad_en_lab = Sesion::where('clase_id', $clase_id)
+                                   ->where('sesion.semana', $semana)
+                                   ->join('sesion_estudiante', 'sesion_estudiante.sesion_id', '=', 'sesion.id')
+                                   ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                   ->where('envio_practica.en_laboratorio', true)
+                                   ->count();
+                $en_lab->push($cantidad_en_lab);
+            }
+            
+            $estadisticas['fuera_laboratorio'] = $fuera;
+            $estadisticas['en_laboratorio']    = $en_lab;
+            $estadisticas['semanas']           = $semana_maxima;
+        }
+        
+        return $estadisticas;
+    }
+    
     public function asistencia(Request $request, $grupo_docente_id){
         $usuario_id = session('usuario_id'); 
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
@@ -242,6 +279,41 @@ class Control extends Base
                                        ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
                                        ->join('sesion', 'sesion.id', '=', 'sesion_estudiante.sesion_id')
                                        ->where('sesion.semana', $semana)
+                                       ->where('sesion_estudiante.asistencia_sesion', true)
+                                       ->count();
+                $asistencia->push($cantidad_asistencia);
+            }
+                
+            $estadisticas['no_asistencia'] = $no_asistencia;
+            $estadisticas['asistencia']    = $asistencia;
+            $estadisticas['semanas']       = $semana_maxima;
+        }
+        
+        return $estadisticas;
+    }
+    
+    public function asistenciaclase(Request $request, $clase_id){
+       $usuario_id = session('usuario_id'); 
+        $docente    = Docente::where("usuario_id", $usuario_id)->first();
+        $estadisticas = collect();
+        
+        if($docente->accesoClase($clase_id)){
+            $clase = Clase::find($clase_id);
+            $semana_maxima  = $clase->semana_actual_sesion;
+            $no_asistencia  = collect();
+            $asistencia     = collect();
+
+            for($semana=1; $semana<=$semana_maxima; $semana++){
+                $cantidad_no_asistencia = Sesion::where('clase_id', $clase_id)
+                                          ->where('sesion.semana', $semana)
+                                          ->join('sesion_estudiante', 'sesion_estudiante.sesion_id', '=', 'sesion.id')
+                                          ->where('sesion_estudiante.asistencia_sesion', false)
+                                          ->count();
+                $no_asistencia->push($cantidad_no_asistencia);
+                
+                $cantidad_asistencia = Sesion::where('clase_id', $clase_id)
+                                       ->where('sesion.semana', $semana)
+                                       ->join('sesion_estudiante', 'sesion_estudiante.sesion_id', '=', 'sesion.id')
                                        ->where('sesion_estudiante.asistencia_sesion', true)
                                        ->count();
                 $asistencia->push($cantidad_asistencia);

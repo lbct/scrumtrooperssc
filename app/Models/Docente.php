@@ -47,6 +47,16 @@ class Docente extends Model
         return $acceso;
     }
     
+    public function accesoClase($clase_id){
+        $acceso = false;
+        $clase = Clase::find($clase_id);
+        
+        if($this->accesoGrupoDocente($clase->grupo_docente_id))
+            $acceso = true;
+        
+        return $acceso;
+    }
+    
     public function accesoEstudianteClase($estudiante_clase_id){
         $acceso = false;
         $estudiante_clase = EstudianteClase::find($estudiante_clase_id);
@@ -89,7 +99,7 @@ class Docente extends Model
                   ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                   ->join('aula', 'aula.id', '=', 'clase.aula_id')
                   ->join('horario', 'horario.id', '=', 'clase.horario_id')
-                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion', 'hora_inicio', 'hora_fin', 'grupo_docente.id')
+                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion', 'hora_inicio', 'hora_fin', 'grupo_docente.id', 'clase.id as clase_id')
                   ->get();
             
         return $clases;
