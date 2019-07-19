@@ -21,11 +21,10 @@ class Control extends Base
 {
     public function getDatos(Request $request){
         
-        $datos = [];
-        array_push($datos, Materia::count());
-        array_push($datos, Docente::count());
-        array_push($datos, Estudiante::count());
-        array_push($datos, Aula::count());
+        $datos['numero_materias'] =  Materia::count();
+        $datos['numero_docentes'] = Docente::count();
+        $datos['numero_estudiantes'] = Estudiante::count();
+        $datos['numero_aulas'] = Aula::count();
         
         return $datos;
     }
@@ -37,39 +36,35 @@ class Control extends Base
         foreach ($materias as $materia) {
 
             $grupos = GrupoDocente::where('materia_id', '=', $materia->id)->get();
-            $datos_materia = [];
-            array_push($datos_materia, $materia->codigo_materia."-".$materia->nombre_materia);
+
+            $datos_grupos['nombre_materia'] = $materia->codigo_materia."-".$materia->nombre_materia;
+            $datos_grupos['grupos'] = [];
+            $total_inscritos = 0;
 
             foreach($grupos as $grupo){
-
-                $temp = [];
-                $nombres = "";
-                $inscritos = 0;
                 
                 $grupoADocente = GrupoADocente::where('grupo_docente_id', '=', $grupo->id)->get();
-                $docentes = GrupoADocente::where('grupo_docente_id', '=', $grupo->id)
-                                            ->join('docente', 'docente.id', '=', 'docente_id')
-                                            ->join('usuario', 'usuario.id', '=', 'usuario_id')
-                                            ->select('nombre', 'apellido')
-                                            ->get();
-                
-                foreach($docentes as $docente){
-                    $nombres = $nombres." ".$docente->nombre." ".$docente->apellido.",";
+                $inscritos = 0;
+                foreach($grupoADocente as $gad){
+                    $inscritos += EstudianteClase::where('grupo_a_docente_id', '=', $gad->id)->count();
                 }
-                $nombres[0] = '(';
-                $nombres[strlen($nombres)-1] = ')';
+                $temp['docentes'] = $grupo->detalle_grupo_docente;
+                $temp['inscritos'] = $inscritos;
+                $temp['porcentaje'] = 0;
+                $temp['style'] = "width: 0%";
+                $total_inscritos += $inscritos;
 
-                
-                foreach($grupoADocente as $grupo){
-                    $inscritos += EstudianteClase::where('grupo_a_docente_id', '=', $grupo->id)->count();
-                }
-
-                array_push($temp, $nombres);
-                array_push($temp, $inscritos);
-                array_push($datos_materia, $temp);
+                array_push($datos_grupos['grupos'], $temp);
             }
 
-            array_push($datos, $datos_materia);
+            for($c = 0; $c < sizeof($datos_grupos['grupos']); $c++){
+                if ($total_inscritos > 0){
+                    $datos_grupos['grupos'][$c]['porcentaje'] = $datos_grupos['grupos'][$c]['inscritos']/$total_inscritos*100;
+                    $datos_grupos['grupos'][$c]['style'] = "width: ".$datos_grupos['grupos'][$c]['porcentaje']."%";
+                }
+            }
+
+            array_push($datos, $datos_grupos);
         }
 
         return $datos;

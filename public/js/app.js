@@ -32711,19 +32711,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
       key_mensajes: 0,
-      numero_materias: 0,
-      numero_docentes: 0,
-      numero_estudiantes: 0,
-      numero_aulas: 0,
+      datos: {
+        numero_materias: 0,
+        numero_docentes: 0,
+        numero_estudiantes: 0,
+        numero_aulas: 0
+      },
       materias: [],
       materia: {
-        nombre: '',
+        nombre_materia: '',
         grupos: []
       },
       grupo: {
@@ -32733,7 +32742,7 @@ __webpack_require__.r(__webpack_exports__);
         style: ''
       },
       options: {
-        labels: ["a", "s"]
+        labels: []
       },
       series: []
     };
@@ -32748,10 +32757,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.axios.get('/administrador/estadisticas/datos').then(function (response) {
-        _this.numero_materias = response.data[0];
-        _this.numero_docentes = response.data[1];
-        _this.numero_estudiantes = response.data[2];
-        _this.numero_aulas = response.data[3];
+        _this.datos = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -32760,33 +32766,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.axios.get('/administrador/estadisticas/tablaGrupos').then(function (response) {
-        for (var c = 0; c < response.data.length; c++) {
-          var m = {
-            nombre: '',
-            grupos: []
-          };
-          m.nombre = response.data[c][0];
-          var inscritos_en_materia = 0;
-          if (response.data[c].length > 1) for (var x = 1; x < response.data[c].length; x++) {
-            var temp = {
-              docentes: '',
-              inscritos: 0
-            };
-            temp.docentes = response.data[c][x][0];
-            temp.inscritos = response.data[c][x][1];
-            inscritos_en_materia += temp.inscritos;
-            m.grupos.push(temp);
-          }
-
-          for (var x = 0; x < m.grupos.length; x++) {
-            m.grupos[c].porcentaje = (100 * temp.inscritos / inscritos_en_materia).toFixed();
-            m.grupos[c].style = "width: " + temp.porcentaje + "%";
-          }
-
-          _this2.materias.push(m); //console.log(m.nombre);
-
-        } //console.log(this.materias);
-
+        _this2.materias = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -51638,7 +51618,7 @@ var render = function() {
                     {
                       staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
                     },
-                    [_vm._v(_vm._s(_vm.numero_materias))]
+                    [_vm._v(_vm._s(_vm.datos.numero_materias))]
                   ),
                   _vm._v(" "),
                   _c("i", {
@@ -51672,7 +51652,7 @@ var render = function() {
                     {
                       staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
                     },
-                    [_vm._v(_vm._s(_vm.numero_docentes))]
+                    [_vm._v(_vm._s(_vm.datos.numero_docentes))]
                   ),
                   _vm._v(" "),
                   _c("i", {
@@ -51706,7 +51686,7 @@ var render = function() {
                     {
                       staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
                     },
-                    [_vm._v(_vm._s(_vm.numero_estudiantes))]
+                    [_vm._v(_vm._s(_vm.datos.numero_estudiantes))]
                   ),
                   _vm._v(" "),
                   _c("i", {
@@ -51740,7 +51720,7 @@ var render = function() {
                     {
                       staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"
                     },
-                    [_vm._v(_vm._s(_vm.numero_aulas))]
+                    [_vm._v(_vm._s(_vm.datos.numero_aulas))]
                   ),
                   _vm._v(" "),
                   _c("i", {
@@ -51755,7 +51735,38 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-7 grid-margin stretch-card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Uso de Laboratorios por Semana")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "chart-wrap" },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      id: "chartAulas",
+                      width: "500",
+                      type: "donut",
+                      options: _vm.options,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12 grid-margin stretch-card" }, [
           _c("div", { staticClass: "card position-relative" }, [
             _c("div", { staticClass: "card-body" }, [
               _c("p", { staticClass: "card-title" }, [
@@ -51776,7 +51787,9 @@ var render = function() {
                               "div",
                               [
                                 _c("tr", [
-                                  _c("td", [_vm._v(_vm._s(materia.nombre))])
+                                  _c("td", [
+                                    _vm._v(_vm._s(materia.nombre_materia))
+                                  ])
                                 ]),
                                 _vm._v(" "),
                                 _vm._l(materia.grupos, function(grupo) {
@@ -51832,40 +51845,22 @@ var render = function() {
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-5 grid-margin stretch-card" }, [
-          _c("div", { staticClass: "card position-relative" }, [
-            _c("div", { staticClass: "card-body align-items-center" }, [
-              _c("p", { staticClass: "card-title" }, [
-                _vm._v("Uso de Laboratorios por Semana")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "chart-wrap" },
-                [
-                  _c("apexchart", {
-                    attrs: {
-                      id: "chartAulas",
-                      width: "500",
-                      type: "donut",
-                      options: _vm.options,
-                      series: _vm.series
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ])
         ])
       ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+      _c("div", { staticClass: "card position-relative" })
+    ])
+  }
+]
 render._withStripped = true
 
 
