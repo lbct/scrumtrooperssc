@@ -61,18 +61,18 @@
                         <p>Horario: {{materia.hora_inicio}} - {{materia.hora_fin}}</p>
                           
                         <div v-if="materia.semana_actual_sesion" class="row">
-                          <div class="col-12 col-md-6">
-                          <h6>Envíos de estudiantes por semana</h6>
-                          <apexchart width="100%" height="300px" 
+                          <div class="col-12">
+                          <h6>Envíos de estudiantes inscritos en el grupo docente</h6>
+                          <apexchart width="100%" height="250px" 
                                      type="bar" 
                                      :options="opciones_envios_chart" 
                                      :series="series_envios_chart">
                           </apexchart>
                           </div>
                             
-                          <div class="col-12 col-md-6">
-                          <h6>Asistencia de estudiantes por semana</h6>
-                          <apexchart width="100%" height="300px" 
+                          <div class="col-12">
+                          <h6>Asistencia de estudiantes inscritos en el grupo docente</h6>
+                          <apexchart width="100%" height="250px" 
                                      type="bar" 
                                      :options="opciones_asistencia_chart" 
                                      :series="series_asistencia_chart">
@@ -206,12 +206,12 @@
                         var datos = response.data;
                         this.series_envios_chart = [
                             {
-                                name: 'Fuera laboratorio',
-                                data: datos.fuera_laboratorio
-                            },
-                            {
                                 name: 'En laboratorio',
                                 data: datos.en_laboratorio
+                            },
+                            {
+                                name: 'Fuera laboratorio',
+                                data: datos.fuera_laboratorio
                             },
                         ];
                     })
@@ -225,12 +225,12 @@
                         var datos = response.data;
                         this.series_asistencia_chart = [
                             {
-                                name: 'Sin asistencia',
-                                data: datos.no_asistencia,
-                            },
-                            {
                                 name: 'Asistencia',
                                 data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
                             },
                         ];
                     })

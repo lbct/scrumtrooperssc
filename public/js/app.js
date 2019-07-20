@@ -35624,10 +35624,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -35703,11 +35699,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/asistencia/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this3.series_asistencia_chart = [{
-          name: 'Sin asistencia',
-          data: datos.no_asistencia
-        }, {
           name: 'Asistencia',
           data: datos.asistencia
+        }, {
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -35715,11 +35711,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/asistencia/grupo/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this3.series_asistencia_grupodocente_chart = [{
-          name: 'Sin asistencia',
-          data: datos.no_asistencia
-        }, {
           name: 'Asistencia',
           data: datos.asistencia
+        }, {
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -35743,13 +35739,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -35887,11 +35876,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/enviospracticas/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this3.series_envios_chart = [{
-          name: 'Fuera laboratorio',
-          data: datos.fuera_laboratorio
-        }, {
           name: 'En laboratorio',
           data: datos.en_laboratorio
+        }, {
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -35899,11 +35888,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/enviospracticas/grupo/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this3.series_envios_grupodocente_chart = [{
-          name: 'Fuera laboratorio',
-          data: datos.fuera_laboratorio
-        }, {
           name: 'En laboratorio',
           data: datos.en_laboratorio
+        }, {
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -35927,12 +35916,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -36100,11 +36083,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/enviospracticas/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this2.series_envios_chart = [{
-          name: 'Fuera laboratorio',
-          data: datos.fuera_laboratorio
-        }, {
           name: 'En laboratorio',
           data: datos.en_laboratorio
+        }, {
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -36112,11 +36095,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/asistencia/' + this.materia.id).then(function (response) {
         var datos = response.data;
         _this2.series_asistencia_chart = [{
-          name: 'Sin asistencia',
-          data: datos.no_asistencia
-        }, {
           name: 'Asistencia',
           data: datos.asistencia
+        }, {
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -36661,11 +36644,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/enviospracticas/clase/' + this.materia.clase_id).then(function (response) {
         var datos = response.data;
         _this3.series_envios_chart = [{
-          name: 'Fuera laboratorio',
-          data: datos.fuera_laboratorio
-        }, {
           name: 'En laboratorio',
           data: datos.en_laboratorio
+        }, {
+          name: 'Fuera laboratorio',
+          data: datos.fuera_laboratorio
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -36673,11 +36656,11 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get('/docente/estadisticas/asistencia/clase/' + this.materia.clase_id).then(function (response) {
         var datos = response.data;
         _this3.series_asistencia_chart = [{
-          name: 'Sin asistencia',
-          data: datos.no_asistencia
-        }, {
           name: 'Asistencia',
           data: datos.asistencia
+        }, {
+          name: 'Sin asistencia',
+          data: datos.no_asistencia
         }];
       })["catch"](function (error) {
         console.log(error);
@@ -56167,94 +56150,88 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-12 grid-margin stretch-card" },
-                      [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("p", { staticClass: "card-title" }, [
-                              _vm._v("Asistencia de estudiantes por semana")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              { staticClass: "text-muted font-weight-light" },
-                              [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 col-md-12 grid-margin stretch-card"
+                        },
+                        [
+                          _c("div", { staticClass: "card" }, [
+                            _c("div", { staticClass: "card-body" }, [
+                              _c("p", { staticClass: "card-title" }, [
                                 _vm._v(
-                                  "\n                      (Estudiantes registrados con el docente)\n                  "
+                                  "Asistencia de estudiantes inscritos en el grupo docente"
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm.materia.maxima_semana
-                              ? _c(
-                                  "div",
-                                  [
-                                    _c("apexchart", {
-                                      attrs: {
-                                        width: "100%",
-                                        height: "300px",
-                                        type: "bar",
-                                        options: _vm.opciones_asistencia_chart,
-                                        series: _vm.series_asistencia_chart
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _c("h5", { staticClass: "text-muted" }, [
-                                  _vm._v("No hay semanas disponibles")
-                                ])
+                              ]),
+                              _vm._v(" "),
+                              _vm.materia.maxima_semana
+                                ? _c(
+                                    "div",
+                                    [
+                                      _c("apexchart", {
+                                        attrs: {
+                                          width: "100%",
+                                          height: "250px",
+                                          type: "bar",
+                                          options:
+                                            _vm.opciones_asistencia_chart,
+                                          series:
+                                            _vm.series_asistencia_grupodocente_chart
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _c("h5", { staticClass: "text-muted" }, [
+                                    _vm._v("No hay semanas disponibles")
+                                  ])
+                            ])
                           ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-12 grid-margin stretch-card" },
-                      [
-                        _c("div", { staticClass: "card" }, [
-                          _c("div", { staticClass: "card-body" }, [
-                            _c("p", { staticClass: "card-title" }, [
-                              _vm._v("Asistencia de estudiantes por semana")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              { staticClass: "text-muted font-weight-light" },
-                              [
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 col-md-12 grid-margin stretch-card"
+                        },
+                        [
+                          _c("div", { staticClass: "card" }, [
+                            _c("div", { staticClass: "card-body" }, [
+                              _c("p", { staticClass: "card-title" }, [
                                 _vm._v(
-                                  "\n                      (Estudiantes inscritos en el grupo docente)\n                  "
+                                  "Asistencia de estudiantes inscritos con el docente"
                                 )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm.materia.maxima_semana
-                              ? _c(
-                                  "div",
-                                  [
-                                    _c("apexchart", {
-                                      attrs: {
-                                        width: "100%",
-                                        height: "300px",
-                                        type: "bar",
-                                        options: _vm.opciones_asistencia_chart,
-                                        series:
-                                          _vm.series_asistencia_grupodocente_chart
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _c("h5", { staticClass: "text-muted" }, [
-                                  _vm._v("No hay semanas disponibles")
-                                ])
+                              ]),
+                              _vm._v(" "),
+                              _vm.materia.maxima_semana
+                                ? _c(
+                                    "div",
+                                    [
+                                      _c("apexchart", {
+                                        attrs: {
+                                          width: "100%",
+                                          height: "250px",
+                                          type: "bar",
+                                          options:
+                                            _vm.opciones_asistencia_chart,
+                                          series: _vm.series_asistencia_chart
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _c("h5", { staticClass: "text-muted" }, [
+                                    _vm._v("No hay semanas disponibles")
+                                  ])
+                            ])
                           ])
-                        ])
-                      ]
-                    )
+                        ]
+                      )
+                    ])
                   ],
                   1
                 )
@@ -56416,18 +56393,10 @@ var render = function() {
                         _c("div", { staticClass: "card" }, [
                           _c("div", { staticClass: "card-body" }, [
                             _c("p", { staticClass: "card-title" }, [
-                              _vm._v("Envíos de estudiantes por semana")
+                              _vm._v(
+                                "Envíos de estudiantes inscritos en el grupo docente"
+                              )
                             ]),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              { staticClass: "text-muted font-weight-light" },
-                              [
-                                _vm._v(
-                                  "\n                      (Estudiantes registrados con el docente)\n                  "
-                                )
-                              ]
-                            ),
                             _vm._v(" "),
                             _vm.materia.maxima_semana
                               ? _c(
@@ -56436,10 +56405,11 @@ var render = function() {
                                     _c("apexchart", {
                                       attrs: {
                                         width: "100%",
-                                        height: "300px",
+                                        height: "250px",
                                         type: "bar",
                                         options: _vm.opciones_envios_chart,
-                                        series: _vm.series_envios_chart
+                                        series:
+                                          _vm.series_envios_grupodocente_chart
                                       }
                                     })
                                   ],
@@ -56460,18 +56430,10 @@ var render = function() {
                         _c("div", { staticClass: "card" }, [
                           _c("div", { staticClass: "card-body" }, [
                             _c("p", { staticClass: "card-title" }, [
-                              _vm._v("Envíos de estudiantes por semana")
+                              _vm._v(
+                                "Envíos de estudiantes inscritos con el docente"
+                              )
                             ]),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              { staticClass: "text-muted font-weight-light" },
-                              [
-                                _vm._v(
-                                  "\n                      (Estudiantes inscritos en el grupo docente)\n                  "
-                                )
-                              ]
-                            ),
                             _vm._v(" "),
                             _vm.materia.maxima_semana
                               ? _c(
@@ -56480,11 +56442,10 @@ var render = function() {
                                     _c("apexchart", {
                                       attrs: {
                                         width: "100%",
-                                        height: "300px",
+                                        height: "250px",
                                         type: "bar",
                                         options: _vm.opciones_envios_chart,
-                                        series:
-                                          _vm.series_envios_grupodocente_chart
+                                        series: _vm.series_envios_chart
                                       }
                                     })
                                   ],
@@ -56630,15 +56591,7 @@ var render = function() {
               _c("div", { staticClass: "card" }, [
                 _c("div", { staticClass: "card-body" }, [
                   _c("p", { staticClass: "card-title" }, [
-                    _vm._v("Envíos de estudiantes por semana")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-muted font-weight-light" }, [
-                    _vm._v(
-                      "\n                  (" +
-                        _vm._s(_vm.materia.nombre_materia) +
-                        ")\n              "
-                    )
+                    _vm._v("Envíos de estudiantes inscritos con el docente")
                   ]),
                   _vm._v(" "),
                   _vm.materia.maxima_semana
@@ -56648,7 +56601,7 @@ var render = function() {
                           _c("apexchart", {
                             attrs: {
                               width: "100%",
-                              height: "300px",
+                              height: "250px",
                               type: "bar",
                               options: _vm.opciones_envios_chart,
                               series: _vm.series_envios_chart
@@ -56668,15 +56621,7 @@ var render = function() {
               _c("div", { staticClass: "card" }, [
                 _c("div", { staticClass: "card-body" }, [
                   _c("p", { staticClass: "card-title" }, [
-                    _vm._v("Asistencia de estudiantes por semana")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-muted font-weight-light" }, [
-                    _vm._v(
-                      "\n                  (" +
-                        _vm._s(_vm.materia.nombre_materia) +
-                        ")\n              "
-                    )
+                    _vm._v("Asistencia de estudiantes inscritos con el docente")
                   ]),
                   _vm._v(" "),
                   _vm.materia.maxima_semana
@@ -56686,7 +56631,7 @@ var render = function() {
                           _c("apexchart", {
                             attrs: {
                               width: "100%",
-                              height: "300px",
+                              height: "250px",
                               type: "bar",
                               options: _vm.opciones_asistencia_chart,
                               series: _vm.series_asistencia_chart
@@ -57313,16 +57258,18 @@ var render = function() {
                         ? _c("div", { staticClass: "row" }, [
                             _c(
                               "div",
-                              { staticClass: "col-12 col-md-6" },
+                              { staticClass: "col-12" },
                               [
                                 _c("h6", [
-                                  _vm._v("Envíos de estudiantes por semana")
+                                  _vm._v(
+                                    "Envíos de estudiantes inscritos en el grupo docente"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("apexchart", {
                                   attrs: {
                                     width: "100%",
-                                    height: "300px",
+                                    height: "250px",
                                     type: "bar",
                                     options: _vm.opciones_envios_chart,
                                     series: _vm.series_envios_chart
@@ -57334,16 +57281,18 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "col-12 col-md-6" },
+                              { staticClass: "col-12" },
                               [
                                 _c("h6", [
-                                  _vm._v("Asistencia de estudiantes por semana")
+                                  _vm._v(
+                                    "Asistencia de estudiantes inscritos en el grupo docente"
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("apexchart", {
                                   attrs: {
                                     width: "100%",
-                                    height: "300px",
+                                    height: "250px",
                                     type: "bar",
                                     options: _vm.opciones_asistencia_chart,
                                     series: _vm.series_asistencia_chart
@@ -74765,164 +74714,316 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   {
     path: '/panel/estudiante',
     name: 'EstudianteInicio',
-    component: _views_Estudiante_Inicio__WEBPACK_IMPORTED_MODULE_14__["default"]
+    component: _views_Estudiante_Inicio__WEBPACK_IMPORTED_MODULE_14__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/EstadoInscripcion',
     name: 'EstudianteEstadoInscripcion',
-    component: _views_Estudiante_EstadoInscripcion__WEBPACK_IMPORTED_MODULE_15__["default"]
+    component: _views_Estudiante_EstadoInscripcion__WEBPACK_IMPORTED_MODULE_15__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/Inscripcion',
     name: 'EstudianteInscripcion',
-    component: _views_Estudiante_Inscripcion__WEBPACK_IMPORTED_MODULE_16__["default"]
+    component: _views_Estudiante_Inscripcion__WEBPACK_IMPORTED_MODULE_16__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/Portafolio',
     name: 'EstudiantePortafolio',
-    component: _views_Estudiante_Portafolio__WEBPACK_IMPORTED_MODULE_17__["default"]
+    component: _views_Estudiante_Portafolio__WEBPACK_IMPORTED_MODULE_17__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/Horario',
     name: 'EstudianteHorario',
-    component: _views_Estudiante_Horario__WEBPACK_IMPORTED_MODULE_18__["default"]
+    component: _views_Estudiante_Horario__WEBPACK_IMPORTED_MODULE_18__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/GuiasPracticas',
     name: 'EstudianteVerPractica',
-    component: _views_Estudiante_VerPractica__WEBPACK_IMPORTED_MODULE_19__["default"]
+    component: _views_Estudiante_VerPractica__WEBPACK_IMPORTED_MODULE_19__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, {
     path: '/panel/estudiante/SubirPractica',
     name: 'EstudianteSubirPractica',
-    component: _views_Estudiante_SubirPractica__WEBPACK_IMPORTED_MODULE_20__["default"]
+    component: _views_Estudiante_SubirPractica__WEBPACK_IMPORTED_MODULE_20__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 5
+    }
   }, //Docente
   {
     path: '/panel/docente',
     name: 'DocenteInicio',
-    component: _views_Docente_Inicio__WEBPACK_IMPORTED_MODULE_21__["default"]
+    component: _views_Docente_Inicio__WEBPACK_IMPORTED_MODULE_21__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/VerClases',
     name: 'DocenteVerClases',
-    component: _views_Docente_VerClases__WEBPACK_IMPORTED_MODULE_22__["default"]
+    component: _views_Docente_VerClases__WEBPACK_IMPORTED_MODULE_22__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/VerAuxiliares',
     name: 'DocenteVerAuxiliares',
-    component: _views_Docente_VerAuxiliares__WEBPACK_IMPORTED_MODULE_23__["default"]
+    component: _views_Docente_VerAuxiliares__WEBPACK_IMPORTED_MODULE_23__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/AsignarAuxiliar',
     name: 'DocenteAsignarAuxiliar',
-    component: _views_Docente_AsignarAuxiliar__WEBPACK_IMPORTED_MODULE_24__["default"]
+    component: _views_Docente_AsignarAuxiliar__WEBPACK_IMPORTED_MODULE_24__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/GuiasPracticas',
     name: 'DocenteGuiasPracticas',
-    component: _views_Docente_GuiasPracticas__WEBPACK_IMPORTED_MODULE_25__["default"]
+    component: _views_Docente_GuiasPracticas__WEBPACK_IMPORTED_MODULE_25__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/EstudiantesInscritos',
     name: 'DocenteEstudiantesInscritos',
-    component: _views_Docente_EstudiantesInscritos__WEBPACK_IMPORTED_MODULE_26__["default"]
+    component: _views_Docente_EstudiantesInscritos__WEBPACK_IMPORTED_MODULE_26__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/EstudiantesInscritos/:estudiante_clase_id',
     name: 'DocentePortafolios',
     component: _views_Docente_Portafolios__WEBPACK_IMPORTED_MODULE_27__["default"],
-    props: true
+    props: true,
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/InformesAsistencia',
     name: 'DocenteInformesAsistencia',
-    component: _views_Docente_InformesAsistencia__WEBPACK_IMPORTED_MODULE_28__["default"]
+    component: _views_Docente_InformesAsistencia__WEBPACK_IMPORTED_MODULE_28__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, {
     path: '/panel/docente/InformesEnvios',
     name: 'DocenteInformesEnvios',
-    component: _views_Docente_InformesEnvios__WEBPACK_IMPORTED_MODULE_29__["default"]
+    component: _views_Docente_InformesEnvios__WEBPACK_IMPORTED_MODULE_29__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 2
+    }
   }, //Auxiliar Terminal
   {
     path: '/panel/auxiliarterminal',
     name: 'AuxiliarTerminalInicio',
-    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_30__["default"]
+    component: _views_AuxiliarTerminal_Inicio__WEBPACK_IMPORTED_MODULE_30__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 4
+    }
   }, {
     path: '/panel/auxiliarterminal/Clases',
     name: 'AuxiliarTerminalListaClases',
-    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_31__["default"]
+    component: _views_AuxiliarTerminal_ListaClases__WEBPACK_IMPORTED_MODULE_31__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 4
+    }
   }, {
     path: '/panel/auxiliarterminal/Practicas',
     name: 'AuxiliarTerminalListaPracticas',
-    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_32__["default"]
+    component: _views_AuxiliarTerminal_ListaPracticas__WEBPACK_IMPORTED_MODULE_32__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 4
+    }
   }, {
     path: '/panel/auxiliarterminal/Estudiantes',
     name: 'AuxiliarTerminalListaEstudiantes',
-    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_33__["default"]
+    component: _views_AuxiliarTerminal_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_33__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 4
+    }
   }, {
     path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
     name: 'AuxiliarTerminalListaEstudiantesClase',
     component: _views_AuxiliarTerminal_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_34__["default"],
-    props: true
+    props: true,
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 4
+    }
   }, //Auxiliar Laboratorio
   {
     path: '/panel/auxiliarlaboratorio',
     name: 'AuxiliarLaboratorioListaEstudiantes',
-    component: _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_35__["default"]
+    component: _views_AuxiliarLaboratorio_ListaEstudiantes__WEBPACK_IMPORTED_MODULE_35__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 3
+    }
   }, {
     path: '/panel/auxiliarlaboratorio/Estudiantes/:sesion_id',
     name: 'AuxiliarLaboratorioListaEstudiantesClase',
     component: _views_AuxiliarLaboratorio_ListaEstudiantesClase__WEBPACK_IMPORTED_MODULE_36__["default"],
-    props: true
+    props: true,
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 3
+    }
   }, //Administrador
   {
     path: '/panel/administrador',
     name: 'AdministradorInicio',
-    component: _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_37__["default"]
+    component: _views_Administrador_Inicio__WEBPACK_IMPORTED_MODULE_37__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Gestiones',
     name: 'AdministradorGestiones',
-    component: _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_38__["default"]
+    component: _views_Administrador_Gestiones__WEBPACK_IMPORTED_MODULE_38__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/FechasInscripcion',
     name: 'AdministradorFechasInscripcion',
-    component: _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_39__["default"]
+    component: _views_Administrador_FechasInscripcion__WEBPACK_IMPORTED_MODULE_39__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Aulas',
     name: 'AdministradorAulas',
-    component: _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_40__["default"]
+    component: _views_Administrador_Aulas__WEBPACK_IMPORTED_MODULE_40__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Materias',
     name: 'AdministradorMaterias',
-    component: _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_41__["default"]
+    component: _views_Administrador_Materias__WEBPACK_IMPORTED_MODULE_41__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/GruposDocentes',
     name: 'AdministradorGruposDocentes',
-    component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_42__["default"]
+    component: _views_Administrador_GruposDocentes__WEBPACK_IMPORTED_MODULE_42__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Clases',
     name: 'AdministradorClases',
-    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_44__["default"]
+    component: _views_Administrador_Clases__WEBPACK_IMPORTED_MODULE_44__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Clases/:grupo_docente_id',
     name: 'AdministradorClasesGrupoDocente',
     component: _views_Administrador_ClasesGrupoDocente__WEBPACK_IMPORTED_MODULE_43__["default"],
-    props: true
+    props: true,
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Administradores',
     name: 'AdministradorAdministradores',
-    component: _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_45__["default"]
+    component: _views_Administrador_Usuarios_Administradores__WEBPACK_IMPORTED_MODULE_45__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Docentes',
     name: 'AdministradorDocentes',
-    component: _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_46__["default"]
+    component: _views_Administrador_Usuarios_Docentes__WEBPACK_IMPORTED_MODULE_46__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/AuxiliaresTerminal',
     name: 'AdministradorAuxiliaresTerminal',
-    component: _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_47__["default"]
+    component: _views_Administrador_Usuarios_AuxiliaresTerminal__WEBPACK_IMPORTED_MODULE_47__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/AuxiliaresLaboratorio',
     name: 'AdministradorAuxiliaresLaboratorio',
-    component: _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_48__["default"]
+    component: _views_Administrador_Usuarios_AuxiliaresLaboratorio__WEBPACK_IMPORTED_MODULE_48__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Estudiantes',
     name: 'AdministradorEstudiantes',
-    component: _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_49__["default"]
+    component: _views_Administrador_Usuarios_Estudiantes__WEBPACK_IMPORTED_MODULE_49__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/Usuario/:usuario_id',
     name: 'AdministradorUsuario',
     component: _views_Administrador_Usuarios_Usuario__WEBPACK_IMPORTED_MODULE_50__["default"],
-    props: true
+    props: true,
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }, {
     path: '/panel/administrador/AgregarUsuario',
     name: 'AdministradorAgregarUsuario',
-    component: _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_51__["default"]
+    component: _views_Administrador_Usuarios_AgregarUsuario__WEBPACK_IMPORTED_MODULE_51__["default"],
+    beforeEnter: requireAuth,
+    meta: {
+      permission: 1
+    }
   }]
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
@@ -74937,12 +75038,9 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 });
 
 function requireAuth(to, from, next) {
-  axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/user/roles').then(function (response) {
-    var roles = response.data;
-    var role = roles.filter(function (role) {
-      return role.role_id === to.meta.permission;
-    });
-    if (role.length > 0) next();else window.location.href = '/login';
+  axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/usuario/tienerol/' + to.meta.permission).then(function (response) {
+    var acceso = response.data.acceso;
+    if (acceso) next();else window.location.href = '/login';
   })["catch"](function (error) {
     console.log(error);
   });

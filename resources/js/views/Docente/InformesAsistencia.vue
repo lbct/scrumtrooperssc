@@ -26,43 +26,39 @@
                         </select>
                   </div>
                 </center>
-
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <p class="card-title">Asistencia de estudiantes por semana</p>
-                      <p class="text-muted font-weight-light">
-                          (Estudiantes registrados con el docente)
-                      </p>
-                      <div v-if="materia.maxima_semana">
-                          <apexchart width="100%" height="300px" 
-                                     type="bar" 
-                                     :options="opciones_asistencia_chart" 
-                                     :series="series_asistencia_chart">
-                          </apexchart>
-                      </div>
-                      <h5 v-else class="text-muted">No hay semanas disponibles</h5>
-                    </div>
-                  </div>
-                </div>
                 
-                <div class="col-md-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <p class="card-title">Asistencia de estudiantes por semana</p>
-                      <p class="text-muted font-weight-light">
-                          (Estudiantes inscritos en el grupo docente)
-                      </p>
-                      <div v-if="materia.maxima_semana">
-                          <apexchart width="100%" height="300px" 
-                                     type="bar" 
-                                     :options="opciones_asistencia_chart" 
-                                     :series="series_asistencia_grupodocente_chart">
-                          </apexchart>
+                <div class="row">
+                    <div class="col-12 col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <p class="card-title">Asistencia de estudiantes inscritos en el grupo docente</p>
+                          <div v-if="materia.maxima_semana">
+                              <apexchart width="100%" height="250px" 
+                                         type="bar" 
+                                         :options="opciones_asistencia_chart" 
+                                         :series="series_asistencia_grupodocente_chart">
+                              </apexchart>
+                          </div>
+                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                        </div>
                       </div>
-                      <h5 v-else class="text-muted">No hay semanas disponibles</h5>
                     </div>
-                  </div>
+
+                    <div class="col-12 col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <p class="card-title">Asistencia de estudiantes inscritos con el docente</p>
+                          <div v-if="materia.maxima_semana">
+                              <apexchart width="100%" height="250px" 
+                                         type="bar" 
+                                         :options="opciones_asistencia_chart" 
+                                         :series="series_asistencia_chart">
+                              </apexchart>
+                          </div>
+                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,12 +141,12 @@
                         var datos = response.data;
                         this.series_asistencia_chart = [
                             {
-                                name: 'Sin asistencia',
-                                data: datos.no_asistencia,
-                            },
-                            {
                                 name: 'Asistencia',
                                 data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
                             },
                         ];
                     })
@@ -164,12 +160,12 @@
                         var datos = response.data;
                         this.series_asistencia_grupodocente_chart = [
                             {
-                                name: 'Sin asistencia',
-                                data: datos.no_asistencia,
-                            },
-                            {
                                 name: 'Asistencia',
                                 data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
                             },
                         ];
                     })

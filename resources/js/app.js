@@ -89,200 +89,276 @@ const router = new VueRouter({
             path: '/panel/estudiante',
             name: 'EstudianteInicio',
             component: EstudianteInicio,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/EstadoInscripcion',
             name: 'EstudianteEstadoInscripcion',
             component: EstudianteEstadoInscripcion,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/Inscripcion',
             name: 'EstudianteInscripcion',
             component: EstudianteInscripcion,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/Portafolio',
             name: 'EstudiantePortafolio',
             component: EstudiantePortafolio,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/Horario',
             name: 'EstudianteHorario',
             component: EstudianteHorario,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/GuiasPracticas',
             name: 'EstudianteVerPractica',
             component: EstudianteVerPractica,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         {
             path: '/panel/estudiante/SubirPractica',
             name: 'EstudianteSubirPractica',
             component: EstudianteSubirPractica,
+            beforeEnter: requireAuth,
+            meta: {permission: 5,},
         },
         //Docente
         {
             path: '/panel/docente',
             name: 'DocenteInicio',
             component: DocenteInicio,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/VerClases',
             name: 'DocenteVerClases',
             component: DocenteVerClases,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/VerAuxiliares',
             name: 'DocenteVerAuxiliares',
             component: DocenteVerAuxiliares,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/AsignarAuxiliar',
             name: 'DocenteAsignarAuxiliar',
             component: DocenteAsignarAuxiliar,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/GuiasPracticas',
             name: 'DocenteGuiasPracticas',
             component: DocenteGuiasPracticas,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/EstudiantesInscritos',
             name: 'DocenteEstudiantesInscritos',
             component: DocenteEstudiantesInscritos,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/EstudiantesInscritos/:estudiante_clase_id',
             name: 'DocentePortafolios',
             component: DocentePortafolios,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/InformesAsistencia',
             name: 'DocenteInformesAsistencia',
             component: DocenteInformesAsistencia,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         {
             path: '/panel/docente/InformesEnvios',
             name: 'DocenteInformesEnvios',
             component: DocenteInformesEnvios,
+            beforeEnter: requireAuth,
+            meta: {permission: 2,},
         },
         //Auxiliar Terminal
         {
             path: '/panel/auxiliarterminal',
             name: 'AuxiliarTerminalInicio',
             component: AuxiliarTerminalInicio,
+            beforeEnter: requireAuth,
+            meta: {permission: 4,},
         },
         {
             path: '/panel/auxiliarterminal/Clases',
             name: 'AuxiliarTerminalListaClases',
             component: AuxiliarTerminalListaClases,
+            beforeEnter: requireAuth,
+            meta: {permission: 4,},
         },
         {
             path: '/panel/auxiliarterminal/Practicas',
             name: 'AuxiliarTerminalListaPracticas',
             component: AuxiliarTerminalListaPracticas,
+            beforeEnter: requireAuth,
+            meta: {permission: 4,},
         },
         {
             path: '/panel/auxiliarterminal/Estudiantes',
             name: 'AuxiliarTerminalListaEstudiantes',
             component: AuxiliarTerminalListaEstudiantes,
+            beforeEnter: requireAuth,
+            meta: {permission: 4,},
         },
         {
             path: '/panel/auxiliarterminal/Estudiantes/:clase_id',
             name: 'AuxiliarTerminalListaEstudiantesClase',
             component: AuxiliarTerminalListaEstudiantesClase,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 4,},
         },
         //Auxiliar Laboratorio
         {
             path: '/panel/auxiliarlaboratorio',
             name: 'AuxiliarLaboratorioListaEstudiantes',
             component: AuxiliarLaboratorioListaEstudiantes,
+            beforeEnter: requireAuth,
+            meta: {permission: 3,},
         },
         {
             path: '/panel/auxiliarlaboratorio/Estudiantes/:sesion_id',
             name: 'AuxiliarLaboratorioListaEstudiantesClase',
             component: AuxiliarLaboratorioListaEstudiantesClase,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 3,},
         },
         //Administrador
         {
             path: '/panel/administrador',
             name: 'AdministradorInicio',
             component: AdministradorInicio,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Gestiones',
             name: 'AdministradorGestiones',
             component: AdministradorGestiones,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/FechasInscripcion',
             name: 'AdministradorFechasInscripcion',
             component: AdministradorFechasInscripcion,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Aulas',
             name: 'AdministradorAulas',
             component: AdministradorAulas,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Materias',
             name: 'AdministradorMaterias',
             component: AdministradorMaterias,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/GruposDocentes',
             name: 'AdministradorGruposDocentes',
             component: AdministradorGruposDocentes,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Clases',
             name: 'AdministradorClases',
             component: AdministradorClases,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Clases/:grupo_docente_id',
             name: 'AdministradorClasesGrupoDocente',
             component: AdministradorClasesGrupoDocente,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Administradores',
             name: 'AdministradorAdministradores',
             component: AdministradorAdministradores,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Docentes',
             name: 'AdministradorDocentes',
             component: AdministradorDocentes,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/AuxiliaresTerminal',
             name: 'AdministradorAuxiliaresTerminal',
             component: AdministradorAuxiliaresTerminal,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/AuxiliaresLaboratorio',
             name: 'AdministradorAuxiliaresLaboratorio',
             component: AdministradorAuxiliaresLaboratorio,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Estudiantes',
             name: 'AdministradorEstudiantes',
             component: AdministradorEstudiantes,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/Usuario/:usuario_id',
             name: 'AdministradorUsuario',
             component: AdministradorUsuario,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
         {
             path: '/panel/administrador/AgregarUsuario',
             name: 'AdministradorAgregarUsuario',
             component: AdministradorAgregarUsuario,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
         },
     ],
 });
@@ -298,11 +374,10 @@ const app = new Vue({
 
 function requireAuth (to, from, next) {
     axios
-        .get('/user/roles')
+        .get('/usuario/tienerol/'+to.meta.permission)
         .then(function (response) {
-            var roles = response.data;
-            var role  = roles.filter(role => role.role_id === to.meta.permission);
-            if( role.length > 0 )
+            var acceso = response.data.acceso;
+            if(acceso)
                 next();
             else
                 window.location.href = '/login';
