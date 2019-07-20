@@ -11,6 +11,7 @@ use App\Models\EstudianteClase;
 use App\Models\Gestion;
 use App\Models\GrupoDocente;
 use App\Models\GrupoADocente;
+use App\Models\Horario;
 use App\Models\Materia;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
@@ -80,6 +81,52 @@ class Control extends Base
             array_push($nombres, $aula->nombre_aula);
         }
         array_push($datos, $nombres, $count);
+        return $datos;
+    }
+
+    public function getTablaAulas(){
+        $datos = [];
+        $datos['aulas'] = [];
+        $datos['horas'] = [];
+        $datos['fecha'] = date('d-m-y', time());
+
+        $aulas = Aula::get();
+        $horas = Horario::get();
+        //Dia de la Semana
+        $date = date('D', time());
+        switch($date){
+            case "Mon": $date = 1; break;
+            case "Tue": $date = 2; break;
+            case "Wed": $date = 3; break;
+            case "Thu": $date = 4; break;
+            case "Fri": $date = 5; break;
+            case "Sat": $date = 6; break;
+            default; $date = 7; break;
+        }
+
+        foreach($aulas as $aula){
+            array_push($datos['aulas'], $aula->nombre_aula);
+        }
+
+        foreach($horas as $hora){
+            $temp = [];
+            array_push($temp, $hora->hora_inicio);
+            foreach($aulas as $aula){    
+                $clase = Clase::where('dia', '=', $date)
+                        ->where('horario_id', '=', $hora->id)
+                        ->where('aula_id', '=', $aula->id)
+                        ->join('grupo_docente', 'grupo_docente.id', '=','grupo_docente_id')
+                        ->join('materia', 'materia.id', '=','materia_id')
+                        ->select('nombre_materia')
+                        ->first();
+                if ($clase != null)
+                    array_push($temp, $clase->nombre_materia);
+                else 
+                    array_push($temp, null);
+            }
+            array_push($datos['horas'], $temp);
+        }
+
         return $datos;
     }
 }

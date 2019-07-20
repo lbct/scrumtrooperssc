@@ -32718,6 +32718,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -32741,6 +32758,11 @@ __webpack_require__.r(__webpack_exports__);
         porcentaje: 0,
         style: ''
       },
+      tabla_aulas: {
+        aulas: [],
+        horas: [],
+        fecha: ''
+      },
       options: {
         labels: []
       },
@@ -32752,6 +32774,7 @@ __webpack_require__.r(__webpack_exports__);
       this.getDatos();
       this.getTablaGrupos();
       this.getChartAulas();
+      this.getTablaAulas();
     },
     getDatos: function getDatos() {
       var _this = this;
@@ -32771,14 +32794,23 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    getChartAulas: function getChartAulas() {
+    getTablaAulas: function getTablaAulas() {
       var _this3 = this;
 
+      this.axios.get('/administrador/estadisticas/tablaAulas').then(function (response) {
+        _this3.tabla_aulas = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getChartAulas: function getChartAulas() {
+      var _this4 = this;
+
       this.axios.get('/administrador/estadisticas/chartAulas').then(function (response) {
-        _this3.options = {
+        _this4.options = {
           labels: response.data[0]
         };
-        _this3.series = response.data[1];
+        _this4.series = response.data[1];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -51735,7 +51767,51 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v(
+                  "Horarios por Laboratorios (" +
+                    _vm._s(_vm.tabla_aulas.fecha) +
+                    ")"
+                )
+              ]),
+              _vm._v(" "),
+              _c("table", { staticClass: "table" }, [
+                _c("thead", { staticClass: "thead-dark" }, [
+                  _c(
+                    "tr",
+                    [
+                      _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.tabla_aulas.aulas, function(nombre) {
+                        return _c("th", { attrs: { scope: "col" } }, [
+                          _vm._v(_vm._s(nombre))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tabla_aulas.horas, function(datos) {
+                    return _c(
+                      "tr",
+                      _vm._l(datos, function(dato) {
+                        return _c("td", [_vm._v(_vm._s(dato))])
+                      }),
+                      0
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
           _c("div", { staticClass: "card position-relative" }, [
@@ -51851,16 +51927,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
-      _c("div", { staticClass: "card position-relative" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

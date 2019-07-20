@@ -50,14 +50,31 @@
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card position-relative">
-                
+                    <div class="card-body align-items-center">
+                        <p class="card-title">Horarios por Laboratorios ({{tabla_aulas.fecha}})</p>
+                        
+                        <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Hora</th>
+                                <th v-for="nombre in tabla_aulas.aulas" scope="col" >{{nombre}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="datos in tabla_aulas.horas">
+                                <td v-for="dato in datos">{{dato}}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+
+                    </div>
               </div>
             </div>
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card position-relative">
                     <div class="card-body align-items-center">
                         <p class="card-title">Uso de Laboratorios por Semana</p>
-                        <div class="chart-wrap">    
+                        <div class="chart-wrap" >    
                             <apexchart id="chartAulas" width="500" type="donut" :options="options" :series="series"></apexchart>
                         </div>
                     </div>
@@ -121,6 +138,8 @@
                 materia: {nombre_materia: '', grupos: []},
                 grupo: {docentes: '', inscritos: 0, porcentaje: 0, style: ''},
 
+                tabla_aulas: {aulas: [], horas: [], fecha: ''},
+
                 options: {
                     labels: [],
                 },
@@ -134,6 +153,7 @@
                 this.getDatos();
                 this.getTablaGrupos();
                 this.getChartAulas();
+                this.getTablaAulas();
             },
 
             getDatos(){
@@ -152,6 +172,17 @@
                 .get('/administrador/estadisticas/tablaGrupos')
                 .then((response)=>{
                     this.materias = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+
+            getTablaAulas(){
+            this.axios
+                .get('/administrador/estadisticas/tablaAulas')
+                .then((response)=>{
+                    this.tabla_aulas = response.data;
                 })
                 .catch(function (error) {
                     console.log(error);
