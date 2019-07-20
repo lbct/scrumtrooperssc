@@ -17,12 +17,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Classes\Gestiones;
 
 class Control extends Base
 {
     public function getDatos(Request $request){
         
-        $datos['numero_materias'] =  Materia::count();
+        $gestion_actual = Gestiones::gestionActiva();
+        $datos['numero_materias'] =  Materia::where('gestion_id', '=', $gestion_actual->id)->count();
         $datos['numero_docentes'] = Docente::count();
         $datos['numero_estudiantes'] = Estudiante::count();
         $datos['numero_aulas'] = Aula::count();
@@ -33,7 +35,8 @@ class Control extends Base
     public function getTablaGrupos(Request $request){
 
         $datos = [];
-        $materias = Materia::get();
+        $gestion_actual = Gestiones::gestionActiva();
+        $materias = Materia::where('gestion_id', '=', $gestion_actual->id)->get();
         foreach ($materias as $materia) {
 
             $grupos = GrupoDocente::where('materia_id', '=', $materia->id)->get();
@@ -76,8 +79,11 @@ class Control extends Base
         $count = [];
         $nombres = [];
         $aulas = Aula::get();
+        $gestion_actual = Gestiones::gestionActiva();
         foreach($aulas as $aula){
-            array_push($count, Clase::where('aula_id', '=', $aula->id)->count());
+            array_push($count, Clase::where('aula_id', '=', $aula->id)
+                                        ->where('gestion_id', '=', $gestion_actual->id)
+                                        ->count());
             array_push($nombres, $aula->nombre_aula);
         }
         array_push($datos, $nombres, $count);
@@ -92,6 +98,7 @@ class Control extends Base
 
         $aulas = Aula::get();
         $horas = Horario::get();
+        $gestion_actual = Gestiones::gestionActiva();
         //Dia de la Semana
         $date = date('D', time());
         switch($date){
@@ -115,6 +122,7 @@ class Control extends Base
                 $clase = Clase::where('dia', '=', $date)
                         ->where('horario_id', '=', $hora->id)
                         ->where('aula_id', '=', $aula->id)
+                        ->where('clase.gestion_id', '=', $gestion_actual->id)
                         ->join('grupo_docente', 'grupo_docente.id', '=','grupo_docente_id')
                         ->join('materia', 'materia.id', '=','materia_id')
                         ->select('nombre_materia')
