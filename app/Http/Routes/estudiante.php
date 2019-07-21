@@ -16,3 +16,7 @@ Route::delete('estudiante/practica', 'Estudiante\Practica\Control@borrar');
 Route::get('estudiante/archivos/practicas/{envio_practica_id}', 'Estudiante\Practica\Control@descargar');
 
 Route::get('estudiante/archivos/guia_practica/{guia_practica_id}', 'Estudiante\GuiaPractica\Control@descargar');
+
+Route::get('estudiante/estadisticas/datos', 'Estudiante\Estadistica\Control@getDatos');
+Route::get('estudiante/estadisticas/tablaClases', 'Estudiante\Estadistica\Control@getTablaClases');
+Route::get('estudiante/estadisticas/asistencia', 'Estudiante\Estadistica\Control@getAsistencia');

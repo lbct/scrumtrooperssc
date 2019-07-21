@@ -30828,7 +30828,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     icono_a_clase: function icono_a_clase() {
-      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";
+      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";else if (this.icono == "fecha") return "fa fa-calendar";
     }
   }
 });
@@ -37249,16 +37249,149 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
-      key_mensajes: 0
+      key_mensajes: 0,
+      datos: {
+        numero_materias: 0,
+        fecha: '',
+        anho: '',
+        periodo: '',
+        portafolio: 0
+      },
+      tabla_clases: [],
+      options: {
+        labels: ['Asistencia']
+      },
+      series: [0],
+      asistencia: {
+        total: 0,
+        asistencia: 0,
+        porcentaje: []
+      },
+      hours: '',
+      minutes: '',
+      seconds: '',
+      hourtime: ''
     };
   },
+  ready: function ready() {
+    this.updateDateTime();
+  },
   methods: {
-    init: function init() {}
+    init: function init() {
+      this.getDatos();
+      this.getTablaClases();
+      this.getAsistencia();
+    },
+    getDatos: function getDatos() {
+      var _this = this;
+
+      this.axios.get('/estudiante/estadisticas/datos').then(function (response) {
+        _this.datos = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getTablaClases: function getTablaClases() {
+      var _this2 = this;
+
+      this.axios.get('/estudiante/estadisticas/tablaClases').then(function (response) {
+        _this2.tabla_clases = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getAsistencia: function getAsistencia() {
+      var _this3 = this;
+
+      this.axios.get('/estudiante/estadisticas/asistencia').then(function (response) {
+        _this3.asistencia = response.data;
+        _this3.series = _this3.asistencia.porcentaje;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updateDateTime: function updateDateTime() {
+      var self = this;
+      var now = new Date();
+      self.hours = now.getHours();
+      self.minutes = self.getZeroPad(now.getMinutes());
+      self.seconds = self.getZeroPad(now.getSeconds());
+      self.hourtime = self.getHourTime(self.hours);
+      self.hours = self.hours % 12 || 12;
+      setTimeout(self.updateDateTime, 1000);
+    },
+    getHourTime: function getHourTime(h) {
+      return h >= 12 ? 'PM' : 'AM';
+    },
+    getZeroPad: function getZeroPad(n) {
+      return (parseInt(n, 10) >= 10 ? '' : '0') + n;
+    }
   },
   mounted: function mounted() {
     this.init();
@@ -58371,9 +58504,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("tarjeta-reducida", {
+          attrs: { titulo: "Año", valor: _vm.datos.anho, icono: "fecha" }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: { titulo: "Gestion", valor: _vm.datos.periodo, icono: "fecha" }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Materias Inscritas",
+            valor: _vm.datos.numero_materias,
+            icono: "materia"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Archivos en Portafolio",
+            valor: _vm.datos.portafolio,
+            icono: "archivo"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card position-relative" }, [
+          _c("div", { staticClass: "card-body align-items-center" }, [
+            _c("p", { staticClass: "card-title" }, [
+              _vm._v("Horario / (" + _vm._s(_vm.datos.fecha) + ")")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tabla_clases, function(datos) {
+                    return _c(
+                      "tr",
+                      _vm._l(datos, function(dato) {
+                        return _c("td", [_vm._v(_vm._s(dato))])
+                      }),
+                      0
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-6 grid-margin stretch-card align-self-start" },
+        [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Porcentaje de Asistencia")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "chart-wrap" },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      id: "chartAsistencia",
+                      width: "100%",
+                      type: "radialBar",
+                      options: _vm.options,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Materia")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aula")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

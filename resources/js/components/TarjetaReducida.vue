@@ -39,6 +39,8 @@
                     return "fas fa-history";
                 else if(this.icono == "aula")
                     return "fa fa-university";
+                else if(this.icono == "fecha")
+                    return "fa fa-calendar";
             },
         },
     }
