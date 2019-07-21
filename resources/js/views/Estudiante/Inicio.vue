@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
     </div>
 </template>
 
@@ -21,7 +20,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Inicio';
+            this.$parent.$parent.section = 'Estudiante';
         },
     }
 </script>

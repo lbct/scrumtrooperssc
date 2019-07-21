@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h5>(Datos de la gestión en curso)</h5>
         <div class="row">
             <tarjeta-reducida 
                 titulo = "Materias"

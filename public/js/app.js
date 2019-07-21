@@ -32726,6 +32726,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37248,7 +37249,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37262,7 +37262,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.init();
-    this.$parent.$parent.section = 'Inicio';
+    this.$parent.$parent.section = 'Estudiante';
   }
 });
 
@@ -52059,6 +52059,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },
@@ -58369,16 +58371,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      })
-    ],
-    1
-  )
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true
