@@ -31,13 +31,22 @@ class Control extends Base
         $nombre_aula    = $request->nombre_aula;
         $detalle_aula   = $request->detalle_aula;
         
-        $aula = new Aula;
-        $aula->codigo_aula   = $codigo_aula;
-        $aula->nombre_aula   = $nombre_aula;
-        $aula->detalle_aula  = $detalle_aula;
-        $aula->save();        
+        $validator = Validator::make($request->all(), [
+            'codigo_aula'  => 'required|min:2|unique:aula',
+            'nombre_aula'  => 'required|min:2',
+            'detalle_aula' => 'required|min:2',
+        ]);
         
-        return $aula;
+        if(!$validator->fails()){
+            $aula = new Aula;
+            $aula->codigo_aula   = $codigo_aula;
+            $aula->nombre_aula   = $nombre_aula;
+            $aula->detalle_aula  = $detalle_aula;
+            $aula->save();
+            
+            return response()->json(['exito'=>["Aula añadida con éxito."], 'aula'=>$aula], 200);
+        }
+        return response()->json(['error'=>$validator->errors()->all()], 200);
     }
     
     public function editar(Request $request){
@@ -47,20 +56,38 @@ class Control extends Base
         $detalle_aula   = $request->detalle_aula;
         
         $aula = Aula::find($aula_id);
-        $aula->codigo_aula   = $codigo_aula;
-        $aula->nombre_aula   = $nombre_aula;
-        $aula->detalle_aula  = $detalle_aula;
-        $aula->save();        
         
-        return $aula;
+        if($aula){
+            $validator = Validator::make($request->all(), [
+                'codigo_aula'  => 'required|min:2',
+                'nombre_aula'  => 'required|min:2',
+                'detalle_aula' => 'required|min:2',
+            ]);
+            
+            if(!$validator->fails()){
+                $aula_con_codigo = Aula::where('codigo_aula', $codigo_aula)->first();
+                if(!$aula_con_codigo || $aula_con_codigo->id == $aula_id){
+                    $aula->codigo_aula   = $codigo_aula;
+                    $aula->nombre_aula   = $nombre_aula;
+                    $aula->detalle_aula  = $detalle_aula;
+                    $aula->save();
+                    
+                    return response()->json(['exito'=>["Aula editada con éxito."]], 200);
+                }
+                return response()->json(['error'=>['El Código del Aula ya ha sido tomado.']], 200);
+            }
+            return response()->json(['error'=>$validator->errors()->all()], 200);
+        }
+        return response()->json(['error'=>['La Aula ha sido eliminada antes de esta acción.']], 200);
     }
     
     public function borrar(Request $request){
-        $aula_id        = $request->aula_id;
+        $aula_id = $request->aula_id;
         
         $aula = Aula::find($aula_id);
-        $aula->delete();        
+        if($aula)
+            $aula->delete();
         
-        return $aula;
+        return response()->json(['exito'=>["Aula eliminada con éxito."]], 200);
     }
 }

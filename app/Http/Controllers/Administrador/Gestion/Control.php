@@ -32,24 +32,33 @@ class Control extends Base
         $ultima_gestion = Gestion::orderBy('id', 'desc')
                           ->first();         
         
-        $gestion = new Gestion;
-        $gestion->anho_gestion = $anho_gestion;
-        $gestion->periodo_id   = $periodo_id;
-        $gestion->save();
+        $gestion_similar = Gestion::where('anho_gestion', $anho_gestion)
+                           ->where('periodo_id', $periodo_id)
+                           ->first();
         
-        if($ultima_gestion){
-            $materias = Materia::where('gestion_id', $ultima_gestion->id)
-                        ->get();
-            
-            foreach($materias as $materia){
-                $nueva_materia = new Materia;
-                $nueva_materia->gestion_id = $gestion->id;
-                $nueva_materia->codigo_materia = $materia->codigo_materia;
-                $nueva_materia->nombre_materia = $materia->nombre_materia;
-                $nueva_materia->detalle_materia = $materia->detalle_materia;
-                $nueva_materia->save();
+        if(!$gestion_similar){
+            $gestion = new Gestion;
+            $gestion->anho_gestion = $anho_gestion;
+            $gestion->periodo_id   = $periodo_id;
+            $gestion->save();
+
+            if($ultima_gestion){
+                $materias = Materia::where('gestion_id', $ultima_gestion->id)
+                            ->get();
+
+                foreach($materias as $materia){
+                    $nueva_materia = new Materia;
+                    $nueva_materia->gestion_id = $gestion->id;
+                    $nueva_materia->codigo_materia = $materia->codigo_materia;
+                    $nueva_materia->nombre_materia = $materia->nombre_materia;
+                    $nueva_materia->detalle_materia = $materia->detalle_materia;
+                    $nueva_materia->save();
+                }
             }
+
+            return response()->json(['exito'=>["Gestión añadida con éxito."]], 200);
         }
+        return response()->json(['error'=>["Gestión duplicada."]], 200);
     }
     
     public function editar(Request $request){
@@ -58,25 +67,47 @@ class Control extends Base
         $periodo_id    = $request->periodo_id;
         
         $gestion = Gestion::find($gestion_id);
-        $gestion->anho_gestion = $anho_gestion;
-        $gestion->periodo_id   = $periodo_id;
-        $gestion->save();
+        
+        if($gestion){
+            $gestion_similar = Gestion::where('anho_gestion', $anho_gestion)
+                               ->where('periodo_id', $periodo_id)
+                               ->first();
+            
+            if(!$gestion_similar){
+                $gestion->anho_gestion = $anho_gestion;
+                $gestion->periodo_id   = $periodo_id;
+                $gestion->save();
+
+                return response()->json(['exito'=>["Gestión editada con éxito."]], 200);
+            }
+            return response()->json(['error'=>["Gestión duplicada."]], 200);
+        }
+        return response()->json(['error'=>['Gestión eliminada antes de la acción.']], 200);
     }
     
     public function borrar(Request $request){
         $gestion_id = $request->gestion_id;
-        
         $gestion = Gestion::find($gestion_id);
-        $gestion->delete();
+        
+        if($gestion)
+            $gestion->delete();
+        
+        return response()->json(['exito'=>["Gestión eliminada con éxito."]], 200);
     }
     
     public function cambiarActiva(Request $request){
         $activa = $request->activa;
-        $gestion_id     = $request->gestion_id;
+        $gestion_id = $request->gestion_id;
         
-        Gestion::where('gestion.id', '!=', $gestion_id)->update(['activa' => false]);
         $gestion = Gestion::find($gestion_id);
-        $gestion->activa = $activa;
-        $gestion->save();
+        
+        if($gestion){
+            Gestion::where('gestion.id', '!=', $gestion_id)->update(['activa' => false]);
+            $gestion->activa = $activa;
+            $gestion->save();
+            
+            return response()->json(['exito'=>["Estado Activa de la Gestión modificado con éxito."]], 200);
+        }
+        return response()->json(['error'=>['Gestión eliminada antes de la acción.']], 200);
     }
 }

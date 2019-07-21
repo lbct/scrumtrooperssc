@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <button v-on:click="mostrarAgregar()"
                 class="mb-3 btn btn-primary pull-left">
             Añadir Fecha de Inscripción
         </button>
+        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <div v-if="fechas.length > 0" class="table-responsive">            
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -41,9 +41,14 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
-                      <label>Fecha de Inicio:</label>
+                      <Alertas 
+                               :key=key_mensajes_fecha 
+                               :mensajes=mensajes_fecha 
+                               :tipo=tipo_mensaje_fecha>
+                      </Alertas>
+                      
+                      <label>Fecha de inicio de Inscripción:</label>
                       <datetime type="datetime"
                                 input-class="form-control"
                                 v-model="fecha_inicio" 
@@ -53,7 +58,7 @@
                                 :phrases="{ok: 'Continuar', cancel: 'Cancelar'}">
                       </datetime>
                       <br>
-                      <label>Fecha de Fin:</label>
+                      <label>Fecha de fin de Inscripción:</label>
                       <datetime type="datetime"
                                 input-class="form-control"
                                 v-model="fecha_fin" 
@@ -110,6 +115,11 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                mensajes_fecha: [],
+                tipo_mensaje_fecha: '',
+                key_mensajes_fecha: 0,
+                
                 fechas: [],
                 fecha: {id:'', inicio_inscripcion:'', fin_inscripcion:''},
                 fecha_inicio: '',
@@ -118,6 +128,16 @@
         },
     
         methods:{
+            init_mensajes(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.mensajes_fecha = [];
+                this.tipo_mensaje_fecha = '';
+                this.key_mensajes_fecha = 0;
+            },
+            
             init(){
                 this.mensajes = [];
                 this.tipo_mensaje = '';
@@ -138,12 +158,16 @@
             },
             
             mostrarAgregar(){
+                this.init_mensajes();
+                
                 this.fecha_inicio = '';
                 this.fecha_fin    = '';
                 $('#modal-agregar-fecha').modal('show');
             },
             
             agregar(){
+                this.init_mensajes();
+                
                 const params = {
                     'inicio_inscripcion': this.fecha_inicio,
                     'fin_inscripcion': this.fecha_fin,
@@ -151,9 +175,21 @@
                 this.axios
                     .post('/administrador/fechasinscripcion', params)
                     .then((response)=>{
-                        var fecha = response.data;
-                        this.obtenerFechas();
-                        $('#modal-agregar-fecha').modal('hide');
+                        var datos = response.data;
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.obtenerFechas();
+                            $('#modal-agregar-fecha').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_fecha = datos.error;
+                            this.tipo_mensaje_fecha = 'danger';
+                            this.key_mensajes_fecha++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -161,6 +197,8 @@
             },
             
             mostrarBorrar(fecha, index){
+                this.init_mensajes();
+                
                 this.fecha = Object.assign({}, fecha);
                 this.fecha.index = index;
                 
@@ -168,6 +206,8 @@
             },
             
             borrar(){
+                this.init_mensajes();
+                
                 const params = {
                     'fecha_inscripcion_id': this.fecha.id,
                 };
@@ -175,9 +215,16 @@
                     .delete('/administrador/fechasinscripcion', { data: params })
                     .then((response)=>{
                         var datos = response.data;
-                        var index = this.fecha.index;
-                        this.fechas.splice(index, 1);
-                        $('#modal-borrar-fecha').modal('hide');
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            var index = this.fecha.index;
+                            this.fechas.splice(index, 1);
+                            $('#modal-borrar-fecha').modal('hide');
+                        }
                     });
             },
         },              

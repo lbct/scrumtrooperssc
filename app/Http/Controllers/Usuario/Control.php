@@ -22,8 +22,14 @@ class Control extends Base
         $usuario_id = session('usuario_id');
         $usuario = Usuario::find($usuario_id);
         $usuario_form = $request->usuario;
-
-        if($usuario_form['id'] == $usuario_id){
+        
+        $validator = Validator::make($usuario_form, [
+            'nombre'    => 'required|min:2',
+            'apellido'  => 'required|min:2',
+            'correo'    => 'required|email|min:8',
+        ]);
+        
+        if(!$validator->fails()){
             $usuario->nombre   = $usuario_form['nombre'];
             $usuario->apellido = $usuario_form['apellido'];
             $usuario->correo   = $usuario_form['correo'];
@@ -31,16 +37,20 @@ class Control extends Base
 
             return response()->json(['exito'=>["Datos cambiados con éxito"]], 200);
         }
-        else
-            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
+        return response()->json(['error'=>$validator->errors()->all()], 200);
     }
     
     public function editarPassword(Request $request){
         $usuario_id = session('usuario_id');
         $usuario = Usuario::find($usuario_id);
         $usuario_form = $request->usuario;
+        
+        $validator = Validator::make($usuario_form, [
+            'old_password'  => 'required|min:2',
+            'password'      => 'required|min:2',
+        ]);
 
-        if($usuario_form['id'] == $usuario_id){
+        if(!$validator->fails()){
             $old_password = $usuario_form['old_password'];
             $new_passowrd = $usuario_form['password'];
 
@@ -49,10 +59,8 @@ class Control extends Base
                 $usuario->save();
                 return response()->json(['exito'=>["Contraseña cambiada con éxito"]], 200);
             }
-            else
-                return response()->json(['error'=>["Contraseña actual incorrecta"]], 200);
+            return response()->json(['error'=>["Contraseña actual incorrecta"]], 200);
         }
-        else
-            return response()->json(['error'=>["No se tiene permisos para esta tarea"]], 200);
+        return response()->json(['error'=>$validator->errors()->all()], 200);
     }
 }

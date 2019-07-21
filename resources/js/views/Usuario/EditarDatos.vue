@@ -138,8 +138,14 @@
             },
             
             mostrarCambiarPassword(){
+                this.key_mensajes = 0;
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                
+                this.key_mensajes_password = 0;
                 this.mensajes_password = [];
                 this.tipo_mensajes_password = '';
+                
                 $('#modal-cambiar-password').modal('show');
             },
             
