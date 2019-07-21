@@ -30828,7 +30828,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     icono_a_clase: function icono_a_clase() {
-      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";
+      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";
     }
   }
 });
@@ -32627,20 +32627,189 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
-      key_mensajes: 0
+      key_mensajes: 0,
+      datos: {
+        numero_materias: 0,
+        numero_docentes: 0,
+        numero_estudiantes: 0,
+        numero_aulas: 0
+      },
+      materias: [],
+      materia: {
+        nombre_materia: '',
+        grupos: []
+      },
+      grupo: {
+        docentes: '',
+        inscritos: 0,
+        porcentaje: 0,
+        style: ''
+      },
+      tabla_aulas: {
+        aulas: [],
+        horas: [],
+        fecha: ''
+      },
+      options: {
+        labels: []
+      },
+      series: []
     };
   },
   methods: {
-    init: function init() {}
+    init: function init() {
+      this.getDatos();
+      this.getTablaGrupos();
+      this.getChartAulas();
+      this.getTablaAulas();
+    },
+    getDatos: function getDatos() {
+      var _this = this;
+
+      this.axios.get('/administrador/estadisticas/datos').then(function (response) {
+        _this.datos = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getTablaGrupos: function getTablaGrupos() {
+      var _this2 = this;
+
+      this.axios.get('/administrador/estadisticas/tablaGrupos').then(function (response) {
+        _this2.materias = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getTablaAulas: function getTablaAulas() {
+      var _this3 = this;
+
+      this.axios.get('/administrador/estadisticas/tablaAulas').then(function (response) {
+        _this3.tabla_aulas = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getChartAulas: function getChartAulas() {
+      var _this4 = this;
+
+      this.axios.get('/administrador/estadisticas/chartAulas').then(function (response) {
+        _this4.options = {
+          labels: response.data[0]
+        };
+        _this4.series = response.data[1];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   mounted: function mounted() {
     this.init();
-    this.$parent.$parent.section = 'Inicio';
+    this.$parent.$parent.section = 'Administrador';
   }
 });
 
@@ -51889,16 +52058,208 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      })
-    ],
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Materias",
+            valor: _vm.datos.numero_materias,
+            icono: "materia"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Docentes",
+            valor: _vm.datos.numero_docentes,
+            icono: "grupo"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Estudiantes",
+            valor: _vm.datos.numero_estudiantes,
+            icono: "usuarios"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Aulas",
+            valor: _vm.datos.numero_aulas,
+            icono: "aula"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card position-relative" }, [
+          _c("div", { staticClass: "card-body align-items-center" }, [
+            _c("p", { staticClass: "card-title" }, [
+              _vm._v(
+                "Horarios por laboratorio para hoy (" +
+                  _vm._s(_vm.tabla_aulas.fecha) +
+                  ")"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _c("thead", { staticClass: "thead-dark" }, [
+                  _c(
+                    "tr",
+                    [
+                      _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.tabla_aulas.aulas, function(nombre) {
+                        return _c("th", { attrs: { scope: "col" } }, [
+                          _vm._v(_vm._s(nombre))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tabla_aulas.horas, function(datos) {
+                    return _c(
+                      "tr",
+                      _vm._l(datos, function(dato) {
+                        return _c("td", [_vm._v(_vm._s(dato))])
+                      }),
+                      0
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-6 grid-margin stretch-card align-self-start" },
+        [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Uso de Laboratorios por Semana")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "chart-wrap" },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      id: "chartAulas",
+                      width: "100%",
+                      type: "donut",
+                      options: _vm.options,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card position-relative" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("p", { staticClass: "card-title" }, [
+              _vm._v("Distribución de Alumnos en Grupos Docentes")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-borderless" }, [
+                _c(
+                  "tbody",
+                  _vm._l(_vm.materias, function(materia) {
+                    return _c(
+                      "div",
+                      [
+                        materia.grupos.length > 0
+                          ? _c(
+                              "tr",
+                              { staticClass: "table-secondary d-flex" },
+                              [
+                                _c("td", [
+                                  _vm._v(_vm._s(materia.nombre_materia))
+                                ]),
+                                _vm._v(" "),
+                                _c("td"),
+                                _vm._v(" "),
+                                _c("td")
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm._l(materia.grupos, function(grupo) {
+                          return _c("tr", { staticClass: "d-flex" }, [
+                            _c(
+                              "td",
+                              { staticClass: "text-muted col-5 overflow-auto" },
+                              [_vm._v(_vm._s(grupo.docentes))]
+                            ),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "w-100 px-0 col-6" }, [
+                              _c(
+                                "div",
+                                { staticClass: "progress progress-md mx-4" },
+                                [
+                                  _c("div", {
+                                    staticClass: "progress-bar bg-primary",
+                                    style: grupo.style,
+                                    attrs: {
+                                      role: "progressbar",
+                                      "aria-valuenow": grupo.porcentaje,
+                                      "aria-valuemin": "0",
+                                      "aria-valuemax": "100"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "col-1" }, [
+                              _c(
+                                "h5",
+                                { staticClass: "font-weight-bold mb-0" },
+                                [_vm._v(_vm._s(grupo.inscritos))]
+                              )
+                            ])
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

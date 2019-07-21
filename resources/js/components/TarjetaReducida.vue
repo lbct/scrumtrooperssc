@@ -37,6 +37,8 @@
                     return "fas fa-clock";
                 else if(this.icono == "cursado")
                     return "fas fa-history";
+                else if(this.icono == "aula")
+                    return "fa fa-university";
             },
         },
     }

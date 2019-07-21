@@ -24,6 +24,9 @@ Route::get('inscripcion/activa', function (Request $request) {
     return response()->json(['activa'=>$activa], 200);
 });
 
+Route::get('registro', 'Registro\Control@vista');
+Route::post('registro', 'Registro\Control@registrar');
+
 //Rutas Usuario
 Route::get('usuario', 'Usuario\Control@informacion');
 Route::put('usuario', 'Usuario\Control@editar');
