@@ -34738,7 +34738,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -34895,7 +34894,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -54891,14 +54889,9 @@ var render = function() {
                                     [
                                       _vm._v(
                                         "\n                                " +
-                                          _vm._s(materia.detalle_grupo_docente)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula)
-                                      ),
-                                      _c("br")
+                                          _vm._s(materia.nombre_aula) +
+                                          "\n                            "
+                                      )
                                     ]
                                   )
                                 }),
@@ -55230,14 +55223,9 @@ var render = function() {
                                     [
                                       _vm._v(
                                         "\n                                " +
-                                          _vm._s(materia.detalle_grupo_docente)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula)
-                                      ),
-                                      _c("br")
+                                          _vm._s(materia.nombre_aula) +
+                                          "\n                            "
+                                      )
                                     ]
                                   )
                                 }),

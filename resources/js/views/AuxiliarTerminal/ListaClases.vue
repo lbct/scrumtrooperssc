@@ -33,8 +33,7 @@
                                 <div v-for="materia in horario"
                                      v-on:click="verMasClase(materia)"
                                      class="clickleable table-info custom-td">
-                                    {{materia.detalle_grupo_docente}}<br>
-                                    {{materia.nombre_aula}}<br>
+                                    {{materia.nombre_aula}}
                                 </div>
                             </td>
                         </tr>
