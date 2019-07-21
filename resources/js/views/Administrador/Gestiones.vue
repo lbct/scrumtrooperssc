@@ -386,6 +386,14 @@
                             this.tipo_mensaje = 'success';
                             this.key_mensajes++;
                         }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                            
+                            this.obtenerGestiones();
+                            $('#modal-editar-gestion').modal('hide');
+                        }
                         else if(datos.error){
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';

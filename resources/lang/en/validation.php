@@ -153,6 +153,9 @@ return [
             'detalle_aula'=>'Detalle del Aula',
             'inicio_inscripcion'=>'Fecha de inicio de Inscripción',
             'fin_inscripcion'=>'Fecha de fin de Inscripción',
+            'codigo_materia'=>'Código de la Materia',
+            'nombre_materia'=>'Nombre de la Materia',
+            'detalle_materia'=>'Detalle de la Materia',
 	],
 	
 ];

@@ -106,7 +106,10 @@ class Control extends Base
             $gestion->activa = $activa;
             $gestion->save();
             
-            return response()->json(['exito'=>["Estado Activa de la Gestión modificado con éxito."]], 200);
+            if($activa)
+                return response()->json(['exito'=>["Gestión Activa asignada con éxito."]], 200);
+            else
+                return response()->json(['advertencia'=>["Gestión desactivada con éxito."]], 200);
         }
         return response()->json(['error'=>['Gestión eliminada antes de la acción.']], 200);
     }

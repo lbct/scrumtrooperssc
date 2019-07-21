@@ -27,14 +27,24 @@ class Control extends Base
         $nombre_materia    = $request->nombre_materia;
         $detalle_materia   = $request->detalle_materia;
         
-        $materia = new Materia;
-        $materia->gestion_id       = $gestion_id;
-        $materia->codigo_materia   = $codigo_materia;
-        $materia->nombre_materia   = $nombre_materia;
-        $materia->detalle_materia  = $detalle_materia;
-        $materia->save();        
+        $validator = Validator::make($request->all(), [
+            'codigo_materia'  => 'required|min:5',
+            'nombre_materia'  => 'required|min:5',
+            'detalle_materia' => 'required|min:5',
+        ]);
         
-        return $materia;
+        if(!$validator->fails()){
+            $materia = new Materia;
+            $materia->gestion_id       = $gestion_id;
+            $materia->codigo_materia   = $codigo_materia;
+            $materia->nombre_materia   = $nombre_materia;
+            $materia->detalle_materia  = $detalle_materia;
+            $materia->save();        
+            
+            return response()->json(['exito'=>['Materia añadida con éxito'],
+                                     'materia'=>$materia], 200);
+        }
+        return response()->json(['error'=>$validator->errors()->all()], 200);
     }
     
     public function editar(Request $request){
@@ -44,20 +54,35 @@ class Control extends Base
         $detalle_materia   = $request->detalle_materia;
         
         $materia = Materia::find($materia_id);
-        $materia->codigo_materia   = $codigo_materia;
-        $materia->nombre_materia   = $nombre_materia;
-        $materia->detalle_materia  = $detalle_materia;
-        $materia->save();    
         
-        return $materia;
+        if($materia){
+            $validator = Validator::make($request->all(), [
+                'codigo_materia'  => 'required|min:5',
+                'nombre_materia'  => 'required|min:5',
+                'detalle_materia' => 'required|min:5',
+            ]);
+            
+            if(!$validator->fails()){
+                $materia->codigo_materia   = $codigo_materia;
+                $materia->nombre_materia   = $nombre_materia;
+                $materia->detalle_materia  = $detalle_materia;
+                $materia->save();    
+
+                return response()->json(['exito'=>['Materia editada con éxito.']], 200);
+            }
+            return response()->json(['error'=>$validator->errors()->all()], 200);
+        }
+        return response()->json(['error'=>['Materia eliminada antes de la acción.']], 200);
     }
     
     public function borrar(Request $request){
         $materia_id = $request->materia_id;
         
         $materia = Materia::find($materia_id);
-        $materia->delete();        
         
-        return $materia;
+        if($materia)
+            $materia->delete();        
+        
+        return response()->json(['exito'=>['Materia eliminada con éxito']], 200);
     }
 }

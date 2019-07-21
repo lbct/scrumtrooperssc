@@ -18,7 +18,7 @@
                     class="mb-3 btn btn-primary pull-left">
                 Añadir Materia
             </button>
-            
+            <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             <div v-if="materias.length > 0" class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-dark">
@@ -61,18 +61,23 @@
                   </div>
                     <form>
                       <div class="modal-body">
+                            <Alertas :key=key_mensajes_materia 
+                                     :mensajes=mensajes_materia  
+                                     :tipo=tipo_mensaje_materia >
+                            </Alertas>
+                          
                             <div class="form-group">
-                              <label>Código</label>
+                              <label>Código de la Materia</label>
                               <input v-model='materia.codigo_materia' class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                              <label>Nombre</label>
+                              <label>Nombre de la Materia</label>
                               <input v-model='materia.nombre_materia' class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                              <label>Detalle</label>
+                              <label>Detalle de la Materia</label>
                               <input v-model='materia.detalle_materia'class="form-control" required>
                             </div>
                       </div>
@@ -100,18 +105,23 @@
                   </div>
                     <form>
                       <div class="modal-body">
+                            <Alertas :key=key_mensajes_materia 
+                                     :mensajes=mensajes_materia  
+                                     :tipo=tipo_mensaje_materia >
+                            </Alertas>
+                          
                             <div class="form-group">
-                              <label>Código</label>
+                              <label>Código de la Materia</label>
                               <input v-model='materia.codigo_materia' class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                              <label>Nombre</label>
+                              <label>Nombre de la Materia</label>
                               <input v-model='materia.nombre_materia' class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                              <label>Detalle</label>
+                              <label>Detalle de la Materia</label>
                               <input v-model='materia.detalle_materia'class="form-control" required>
                             </div>
                       </div>
@@ -165,6 +175,11 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                mensajes_materia: [],
+                tipo_mensaje_materia: '',
+                key_mensajes_materia: 0,
+                
                 gestiones: [],
                 gestion: {id:'', activa:false},
                 materias: [],
@@ -173,6 +188,16 @@
         },
     
         methods:{
+            initMensajes(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.mensajes_materia = [];
+                this.tipo_mensaje_materia = '';
+                this.key_mensajes_materia = 0;
+            },
+            
             init(){
                 this.axios
                     .get('/administrador/gestiones')
@@ -206,11 +231,15 @@
             },
             
             mostrarAgregarMateria(){
+                this.initMensajes();
+                
                 this.materia = {id:'', codigo_materia:'', nombre_materia:'', detalle_materia:''};
                 $('#modal-agregar-materia').modal('show');
             },
             
             agregarMateria(){
+                this.initMensajes();
+                
                 const params = {
                     'gestion_id': this.gestion.id,
                     'codigo_materia': this.materia.codigo_materia,
@@ -220,8 +249,21 @@
                 this.axios
                     .post('/administrador/materia', params)
                     .then((response)=>{
-                        this.materias.push(response.data);
-                        $('#modal-agregar-materia').modal('hide');
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.materias.push(datos.materia);
+                            $('#modal-agregar-materia').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_materia = datos.error;
+                            this.tipo_mensaje_materia = 'danger';
+                            this.key_mensajes_materia++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -229,6 +271,8 @@
             },
             
             mostrarEditarMateria(materia, index){
+                this.initMensajes();
+                
                 this.materia = Object.assign({}, materia);
                 this.materia.index = index;
                 
@@ -236,6 +280,8 @@
             },
             
             editarMateria(){
+                this.initMensajes();
+                
                 const params = {
                     'materia_id': this.materia.id,
                     'codigo_materia': this.materia.codigo_materia,
@@ -245,11 +291,24 @@
                 this.axios
                     .put('/administrador/materia', params)
                     .then((response)=>{
-                        var index = this.materia.index;
-                        this.materias[index].codigo_materia  = this.materia.codigo_materia;
-                        this.materias[index].nombre_materia  = this.materia.nombre_materia;
-                        this.materias[index].detalle_materia = this.materia.detalle_materia;
-                        $('#modal-editar-materia').modal('hide');
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            var index = this.materia.index;
+                            this.materias[index].codigo_materia  = this.materia.codigo_materia;
+                            this.materias[index].nombre_materia  = this.materia.nombre_materia;
+                            this.materias[index].detalle_materia = this.materia.detalle_materia;
+                            $('#modal-editar-materia').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_materia = datos.error;
+                            this.tipo_mensaje_materia = 'danger';
+                            this.key_mensajes_materia++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -257,6 +316,8 @@
             },
             
             mostrarBorrarMateria(materia, index){
+                this.initMensajes();
+                
                 this.materia = Object.assign({}, materia);
                 this.materia.index = index;
                 
@@ -264,6 +325,8 @@
             },
             
             borrarMateria(){
+                this.initMensajes();
+                
                 const params = {
                     'materia_id': this.materia.id,
                 };
@@ -271,8 +334,15 @@
                     .delete('/administrador/materia', { data: params })
                     .then((response)=>{
                         var datos = response.data;
-                        this.materias.splice(this.materia.index,1);
-                        $('#modal-borrar-materia').modal('hide');
+                    
+                        if(datos.exito){
+                            this.materias.splice(this.materia.index,1);
+                            $('#modal-borrar-materia').modal('hide');
+                            
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
                     });
             },
         },            

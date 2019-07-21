@@ -32348,6 +32348,14 @@ __webpack_require__.r(__webpack_exports__);
           _this6.mensajes = datos.exito;
           _this6.tipo_mensaje = 'success';
           _this6.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this6.mensajes = datos.advertencia;
+          _this6.tipo_mensaje = 'warning';
+          _this6.key_mensajes++;
+
+          _this6.obtenerGestiones();
+
+          $('#modal-editar-gestion').modal('hide');
         } else if (datos.error) {
           _this6.mensajes = datos.error;
           _this6.tipo_mensaje = 'danger';
@@ -33143,12 +33151,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_materia: [],
+      tipo_mensaje_materia: '',
+      key_mensajes_materia: 0,
       gestiones: [],
       gestion: {
         id: '',
@@ -33164,6 +33185,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    initMensajes: function initMensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_materia = [];
+      this.tipo_mensaje_materia = '';
+      this.key_mensajes_materia = 0;
+    },
     init: function init() {
       var _this = this;
 
@@ -33193,6 +33222,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarAgregarMateria: function mostrarAgregarMateria() {
+      this.initMensajes();
       this.materia = {
         id: '',
         codigo_materia: '',
@@ -33204,6 +33234,7 @@ __webpack_require__.r(__webpack_exports__);
     agregarMateria: function agregarMateria() {
       var _this3 = this;
 
+      this.initMensajes();
       var params = {
         'gestion_id': this.gestion.id,
         'codigo_materia': this.materia.codigo_materia,
@@ -33211,14 +33242,27 @@ __webpack_require__.r(__webpack_exports__);
         'detalle_materia': this.materia.detalle_materia
       };
       this.axios.post('/administrador/materia', params).then(function (response) {
-        _this3.materias.push(response.data);
+        var datos = response.data;
 
-        $('#modal-agregar-materia').modal('hide');
+        if (datos.exito) {
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+
+          _this3.materias.push(datos.materia);
+
+          $('#modal-agregar-materia').modal('hide');
+        } else if (datos.error) {
+          _this3.mensajes_materia = datos.error;
+          _this3.tipo_mensaje_materia = 'danger';
+          _this3.key_mensajes_materia++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarEditarMateria: function mostrarEditarMateria(materia, index) {
+      this.initMensajes();
       this.materia = Object.assign({}, materia);
       this.materia.index = index;
       $('#modal-editar-materia').modal('show');
@@ -33226,6 +33270,7 @@ __webpack_require__.r(__webpack_exports__);
     editarMateria: function editarMateria() {
       var _this4 = this;
 
+      this.initMensajes();
       var params = {
         'materia_id': this.materia.id,
         'codigo_materia': this.materia.codigo_materia,
@@ -33233,16 +33278,28 @@ __webpack_require__.r(__webpack_exports__);
         'detalle_materia': this.materia.detalle_materia
       };
       this.axios.put('/administrador/materia', params).then(function (response) {
-        var index = _this4.materia.index;
-        _this4.materias[index].codigo_materia = _this4.materia.codigo_materia;
-        _this4.materias[index].nombre_materia = _this4.materia.nombre_materia;
-        _this4.materias[index].detalle_materia = _this4.materia.detalle_materia;
-        $('#modal-editar-materia').modal('hide');
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this4.mensajes = datos.exito;
+          _this4.tipo_mensaje = 'success';
+          _this4.key_mensajes++;
+          var index = _this4.materia.index;
+          _this4.materias[index].codigo_materia = _this4.materia.codigo_materia;
+          _this4.materias[index].nombre_materia = _this4.materia.nombre_materia;
+          _this4.materias[index].detalle_materia = _this4.materia.detalle_materia;
+          $('#modal-editar-materia').modal('hide');
+        } else if (datos.error) {
+          _this4.mensajes_materia = datos.error;
+          _this4.tipo_mensaje_materia = 'danger';
+          _this4.key_mensajes_materia++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarBorrarMateria: function mostrarBorrarMateria(materia, index) {
+      this.initMensajes();
       this.materia = Object.assign({}, materia);
       this.materia.index = index;
       $('#modal-borrar-materia').modal('show');
@@ -33250,6 +33307,7 @@ __webpack_require__.r(__webpack_exports__);
     borrarMateria: function borrarMateria() {
       var _this5 = this;
 
+      this.initMensajes();
       var params = {
         'materia_id': this.materia.id
       };
@@ -33258,9 +33316,14 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         var datos = response.data;
 
-        _this5.materias.splice(_this5.materia.index, 1);
+        if (datos.exito) {
+          _this5.materias.splice(_this5.materia.index, 1);
 
-        $('#modal-borrar-materia').modal('hide');
+          $('#modal-borrar-materia').modal('hide');
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+        }
       });
     }
   },
@@ -52520,6 +52583,11 @@ var render = function() {
               [_vm._v("\n            Añadir Materia\n        ")]
             ),
             _vm._v(" "),
+            _c("Alertas", {
+              key: _vm.key_mensajes,
+              attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+            }),
+            _vm._v(" "),
             _vm.materias.length > 0
               ? _c("div", { staticClass: "table-responsive" }, [
                   _c("table", { staticClass: "table table-hover" }, [
@@ -52582,97 +52650,110 @@ var render = function() {
                     _vm._m(1),
                     _vm._v(" "),
                     _c("form", [
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Código")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.codigo_materia,
-                                expression: "materia.codigo_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.codigo_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "codigo_materia",
-                                  $event.target.value
-                                )
-                              }
+                      _c(
+                        "div",
+                        { staticClass: "modal-body" },
+                        [
+                          _c("Alertas", {
+                            key: _vm.key_mensajes_materia,
+                            attrs: {
+                              mensajes: _vm.mensajes_materia,
+                              tipo: _vm.tipo_mensaje_materia
                             }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Nombre")]),
+                          }),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.nombre_materia,
-                                expression: "materia.nombre_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.nombre_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Código de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.codigo_materia,
+                                  expression: "materia.codigo_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "nombre_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.codigo_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "codigo_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Detalle")]),
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.detalle_materia,
-                                expression: "materia.detalle_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.detalle_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Nombre de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.nombre_materia,
+                                  expression: "materia.nombre_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "detalle_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.nombre_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "nombre_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ])
-                      ]),
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Detalle de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.detalle_materia,
+                                  expression: "materia.detalle_materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.detalle_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "detalle_materia",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-footer" }, [
                         _c(
@@ -52720,97 +52801,110 @@ var render = function() {
                     _vm._m(2),
                     _vm._v(" "),
                     _c("form", [
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Código")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.codigo_materia,
-                                expression: "materia.codigo_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.codigo_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "codigo_materia",
-                                  $event.target.value
-                                )
-                              }
+                      _c(
+                        "div",
+                        { staticClass: "modal-body" },
+                        [
+                          _c("Alertas", {
+                            key: _vm.key_mensajes_materia,
+                            attrs: {
+                              mensajes: _vm.mensajes_materia,
+                              tipo: _vm.tipo_mensaje_materia
                             }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Nombre")]),
+                          }),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.nombre_materia,
-                                expression: "materia.nombre_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.nombre_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Código de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.codigo_materia,
+                                  expression: "materia.codigo_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "nombre_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.codigo_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "codigo_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Detalle")]),
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.detalle_materia,
-                                expression: "materia.detalle_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.detalle_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Nombre de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.nombre_materia,
+                                  expression: "materia.nombre_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "detalle_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.nombre_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "nombre_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ])
-                      ]),
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Detalle de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.detalle_materia,
+                                  expression: "materia.detalle_materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.detalle_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "detalle_materia",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-footer" }, [
                         _c(
