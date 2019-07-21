@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use \App\Classes\Gestiones;
-use \App\Models\EstudianteClase;
-use \App\Models\Materia;
-use \App\Models\SesionEstudiante;
-use \App\Models\EnvioPractica;
+use App\Classes\Gestiones;
+use App\Classes\Colecciones;
+use App\Models\EstudianteClase;
+use App\Models\Materia;
+use App\Models\SesionEstudiante;
+use App\Models\EnvioPractica;
 use Illuminate\Database\Eloquent\Model;
 
 class Estudiante extends Model
@@ -156,17 +157,12 @@ class Estudiante extends Model
     public function materiasDisponibles()
     {
         $gestion_actual = Gestiones::gestionActiva();
-        $materias = Materia::where("gestion_id", $gestion_actual->id)
-                    ->select("id", 'nombre_materia')
-                    ->get();
+        $todas_materias = Materia::where("gestion_id", $gestion_actual->id)
+                          ->select("id", 'nombre_materia')
+                          ->get();
         
         $materias_inscritas = $this->materiasInscritas();
-        
-        $materias_disponibles = array_udiff($materias->toArray(), $materias_inscritas->toArray(),
-                                            function ($obj_a, $obj_b) {
-                                                return $obj_a['id'] - $obj_b['id'];
-                                            });
-        
+        $materias_disponibles = Colecciones::diferenciaPorId($todas_materias, $materias_inscritas);
         return $materias_disponibles;
     }
 }

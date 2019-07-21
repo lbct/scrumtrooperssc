@@ -149,7 +149,6 @@ class Docente extends Model
         $clases_cursadas = Clase::where('grupo_docente_id', $grupo_docente_id)
                            ->join('sesion', 'sesion.clase_id', '=', 'clase.id')
                            ->where('sesion.auxiliar_terminal_id', $auxiliar_id)
-                           ->get()
                            ->count();
         
         return $clases_cursadas;

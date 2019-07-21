@@ -5,6 +5,7 @@ use App\Models\Usuario;
 use App\Models\Docente;
 use App\Models\AsignaRol;
 use App\Models\GrupoDocenteAuxiliar;
+use App\Classes\Colecciones;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Docente\Base;
 use Illuminate\Http\Request;
@@ -24,16 +25,7 @@ class Control extends Base
                                   ->select('auxiliar_id as id')
                                   ->get();
             
-        $auxiliares_disponibles = array_udiff($auxiliares_terminal->toArray(), $auxiliares_registrados->toArray(),
-                                            function ($obj_a, $obj_b) {
-                                                return $obj_a['id'] - $obj_b['id'];
-                                            });
-        
-        $auxiliares = collect();
-        
-        foreach($auxiliares_disponibles as $auxiliar_disponible){
-            $auxiliares->push($auxiliar_disponible);
-        }
+        $auxiliares = Colecciones::diferenciaPorId($auxiliares_terminal, $auxiliares_registrados);
         
         return $auxiliares;
     }

@@ -15,3 +15,11 @@ Route::put('auxiliarterminal/sesion/estudiante/asistencia', 'AuxiliarTerminal\Se
 Route::put('auxiliarterminal/sesion/estudiante/comentario', 'AuxiliarTerminal\SesionEstudiante\Control@cambiarComentario');
 
 Route::get('auxiliarterminal/archivos/guia_practica/{guia_practica_id}', 'AuxiliarTerminal\GuiaPractica\Control@descargar');
+
+Route::get('auxiliarterminal/estadisticas/gruposdocentes', 'AuxiliarTerminal\Estadistica\Control@gruposdocentes');
+Route::get('auxiliarterminal/estadisticas/estudiantesinscritos', 'AuxiliarTerminal\Estadistica\Control@estudiantesinscritos');
+Route::get('auxiliarterminal/estadisticas/cantidadclases', 'AuxiliarTerminal\Estadistica\Control@cantidadclases');
+Route::get('auxiliarterminal/estadisticas/clasescursadas', 'AuxiliarTerminal\Estadistica\Control@clasescursadas');
+
+Route::get('auxiliarterminal/estadisticas/enviospracticas/{grupo_docente_id}', 'AuxiliarTerminal\Estadistica\Control@enviospracticas');
+Route::get('auxiliarterminal/estadisticas/asistencia/{grupo_docente_id}', 'AuxiliarTerminal\Estadistica\Control@asistencia');
