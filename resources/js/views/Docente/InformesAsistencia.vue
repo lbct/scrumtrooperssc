@@ -1,70 +1,65 @@
 <template>
     <div>
-        <h5>(Datos de la gestión en curso)</h5>
-        <div class="row">
-            <tarjeta-reducida 
-                titulo = "Grupos Docentes"
-                :valor  = "grupos_docentes"
-                icono  = "grupo">
-            </tarjeta-reducida>
-            
-            <tarjeta-reducida 
-                titulo = "Guías Prácticas"
-                :valor  = "guias_practicas"
-                icono  = "archivo">
-            </tarjeta-reducida>
-            
-            <tarjeta-reducida 
-                titulo = "Estudiantes Inscritos"
-                :valor  = "estudiantes_inscritos"
-                icono  = "usuarios">
-            </tarjeta-reducida>
-            
-            <tarjeta-reducida 
-                titulo = "Envíos de estudiantes"
-                :valor  = "envios_totales"
-                icono  = "subir">
-            </tarjeta-reducida>
-        </div>
-        
-        <div v-for="(materia,index) in materias_envios" class ="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">{{materia.nombre_materia}}</p>
-                  <p class="text-muted font-weight-light">
-                      (Envíos de estudiantes por semana)
-                  </p>
-                  <div v-if="materia.semanas">
-                      <apexchart width="100%" height="300px" 
-                                 type="bar" 
-                                 :options="opciones_envios_chart[index]" :series="series_envios_chart[index]">
-                      </apexchart>
-                  </div>
-                  <h5 v-else class="text-muted">No hay semanas disponibles</h5>
-                </div>
+        <div v-if="gestiones.length > 0">
+            <center>
+              <div class="form-group form-group col-md-6">
+                    <label>Selecciona una Gestión</label>
+                    <select v-model="gestion" 
+                            v-on:change="cambiarGestion()" class="form-control" >
+                        <option v-for="(gestion, index) in gestiones"
+                                :value="gestion">
+                            Gestion: {{gestion.anho_gestion}} - {{gestion.periodo}}
+                        </option>
+                    </select> 
               </div>
-            </div>
-        </div>
-        
-        <div v-for="(materia,index) in materias_asistencia" class ="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <p class="card-title">{{materia.nombre_materia}}</p>
-                  <p class="text-muted font-weight-light">
-                      (Asistencia de estudiantes por semana)
-                  </p>
-                  <div v-if="materia.semanas">
-                      <apexchart width="100%" height="300px" 
-                                 type="bar" 
-                                 :options="opciones_asistencia_chart[index]" 
-                                 :series="series_asistencia_chart[index]">
-                      </apexchart>
+            </center>
+            
+            <div v-if="materias.length > 0">
+                <center>
+                  <div class="form-group form-group col-md-6">
+                        <label>Selecciona una Materia</label>
+                        <select v-model="materia" class="form-control" v-on:change="cambiarMateria()">
+                            <option v-for="(materia, index) in materias" 
+                                    v-bind:value="materia">
+                                {{materia.nombre_materia}}
+                            </option>
+                        </select>
                   </div>
-                  <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                </center>
+                
+                <div class="row">
+                    <div class="col-12 col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <p class="card-title">Asistencia de estudiantes inscritos en el grupo docente</p>
+                          <div v-if="materia.maxima_semana">
+                              <apexchart width="100%" height="250px" 
+                                         type="bar" 
+                                         :options="opciones_asistencia_chart" 
+                                         :series="series_asistencia_grupodocente_chart">
+                              </apexchart>
+                          </div>
+                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-12 col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <p class="card-title">Asistencia de estudiantes inscritos con el docente</p>
+                          <div v-if="materia.maxima_semana">
+                              <apexchart width="100%" height="250px" 
+                                         type="bar" 
+                                         :options="opciones_asistencia_chart" 
+                                         :series="series_asistencia_chart">
+                              </apexchart>
+                          </div>
+                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
     </div>
@@ -74,139 +69,105 @@
     export default {        
         data() {
             return {
-                mensajes: '',
-                tipo_mensaje: '',
-                key_mensajes: 0,
+                gestiones: [],
+                gestion: {id:'', activa:false},
                 
-                materias_envios: [],
-                opciones_envios_chart: [],
-                series_envios_chart: [],
+                series_asistencia_grupodocente_chart: [],
                 
-                materias_asistencia: [],
-                opciones_asistencia_chart: [],
+                opciones_asistencia_chart: {},
                 series_asistencia_chart: [],
                 
-                grupos_docentes: 0,
-                guias_practicas: 0,
-                estudiantes_inscritos: 0,
-                envios_totales:  0,
+                materias: [],
+                materia: {id:'', nombre_materia:'', maxima_semana:0},
             }
         },
     
         methods:{
             init(){
                 this.axios
-                    .get('/docente/estadisticas/enviospracticas')
+                    .get('/docente/gestiones')
+                    .then((response)=>{
+                        this.gestiones = response.data;
+                        if(this.gestiones.length > 0){
+                            const gestion = this.gestiones.find(gestion => gestion.activa == true);
+                            
+                            if(gestion)
+                                this.gestion = gestion;
+                            else
+                                this.gestion = this.gestiones[0];
+                                    
+                            this.cambiarGestion();
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
+            cambiarGestion(){
+                 this.axios
+                    .get('/docente/materias/'+this.gestion.id)
+                    .then((response)=>{
+                        this.materias = response.data;
+                        if(this.materias.length){
+                            this.materia = this.materias[0];
+                            this.cambiarMateria();
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            
+            cambiarMateria(){
+                var semanas = [];
+                for(var semana=1; semana<=this.materia.maxima_semana; semana++){
+                    semanas.push('Semana '+semana);
+                }
+                
+                this.opciones_asistencia_chart = {
+                    chart: {
+                        stacked: true,
+                        stackType: '100%'
+                    },
+                    xaxis: {
+                        categories: semanas
+                    },
+                };
+                
+                this.axios
+                    .get('/docente/estadisticas/asistencia/'+this.materia.id)
                     .then((response)=>{
                         var datos = response.data;
-                        this.materias_envios = datos;
-                    
-                        this.materias_envios.forEach((materia)=>{
-                            var semanas = [];
-                            
-                            for(var semana=1; semana<=materia.semanas; semana++){
-                                semanas.push('Semana '+semana);
-                            }
-                            
-                            this.opciones_envios_chart.push({
-                                chart: {
-                                    stacked: true,
-                                },
-                                xaxis: {
-                                    categories: semanas
-                                },
-                            });
-                            
-                            this.series_envios_chart.push([
-                                {
-                                    name: 'Fuera laboratorio',
-                                    data: materia.fuera_laboratorio
-                                },
-                                {
-                                    name: 'En laboratorio',
-                                    data: materia.en_laboratorio
-                                },
-                            ]);
-                        });
+                        this.series_asistencia_chart = [
+                            {
+                                name: 'Asistencia',
+                                data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
+                            },
+                        ];
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
                 
                 this.axios
-                    .get('/docente/estadisticas/asistencia')
+                    .get('/docente/estadisticas/asistencia/grupo/'+this.materia.id)
                     .then((response)=>{
                         var datos = response.data;
-                        this.materias_asistencia = datos;
-                    
-                        this.materias_asistencia.forEach((materia)=>{
-                            var semanas = [];
-                            
-                            for(var semana=1; semana<=materia.semanas; semana++){
-                                semanas.push('Semana '+semana);
-                            }
-                            
-                            this.opciones_asistencia_chart.push({
-                                chart: {
-                                    stacked: true,
-                                    stackType: '100%'
-                                },
-                                xaxis: {
-                                    categories: semanas
-                                },
-                            });
-                            
-                            this.series_asistencia_chart.push([
-                                {
-                                    name: 'Sin asistencia',
-                                    data: materia.no_asistencia,
-                                },
-                                {
-                                    name: 'Asistencia',
-                                    data: materia.asistencia,
-                                },
-                            ]);
-                        });
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                
-                this.axios
-                    .get('/docente/estadisticas/gruposdocentes')
-                    .then((response)=>{
-                        var datos = response.data;
-                        this.grupos_docentes = datos;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                
-                this.axios
-                    .get('/docente/estadisticas/guiaspracticas')
-                    .then((response)=>{
-                        var datos = response.data;
-                        this.guias_practicas = datos;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                
-                this.axios
-                    .get('/docente/estadisticas/estudiantesinscritos')
-                    .then((response)=>{
-                        var datos = response.data;
-                        this.estudiantes_inscritos = datos;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                
-                this.axios
-                    .get('/docente/estadisticas/enviostotales')
-                    .then((response)=>{
-                        var datos = response.data;
-                        this.envios_totales = datos;
+                        this.series_asistencia_grupodocente_chart = [
+                            {
+                                name: 'Asistencia',
+                                data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
+                            },
+                        ];
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -216,7 +177,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Informes de asistencia';
+            this.$parent.$parent.section = 'Asistencia';
         },
     }
 </script>

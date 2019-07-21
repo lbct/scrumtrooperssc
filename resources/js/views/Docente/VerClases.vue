@@ -44,7 +44,7 @@
             <p v-else>No se tiene ninguna clase disponible</p>
             
             <div class="modal fade" id="modal-ver-mas-clase">
-              <div class="modal-dialog">
+              <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title">{{materia.nombre_materia}}</h4>
@@ -59,6 +59,26 @@
                         <p>Grupo Docente: {{materia.detalle_grupo_docente}}</p>
                         <p>Aula: {{materia.nombre_aula}}</p>
                         <p>Horario: {{materia.hora_inicio}} - {{materia.hora_fin}}</p>
+                          
+                        <div v-if="materia.semana_actual_sesion" class="row">
+                          <div class="col-12">
+                          <h6>Envíos de estudiantes inscritos en el grupo docente</h6>
+                          <apexchart width="100%" height="250px" 
+                                     type="bar" 
+                                     :options="opciones_envios_chart" 
+                                     :series="series_envios_chart">
+                          </apexchart>
+                          </div>
+                            
+                          <div class="col-12">
+                          <h6>Asistencia de estudiantes inscritos en el grupo docente</h6>
+                          <apexchart width="100%" height="250px" 
+                                     type="bar" 
+                                     :options="opciones_asistencia_chart" 
+                                     :series="series_asistencia_chart">
+                          </apexchart>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="modal-footer">
@@ -94,6 +114,11 @@
                 clases: [[[]]],
                 key_clases: 0,
                 materia: {nombre_aula:'', nombre_materia:'', detalle_grupo_docente:'', semana_actual_sesion:''},
+                
+                opciones_envios_chart: {},
+                series_envios_chart: [],
+                opciones_asistencia_chart: {},
+                series_asistencia_chart: [],
             }
         },
     
@@ -150,6 +175,69 @@
             
             verMasMateria(materia){
                 this.materia = materia;
+                
+                var semanas = [];
+                for(var semana=1; semana<=this.materia.semana_actual_sesion; semana++){
+                    semanas.push('Semana '+semana);
+                }
+                
+                this.opciones_envios_chart = {
+                    chart: {
+                        stacked: true,
+                    },
+                    xaxis: {
+                        categories: semanas
+                    },
+                };
+                
+                this.opciones_asistencia_chart = {
+                    chart: {
+                        stacked: true,
+                        stackType: '100%'
+                    },
+                    xaxis: {
+                        categories: semanas
+                    },
+                };
+                
+                this.axios
+                    .get('/docente/estadisticas/enviospracticas/clase/'+this.materia.clase_id)
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.series_envios_chart = [
+                            {
+                                name: 'En laboratorio',
+                                data: datos.en_laboratorio
+                            },
+                            {
+                                name: 'Fuera laboratorio',
+                                data: datos.fuera_laboratorio
+                            },
+                        ];
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
+                this.axios
+                    .get('/docente/estadisticas/asistencia/clase/'+this.materia.clase_id)
+                    .then((response)=>{
+                        var datos = response.data;
+                        this.series_asistencia_chart = [
+                            {
+                                name: 'Asistencia',
+                                data: datos.asistencia,
+                            },
+                            {
+                                name: 'Sin asistencia',
+                                data: datos.no_asistencia,
+                            },
+                        ];
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                
                 $('#modal-ver-mas-clase').modal('show');
             },
             

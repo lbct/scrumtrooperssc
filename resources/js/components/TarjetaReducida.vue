@@ -31,6 +31,14 @@
                     return  "fas fa-users";
                 else if(this.icono == "subir")
                     return "fas fa-upload";
+                else if(this.icono == "materia")
+                    return "fas fa-pencil-alt";
+                else if(this.icono == "horario")
+                    return "fas fa-clock";
+                else if(this.icono == "cursado")
+                    return "fas fa-history";
+                else if(this.icono == "aula")
+                    return "fa fa-university";
             },
         },
     }

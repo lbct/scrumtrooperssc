@@ -37,6 +37,24 @@ class Auxiliar extends Model
         return $es_auxiliar_terminal;
     }
     
+    public function materias($gestion_id){
+        $materias = GrupoDocenteAuxiliar::where('auxiliar_id', $this->id)
+                    ->join('grupo_docente', 'grupo_docente.id', '=', 'grupo_docente_auxiliar.grupo_docente_id')
+                    ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
+                    ->where('materia.gestion_id', $gestion_id)
+                    ->select('grupo_docente_id as id', 'nombre_materia', 'detalle_grupo_docente')
+                    ->get();
+        
+        $materias = $materias->map(function ($materia) {
+                        $grupo_docente_id = $materia['id'];
+                        $grupo_docente = GrupoDocente::find($grupo_docente_id);
+                        $materia['maxima_semana'] = $grupo_docente->maximaSemanaActual();
+                        return $materia;
+                     });
+        
+        return $materias;
+    }
+    
     public function accesoClase($clase_id){
         $acceso_clase = false;
         

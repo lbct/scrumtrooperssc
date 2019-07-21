@@ -47,6 +47,16 @@ class Docente extends Model
         return $acceso;
     }
     
+    public function accesoClase($clase_id){
+        $acceso = false;
+        $clase = Clase::find($clase_id);
+        
+        if($this->accesoGrupoDocente($clase->grupo_docente_id))
+            $acceso = true;
+        
+        return $acceso;
+    }
+    
     public function accesoEstudianteClase($estudiante_clase_id){
         $acceso = false;
         $estudiante_clase = EstudianteClase::find($estudiante_clase_id);
@@ -73,7 +83,8 @@ class Docente extends Model
         $materias = $materias->map(function ($materia) {
                         $grupo_docente_id = $materia['id'];
                         $grupo_docente = GrupoDocente::find($grupo_docente_id);
-                        $materia['tiene_clases'] = $grupo_docente->tieneClases();
+                        $materia['tiene_clases']  = $grupo_docente->tieneClases();
+                        $materia['maxima_semana'] = $grupo_docente->maximaSemanaActual();
                         return $materia;
                      });
         
@@ -88,7 +99,7 @@ class Docente extends Model
                   ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
                   ->join('aula', 'aula.id', '=', 'clase.aula_id')
                   ->join('horario', 'horario.id', '=', 'clase.horario_id')
-                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion', 'hora_inicio', 'hora_fin', 'grupo_docente.id')
+                  ->select('dia', 'horario_id', 'nombre_aula', 'nombre_materia', 'detalle_grupo_docente', 'semana_actual_sesion', 'hora_inicio', 'hora_fin', 'grupo_docente.id', 'clase.id as clase_id')
                   ->get();
             
         return $clases;
@@ -138,7 +149,6 @@ class Docente extends Model
         $clases_cursadas = Clase::where('grupo_docente_id', $grupo_docente_id)
                            ->join('sesion', 'sesion.clase_id', '=', 'clase.id')
                            ->where('sesion.auxiliar_terminal_id', $auxiliar_id)
-                           ->get()
                            ->count();
         
         return $clases_cursadas;

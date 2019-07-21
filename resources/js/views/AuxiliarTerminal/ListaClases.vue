@@ -7,7 +7,7 @@
                     <select v-model="materia" class="form-control" v-on:change="obtenerClases()">
                         <option v-for="(materia, index) in materias" 
                                 v-bind:value="materia">
-                            {{materia.nombre_materia}}
+                            {{materia.nombre_materia}} - {{materia.detalle_grupo_docente}}
                         </option>
                     </select>
               </div>

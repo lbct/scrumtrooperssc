@@ -6,8 +6,15 @@
             </div>
             <div class="text-left">
                 <div class="col-xs-12 col-lg-4">
-                    <label>Nombre del usuario</label>
-                    <input v-model="busqueda" type="text" v-on:keyup="filtrar()" class="form-control">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <i class="fas fa-search"></i>
+                          </div>
+                        </div>
+                        <input v-model="busqueda" v-on:keyup="filtrar()"
+                               type="text" class="form-control" placeholder="Nombre del usuario">
+                    </div>
                 </div>
                 <br>
             </div>

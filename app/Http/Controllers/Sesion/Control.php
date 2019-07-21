@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sesion;
 
 use App\Models\Usuario;
 use App\Models\AsignaRol;
+use App\Classes\Sesion;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -13,6 +14,9 @@ class Control extends Controller
 {
     //Obtiene la vista de Inicio de sesión
     public function getLogin(Request $request){
+        if(Sesion::iniciado($request))
+            return redirect('/panel/'.Sesion::rutaRol($request));
+        
         return view('login');
     }
     
@@ -32,9 +36,11 @@ class Control extends Controller
             {
                 //inicia la sesion
                 session(['usuario_id' => $usuario->id]);
+                
+                $ruta = Sesion::rutaRol($request);
 
                 //Redirije al panel
-                return redirect('/panel');
+                return redirect('/panel/'.$ruta);
             }
             
             $request->session()->flash('alert-danger', 'Usuario o Contraseña Incorrecta');
@@ -48,5 +54,9 @@ class Control extends Controller
     {        
         $request->session()->flush();
         return redirect('/login');
+    }
+    
+    private function rutaRol(){
+        
     }
 }

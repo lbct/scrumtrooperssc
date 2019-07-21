@@ -20,12 +20,7 @@ class Control extends Base
         $auxiliar       = Auxiliar::where("usuario_id", $usuario_id)->first();
         $gestion_actual = Gestiones::gestionActiva();
         
-        $materias = GrupoDocenteAuxiliar::where('auxiliar_id', $auxiliar->id)
-                    ->join('grupo_docente', 'grupo_docente.id', '=', 'grupo_docente_auxiliar.grupo_docente_id')
-                    ->join('materia', 'materia.id', '=', 'grupo_docente.materia_id')
-                    ->where('materia.gestion_id', $gestion_actual->id)
-                    ->select('grupo_docente_id as id', 'nombre_materia')
-                    ->get();
+        $materias = $auxiliar->materias($gestion_actual->id);
         
         return $materias;
     }
