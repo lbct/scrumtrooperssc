@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Periodo extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'PERIODO';
+    protected $primaryKey = 'id';
+    protected $table = 'periodo';
     
     public function gestion()
     {
-        return $this->hasMany('App\Models\Gestion', 'PERIODO_ID', 'ID');
+        return $this->hasMany('App\Models\Gestion', 'periodo_id', 'id');
     }
 }

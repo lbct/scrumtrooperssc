@@ -7,20 +7,20 @@ class CrearTablaAdministrador extends Migration
 {
     public function up()
     {
-        Schema::create('ADMINISTRADOR', function (Blueprint $table) {
+        Schema::create('administrador', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('USUARIO_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('usuario_id')->unsigned();
             
             $table->timestamps();
             
-            $table->foreign('USUARIO_ID')->references('ID')->on('USUARIO')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('ADMINISTRADOR');
+        Schema::drop('administrador');
     }
 }

@@ -7,10 +7,9 @@ class GrupoDocenteAuxiliarSeeder extends Seeder
 {
     public function run()
     {
-        //WilsonAlcocer a Introducción a la programación
         GrupoDocenteAuxiliar::create([
-            'GRUPO_DOCENTE_ID' 		    =>	1,
-            'AUXILIAR_ID' 		        =>	4,
+        	'grupo_docente_id' 		=>	1,
+        	'auxiliar_id'		    =>	4,
         ]);
     }
 }

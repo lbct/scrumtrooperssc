@@ -7,26 +7,30 @@ class CrearTablaSesionEstudiante extends Migration
 {
     public function up()
     {
-        Schema::create('SESION_ESTUDIANTE', function (Blueprint $table) {
+        Schema::create('sesion_estudiante', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('SESION_ID')->unsigned();
-            $table->integer('ESTUDIANTE_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('sesion_id')->unsigned();
+            $table->integer('estudiante_clase_id')->unsigned();
+            $table->integer('auxiliar_comentario_id')->unsigned()->nullable();
+            $table->integer('auxiliar_lista_id')->unsigned()->nullable();
             
-            $table->string('COMENTARIO_AUXILIAR',255);
-            $table->boolean('ASISTENCIA_SESION');
+            $table->string('comentario_auxiliar',1023)->nullable();
+            $table->boolean('asistencia_sesion')->default(false);
             $table->timestamps();
             
-            $table->foreign('SESION_ID')->references('ID')->on('SESION')->onDelete('cascade');
-            $table->foreign('ESTUDIANTE_ID')->references('ID')->on('ESTUDIANTE')->onDelete('cascade');
+            $table->foreign('sesion_id')->references('id')->on('sesion')->onDelete('cascade');
+            $table->foreign('estudiante_clase_id')->references('id')->on('estudiante_clase')->onDelete('cascade');
+            $table->foreign('auxiliar_comentario_id')->references('id')->on('auxiliar')->onDelete('cascade');
+            $table->foreign('auxiliar_lista_id')->references('id')->on('auxiliar')->onDelete('cascade');
             
-            $table->unique(['SESION_ID', 'ESTUDIANTE_ID']);
+            $table->unique(['sesion_id', 'estudiante_clase_id']);
         });
     }
 
     public function down()
     {
-        Schema::drop('SESION_ESTUDIANTE');
+        Schema::drop('sesion_estudiante');
     }
 }

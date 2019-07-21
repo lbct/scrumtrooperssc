@@ -52,6 +52,11 @@ return [
             'driver' => 'local',
             'root'   => storage_path('app/practicasEstudiantes'),
         ],
+        
+        'guiasPracticas' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/guiasPracticas'),
+        ],
 
         'ftp' => [
             'driver'   => 'ftp',

@@ -8,21 +8,21 @@ class AulaSeeder extends Seeder
     public function run()
     {
         Aula::create([
-        'CODIGO_AULA' 		        =>	'CSLAB001',
-        'NOMBRE_AULA' 	            =>	'LAB001',
-        'DETALLE_AULA' 	            =>	'Laboratorio 001',
+        'codigo_aula' 		        =>	'CSLAB001',
+        'nombre_aula' 	            =>	'LAB001',
+        'detalle_aula' 	            =>	'Laboratorio 001',
         ]);
         
         Aula::create([
-        'CODIGO_AULA' 		        =>	'CSLAB002',
-        'NOMBRE_AULA' 	            =>	'LAB002',
-        'DETALLE_AULA' 	            =>	'Laboratorio 002',
+        'codigo_aula' 		        =>	'CSLAB002',
+        'nombre_aula' 	            =>	'LAB002',
+        'detalle_aula' 	            =>	'Laboratorio 002',
         ]);
         
         Aula::create([
-        'CODIGO_AULA' 		        =>	'CSLAB003',
-        'NOMBRE_AULA' 	            =>	'LAB003',
-        'DETALLE_AULA' 	            =>	'Laboratorio 003',
+        'codigo_aula' 		        =>	'CSLAB003',
+        'nombre_aula' 	            =>	'LAB003',
+        'detalle_aula' 	            =>	'Laboratorio 003',
         ]);
     }
 }

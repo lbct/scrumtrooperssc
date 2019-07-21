@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aula extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'AULA';
+    protected $primaryKey = 'id';
+    protected $table = 'aula';
     
     public function clase()
     {
-        return $this->hasMany('App\Models\Clase', 'AULA_ID', 'ID');
+        return $this->hasMany('App\Models\Clase', 'aula_id', 'id');
     }
 }

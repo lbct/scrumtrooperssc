@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class IniciarSesion extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'INICIAR_SESION';
+    protected $primaryKey = 'id';
+    protected $table = 'iniciar_sesion';
     
     public function usuario()
     {
-        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
 }

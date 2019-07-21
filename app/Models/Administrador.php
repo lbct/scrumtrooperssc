@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Administrador extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'ADMINISTRADOR';
+    protected $primaryKey = 'id';
+    protected $table = 'administrador';
     
     public function usuario()
     {
-        return $this->belongsTo('App\Models\Usuario', 'USUARIO_ID');
+        return $this->belongsTo('App\Models\Usuario', 'usuario_id');
     }
 }

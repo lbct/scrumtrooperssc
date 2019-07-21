@@ -7,23 +7,24 @@ class CrearTablaGestion extends Migration
 {
     public function up()
     {
-        Schema::create('GESTION', function (Blueprint $table) {
+        Schema::create('gestion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('PERIODO_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('periodo_id')->unsigned();
             
-            $table->string('ANO_GESTION',4);
+            $table->string('anho_gestion',4);
+            $table->boolean('activa')->default(0);;
             $table->timestamps();
             
-            $table->foreign('PERIODO_ID')->references('ID')->on('PERIODO')->onDelete('cascade');
+            $table->foreign('periodo_id')->references('id')->on('periodo')->onDelete('cascade');
             
-            $table->unique(['ANO_GESTION', 'PERIODO_ID']);
+            $table->unique(['anho_gestion', 'periodo_id']);
         });
     }
 
     public function down()
     {
-        Schema::drop('GESTION');
+        Schema::drop('gestion');
     }
 }

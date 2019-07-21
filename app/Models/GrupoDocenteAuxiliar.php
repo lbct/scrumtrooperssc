@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class GrupoDocenteAuxiliar extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'GRUPO_DOCENTE_AUXILIAR';
+    protected $primaryKey = 'id';
+    protected $table = 'grupo_docente_auxiliar';
     
     public function auxiliar()
     {
-        return $this->belongsTo('App\Models\Auxiliar', 'AUXILIAR_ID');
+        return $this->belongsTo('App\Models\Auxiliar', 'auxiliar_id');
     }
     
     public function grupoDocente()
     {
-        return $this->belongsTo('App\Models\GrupoDocente', 'GRUPO_DOCENTE_ID');
+        return $this->belongsTo('App\Models\GrupoDocente', 'grupo_docente_id');
     }
 }

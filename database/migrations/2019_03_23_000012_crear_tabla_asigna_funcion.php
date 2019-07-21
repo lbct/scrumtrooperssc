@@ -7,22 +7,22 @@ class CrearTablaAsignaFuncion extends Migration
 {
     public function up()
     {
-        Schema::create('ASIGNA_FUNCION', function (Blueprint $table) {
+        Schema::create('asigna_funcion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('ROL_ID')->unsigned();
-            $table->integer('FUNCION_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('rol_id')->unsigned();
+            $table->integer('funcion_id')->unsigned();
             
             $table->timestamps();
             
-            $table->foreign('ROL_ID')->references('ID')->on('ROL')->onDelete('cascade');
-            $table->foreign('FUNCION_ID')->references('ID')->on('FUNCION')->onDelete('cascade');
+            $table->foreign('rol_id')->references('id')->on('rol')->onDelete('cascade');
+            $table->foreign('funcion_id')->references('id')->on('funcion')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('ASIGNA_FUNCION');
+        Schema::drop('asigna_funcion');
     }
 }

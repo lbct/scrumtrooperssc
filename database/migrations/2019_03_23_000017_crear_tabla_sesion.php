@@ -7,25 +7,25 @@ class CrearTablaSesion extends Migration
 {
     public function up()
     {
-        Schema::create('SESION', function (Blueprint $table) {
+        Schema::create('sesion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('CLASE_ID')->unsigned();
-            $table->integer('AUXILIAR_ID')->unsigned()->nullable();
-            $table->integer('GUIA_PRACTICA_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('clase_id')->unsigned();
+            $table->integer('auxiliar_terminal_id')->unsigned()->nullable();
+            $table->integer('guia_practica_id')->unsigned();
             
-            $table->integer('SEMANA');
+            $table->integer('semana');
             $table->timestamps();
             
-            $table->foreign('CLASE_ID')->references('ID')->on('CLASE')->onDelete('cascade');
-            $table->foreign('AUXILIAR_ID')->references('ID')->on('AUXILIAR')->onDelete('cascade');
-            $table->foreign('GUIA_PRACTICA_ID')->references('ID')->on('GUIA_PRACTICA')->onDelete('cascade');
+            $table->foreign('clase_id')->references('id')->on('clase')->onDelete('cascade');
+            $table->foreign('auxiliar_terminal_id')->references('id')->on('auxiliar')->onDelete('cascade');
+            $table->foreign('guia_practica_id')->references('id')->on('guia_practica')->onDelete('cascade');
         });
     }
     
     public function down()
     {
-        Schema::drop('SESION');
+        Schema::drop('sesion');
     }
 }

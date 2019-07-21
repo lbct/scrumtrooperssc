@@ -7,21 +7,21 @@ class CrearTablaEstudiante extends Migration
 {
     public function up()
     {
-        Schema::create('ESTUDIANTE', function (Blueprint $table) {
+        Schema::create('estudiante', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('USUARIO_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('usuario_id')->unsigned();
             
-            $table->string('CODIGO_SIS', 15)->unique();;
+            $table->string('codigo_sis', 15)->default('');
             $table->timestamps();
             
-            $table->foreign('USUARIO_ID')->references('ID')->on('USUARIO')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::drop('ESTUDIANTE');
+        Schema::drop('estudiante');
     }
 }

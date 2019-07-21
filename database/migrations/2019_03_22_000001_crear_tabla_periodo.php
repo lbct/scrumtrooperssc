@@ -7,18 +7,18 @@ class CrearTablaPeriodo extends Migration
 {
     public function up()
     {
-        Schema::create('PERIODO', function (Blueprint $table) {
+        Schema::create('periodo', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('DESCRIPCION',255);
+            $table->string('descripcion',255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('PERIODO');
+        Schema::drop('periodo');
     }
 }
