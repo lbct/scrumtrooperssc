@@ -141,12 +141,21 @@ return [
 	'attributes' => [
 			'username'=>'Usuario',
 			'password'=>'Contraseña',
+            'old_password'=>'Contraseña Actual',
 			'password_confirmation'=>'Confirmar Contraseña',
-			'codigo_sis'=>'CodigoSis',
+			'codigo_sis'=>'Codigo SIS',
 			'correo'=>'Email',
 			'nombre'=>'Nombre(s)',
 			'apellido'=>'Apellidos',
-			'anio'=>'Año'
+			'anio'=>'Año',
+            'codigo_aula'=>'Código del Aula',
+            'nombre_aula'=>'Nombre del Aula',
+            'detalle_aula'=>'Detalle del Aula',
+            'inicio_inscripcion'=>'Fecha de inicio de Inscripción',
+            'fin_inscripcion'=>'Fecha de fin de Inscripción',
+            'codigo_materia'=>'Código de la Materia',
+            'nombre_materia'=>'Nombre de la Materia',
+            'detalle_materia'=>'Detalle de la Materia',
 	],
 	
 ];

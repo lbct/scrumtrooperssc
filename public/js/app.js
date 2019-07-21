@@ -30988,12 +30988,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_aula: [],
+      tipo_mensaje_aula: '',
+      key_mensajes_aula: 0,
       aulas: [],
       aula: {
         id: '',
@@ -31020,6 +31031,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarAgregar: function mostrarAgregar() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_aula = [];
+      this.tipo_mensaje_aula = '';
+      this.key_mensajes_aula = 0;
       this.aula = {
         id: '',
         codigo_aula: '',
@@ -31031,24 +31048,41 @@ __webpack_require__.r(__webpack_exports__);
     agregar: function agregar() {
       var _this2 = this;
 
+      this.mensajes_aula = [];
+      this.tipo_mensaje_aula = '';
+      this.key_mensajes_aula = 0;
       var params = {
         'codigo_aula': this.aula.codigo_aula,
         'nombre_aula': this.aula.nombre_aula,
         'detalle_aula': this.aula.detalle_aula
       };
       this.axios.post('/administrador/aula', params).then(function (response) {
-        var aula = response.data;
+        var datos = response.data;
 
-        _this2.aulas.push(aula);
+        if (datos.exito) {
+          _this2.mensajes = datos.exito;
+          _this2.tipo_mensaje = 'success';
+          _this2.key_mensajes++;
 
-        _this2.aulas.push(response.data);
+          _this2.aulas.push(datos.aula);
 
-        $('#modal-agregar-aula').modal('hide');
+          $('#modal-agregar-aula').modal('hide');
+        } else if (datos.error) {
+          _this2.mensajes_aula = datos.error;
+          _this2.tipo_mensaje_aula = 'danger';
+          _this2.key_mensajes_aula++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarEditar: function mostrarEditar(aula, index) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_aula = [];
+      this.tipo_mensaje_aula = '';
+      this.key_mensajes_aula = 0;
       this.aula = Object.assign({}, aula);
       this.aula.index = index;
       $('#modal-editar-aula').modal('show');
@@ -31056,6 +31090,9 @@ __webpack_require__.r(__webpack_exports__);
     editar: function editar() {
       var _this3 = this;
 
+      this.mensajes_aula = [];
+      this.tipo_mensaje_aula = '';
+      this.key_mensajes_aula = 0;
       var params = {
         'aula_id': this.aula.id,
         'codigo_aula': this.aula.codigo_aula,
@@ -31063,16 +31100,30 @@ __webpack_require__.r(__webpack_exports__);
         'detalle_aula': this.aula.detalle_aula
       };
       this.axios.put('/administrador/aula', params).then(function (response) {
-        var index = _this3.aula.index;
-        _this3.aulas[index].codigo_aula = _this3.aula.codigo_aula;
-        _this3.aulas[index].nombre_aula = _this3.aula.nombre_aula;
-        _this3.aulas[index].detalle_aula = _this3.aula.detalle_aula;
-        $('#modal-editar-aula').modal('hide');
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+          var index = _this3.aula.index;
+          _this3.aulas[index].codigo_aula = _this3.aula.codigo_aula;
+          _this3.aulas[index].nombre_aula = _this3.aula.nombre_aula;
+          _this3.aulas[index].detalle_aula = _this3.aula.detalle_aula;
+          $('#modal-editar-aula').modal('hide');
+        } else if (datos.error) {
+          _this3.mensajes_aula = datos.error;
+          _this3.tipo_mensaje_aula = 'danger';
+          _this3.key_mensajes_aula++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarBorrar: function mostrarBorrar(aula, index) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
       this.aula = Object.assign({}, aula);
       this.aula.index = index;
       $('#modal-borrar-aula').modal('show');
@@ -31087,11 +31138,17 @@ __webpack_require__.r(__webpack_exports__);
         data: params
       }).then(function (response) {
         var datos = response.data;
-        var index = _this4.aula.index;
 
-        _this4.aulas.splice(index, 1);
+        if (datos.exito) {
+          _this4.mensajes = datos.exito;
+          _this4.tipo_mensaje = 'success';
+          _this4.key_mensajes++;
+          var index = _this4.aula.index;
 
-        $('#modal-borrar-aula').modal('hide');
+          _this4.aulas.splice(index, 1);
+
+          $('#modal-borrar-aula').modal('hide');
+        }
       });
     }
   },
@@ -31796,12 +31853,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_fecha: [],
+      tipo_mensaje_fecha: '',
+      key_mensajes_fecha: 0,
       fechas: [],
       fecha: {
         id: '',
@@ -31813,6 +31878,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    init_mensajes: function init_mensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_fecha = [];
+      this.tipo_mensaje_fecha = '';
+      this.key_mensajes_fecha = 0;
+    },
     init: function init() {
       this.mensajes = [];
       this.tipo_mensaje = '';
@@ -31829,6 +31902,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarAgregar: function mostrarAgregar() {
+      this.init_mensajes();
       this.fecha_inicio = '';
       this.fecha_fin = '';
       $('#modal-agregar-fecha').modal('show');
@@ -31836,21 +31910,33 @@ __webpack_require__.r(__webpack_exports__);
     agregar: function agregar() {
       var _this2 = this;
 
+      this.init_mensajes();
       var params = {
         'inicio_inscripcion': this.fecha_inicio,
         'fin_inscripcion': this.fecha_fin
       };
       this.axios.post('/administrador/fechasinscripcion', params).then(function (response) {
-        var fecha = response.data;
+        var datos = response.data;
 
-        _this2.obtenerFechas();
+        if (datos.exito) {
+          _this2.mensajes = datos.exito;
+          _this2.tipo_mensaje = 'success';
+          _this2.key_mensajes++;
 
-        $('#modal-agregar-fecha').modal('hide');
+          _this2.obtenerFechas();
+
+          $('#modal-agregar-fecha').modal('hide');
+        } else if (datos.error) {
+          _this2.mensajes_fecha = datos.error;
+          _this2.tipo_mensaje_fecha = 'danger';
+          _this2.key_mensajes_fecha++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarBorrar: function mostrarBorrar(fecha, index) {
+      this.init_mensajes();
       this.fecha = Object.assign({}, fecha);
       this.fecha.index = index;
       $('#modal-borrar-fecha').modal('show');
@@ -31858,6 +31944,7 @@ __webpack_require__.r(__webpack_exports__);
     borrar: function borrar() {
       var _this3 = this;
 
+      this.init_mensajes();
       var params = {
         'fecha_inscripcion_id': this.fecha.id
       };
@@ -31865,11 +31952,17 @@ __webpack_require__.r(__webpack_exports__);
         data: params
       }).then(function (response) {
         var datos = response.data;
-        var index = _this3.fecha.index;
 
-        _this3.fechas.splice(index, 1);
+        if (datos.exito) {
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+          var index = _this3.fecha.index;
 
-        $('#modal-borrar-fecha').modal('hide');
+          _this3.fechas.splice(index, 1);
+
+          $('#modal-borrar-fecha').modal('hide');
+        }
       });
     }
   },
@@ -32058,12 +32151,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_gestion: [],
+      tipo_mensaje_gestion: '',
+      key_mensajes_gestion: 0,
       gestiones: [],
       gestion: {
         id: '',
@@ -32079,6 +32182,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    initMensajes: function initMensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_gestion = [];
+      this.tipo_mensaje_gestion = '';
+      this.key_mensajes_gestion = 0;
+    },
     init: function init() {
       this.mensajes = [];
       this.tipo_mensaje = '';
@@ -32116,6 +32227,7 @@ __webpack_require__.r(__webpack_exports__);
       this.actualizarPeriodos();
     },
     mostrarAgregarGestion: function mostrarAgregarGestion() {
+      this.initMensajes();
       this.anho_actual = new Date().getFullYear();
       this.posiblesAnhos(this.anho_actual);
       $('#modal-agregar-gestion').modal('show');
@@ -32123,19 +32235,33 @@ __webpack_require__.r(__webpack_exports__);
     agregarGestion: function agregarGestion() {
       var _this3 = this;
 
+      this.initMensajes();
       var params = {
         'anho_gestion': this.gestion.anho_gestion,
         'periodo_id': this.gestion.periodo_id
       };
       this.axios.post('/administrador/gestion', params).then(function (response) {
-        _this3.obtenerGestiones();
+        var datos = response.data;
 
-        $('#modal-agregar-gestion').modal('hide');
+        if (datos.exito) {
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+
+          _this3.obtenerGestiones();
+
+          $('#modal-agregar-gestion').modal('hide');
+        } else if (datos.error) {
+          _this3.mensajes_gestion = datos.error;
+          _this3.tipo_mensaje_gestion = 'danger';
+          _this3.key_mensajes_gestion++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarEditar: function mostrarEditar(gestion) {
+      this.initMensajes();
       this.gestion.id = gestion.id;
       this.gestion.periodo_id = gestion.periodo_id;
       this.posiblesAnhos(gestion.anho_gestion);
@@ -32144,20 +32270,34 @@ __webpack_require__.r(__webpack_exports__);
     editarGestion: function editarGestion() {
       var _this4 = this;
 
+      this.initMensajes();
       var params = {
         'gestion_id': this.gestion.id,
         'anho_gestion': this.gestion.anho_gestion,
         'periodo_id': this.gestion.periodo_id
       };
       this.axios.put('/administrador/gestion', params).then(function (response) {
-        _this4.obtenerGestiones();
+        var datos = response.data;
 
-        $('#modal-editar-gestion').modal('hide');
+        if (datos.exito) {
+          _this4.mensajes = datos.exito;
+          _this4.tipo_mensaje = 'success';
+          _this4.key_mensajes++;
+
+          _this4.obtenerGestiones();
+
+          $('#modal-editar-gestion').modal('hide');
+        } else if (datos.error) {
+          _this4.mensajes_gestion = datos.error;
+          _this4.tipo_mensaje_gestion = 'danger';
+          _this4.key_mensajes_gestion++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarBorrar: function mostrarBorrar(gestion, index) {
+      this.initMensajes();
       this.gestion = gestion;
       this.gestion.index = index;
       $('#modal-borrar-gestion').modal('show');
@@ -32173,14 +32313,21 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         var datos = response.data;
 
-        _this5.gestiones.splice(_this5.gestion.index, 1);
+        if (datos.exito) {
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
 
-        $('#modal-borrar-gestion').modal('hide');
+          _this5.gestiones.splice(_this5.gestion.index, 1);
+
+          $('#modal-borrar-gestion').modal('hide');
+        }
       });
     },
     cambiarActiva: function cambiarActiva(gestion) {
       var _this6 = this;
 
+      this.initMensajes();
       var gestion_activa = true;
       if (gestion.activa) gestion_activa = false;
       var params = {
@@ -32188,13 +32335,32 @@ __webpack_require__.r(__webpack_exports__);
         'activa': gestion_activa
       };
       this.axios.put('/administrador/gestion/activa', params).then(function (response) {
-        if (gestion_activa) {
-          _this6.gestiones.forEach(function (gestion) {
-            gestion.activa = false;
-          });
-        }
+        var datos = response.data;
 
-        gestion.activa = gestion_activa;
+        if (datos.exito) {
+          if (gestion_activa) {
+            _this6.gestiones.forEach(function (gestion) {
+              gestion.activa = false;
+            });
+          }
+
+          gestion.activa = gestion_activa;
+          _this6.mensajes = datos.exito;
+          _this6.tipo_mensaje = 'success';
+          _this6.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this6.mensajes = datos.advertencia;
+          _this6.tipo_mensaje = 'warning';
+          _this6.key_mensajes++;
+
+          _this6.obtenerGestiones();
+
+          $('#modal-editar-gestion').modal('hide');
+        } else if (datos.error) {
+          _this6.mensajes = datos.error;
+          _this6.tipo_mensaje = 'danger';
+          _this6.key_mensajes++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -32985,12 +33151,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_materia: [],
+      tipo_mensaje_materia: '',
+      key_mensajes_materia: 0,
       gestiones: [],
       gestion: {
         id: '',
@@ -33006,6 +33185,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    initMensajes: function initMensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.mensajes_materia = [];
+      this.tipo_mensaje_materia = '';
+      this.key_mensajes_materia = 0;
+    },
     init: function init() {
       var _this = this;
 
@@ -33035,6 +33222,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarAgregarMateria: function mostrarAgregarMateria() {
+      this.initMensajes();
       this.materia = {
         id: '',
         codigo_materia: '',
@@ -33046,6 +33234,7 @@ __webpack_require__.r(__webpack_exports__);
     agregarMateria: function agregarMateria() {
       var _this3 = this;
 
+      this.initMensajes();
       var params = {
         'gestion_id': this.gestion.id,
         'codigo_materia': this.materia.codigo_materia,
@@ -33053,14 +33242,27 @@ __webpack_require__.r(__webpack_exports__);
         'detalle_materia': this.materia.detalle_materia
       };
       this.axios.post('/administrador/materia', params).then(function (response) {
-        _this3.materias.push(response.data);
+        var datos = response.data;
 
-        $('#modal-agregar-materia').modal('hide');
+        if (datos.exito) {
+          _this3.mensajes = datos.exito;
+          _this3.tipo_mensaje = 'success';
+          _this3.key_mensajes++;
+
+          _this3.materias.push(datos.materia);
+
+          $('#modal-agregar-materia').modal('hide');
+        } else if (datos.error) {
+          _this3.mensajes_materia = datos.error;
+          _this3.tipo_mensaje_materia = 'danger';
+          _this3.key_mensajes_materia++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarEditarMateria: function mostrarEditarMateria(materia, index) {
+      this.initMensajes();
       this.materia = Object.assign({}, materia);
       this.materia.index = index;
       $('#modal-editar-materia').modal('show');
@@ -33068,6 +33270,7 @@ __webpack_require__.r(__webpack_exports__);
     editarMateria: function editarMateria() {
       var _this4 = this;
 
+      this.initMensajes();
       var params = {
         'materia_id': this.materia.id,
         'codigo_materia': this.materia.codigo_materia,
@@ -33075,16 +33278,28 @@ __webpack_require__.r(__webpack_exports__);
         'detalle_materia': this.materia.detalle_materia
       };
       this.axios.put('/administrador/materia', params).then(function (response) {
-        var index = _this4.materia.index;
-        _this4.materias[index].codigo_materia = _this4.materia.codigo_materia;
-        _this4.materias[index].nombre_materia = _this4.materia.nombre_materia;
-        _this4.materias[index].detalle_materia = _this4.materia.detalle_materia;
-        $('#modal-editar-materia').modal('hide');
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this4.mensajes = datos.exito;
+          _this4.tipo_mensaje = 'success';
+          _this4.key_mensajes++;
+          var index = _this4.materia.index;
+          _this4.materias[index].codigo_materia = _this4.materia.codigo_materia;
+          _this4.materias[index].nombre_materia = _this4.materia.nombre_materia;
+          _this4.materias[index].detalle_materia = _this4.materia.detalle_materia;
+          $('#modal-editar-materia').modal('hide');
+        } else if (datos.error) {
+          _this4.mensajes_materia = datos.error;
+          _this4.tipo_mensaje_materia = 'danger';
+          _this4.key_mensajes_materia++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     mostrarBorrarMateria: function mostrarBorrarMateria(materia, index) {
+      this.initMensajes();
       this.materia = Object.assign({}, materia);
       this.materia.index = index;
       $('#modal-borrar-materia').modal('show');
@@ -33092,6 +33307,7 @@ __webpack_require__.r(__webpack_exports__);
     borrarMateria: function borrarMateria() {
       var _this5 = this;
 
+      this.initMensajes();
       var params = {
         'materia_id': this.materia.id
       };
@@ -33100,9 +33316,14 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         var datos = response.data;
 
-        _this5.materias.splice(_this5.materia.index, 1);
+        if (datos.exito) {
+          _this5.materias.splice(_this5.materia.index, 1);
 
-        $('#modal-borrar-materia').modal('hide');
+          $('#modal-borrar-materia').modal('hide');
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+        }
       });
     }
   },
@@ -34517,7 +34738,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -34674,7 +34894,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -38287,6 +38506,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     mostrarCambiarPassword: function mostrarCambiarPassword() {
+      this.key_mensajes = 0;
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes_password = 0;
       this.mensajes_password = [];
       this.tipo_mensajes_password = '';
       $('#modal-cambiar-password').modal('show');
@@ -49036,11 +49259,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      }),
-      _vm._v(" "),
       _c(
         "button",
         {
@@ -49053,6 +49271,11 @@ var render = function() {
         },
         [_vm._v("\n        Añadir Aula\n    ")]
       ),
+      _vm._v(" "),
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
       _vm._v(" "),
       _vm.aulas.length > 0
         ? _c("div", { staticClass: "table-responsive" }, [
@@ -49106,17 +49329,21 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _c("Alertas", {
+                      key: _vm.key_mensajes_aula,
+                      attrs: {
+                        mensajes: _vm.mensajes_aula,
+                        tipo: _vm.tipo_mensaje_aula
+                      }
+                    }),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Código")]),
+                      _c("label", [_vm._v("Código del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49146,7 +49373,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Nombre")]),
+                      _c("label", [_vm._v("Nombre del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49176,7 +49403,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Detalle")]),
+                      _c("label", [_vm._v("Detalle del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49204,35 +49431,35 @@ var render = function() {
                         }
                       })
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "m-3 btn btn-primary pull-left",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.agregar()
-                          }
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "m-3 btn btn-primary pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.agregar()
                         }
-                      },
-                      [_vm._v("\n                    Añadir\n                ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    )
-                  ])
-                ],
-                1
-              )
+                      }
+                    },
+                    [_vm._v("\n                    Añadir\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -49246,17 +49473,21 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(2),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _c("Alertas", {
+                      key: _vm.key_mensajes_aula,
+                      attrs: {
+                        mensajes: _vm.mensajes_aula,
+                        tipo: _vm.tipo_mensaje_aula
+                      }
+                    }),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Código")]),
+                      _c("label", [_vm._v("Código del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49286,7 +49517,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Nombre")]),
+                      _c("label", [_vm._v("Nombre del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49316,7 +49547,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c("label", [_vm._v("Detalle")]),
+                      _c("label", [_vm._v("Detalle del Aula")]),
                       _vm._v(" "),
                       _c("input", {
                         directives: [
@@ -49344,35 +49575,35 @@ var render = function() {
                         }
                       })
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "m-3 btn btn-primary pull-left",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.editar()
-                          }
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "m-3 btn btn-primary pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.editar()
                         }
-                      },
-                      [_vm._v("\n                    Editar\n                ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    )
-                  ])
-                ],
-                1
-              )
+                      }
+                    },
+                    [_vm._v("\n                    Editar\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -50518,11 +50749,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      }),
-      _vm._v(" "),
       _c(
         "button",
         {
@@ -50535,6 +50761,11 @@ var render = function() {
         },
         [_vm._v("\n        Añadir Fecha de Inscripción\n    ")]
       ),
+      _vm._v(" "),
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
       _vm._v(" "),
       _vm.fechas.length > 0
         ? _c("div", { staticClass: "table-responsive" }, [
@@ -50577,91 +50808,90 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
+              _c("form", [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _c("Alertas", {
+                      key: _vm.key_mensajes_fecha,
+                      attrs: {
+                        mensajes: _vm.mensajes_fecha,
+                        tipo: _vm.tipo_mensaje_fecha
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("label", [_vm._v("Fecha de inicio de Inscripción:")]),
+                    _vm._v(" "),
+                    _c("datetime", {
+                      attrs: {
+                        type: "datetime",
+                        "input-class": "form-control",
+                        format: "yyyy-MM-dd HH:mm:ss",
+                        "value-zone": "America/La_Paz",
+                        zone: "America/La_Paz",
+                        phrases: { ok: "Continuar", cancel: "Cancelar" }
+                      },
+                      model: {
+                        value: _vm.fecha_inicio,
+                        callback: function($$v) {
+                          _vm.fecha_inicio = $$v
+                        },
+                        expression: "fecha_inicio"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("label", [_vm._v("Fecha de fin de Inscripción:")]),
+                    _vm._v(" "),
+                    _c("datetime", {
+                      attrs: {
+                        type: "datetime",
+                        "input-class": "form-control",
+                        format: "yyyy-MM-dd HH:mm:ss",
+                        "value-zone": "America/La_Paz",
+                        zone: "America/La_Paz",
+                        phrases: { ok: "Continuar", cancel: "Cancelar" },
+                        "min-datetime": _vm.fecha_inicio
+                      },
+                      model: {
+                        value: _vm.fecha_fin,
+                        callback: function($$v) {
+                          _vm.fecha_fin = $$v
+                        },
+                        expression: "fecha_fin"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
                   _c(
-                    "div",
-                    { staticClass: "modal-body" },
-                    [
-                      _c("label", [_vm._v("Fecha de Inicio:")]),
-                      _vm._v(" "),
-                      _c("datetime", {
-                        attrs: {
-                          type: "datetime",
-                          "input-class": "form-control",
-                          format: "yyyy-MM-dd HH:mm:ss",
-                          "value-zone": "America/La_Paz",
-                          zone: "America/La_Paz",
-                          phrases: { ok: "Continuar", cancel: "Cancelar" }
-                        },
-                        model: {
-                          value: _vm.fecha_inicio,
-                          callback: function($$v) {
-                            _vm.fecha_inicio = $$v
-                          },
-                          expression: "fecha_inicio"
+                    "button",
+                    {
+                      staticClass: "m-3 btn btn-primary pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.agregar()
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("label", [_vm._v("Fecha de Fin:")]),
-                      _vm._v(" "),
-                      _c("datetime", {
-                        attrs: {
-                          type: "datetime",
-                          "input-class": "form-control",
-                          format: "yyyy-MM-dd HH:mm:ss",
-                          "value-zone": "America/La_Paz",
-                          zone: "America/La_Paz",
-                          phrases: { ok: "Continuar", cancel: "Cancelar" },
-                          "min-datetime": _vm.fecha_inicio
-                        },
-                        model: {
-                          value: _vm.fecha_fin,
-                          callback: function($$v) {
-                            _vm.fecha_fin = $$v
-                          },
-                          expression: "fecha_fin"
-                        }
-                      })
-                    ],
-                    1
+                      }
+                    },
+                    [_vm._v("\n                    Añadir\n                ")]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "m-3 btn btn-primary pull-left",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.agregar()
-                          }
-                        }
-                      },
-                      [_vm._v("\n                    Añadir\n                ")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    )
-                  ])
-                ],
-                1
-              )
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -50803,11 +51033,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      }),
-      _vm._v(" "),
       _c(
         "button",
         {
@@ -50820,6 +51045,11 @@ var render = function() {
         },
         [_vm._v("\n        Añadir Gestión\n    ")]
       ),
+      _vm._v(" "),
+      _c("Alertas", {
+        key: _vm.key_mensajes,
+        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+      }),
       _vm._v(" "),
       _vm.gestiones.length > 0
         ? _c("div", { staticClass: "table-responsive" }, [
@@ -50891,15 +51121,19 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _c("Alertas", {
+                      key: _vm.key_mensajes_gestion,
+                      attrs: {
+                        mensajes: _vm.mensajes_gestion,
+                        tipo: _vm.tipo_mensaje_gestion
+                      }
+                    }),
+                    _vm._v(" "),
                     _c("label", [_vm._v("Selecciona el Año")]),
                     _vm._v(" "),
                     _c("div", [
@@ -51014,41 +51248,41 @@ var render = function() {
                             "No se tiene periodos disponibles para ese año"
                           )
                         ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _vm.periodos.length > 0
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "m-3 btn btn-primary pull-left",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.agregarGestion()
-                              }
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _vm.periodos.length > 0
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "m-3 btn btn-primary pull-left",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.agregarGestion()
                             }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Añadir\n                "
-                            )
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    )
-                  ])
-                ],
-                1
-              )
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Añadir\n                "
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -51062,15 +51296,19 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(2),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c(
+                  "div",
+                  { staticClass: "modal-body" },
+                  [
+                    _c("Alertas", {
+                      key: _vm.key_mensajes_gestion,
+                      attrs: {
+                        mensajes: _vm.mensajes_gestion,
+                        tipo: _vm.tipo_mensaje_gestion
+                      }
+                    }),
+                    _vm._v(" "),
                     _c("label", [_vm._v("Selecciona el Año")]),
                     _vm._v(" "),
                     _c("div", [
@@ -51185,41 +51423,41 @@ var render = function() {
                             "No se tiene periodos disponibles para ese año"
                           )
                         ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _vm.periodos.length > 0
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "m-3 btn btn-primary pull-left",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.editarGestion()
-                              }
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _vm.periodos.length > 0
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "m-3 btn btn-primary pull-left",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.editarGestion()
                             }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    Editar\n                "
-                            )
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
-                    )
-                  ])
-                ],
-                1
-              )
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    Editar\n                "
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -51233,57 +51471,44 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(3),
               _vm._v(" "),
-              _c(
-                "form",
-                [
-                  _c("Alertas", {
-                    key: _vm.key_mensajes,
-                    attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("p", [
-                      _vm._v(
-                        "\n                      ¿Estás seguro de eliminar la gestión: " +
-                          _vm._s(_vm.gestion.anho_gestion) +
-                          " - " +
-                          _vm._s(_vm.gestion.periodo) +
-                          "?\n                  "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "m-3 btn btn-primary pull-left",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.borrarGestion()
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    Eliminar\n                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Cancelar")]
+              _c("form", [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                      ¿Estás seguro de eliminar la gestión: " +
+                        _vm._s(_vm.gestion.anho_gestion) +
+                        " - " +
+                        _vm._s(_vm.gestion.periodo) +
+                        "?\n                  "
                     )
                   ])
-                ],
-                1
-              )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "m-3 btn btn-primary pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.borrarGestion()
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    Eliminar\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Cancelar")]
+                  )
+                ])
+              ])
             ])
           ])
         ]
@@ -52489,6 +52714,11 @@ var render = function() {
               [_vm._v("\n            Añadir Materia\n        ")]
             ),
             _vm._v(" "),
+            _c("Alertas", {
+              key: _vm.key_mensajes,
+              attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+            }),
+            _vm._v(" "),
             _vm.materias.length > 0
               ? _c("div", { staticClass: "table-responsive" }, [
                   _c("table", { staticClass: "table table-hover" }, [
@@ -52551,97 +52781,110 @@ var render = function() {
                     _vm._m(1),
                     _vm._v(" "),
                     _c("form", [
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Código")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.codigo_materia,
-                                expression: "materia.codigo_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.codigo_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "codigo_materia",
-                                  $event.target.value
-                                )
-                              }
+                      _c(
+                        "div",
+                        { staticClass: "modal-body" },
+                        [
+                          _c("Alertas", {
+                            key: _vm.key_mensajes_materia,
+                            attrs: {
+                              mensajes: _vm.mensajes_materia,
+                              tipo: _vm.tipo_mensaje_materia
                             }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Nombre")]),
+                          }),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.nombre_materia,
-                                expression: "materia.nombre_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.nombre_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Código de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.codigo_materia,
+                                  expression: "materia.codigo_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "nombre_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.codigo_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "codigo_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Detalle")]),
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.detalle_materia,
-                                expression: "materia.detalle_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.detalle_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Nombre de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.nombre_materia,
+                                  expression: "materia.nombre_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "detalle_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.nombre_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "nombre_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ])
-                      ]),
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Detalle de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.detalle_materia,
+                                  expression: "materia.detalle_materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.detalle_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "detalle_materia",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-footer" }, [
                         _c(
@@ -52689,97 +52932,110 @@ var render = function() {
                     _vm._m(2),
                     _vm._v(" "),
                     _c("form", [
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Código")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.codigo_materia,
-                                expression: "materia.codigo_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.codigo_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "codigo_materia",
-                                  $event.target.value
-                                )
-                              }
+                      _c(
+                        "div",
+                        { staticClass: "modal-body" },
+                        [
+                          _c("Alertas", {
+                            key: _vm.key_mensajes_materia,
+                            attrs: {
+                              mensajes: _vm.mensajes_materia,
+                              tipo: _vm.tipo_mensaje_materia
                             }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Nombre")]),
+                          }),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.nombre_materia,
-                                expression: "materia.nombre_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.nombre_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Código de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.codigo_materia,
+                                  expression: "materia.codigo_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "nombre_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.codigo_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "codigo_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Detalle")]),
+                            })
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.materia.detalle_materia,
-                                expression: "materia.detalle_materia"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { required: "" },
-                            domProps: { value: _vm.materia.detalle_materia },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Nombre de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.nombre_materia,
+                                  expression: "materia.nombre_materia"
                                 }
-                                _vm.$set(
-                                  _vm.materia,
-                                  "detalle_materia",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.nombre_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "nombre_materia",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          })
-                        ])
-                      ]),
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", [_vm._v("Detalle de la Materia")]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.materia.detalle_materia,
+                                  expression: "materia.detalle_materia"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              domProps: { value: _vm.materia.detalle_materia },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.materia,
+                                    "detalle_materia",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-footer" }, [
                         _c(
@@ -54766,14 +55022,9 @@ var render = function() {
                                     [
                                       _vm._v(
                                         "\n                                " +
-                                          _vm._s(materia.detalle_grupo_docente)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula)
-                                      ),
-                                      _c("br")
+                                          _vm._s(materia.nombre_aula) +
+                                          "\n                            "
+                                      )
                                     ]
                                   )
                                 }),
@@ -55105,14 +55356,9 @@ var render = function() {
                                     [
                                       _vm._v(
                                         "\n                                " +
-                                          _vm._s(materia.detalle_grupo_docente)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula)
-                                      ),
-                                      _c("br")
+                                          _vm._s(materia.nombre_aula) +
+                                          "\n                            "
+                                      )
                                     ]
                                   )
                                 }),

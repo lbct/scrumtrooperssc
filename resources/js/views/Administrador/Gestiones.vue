@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <button v-on:click="mostrarAgregarGestion()"
                 class="mb-3 btn btn-primary pull-left">
             Añadir Gestión
         </button>
+        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <div v-if="gestiones.length > 0" class="table-responsive">            
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -53,8 +53,12 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
+                    <Alertas :key=key_mensajes_gestion 
+                             :mensajes=mensajes_gestion  
+                             :tipo=tipo_mensaje_gestion>
+                    </Alertas>  
+                    
                     <label>Selecciona el Año</label>
                     <div>
                         <select v-model="gestion.anho_gestion" 
@@ -99,8 +103,12 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
+                    <Alertas :key=key_mensajes_gestion 
+                             :mensajes=mensajes_gestion  
+                             :tipo=tipo_mensaje_gestion>
+                    </Alertas> 
+                      
                     <label>Selecciona el Año</label>
                     <div>
                         <select v-model="gestion.anho_gestion" 
@@ -145,7 +153,6 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
                       <p>
                           ¿Estás seguro de eliminar la gestión: {{gestion.anho_gestion}} - {{gestion.periodo}}?
@@ -173,6 +180,11 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                mensajes_gestion: [],
+                tipo_mensaje_gestion: '',
+                key_mensajes_gestion: 0,
+                
                 gestiones: [],
                 gestion: {id:'', periodo_id:'', anho_gestion:'', periodo:'', activa:'', index:''},
                 periodos: [],
@@ -182,6 +194,16 @@
         },
     
         methods:{
+            initMensajes(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.mensajes_gestion = [];
+                this.tipo_mensaje_gestion = '';
+                this.key_mensajes_gestion = 0;
+            },
+            
             init(){
                 this.mensajes = [];
                 this.tipo_mensaje = '';
@@ -226,6 +248,8 @@
             },
             
             mostrarAgregarGestion(){
+                this.initMensajes();
+                
                 this.anho_actual  = new Date().getFullYear();
                 this.posiblesAnhos(this.anho_actual);
                 
@@ -233,6 +257,8 @@
             },
             
             agregarGestion(){
+                this.initMensajes();
+                
                 const params = {
                     'anho_gestion': this.gestion.anho_gestion,
                     'periodo_id': this.gestion.periodo_id,
@@ -240,8 +266,21 @@
                 this.axios
                     .post('/administrador/gestion', params)
                     .then((response)=>{
-                        this.obtenerGestiones();
-                        $('#modal-agregar-gestion').modal('hide');
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.obtenerGestiones();
+                            $('#modal-agregar-gestion').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_gestion = datos.error;
+                            this.tipo_mensaje_gestion = 'danger';
+                            this.key_mensajes_gestion++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -249,6 +288,8 @@
             },
             
             mostrarEditar(gestion){
+                this.initMensajes();
+                
                 this.gestion.id           = gestion.id;
                 this.gestion.periodo_id   = gestion.periodo_id;
                 this.posiblesAnhos(gestion.anho_gestion);
@@ -257,6 +298,8 @@
             },
             
             editarGestion(){
+                this.initMensajes();
+                
                 const params = {
                     'gestion_id': this.gestion.id,
                     'anho_gestion': this.gestion.anho_gestion,
@@ -265,8 +308,21 @@
                 this.axios
                     .put('/administrador/gestion', params)
                     .then((response)=>{
-                        this.obtenerGestiones();
-                        $('#modal-editar-gestion').modal('hide');
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.obtenerGestiones();
+                            $('#modal-editar-gestion').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_gestion = datos.error;
+                            this.tipo_mensaje_gestion = 'danger';
+                            this.key_mensajes_gestion++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -274,6 +330,8 @@
             },
             
             mostrarBorrar(gestion, index){
+                this.initMensajes();
+                
                 this.gestion = gestion;
                 this.gestion.index = index;
                 $('#modal-borrar-gestion').modal('show');
@@ -287,12 +345,21 @@
                     .delete('/administrador/gestion', { data: params })
                     .then((response)=>{
                         var datos = response.data;
-                        this.gestiones.splice(this.gestion.index, 1);
-                        $('#modal-borrar-gestion').modal('hide');
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.gestiones.splice(this.gestion.index, 1);
+                            $('#modal-borrar-gestion').modal('hide');
+                        }
                     });
             },
             
             cambiarActiva(gestion){
+                this.initMensajes();
+                
                 var gestion_activa = true;
                 
                 if(gestion.activa)
@@ -305,13 +372,33 @@
                 this.axios
                     .put('/administrador/gestion/activa', params)
                     .then((response)=>{
-                        if(gestion_activa){
-                            this.gestiones.forEach((gestion)=> {
-                                gestion.activa = false
-                            });
+                        var datos = response.data;
+                        if(datos.exito){
+                            if(gestion_activa){
+                                this.gestiones.forEach((gestion)=> {
+                                    gestion.activa = false
+                                });
+                            }
+
+                            gestion.activa = gestion_activa;
+                            
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
                         }
-                    
-                        gestion.activa = gestion_activa;
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                            
+                            this.obtenerGestiones();
+                            $('#modal-editar-gestion').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }                        
                     })
                     .catch(function (error) {
                         console.log(error);

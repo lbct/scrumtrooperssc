@@ -1,10 +1,10 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <button v-on:click="mostrarAgregar()"
                 class="mb-3 btn btn-primary pull-left">
             Añadir Aula
         </button>
+        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <div v-if="aulas.length > 0" class="table-responsive">            
             <table class="table table-hover">
                 <thead class="thead-dark">
@@ -46,20 +46,24 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
+                        <Alertas :key=key_mensajes_aula 
+                                 :mensajes=mensajes_aula 
+                                 :tipo=tipo_mensaje_aula>
+                        </Alertas>
+                      
                         <div class="form-group">
-                          <label>Código</label>
+                          <label>Código del Aula</label>
                           <input v-model='aula.codigo_aula' class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                          <label>Nombre</label>
+                          <label>Nombre del Aula</label>
                           <input v-model='aula.nombre_aula' class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                          <label>Detalle</label>
+                          <label>Detalle del Aula</label>
                           <input v-model='aula.detalle_aula'class="form-control" required>
                         </div>
                   </div>
@@ -86,20 +90,24 @@
                 </button>
               </div>
                 <form>
-                  <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                   <div class="modal-body">
+                        <Alertas :key=key_mensajes_aula 
+                                 :mensajes=mensajes_aula 
+                                 :tipo=tipo_mensaje_aula>
+                        </Alertas>
+                      
                         <div class="form-group">
-                          <label>Código</label>
+                          <label>Código del Aula</label>
                           <input v-model='aula.codigo_aula' class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                          <label>Nombre</label>
+                          <label>Nombre del Aula</label>
                           <input v-model='aula.nombre_aula' class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                          <label>Detalle</label>
+                          <label>Detalle del Aula</label>
                           <input v-model='aula.detalle_aula'class="form-control" required>
                         </div>
                   </div>
@@ -149,6 +157,11 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                mensajes_aula: [],
+                tipo_mensaje_aula: '',
+                key_mensajes_aula: 0,
+                
                 aulas: [],
                 aula: {id:'', codigo_aula:'', nombre_aula:'', detalle_aula:''},
             }
@@ -175,11 +188,23 @@
             },
             
             mostrarAgregar(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.mensajes_aula     = [];
+                this.tipo_mensaje_aula = '';
+                this.key_mensajes_aula = 0;
+                
                 this.aula = {id:'', codigo_aula:'', nombre_aula:'', detalle_aula:''};
                 $('#modal-agregar-aula').modal('show');
             },
             
             agregar(){
+                this.mensajes_aula     = [];
+                this.tipo_mensaje_aula = '';
+                this.key_mensajes_aula = 0;
+                
                 const params = {
                     'codigo_aula': this.aula.codigo_aula,
                     'nombre_aula': this.aula.nombre_aula,
@@ -188,10 +213,21 @@
                 this.axios
                     .post('/administrador/aula', params)
                     .then((response)=>{
-                        var aula = response.data;
-                        this.aulas.push(aula);
-                        this.aulas.push(response.data);
-                        $('#modal-agregar-aula').modal('hide');
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes     = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            this.aulas.push(datos.aula);
+                            $('#modal-agregar-aula').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_aula     = datos.error;
+                            this.tipo_mensaje_aula = 'danger';
+                            this.key_mensajes_aula++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -199,6 +235,14 @@
             },
             
             mostrarEditar(aula, index){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.mensajes_aula     = [];
+                this.tipo_mensaje_aula = '';
+                this.key_mensajes_aula = 0;
+                
                 this.aula = Object.assign({}, aula);
                 this.aula.index = index;
                 
@@ -206,6 +250,10 @@
             },
             
             editar(){
+                this.mensajes_aula     = [];
+                this.tipo_mensaje_aula = '';
+                this.key_mensajes_aula = 0;
+                
                 const params = {
                     'aula_id': this.aula.id,
                     'codigo_aula': this.aula.codigo_aula,
@@ -215,11 +263,24 @@
                 this.axios
                     .put('/administrador/aula', params)
                     .then((response)=>{
-                        var index = this.aula.index;
-                        this.aulas[index].codigo_aula = this.aula.codigo_aula;
-                        this.aulas[index].nombre_aula = this.aula.nombre_aula;
-                        this.aulas[index].detalle_aula = this.aula.detalle_aula;
-                        $('#modal-editar-aula').modal('hide');
+                        var datos = response.data;
+                        
+                        if(datos.exito){
+                            this.mensajes     = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            var index = this.aula.index;
+                            this.aulas[index].codigo_aula  = this.aula.codigo_aula;
+                            this.aulas[index].nombre_aula  = this.aula.nombre_aula;
+                            this.aulas[index].detalle_aula = this.aula.detalle_aula;
+                            $('#modal-editar-aula').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes_aula     = datos.error;
+                            this.tipo_mensaje_aula = 'danger';
+                            this.key_mensajes_aula++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -227,6 +288,10 @@
             },
             
             mostrarBorrar(aula, index){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
                 this.aula = Object.assign({}, aula);
                 this.aula.index = index;
                 
@@ -241,9 +306,16 @@
                     .delete('/administrador/aula', { data: params })
                     .then((response)=>{
                         var datos = response.data;
-                        var index = this.aula.index;
-                        this.aulas.splice(index, 1);
-                        $('#modal-borrar-aula').modal('hide');
+                        
+                        if(datos.exito){
+                            this.mensajes     = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                            
+                            var index = this.aula.index;
+                            this.aulas.splice(index, 1);
+                            $('#modal-borrar-aula').modal('hide');
+                        }
                     });
             },
         },              
