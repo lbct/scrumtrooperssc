@@ -50,7 +50,7 @@
                     </div>
               </div>
             </div>
-            <div class="col-md-6 grid-margin stretch-card align-self-start">
+            <div v-if="asistencia.total" class="col-md-6 grid-margin stretch-card align-self-start">
                 <div class="card position-relative">
                     <div class="card-body align-items-center">
                         <p class="card-title">Porcentaje de Asistencia</p>
@@ -78,6 +78,8 @@
                 datos: {numero_materias: 0, fecha: '', cantidad_envios: 0, en_laboratorio: 0, fuera_laboratorio: 0},
 
                 tabla_clases: [],
+                
+                asistencia: {en_laboratorio:0, fuera_laboratorio:0, total:0},
 
                 options: {
                     labels: ['Asistencia'],
@@ -130,11 +132,8 @@
                 .get('/estudiante/estadisticas/asistencia')
                 .then((response)=>{
                     var datos = response.data;
-                
-                    if(datos.total)
-                        this.series = [100*datos.asistencia/datos.total];
-                    else
-                        this.series = [100];
+                    this.asistencia = datos;
+                    this.series = [100*datos.asistencia/datos.total];
                 })
                 .catch(function (error) {
                     console.log(error);

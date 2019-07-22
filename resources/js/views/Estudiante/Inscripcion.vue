@@ -162,8 +162,6 @@
                         if(datos.exito){
                             this.materias = datos.exito;
                             
-                            console.log(this.materias);
-                            
                             if(this.materias.length)
                                 this.materia = this.materias[0];
                         }

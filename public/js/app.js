@@ -37546,6 +37546,11 @@ __webpack_require__.r(__webpack_exports__);
         fuera_laboratorio: 0
       },
       tabla_clases: [],
+      asistencia: {
+        en_laboratorio: 0,
+        fuera_laboratorio: 0,
+        total: 0
+      },
       options: {
         labels: ['Asistencia']
       },
@@ -37588,7 +37593,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.axios.get('/estudiante/estadisticas/asistencia').then(function (response) {
         var datos = response.data;
-        if (datos.total) _this3.series = [100 * datos.asistencia / datos.total];else _this3.series = [100];
+        _this3.asistencia = datos;
+        _this3.series = [100 * datos.asistencia / datos.total];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -37794,7 +37800,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (datos.exito) {
           _this.materias = datos.exito;
-          console.log(_this.materias);
           if (_this.materias.length) _this.materia = _this.materias[0];
         } else {
           _this.inscripcion_activa = false;
@@ -58859,36 +58864,40 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-md-6 grid-margin stretch-card align-self-start" },
-        [
-          _c("div", { staticClass: "card position-relative" }, [
-            _c("div", { staticClass: "card-body align-items-center" }, [
-              _c("p", { staticClass: "card-title" }, [
-                _vm._v("Porcentaje de Asistencia")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "chart-wrap" },
-                [
-                  _c("apexchart", {
-                    attrs: {
-                      id: "chartAsistencia",
-                      width: "100%",
-                      type: "radialBar",
-                      options: _vm.options,
-                      series: _vm.series
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ])
-        ]
-      )
+      _vm.asistencia.total
+        ? _c(
+            "div",
+            {
+              staticClass: "col-md-6 grid-margin stretch-card align-self-start"
+            },
+            [
+              _c("div", { staticClass: "card position-relative" }, [
+                _c("div", { staticClass: "card-body align-items-center" }, [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v("Porcentaje de Asistencia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "chart-wrap" },
+                    [
+                      _c("apexchart", {
+                        attrs: {
+                          id: "chartAsistencia",
+                          width: "100%",
+                          type: "radialBar",
+                          options: _vm.options,
+                          series: _vm.series
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ]
+          )
+        : _vm._e()
     ])
   ])
 }
