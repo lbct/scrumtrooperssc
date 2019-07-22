@@ -70,7 +70,7 @@ class Control extends Base
                 else
                     return response()->json(['error'=>['Ya subiste un archivo con ese nombre']], 400);
             }
-            return response()->json(['error'=>['Archivo no válido']], 400);
+            return response()->json(['error'=>$validation->errors()->all()], 400);
         }
     }
     
@@ -88,8 +88,7 @@ class Control extends Base
             
             return response()->json(['exito'=>['Éxito al remover el envío']], 200);
         }
-        
-        return response()->json(['error'=>['No tienes acceso']], 200);
+        return response()->json(['error'=>['El archivo ya ha sido borrado con anterioridad.']], 200);
     }
     
     public function descargar(Request $request, $envio_practica_id)

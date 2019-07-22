@@ -61,7 +61,7 @@ class Control extends Base
                 }
                 return response()->json(['error'=>['No se tiene clases disponibles']], 400);
             }
-            return response()->json(['error'=>['Archivo no válido']], 400);
+            return response()->json(['error'=>$validation->errors()->all()], 400);
         }
     }
     
@@ -93,7 +93,7 @@ class Control extends Base
 
                 return response()->json(['exito'=>['Guía Práctica editada con éxito']], 200);
             }
-            return response()->json(['error'=>['Archivo no válido']], 400);
+            return response()->json(['error'=>$validation->errors()->all()], 400);
         }
     }
     

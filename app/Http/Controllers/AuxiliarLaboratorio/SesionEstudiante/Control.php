@@ -29,7 +29,10 @@ class Control extends Base
                 $sesion_estudiante->auxiliar_lista_id = $auxiliar->id;
                 $sesion_estudiante->asistencia_sesion = $asistencia_sesion;
                 $sesion_estudiante->save();
+                return response()->json(['exito'=>['Asitencia cambiada con éxito.']], 200);
             }
+            return response()->json(['error'=>['La asistencia no pudo ser registrada ya que la sesión ha finalizado.']], 200);
         }
+        return response()->json(['error'=>['La asistencia no pudo ser registrada ya que la sesión ha sido eliminada.']], 200);
     }
 }

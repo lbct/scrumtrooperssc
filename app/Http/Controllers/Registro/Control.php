@@ -26,7 +26,7 @@ class Control extends Controller
             'codigo_sis'                => 'required|size:9',
             'nombre'                    => 'required|min:2',
             'apellido'                  => 'required|min:2',
-            'correo'                    => 'required|min:8',
+            'correo'                    => 'required|email|min:8',
         ]);
         
         if($validator->fails()) 

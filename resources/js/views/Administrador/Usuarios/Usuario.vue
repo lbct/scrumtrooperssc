@@ -277,16 +277,28 @@
             },
             
             habilitarEditar(){
+                this.key_mensajes = 0;
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                
                 this.usuario_edicion = Object.assign({}, this.usuario);
                 this.modo_edicion = true;
             },
             
             deshabilitarEditar(){
+                this.key_mensajes = 0;
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                
                 this.usuario_edicion = Object.assign({}, this.usuario);
                 this.modo_edicion = false;
             },
             
             mostrarRoles(){
+                this.key_mensajes++;
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                
                 this.usuario_edicion.roles = Object.assign([], this.usuario.roles);
                 
                 this.axios

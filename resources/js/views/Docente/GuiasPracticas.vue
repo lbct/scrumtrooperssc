@@ -62,7 +62,10 @@
                     </button>
                   </div>
                       <div class="modal-body">
-                        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
+                        <Alertas :key=key_mensajes_guias 
+                                 :mensajes=mensajes_guias 
+                                 :tipo=tipo_mensaje_guias>
+                        </Alertas>
                         <p>Añade una nueva semana con su guía práctica de laboratorio</p>
                         <vue-dropzone ref="subirGuiaPractica"
                                       id="subirGuiaPractica"
@@ -95,7 +98,10 @@
                     </button>
                   </div>
                       <div class="modal-body">
-                        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
+                        <Alertas :key=key_mensajes_guias 
+                                 :mensajes=mensajes_guias 
+                                 :tipo=tipo_mensaje_guias>
+                        </Alertas>
                         <p>Esta acción reemplazará el archivo de la semana {{sesion.semana}}</p>
                         <vue-dropzone ref="editarGuiaPractica"
                                       id="editarGuiaPractica"
@@ -153,6 +159,10 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
+                mensajes_guias: [],
+                tipo_mensaje_guias: '',
+                key_mensajes_guias: 0,
                 
                 materias: [],
                 materia: {'id':'','nombre_materia':''},
@@ -245,6 +255,10 @@
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
                 
+                this.mensajes_guias = [];
+                this.tipo_mensaje_guias = '';
+                this.key_mensajes_guias = 0;
+                
                 $('#modal-agregar-sesion').modal('show');
             },
             
@@ -252,6 +266,11 @@
                 this.mensajes = [];
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
+                
+                this.mensajes_guias = [];
+                this.tipo_mensaje_guias = '';
+                this.key_mensajes_guias = 0;
+                
                 this.$refs.subirGuiaPractica.processQueue();
             },
             
@@ -269,9 +288,9 @@
             },
             
             subidaErrorAgregar(file, response){
-                this.mensajes = response.error;
-                this.tipo_mensaje = 'danger';
-                this.key_mensajes++;
+                this.mensajes_guias = response.error;
+                this.tipo_mensaje_guias = 'danger';
+                this.key_mensajes_guias++;
                 this.$refs.subirGuiaPractica.removeAllFiles();
             },
             
@@ -314,6 +333,10 @@
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
                 
+                this.mensajes_guias = [];
+                this.tipo_mensaje_guias = '';
+                this.key_mensajes_guias = 0;
+                
                 this.sesion = sesion;
                 var file = { size: 5500000, name: this.sesion.archivo, type: "zip" };
                 var url = "";
@@ -322,6 +345,10 @@
             },
             
             confirmarEdicion(){
+                this.mensajes_guias = [];
+                this.tipo_mensaje_guias = '';
+                this.key_mensajes_guias = 0;
+                
                 this.mensajes = [];
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
@@ -343,9 +370,9 @@
             },
             
             subidaErrorEditar(file, response){
-                this.mensajes = response.error;
-                this.tipo_mensaje = 'danger';
-                this.key_mensajes++;
+                this.mensajes_guias = response.error;
+                this.tipo_mensaje_guias = 'danger';
+                this.key_mensajes_guias++;
                 this.$refs.editarGuiaPractica.removeAllFiles();
             },
         },            

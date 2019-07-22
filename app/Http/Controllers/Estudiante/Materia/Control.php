@@ -34,11 +34,9 @@ class Control extends Base
                 $estudiante->retirar($estudiante_clase_id);
                 return response()->json(['exito'=>['Materia retirada con éxito']], 200);
             }
-
             return response()->json(['error'=>['Materia no Válida']], 200);
         }
-        else
-            return response()->json(['error'=>['La fecha para retiros de materias ha finalizado']], 200);
+        return response()->json(['error'=>['La fecha para retiros de materias ha finalizado']], 200);
     }
     
     public function materiasHabilitadas(Request $request){

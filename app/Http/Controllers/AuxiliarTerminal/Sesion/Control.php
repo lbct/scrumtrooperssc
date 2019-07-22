@@ -56,7 +56,7 @@ class Control extends Base
 
                 return response()->json(['exito'=>['Clase cancelada con éxito']], 200);
             }
-            return response()->json(['error'=>['No ha sido posible cancelar la sesión']], 200);
+            return response()->json(['error'=>['No ha sido posible cancelar la sesión ya que esta ha sido cursada.']], 200);
         }
     }
     

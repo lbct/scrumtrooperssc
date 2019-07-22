@@ -228,9 +228,12 @@
                             $('#modal-borrar-envio-practica').modal('hide');
                         }
                         else if(datos.error){
+                            this.sesion.archivos.splice(this.archivo.index, 1);
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
                             this.key_mensajes++;
+                            
+                            $('#modal-borrar-envio-practica').modal('hide');
                         }
                     });
             },

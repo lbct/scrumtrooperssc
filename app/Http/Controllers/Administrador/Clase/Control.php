@@ -58,33 +58,42 @@ class Control extends Base
         $grupo_docente = GrupoDocente::find($grupo_docente_id);
         $gestion_id    = $grupo_docente->gestion();
         
-        $clase_similar = Clase::where('grupo_docente_id', $grupo_docente_id)->first();
+        $clase_comprobar = Clase::where('horario_id', $horario_id)
+                           ->where('aula_id', $aula_id)
+                           ->where('dia', $dia)
+                           ->where('gestion_id', $gestion_id)
+                           ->first();
         
-        $clase = new Clase;
-        $clase->horario_id = $horario_id;
-        $clase->dia        = $dia;
-        $clase->aula_id    = $aula_id;
-        $clase->gestion_id = $gestion_id;
-        $clase->grupo_docente_id = $grupo_docente_id;
-        $clase->save();
-        
-        if($clase_similar){
-            $sesiones = Sesion::where('clase_id', $clase_similar->id)
-                        ->get();
-            
-            foreach($sesiones as $sesion){
-                $guia_practica_id = $sesion->guia_practica_id;
-                $semana           = $sesion->semana;
-                
-                $nueva_sesion = new Sesion;
-                $nueva_sesion->clase_id         = $clase->id;
-                $nueva_sesion->guia_practica_id = $guia_practica_id;
-                $nueva_sesion->semana           = $semana;
-                $nueva_sesion->save();
+        if(!$clase_comprobar){
+            $clase_similar = Clase::where('grupo_docente_id', $grupo_docente_id)->first();
+
+            $clase = new Clase;
+            $clase->horario_id = $horario_id;
+            $clase->dia        = $dia;
+            $clase->aula_id    = $aula_id;
+            $clase->gestion_id = $gestion_id;
+            $clase->grupo_docente_id = $grupo_docente_id;
+            $clase->save();
+
+            if($clase_similar){
+                $sesiones = Sesion::where('clase_id', $clase_similar->id)
+                            ->get();
+
+                foreach($sesiones as $sesion){
+                    $guia_practica_id = $sesion->guia_practica_id;
+                    $semana           = $sesion->semana;
+
+                    $nueva_sesion = new Sesion;
+                    $nueva_sesion->clase_id         = $clase->id;
+                    $nueva_sesion->guia_practica_id = $guia_practica_id;
+                    $nueva_sesion->semana           = $semana;
+                    $nueva_sesion->save();
+                }
             }
+            
+            return response()->json(['exito'=>["Clase añadida con éxito."]], 200);
         }
-        
-        return $clase;
+        return response()->json(['error'=>["Ya existe una clase con el mismo horario, aula y día en esta gestión."]], 200);
     }
     
     public function borrar(Request $request){
@@ -93,5 +102,7 @@ class Control extends Base
         $clase = Clase::find($clase_id);
         if($clase)
             $clase->delete();
+        
+        return response()->json(['exito'=>["Clase eliminada con éxito."]], 200);
     }
 }

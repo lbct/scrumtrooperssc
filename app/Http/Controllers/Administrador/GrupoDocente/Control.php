@@ -80,13 +80,19 @@ class Control extends Base
         
         $detalle_docente = '';
         
+        $docentes_agregados = 0;
+        $docentes_totales=0;
+        
         $materia = Materia::find($materia_id);
         foreach($docentes as $docente){
+            $docentes_totales++;
             if(!$materia->tieneDocente($docente['id'])){
                 $grupo_a_docente = new GrupoADocente;
                 $grupo_a_docente->grupo_docente_id = $grupo_docente->id;
                 $grupo_a_docente->docente_id       = $docente['id'];
                 $grupo_a_docente->save();
+                
+                $docentes_agregados++;
             }
         }
         
@@ -95,10 +101,16 @@ class Control extends Base
         if($detalle_docente != ''){
             $grupo_docente->detalle_grupo_docente = $detalle_docente;
             $grupo_docente->save();
-        }
-        else
-            $grupo_docente->delete();
             
+            if($docentes_totales == $docentes_agregados)
+                return response()->json(['exito'=>["Grupo Docente añadido con éxito."]], 200);
+            else
+                return response()->json(['advertencia'=>["Grupo Docente añadido, sin embargo algunos docentes ya pertenecen a otro grupo de la misma materia, estos no fueron agregados."]], 200);
+        }
+        else{
+            $grupo_docente->delete();
+            return response()->json(['error'=>["Los docentes indicados ya pertenecen a otro grupo de la misma materia."]], 200);
+        }
     }
     
     public function borrarGrupoDocente(Request $request){
@@ -108,7 +120,7 @@ class Control extends Base
         if($grupo_docente)
             $grupo_docente->delete();        
         
-        return $grupo_docente;
+        return response()->json(['exito'=>["Grupo Docente eliminado con éxito."]], 200);
     }
     
     public function editarGrupoDocente(Request $request){
@@ -161,9 +173,15 @@ class Control extends Base
             if($detalle_docente != ''){
                 $grupo_docente->detalle_grupo_docente = $detalle_docente;
                 $grupo_docente->save();
+                
+                return response()->json(['exito'=>["Grupo Docente editado con éxito."]], 200);
             }
-            else
+            else{
                 $grupo_docente->delete();
+                return response()->json(['error'=>["Los docentes indicados ya pertenecen a otro grupo de la misma materia."]], 200);
+            }
+                
         }
+        return response()->json(['error'=>["Grupo Docente eliminado antes la acción."]], 200);
     }
 }

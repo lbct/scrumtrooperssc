@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <div v-if="gestiones.length > 0">
             <center>
               <div class="form-group form-group col-md-6">
@@ -14,6 +13,8 @@
                     </select> 
               </div>
             </center>
+            
+            <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             
             <div class="table-responsive">
                 <table :key="key_clases" class="table table-hover">
@@ -185,6 +186,12 @@
         },
     
         methods:{
+            initMensajes(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+            },
+            
             init(){
                 this.axios
                     .get('/administrador/gestiones')
@@ -308,6 +315,24 @@
                 this.axios
                     .post('/administrador/clase', params)
                     .then((response)=>{
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.obtenerHorarios();
                         $('#modal-agregar-clase').modal('hide');
                     })
@@ -328,6 +353,24 @@
                 this.axios
                     .delete('/administrador/clase', { data: params })
                     .then((response)=>{
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.obtenerHorarios();
                         $('#modal-editar-clase').modal('hide');
                     });

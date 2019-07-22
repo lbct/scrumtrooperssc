@@ -144,6 +144,9 @@
                             this.key_mensajes++;
                             this.asignado = true;
                         }else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
                             this.inscripcion_activa = false;
                         }
                     })

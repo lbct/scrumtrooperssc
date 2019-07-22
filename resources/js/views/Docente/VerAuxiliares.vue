@@ -14,6 +14,13 @@
               </div>
             </center>
             
+            <div class="mb-3">
+                <router-link :to="{ name:'DocenteAsignarAuxiliar' }" 
+                             class="btn btn-primary">
+                    Asignar Auxiliar
+                </router-link>
+            </div>
+            
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             <div v-if="auxiliares.length > 0" >
                 <div class="table-responsive">
