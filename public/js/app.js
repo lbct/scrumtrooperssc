@@ -30828,7 +30828,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     icono_a_clase: function icono_a_clase() {
-      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";
+      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";else if (this.icono == "fecha") return "fa fa-calendar";else if (this.icono == "laboratorio") return "fas fa-vial";else if (this.icono == "afuera") return "fas fa-share";
     }
   }
 });
@@ -37468,16 +37468,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: '',
       tipo_mensaje: '',
-      key_mensajes: 0
+      key_mensajes: 0,
+      datos: {
+        numero_materias: 0,
+        fecha: '',
+        cantidad_envios: 0,
+        en_laboratorio: 0,
+        fuera_laboratorio: 0
+      },
+      tabla_clases: [],
+      options: {
+        labels: ['Asistencia']
+      },
+      series: [],
+      hours: '',
+      minutes: '',
+      seconds: '',
+      hourtime: ''
     };
   },
+  ready: function ready() {
+    this.updateDateTime();
+  },
   methods: {
-    init: function init() {}
+    init: function init() {
+      this.getDatos();
+      this.getTablaClases();
+      this.getAsistencia();
+    },
+    getDatos: function getDatos() {
+      var _this = this;
+
+      this.axios.get('/estudiante/estadisticas/datos').then(function (response) {
+        _this.datos = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getTablaClases: function getTablaClases() {
+      var _this2 = this;
+
+      this.axios.get('/estudiante/estadisticas/tabla_clases').then(function (response) {
+        _this2.tabla_clases = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getAsistencia: function getAsistencia() {
+      var _this3 = this;
+
+      this.axios.get('/estudiante/estadisticas/asistencia').then(function (response) {
+        var datos = response.data;
+        if (datos.total) _this3.series = [100 * datos.asistencia / datos.total];else _this3.series = [100];
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updateDateTime: function updateDateTime() {
+      var self = this;
+      var now = new Date();
+      self.hours = now.getHours();
+      self.minutes = self.getZeroPad(now.getMinutes());
+      self.seconds = self.getZeroPad(now.getSeconds());
+      self.hourtime = self.getHourTime(self.hours);
+      self.hours = self.hours % 12 || 12;
+      setTimeout(self.updateDateTime, 1000);
+    },
+    getHourTime: function getHourTime(h) {
+      return h >= 12 ? 'PM' : 'AM';
+    },
+    getZeroPad: function getZeroPad(n) {
+      return (parseInt(n, 10) >= 10 ? '' : '0') + n;
+    }
   },
   mounted: function mounted() {
     this.init();
@@ -37989,6 +38120,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38007,6 +38164,10 @@ __webpack_require__.r(__webpack_exports__);
         archivos: []
       },
       practicas: [],
+      archivo: {
+        id: '',
+        archivo: ''
+      },
       dropzoneOptions: {
         url: '/estudiante/practica',
         headers: {
@@ -38086,12 +38247,19 @@ __webpack_require__.r(__webpack_exports__);
       this.key_mensajes++;
       this.$refs.subirPracticaEstudiante.removeAllFiles();
     },
-    borrarArchivo: function borrarArchivo(index) {
+    mostrarBorrar: function mostrarBorrar(archivo, index) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.archivo = archivo;
+      this.archivo.index = index;
+      $('#modal-borrar-envio-practica').modal('show');
+    },
+    confirmarBorrar: function confirmarBorrar() {
       var _this3 = this;
 
-      var envio_practica = this.sesion.archivos[index];
       var params = {
-        'envio_practica_id': envio_practica.id
+        'envio_practica_id': this.archivo.id
       };
       this.axios["delete"]('/estudiante/practica', {
         data: params
@@ -38099,11 +38267,12 @@ __webpack_require__.r(__webpack_exports__);
         var datos = response.data;
 
         if (datos.exito) {
-          _this3.sesion.archivos.splice(index, 1);
+          _this3.sesion.archivos.splice(_this3.archivo.index, 1);
 
           _this3.mensajes = datos.exito;
           _this3.tipo_mensaje = 'success';
           _this3.key_mensajes++;
+          $('#modal-borrar-envio-practica').modal('hide');
         } else if (datos.error) {
           _this3.mensajes = datos.error;
           _this3.tipo_mensaje = 'danger';
@@ -58617,9 +58786,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Materias Inscritas",
+            valor: _vm.datos.numero_materias,
+            icono: "materia"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Envíos Totales",
+            valor: _vm.datos.cantidad_envios,
+            icono: "archivo"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "En Laboratorio",
+            valor: _vm.datos.en_laboratorio,
+            icono: "laboratorio"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Fuera de Laboratorio",
+            valor: _vm.datos.fuera_laboratorio,
+            icono: "afuera"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 grid-margin stretch-card" }, [
+        _c("div", { staticClass: "card position-relative" }, [
+          _c("div", { staticClass: "card-body align-items-center" }, [
+            _c("p", { staticClass: "card-title" }, [
+              _vm._v("Horario para hoy (" + _vm._s(_vm.datos.fecha) + ")")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.tabla_clases, function(datos) {
+                    return _c(
+                      "tr",
+                      _vm._l(datos, function(dato) {
+                        return _c("td", [_vm._v(_vm._s(dato))])
+                      }),
+                      0
+                    )
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-6 grid-margin stretch-card align-self-start" },
+        [
+          _c("div", { staticClass: "card position-relative" }, [
+            _c("div", { staticClass: "card-body align-items-center" }, [
+              _c("p", { staticClass: "card-title" }, [
+                _vm._v("Porcentaje de Asistencia")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "chart-wrap" },
+                [
+                  _c("apexchart", {
+                    attrs: {
+                      id: "chartAsistencia",
+                      width: "100%",
+                      type: "radialBar",
+                      options: _vm.options,
+                      series: _vm.series
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Hora")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Materia")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aula")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -59626,7 +59914,7 @@ var render = function() {
                                   staticClass: "fas fa-trash-alt clickleable",
                                   on: {
                                     click: function($event) {
-                                      return _vm.borrarArchivo(index)
+                                      return _vm.mostrarBorrar(archivo, index)
                                     }
                                   }
                                 })
@@ -59689,7 +59977,62 @@ var render = function() {
                           )
                         ]
                       )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "modal-borrar-envio-practica" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _vm._v(
+                                "\n                        ¿Estás seguro de borrar el archivo " +
+                                  _vm._s(_vm.archivo.archivo) +
+                                  "?\n                      "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.confirmarBorrar()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Borrar\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  }
+                                },
+                                [_vm._v("Cerrar")]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
                   ],
                   1
                 )
@@ -59700,7 +60043,29 @@ var render = function() {
       : _c("p", [_vm._v("No tienes materias inscritas")])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Borrar Práctica")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
