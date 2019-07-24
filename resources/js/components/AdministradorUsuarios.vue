@@ -89,7 +89,7 @@
     
         methods:{
             init(){
-                this.usuarios_filtrados = this.usuarios;
+                this.usuarios_filtrados = Object.assign({}, this.usuarios);
             },
             
             filtrar(){
@@ -112,7 +112,11 @@
                 this.axios
                     .delete('/administrador/usuario', { data: params })
                     .then((response)=>{
-                        this.usuarios.splice(this.usuario.index, 1);
+                        var index = this.usuarios.findIndex((usuario)=>{
+                            return usuario.usuario_id == this.usuario.usuario_id;
+                        });
+                        this.usuarios.splice(index, 1);
+                        this.usuarios_filtrados.splice(this.usuario.index, 1);
                         $('#modal-borrar-usuario').modal('hide');
                     });
             }

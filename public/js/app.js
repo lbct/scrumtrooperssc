@@ -30733,7 +30733,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     init: function init() {
-      this.usuarios_filtrados = this.usuarios;
+      this.usuarios_filtrados = Object.assign({}, this.usuarios);
     },
     filtrar: function filtrar() {
       var _this = this;
@@ -30757,7 +30757,13 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/usuario', {
         data: params
       }).then(function (response) {
-        _this2.usuarios.splice(_this2.usuario.index, 1);
+        var index = _this2.usuarios.findIndex(function (usuario) {
+          return usuario.usuario_id == _this2.usuario.usuario_id;
+        });
+
+        _this2.usuarios.splice(index, 1);
+
+        _this2.usuarios_filtrados.splice(_this2.usuario.index, 1);
 
         $('#modal-borrar-usuario').modal('hide');
       });
@@ -35719,6 +35725,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -56661,7 +56671,24 @@ var render = function() {
                                 "Total de estudiantes: " +
                                   _vm._s(_vm.estudiantes.length)
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "mb-3 btn btn-primary",
+                                attrs: {
+                                  href:
+                                    "/docente/portafolios/" + _vm.materia.id,
+                                  target: "_blank"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    Descargar Portafolios\n                "
+                                )
+                              ]
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "text-left" }, [

@@ -36,3 +36,5 @@ Route::get('docente/estadisticas/enviospracticas/clase/{clase_id}', 'Docente\Est
 Route::get('docente/estadisticas/asistencia/{grupo_docente_id}', 'Docente\Estadistica\Control@asistencia');
 Route::get('docente/estadisticas/asistencia/grupo/{grupo_docente_id}', 'Docente\Estadistica\Control@asistenciagrupo');
 Route::get('docente/estadisticas/asistencia/clase/{clase_id}', 'Docente\Estadistica\Control@asistenciaclase');
+
+Route::get('docente/portafolios/{grupo_docente_id}', 'Docente\Portafolio\Control@descargar');

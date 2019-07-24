@@ -57,6 +57,11 @@ return [
             'driver' => 'local',
             'root'   => storage_path('app/guiasPracticas'),
         ],
+        
+        'temporalPortafolio' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/portafolios'),
+        ],
 
         'ftp' => [
             'driver'   => 'ftp',
