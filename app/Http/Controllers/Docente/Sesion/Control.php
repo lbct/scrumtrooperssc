@@ -45,7 +45,12 @@ class Control extends Base
                 
                 if($grupo_docente->tieneClases()){
                     $semana            = $grupo_docente->maximaSemana()+1;
-                    $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;                
+                    $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;
+                    
+                    $existe_archivo = Storage::disk('guiasPracticas')->exists($ruta_destino);
+                    if($existe_archivo)
+                        Storage::disk('guiasPracticas')->delete($ruta_destino);
+                    
                     $archivo = Storage::disk('guiasPracticas')->put($ruta_destino, \File::get($file));
 
                     $guia_practica = new GuiaPractica;
@@ -84,7 +89,12 @@ class Control extends Base
                 $semana            = $sesion->semana;
                 $grupo_docente_id  = $sesion->clase->grupo_docente_id;
                 
-                $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;                
+                $ruta_destino = '/'.$grupo_docente_id.'/'.$semana.'/'.$nombre_archivo;
+                
+                $existe_archivo = Storage::disk('guiasPracticas')->exists($ruta_destino);
+                if($existe_archivo)
+                    Storage::disk('guiasPracticas')->delete($ruta_destino);
+                
                 $archivo = Storage::disk('guiasPracticas')->put($ruta_destino, \File::get($file));
 
                 $guia_practica = GuiaPractica::find($sesion->guia_practica_id);

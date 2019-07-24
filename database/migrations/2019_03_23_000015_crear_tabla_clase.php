@@ -16,7 +16,6 @@ class CrearTablaClase extends Migration
             $table->integer('horario_id')->unsigned();
             $table->integer('grupo_docente_id')->unsigned();
             
-            $table->string('detalle_clase',255);
             $table->tinyInteger('dia');
             $table->tinyInteger('semana_actual_sesion')->default(0);
             $table->timestamps();

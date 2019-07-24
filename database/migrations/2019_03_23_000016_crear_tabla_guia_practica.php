@@ -13,7 +13,6 @@ class CrearTablaGuiaPractica extends Migration
             $table->increments('id');
             
             $table->string('archivo',255);
-            $table->string('detalle',255);
             $table->timestamps();
         });
     }
