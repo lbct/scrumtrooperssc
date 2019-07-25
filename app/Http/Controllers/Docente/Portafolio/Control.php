@@ -47,7 +47,7 @@ class Control extends Base
                 $index = $estudiante_inscrito->codigo_sis;
                 
                 if( array_key_exists($index, $estudiantes) ){
-                    $datos['asistencia'] = $estudiante_inscrito->asistencia;
+                    $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     $estudiantes[$index]['semanas'][$estudiante_inscrito->semana] = $datos;
                 }else{
