@@ -54,7 +54,7 @@ class Control extends Base
                     $estudiantes[$index] = collect();
                     $estudiantes[$index]['nombre'] = $estudiante_inscrito->nombre.' '.$estudiante_inscrito->apellido;
                     
-                    $datos['asistencia'] = $estudiante_inscrito->asistencia;
+                    $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     
                     $estudiantes[$index]['semanas'] = collect();
@@ -80,7 +80,12 @@ class Control extends Base
                         if(!$semana['asistencia'])
                             $asistencia = 'Sin Asistencia';
                         
-                        $directorio = $codigo_sis.' - '.$estudiante['nombre'].'/'.$num_semana.' - '.$asistencia;
+                        $en_lab = 'En Laboratorio';
+                        
+                        if(!$practica['en_laboratorio'])
+                            $en_lab = 'Fuera Laboratorio';
+                        
+                        $directorio = $codigo_sis.' - '.$estudiante['nombre'].'/'.$num_semana.' - '.$asistencia.'/'.$en_lab;
                         
                         $zipper->make(storage_path('app/portafolios').'/'.$grupo_a_docente->id.'.zip')
                                ->folder($directorio)
