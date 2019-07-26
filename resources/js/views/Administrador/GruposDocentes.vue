@@ -61,7 +61,8 @@
                                         <i v-on:click="mostrarEditar(grupo_docente, index)"
                                            class="fas fa-edit clickleable">
                                         </i>
-                                        <i v-on:click="mostrarBorrar(grupo_docente, index)" 
+                                        <i v-if="grupo_docente.borrable"
+                                           v-on:click="mostrarBorrar(grupo_docente, index)" 
                                            class="fas fa-trash-alt clickleable">
                                         </i>
                                     </td>

@@ -17,6 +17,10 @@ class Control extends Base
         $aulas = Aula::select('id', 'codigo_aula', 'nombre_aula', 'detalle_aula')
                  ->get();
         
+        foreach($aulas as $aula){
+            $aula['borrable'] = $aula->esBorrable();
+        }
+        
         return $aulas;
     }
     
@@ -85,9 +89,14 @@ class Control extends Base
         $aula_id = $request->aula_id;
         
         $aula = Aula::find($aula_id);
-        if($aula)
-            $aula->delete();
         
+        if($aula){
+            if($aula->esBorrable()){
+                $aula->delete();
+                return response()->json(['exito'=>["Aula eliminada con éxito."]], 200);
+            }
+            return response()->json(['error'=>["No es posible eliminar una aula con clases iniciadas."]], 200);
+        }
         return response()->json(['exito'=>["Aula eliminada con éxito."]], 200);
     }
 }

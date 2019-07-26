@@ -5,25 +5,29 @@
             <tarjeta-reducida 
                 titulo = "Grupos Docentes"
                 :valor = "grupos_docentes"
-                icono  = "grupo">
+                icono  = "grupo"
+                ruta   = "AuxiliarTerminalListaClases">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Estudiantes Inscritos"
                 :valor = "estudiantes_inscritos"
-                icono  = "usuarios">
+                icono  = "usuarios"
+                ruta   = "AuxiliarTerminalListaEstudiantes">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Cantidad de Clases"
                 :valor = "cantidad_clases"
-                icono  = "horario">
+                icono  = "horario"
+                ruta   = "AuxiliarTerminalListaClases">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Sesiones Cursadas"
                 :valor = "clases_cursadas"
-                icono  = "cursado">
+                icono  = "cursado"
+                ruta   = "AuxiliarTerminalListaPracticas">
             </tarjeta-reducida>
         </div>
             

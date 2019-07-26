@@ -18,6 +18,10 @@ class Control extends Base
                     ->select('id', 'codigo_materia', 'nombre_materia', 'detalle_materia')
                     ->get();
         
+        foreach($materias as $materia){
+            $materia['borrable'] = $materia->esBorrable();
+        }
+        
         return $materias;
     }
     

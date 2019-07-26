@@ -15,7 +15,7 @@
             </center>
             
             <div v-if="practicas.length > 0" class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Semana</th>

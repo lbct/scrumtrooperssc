@@ -28,9 +28,9 @@ class Control extends Base
                                ->where('docente_id', $docente->id)
                                ->first();
             
-            $existe_archivo = Storage::disk('temporalPortafolio')->exists($grupo_a_docente->id.'.zip');
-            if($existe_archivo)
-                Storage::disk('temporalPortafolio')->delete($grupo_a_docente->id.'.zip');
+            $existe_directorio = Storage::disk('portafolios')->exists($grupo_a_docente->id);
+            if($existe_directorio)
+                Storage::disk('portafolios')->deleteDirectory($grupo_a_docente->id, true);
             
             $estudiantes_inscritos = EstudianteClase::where('grupo_a_docente_id', $grupo_a_docente->id)
                                      ->join('estudiante', 'estudiante.id', '=', 'estudiante_clase.estudiante_id')
@@ -71,44 +71,53 @@ class Control extends Base
                 }
             }
             
-            $zipper = new Zipper;
-            
-            $archivos_enviados = collect();
             foreach($estudiantes as $codigo_sis => $estudiante){
                 foreach($estudiante['semanas'] as $num_semana => $semana){
                     $practicas = EnvioPractica::where('sesion_estudiante_id', $semana['sesion_estudiante_id'])
                                  ->get();
                     
                     foreach($practicas as $practica){
-                        $ruta = storage_path('app/practicasEstudiantes').'/'
-                                             .$semana['sesion_estudiante_id'].'/'
-                                             .$practica['archivo'];
+                        $asistencia = 'Sin Asistencia';
+                        if($semana['asistencia'])
+                            $asistencia = 'Asistencia';
                         
-                        $asistencia = 'Asistencia';
+                        $en_lab = 'Fuera Laboratorio';
+                        if($practica['en_laboratorio'])
+                            $en_lab = 'En Laboratorio';
                         
-                        if(!$semana['asistencia'])
-                            $asistencia = 'Sin Asistencia';
+                        $origen = '/practicasEstudiantes/'.
+                                  $semana['sesion_estudiante_id'].'/'.
+                                  $practica['archivo'];
                         
-                        $en_lab = 'En Laboratorio';
+                        $destino = 'portafolios/'.
+                                   $grupo_a_docente->id.'/'.
+                                   $codigo_sis.' - '.
+                                   $estudiante['nombre'].'/'.
+                                   $num_semana.' - '.
+                                   $asistencia.' - '.
+                                   $semana['comentario_auxiliar'].'/'.
+                                   $en_lab.'/'.
+                                   $practica['archivo'];
                         
-                        if(!$practica['en_laboratorio'])
-                            $en_lab = 'Fuera Laboratorio';
-                        
-                        $directorio = $codigo_sis.' - '.$estudiante['nombre'].'/'.$num_semana.' - '.$asistencia.' - '.$semana['comentario_auxiliar'].'/'.$en_lab;
-                        
-                        $zipper->make(storage_path('app/portafolios').'/'.$grupo_a_docente->id.'.zip')
-                               ->folder($directorio)
-                               ->add($ruta);
+                        Storage::copy($origen, $destino);       
                     }
                 }
             }
-            
-            $zipper->close();
-            
-            $existe_archivo = Storage::disk('temporalPortafolio')->exists($grupo_a_docente->id.'.zip');
-            
-            if($existe_archivo)
+
+            $existe_archivo = Storage::disk('portafolios')->exists($grupo_a_docente->id);
+            if($existe_archivo){
+                $existe_comprimido = Storage::disk('portafolios')->exists($grupo_a_docente->id.'.zip');
+                if($existe_comprimido)
+                    Storage::disk('portafolios')->delete($grupo_a_docente->id.'.zip');
+                
+                $zipper = new Zipper;
+                $zipper->make(storage_path('app/portafolios').'/'.$grupo_a_docente->id.'.zip')
+                         ->add(storage_path('app/portafolios').'/'.$grupo_a_docente->id);
+                
+                $zipper->close();
+                
                 return response()->download(storage_path('app/portafolios/'.$grupo_a_docente->id.'.zip'));
+            } 
             else
                 return "No hay envíos de prácticas para este grupo";
         }

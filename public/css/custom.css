@@ -7,6 +7,11 @@
     padding: 15px;
     line-height: 2;
     margin-top: 10px;
+    
+    box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -webkit-box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -moz-box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -ms-box-shadow: 4px 8px 9px -2px #c7c5d8;
 }
 
 .nav_title {

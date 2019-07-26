@@ -22,6 +22,10 @@ class Control extends Base
                      ->select('gestion.id', 'periodo_id', 'anho_gestion', 'descripcion as periodo', 'activa')
                      ->get();
         
+        foreach($gestiones as $gestion){
+            $gestion['borrable'] = $gestion->esBorrable();
+        }
+        
         return $gestiones;
     }
     
@@ -89,9 +93,13 @@ class Control extends Base
         $gestion_id = $request->gestion_id;
         $gestion = Gestion::find($gestion_id);
         
-        if($gestion)
-            $gestion->delete();
-        
+        if($gestion){
+            if($gestion->esBorrable()){
+                $gestion->delete();
+                return response()->json(['exito'=>["Gestión eliminada con éxito."]], 200);
+            }
+            return response()->json(['error'=>["No es posible eliminar una gestión con clases iniciadas."]], 200);
+        }
         return response()->json(['exito'=>["Gestión eliminada con éxito."]], 200);
     }
     

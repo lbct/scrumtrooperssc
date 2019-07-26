@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Clase;
 
 class Gestion extends Model
 {
@@ -22,5 +23,18 @@ class Gestion extends Model
     public function clase()
     {
         return $this->hasMany('App\Models\Clase', 'gestion_id', 'id');
+    }
+    
+    public function esBorrable()
+    {
+        $borrable = true;
+        $clase_iniciada = Clase::where('gestion_id', $this->id)
+                          ->where('semana_actual_sesion', '>', 0)
+                          ->first();
+        
+        if($clase_iniciada)
+            $borrable = false;
+        
+        return $borrable;
     }
 }

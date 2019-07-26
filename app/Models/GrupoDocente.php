@@ -29,6 +29,20 @@ class GrupoDocente extends Model
         return $this->hasMany('App\Models\Clase', 'grupo_docente_id', 'id');
     }
     
+    public function esBorrable()
+    {
+        $borrable = true;
+        
+        $clase_iniciada = Clase::where('grupo_docente_id', $this->id)
+                          ->where('clase.semana_actual_sesion', '>', 0)
+                          ->first();
+        
+        if($clase_iniciada)
+            $borrable = false;
+        
+        return $borrable;
+    }
+    
     public function sesiones()
     {
         $sesiones = [];

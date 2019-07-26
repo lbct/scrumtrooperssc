@@ -58,7 +58,7 @@ return [
             'root'   => storage_path('app/guiasPracticas'),
         ],
         
-        'temporalPortafolio' => [
+        'portafolios' => [
             'driver' => 'local',
             'root'   => storage_path('app/portafolios'),
         ],

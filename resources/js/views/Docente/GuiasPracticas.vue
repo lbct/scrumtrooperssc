@@ -82,7 +82,7 @@
                                 type="button" class="btn btn-primary">
                             Guardar
                         </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                       </div>
                 </div>
               </div>
@@ -116,9 +116,9 @@
                       <div class="modal-footer">
                         <button v-on:click="confirmarEdicion()" 
                                 type="button" class="btn btn-primary">
-                            Editar
+                            Subir y reemplazar
                         </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                       </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@
                                 type="button" class="btn btn-primary">
                             Borrar
                         </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                       </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@
                     addRemoveLinks: true,
                     uploadMultiple: false,
                     acceptedFiles: "",
-                    dictDefaultMessage: "Sube el archivo acá",
+                    dictDefaultMessage: "Añade el archivo acá",
                     dictInvalidFileType: "No puedes subir archivos de ese tipo",
                     dictRemoveFile: "Retirar",
                     maxFilesize: 5,
@@ -203,7 +203,7 @@
                     addRemoveLinks: true,
                     uploadMultiple: false,
                     acceptedFiles: "",
-                    dictDefaultMessage: "Sube el archivo acá",
+                    dictDefaultMessage: "Añade el archivo acá",
                     dictInvalidFileType: "No puedes subir archivos de ese tipo",
                     dictRemoveFile: "Retirar",
                     maxFilesize: 5,
@@ -338,9 +338,6 @@
                 this.key_mensajes_guias = 0;
                 
                 this.sesion = sesion;
-                var file = { size: 5500000, name: this.sesion.archivo, type: "zip" };
-                var url = "";
-                this.$refs.editarGuiaPractica.manuallyAddFile(file, url);
                 $('#modal-editar-sesion').modal('show');
             },
             

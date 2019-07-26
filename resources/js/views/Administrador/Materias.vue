@@ -40,7 +40,8 @@
                                 <i v-on:click="mostrarEditarMateria(materia, index)" 
                                    class="fas fa-edit clickleable">
                                 </i>
-                                <i v-on:click="mostrarBorrarMateria(materia, index)" 
+                                <i v-if="materia.borrable"
+                                   v-on:click="mostrarBorrarMateria(materia, index)" 
                                    class="fas fa-trash-alt clickleable">
                                 </i>
                             </td>

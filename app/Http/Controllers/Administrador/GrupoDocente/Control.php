@@ -26,6 +26,7 @@ class Control extends Base
         foreach($grupos_docentes as $grupo_docente){
             $cantidad_horarios = Clase::where('grupo_docente_id', $grupo_docente->id)->count();
             $grupo_docente['cantidad_horarios'] = $cantidad_horarios;
+            $grupo_docente['borrable'] = $grupo_docente->esBorrable();
         }
         
         return $grupos_docentes;

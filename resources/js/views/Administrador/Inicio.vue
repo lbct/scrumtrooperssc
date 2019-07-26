@@ -5,25 +5,29 @@
             <tarjeta-reducida 
                 titulo = "Materias"
                 :valor = "datos.numero_materias"
-                icono  = "materia">
+                icono  = "materia"
+                ruta   = "AdministradorMaterias">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Docentes"
                 :valor = "datos.numero_docentes"
-                icono  = "grupo">
+                icono  = "grupo"
+                ruta   = "AdministradorDocentes">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Estudiantes"
                 :valor = "datos.numero_estudiantes"
-                icono  = "usuarios">
+                icono  = "usuarios"
+                ruta   = "AdministradorEstudiantes">
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Aulas"
                 :valor = "datos.numero_aulas"
-                icono  = "aula">
+                icono  = "aula"
+                ruta   = "AdministradorAulas">
             </tarjeta-reducida>
         </div>
         

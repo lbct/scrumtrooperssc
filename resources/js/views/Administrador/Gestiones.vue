@@ -33,7 +33,8 @@
                             <i v-on:click="mostrarEditar(gestion)"
                                class="fas fa-edit clickleable">
                             </i>
-                            <i v-on:click="mostrarBorrar(gestion, index)" 
+                            <i v-if="gestion.borrable"
+                               v-on:click="mostrarBorrar(gestion, index)" 
                                class="fas fa-trash-alt clickleable">
                             </i>
                         </td>
@@ -352,6 +353,12 @@
                             this.key_mensajes++;
                             
                             this.gestiones.splice(this.gestion.index, 1);
+                            $('#modal-borrar-gestion').modal('hide');
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
                             $('#modal-borrar-gestion').modal('hide');
                         }
                     });

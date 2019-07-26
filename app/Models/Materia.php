@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use \App\Models\GrupoDocente;
+use App\Models\GrupoDocente;
 use Illuminate\Database\Eloquent\Model;
 
 class Materia extends Model
@@ -18,6 +18,21 @@ class Materia extends Model
     public function grupoDocente()
     {
         return $this->hasMany('App\Models\GrupoDocente', 'materia_id', 'id');
+    }
+    
+    public function esBorrable()
+    {
+        $borrable = true;
+        
+        $clase_iniciada = GrupoDocente::where('materia_id', $this->id)
+                          ->join('clase', 'clase.grupo_docente_id', '=', 'grupo_docente.id')
+                          ->where('clase.semana_actual_sesion', '>', 0)
+                          ->first();
+        
+        if($clase_iniciada)
+            $borrable = false;
+        
+        return $borrable;
     }
     
     public function docentes()
