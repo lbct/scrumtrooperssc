@@ -39,7 +39,7 @@ class Control extends Base
                                      ->join('sesion', 'sesion_estudiante.sesion_id', '=', 'sesion.id')
                                      ->orderBy('estudiante.id')
                                      ->orderBy('sesion.semana')
-                                     ->select('sesion_estudiante.id as sesion_estudiante_id', 'codigo_sis', 'nombre', 'apellido', 'asistencia_sesion', 'sesion.semana', 'estudiante.id')
+                                     ->select('sesion_estudiante.id as sesion_estudiante_id', 'codigo_sis', 'nombre', 'apellido', 'asistencia_sesion', 'sesion.semana', 'estudiante.id', 'comentario_auxiliar')
                                      ->get();
             
             $estudiantes = [];
@@ -49,6 +49,10 @@ class Control extends Base
                 if( array_key_exists($index, $estudiantes) ){
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
+                    if($estudiante_inscrito->comentario_auxiliar)
+                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                    else
+                        $datos['comentario_auxiliar'] = 'Sin comentario';
                     $estudiantes[$index]['semanas'][$estudiante_inscrito->semana] = $datos;
                 }else{
                     $estudiantes[$index] = collect();
@@ -56,6 +60,11 @@ class Control extends Base
                     
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
+                    
+                    if($estudiante_inscrito->comentario_auxiliar)
+                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                    else
+                        $datos['comentario_auxiliar'] = 'Sin comentario';
                     
                     $estudiantes[$index]['semanas'] = collect();
                     $estudiantes[$index]['semanas'][$estudiante_inscrito->semana] = $datos;
@@ -85,7 +94,7 @@ class Control extends Base
                         if(!$practica['en_laboratorio'])
                             $en_lab = 'Fuera Laboratorio';
                         
-                        $directorio = $codigo_sis.' - '.$estudiante['nombre'].'/'.$num_semana.' - '.$asistencia.'/'.$en_lab;
+                        $directorio = $codigo_sis.' - '.$estudiante['nombre'].'/'.$num_semana.' - '.$asistencia.' - '.$semana['comentario_auxiliar'].'/'.$en_lab;
                         
                         $zipper->make(storage_path('app/portafolios').'/'.$grupo_a_docente->id.'.zip')
                                ->folder($directorio)
