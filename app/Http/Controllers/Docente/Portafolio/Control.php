@@ -113,8 +113,9 @@ class Control extends Base
                 $zipper = new Zipper;
                 $zipper->make(storage_path('app/portafolios').'/'.$grupo_a_docente->id.'.zip')
                          ->add(storage_path('app/portafolios').'/'.$grupo_a_docente->id);
-                
                 $zipper->close();
+                
+                Storage::disk('portafolios')->deleteDirectory($grupo_a_docente->id, true);
                 
                 return response()->download(storage_path('app/portafolios/'.$grupo_a_docente->id.'.zip'));
             } 
