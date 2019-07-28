@@ -6,6 +6,7 @@ Route::get('estudiante/materias/disponibles', 'Estudiante\Materia\Control@materi
 Route::get('estudiante/materia/{materia_id}/docentes', 'Estudiante\Materia\Control@docentesMateria');
 Route::get('estudiante/materia/{grupo_a_docente_id}/clases', 'Estudiante\Materia\Control@clasesMateria');
 Route::post('estudiante/materia', 'Estudiante\Materia\Control@nuevaMateria');
+Route::put('estudiante/materia', 'Estudiante\Materia\Control@editarMateria');
 
 Route::get('estudiante/sesiones/{estudiante_clase_id}', 'Estudiante\Sesion\Control@cursadas');
 

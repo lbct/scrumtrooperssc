@@ -54,7 +54,9 @@ class Estudiante extends Model
                              "nombre_aula",
                              "horario_id",
                              "hora_inicio",
-                             "hora_fin")
+                             "hora_fin",
+                             "grupo_a_docente.id as grupo_a_docente_id",
+                             "clase.id as clase_id")
                     ->get();
         
         return $materias;
