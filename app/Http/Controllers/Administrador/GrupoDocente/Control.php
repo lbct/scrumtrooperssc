@@ -44,14 +44,17 @@ class Control extends Base
     }
     
     public function docentes(Request $request, $grupo_docente_id){
-        $grupo_docente = GrupoDocente::where('grupo_docente.id', $grupo_docente_id)
-                         ->join('grupo_a_docente', 'grupo_a_docente.grupo_docente_id', '=', 'grupo_docente.id')
-                         ->join('docente', 'docente.id', '=', 'grupo_a_docente.docente_id')
-                         ->join('usuario', 'usuario.id', '=', 'docente.usuario_id')
-                         ->select('docente.id', 'nombre', 'apellido')
-                         ->get();
+        $grupos_a_docentes = GrupoADocente::where('grupo_docente_id', $grupo_docente_id)
+                             ->join('docente', 'docente.id', '=', 'grupo_a_docente.docente_id')
+                             ->join('usuario', 'usuario.id', '=', 'docente.usuario_id')
+                             ->select('grupo_a_docente.id as grupo_a_docente_id', 'docente.id', 'nombre', 'apellido')
+                             ->get();
         
-        return $grupo_docente;        
+        foreach($grupos_a_docentes as $grupo_a_docente){
+            $grupo_a_docente['borrable'] = $grupo_a_docente->esBorrable();
+        }        
+        
+        return $grupos_a_docentes;        
     }
     
     public function docentesDisponibles(Request $request, $materia_id){
@@ -147,7 +150,7 @@ class Control extends Base
                     }
                 }
                 
-                if(!$encontrado){
+                if(!$encontrado && $grupo_a_docente->esBorrable()){
                     $docentes_eliminados->push($grupo_a_docente->docente_id);
                     $registro = GrupoADocente::find($grupo_a_docente->id);
                     $registro->delete();
@@ -183,6 +186,6 @@ class Control extends Base
             }
                 
         }
-        return response()->json(['error'=>["Grupo Docente eliminado antes la acción."]], 200);
+        return response()->json(['error'=>["Grupo Docente eliminado antes de la acción realizada."]], 200);
     }
 }

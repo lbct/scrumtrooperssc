@@ -32677,6 +32677,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -32705,7 +32706,8 @@ __webpack_require__.r(__webpack_exports__);
       docente: {
         id: '',
         nombre: '',
-        apellido: ''
+        apellido: '',
+        borrable: true
       },
       docentes_posibles: []
     };
@@ -32892,6 +32894,7 @@ __webpack_require__.r(__webpack_exports__);
         return _this9.docente == docente;
       });
       this.docentes_posibles.splice(index, 1);
+      this.docentes[this.docentes.length - 1].borrable = true;
       if (this.docentes_posibles.length) this.docente = this.docentes_posibles[0];
     },
     borrarDocente: function borrarDocente(index) {
@@ -52322,15 +52325,19 @@ var render = function() {
                                               _vm._s(docente.apellido) +
                                               " \n                                    "
                                           ),
-                                          _c("i", {
-                                            staticClass:
-                                              "fas fa-trash-alt clickleable",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.borrarDocente(index)
-                                              }
-                                            }
-                                          })
+                                          docente.borrable
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-trash-alt clickleable",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.borrarDocente(
+                                                      index
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            : _vm._e()
                                         ])
                                       }),
                                       0
@@ -52440,7 +52447,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                            Editar\n                        "
+                                          "\n                            Guardar y Editar\n                        "
                                         )
                                       ]
                                     )

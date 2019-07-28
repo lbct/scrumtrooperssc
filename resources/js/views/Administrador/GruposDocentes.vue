@@ -140,7 +140,8 @@
                                 <div v-if="docentes.length > 0" >
                                     <p v-for="(docente, index) in docentes">
                                         {{docente.nombre}} {{docente.apellido}} 
-                                        <i v-on:click="borrarDocente(index)" 
+                                        <i v-if="docente.borrable"
+                                           v-on:click="borrarDocente(index)" 
                                            class="fas fa-trash-alt clickleable">
                                         </i>
                                     </p>
@@ -168,7 +169,7 @@
                             <button v-if="docentes.length > 0"
                                     v-on:click="editar()" 
                                     type="button" class="m-3 btn btn-primary pull-left">
-                                Editar
+                                Guardar y Editar
                             </button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                           </div>
@@ -222,7 +223,7 @@
                 grupos_docentes: [],
                 grupo_docente: {id:'',materia_id:'',detalle_grupo_docente:''},
                 docentes: [],
-                docente: {id:'', nombre:'', apellido:''},
+                docente: {id:'', nombre:'', apellido:'', borrable:true},
                 docentes_posibles: [],
             }
         },
@@ -429,6 +430,8 @@
                                     return this.docente == docente;
                             });
                 this.docentes_posibles.splice(index,1);
+                
+                this.docentes[this.docentes.length-1].borrable = true;
                 
                 if(this.docentes_posibles.length)
                     this.docente = this.docentes_posibles[0];
