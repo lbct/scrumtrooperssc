@@ -21,6 +21,8 @@
   <link type="text/css" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" >
   <link rel="stylesheet" href="{{asset('css/bs-stepper.min.css')}}" >
   <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    
+  <link rel="icon" type="image/png" href="{{asset('img/icon.png')}}">
 </head>
 <body>
 <div id="app">
