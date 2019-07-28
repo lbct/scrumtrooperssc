@@ -38,3 +38,4 @@ Route::get('docente/estadisticas/asistencia/grupo/{grupo_docente_id}', 'Docente\
 Route::get('docente/estadisticas/asistencia/clase/{clase_id}', 'Docente\Estadistica\Control@asistenciaclase');
 
 Route::get('docente/portafolios/{grupo_docente_id}', 'Docente\Portafolio\Control@descargar');
+Route::get('docente/portafolio/{estudiante_clase_id}', 'Docente\Portafolio\Control@descargarestudiante');

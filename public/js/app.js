@@ -36930,6 +36930,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['estudiante_clase_id'],
   data: function data() {
@@ -58064,6 +58068,18 @@ var render = function() {
                 _vm._s(_vm.estudiante.correo)
             )
           ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "mb-3 btn btn-primary",
+              attrs: {
+                href: "/docente/portafolio/" + _vm.estudiante_clase_id,
+                target: "_blank"
+              }
+            },
+            [_vm._v("\n            Descargar Portafolio\n        ")]
+          ),
           _vm._v(" "),
           _vm.sesiones.length > 0
             ? _c("div", { staticClass: "table-responsive" }, [

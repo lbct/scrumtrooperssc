@@ -62,6 +62,11 @@ return [
             'driver' => 'local',
             'root'   => storage_path('app/portafolios'),
         ],
+        
+        'portafoliosEstudiantes' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/portafoliosEstudiantes'),
+        ],
 
         'ftp' => [
             'driver'   => 'ftp',
