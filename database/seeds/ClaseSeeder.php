@@ -13,7 +13,7 @@ class ClaseSeeder extends Seeder
         	'horario_id'			=>	7,
             'grupo_docente_id'      =>	1,
             'dia'			        =>	2,
-            'semana_actual_sesion'	=>	0,
+            'semana_actual_sesion'	=>	15,
         ]);
     }
 }
