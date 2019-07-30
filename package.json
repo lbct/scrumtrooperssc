@@ -33,6 +33,7 @@
         "vue-ctk-date-time-picker": "^2.1.1",
         "vue-datetime": "^1.0.0-beta.10",
         "vue-hotel-datepicker": "^2.6.4",
+        "vue-loading-spinner": "^1.0.11",
         "vue-router": "^3.0.6",
         "vue-router-back-button": "^1.2.1",
         "vue-schedule": "^2.0.4",
