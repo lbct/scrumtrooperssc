@@ -20614,7 +20614,7 @@ dl li {
   font-weight: 500;
   padding: 0;
   width: 237px;
-  z-index: 11;
+  z-index: 999;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
@@ -20828,13 +20828,13 @@ dl li {
     top: 70px;
     bottom: 0;
     overflow: auto;
-    right: -237px;
+    left: -237px;
     -webkit-transition: all 0.25s ease-out;
     -o-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
   }
   .sidebar-offcanvas.active {
-    right: 0;
+    left: 0;
   }
 }
 

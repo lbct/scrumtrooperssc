@@ -3,7 +3,7 @@
     <span class="nav_title">Estudiante</span>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'EstudianteInicio' }" class="nav-link">
+        <router-link :to="{ name: 'EstudianteInicio' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-home menu-icon"></i>
             <span class="menu-title">Inicio</span>
         </router-link>
@@ -18,12 +18,12 @@
         <div class="collapse" id="estudiante_inscripcion">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <router-link :to="{ name: 'EstudianteEstadoInscripcion' }" class="nav-link">
+                <router-link :to="{ name: 'EstudianteEstadoInscripcion' }" class="nav-link" data-toggle="offcanvas">
                     Estado Inscripción
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'EstudianteInscripcion' }" class="nav-link">
+                <router-link :to="{ name: 'EstudianteInscripcion' }" class="nav-link" data-toggle="offcanvas">
                     Incribirme
                 </router-link>
             </li>
@@ -40,17 +40,17 @@
         <div class="collapse" id="estudiante_practicas">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <router-link :to="{ name: 'EstudianteVerPractica' }" class="nav-link">
+                <router-link :to="{ name: 'EstudianteVerPractica' }" class="nav-link" data-toggle="offcanvas">
                     Ver Guías Prácticas
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'EstudianteSubirPractica' }" class="nav-link">
+                <router-link :to="{ name: 'EstudianteSubirPractica' }" class="nav-link" data-toggle="offcanvas">
                     Subir Prácticas
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'EstudiantePortafolio' }" class="nav-link">
+                <router-link :to="{ name: 'EstudiantePortafolio' }" class="nav-link" data-toggle="offcanvas">
                     Portafolio
                 </router-link>
             </li>
@@ -59,7 +59,7 @@
     </li>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'EstudianteHorario' }" class="nav-link">
+        <router-link :to="{ name: 'EstudianteHorario' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-calendar menu-icon"></i>
             <span class="menu-title">Ver Horario</span>
         </router-link>

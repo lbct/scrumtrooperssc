@@ -32,14 +32,17 @@
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title">Asistencia de estudiantes inscritos en el grupo docente</p>
-                          <div v-if="materia.maxima_semana">
-                              <apexchart width="100%" height="250px" 
-                                         type="bar" 
-                                         :options="opciones_asistencia_chart" 
-                                         :series="series_asistencia_grupodocente_chart">
-                              </apexchart>
+                          <div v-if="carga_grupo_docente">
+                              <div v-if="materia.maxima_semana">
+                                  <apexchart width="100%" height="250px" 
+                                             type="bar" 
+                                             :options="opciones_asistencia_chart" 
+                                             :series="series_asistencia_grupodocente_chart">
+                                  </apexchart>
+                              </div>
+                              <h5 v-else class="text-muted">No hay semanas disponibles</h5>
                           </div>
-                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                          <div v-else class="m-5"><circle-spin></circle-spin></div>
                         </div>
                       </div>
                     </div>
@@ -48,14 +51,17 @@
                       <div class="card">
                         <div class="card-body">
                           <p class="card-title">Asistencia de estudiantes inscritos con el docente</p>
-                          <div v-if="materia.maxima_semana">
-                              <apexchart width="100%" height="250px" 
-                                         type="bar" 
-                                         :options="opciones_asistencia_chart" 
-                                         :series="series_asistencia_chart">
-                              </apexchart>
+                          <div v-if="carga_docente">
+                              <div v-if="materia.maxima_semana">
+                                  <apexchart width="100%" height="250px" 
+                                             type="bar" 
+                                             :options="opciones_asistencia_chart" 
+                                             :series="series_asistencia_chart">
+                                  </apexchart>
+                              </div>
+                              <h5 v-else class="text-muted">No hay semanas disponibles</h5>
                           </div>
-                          <h5 v-else class="text-muted">No hay semanas disponibles</h5>
+                          <div v-else class="m-5"><circle-spin></circle-spin></div>
                         </div>
                       </div>
                     </div>
@@ -79,6 +85,9 @@
                 
                 materias: [],
                 materia: {id:'', nombre_materia:'', maxima_semana:0},
+                
+                carga_grupo_docente: false,
+                carga_docente: false,
             }
         },
     
@@ -120,6 +129,9 @@
             },
             
             cambiarMateria(){
+                this.carga_grupo_docente = false;
+                this.carga_docente = false;
+                
                 var semanas = [];
                 for(var semana=1; semana<=this.materia.maxima_semana; semana++){
                     semanas.push('Semana '+semana);
@@ -149,6 +161,8 @@
                                 data: datos.no_asistencia,
                             },
                         ];
+                    
+                        this.carga_grupo_docente = true;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -168,6 +182,8 @@
                                 data: datos.no_asistencia,
                             },
                         ];
+                    
+                        this.carga_docente = true;
                     })
                     .catch(function (error) {
                         console.log(error);

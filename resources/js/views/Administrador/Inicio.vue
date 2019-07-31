@@ -59,7 +59,7 @@
                     <div class="card-body align-items-center">
                         <p class="card-title">Uso de Laboratorios por Semana</p>
                         <div class="chart-wrap" >    
-                            <apexchart id="chartAulas" width="100%" type="donut" 
+                            <apexchart id="chartAulas" width="100%" height="200px" type="donut" 
                                        :options="options" :series="series">
                             </apexchart>
                         </div>

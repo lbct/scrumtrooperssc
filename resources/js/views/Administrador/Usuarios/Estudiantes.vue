@@ -9,7 +9,7 @@
     export default {        
         data() {
             return {
-                estudiantes: [],
+                estudiantes: null,
                 key_estudiantes: 0,
             }
         },

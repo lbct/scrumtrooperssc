@@ -9,7 +9,7 @@
     export default {        
         data() {
             return {
-                auxiliares_laboratorio: [],
+                auxiliares_laboratorio: null,
                 key_auxiliares_laboratorio: 0,
             }
         },

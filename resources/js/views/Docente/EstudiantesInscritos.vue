@@ -78,7 +78,7 @@
                     </div>
                     <p v-else>No tienes estudiantes inscritos a esta materia</p>
                 </div>
-                <div v-else class="mt-5"><circle-spin></circle-spin></div>
+                <div v-else class="m-5"><circle-spin></circle-spin></div>
             </div>
             <p v-else>No tienes materias disponibles</p>
         </div>

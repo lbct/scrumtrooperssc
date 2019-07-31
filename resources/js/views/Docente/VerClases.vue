@@ -62,21 +62,27 @@
                           
                         <div v-if="materia.semana_actual_sesion" class="row">
                           <div class="col-12">
-                          <h6>Envíos de estudiantes inscritos en el grupo docente</h6>
-                          <apexchart width="100%" height="250px" 
-                                     type="bar" 
-                                     :options="opciones_envios_chart" 
-                                     :series="series_envios_chart">
-                          </apexchart>
+                              <h6>Envíos de estudiantes inscritos en el grupo docente</h6>
+                              <div v-if="carga_envios">
+                                  <apexchart width="100%" height="250px" 
+                                             type="bar" 
+                                             :options="opciones_envios_chart" 
+                                             :series="series_envios_chart">
+                                  </apexchart>
+                              </div>
+                              <div v-else class="m-5"><circle-spin></circle-spin></div>
                           </div>
                             
                           <div class="col-12">
-                          <h6>Asistencia de estudiantes inscritos en el grupo docente</h6>
-                          <apexchart width="100%" height="250px" 
-                                     type="bar" 
-                                     :options="opciones_asistencia_chart" 
-                                     :series="series_asistencia_chart">
-                          </apexchart>
+                              <h6>Asistencia de estudiantes inscritos en el grupo docente</h6>
+                              <div v-if="carga_asistencia">
+                                  <apexchart width="100%" height="250px" 
+                                             type="bar" 
+                                             :options="opciones_asistencia_chart" 
+                                             :series="series_asistencia_chart">
+                                  </apexchart>
+                              </div>
+                              <div v-else class="m-5"><circle-spin></circle-spin></div>
                           </div>
                         </div>
                       </div>
@@ -119,6 +125,9 @@
                 series_envios_chart: [],
                 opciones_asistencia_chart: {},
                 series_asistencia_chart: [],
+                
+                carga_envios: false,
+                carga_asistencia: false,
             }
         },
     
@@ -174,6 +183,9 @@
             },
             
             verMasMateria(materia){
+                this.carga_envios = false;
+                this.carga_asistencia = false;
+                
                 this.materia = materia;
                 
                 var semanas = [];
@@ -214,6 +226,8 @@
                                 data: datos.fuera_laboratorio
                             },
                         ];
+                    
+                        this.carga_envios = true;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -233,6 +247,8 @@
                                 data: datos.no_asistencia,
                             },
                         ];
+                    
+                        this.carga_asistencia = true;
                     })
                     .catch(function (error) {
                         console.log(error);
