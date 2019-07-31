@@ -134,7 +134,7 @@
                 },
                 series: [],
                 
-                altura: "200px",
+                altura: "150px",
             }
         },
     
