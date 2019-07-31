@@ -49,10 +49,13 @@
                 <div class="card-body">
                   <p class="card-title">Envíos de estudiantes inscritos con el docente</p>
                   <div v-if="materia.maxima_semana">
-                      <apexchart width="100%" height="250px" 
-                                 type="bar" 
-                                 :options="opciones_envios_chart" :series="series_envios_chart">
-                      </apexchart>
+                      <div v-if="carga_envios">
+                          <apexchart width="100%" height="250px" 
+                                     type="bar" 
+                                     :options="opciones_envios_chart" :series="series_envios_chart">
+                          </apexchart>
+                      </div>
+                      <div v-else class="m-5"><circle-spin></circle-spin></div>
                   </div>
                   <h5 v-else class="text-muted">No hay semanas disponibles</h5>
                 </div>
@@ -64,11 +67,14 @@
                 <div class="card-body">
                   <p class="card-title">Asistencia de estudiantes inscritos con el docente</p>
                   <div v-if="materia.maxima_semana">
-                      <apexchart width="100%" height="250px" 
-                                 type="bar" 
-                                 :options="opciones_asistencia_chart" 
-                                 :series="series_asistencia_chart">
-                      </apexchart>
+                      <div v-if="carga_asistencia">
+                          <apexchart width="100%" height="250px" 
+                                     type="bar" 
+                                     :options="opciones_asistencia_chart" 
+                                     :series="series_asistencia_chart">
+                          </apexchart>
+                      </div>
+                      <div v-else class="m-5"><circle-spin></circle-spin></div>
                   </div>
                   <h5 v-else class="text-muted">No hay semanas disponibles</h5>
                 </div>
@@ -99,6 +105,9 @@
                 
                 materias: [],
                 materia: {id:'', nombre_materia:'', maxima_semana:0},
+                
+                carga_envios: false,
+                carga_asistencia: false,
             }
         },
     
@@ -159,6 +168,9 @@
             },
             
             cambiarMateria(){
+                this.carga_envios = false;
+                this.carga_asistencia = false;
+                
                 var semanas = [];
                 for(var semana=1; semana<=this.materia.maxima_semana; semana++){
                     semanas.push('Semana '+semana);
@@ -197,6 +209,8 @@
                                 data: datos.fuera_laboratorio
                             },
                         ];
+                    
+                        this.carga_envios = true;
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -216,6 +230,8 @@
                                 data: datos.no_asistencia,
                             },
                         ];
+                    
+                        this.carga_asistencia = true;
                     })
                     .catch(function (error) {
                         console.log(error);

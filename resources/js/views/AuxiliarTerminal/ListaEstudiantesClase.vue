@@ -23,6 +23,8 @@
                         Descargar Guía Práctica
                     </a>
                 </p>
+                
+                <div v-if="carga_estudiantes">
                 <div v-if="estudiantes.length > 0">
                 <div class="text-left">
                     <div class="col-xs-12 col-lg-4">
@@ -111,6 +113,8 @@
                 </div>
                 </div>
                 <p v-else>No se tiene estudiantes en esta clase</p>
+                </div>
+                <div v-else class="m-5"><circle-spin></circle-spin></div>
             </div>
             <p v-else>No se tiene sesiones de laboratorio para esta clase</p>
         </div>
@@ -132,7 +136,9 @@
                 clase: {},
                 estudiantes_filtrados: [],
                 estudiantes: [],
-                estudiante: {id:'', comentario_auxiliar:'', index:''}
+                estudiante: {id:'', comentario_auxiliar:'', index:''},
+                
+                carga_estudiantes: false,
             }
         },
     
@@ -190,12 +196,16 @@
             },
             
             obtenerEstudiantes(){
+                this.carga_estudiantes = false;
+                
                 this.axios
                     .get('/auxiliarterminal/sesion/estudiantes/'+this.sesion.id)
                     .then((response)=>{
                         var datos = response.data;
                         this.estudiantes = datos;
                         this.estudiantes_filtrados = datos;
+                    
+                        this.carga_estudiantes = true;
                     })
                     .catch(function (error) {
                         console.log(error);
