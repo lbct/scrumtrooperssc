@@ -54,12 +54,12 @@
                     </div>
               </div>
             </div>
-            <div class="col-md-6 grid-margin stretch-card align-self-start">
+            <div class="col-md-6 grid-margin stretch-card align-self-start card-min">
                 <div class="card position-relative">
                     <div class="card-body align-items-center">
                         <p class="card-title">Uso de Laboratorios por Semana</p>
                         <div class="chart-wrap" >    
-                            <apexchart id="chartAulas" width="100%" height="200px" type="donut" 
+                            <apexchart id="chartAulas" width="100%" type="donut" min-heig 
                                        :options="options" :series="series">
                             </apexchart>
                         </div>

@@ -14,34 +14,36 @@
               </div>
             </center>
             
-            <div v-if="sesiones.length > 0" class="table-responsive">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Asistencia</th>
-                            <th scope="col">Semana</th>
-                            <th scope="col">Comentario Del Auxiliar</th>
-                            <th scope="col">Archivos Subidos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="sesion in sesiones" v-bind:class="tipoSesion(sesion)">
-                            <td v-if="sesion.asistencia_sesion"><i class="fas fa-check"></i></td>
-                            <td v-else><i class="fas fa-times"></i></td>
-                            <td>{{sesion.semana}}</td>
-                            <td>{{sesion.comentario_auxiliar}}</td>
-                            <td v-if="sesion.archivos.length">
-                                <div v-for="archivo in sesion.archivos">
-                                    <a :href="'/estudiante/archivos/practicas/' + archivo.id" target="_blank">
-                                        {{archivo.archivo}} 
-                                        <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i>
-                                    </a>
-                                </div>
-                            </td>
-                            <td v-else>Sin Archivos</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div v-if="sesiones.length > 0">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Asistencia</th>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Comentario Del Auxiliar</th>
+                                <th scope="col">Archivos Subidos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="sesion in sesiones" v-bind:class="tipoSesion(sesion)">
+                                <td v-if="sesion.asistencia_sesion"><i class="fas fa-check"></i></td>
+                                <td v-else><i class="fas fa-times"></i></td>
+                                <td>{{sesion.semana}}</td>
+                                <td>{{sesion.comentario_auxiliar}}</td>
+                                <td v-if="sesion.archivos.length">
+                                    <div v-for="archivo in sesion.archivos">
+                                        <a :href="'/estudiante/archivos/practicas/' + archivo.id" target="_blank">
+                                            {{archivo.archivo}} 
+                                            <i v-if="archivo.en_laboratorio" class="fas fa-vial"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td v-else>Sin Archivos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <br>
                 <h4 class="text-left">Porcentaje de asistencia: {{pocentaje_asistencia}}% ({{asistido}}/{{total_sesiones}})</h4>
                 <p class="text-left">Arhivos subidos: {{total_arhivos_subidos}} (En laboratorio: {{archivos_laboratorio}})</p>
@@ -91,7 +93,7 @@
             
             tipoSesion(sesion) {
                 if(sesion.asistencia_sesion)
-                    return 'table-default';
+                    return 'table-success';
                 else if(sesion.archivos.length)
                     return 'table-warning';
                 else

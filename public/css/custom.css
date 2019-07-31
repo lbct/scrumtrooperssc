@@ -41,3 +41,7 @@
 .card-title{
     font-weight: bold !important;
 }
+
+.card-min{
+    min-height: 150px !important; 
+}
