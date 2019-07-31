@@ -1,33 +1,40 @@
 <template>
     <div>
+        <h5>(Datos de la gestión en curso)</h5>
         <div class="row">
-            <tarjeta-reducida
-                titulo = "Año"
-                :valor = "datos.anho"
-                icono =  'fecha'>
-                
-            </tarjeta-reducida>
-            <tarjeta-reducida 
-                titulo = "Gestion"
-                :valor = "datos.periodo"
-                icono  = "fecha">
-            </tarjeta-reducida>
             <tarjeta-reducida 
                 titulo = "Materias Inscritas"
                 :valor = "datos.numero_materias"
-                icono  = "materia">
+                icono  = "materia"
+                ruta   = "EstudianteEstadoInscripcion">
             </tarjeta-reducida>
+            
             <tarjeta-reducida 
-                titulo = "Archivos en Portafolio"
-                :valor = "datos.portafolio"
-                icono  = "archivo">
+                titulo = "Envíos Totales"
+                :valor = "datos.cantidad_envios"
+                icono  = "archivo"
+                ruta   = "EstudiantePortafolio">
+            </tarjeta-reducida>
+            
+            <tarjeta-reducida
+                titulo = "En Laboratorio"
+                :valor = "datos.en_laboratorio"
+                icono =  'laboratorio'
+                ruta   = "EstudiantePortafolio">
+            </tarjeta-reducida>
+            
+            <tarjeta-reducida 
+                titulo = "Fuera de Laboratorio"
+                :valor = "datos.fuera_laboratorio"
+                icono  = "afuera"
+                ruta   = "EstudiantePortafolio">
             </tarjeta-reducida>
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card position-relative">
                     <div class="card-body align-items-center">
-                        <p class="card-title">Horario / ({{datos.fecha}})</p>
+                        <p class="card-title">Horario para hoy ({{datos.fecha}})</p>
                         <div class="table-responsive">
                             <table class="table table-hover">
                             <thead class="thead-dark">
@@ -47,11 +54,11 @@
                     </div>
               </div>
             </div>
-            <div class="col-md-6 grid-margin stretch-card align-self-start">
+            <div v-if="asistencia.total" class="col-md-6 grid-margin stretch-card align-self-start">
                 <div class="card position-relative">
                     <div class="card-body align-items-center">
                         <p class="card-title">Porcentaje de Asistencia</p>
-                        <div class="chart-wrap" >    
+                        <div class="chart-wrap" >
                             <apexchart id="chartAsistencia" width="100%" type="radialBar" 
                                        :options="options" :series="series">
                             </apexchart>
@@ -72,16 +79,17 @@
                 tipo_mensaje: '',
                 key_mensajes: 0,
 
-                datos: { numero_materias: 0, fecha: '', anho:'', periodo: '', portafolio: 0},
+                datos: {numero_materias: 0, fecha: '', cantidad_envios: 0, en_laboratorio: 0, fuera_laboratorio: 0},
 
                 tabla_clases: [],
+                
+                asistencia: {en_laboratorio:0, fuera_laboratorio:0, total:0},
 
                 options: {
                     labels: ['Asistencia'],
                 },
 
-                series: [0],
-                asistencia: {total: 0, asistencia: 0, porcentaje: []},
+                series: [],
 
                 hours: '',
                 minutes: '',
@@ -114,7 +122,7 @@
 
             getTablaClases(){
             this.axios
-                .get('/estudiante/estadisticas/tablaClases')
+                .get('/estudiante/estadisticas/tabla_clases')
                 .then((response)=>{
                     this.tabla_clases = response.data;
                 })
@@ -127,8 +135,9 @@
             this.axios
                 .get('/estudiante/estadisticas/asistencia')
                 .then((response)=>{
-                    this.asistencia = response.data;
-                    this.series = this.asistencia.porcentaje;
+                    var datos = response.data;
+                    this.asistencia = datos;
+                    this.series = [100*datos.asistencia/datos.total];
                 })
                 .catch(function (error) {
                     console.log(error);

@@ -23,25 +23,34 @@ use Input;
 class Control extends Base
 {
     public function getDatos(){
-
         $usuario_id = session('usuario_id');        
         $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
         $gestion_actual = Gestiones::gestionActiva();
-        $periodo = Periodo::where('id', '=', $gestion_actual->periodo_id)->first();
 
         $datos['fecha'] = date('d-m-y', time());
-        $datos['anho'] =  $gestion_actual->anho_gestion;
-        $datos['periodo'] = $periodo->descripcion;
         
         $datos['numero_materias'] = EstudianteClase::where('estudiante_id', '=', $estudiante->id)
-                                        ->join('clase', 'clase.id', '=', 'clase_id')
-                                        ->where('gestion_id', '=', $gestion_actual->id)
-                                        ->count();
+                                    ->join('clase', 'clase.id', '=', 'clase_id')
+                                    ->where('gestion_id', '=', $gestion_actual->id)
+                                    ->count();
 
-        $datos['portafolio'] =  EstudianteClase::where('estudiante_id', '=', $estudiante->id)
-                                                ->join('sesion_estudiante', 'estudiante_clase_id', '=', 'estudiante_clase.id')
-                                                ->join('envio_practica', 'sesion_estudiante_id', '=', 'sesion_estudiante.id')
-                                                ->count();
+        $datos['en_laboratorio'] =  EstudianteClase::where('estudiante_id', '=', $estudiante->id)
+                                    ->join('clase', 'clase.id', '=', 'clase_id')
+                                    ->where('gestion_id', '=', $gestion_actual->id)
+                                    ->join('sesion_estudiante', 'estudiante_clase_id', '=', 'estudiante_clase.id')
+                                    ->join('envio_practica', 'sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                    ->where('en_laboratorio', true)
+                                    ->count();
+        
+        $datos['fuera_laboratorio'] =  EstudianteClase::where('estudiante_id', '=', $estudiante->id)
+                                       ->join('clase', 'clase.id', '=', 'clase_id')
+                                       ->where('gestion_id', '=', $gestion_actual->id)
+                                       ->join('sesion_estudiante', 'estudiante_clase_id', '=', 'estudiante_clase.id')
+                                       ->join('envio_practica', 'sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                                       ->where('en_laboratorio', false)
+                                       ->count();
+        
+        $datos['cantidad_envios'] = $datos['en_laboratorio']+$datos['fuera_laboratorio'];
         
         return $datos;
     }
@@ -96,14 +105,25 @@ class Control extends Base
         $usuario_id = session('usuario_id');        
         $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
         $gestion_actual = Gestiones::gestionActiva();
-
-        $sesiones = EstudianteClase::where('estudiante_id', '=', $estudiante->id)
-                                    ->join('clase', 'clase.id', '=', 'clase_id')
-                                    ->where('gestion_id', '=', $gestion_actual->id)
-                                    ->join('sesion_estudiante', 'estudiante_clase.id', '=', 'estudiante_clase_id')
-                                    ->select('asistencia_sesion')
-                                    ->get();
-        $total = sizeof($sesiones);
+        
+        $datos['asistencia'] = EstudianteClase::where('estudiante_id', '=', $estudiante->id)
+                               ->join('clase', 'clase.id', '=', 'clase_id')
+                               ->where('gestion_id', '=', $gestion_actual->id)
+                               ->join('sesion_estudiante', 'estudiante_clase.id', '=', 'estudiante_clase_id')
+                               ->where('asistencia_sesion', true)
+                               ->count();
+        
+        $datos['no_asistencia'] = EstudianteClase::where('estudiante_id', '=', $estudiante->id)
+                                  ->join('clase', 'clase.id', '=', 'clase_id')
+                                  ->where('gestion_id', '=', $gestion_actual->id)
+                                  ->join('sesion_estudiante', 'estudiante_clase.id', '=', 'estudiante_clase_id')
+                                  ->where('asistencia_sesion', false)
+                                  ->count();
+        
+        $datos['total'] = $datos['asistencia']+$datos['no_asistencia'];
+        
+        
+        /*$total = sizeof($sesiones);
         $asistencia = 0;
         foreach($sesiones as $sesion){
             if ($sesion->asistencia_sesion == 1){
@@ -113,7 +133,7 @@ class Control extends Base
         $datos['total'] = $total;
         $datos['asistencia'] = $asistencia;
         $datos['porcentaje'] = [];
-        array_push($datos['porcentaje'], 100*$asistencia/$total);
+        array_push($datos['porcentaje'], 100*$asistencia/$total);*/
 
         return $datos;
     }

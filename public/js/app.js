@@ -30733,7 +30733,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     init: function init() {
-      this.usuarios_filtrados = this.usuarios;
+      this.usuarios_filtrados = Object.assign({}, this.usuarios);
     },
     filtrar: function filtrar() {
       var _this = this;
@@ -30757,7 +30757,13 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/usuario', {
         data: params
       }).then(function (response) {
-        _this2.usuarios.splice(_this2.usuario.index, 1);
+        var index = _this2.usuarios.findIndex(function (usuario) {
+          return usuario.usuario_id == _this2.usuario.usuario_id;
+        });
+
+        _this2.usuarios.splice(index, 1);
+
+        _this2.usuarios_filtrados.splice(_this2.usuario.index, 1);
 
         $('#modal-borrar-usuario').modal('hide');
       });
@@ -30819,8 +30825,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['titulo', 'valor', 'icono'],
+  props: ['titulo', 'valor', 'icono', 'ruta'],
   data: function data() {
     return {
       clase_icono: ''
@@ -30828,7 +30835,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     icono_a_clase: function icono_a_clase() {
-      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";else if (this.icono == "fecha") return "fa fa-calendar";
+      if (this.icono == "grupo") return "fas fa-users-cog";else if (this.icono == "archivo") return "fas fa-file-alt";else if (this.icono == "usuarios") return "fas fa-users";else if (this.icono == "subir") return "fas fa-upload";else if (this.icono == "materia") return "fas fa-pencil-alt";else if (this.icono == "horario") return "fas fa-clock";else if (this.icono == "cursado") return "fas fa-history";else if (this.icono == "aula") return "fa fa-university";else if (this.icono == "fecha") return "fa fa-calendar";else if (this.icono == "laboratorio") return "fas fa-vial";else if (this.icono == "afuera") return "fas fa-share";
     }
   }
 });
@@ -30844,6 +30851,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -31316,6 +31324,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -31343,6 +31352,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    initMensajes: function initMensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+    },
     init: function init() {
       var _this = this;
 
@@ -31450,6 +31464,22 @@ __webpack_require__.r(__webpack_exports__);
         'grupo_docente_id': this.grupo_docente.id
       };
       this.axios.post('/administrador/clase', params).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this7.mensajes = datos.exito;
+          _this7.tipo_mensaje = 'success';
+          _this7.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this7.mensajes = datos.advertencia;
+          _this7.tipo_mensaje = 'warning';
+          _this7.key_mensajes++;
+        } else if (datos.error) {
+          _this7.mensajes = datos.error;
+          _this7.tipo_mensaje = 'danger';
+          _this7.key_mensajes++;
+        }
+
         _this7.obtenerHorarios();
 
         $('#modal-agregar-clase').modal('hide');
@@ -31470,6 +31500,22 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/clase', {
         data: params
       }).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this8.mensajes = datos.exito;
+          _this8.tipo_mensaje = 'success';
+          _this8.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this8.mensajes = datos.advertencia;
+          _this8.tipo_mensaje = 'warning';
+          _this8.key_mensajes++;
+        } else if (datos.error) {
+          _this8.mensajes = datos.error;
+          _this8.tipo_mensaje = 'danger';
+          _this8.key_mensajes++;
+        }
+
         _this8.obtenerHorarios();
 
         $('#modal-editar-clase').modal('hide');
@@ -31497,6 +31543,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -31701,6 +31748,22 @@ __webpack_require__.r(__webpack_exports__);
         'grupo_docente_id': this.grupo_docente_id
       };
       this.axios.post('/administrador/clase', params).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this5.mensajes = datos.advertencia;
+          _this5.tipo_mensaje = 'warning';
+          _this5.key_mensajes++;
+        } else if (datos.error) {
+          _this5.mensajes = datos.error;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
+        }
+
         _this5.obtenerHorarios();
 
         $('#modal-agregar-clase').modal('hide');
@@ -31721,6 +31784,22 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/clase', {
         data: params
       }).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this6.mensajes = datos.exito;
+          _this6.tipo_mensaje = 'success';
+          _this6.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this6.mensajes = datos.advertencia;
+          _this6.tipo_mensaje = 'warning';
+          _this6.key_mensajes++;
+        } else if (datos.error) {
+          _this6.mensajes = datos.error;
+          _this6.tipo_mensaje = 'danger';
+          _this6.key_mensajes++;
+        }
+
         _this6.obtenerHorarios();
 
         $('#modal-editar-clase').modal('hide');
@@ -32158,6 +32237,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -32320,6 +32400,11 @@ __webpack_require__.r(__webpack_exports__);
 
           _this5.gestiones.splice(_this5.gestion.index, 1);
 
+          $('#modal-borrar-gestion').modal('hide');
+        } else if (datos.error) {
+          _this5.mensajes = datos.error;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
           $('#modal-borrar-gestion').modal('hide');
         }
       });
@@ -32592,6 +32677,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -32620,12 +32706,18 @@ __webpack_require__.r(__webpack_exports__);
       docente: {
         id: '',
         nombre: '',
-        apellido: ''
+        apellido: '',
+        borrable: true
       },
       docentes_posibles: []
     };
   },
   methods: {
+    initMensajes: function initMensajes() {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+    },
     init: function init() {
       var _this = this;
 
@@ -32672,6 +32764,7 @@ __webpack_require__.r(__webpack_exports__);
     mostrarAgregar: function mostrarAgregar() {
       var _this4 = this;
 
+      this.initMensajes();
       this.axios.get('/administrador/docentes/disponibles/' + this.materia.id).then(function (response) {
         _this4.docentes = [];
         _this4.docentes_posibles = response.data;
@@ -32684,11 +32777,28 @@ __webpack_require__.r(__webpack_exports__);
     agregar: function agregar() {
       var _this5 = this;
 
+      this.initMensajes();
       var params = {
         'materia_id': this.materia.id,
         'docentes': this.docentes
       };
       this.axios.post('/administrador/grupodocente', params).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this5.mensajes = datos.advertencia;
+          _this5.tipo_mensaje = 'warning';
+          _this5.key_mensajes++;
+        } else if (datos.error) {
+          _this5.mensajes = datos.error;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
+        }
+
         _this5.cambiarMateria();
 
         $('#modal-agregar-grupodocente').modal('hide');
@@ -32699,6 +32809,7 @@ __webpack_require__.r(__webpack_exports__);
     mostrarEditar: function mostrarEditar(grupo_docente, index) {
       var _this6 = this;
 
+      this.initMensajes();
       this.grupo_docente = grupo_docente;
       this.grupo_docente.index = index;
       this.axios.get('/administrador/grupodocente/docentes/' + grupo_docente.id).then(function (response) {
@@ -32717,6 +32828,22 @@ __webpack_require__.r(__webpack_exports__);
         'docentes': this.docentes
       };
       this.axios.put('/administrador/grupodocente', params).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this7.mensajes = datos.exito;
+          _this7.tipo_mensaje = 'success';
+          _this7.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this7.mensajes = datos.advertencia;
+          _this7.tipo_mensaje = 'warning';
+          _this7.key_mensajes++;
+        } else if (datos.error) {
+          _this7.mensajes = datos.error;
+          _this7.tipo_mensaje = 'danger';
+          _this7.key_mensajes++;
+        }
+
         _this7.cambiarMateria();
 
         $('#modal-editar-grupodocente').modal('hide');
@@ -32738,6 +32865,22 @@ __webpack_require__.r(__webpack_exports__);
       this.axios["delete"]('/administrador/grupodocente', {
         data: params
       }).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this8.mensajes = datos.exito;
+          _this8.tipo_mensaje = 'success';
+          _this8.key_mensajes++;
+        } else if (datos.advertencia) {
+          _this8.mensajes = datos.advertencia;
+          _this8.tipo_mensaje = 'warning';
+          _this8.key_mensajes++;
+        } else if (datos.error) {
+          _this8.mensajes = datos.error;
+          _this8.tipo_mensaje = 'danger';
+          _this8.key_mensajes++;
+        }
+
         _this8.grupos_docentes.splice(_this8.grupo_docente.index, 1);
 
         $('#modal-borrar-grupodocente').modal('hide');
@@ -32751,6 +32894,7 @@ __webpack_require__.r(__webpack_exports__);
         return _this9.docente == docente;
       });
       this.docentes_posibles.splice(index, 1);
+      this.docentes[this.docentes.length - 1].borrable = true;
       if (this.docentes_posibles.length) this.docente = this.docentes_posibles[0];
     },
     borrarDocente: function borrarDocente(index) {
@@ -32787,6 +32931,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -32991,6 +33139,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -33762,7 +33911,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.init();
-    this.$parent.$parent.section = 'Auxiliares de Laboratorio';
+    this.$parent.$parent.section = 'Estudiantes';
   }
 });
 
@@ -34057,16 +34206,25 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     habilitarEditar: function habilitarEditar() {
+      this.key_mensajes = 0;
+      this.mensajes = [];
+      this.tipo_mensaje = '';
       this.usuario_edicion = Object.assign({}, this.usuario);
       this.modo_edicion = true;
     },
     deshabilitarEditar: function deshabilitarEditar() {
+      this.key_mensajes = 0;
+      this.mensajes = [];
+      this.tipo_mensaje = '';
       this.usuario_edicion = Object.assign({}, this.usuario);
       this.modo_edicion = false;
     },
     mostrarRoles: function mostrarRoles() {
       var _this4 = this;
 
+      this.key_mensajes++;
+      this.mensajes = [];
+      this.tipo_mensaje = '';
       this.usuario_edicion.roles = Object.assign([], this.usuario.roles);
       this.axios.get('/administrador/roles/usuario/disponibles/' + this.usuario_id).then(function (response) {
         _this4.roles_disponibles = response.data;
@@ -34359,6 +34517,9 @@ __webpack_require__.r(__webpack_exports__);
     init: function init() {
       var _this = this;
 
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
       this.axios.get('/auxiliarlaboratorio/clase/' + this.sesion_id).then(function (response) {
         var datos = response.data;
         _this.clase = datos;
@@ -34409,6 +34570,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     asistencia: function asistencia(estudiante) {
+      var _this4 = this;
+
       var asistencia_sesion = true;
       if (estudiante.asistencia_sesion) asistencia_sesion = false;
       var params = {
@@ -34417,7 +34580,16 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.axios.put('/auxiliarlaboratorio/sesion/estudiante/asistencia', params).then(function (response) {
         var datos = response.data;
-        estudiante.asistencia_sesion = asistencia_sesion;
+
+        if (datos.exito) {
+          estudiante.asistencia_sesion = asistencia_sesion;
+        } else if (datos.error) {
+          _this4.init();
+
+          _this4.mensajes = datos.error;
+          _this4.tipo_mensaje = 'danger';
+          _this4.key_mensajes++;
+        }
       })["catch"](function (error) {
         console.log(error);
       });
@@ -34440,6 +34612,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -35536,6 +35712,9 @@ __webpack_require__.r(__webpack_exports__);
           _this3.key_mensajes++;
           _this3.asignado = true;
         } else if (datos.error) {
+          _this3.mensajes = datos.error;
+          _this3.tipo_mensaje = 'danger';
+          _this3.key_mensajes++;
           _this3.inscripcion_activa = false;
         }
       })["catch"](function (error) {
@@ -35567,6 +35746,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -35905,12 +36088,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mensajes: [],
       tipo_mensaje: '',
       key_mensajes: 0,
+      mensajes_guias: [],
+      tipo_mensaje_guias: '',
+      key_mensajes_guias: 0,
       materias: [],
       materia: {
         'id': '',
@@ -35934,7 +36126,7 @@ __webpack_require__.r(__webpack_exports__);
         addRemoveLinks: true,
         uploadMultiple: false,
         acceptedFiles: "",
-        dictDefaultMessage: "Sube el archivo acá",
+        dictDefaultMessage: "Añade el archivo acá",
         dictInvalidFileType: "No puedes subir archivos de ese tipo",
         dictRemoveFile: "Retirar",
         maxFilesize: 5,
@@ -35957,7 +36149,7 @@ __webpack_require__.r(__webpack_exports__);
         addRemoveLinks: true,
         uploadMultiple: false,
         acceptedFiles: "",
-        dictDefaultMessage: "Sube el archivo acá",
+        dictDefaultMessage: "Añade el archivo acá",
         dictInvalidFileType: "No puedes subir archivos de ese tipo",
         dictRemoveFile: "Retirar",
         maxFilesize: 5,
@@ -36002,12 +36194,18 @@ __webpack_require__.r(__webpack_exports__);
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
+      this.mensajes_guias = [];
+      this.tipo_mensaje_guias = '';
+      this.key_mensajes_guias = 0;
       $('#modal-agregar-sesion').modal('show');
     },
     confirmarSubida: function confirmarSubida() {
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
+      this.mensajes_guias = [];
+      this.tipo_mensaje_guias = '';
+      this.key_mensajes_guias = 0;
       this.$refs.subirGuiaPractica.processQueue();
     },
     enviarDatosExtraAgregar: function enviarDatosExtraAgregar(file, xhr, formData) {
@@ -36022,9 +36220,9 @@ __webpack_require__.r(__webpack_exports__);
       $('#modal-agregar-sesion').modal('hide');
     },
     subidaErrorAgregar: function subidaErrorAgregar(file, response) {
-      this.mensajes = response.error;
-      this.tipo_mensaje = 'danger';
-      this.key_mensajes++;
+      this.mensajes_guias = response.error;
+      this.tipo_mensaje_guias = 'danger';
+      this.key_mensajes_guias++;
       this.$refs.subirGuiaPractica.removeAllFiles();
     },
     mostrarBorrar: function mostrarBorrar(sesion) {
@@ -36068,17 +36266,16 @@ __webpack_require__.r(__webpack_exports__);
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
+      this.mensajes_guias = [];
+      this.tipo_mensaje_guias = '';
+      this.key_mensajes_guias = 0;
       this.sesion = sesion;
-      var file = {
-        size: 5500000,
-        name: this.sesion.archivo,
-        type: "zip"
-      };
-      var url = "";
-      this.$refs.editarGuiaPractica.manuallyAddFile(file, url);
       $('#modal-editar-sesion').modal('show');
     },
     confirmarEdicion: function confirmarEdicion() {
+      this.mensajes_guias = [];
+      this.tipo_mensaje_guias = '';
+      this.key_mensajes_guias = 0;
       this.mensajes = [];
       this.tipo_mensaje = '';
       this.key_mensajes = 0;
@@ -36097,9 +36294,9 @@ __webpack_require__.r(__webpack_exports__);
       $('#modal-editar-sesion').modal('hide');
     },
     subidaErrorEditar: function subidaErrorEditar(file, response) {
-      this.mensajes = response.error;
-      this.tipo_mensaje = 'danger';
-      this.key_mensajes++;
+      this.mensajes_guias = response.error;
+      this.tipo_mensaje_guias = 'danger';
+      this.key_mensajes_guias++;
       this.$refs.editarGuiaPractica.removeAllFiles();
     }
   },
@@ -36555,6 +36752,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -36732,6 +36933,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['estudiante_clase_id'],
   data: function data() {
@@ -36828,6 +37033,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37312,6 +37524,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37320,7 +37582,11 @@ __webpack_require__.r(__webpack_exports__);
       key_mensajes: 0,
       materias: [],
       inscripcion_activa: false,
-      materia: {}
+      materia: {},
+      docente: {},
+      docentes: [],
+      clase: {},
+      clases: []
     };
   },
   methods: {
@@ -37343,7 +37609,7 @@ __webpack_require__.r(__webpack_exports__);
       this.materia.index = index;
       $('#modal-retiro-incripcion').modal('show');
     },
-    retirarMateria: function retirarMateria(index) {
+    retirarMateria: function retirarMateria() {
       var _this2 = this;
 
       var params = {
@@ -37359,7 +37625,7 @@ __webpack_require__.r(__webpack_exports__);
           _this2.tipo_mensaje = 'success';
           _this2.key_mensajes++;
 
-          _this2.materias.splice(index, 1);
+          _this2.materias.splice(_this2.materia.index, 1);
 
           $('#modal-retiro-incripcion').modal('hide');
         } else if (datos.error) {
@@ -37368,6 +37634,87 @@ __webpack_require__.r(__webpack_exports__);
           _this2.tipo_mensaje = 'danger';
           $('#modal-retiro-incripcion').modal('hide');
         }
+      });
+    },
+    mostrarEditar: function mostrarEditar(materia, index) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.materia = materia;
+      this.materia.index = index;
+      this.docentesDisponibles();
+      $('#modal-editar-incripcion').modal('show');
+    },
+    docentesDisponibles: function docentesDisponibles() {
+      var _this3 = this;
+
+      this.axios.get('/estudiante/materia/' + this.materia.materia_id + '/docentes').then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this3.docentes = datos.exito;
+
+          if (_this3.docentes.length) {
+            var index = _this3.docentes.findIndex(function (docente) {
+              return docente.id == _this3.materia.grupo_a_docente_id;
+            });
+
+            if (index >= 0) _this3.docente = _this3.docentes[index];else _this3.docente = _this3.docentes[0];
+
+            _this3.clasesDisponibles();
+          }
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    clasesDisponibles: function clasesDisponibles() {
+      var _this4 = this;
+
+      this.axios.get('/estudiante/materia/' + this.docente.id + '/clases').then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this4.clases = datos.exito;
+
+          if (_this4.clases.length) {
+            var index = _this4.clases.findIndex(function (clase) {
+              return clase.id == _this4.materia.clase_id;
+            });
+
+            if (index >= 0) _this4.clase = _this4.clases[index];else _this4.clase = _this4.clases[0];
+          } else _this4.clase = {};
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    editarMateria: function editarMateria() {
+      var _this5 = this;
+
+      var params = {
+        'estudiante_clase_id': this.materia.id,
+        'grupo_a_docente_id': this.docente.id,
+        'clase_id': this.clase.id
+      };
+      this.axios.put('/estudiante/materia', params).then(function (response) {
+        var datos = response.data;
+
+        if (datos.exito) {
+          _this5.mensajes = datos.exito;
+          _this5.tipo_mensaje = 'success';
+          _this5.key_mensajes++;
+        } else if (datos.error) {
+          _this5.mensajes = datos.error;
+          _this5.tipo_mensaje = 'danger';
+          _this5.key_mensajes++;
+        }
+
+        _this5.init();
+
+        $('#modal-editar-incripcion').modal('hide');
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   },
@@ -37529,6 +37876,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37538,20 +37892,20 @@ __webpack_require__.r(__webpack_exports__);
       datos: {
         numero_materias: 0,
         fecha: '',
-        anho: '',
-        periodo: '',
-        portafolio: 0
+        cantidad_envios: 0,
+        en_laboratorio: 0,
+        fuera_laboratorio: 0
       },
       tabla_clases: [],
+      asistencia: {
+        en_laboratorio: 0,
+        fuera_laboratorio: 0,
+        total: 0
+      },
       options: {
         labels: ['Asistencia']
       },
-      series: [0],
-      asistencia: {
-        total: 0,
-        asistencia: 0,
-        porcentaje: []
-      },
+      series: [],
       hours: '',
       minutes: '',
       seconds: '',
@@ -37579,7 +37933,7 @@ __webpack_require__.r(__webpack_exports__);
     getTablaClases: function getTablaClases() {
       var _this2 = this;
 
-      this.axios.get('/estudiante/estadisticas/tablaClases').then(function (response) {
+      this.axios.get('/estudiante/estadisticas/tabla_clases').then(function (response) {
         _this2.tabla_clases = response.data;
       })["catch"](function (error) {
         console.log(error);
@@ -37589,8 +37943,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.axios.get('/estudiante/estadisticas/asistencia').then(function (response) {
-        _this3.asistencia = response.data;
-        _this3.series = _this3.asistencia.porcentaje;
+        var datos = response.data;
+        _this3.asistencia = datos;
+        _this3.series = [100 * datos.asistencia / datos.total];
       })["catch"](function (error) {
         console.log(error);
       });
@@ -37796,7 +38151,6 @@ __webpack_require__.r(__webpack_exports__);
 
         if (datos.exito) {
           _this.materias = datos.exito;
-          console.log(_this.materias);
           if (_this.materias.length) _this.materia = _this.materias[0];
         } else {
           _this.inscripcion_activa = false;
@@ -38122,6 +38476,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38140,6 +38520,10 @@ __webpack_require__.r(__webpack_exports__);
         archivos: []
       },
       practicas: [],
+      archivo: {
+        id: '',
+        archivo: ''
+      },
       dropzoneOptions: {
         url: '/estudiante/practica',
         headers: {
@@ -38219,12 +38603,19 @@ __webpack_require__.r(__webpack_exports__);
       this.key_mensajes++;
       this.$refs.subirPracticaEstudiante.removeAllFiles();
     },
-    borrarArchivo: function borrarArchivo(index) {
+    mostrarBorrar: function mostrarBorrar(archivo, index) {
+      this.mensajes = [];
+      this.tipo_mensaje = '';
+      this.key_mensajes = 0;
+      this.archivo = archivo;
+      this.archivo.index = index;
+      $('#modal-borrar-envio-practica').modal('show');
+    },
+    confirmarBorrar: function confirmarBorrar() {
       var _this3 = this;
 
-      var envio_practica = this.sesion.archivos[index];
       var params = {
-        'envio_practica_id': envio_practica.id
+        'envio_practica_id': this.archivo.id
       };
       this.axios["delete"]('/estudiante/practica', {
         data: params
@@ -38232,15 +38623,19 @@ __webpack_require__.r(__webpack_exports__);
         var datos = response.data;
 
         if (datos.exito) {
-          _this3.sesion.archivos.splice(index, 1);
+          _this3.sesion.archivos.splice(_this3.archivo.index, 1);
 
           _this3.mensajes = datos.exito;
           _this3.tipo_mensaje = 'success';
           _this3.key_mensajes++;
+          $('#modal-borrar-envio-practica').modal('hide');
         } else if (datos.error) {
+          _this3.sesion.archivos.splice(_this3.archivo.index, 1);
+
           _this3.mensajes = datos.error;
           _this3.tipo_mensaje = 'danger';
           _this3.key_mensajes++;
+          $('#modal-borrar-envio-practica').modal('hide');
         }
       });
     },
@@ -49204,35 +49599,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-3 grid-margin stretch-card" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("p", { staticClass: "card-title text-md-center text-xl-left" }, [
-          _vm._v(_vm._s(_vm.titulo))
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
-          },
-          [
-            _c(
-              "h3",
-              { staticClass: "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0" },
-              [_vm._v(_vm._s(_vm.valor))]
-            ),
-            _vm._v(" "),
-            _c("i", {
-              class:
-                _vm.icono_a_clase() + " icon-md text-muted mb-0 mb-md-3 mb-xl-0"
-            })
-          ]
-        )
+  return _c(
+    "router-link",
+    {
+      staticClass: "col-md-3 grid-margin stretch-card",
+      attrs: { to: { name: _vm.ruta } }
+    },
+    [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("p", { staticClass: "card-title text-md-center text-xl-left" }, [
+            _vm._v(_vm._s(_vm.titulo))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center"
+            },
+            [
+              _c(
+                "h3",
+                {
+                  staticClass:
+                    "mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0 color text-dark"
+                },
+                [_vm._v(_vm._s(_vm.valor))]
+              ),
+              _vm._v(" "),
+              _c("i", {
+                class:
+                  _vm.icono_a_clase() +
+                  " icon-md text-muted mb-0 mb-md-3 mb-xl-0"
+              })
+            ]
+          )
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49304,14 +49710,16 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("i", {
-                        staticClass: "fas fa-trash-alt clickleable",
-                        on: {
-                          click: function($event) {
-                            return _vm.mostrarBorrar(aula, index)
-                          }
-                        }
-                      })
+                      aula.borrable
+                        ? _c("i", {
+                            staticClass: "fas fa-trash-alt clickleable",
+                            on: {
+                              click: function($event) {
+                                return _vm.mostrarBorrar(aula, index)
+                              }
+                            }
+                          })
+                        : _vm._e()
                     ])
                   ])
                 }),
@@ -49765,493 +50173,476 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      }),
-      _vm._v(" "),
-      _vm.gestiones.length > 0
-        ? _c(
-            "div",
-            [
-              _c("center", [
-                _c("div", { staticClass: "form-group form-group col-md-6" }, [
-                  _c("label", [_vm._v("Selecciona una Gestión")]),
+  return _c("div", [
+    _vm.gestiones.length > 0
+      ? _c(
+          "div",
+          [
+            _c("center", [
+              _c("div", { staticClass: "form-group form-group col-md-6" }, [
+                _c("label", [_vm._v("Selecciona una Gestión")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.gestion,
+                        expression: "gestion"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.gestion = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.cambiarGestion()
+                        }
+                      ]
+                    }
+                  },
+                  _vm._l(_vm.gestiones, function(gestion, index) {
+                    return _c("option", { domProps: { value: gestion } }, [
+                      _vm._v(
+                        "\n                        Gestion: " +
+                          _vm._s(gestion.anho_gestion) +
+                          " - " +
+                          _vm._s(gestion.periodo) +
+                          "\n                    "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("Alertas", {
+              key: _vm.key_mensajes,
+              attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "table-responsive" }, [
+              _c(
+                "table",
+                { key: _vm.key_clases, staticClass: "table table-hover" },
+                [
+                  _vm._m(0),
                   _vm._v(" "),
                   _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.gestion,
-                          expression: "gestion"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.gestion = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                          function($event) {
-                            return _vm.cambiarGestion()
-                          }
-                        ]
-                      }
-                    },
-                    _vm._l(_vm.gestiones, function(gestion, index) {
-                      return _c("option", { domProps: { value: gestion } }, [
-                        _vm._v(
-                          "\n                        Gestion: " +
-                            _vm._s(gestion.anho_gestion) +
-                            " - " +
-                            _vm._s(gestion.periodo) +
-                            "\n                    "
-                        )
-                      ])
+                    "tbody",
+                    _vm._l(_vm.horarios, function(horario, hora) {
+                      return _c(
+                        "tr",
+                        [
+                          _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
+                          _vm._v(" "),
+                          _vm._l(horario, function(clase, dia) {
+                            return _c(
+                              "td",
+                              [
+                                _vm._l(clase, function(aula) {
+                                  return _c("div", [
+                                    _c(
+                                      "div",
+                                      {
+                                        class:
+                                          "clickleable custom-td " +
+                                          _vm.colorGrupoDocente(
+                                            aula.grupo_docente_id
+                                          ),
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.verMas(aula)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                      " +
+                                            _vm._s(aula.nombre_aula)
+                                        ),
+                                        _c("br"),
+                                        _vm._v(
+                                          "\n                                      " +
+                                            _vm._s(aula.nombre_materia)
+                                        ),
+                                        _c("br"),
+                                        _vm._v(
+                                          "\n                                      (" +
+                                            _vm._s(aula.detalle_grupo_docente) +
+                                            ")\n                                 "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                }),
+                                _vm._v(" "),
+                                clase.length < _vm.cantidad_aulas
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.mostrarAgregar(hora, dia)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fas fa-plus clickleable"
+                                        })
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              2
+                            )
+                          })
+                        ],
+                        2
+                      )
                     }),
                     0
                   )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "table-responsive" }, [
-                _c(
-                  "table",
-                  { key: _vm.key_clases, staticClass: "table table-hover" },
-                  [
-                    _vm._m(0),
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-agregar-clase" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(1),
                     _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.horarios, function(horario, hora) {
-                        return _c(
-                          "tr",
-                          [
-                            _c("td", [_vm._v(_vm._s(_vm.horas[hora]))]),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _vm.aulas_disponibles.length > 0
+                        ? _c("div", [
+                            _c("label", [_vm._v("Aulas disponibles")]),
                             _vm._v(" "),
-                            _vm._l(horario, function(clase, dia) {
-                              return _c(
-                                "td",
-                                [
-                                  _vm._l(clase, function(aula) {
-                                    return _c("div", [
-                                      _c(
-                                        "div",
-                                        {
-                                          class:
-                                            "clickleable custom-td " +
-                                            _vm.colorGrupoDocente(
-                                              aula.grupo_docente_id
-                                            ),
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.verMas(aula)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                      " +
-                                              _vm._s(aula.nombre_aula)
-                                          ),
-                                          _c("br"),
-                                          _vm._v(
-                                            "\n                                      " +
-                                              _vm._s(aula.nombre_materia)
-                                          ),
-                                          _c("br"),
-                                          _vm._v(
-                                            "\n                                      (" +
-                                              _vm._s(
-                                                aula.detalle_grupo_docente
-                                              ) +
-                                              ")\n                                 "
-                                          )
-                                        ]
-                                      )
-                                    ])
-                                  }),
-                                  _vm._v(" "),
-                                  clase.length < _vm.cantidad_aulas
-                                    ? _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.mostrarAgregar(
-                                                hora,
-                                                dia
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass:
-                                              "fas fa-plus clickleable"
-                                          })
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ],
-                                2
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      }),
-                      0
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal fade",
-                  attrs: { id: "modal-agregar-clase" }
-                },
-                [
-                  _c("div", { staticClass: "modal-dialog" }, [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _vm.aulas_disponibles.length > 0
-                          ? _c("div", [
-                              _c("label", [_vm._v("Aulas disponibles")]),
-                              _vm._v(" "),
-                              _c(
-                                "select",
-                                {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.aula,
-                                      expression: "aula"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.aula = $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    }
-                                  }
-                                },
-                                _vm._l(_vm.aulas_disponibles, function(
-                                  aula,
-                                  index
-                                ) {
-                                  return _c(
-                                    "option",
-                                    { domProps: { value: aula } },
-                                    [
-                                      _vm._v(
-                                        "\n                                Aula: " +
-                                          _vm._s(aula.nombre_aula) +
-                                          "\n                            "
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
-                              ),
-                              _vm._v(" "),
-                              _vm.materias.length > 0
-                                ? _c("div", [
-                                    _c("label", [
-                                      _vm._v("Selecciona una Materia")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value: _vm.materia,
-                                            expression: "materia"
-                                          }
-                                        ],
-                                        staticClass: "form-control",
-                                        on: {
-                                          change: [
-                                            function($event) {
-                                              var $$selectedVal = Array.prototype.filter
-                                                .call(
-                                                  $event.target.options,
-                                                  function(o) {
-                                                    return o.selected
-                                                  }
-                                                )
-                                                .map(function(o) {
-                                                  var val =
-                                                    "_value" in o
-                                                      ? o._value
-                                                      : o.value
-                                                  return val
-                                                })
-                                              _vm.materia = $event.target
-                                                .multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            },
-                                            function($event) {
-                                              return _vm.cambiarMateria()
-                                            }
-                                          ]
-                                        }
-                                      },
-                                      _vm._l(_vm.materias, function(
-                                        materia,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "option",
-                                          { domProps: { value: materia } },
-                                          [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(materia.nombre_materia) +
-                                                "\n                                "
-                                            )
-                                          ]
-                                        )
-                                      }),
-                                      0
-                                    ),
-                                    _vm._v(" "),
-                                    _vm.grupos_docentes.length > 0
-                                      ? _c("div", [
-                                          _c("label", [
-                                            _vm._v(
-                                              "Selecciona un Grupo Docente"
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c(
-                                            "select",
-                                            {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value: _vm.grupo_docente,
-                                                  expression: "grupo_docente"
-                                                }
-                                              ],
-                                              staticClass: "form-control",
-                                              on: {
-                                                change: function($event) {
-                                                  var $$selectedVal = Array.prototype.filter
-                                                    .call(
-                                                      $event.target.options,
-                                                      function(o) {
-                                                        return o.selected
-                                                      }
-                                                    )
-                                                    .map(function(o) {
-                                                      var val =
-                                                        "_value" in o
-                                                          ? o._value
-                                                          : o.value
-                                                      return val
-                                                    })
-                                                  _vm.grupo_docente = $event
-                                                    .target.multiple
-                                                    ? $$selectedVal
-                                                    : $$selectedVal[0]
-                                                }
-                                              }
-                                            },
-                                            _vm._l(
-                                              _vm.grupos_docentes,
-                                              function(grupo_docente, index) {
-                                                return _c(
-                                                  "option",
-                                                  {
-                                                    domProps: {
-                                                      value: grupo_docente
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                        " +
-                                                        _vm._s(
-                                                          grupo_docente.detalle_grupo_docente
-                                                        ) +
-                                                        "\n                                    "
-                                                    )
-                                                  ]
-                                                )
-                                              }
-                                            ),
-                                            0
-                                          )
-                                        ])
-                                      : _c("p", [
-                                          _c("br"),
-                                          _vm._v(
-                                            "No se tiene ningún grupo docente disponible"
-                                          )
-                                        ])
-                                  ])
-                                : _c("p", [
-                                    _c("br"),
-                                    _vm._v(
-                                      "No se tiene ninguna materia disponible"
-                                    )
-                                  ])
-                            ])
-                          : _c("p", [
-                              _vm._v(
-                                "No se cuenta con aulas disponibles para este horario"
-                              )
-                            ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-footer" }, [
-                        _vm.grupo_docente.id && _vm.aula.id
-                          ? _c(
-                              "button",
+                            _c(
+                              "select",
                               {
-                                staticClass: "m-3 btn btn-primary pull-left",
-                                attrs: { type: "button" },
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.aula,
+                                    expression: "aula"
+                                  }
+                                ],
+                                staticClass: "form-control",
                                 on: {
-                                  click: function($event) {
-                                    return _vm.agregar()
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.aula = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
                                   }
                                 }
                               },
-                              [
-                                _vm._v(
-                                  "\n                        Añadir\n                    "
-                                )
-                              ]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: { type: "button", "data-dismiss": "modal" }
-                          },
-                          [_vm._v("Cancelar")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal fade",
-                  attrs: { id: "modal-editar-clase" }
-                },
-                [
-                  _c("div", { staticClass: "modal-dialog" }, [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _c("div", [
-                          _c("h5", [
-                            _vm._v(
-                              "Materia: " + _vm._s(_vm.aula.nombre_materia)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", [
-                            _vm._v(
-                              "Grupo Docente: " +
-                                _vm._s(_vm.aula.detalle_grupo_docente)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", [
-                            _vm._v("Aula: " + _vm._s(_vm.aula.nombre_aula))
-                          ]),
-                          _vm._v(" "),
-                          _vm.aula.semana_actual_sesion
-                            ? _c("p", [
-                                _vm._v(
-                                  "Semana: " +
-                                    _vm._s(_vm.aula.semana_actual_sesion)
-                                )
-                              ])
-                            : _c("div", [
-                                _c("p", [_vm._v("Clase sin iniciar")]),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "m-2 btn btn-danger",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.borrar()
-                                      }
-                                    }
-                                  },
+                              _vm._l(_vm.aulas_disponibles, function(
+                                aula,
+                                index
+                              ) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: aula } },
                                   [
                                     _vm._v(
-                                      "\n                                    Eliminar Clase\n                              "
+                                      "\n                                Aula: " +
+                                        _vm._s(aula.nombre_aula) +
+                                        "\n                            "
                                     )
                                   ]
                                 )
-                              ])
-                        ])
-                      ]),
+                              }),
+                              0
+                            ),
+                            _vm._v(" "),
+                            _vm.materias.length > 0
+                              ? _c("div", [
+                                  _c("label", [
+                                    _vm._v("Selecciona una Materia")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.materia,
+                                          expression: "materia"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      on: {
+                                        change: [
+                                          function($event) {
+                                            var $$selectedVal = Array.prototype.filter
+                                              .call(
+                                                $event.target.options,
+                                                function(o) {
+                                                  return o.selected
+                                                }
+                                              )
+                                              .map(function(o) {
+                                                var val =
+                                                  "_value" in o
+                                                    ? o._value
+                                                    : o.value
+                                                return val
+                                              })
+                                            _vm.materia = $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          },
+                                          function($event) {
+                                            return _vm.cambiarMateria()
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    _vm._l(_vm.materias, function(
+                                      materia,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "option",
+                                        { domProps: { value: materia } },
+                                        [
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(materia.nombre_materia) +
+                                              "\n                                "
+                                          )
+                                        ]
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.grupos_docentes.length > 0
+                                    ? _c("div", [
+                                        _c("label", [
+                                          _vm._v("Selecciona un Grupo Docente")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "select",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: _vm.grupo_docente,
+                                                expression: "grupo_docente"
+                                              }
+                                            ],
+                                            staticClass: "form-control",
+                                            on: {
+                                              change: function($event) {
+                                                var $$selectedVal = Array.prototype.filter
+                                                  .call(
+                                                    $event.target.options,
+                                                    function(o) {
+                                                      return o.selected
+                                                    }
+                                                  )
+                                                  .map(function(o) {
+                                                    var val =
+                                                      "_value" in o
+                                                        ? o._value
+                                                        : o.value
+                                                    return val
+                                                  })
+                                                _vm.grupo_docente = $event
+                                                  .target.multiple
+                                                  ? $$selectedVal
+                                                  : $$selectedVal[0]
+                                              }
+                                            }
+                                          },
+                                          _vm._l(_vm.grupos_docentes, function(
+                                            grupo_docente,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "option",
+                                              {
+                                                domProps: {
+                                                  value: grupo_docente
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                        " +
+                                                    _vm._s(
+                                                      grupo_docente.detalle_grupo_docente
+                                                    ) +
+                                                    "\n                                    "
+                                                )
+                                              ]
+                                            )
+                                          }),
+                                          0
+                                        )
+                                      ])
+                                    : _c("p", [
+                                        _c("br"),
+                                        _vm._v(
+                                          "No se tiene ningún grupo docente disponible"
+                                        )
+                                      ])
+                                ])
+                              : _c("p", [
+                                  _c("br"),
+                                  _vm._v(
+                                    "No se tiene ninguna materia disponible"
+                                  )
+                                ])
+                          ])
+                        : _c("p", [
+                            _vm._v(
+                              "No se cuenta con aulas disponibles para este horario"
+                            )
+                          ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _vm.grupo_docente.id && _vm.aula.id
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "m-3 btn btn-primary pull-left",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.agregar()
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        Añadir\n                    "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
-                      _vm._m(3)
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cancelar")]
+                      )
                     ])
                   ])
-                ]
-              )
-            ],
-            1
-          )
-        : _c("p", [_vm._v("No existen gestiones disponibles")])
-    ],
-    1
-  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "modal fade",
+                attrs: { id: "modal-editar-clase" }
+              },
+              [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", [
+                        _c("h5", [
+                          _vm._v("Materia: " + _vm._s(_vm.aula.nombre_materia))
+                        ]),
+                        _vm._v(" "),
+                        _c("h6", [
+                          _vm._v(
+                            "Grupo Docente: " +
+                              _vm._s(_vm.aula.detalle_grupo_docente)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("h6", [
+                          _vm._v("Aula: " + _vm._s(_vm.aula.nombre_aula))
+                        ]),
+                        _vm._v(" "),
+                        _vm.aula.semana_actual_sesion
+                          ? _c("p", [
+                              _vm._v(
+                                "Semana: " +
+                                  _vm._s(_vm.aula.semana_actual_sesion)
+                              )
+                            ])
+                          : _c("div", [
+                              _c("p", [_vm._v("Clase sin iniciar")]),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "m-2 btn btn-danger",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.borrar()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    Eliminar Clase\n                              "
+                                  )
+                                ]
+                              )
+                            ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ])
+                ])
+              ]
+            )
+          ],
+          1
+        )
+      : _c("p", [_vm._v("No existen gestiones disponibles")])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -50355,16 +50746,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("Alertas", {
-        key: _vm.key_mensajes,
-        attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
-      }),
-      _vm._v(" "),
-      _vm.grupo_docente.id
-        ? _c("div", [
+  return _c("div", [
+    _vm.grupo_docente.id
+      ? _c(
+          "div",
+          [
             _c("h4", [
               _vm._v(
                 _vm._s(_vm.grupo_docente.codigo_materia) +
@@ -50386,6 +50772,11 @@ var render = function() {
                   _vm._s(_vm.grupo_docente.periodo)
               )
             ]),
+            _vm._v(" "),
+            _c("Alertas", {
+              key: _vm.key_mensajes,
+              attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+            }),
             _vm._v(" "),
             _c("div", { staticClass: "table-responsive" }, [
               _c(
@@ -50638,11 +51029,11 @@ var render = function() {
                 ])
               ]
             )
-          ])
-        : _c("p", [_vm._v("No existe el grupo docente")])
-    ],
-    1
-  )
+          ],
+          1
+        )
+      : _c("p", [_vm._v("No existe el grupo docente")])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -51096,14 +51487,16 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("i", {
-                        staticClass: "fas fa-trash-alt clickleable",
-                        on: {
-                          click: function($event) {
-                            return _vm.mostrarBorrar(gestion, index)
-                          }
-                        }
-                      })
+                      gestion.borrable
+                        ? _c("i", {
+                            staticClass: "fas fa-trash-alt clickleable",
+                            on: {
+                              click: function($event) {
+                                return _vm.mostrarBorrar(gestion, index)
+                              }
+                            }
+                          })
+                        : _vm._e()
                     ])
                   ])
                 }),
@@ -51758,6 +52151,11 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
+                    _c("Alertas", {
+                      key: _vm.key_mensajes,
+                      attrs: { mensajes: _vm.mensajes, tipo: _vm.tipo_mensaje }
+                    }),
+                    _vm._v(" "),
                     _vm.grupos_docentes.length > 0
                       ? _c("div", [
                           _c("div", { staticClass: "table-responsive" }, [
@@ -51832,18 +52230,20 @@ var render = function() {
                                         }
                                       }),
                                       _vm._v(" "),
-                                      _c("i", {
-                                        staticClass:
-                                          "fas fa-trash-alt clickleable",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.mostrarBorrar(
-                                              grupo_docente,
-                                              index
-                                            )
-                                          }
-                                        }
-                                      })
+                                      grupo_docente.borrable
+                                        ? _c("i", {
+                                            staticClass:
+                                              "fas fa-trash-alt clickleable",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.mostrarBorrar(
+                                                  grupo_docente,
+                                                  index
+                                                )
+                                              }
+                                            }
+                                          })
+                                        : _vm._e()
                                     ])
                                   ])
                                 }),
@@ -51867,181 +52267,163 @@ var render = function() {
                           _c("div", { staticClass: "modal-content" }, [
                             _vm._m(1),
                             _vm._v(" "),
-                            _c(
-                              "form",
-                              [
-                                _c("Alertas", {
-                                  key: _vm.key_mensajes,
-                                  attrs: {
-                                    mensajes: _vm.mensajes,
-                                    tipo: _vm.tipo_mensaje
-                                  }
-                                }),
+                            _c("form", [
+                              _c("div", { staticClass: "modal-body" }, [
+                                _c("label", [_vm._v("Docente Añadidos")]),
+                                _c("br"),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "modal-body" }, [
-                                  _c("label", [_vm._v("Docente Añadidos")]),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _vm.docentes.length > 0
-                                    ? _c(
-                                        "div",
-                                        _vm._l(_vm.docentes, function(
+                                _vm.docentes.length > 0
+                                  ? _c(
+                                      "div",
+                                      _vm._l(_vm.docentes, function(
+                                        docente,
+                                        index
+                                      ) {
+                                        return _c("p", [
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(docente.nombre) +
+                                              " " +
+                                              _vm._s(docente.apellido) +
+                                              " \n                                    "
+                                          ),
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-trash-alt clickleable",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.borrarDocente(index)
+                                              }
+                                            }
+                                          })
+                                        ])
+                                      }),
+                                      0
+                                    )
+                                  : _c("p", [
+                                      _vm._v("No has agregado un docente")
+                                    ]),
+                                _vm._v(" "),
+                                _vm.docentes_posibles.length > 0
+                                  ? _c("div", [
+                                      _c("label", [_vm._v("Agregar Docente")]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.docente,
+                                              expression: "docente"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.docente = $event.target
+                                                .multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        _vm._l(_vm.docentes_posibles, function(
                                           docente,
                                           index
                                         ) {
-                                          return _c("p", [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(docente.nombre) +
-                                                " " +
-                                                _vm._s(docente.apellido) +
-                                                " \n                                    "
-                                            ),
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-trash-alt clickleable",
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.borrarDocente(
-                                                    index
-                                                  )
-                                                }
-                                              }
-                                            })
-                                          ])
+                                          return _c(
+                                            "option",
+                                            { domProps: { value: docente } },
+                                            [
+                                              _vm._v(
+                                                "\n                                        " +
+                                                  _vm._s(docente.nombre) +
+                                                  " " +
+                                                  _vm._s(docente.apellido) +
+                                                  " \n                                    "
+                                              )
+                                            ]
+                                          )
                                         }),
                                         0
-                                      )
-                                    : _c("p", [
-                                        _vm._v("No has agregado un docente")
-                                      ]),
-                                  _vm._v(" "),
-                                  _vm.docentes_posibles.length > 0
-                                    ? _c("div", [
-                                        _c("label", [
-                                          _vm._v("Agregar Docente")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "select",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.docente,
-                                                expression: "docente"
-                                              }
-                                            ],
-                                            staticClass: "form-control",
-                                            on: {
-                                              change: function($event) {
-                                                var $$selectedVal = Array.prototype.filter
-                                                  .call(
-                                                    $event.target.options,
-                                                    function(o) {
-                                                      return o.selected
-                                                    }
-                                                  )
-                                                  .map(function(o) {
-                                                    var val =
-                                                      "_value" in o
-                                                        ? o._value
-                                                        : o.value
-                                                    return val
-                                                  })
-                                                _vm.docente = $event.target
-                                                  .multiple
-                                                  ? $$selectedVal
-                                                  : $$selectedVal[0]
-                                              }
-                                            }
-                                          },
-                                          _vm._l(
-                                            _vm.docentes_posibles,
-                                            function(docente, index) {
-                                              return _c(
-                                                "option",
-                                                {
-                                                  domProps: { value: docente }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                        " +
-                                                      _vm._s(docente.nombre) +
-                                                      " " +
-                                                      _vm._s(docente.apellido) +
-                                                      " \n                                    "
-                                                  )
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "mt-3 btn btn-primary",
-                                            attrs: { type: "button" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.agregarDocente()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                    Agregar\n                                "
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    : _c("p", [
-                                        _vm._v(
-                                          "No hay más docentes disponibles para esta materia"
-                                        )
-                                      ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "modal-footer" }, [
-                                  _vm.docentes.length > 0
-                                    ? _c(
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
                                         "button",
                                         {
-                                          staticClass:
-                                            "m-3 btn btn-primary pull-left",
+                                          staticClass: "mt-3 btn btn-primary",
                                           attrs: { type: "button" },
                                           on: {
                                             click: function($event) {
-                                              return _vm.agregar()
+                                              return _vm.agregarDocente()
                                             }
                                           }
                                         },
                                         [
                                           _vm._v(
-                                            "\n                            Añadir\n                        "
+                                            "\n                                    Agregar\n                                "
                                           )
                                         ]
                                       )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      attrs: {
-                                        type: "button",
-                                        "data-dismiss": "modal"
-                                      }
-                                    },
-                                    [_vm._v("Cancelar")]
-                                  )
-                                ])
-                              ],
-                              1
-                            )
+                                    ])
+                                  : _c("p", [
+                                      _vm._v(
+                                        "No hay más docentes disponibles para esta materia"
+                                      )
+                                    ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-footer" }, [
+                                _vm.docentes.length > 0
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "m-3 btn btn-primary pull-left",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.agregar()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            Añadir\n                        "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    }
+                                  },
+                                  [_vm._v("Cancelar")]
+                                )
+                              ])
+                            ])
                           ])
                         ])
                       ]
@@ -52058,181 +52440,167 @@ var render = function() {
                           _c("div", { staticClass: "modal-content" }, [
                             _vm._m(2),
                             _vm._v(" "),
-                            _c(
-                              "form",
-                              [
-                                _c("Alertas", {
-                                  key: _vm.key_mensajes,
-                                  attrs: {
-                                    mensajes: _vm.mensajes,
-                                    tipo: _vm.tipo_mensaje
-                                  }
-                                }),
+                            _c("form", [
+                              _c("div", { staticClass: "modal-body" }, [
+                                _c("label", [_vm._v("Docente Añadidos")]),
+                                _c("br"),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "modal-body" }, [
-                                  _c("label", [_vm._v("Docente Añadidos")]),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _vm.docentes.length > 0
-                                    ? _c(
-                                        "div",
-                                        _vm._l(_vm.docentes, function(
+                                _vm.docentes.length > 0
+                                  ? _c(
+                                      "div",
+                                      _vm._l(_vm.docentes, function(
+                                        docente,
+                                        index
+                                      ) {
+                                        return _c("p", [
+                                          _vm._v(
+                                            "\n                                    " +
+                                              _vm._s(docente.nombre) +
+                                              " " +
+                                              _vm._s(docente.apellido) +
+                                              " \n                                    "
+                                          ),
+                                          docente.borrable
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fas fa-trash-alt clickleable",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.borrarDocente(
+                                                      index
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            : _vm._e()
+                                        ])
+                                      }),
+                                      0
+                                    )
+                                  : _c("p", [
+                                      _vm._v("No has agregado un docente")
+                                    ]),
+                                _vm._v(" "),
+                                _vm.docentes_posibles.length > 0
+                                  ? _c("div", [
+                                      _c("label", [_vm._v("Agregar Docente")]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "select",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value: _vm.docente,
+                                              expression: "docente"
+                                            }
+                                          ],
+                                          staticClass: "form-control",
+                                          on: {
+                                            change: function($event) {
+                                              var $$selectedVal = Array.prototype.filter
+                                                .call(
+                                                  $event.target.options,
+                                                  function(o) {
+                                                    return o.selected
+                                                  }
+                                                )
+                                                .map(function(o) {
+                                                  var val =
+                                                    "_value" in o
+                                                      ? o._value
+                                                      : o.value
+                                                  return val
+                                                })
+                                              _vm.docente = $event.target
+                                                .multiple
+                                                ? $$selectedVal
+                                                : $$selectedVal[0]
+                                            }
+                                          }
+                                        },
+                                        _vm._l(_vm.docentes_posibles, function(
                                           docente,
                                           index
                                         ) {
-                                          return _c("p", [
-                                            _vm._v(
-                                              "\n                                    " +
-                                                _vm._s(docente.nombre) +
-                                                " " +
-                                                _vm._s(docente.apellido) +
-                                                " \n                                    "
-                                            ),
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-trash-alt clickleable",
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.borrarDocente(
-                                                    index
-                                                  )
-                                                }
-                                              }
-                                            })
-                                          ])
+                                          return _c(
+                                            "option",
+                                            { domProps: { value: docente } },
+                                            [
+                                              _vm._v(
+                                                "\n                                        " +
+                                                  _vm._s(docente.nombre) +
+                                                  " " +
+                                                  _vm._s(docente.apellido) +
+                                                  " \n                                    "
+                                              )
+                                            ]
+                                          )
                                         }),
                                         0
-                                      )
-                                    : _c("p", [
-                                        _vm._v("No has agregado un docente")
-                                      ]),
-                                  _vm._v(" "),
-                                  _vm.docentes_posibles.length > 0
-                                    ? _c("div", [
-                                        _c("label", [
-                                          _vm._v("Agregar Docente")
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "select",
-                                          {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value: _vm.docente,
-                                                expression: "docente"
-                                              }
-                                            ],
-                                            staticClass: "form-control",
-                                            on: {
-                                              change: function($event) {
-                                                var $$selectedVal = Array.prototype.filter
-                                                  .call(
-                                                    $event.target.options,
-                                                    function(o) {
-                                                      return o.selected
-                                                    }
-                                                  )
-                                                  .map(function(o) {
-                                                    var val =
-                                                      "_value" in o
-                                                        ? o._value
-                                                        : o.value
-                                                    return val
-                                                  })
-                                                _vm.docente = $event.target
-                                                  .multiple
-                                                  ? $$selectedVal
-                                                  : $$selectedVal[0]
-                                              }
-                                            }
-                                          },
-                                          _vm._l(
-                                            _vm.docentes_posibles,
-                                            function(docente, index) {
-                                              return _c(
-                                                "option",
-                                                {
-                                                  domProps: { value: docente }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                        " +
-                                                      _vm._s(docente.nombre) +
-                                                      " " +
-                                                      _vm._s(docente.apellido) +
-                                                      " \n                                    "
-                                                  )
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "mt-3 btn btn-primary",
-                                            attrs: { type: "button" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.agregarDocente()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                    Agregar\n                                "
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    : _c("p", [
-                                        _vm._v(
-                                          "No hay más docentes disponibles para esta materia"
-                                        )
-                                      ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "modal-footer" }, [
-                                  _vm.docentes.length > 0
-                                    ? _c(
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
                                         "button",
                                         {
-                                          staticClass:
-                                            "m-3 btn btn-primary pull-left",
+                                          staticClass: "mt-3 btn btn-primary",
                                           attrs: { type: "button" },
                                           on: {
                                             click: function($event) {
-                                              return _vm.editar()
+                                              return _vm.agregarDocente()
                                             }
                                           }
                                         },
                                         [
                                           _vm._v(
-                                            "\n                            Editar\n                        "
+                                            "\n                                    Agregar\n                                "
                                           )
                                         ]
                                       )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-danger",
-                                      attrs: {
-                                        type: "button",
-                                        "data-dismiss": "modal"
-                                      }
-                                    },
-                                    [_vm._v("Cancelar")]
-                                  )
-                                ])
-                              ],
-                              1
-                            )
+                                    ])
+                                  : _c("p", [
+                                      _vm._v(
+                                        "No hay más docentes disponibles para esta materia"
+                                      )
+                                    ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-footer" }, [
+                                _vm.docentes.length > 0
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "m-3 btn btn-primary pull-left",
+                                        attrs: { type: "button" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editar()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                            Guardar y Editar\n                        "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger",
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    }
+                                  },
+                                  [_vm._v("Cancelar")]
+                                )
+                              ])
+                            ])
                           ])
                         ])
                       ]
@@ -52427,7 +52795,8 @@ var render = function() {
           attrs: {
             titulo: "Materias",
             valor: _vm.datos.numero_materias,
-            icono: "materia"
+            icono: "materia",
+            ruta: "AdministradorMaterias"
           }
         }),
         _vm._v(" "),
@@ -52435,7 +52804,8 @@ var render = function() {
           attrs: {
             titulo: "Docentes",
             valor: _vm.datos.numero_docentes,
-            icono: "grupo"
+            icono: "grupo",
+            ruta: "AdministradorDocentes"
           }
         }),
         _vm._v(" "),
@@ -52443,7 +52813,8 @@ var render = function() {
           attrs: {
             titulo: "Estudiantes",
             valor: _vm.datos.numero_estudiantes,
-            icono: "usuarios"
+            icono: "usuarios",
+            ruta: "AdministradorEstudiantes"
           }
         }),
         _vm._v(" "),
@@ -52451,7 +52822,8 @@ var render = function() {
           attrs: {
             titulo: "Aulas",
             valor: _vm.datos.numero_aulas,
-            icono: "aula"
+            icono: "aula",
+            ruta: "AdministradorAulas"
           }
         })
       ],
@@ -52749,17 +53121,19 @@ var render = function() {
                               }
                             }),
                             _vm._v(" "),
-                            _c("i", {
-                              staticClass: "fas fa-trash-alt clickleable",
-                              on: {
-                                click: function($event) {
-                                  return _vm.mostrarBorrarMateria(
-                                    materia,
-                                    index
-                                  )
-                                }
-                              }
-                            })
+                            materia.borrable
+                              ? _c("i", {
+                                  staticClass: "fas fa-trash-alt clickleable",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.mostrarBorrarMateria(
+                                        materia,
+                                        index
+                                      )
+                                    }
+                                  }
+                                })
+                              : _vm._e()
                           ])
                         ])
                       }),
@@ -54466,63 +54840,69 @@ var render = function() {
   return _c("div", [
     _vm.horarios.length > 0
       ? _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { key: _vm.key_clases, staticClass: "table" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.clases, function(clase, index) {
-                return _c(
-                  "tr",
-                  [
-                    _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
-                    _vm._v(" "),
-                    _vm._l(clase, function(horario) {
-                      return _c(
-                        "td",
-                        _vm._l(horario, function(materia) {
-                          return _c(
-                            "div",
-                            {
-                              class:
-                                "clickleable custom-td " +
-                                _vm.colorGrupoDocente(materia.grupo_docente_id),
-                              on: {
-                                click: function($event) {
-                                  return _vm.verSesion(materia)
+          _c(
+            "table",
+            { key: _vm.key_clases, staticClass: "table table-hover" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.clases, function(clase, index) {
+                  return _c(
+                    "tr",
+                    [
+                      _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
+                      _vm._v(" "),
+                      _vm._l(clase, function(horario) {
+                        return _c(
+                          "td",
+                          _vm._l(horario, function(materia) {
+                            return _c(
+                              "div",
+                              {
+                                class:
+                                  "clickleable custom-td " +
+                                  _vm.colorGrupoDocente(
+                                    materia.grupo_docente_id
+                                  ),
+                                on: {
+                                  click: function($event) {
+                                    return _vm.verSesion(materia)
+                                  }
                                 }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(materia.nombre_materia)
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\n                            (" +
-                                  _vm._s(materia.detalle_grupo_docente) +
-                                  ")"
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\n                            " +
-                                  _vm._s(materia.nombre_aula)
-                              ),
-                              _c("br")
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    })
-                  ],
-                  2
-                )
-              }),
-              0
-            )
-          ])
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(materia.nombre_materia)
+                                ),
+                                _c("br"),
+                                _vm._v(
+                                  "\n                            (" +
+                                    _vm._s(materia.detalle_grupo_docente) +
+                                    ")"
+                                ),
+                                _c("br"),
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(materia.nombre_aula)
+                                ),
+                                _c("br")
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      })
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
+            ]
+          )
         ])
       : _c("p", [_vm._v("No se tiene ninguna clase disponible")])
   ])
@@ -54756,7 +55136,8 @@ var render = function() {
           attrs: {
             titulo: "Grupos Docentes",
             valor: _vm.grupos_docentes,
-            icono: "grupo"
+            icono: "grupo",
+            ruta: "AuxiliarTerminalListaClases"
           }
         }),
         _vm._v(" "),
@@ -54764,7 +55145,8 @@ var render = function() {
           attrs: {
             titulo: "Estudiantes Inscritos",
             valor: _vm.estudiantes_inscritos,
-            icono: "usuarios"
+            icono: "usuarios",
+            ruta: "AuxiliarTerminalListaEstudiantes"
           }
         }),
         _vm._v(" "),
@@ -54772,7 +55154,8 @@ var render = function() {
           attrs: {
             titulo: "Cantidad de Clases",
             valor: _vm.cantidad_clases,
-            icono: "horario"
+            icono: "horario",
+            ruta: "AuxiliarTerminalListaClases"
           }
         }),
         _vm._v(" "),
@@ -54780,7 +55163,8 @@ var render = function() {
           attrs: {
             titulo: "Sesiones Cursadas",
             valor: _vm.clases_cursadas,
-            icono: "cursado"
+            icono: "cursado",
+            ruta: "AuxiliarTerminalListaPracticas"
           }
         })
       ],
@@ -54993,51 +55377,55 @@ var render = function() {
             _vm._v(" "),
             _vm.horarios.length > 0
               ? _c("div", { staticClass: "table-responsive" }, [
-                  _c("table", { key: _vm.key_clases, staticClass: "table" }, [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.clases, function(clase, index) {
-                        return _c(
-                          "tr",
-                          [
-                            _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
-                            _vm._v(" "),
-                            _vm._l(clase, function(horario) {
-                              return _c(
-                                "td",
-                                _vm._l(horario, function(materia) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "clickleable table-info custom-td",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.verMasClase(materia)
+                  _c(
+                    "table",
+                    { key: _vm.key_clases, staticClass: "table table-hover" },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clases, function(clase, index) {
+                          return _c(
+                            "tr",
+                            [
+                              _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
+                              _vm._v(" "),
+                              _vm._l(clase, function(horario) {
+                                return _c(
+                                  "td",
+                                  _vm._l(horario, function(materia) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "clickleable table-info custom-td",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.verMasClase(materia)
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula) +
-                                          "\n                            "
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      }),
-                      0
-                    )
-                  ])
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(materia.nombre_aula) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
               : _c("p", [_vm._v("No se tiene ninguna clase disponible")]),
             _vm._v(" "),
@@ -55327,51 +55715,55 @@ var render = function() {
             _vm._v(" "),
             _vm.horarios.length > 0
               ? _c("div", { staticClass: "table-responsive" }, [
-                  _c("table", { key: _vm.key_clases, staticClass: "table" }, [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.clases, function(clase, index) {
-                        return _c(
-                          "tr",
-                          [
-                            _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
-                            _vm._v(" "),
-                            _vm._l(clase, function(horario) {
-                              return _c(
-                                "td",
-                                _vm._l(horario, function(materia) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "clickleable table-info custom-td",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.verClase(materia)
+                  _c(
+                    "table",
+                    { key: _vm.key_clases, staticClass: "table table-hover" },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clases, function(clase, index) {
+                          return _c(
+                            "tr",
+                            [
+                              _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
+                              _vm._v(" "),
+                              _vm._l(clase, function(horario) {
+                                return _c(
+                                  "td",
+                                  _vm._l(horario, function(materia) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "clickleable table-info custom-td",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.verClase(materia)
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula) +
-                                          "\n                            "
-                                      )
-                                    ]
-                                  )
-                                }),
-                                0
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      }),
-                      0
-                    )
-                  ])
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(materia.nombre_aula) +
+                                            "\n                            "
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
               : _c("p", [_vm._v("No se tiene ninguna clase disponible")])
           ],
@@ -55940,7 +56332,7 @@ var render = function() {
               _vm._v(" "),
               _vm.practicas.length > 0
                 ? _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table" }, [
+                    _c("table", { staticClass: "table table-hover" }, [
                       _vm._m(0),
                       _vm._v(" "),
                       _c(
@@ -56485,7 +56877,24 @@ var render = function() {
                                 "Total de estudiantes: " +
                                   _vm._s(_vm.estudiantes.length)
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "mb-3 btn btn-primary",
+                                attrs: {
+                                  href:
+                                    "/docente/portafolios/" + _vm.materia.id,
+                                  target: "_blank"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                    Descargar Portafolios\n                "
+                                )
+                              ]
+                            )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "text-left" }, [
@@ -56800,10 +57209,10 @@ var render = function() {
                       { staticClass: "modal-body" },
                       [
                         _c("Alertas", {
-                          key: _vm.key_mensajes,
+                          key: _vm.key_mensajes_guias,
                           attrs: {
-                            mensajes: _vm.mensajes,
-                            tipo: _vm.tipo_mensaje
+                            mensajes: _vm.mensajes_guias,
+                            tipo: _vm.tipo_mensaje_guias
                           }
                         }),
                         _vm._v(" "),
@@ -56855,7 +57264,7 @@ var render = function() {
                           staticClass: "btn btn-danger",
                           attrs: { type: "button", "data-dismiss": "modal" }
                         },
-                        [_vm._v("Cerrar")]
+                        [_vm._v("Cancelar")]
                       )
                     ])
                   ])
@@ -56885,10 +57294,10 @@ var render = function() {
                       { staticClass: "modal-body" },
                       [
                         _c("Alertas", {
-                          key: _vm.key_mensajes,
+                          key: _vm.key_mensajes_guias,
                           attrs: {
-                            mensajes: _vm.mensajes,
-                            tipo: _vm.tipo_mensaje
+                            mensajes: _vm.mensajes_guias,
+                            tipo: _vm.tipo_mensaje_guias
                           }
                         }),
                         _vm._v(" "),
@@ -56930,7 +57339,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        Editar\n                    "
+                            "\n                        Subir y reemplazar\n                    "
                           )
                         ]
                       ),
@@ -56941,7 +57350,7 @@ var render = function() {
                           staticClass: "btn btn-danger",
                           attrs: { type: "button", "data-dismiss": "modal" }
                         },
-                        [_vm._v("Cerrar")]
+                        [_vm._v("Cancelar")]
                       )
                     ])
                   ])
@@ -56999,7 +57408,7 @@ var render = function() {
                           staticClass: "btn btn-danger",
                           attrs: { type: "button", "data-dismiss": "modal" }
                         },
-                        [_vm._v("Cerrar")]
+                        [_vm._v("Cancelar")]
                       )
                     ])
                   ])
@@ -57577,33 +57986,49 @@ var render = function() {
           attrs: {
             titulo: "Grupos Docentes",
             valor: _vm.grupos_docentes,
-            icono: "grupo"
+            icono: "grupo",
+            ruta: "DocenteVerClases"
           }
         }),
         _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: {
-            titulo: "Guías Prácticas",
-            valor: _vm.guias_practicas,
-            icono: "archivo"
-          }
-        }),
+        _c(
+          "tarjeta-reducida",
+          {
+            attrs: {
+              titulo: "Guías Prácticas",
+              valor: _vm.guias_practicas,
+              icono: "archivo",
+              ruta: "DocenteGuiasPracticas"
+            }
+          },
+          [_vm._v(">\n        ")]
+        ),
         _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: {
-            titulo: "Estudiantes Inscritos",
-            valor: _vm.estudiantes_inscritos,
-            icono: "usuarios"
-          }
-        }),
+        _c(
+          "tarjeta-reducida",
+          {
+            attrs: {
+              titulo: "Estudiantes Inscritos",
+              valor: _vm.estudiantes_inscritos,
+              icono: "usuarios",
+              ruta: "DocenteEstudiantesInscritos"
+            }
+          },
+          [_vm._v(">\n        ")]
+        ),
         _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: {
-            titulo: "Envíos de estudiantes",
-            valor: _vm.envios_totales,
-            icono: "subir"
-          }
-        })
+        _c(
+          "tarjeta-reducida",
+          {
+            attrs: {
+              titulo: "Envíos de estudiantes",
+              valor: _vm.envios_totales,
+              icono: "subir",
+              ruta: "DocenteInformesEnvios"
+            }
+          },
+          [_vm._v(">\n        ")]
+        )
       ],
       1
     ),
@@ -57785,6 +58210,18 @@ var render = function() {
                 _vm._s(_vm.estudiante.correo)
             )
           ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "mb-3 btn btn-primary",
+              attrs: {
+                href: "/docente/portafolio/" + _vm.estudiante_clase_id,
+                target: "_blank"
+              }
+            },
+            [_vm._v("\n            Descargar Portafolio\n        ")]
+          ),
           _vm._v(" "),
           _vm.sesiones.length > 0
             ? _c("div", { staticClass: "table-responsive" }, [
@@ -57971,6 +58408,22 @@ var render = function() {
                 )
               ])
             ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "mb-3" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { to: { name: "DocenteAsignarAuxiliar" } }
+                  },
+                  [_vm._v("\n                Asignar Auxiliar\n            ")]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("Alertas", {
               key: _vm.key_mensajes,
@@ -58225,57 +58678,61 @@ var render = function() {
             _vm._v(" "),
             _vm.horarios.length > 0
               ? _c("div", { staticClass: "table-responsive" }, [
-                  _c("table", { key: _vm.key_clases, staticClass: "table" }, [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      _vm._l(_vm.clases, function(clase, index) {
-                        return _c(
-                          "tr",
-                          [
-                            _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
-                            _vm._v(" "),
-                            _vm._l(clase, function(horario) {
-                              return _c(
-                                "td",
-                                _vm._l(horario, function(materia) {
-                                  return _c(
-                                    "div",
-                                    {
-                                      class:
-                                        "clickleable custom-td " +
-                                        _vm.colorGrupoDocente(materia.id),
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.verMasMateria(materia)
+                  _c(
+                    "table",
+                    { key: _vm.key_clases, staticClass: "table table-hover" },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clases, function(clase, index) {
+                          return _c(
+                            "tr",
+                            [
+                              _c("td", [_vm._v(_vm._s(_vm.horas[index]))]),
+                              _vm._v(" "),
+                              _vm._l(clase, function(horario) {
+                                return _c(
+                                  "td",
+                                  _vm._l(horario, function(materia) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        class:
+                                          "clickleable custom-td " +
+                                          _vm.colorGrupoDocente(materia.id),
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.verMasMateria(materia)
+                                          }
                                         }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_materia)
-                                      ),
-                                      _c("br"),
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(materia.nombre_aula)
-                                      ),
-                                      _c("br")
-                                    ]
-                                  )
-                                }),
-                                0
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      }),
-                      0
-                    )
-                  ])
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(materia.nombre_materia)
+                                        ),
+                                        _c("br"),
+                                        _vm._v(
+                                          "\n                                " +
+                                            _vm._s(materia.nombre_aula)
+                                        ),
+                                        _c("br")
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
               : _c("p", [_vm._v("No se tiene ninguna clase disponible")]),
             _vm._v(" "),
@@ -58515,6 +58972,15 @@ var render = function() {
                     _vm.inscripcion_activa
                       ? _c("td", [
                           _c("i", {
+                            staticClass: "fas fa-edit clickleable",
+                            on: {
+                              click: function($event) {
+                                return _vm.mostrarEditar(materia, index)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("i", {
                             staticClass: "fas fa-trash-alt clickleable",
                             on: {
                               click: function($event) {
@@ -58556,12 +59022,10 @@ var render = function() {
                   _vm._m(0),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
-                    _c("p", [_vm._v("¿Estás seguro de retirar la Materia?")]),
+                    _c("h5", [_vm._v("¿Estás seguro de retirar la Materia?")]),
                     _vm._v(" "),
                     _c("p", [
-                      _vm._v(
-                        "Nombre Materia: " + _vm._s(_vm.materia.nombre_materia)
-                      )
+                      _vm._v("Materia: " + _vm._s(_vm.materia.nombre_materia))
                     ]),
                     _vm._v(" "),
                     _c("p", [
@@ -58595,12 +59059,175 @@ var render = function() {
                         attrs: { type: "button" },
                         on: {
                           click: function($event) {
-                            return _vm.retirarMateria(_vm.materia.index)
+                            return _vm.retirarMateria()
                           }
                         }
                       },
-                      [_vm._v("Confirmar")]
+                      [
+                        _vm._v(
+                          "\n                    Confirmar y retirar\n                "
+                        )
+                      ]
                     ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Cancelar")]
+                    )
+                  ])
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.inscripcion_activa
+        ? _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: { id: "modal-editar-incripcion" }
+            },
+            [
+              _c("div", { staticClass: "modal-dialog" }, [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("h5", [
+                      _vm._v("Materia: " + _vm._s(_vm.materia.nombre_materia))
+                    ]),
+                    _vm._v(" "),
+                    _c("label", [_vm._v("Selecciona un Docente")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.docente,
+                            expression: "docente"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.docente = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            function($event) {
+                              return _vm.clasesDisponibles()
+                            }
+                          ]
+                        }
+                      },
+                      _vm._l(_vm.docentes, function(docente) {
+                        return _c("option", { domProps: { value: docente } }, [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(docente.nombre_docente) +
+                              " " +
+                              _vm._s(docente.apellido_docente) +
+                              "\n                    "
+                          )
+                        ])
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _vm.clases.length > 0
+                      ? _c("div", [
+                          _c("label", [_vm._v("Selecciona un Horario")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.clase,
+                                  expression: "clase"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.clase = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                }
+                              }
+                            },
+                            _vm._l(_vm.clases, function(clase) {
+                              return _c(
+                                "option",
+                                { domProps: { value: clase } },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(clase.descripcion) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
+                      : _c("p", [
+                          _c("br"),
+                          _vm._v(
+                            "No se tienen horarios disponibles para este docente."
+                          )
+                        ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _vm.clase.id
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "m-3 btn btn-primary pull-left",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                return _vm.editarMateria()
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    Guardar y editar\n                "
+                            )
+                          ]
+                        )
+                      : _vm._e(),
                     _vm._v(" "),
                     _c(
                       "button",
@@ -58627,6 +59254,29 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Retiro de Materia")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [
+        _vm._v("Editar Materia Inscrita")
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -58751,31 +59401,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("h5", [_vm._v("(Datos de la gestión en curso)")]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },
       [
         _c("tarjeta-reducida", {
-          attrs: { titulo: "Año", valor: _vm.datos.anho, icono: "fecha" }
-        }),
-        _vm._v(" "),
-        _c("tarjeta-reducida", {
-          attrs: { titulo: "Gestion", valor: _vm.datos.periodo, icono: "fecha" }
-        }),
-        _vm._v(" "),
-        _c("tarjeta-reducida", {
           attrs: {
             titulo: "Materias Inscritas",
             valor: _vm.datos.numero_materias,
-            icono: "materia"
+            icono: "materia",
+            ruta: "EstudianteEstadoInscripcion"
           }
         }),
         _vm._v(" "),
         _c("tarjeta-reducida", {
           attrs: {
-            titulo: "Archivos en Portafolio",
-            valor: _vm.datos.portafolio,
-            icono: "archivo"
+            titulo: "Envíos Totales",
+            valor: _vm.datos.cantidad_envios,
+            icono: "archivo",
+            ruta: "EstudiantePortafolio"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "En Laboratorio",
+            valor: _vm.datos.en_laboratorio,
+            icono: "laboratorio",
+            ruta: "EstudiantePortafolio"
+          }
+        }),
+        _vm._v(" "),
+        _c("tarjeta-reducida", {
+          attrs: {
+            titulo: "Fuera de Laboratorio",
+            valor: _vm.datos.fuera_laboratorio,
+            icono: "afuera",
+            ruta: "EstudiantePortafolio"
           }
         })
       ],
@@ -58787,7 +59451,7 @@ var render = function() {
         _c("div", { staticClass: "card position-relative" }, [
           _c("div", { staticClass: "card-body align-items-center" }, [
             _c("p", { staticClass: "card-title" }, [
-              _vm._v("Horario / (" + _vm._s(_vm.datos.fecha) + ")")
+              _vm._v("Horario para hoy (" + _vm._s(_vm.datos.fecha) + ")")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "table-responsive" }, [
@@ -58813,36 +59477,40 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-md-6 grid-margin stretch-card align-self-start" },
-        [
-          _c("div", { staticClass: "card position-relative" }, [
-            _c("div", { staticClass: "card-body align-items-center" }, [
-              _c("p", { staticClass: "card-title" }, [
-                _vm._v("Porcentaje de Asistencia")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "chart-wrap" },
-                [
-                  _c("apexchart", {
-                    attrs: {
-                      id: "chartAsistencia",
-                      width: "100%",
-                      type: "radialBar",
-                      options: _vm.options,
-                      series: _vm.series
-                    }
-                  })
-                ],
-                1
-              )
-            ])
-          ])
-        ]
-      )
+      _vm.asistencia.total
+        ? _c(
+            "div",
+            {
+              staticClass: "col-md-6 grid-margin stretch-card align-self-start"
+            },
+            [
+              _c("div", { staticClass: "card position-relative" }, [
+                _c("div", { staticClass: "card-body align-items-center" }, [
+                  _c("p", { staticClass: "card-title" }, [
+                    _vm._v("Porcentaje de Asistencia")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "chart-wrap" },
+                    [
+                      _c("apexchart", {
+                        attrs: {
+                          id: "chartAsistencia",
+                          width: "100%",
+                          type: "radialBar",
+                          options: _vm.options,
+                          series: _vm.series
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ]
+          )
+        : _vm._e()
     ])
   ])
 }
@@ -58920,7 +59588,7 @@ var render = function() {
                               "div",
                               { staticClass: "form-group form-group col-md-6" },
                               [
-                                _c("label", [_vm._v("Selecciona la Materia")]),
+                                _c("label", [_vm._v("Selecciona una Materia")]),
                                 _vm._v(" "),
                                 _c(
                                   "select",
@@ -59014,7 +59682,7 @@ var render = function() {
                               "div",
                               { staticClass: "form-group form-group col-md-6" },
                               [
-                                _c("label", [_vm._v("Selecciona tu Docente")]),
+                                _c("label", [_vm._v("Selecciona un Docente")]),
                                 _vm._v(" "),
                                 _c(
                                   "select",
@@ -59868,7 +60536,7 @@ var render = function() {
                                   staticClass: "fas fa-trash-alt clickleable",
                                   on: {
                                     click: function($event) {
-                                      return _vm.borrarArchivo(index)
+                                      return _vm.mostrarBorrar(archivo, index)
                                     }
                                   }
                                 })
@@ -59931,7 +60599,62 @@ var render = function() {
                           )
                         ]
                       )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "modal-borrar-envio-practica" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _vm._v(
+                                "\n                        ¿Estás seguro de borrar el archivo " +
+                                  _vm._s(_vm.archivo.archivo) +
+                                  "?\n                      "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.confirmarBorrar()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Borrar\n                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  }
+                                },
+                                [_vm._v("Cerrar")]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
                   ],
                   1
                 )
@@ -59942,7 +60665,29 @@ var render = function() {
       : _c("p", [_vm._v("No tienes materias inscritas")])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Borrar Práctica")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

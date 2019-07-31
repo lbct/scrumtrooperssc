@@ -75,6 +75,10 @@
     
         methods:{
             init(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
                 this.axios
                     .get('/auxiliarlaboratorio/clase/'+this.sesion_id)
                     .then((response)=>{
@@ -143,7 +147,16 @@
                     .put('/auxiliarlaboratorio/sesion/estudiante/asistencia', params)
                     .then((response)=>{
                         var datos = response.data;
-                        estudiante.asistencia_sesion = asistencia_sesion;
+                        if(datos.exito){                            
+                            estudiante.asistencia_sesion = asistencia_sesion;
+                        }
+                        else if(datos.error){
+                            this.init();
+                            
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);

@@ -14,7 +14,7 @@
             </center>
             
             <div v-if="horarios.length > 0" class="table-responsive">
-                <table :key="key_clases" class="table">
+                <table :key="key_clases" class="table table-hover">
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Hora</th>

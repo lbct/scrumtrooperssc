@@ -67,9 +67,9 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'u441280180_dajer'),
-            'username' => env('DB_USERNAME', 'u441280180_vepad'),
-            'password' => env('DB_PASSWORD', 'fexCNdR3L!7+'),
+            'database' => env('DB_DATABASE', 'scrumtroopers_db'),
+            'username' => env('DB_USERNAME', 'scrumtroopers'),
+            'password' => env('DB_PASSWORD', 'uBsn4O%=X5$j->z'),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',

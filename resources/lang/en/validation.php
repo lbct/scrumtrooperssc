@@ -78,8 +78,8 @@ return [
 		'string'  => 'El campo :attribute debe ser menor que :max caracteres.',
 		'array'   => 'El campo :attribute puede tener hasta :max elementos.',
 	],
-	'mimes'                 => 'El campo :attribute debe ser un archivo de tipo: :values.',
-	'mimetypes'             => 'El campo :attribute debe ser un archivo de tipo: :values.',
+	'mimes'                 => 'El campo :attribute debe ser de tipo: :values.',
+	'mimetypes'             => 'El campo :attribute debe ser de tipo: :values.',
 	'min'                   => [
 		'numeric' => 'El campo :attribute debe tener al menos :min.',
 		'file'    => 'El campo :attribute debe tener al menos :min kilobytes.',
@@ -146,7 +146,7 @@ return [
 			'codigo_sis'=>'Codigo SIS',
 			'correo'=>'Email',
 			'nombre'=>'Nombre(s)',
-			'apellido'=>'Apellidos',
+			'apellido'=>'Apellido(s)',
 			'anio'=>'Año',
             'codigo_aula'=>'Código del Aula',
             'nombre_aula'=>'Nombre del Aula',
@@ -156,6 +156,7 @@ return [
             'codigo_materia'=>'Código de la Materia',
             'nombre_materia'=>'Nombre de la Materia',
             'detalle_materia'=>'Detalle de la Materia',
+            'file' => 'del archivo',
 	],
 	
 ];

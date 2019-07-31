@@ -31,6 +31,7 @@
                         class="mb-3 btn btn-primary pull-left">
                     Añadir Grupo Docente
                 </button>
+                <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                 <div v-if="grupos_docentes.length > 0">
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -60,7 +61,8 @@
                                         <i v-on:click="mostrarEditar(grupo_docente, index)"
                                            class="fas fa-edit clickleable">
                                         </i>
-                                        <i v-on:click="mostrarBorrar(grupo_docente, index)" 
+                                        <i v-if="grupo_docente.borrable"
+                                           v-on:click="mostrarBorrar(grupo_docente, index)" 
                                            class="fas fa-trash-alt clickleable">
                                         </i>
                                     </td>
@@ -81,7 +83,6 @@
                         </button>
                       </div>
                         <form>
-                          <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                           <div class="modal-body">
                                 <label>Docente Añadidos</label><br>
                                 <div v-if="docentes.length > 0" >
@@ -134,13 +135,13 @@
                         </button>
                       </div>
                         <form>
-                          <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
                           <div class="modal-body">
                                 <label>Docente Añadidos</label><br>
                                 <div v-if="docentes.length > 0" >
                                     <p v-for="(docente, index) in docentes">
                                         {{docente.nombre}} {{docente.apellido}} 
-                                        <i v-on:click="borrarDocente(index)" 
+                                        <i v-if="docente.borrable"
+                                           v-on:click="borrarDocente(index)" 
                                            class="fas fa-trash-alt clickleable">
                                         </i>
                                     </p>
@@ -168,7 +169,7 @@
                             <button v-if="docentes.length > 0"
                                     v-on:click="editar()" 
                                     type="button" class="m-3 btn btn-primary pull-left">
-                                Editar
+                                Guardar y Editar
                             </button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                           </div>
@@ -214,6 +215,7 @@
                 mensajes: [],
                 tipo_mensaje: '',
                 key_mensajes: 0,
+                
                 gestiones: [],
                 gestion: {id:'', activa:false},
                 materias: [],
@@ -221,12 +223,18 @@
                 grupos_docentes: [],
                 grupo_docente: {id:'',materia_id:'',detalle_grupo_docente:''},
                 docentes: [],
-                docente: {id:'', nombre:'', apellido:''},
+                docente: {id:'', nombre:'', apellido:'', borrable:true},
                 docentes_posibles: [],
             }
         },
     
         methods:{
+            initMensajes(){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+            },
+            
             init(){
                 this.axios
                     .get('/administrador/gestiones')
@@ -275,6 +283,8 @@
             },
             
             mostrarAgregar(){
+                this.initMensajes();
+                
                 this.axios
                     .get('/administrador/docentes/disponibles/'+this.materia.id)
                     .then((response)=>{
@@ -292,6 +302,8 @@
             },
             
             agregar(){
+                this.initMensajes();
+                
                 const params = {
                     'materia_id': this.materia.id,
                     'docentes': this.docentes,
@@ -299,6 +311,24 @@
                 this.axios
                     .post('/administrador/grupodocente', params)
                     .then((response)=>{
+                        var datos = response.data;
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.cambiarMateria();
                         $('#modal-agregar-grupodocente').modal('hide');
                     })
@@ -308,6 +338,8 @@
             },
             
             mostrarEditar(grupo_docente, index){
+                this.initMensajes();
+                
                 this.grupo_docente = grupo_docente;
                 this.grupo_docente.index = index;
                 
@@ -330,6 +362,24 @@
                 this.axios
                     .put('/administrador/grupodocente', params)
                     .then((response)=>{
+                        var datos = response.data;
+                        
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.cambiarMateria();
                         $('#modal-editar-grupodocente').modal('hide');
                     })
@@ -351,6 +401,24 @@
                 this.axios
                     .delete('/administrador/grupodocente', { data: params })
                     .then((response)=>{
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.grupos_docentes.splice(this.grupo_docente.index, 1);
                         $('#modal-borrar-grupodocente').modal('hide');
                     });
@@ -362,6 +430,8 @@
                                     return this.docente == docente;
                             });
                 this.docentes_posibles.splice(index,1);
+                
+                this.docentes[this.docentes.length-1].borrable = true;
                 
                 if(this.docentes_posibles.length)
                     this.docente = this.docentes_posibles[0];

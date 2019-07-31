@@ -36,7 +36,7 @@
               <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                 <center v-if="materias.length > 0">
                   <div class="form-group form-group col-md-6">
-                        <label>Selecciona la Materia</label>
+                        <label>Selecciona una Materia</label>
                         <select v-model="materia" class="form-control" required>
                             <option v-for="materia in materias" :value="materia">
                                 {{materia.nombre_materia}}
@@ -54,7 +54,7 @@
               <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                 <center v-if="docentes.length > 0">
                   <div class="form-group form-group col-md-6">
-                    <label>Selecciona tu Docente</label>
+                    <label>Selecciona un Docente</label>
                     <select v-model="docente" class="form-control" required>
                         <option v-for="docente in docentes" :value="docente">
                             {{docente.nombre_docente}} {{docente.apellido_docente}}
@@ -161,8 +161,6 @@
                         var datos = response.data;                        
                         if(datos.exito){
                             this.materias = datos.exito;
-                            
-                            console.log(this.materias);
                             
                             if(this.materias.length)
                                 this.materia = this.materias[0];

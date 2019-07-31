@@ -34,12 +34,19 @@ class Control extends Base
         $grupo_docente_id     = $request->grupo_docente_id;
         $auxiliar_terminal_id = $request->auxiliar_terminal_id;
         
-        $registro = new GrupoDocenteAuxiliar;
-        $registro->grupo_docente_id = $grupo_docente_id;
-        $registro->auxiliar_id      = $auxiliar_terminal_id;
-        $registro->save();
+        $auxiliar_duplicado = GrupoDocenteAuxiliar::where('grupo_docente_id', $grupo_docente_id)
+                              ->where('auxiliar_id', $auxiliar_terminal_id)
+                              ->first();
         
-        return response()->json(['exito'=>['Auxiliar asignado con éxito']], 200);
+        if(!$auxiliar_duplicado){
+            $registro = new GrupoDocenteAuxiliar;
+            $registro->grupo_docente_id = $grupo_docente_id;
+            $registro->auxiliar_id      = $auxiliar_terminal_id;
+            $registro->save();
+
+            return response()->json(['exito'=>['Auxiliar asignado con éxito.']], 200);
+        }
+        return response()->json(['error'=>['El Auxiliar ya ha sido asignado al mismo grupo.']], 200);
     }
     
     public function asignados(Request $request, $gestion_id){
@@ -52,6 +59,8 @@ class Control extends Base
     public function retirar(Request $request){
         $grupo_docente_auxiliar_id = $request->grupo_docente_auxiliar_id;
         $registro = GrupoDocenteAuxiliar::find($grupo_docente_auxiliar_id);
+        
+        if($registro)
         $registro->delete();
         
         return response()->json(['exito'=>['Auxiliar retirado con éxito']], 200);

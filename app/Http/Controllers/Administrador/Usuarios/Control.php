@@ -38,45 +38,58 @@ class Control extends Base
                                 ->first();
 
         if(!$usuario_con_username){
-            $usuario = new Usuario;
-            $usuario->username = $usuario_username;
-            $usuario->nombre   = $usuario_form['nombre'];
-            $usuario->apellido = $usuario_form['apellido'];
-            $usuario->correo   = $usuario_form['correo'];
-            $usuario->password = Hash::make($usuario_form['password']);
-            $usuario->save();
+            $validator = Validator::make($usuario_form, [
+                'username'                  => 'required|min:5',
+                'password'                  => 'required|min:2',
+                'nombre'                    => 'required|min:2',
+                'apellido'                  => 'required|min:2',
+                'correo'                    => 'required|email|min:8',
+            ]);
             
-            $roles = $usuario_form['roles'];
-            
-            foreach($roles as $rol){
-                $asigna_rol = new AsignaRol;
-                $asigna_rol->usuario_id = $usuario->id;
-                $asigna_rol->rol_id     = $rol['id'];
-                $asigna_rol->save();
+            if(!$validator->fails()){
+                $roles = $usuario_form['roles'];
                 
-                if($rol['id'] == 1){
-                    $administrador = new Administrador;
-                    $administrador->usuario_id = $usuario->id;
-                    $administrador->save();
-                }else if($rol['id'] == 2){
-                    $docente = new Docente;
-                    $docente->usuario_id = $usuario->id;
-                    $docente->save();
+                if(sizeof($roles) >= 1){
+                    $usuario = new Usuario;
+                    $usuario->username = $usuario_username;
+                    $usuario->nombre   = $usuario_form['nombre'];
+                    $usuario->apellido = $usuario_form['apellido'];
+                    $usuario->correo   = $usuario_form['correo'];
+                    $usuario->password = Hash::make($usuario_form['password']);
+                    $usuario->save();
+
+                    foreach($roles as $rol){
+                        $asigna_rol = new AsignaRol;
+                        $asigna_rol->usuario_id = $usuario->id;
+                        $asigna_rol->rol_id     = $rol['id'];
+                        $asigna_rol->save();
+
+                        if($rol['id'] == 1){
+                            $administrador = new Administrador;
+                            $administrador->usuario_id = $usuario->id;
+                            $administrador->save();
+                        }else if($rol['id'] == 2){
+                            $docente = new Docente;
+                            $docente->usuario_id = $usuario->id;
+                            $docente->save();
+                        }
+                        else if($rol['id'] == 3 || $rol['id'] == 4){
+                            $auxiliar = new Auxiliar;
+                            $auxiliar->usuario_id = $usuario->id;
+                            $auxiliar->save();
+                        }
+                        else if($rol['id'] == 5){
+                            $estudiante = new Estudiante;
+                            $estudiante->usuario_id = $usuario->id;
+                            $estudiante->codigo_sis = $usuario_form['codigo_sis'];
+                            $estudiante->save();
+                        }
+                    }
+                    return response()->json(['exito'=>["Usuario Creado con éxito"]], 200);
                 }
-                else if($rol['id'] == 3 || $rol['id'] == 4){
-                    $auxiliar = new Auxiliar;
-                    $auxiliar->usuario_id = $usuario->id;
-                    $auxiliar->save();
-                }
-                else if($rol['id'] == 5){
-                    $estudiante = new Estudiante;
-                    $estudiante->usuario_id = $usuario->id;
-                    $estudiante->codigo_sis = $usuario_form['codigo_sis'];
-                    $estudiante->save();
-                }
+                return response()->json(['error'=>["Es al menos necesario un Rol de usuario"]], 200);
             }
-            
-            return response()->json(['exito'=>["Usuario Creado con éxito"]], 200);
+            return response()->json(['error'=>$validator->errors()->all()], 200);
         }
         return response()->json(['error'=>["Nombre de usuario en uso"]], 200);
     }
@@ -93,20 +106,30 @@ class Control extends Base
                                 ->first();
             
             if(!$usuario_con_username || $usuario_con_username->id == $usuario_id){
-                $usuario->username = $usuario_username;
-                $usuario->nombre   = $usuario_form['nombre'];
-                $usuario->apellido = $usuario_form['apellido'];
-                $usuario->correo   = $usuario_form['correo'];
+                $validator = Validator::make($usuario_form, [
+                    'username'                  => 'required|min:5',
+                    'nombre'                    => 'required|min:2',
+                    'apellido'                  => 'required|min:2',
+                    'correo'                    => 'required|email|min:8',
+                ]);
                 
-                if($usuario->tieneRol(5)){
-                    $codigo_sis = $usuario_form['estudiante']['codigo_sis'];
-                    $estudiante = Estudiante::where('usuario_id', $usuario_id)->first();
-                    $estudiante->codigo_sis = $codigo_sis;
-                    $estudiante->save();
+                if(!$validator->fails()){
+                    $usuario->username = $usuario_username;
+                    $usuario->nombre   = $usuario_form['nombre'];
+                    $usuario->apellido = $usuario_form['apellido'];
+                    $usuario->correo   = $usuario_form['correo'];
+
+                    if($usuario->tieneRol(5)){
+                        $codigo_sis = $usuario_form['estudiante']['codigo_sis'];
+                        $estudiante = Estudiante::where('usuario_id', $usuario_id)->first();
+                        $estudiante->codigo_sis = $codigo_sis;
+                        $estudiante->save();
+                    }
+
+                    $usuario->save();
+                    return response()->json(['exito'=>["Datos cambiados con éxito"]], 200);
                 }
-                
-                $usuario->save();
-                return response()->json(['exito'=>["Datos cambiados con éxito"]], 200);
+                return response()->json(['error'=>$validator->errors()->all()], 200);
             }
             return response()->json(['error'=>["Nombre de usuario en uso"]], 200);
         }

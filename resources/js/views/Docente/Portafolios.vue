@@ -6,6 +6,10 @@
             
             <h4>{{estudiante.nombre}} {{estudiante.apellido}}</h4>
             <p>Código SIS: {{estudiante.codigo_sis}} - Correo: {{estudiante.correo}}</p>
+            <a :href="'/docente/portafolio/'+estudiante_clase_id"
+               target="_blank" class="mb-3 btn btn-primary">
+                Descargar Portafolio
+            </a>
             <div v-if="sesiones.length > 0" class="table-responsive">
                 <table class="table">
                     <thead class="thead-dark">

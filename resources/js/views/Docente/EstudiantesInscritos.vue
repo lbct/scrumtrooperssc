@@ -29,6 +29,10 @@
                 <div v-if="estudiantes.length > 0">
                 <div class="text-right">
                     <h4>Total de estudiantes: {{estudiantes.length}}</h4>
+                    <a :href="'/docente/portafolios/'+materia.id"
+                       target="_blank" class="mb-3 btn btn-primary">
+                        Descargar Portafolios
+                    </a>
                 </div>
                 <div class="text-left">
                     <div class="col-xs-12 col-lg-4">

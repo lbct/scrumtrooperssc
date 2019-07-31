@@ -1,10 +1,11 @@
 <template>
     <div>
-        <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
         <div v-if="grupo_docente.id">
             <h4>{{grupo_docente.codigo_materia}} - {{grupo_docente.nombre_materia}}</h4>
             <h5>({{grupo_docente.detalle_grupo_docente}})</h5>
             <h6>{{grupo_docente.anho_gestion}} - {{grupo_docente.periodo}}</h6>
+            
+            <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             
             <div class="table-responsive">
                 <table :key="key_clases" class="table table-hover">
@@ -230,6 +231,24 @@
                 this.axios
                     .post('/administrador/clase', params)
                     .then((response)=>{
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.obtenerHorarios();
                         $('#modal-agregar-clase').modal('hide');
                     })
@@ -250,6 +269,24 @@
                 this.axios
                     .delete('/administrador/clase', { data: params })
                     .then((response)=>{
+                        var datos = response.data;
+                    
+                        if(datos.exito){
+                            this.mensajes = datos.exito;
+                            this.tipo_mensaje = 'success';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.advertencia){
+                            this.mensajes = datos.advertencia;
+                            this.tipo_mensaje = 'warning';
+                            this.key_mensajes++;
+                        }
+                        else if(datos.error){
+                            this.mensajes = datos.error;
+                            this.tipo_mensaje = 'danger';
+                            this.key_mensajes++;
+                        }
+                    
                         this.obtenerHorarios();
                         $('#modal-editar-clase').modal('hide');
                     });

@@ -34,11 +34,9 @@ class Control extends Base
                 $estudiante->retirar($estudiante_clase_id);
                 return response()->json(['exito'=>['Materia retirada con éxito']], 200);
             }
-
             return response()->json(['error'=>['Materia no Válida']], 200);
         }
-        else
-            return response()->json(['error'=>['La fecha para retiros de materias ha finalizado']], 200);
+        return response()->json(['error'=>['La fecha para retiros de materias ha finalizado']], 200);
     }
     
     public function materiasHabilitadas(Request $request){
@@ -91,5 +89,27 @@ class Control extends Base
             return response()->json(['exito'=>['Materia añadida correctamente']], 200);
         }
         return response()->json(['error'=>['La fecha para inscripciones de materias ha finalizado']], 200);
+    }
+    
+    public function editarMateria(Request $request){
+        $usuario_id = session('usuario_id');        
+        $estudiante = Estudiante::where("usuario_id", $usuario_id)->first();
+        $estudiante_clase_id = $request->estudiante_clase_id;
+        $grupo_a_docente_id  = $request->grupo_a_docente_id;
+        $clase_id            = $request->clase_id;
+        
+        $activa = FechasInscripciones::fechaActiva();
+        if($activa){
+            if($estudiante->estaInscrito($estudiante_clase_id)){
+                $registro = EstudianteClase::find($estudiante_clase_id);
+                $registro->clase_id             = $clase_id;
+                $registro->grupo_a_docente_id   = $grupo_a_docente_id;
+                $registro->save();
+
+                return response()->json(['exito'=>['Materia editada correctamente.']], 200);
+            }
+            return response()->json(['error'=>['No tienes acceso a este registro.']], 200);
+        }
+        return response()->json(['error'=>['La fecha para inscripciones de materias ha finalizado.']], 200);
     }
 }

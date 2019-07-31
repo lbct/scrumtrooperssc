@@ -38,7 +38,7 @@ class Control extends Base
         $materias = Materia::where('gestion_id', '=', $gestion_actual->id)->get();
         foreach ($materias as $materia) {
             $grupos = GrupoDocente::where('materia_id', '=', $materia->id)->get();
-            $datos_grupos['nombre_materia'] = $materia->codigo_materia."-".$materia->nombre_materia;
+            $datos_grupos['nombre_materia'] = $materia->codigo_materia." - ".$materia->nombre_materia;
             $datos_grupos['grupos'] = [];
             $total_inscritos = 0;
             foreach($grupos as $grupo){

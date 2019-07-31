@@ -30,7 +30,7 @@
         
         mounted(){
             this.init();
-            this.$parent.$parent.section = 'Auxiliares de Laboratorio';
+            this.$parent.$parent.section = 'Estudiantes';
         },
     }
 </script>

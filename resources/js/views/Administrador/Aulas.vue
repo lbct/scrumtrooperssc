@@ -26,7 +26,8 @@
                             <i v-on:click="mostrarEditar(aula, index)"
                                class="fas fa-edit clickleable">
                             </i>
-                            <i v-on:click="mostrarBorrar(aula, index)" 
+                            <i v-if="aula.borrable"
+                               v-on:click="mostrarBorrar(aula, index)" 
                                class="fas fa-trash-alt clickleable">
                             </i>
                         </td>

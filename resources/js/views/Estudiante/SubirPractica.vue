@@ -40,7 +40,9 @@
                            target="_blank">
                             {{archivo.archivo}}
                         </a> 
-                        <i v-on:click="borrarArchivo(index)" class="fas fa-trash-alt clickleable"></i> 
+                        <i v-on:click="mostrarBorrar(archivo, index)" 
+                           class="fas fa-trash-alt clickleable">
+                        </i> 
                     </div>
                     <br>
                 </div>
@@ -62,6 +64,30 @@
                         Limpiar
                     </button>
                 </div>
+                
+                <div class="modal fade" id="modal-borrar-envio-practica">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Borrar Práctica</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                          <div class="modal-body">
+                            ¿Estás seguro de borrar el archivo {{archivo.archivo}}?
+                          </div>
+
+                          <div class="modal-footer">
+                            <button v-on:click="confirmarBorrar()" 
+                                    type="button" class="btn btn-primary">
+                                Borrar
+                            </button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                          </div>
+                    </div>
+                  </div>
+                </div>
             </div>
             <p v-else>No se ha avanzado ninguna clase</p>
         </div>
@@ -82,6 +108,7 @@
                 sesiones: [],
                 sesion: {'sesion_estudiante_id':'', semana:'', archivos: []},
                 practicas: [],
+                archivo: {id:'', archivo:''},
                 
                 dropzoneOptions: {
                     url: '/estudiante/practica',
@@ -173,10 +200,19 @@
                 this.$refs.subirPracticaEstudiante.removeAllFiles();
             },
             
-            borrarArchivo(index){
-                var envio_practica = this.sesion.archivos[index];
+            mostrarBorrar(archivo, index){
+                this.mensajes = [];
+                this.tipo_mensaje = '';
+                this.key_mensajes = 0;
+                
+                this.archivo = archivo;
+                this.archivo.index = index;
+                $('#modal-borrar-envio-practica').modal('show');
+            },
+            
+            confirmarBorrar(){
                 const params = {
-                    'envio_practica_id': envio_practica.id,
+                    'envio_practica_id': this.archivo.id,
                 };
                 this.axios
                     .delete('/estudiante/practica', { data: params })
@@ -184,15 +220,20 @@
                         var datos = response.data;
                         
                         if(datos.exito){
-                            this.sesion.archivos.splice(index, 1);
+                            this.sesion.archivos.splice(this.archivo.index, 1);
                             this.mensajes = datos.exito;
                             this.tipo_mensaje = 'success';
                             this.key_mensajes++;
+                            
+                            $('#modal-borrar-envio-practica').modal('hide');
                         }
                         else if(datos.error){
+                            this.sesion.archivos.splice(this.archivo.index, 1);
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
                             this.key_mensajes++;
+                            
+                            $('#modal-borrar-envio-practica').modal('hide');
                         }
                     });
             },

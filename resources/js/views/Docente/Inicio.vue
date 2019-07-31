@@ -2,28 +2,32 @@
     <div>
         <h5>(Datos de la gestión en curso)</h5>
         <div class="row">
-            <tarjeta-reducida 
+            <tarjeta-reducida
                 titulo = "Grupos Docentes"
-                :valor  = "grupos_docentes"
-                icono  = "grupo">
-            </tarjeta-reducida>
+                :valor = "grupos_docentes"
+                icono  = "grupo"
+                ruta   = "DocenteVerClases">
+            </tarjeta-reducida >
             
             <tarjeta-reducida 
                 titulo = "Guías Prácticas"
-                :valor  = "guias_practicas"
-                icono  = "archivo">
+                :valor = "guias_practicas"
+                icono  = "archivo"
+                ruta   = "DocenteGuiasPracticas">>
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Estudiantes Inscritos"
-                :valor  = "estudiantes_inscritos"
-                icono  = "usuarios">
+                :valor = "estudiantes_inscritos"
+                icono  = "usuarios"
+                ruta   = "DocenteEstudiantesInscritos">>
             </tarjeta-reducida>
             
             <tarjeta-reducida 
                 titulo = "Envíos de estudiantes"
-                :valor  = "envios_totales"
-                icono  = "subir">
+                :valor = "envios_totales"
+                icono  = "subir"
+                ruta   = "DocenteInformesEnvios">>
             </tarjeta-reducida>
         </div>
         

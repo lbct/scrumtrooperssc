@@ -26,6 +26,21 @@ class GrupoADocente extends Model
         return $this->hasMany('App\Models\EstudianteClase', 'grupo_a_docente_id', 'id');
     }
     
+    public function esBorrable()
+    {
+        $borrable = true;
+        
+        $clase_cursada = EstudianteClase::where('grupo_a_docente_id', $this->id)
+                         ->join('sesion_estudiante', 'sesion_estudiante.estudiante_clase_id', '=', 'estudiante_clase.id')
+                         ->where('sesion_estudiante.asistencia_sesion', true)
+                         ->first();
+        
+        if($clase_cursada)
+            $borrable = false;
+        
+        return $borrable;
+    }
+    
     public function clases()
     {
         $clases = GrupoDocente::where('grupo_docente.id', $this->grupo_docente_id)
