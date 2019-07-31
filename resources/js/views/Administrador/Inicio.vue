@@ -54,12 +54,12 @@
                     </div>
               </div>
             </div>
-            <div class="col-md-6 grid-margin stretch-card align-self-start card-min">
+            <div class="col-md-6 grid-margin stretch-card align-self-start">
                 <div class="card position-relative">
                     <div class="card-body align-items-center">
                         <p class="card-title">Uso de Laboratorios por Semana</p>
                         <div class="chart-wrap" >    
-                            <apexchart id="chartAulas" width="100%" type="donut" min-heig 
+                            <apexchart id="chartAulas" width="100%" type="donut" class="card-min"
                                        :options="options" :series="series">
                             </apexchart>
                         </div>
@@ -84,7 +84,7 @@
                                     </tr>
                                     <tr v-for="grupo in materia.grupos" class="d-flex">
                                         <td class="text-muted col-5 overflow-auto">{{grupo.docentes}}</td>
-                                        <td class="w-100 px-0 col-6">
+                                        <td class="w-100 px-0 col-5">
                                             <div class="progress progress-md mx-4">
                                                 <div class="progress-bar bg-primary" role="progressbar" 
                                                      :style="grupo.style" 
@@ -93,7 +93,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="col-1">
+                                        <td class="col-2">
                                             <h5 class="font-weight-bold mb-0">{{grupo.inscritos}}</h5>
                                         </td>
                                     </tr>

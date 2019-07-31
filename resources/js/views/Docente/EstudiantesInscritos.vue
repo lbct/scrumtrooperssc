@@ -64,13 +64,12 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(estudiante, index) in estudiantes_filtrados"
-                                        v-on:click="irAPortafolio(estudiante)"
-                                        class = "clickleable">
-                                        <td>{{estudiante.codigo_sis}}</td>
-                                        <td>{{estudiante.nombre}}</td>
-                                        <td>{{estudiante.apellido}}</td> 
-                                        <td>{{estudiante.correo}}</td>
-                                        <td>{{estudiante.semanas_asistidas}}/{{estudiante.semanas_totales}}</td>
+                                        v-on:click="irAPortafolio(estudiante)">
+                                        <td class = "clickleable">{{estudiante.codigo_sis}}</td>
+                                        <td class = "clickleable">{{estudiante.nombre}}</td>
+                                        <td class = "clickleable">{{estudiante.apellido}}</td> 
+                                        <td class = "clickleable">{{estudiante.correo}}</td>
+                                        <td class = "clickleable">{{estudiante.semanas_asistidas}}/{{estudiante.semanas_totales}}</td>
                                     </tr>
                                 </tbody>
                             </table>
