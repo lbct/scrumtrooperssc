@@ -7,9 +7,64 @@ class GuiaPracticaSeeder extends Seeder
 {
     public function run()
     {
-        /*GuiaPractica::create([
-        	'archivo' 		        =>	'guia_1.pdf',
-        	'detalle'               =>	'',
-        ]);*/
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
+        
+        GuiaPractica::create([
+        	'archivo' 		        =>	'guia_practica.pdf',
+        ]);
     }
 }

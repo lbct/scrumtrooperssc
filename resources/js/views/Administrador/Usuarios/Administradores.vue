@@ -9,7 +9,7 @@
     export default {        
         data() {
             return {
-                administradores: [],
+                administradores: null,
                 key_administradores: 0,
             }
         },

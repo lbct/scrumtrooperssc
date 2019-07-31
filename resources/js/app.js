@@ -7,6 +7,7 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
 import VueApexCharts from 'vue-apexcharts'
+import CircleSpin from 'vue-loading-spinner/src/components/Circle'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
@@ -23,6 +24,7 @@ Vue.component('AdministradorUsuarios', AdministradorUsuarios)
 Vue.component('TarjetaReducida', TarjetaReducida)
 Vue.component('vueDropzone', vue2Dropzone)
 Vue.component('apexchart', VueApexCharts)
+Vue.component('CircleSpin', CircleSpin)
 
 //Usuarios
 import UsuarioEditarDatos from './views/Usuario/EditarDatos'

@@ -2,28 +2,28 @@
 @if($usuario->tieneRol(2))
     <span class="nav_title">Docente</span>
     <li class="nav-item">
-        <router-link :to="{ name: 'DocenteInicio' }" class="nav-link">
+        <router-link :to="{ name: 'DocenteInicio' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-home menu-icon"></i>
             <span class="menu-title">Inicio</span>
         </router-link>
     </li>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'DocenteVerClases' }" class="nav-link">
+        <router-link :to="{ name: 'DocenteVerClases' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-briefcase menu-icon"></i>
             <span class="menu-title">Clases</span>
         </router-link>
     </li>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'DocenteGuiasPracticas' }" class="nav-link">
+        <router-link :to="{ name: 'DocenteGuiasPracticas' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-upload menu-icon"></i>
             <span class="menu-title">Guías Prácticas</span>
         </router-link>
     </li>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'DocenteEstudiantesInscritos' }" class="nav-link">
+        <router-link :to="{ name: 'DocenteEstudiantesInscritos' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-fw fa-pen-square menu-icon"></i>
             <span class="menu-title">Estudiantes</span>
         </router-link>
@@ -38,12 +38,12 @@
         <div class="collapse" id="docente_auxiliares">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteVerAuxiliares' }" class="nav-link">
+                <router-link :to="{ name: 'DocenteVerAuxiliares' }" class="nav-link" data-toggle="offcanvas">
                     Ver Auxiliares
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteAsignarAuxiliar' }" class="nav-link">
+                <router-link :to="{ name: 'DocenteAsignarAuxiliar' }" class="nav-link" data-toggle="offcanvas">
                     Asignar Auxiliar
                 </router-link>
             </li>
@@ -60,12 +60,12 @@
         <div class="collapse" id="docente_reportes">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteInformesAsistencia' }" class="nav-link">
+                <router-link :to="{ name: 'DocenteInformesAsistencia' }" class="nav-link" data-toggle="offcanvas">
                     Asistencia
                 </router-link>
             </li>
             <li class="nav-item">
-                <router-link :to="{ name: 'DocenteInformesEnvios' }" class="nav-link">
+                <router-link :to="{ name: 'DocenteInformesEnvios' }" class="nav-link" data-toggle="offcanvas">
                     Envíos
                 </router-link>
             </li>

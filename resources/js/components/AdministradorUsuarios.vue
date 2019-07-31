@@ -1,6 +1,7 @@
 <template>
-    <div>        
-        <div v-if="usuarios.length > 0">
+    <div>
+        <div v-if="!usuarios" class="m-5"><circle-spin></circle-spin></div>
+        <div v-else-if="usuarios.length > 0">
             <div class="text-right">
                 <h4>Total de usuarios: {{usuarios.length}}</h4>
             </div>
@@ -72,7 +73,9 @@
               </div>
             </div>
         </div>
-        <h5 v-else>No se cuenta con usuarios</h5>
+        <div v-else>
+            <h5>No se cuenta con usuarios</h5>
+        </div>
     </div>
 </template>
 
@@ -84,6 +87,8 @@
                 usuarios_filtrados: [],
                 usuario: {id:'', nombre:'', apellido:'', correo:'', username:''},
                 busqueda: '',
+                
+                lista_cargada: false,
             }
         },
     
