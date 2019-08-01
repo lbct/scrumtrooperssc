@@ -96,6 +96,78 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 19,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 20,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 21,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 22,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 23,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 24,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 25,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 26,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 27,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 28,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 29,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 30,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 31,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -120,31 +192,85 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 36,
+'sesion_estudiante_id'  => 46,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 37,
+'sesion_estudiante_id'  => 48,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 38,
+'sesion_estudiante_id'  => 49,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 39,
+'sesion_estudiante_id'  => 50,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 61,
+'sesion_estudiante_id'  => 51,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 52,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 53,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 54,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 55,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 56,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 57,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 58,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 59,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 60,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -169,30 +295,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 66,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 67,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 68,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 72,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 73,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -229,6 +331,126 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 83,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 84,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 85,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 86,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 87,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 88,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 89,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 91,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 93,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 94,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 95,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 96,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 97,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 98,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 99,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 100,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 101,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 102,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 103,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 104,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 105,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -324,6 +546,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 123,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 124,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -384,6 +612,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 134,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 135,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -420,12 +654,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 142,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 143,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -456,49 +684,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 151,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 153,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 154,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 155,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 156,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 157,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 158,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 159,
+'sesion_estudiante_id'  => 150,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -523,6 +709,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 170,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 171,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -588,6 +780,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 183,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 184,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -595,6 +793,66 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 185,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 186,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 187,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 188,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 189,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 190,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 191,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 192,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 193,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 194,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 195,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -624,67 +882,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 201,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 202,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 203,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 204,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 205,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 206,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 207,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 208,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 209,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 210,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 211,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 213,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -702,13 +906,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 216,
+'sesion_estudiante_id'  => 217,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 219,
+'sesion_estudiante_id'  => 218,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 221,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -726,13 +936,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 229,
+'sesion_estudiante_id'  => 230,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 230,
+'sesion_estudiante_id'  => 231,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -756,31 +966,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 235,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 236,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 237,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 238,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 240,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -799,6 +985,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 244,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 245,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -828,6 +1020,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 250,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 251,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -835,6 +1033,18 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 252,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 253,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 254,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -858,12 +1068,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 260,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 261,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -877,18 +1081,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 263,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 265,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 267,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -996,7 +1188,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 290,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 291,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 292,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1008,13 +1212,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 294,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 295,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 296,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 297,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 298,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 299,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1039,12 +1267,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 304,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 305,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1236,42 +1458,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 339,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 340,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 341,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 342,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 343,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 345,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 346,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1284,19 +1470,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 349,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 350,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 352,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 353,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1368,6 +1548,24 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 373,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 374,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 375,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 376,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1429,6 +1627,24 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 387,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 388,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 389,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 390,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1518,6 +1734,18 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 406,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 408,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 421,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1543,6 +1771,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 426,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 427,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1632,7 +1866,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 443,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 444,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 445,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1644,19 +1890,55 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 447,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 448,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 449,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 450,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 451,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 453,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 454,
+'sesion_estudiante_id'  => 455,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 455,
+'sesion_estudiante_id'  => 456,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 457,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1674,30 +1956,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 460,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 461,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 462,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 465,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 466,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1710,13 +1968,67 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 469,
+'sesion_estudiante_id'  => 470,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 470,
+'sesion_estudiante_id'  => 471,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 472,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 473,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 474,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 475,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 476,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 477,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 478,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 479,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 480,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1740,7 +2052,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 486,
+'sesion_estudiante_id'  => 485,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1771,6 +2083,30 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 491,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 492,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 493,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 494,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 495,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1824,7 +2160,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 505,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 506,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 507,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 508,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 509,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 510,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1902,37 +2268,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 526,
+'sesion_estudiante_id'  => 532,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 527,
+'sesion_estudiante_id'  => 537,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 528,
+'sesion_estudiante_id'  => 538,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 529,
+'sesion_estudiante_id'  => 539,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 540,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 541,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 542,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -1968,6 +2334,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 548,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 549,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1986,6 +2358,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 552,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 553,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -1998,13 +2376,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 556,
+'sesion_estudiante_id'  => 555,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 557,
+'sesion_estudiante_id'  => 556,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2016,73 +2394,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 559,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 560,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 561,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 562,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 564,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 565,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 566,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 567,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 568,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 569,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 570,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 572,
+'sesion_estudiante_id'  => 571,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2094,97 +2406,43 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 586,
+'sesion_estudiante_id'  => 574,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 587,
+'sesion_estudiante_id'  => 575,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 588,
+'sesion_estudiante_id'  => 576,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 589,
+'sesion_estudiante_id'  => 577,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 590,
+'sesion_estudiante_id'  => 578,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 591,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 592,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 594,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 595,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 596,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 597,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 598,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 599,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 600,
+'sesion_estudiante_id'  => 579,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 601,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 602,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2220,25 +2478,25 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 609,
+'sesion_estudiante_id'  => 608,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 610,
+'sesion_estudiante_id'  => 612,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 613,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 616,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 617,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2262,151 +2520,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 621,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 622,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 624,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 625,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 626,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 627,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 628,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 629,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 630,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 631,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 632,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 633,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 634,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 635,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 636,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 637,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 639,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 640,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 641,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 642,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 643,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 644,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 645,
+'sesion_estudiante_id'  => 623,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 646,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 647,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2437,6 +2563,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 652,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 653,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2490,18 +2622,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 662,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 663,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 664,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -2521,6 +2641,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 667,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 668,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2556,12 +2682,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 674,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 675,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -2574,7 +2694,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 677,
+'sesion_estudiante_id'  => 678,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2598,19 +2718,43 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 682,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 683,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 684,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 691,
+'sesion_estudiante_id'  => 685,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 692,
+'sesion_estudiante_id'  => 686,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 688,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 691,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2646,55 +2790,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 698,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 699,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 700,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 701,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 702,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 703,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 704,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 705,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 706,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 707,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2718,13 +2826,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 711,
+'sesion_estudiante_id'  => 712,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 712,
+'sesion_estudiante_id'  => 713,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2778,18 +2886,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 722,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 723,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 724,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -2802,49 +2898,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 726,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 729,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 730,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 731,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 733,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 734,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 736,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 737,
+'sesion_estudiante_id'  => 738,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2874,6 +2934,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 743,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 744,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -2886,25 +2952,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 746,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 747,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 748,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 749,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 750,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 751,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 752,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 753,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2928,43 +3006,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 757,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 759,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 760,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 761,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 762,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 764,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 765,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -2994,13 +3036,55 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 781,
+'sesion_estudiante_id'  => 772,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 782,
+'sesion_estudiante_id'  => 773,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 774,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 775,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 776,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 777,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 778,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 780,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 781,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3018,12 +3102,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 785,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 786,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3036,13 +3114,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 789,
+'sesion_estudiante_id'  => 788,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 790,
+'sesion_estudiante_id'  => 789,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3060,31 +3138,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 793,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 794,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 795,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 796,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 797,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3120,19 +3174,25 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 804,
+'sesion_estudiante_id'  => 803,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 805,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 807,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 811,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 812,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3156,13 +3216,67 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 826,
+'sesion_estudiante_id'  => 816,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 827,
+'sesion_estudiante_id'  => 817,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 818,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 819,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 820,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 821,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 822,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 823,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 824,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 825,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 826,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3180,25 +3294,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 830,
+'sesion_estudiante_id'  => 831,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 832,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 834,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 835,
+'sesion_estudiante_id'  => 833,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3210,19 +3312,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 837,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 838,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 839,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3235,12 +3325,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 841,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 842,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3271,6 +3355,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 847,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 848,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3324,12 +3414,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 857,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 858,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3342,7 +3426,67 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 860,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 861,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 862,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 863,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 864,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 865,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 866,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 867,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 868,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 869,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 870,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3354,13 +3498,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 872,
+'sesion_estudiante_id'  => 873,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 873,
+'sesion_estudiante_id'  => 874,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3384,6 +3528,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 878,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 879,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3402,13 +3552,25 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 886,
+'sesion_estudiante_id'  => 882,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 887,
+'sesion_estudiante_id'  => 883,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 885,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 886,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3426,61 +3588,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 891,
+'sesion_estudiante_id'  => 892,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 894,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 895,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 896,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 897,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 898,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 899,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 900,
+'sesion_estudiante_id'  => 893,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 901,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 902,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3504,7 +3624,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 906,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 907,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 908,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3528,25 +3660,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 914,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 915,
+'sesion_estudiante_id'  => 912,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 916,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 917,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3582,6 +3702,36 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 923,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 924,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 925,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 926,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 927,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 931,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3594,97 +3744,79 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 946,
+'sesion_estudiante_id'  => 934,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 947,
+'sesion_estudiante_id'  => 935,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 948,
+'sesion_estudiante_id'  => 936,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 949,
+'sesion_estudiante_id'  => 937,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 950,
+'sesion_estudiante_id'  => 938,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 951,
+'sesion_estudiante_id'  => 939,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 952,
+'sesion_estudiante_id'  => 940,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 954,
+'sesion_estudiante_id'  => 941,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 955,
+'sesion_estudiante_id'  => 942,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 956,
+'sesion_estudiante_id'  => 943,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 957,
+'sesion_estudiante_id'  => 944,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 958,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 959,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 960,
+'sesion_estudiante_id'  => 945,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 961,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 962,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3702,7 +3834,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 965,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 966,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 968,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3714,13 +3858,43 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 976,
+'sesion_estudiante_id'  => 970,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 977,
+'sesion_estudiante_id'  => 971,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 972,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 973,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 974,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 975,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 976,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3756,31 +3930,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 985,
+'sesion_estudiante_id'  => 984,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 986,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 988,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 989,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 991,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3799,18 +3955,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 995,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 996,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 997,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3846,18 +3990,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1003,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1004,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1005,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3888,66 +4020,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1011,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1012,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1013,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1014,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1015,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1016,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1017,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1018,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1019,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1020,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1021,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -3961,12 +4033,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1024,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1025,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -3996,31 +4062,31 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1030,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1031,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1032,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1033,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1034,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1036,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1038,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1039,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4033,6 +4099,30 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1041,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1042,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1043,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1044,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1046,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4110,18 +4200,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1064,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1065,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1066,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4182,6 +4260,30 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1077,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1078,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1079,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1080,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1081,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4189,6 +4291,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1083,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1084,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4236,7 +4344,91 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1092,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1093,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1094,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1095,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1096,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1098,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1099,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1100,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1102,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1103,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1104,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1106,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1107,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1108,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1109,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4248,91 +4440,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1112,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1113,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1114,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1115,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1116,
+'sesion_estudiante_id'  => 1126,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1117,
+'sesion_estudiante_id'  => 1128,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1118,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1119,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1120,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1121,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1122,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1123,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1124,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1125,
+'sesion_estudiante_id'  => 1129,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1130,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1131,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4404,12 +4542,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1144,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1145,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4429,6 +4561,24 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1148,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1149,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1150,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1151,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4495,6 +4645,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1167,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1168,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4578,12 +4734,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1183,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1184,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4608,6 +4758,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1189,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1190,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4615,6 +4771,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1191,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1192,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4638,7 +4800,43 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1204,
+'sesion_estudiante_id'  => 1196,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1197,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1198,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1199,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1200,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1201,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1203,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4651,12 +4849,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1206,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1207,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4758,6 +4950,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1246,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1248,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -4765,6 +4963,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1249,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1250,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4789,6 +4993,66 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1265,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1266,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1267,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1268,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1269,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1270,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1271,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1272,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1273,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1274,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1275,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4890,73 +5154,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1294,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1295,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1296,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1297,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1298,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1299,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1300,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1301,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1302,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1303,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1304,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1305,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -4974,7 +5172,49 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1309,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1310,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1311,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1312,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1313,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1314,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1315,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1317,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5004,25 +5244,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1326,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1327,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1328,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1329,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5034,49 +5256,31 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1331,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1332,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1339,
+'sesion_estudiante_id'  => 1333,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1340,
+'sesion_estudiante_id'  => 1334,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1341,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1342,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1343,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1344,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1345,
+'sesion_estudiante_id'  => 1336,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5094,7 +5298,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1354,
+'sesion_estudiante_id'  => 1356,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1357,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1358,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5124,43 +5340,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1371,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1372,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1375,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1376,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1377,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1378,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1379,
+'sesion_estudiante_id'  => 1373,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1381,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1383,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1384,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5173,6 +5383,18 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1398,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1399,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1400,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5196,109 +5418,31 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1404,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1405,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1406,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1411,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1413,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1414,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1416,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1417,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1418,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1419,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1420,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1421,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1422,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1423,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1424,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1425,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1426,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1428,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1429,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1430,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1431,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5346,12 +5490,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1439,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1440,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -5371,12 +5509,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1444,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1445,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5442,18 +5574,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1456,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1458,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1459,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -5466,13 +5586,31 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1471,
+'sesion_estudiante_id'  => 1461,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1473,
+'sesion_estudiante_id'  => 1462,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1463,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1464,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1465,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5520,36 +5658,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1481,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1482,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1483,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1484,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1485,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1488,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -5557,18 +5665,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1489,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1490,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1491,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5593,6 +5689,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1505,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1506,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5646,6 +5748,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1515,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1516,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -5658,73 +5766,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1519,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1520,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1521,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1522,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1523,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1524,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1525,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1526,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1527,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1528,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1529,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1530,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5784,31 +5826,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1541,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1542,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1543,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1544,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1545,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5820,79 +5838,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1548,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1549,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1550,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1551,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1552,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1553,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1554,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1555,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1556,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1557,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1558,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1559,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1560,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5928,6 +5874,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1567,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1568,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -5952,13 +5904,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1573,
+'sesion_estudiante_id'  => 1572,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1575,
+'sesion_estudiante_id'  => 1573,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -5988,12 +5940,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1581,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1582,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -6006,49 +5952,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1584,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1585,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1586,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1587,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1588,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1589,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1590,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1591,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6090,43 +5994,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1599,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1600,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1601,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1602,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1603,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1604,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1605,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6156,13 +6030,61 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1621,
+'sesion_estudiante_id'  => 1612,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1623,
+'sesion_estudiante_id'  => 1613,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1614,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1615,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1616,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1617,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1618,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1619,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1620,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1621,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6180,6 +6102,12 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1626,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1627,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -6192,7 +6120,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1629,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1630,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1631,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1632,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1633,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1635,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6210,7 +6168,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1640,
+'sesion_estudiante_id'  => 1639,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6228,19 +6186,25 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1643,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1644,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1645,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1646,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1648,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6294,36 +6258,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1660,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1661,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1662,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1663,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1664,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1666,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -6336,7 +6270,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1669,
+'sesion_estudiante_id'  => 1670,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6360,13 +6294,49 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1681,
+'sesion_estudiante_id'  => 1674,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1683,
+'sesion_estudiante_id'  => 1675,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1676,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1677,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1678,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1679,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1680,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1681,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6379,72 +6349,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1685,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1686,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1687,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1688,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1689,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1690,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1691,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1692,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1693,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1694,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1695,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1696,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6534,13 +6438,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1713,
+'sesion_estudiante_id'  => 1714,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1714,
+'sesion_estudiante_id'  => 1715,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6552,55 +6456,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1717,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1718,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1719,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1720,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1721,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1722,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1723,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1724,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1725,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6618,19 +6474,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1729,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1730,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1731,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6678,12 +6522,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1739,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1740,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -6708,12 +6546,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1745,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1746,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -6727,6 +6559,24 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1748,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1749,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1751,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1752,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6756,19 +6606,37 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1771,
+'sesion_estudiante_id'  => 1761,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1762,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1763,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1765,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1767,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1773,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1774,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6858,19 +6726,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1790,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1791,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1792,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6882,37 +6738,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1794,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1795,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1796,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1797,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1798,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1799,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -6990,12 +6822,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1813,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1814,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -7015,6 +6841,66 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1818,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1819,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1820,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1821,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1822,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1824,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1825,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1826,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1827,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1829,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1830,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7074,12 +6960,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1841,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1842,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -7087,12 +6967,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1843,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1844,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7116,19 +6990,7 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1849,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1850,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1851,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7146,55 +7008,19 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1854,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1855,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1856,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1857,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1858,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1859,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1860,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1861,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1863,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1864,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7230,6 +7056,24 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1870,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1871,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1872,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1876,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -7237,6 +7081,12 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1878,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1879,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7290,24 +7140,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1888,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1889,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1890,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1891,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -7332,13 +7164,13 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1897,
+'sesion_estudiante_id'  => 1896,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1898,
+'sesion_estudiante_id'  => 1897,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7398,12 +7230,6 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1909,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
 'sesion_estudiante_id'  => 1910,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
@@ -7435,36 +7261,6 @@ EnvioPractica::create([
 
 EnvioPractica::create([
 'sesion_estudiante_id'  => 1915,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1916,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1917,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1918,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1919,
-'en_laboratorio'        => 1,
-'archivo'               => 'practica.zip',
-]);
-
-EnvioPractica::create([
-'sesion_estudiante_id'  => 1920,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
@@ -7542,31 +7338,8779 @@ EnvioPractica::create([
 ]);
 
 EnvioPractica::create([
+'sesion_estudiante_id'  => 1934,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1935,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1938,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1939,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1940,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1941,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
 'sesion_estudiante_id'  => 1942,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1947,
+'sesion_estudiante_id'  => 1944,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1948,
+'sesion_estudiante_id'  => 1946,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1949,
+'sesion_estudiante_id'  => 1951,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);
 
 EnvioPractica::create([
-'sesion_estudiante_id'  => 1950,
+'sesion_estudiante_id'  => 1953,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1954,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1955,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1957,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1958,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1959,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1960,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1961,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1962,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1965,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1966,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1968,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1969,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1970,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1971,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1972,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1974,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1975,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1976,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1978,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1979,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1981,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1983,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1984,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1985,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1986,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1987,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1988,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1989,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1990,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1991,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1992,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1993,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1995,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1996,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1997,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1998,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 1999,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2000,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2001,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2002,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2003,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2004,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2006,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2007,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2008,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2009,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2011,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2012,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2013,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2014,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2015,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2016,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2017,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2018,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2019,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2021,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2022,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2023,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2024,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2025,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2026,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2027,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2028,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2029,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2030,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2031,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2032,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2033,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2034,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2036,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2038,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2039,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2040,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2041,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2042,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2043,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2044,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2046,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2047,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2048,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2056,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2057,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2058,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2059,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2061,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2063,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2064,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2066,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2067,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2068,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2069,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2070,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2071,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2072,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2073,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2074,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2075,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2076,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2077,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2078,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2079,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2081,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2082,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2084,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2086,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2087,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2088,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2089,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2090,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2091,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2092,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2093,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2094,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2096,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2097,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2098,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2100,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2101,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2102,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2116,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2117,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2118,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2119,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2120,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2121,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2122,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2123,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2124,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2126,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2128,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2129,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2130,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2131,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2132,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2133,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2134,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2135,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2136,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2137,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2138,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2139,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2141,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2142,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2143,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2144,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2145,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2147,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2148,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2149,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2151,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2152,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2156,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2161,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2162,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2163,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2164,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2165,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2166,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2176,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2177,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2179,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2180,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2181,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2182,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2183,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2184,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2186,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2187,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2188,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2189,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2190,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2191,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2192,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2193,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2206,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2207,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2208,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2209,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2210,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2211,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2212,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2213,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2214,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2216,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2218,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2221,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2222,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2223,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2224,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2225,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2226,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2227,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2228,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2236,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2237,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2238,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2240,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2241,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2242,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2244,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2246,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2247,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2248,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2249,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2251,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2252,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2253,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2254,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2255,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2256,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2257,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2258,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2259,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2266,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2267,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2268,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2269,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2270,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2271,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2272,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2273,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2274,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2276,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2277,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2278,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2279,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2280,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2281,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2282,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2283,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2284,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2285,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2286,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2287,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2288,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2289,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2291,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2292,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2293,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2295,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2296,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2297,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2298,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2311,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2312,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2313,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2314,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2315,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2316,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2317,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2318,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2319,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2321,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2322,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2326,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2327,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2328,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2329,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2330,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2331,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2332,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2334,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2336,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2339,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2341,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2342,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2343,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2344,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2345,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2346,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2347,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2348,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2349,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2351,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2352,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2353,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2354,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2355,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2356,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2357,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2358,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2359,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2360,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2361,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2362,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2363,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2366,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2367,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2368,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2369,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2371,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2372,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2386,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2387,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2388,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2389,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2391,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2392,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2393,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2396,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2398,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2399,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2401,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2403,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2404,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2405,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2406,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2407,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2408,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2409,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2411,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2412,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2413,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2414,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2415,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2416,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2418,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2419,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2420,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2421,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2422,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2423,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2424,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2426,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2431,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2432,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2446,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2447,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2448,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2449,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2450,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2451,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2452,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2453,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2454,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2456,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2457,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2458,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2459,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2460,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2476,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2477,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2478,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2479,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2480,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2481,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2482,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2483,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2484,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2487,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2488,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2489,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2490,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2491,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2492,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2493,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2494,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2495,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2497,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2521,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2522,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2523,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2524,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2525,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2526,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2527,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2528,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2529,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2531,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2532,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2534,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2536,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2537,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2538,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2540,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2541,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2542,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2543,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2544,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2546,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2551,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2552,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2553,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2554,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2566,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2567,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2568,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2569,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2570,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2571,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2572,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2573,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2574,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2576,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2578,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2579,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2580,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2581,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2582,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2583,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2584,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2585,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2586,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2587,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2588,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2589,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2591,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2592,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2593,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2594,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2595,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2596,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2611,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2612,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2613,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2614,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2615,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2616,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2617,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2618,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2619,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2622,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2623,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2624,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2625,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2626,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2627,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2628,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2629,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2630,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2641,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2642,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2643,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2644,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2645,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2646,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2647,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2648,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2649,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2651,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2652,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2653,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2654,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2655,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2656,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2657,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2658,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2671,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2673,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2674,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2675,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2677,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2679,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2682,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2686,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2688,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2689,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2690,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2691,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2692,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2694,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2701,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2702,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2703,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2704,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2705,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2706,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2707,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2708,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2709,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2711,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2712,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2713,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2714,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2715,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2716,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2717,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2718,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2719,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2720,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2721,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2722,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2723,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2724,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2731,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2732,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2733,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2734,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2735,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2737,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2738,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2739,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2741,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2742,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2743,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2745,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2746,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2747,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2748,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2749,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2750,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2751,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2752,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2753,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2754,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2756,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2761,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2794,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2795,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2796,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2797,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2798,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2799,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2801,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2802,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2803,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2804,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2805,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2806,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2807,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2808,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2809,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2821,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2822,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2823,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2825,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2826,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2827,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2829,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2830,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2831,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2833,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2834,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2836,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2837,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2838,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2839,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2840,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2841,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2842,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2844,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2845,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2846,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2847,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2848,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2849,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2850,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2852,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2853,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2866,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2867,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2868,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2869,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2870,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2871,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2872,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2874,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2875,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2876,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2877,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2878,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2879,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2880,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2881,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2882,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2883,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2884,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2885,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2886,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2887,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2889,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2890,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2896,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2897,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2898,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2899,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2900,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2901,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2902,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2904,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2905,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2906,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2907,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2908,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2909,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2910,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2911,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2912,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2913,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2914,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2915,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2916,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2917,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2919,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2920,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2921,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2922,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2923,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2924,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2925,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2926,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2927,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2928,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2929,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2930,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2931,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2932,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2934,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2935,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2936,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2937,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2938,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2939,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2940,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2941,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2942,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2943,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2944,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2945,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2946,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2947,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2949,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2950,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2951,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2952,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2953,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2954,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2955,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2956,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2957,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2960,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2961,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2971,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2972,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2973,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2974,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2975,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2976,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2979,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2980,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2981,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2982,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2983,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2984,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2985,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2986,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2987,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2988,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2989,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2990,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2991,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2992,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2994,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2995,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2996,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2997,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2998,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 2999,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3000,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3001,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3002,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3003,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3004,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3005,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3006,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3009,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3010,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3011,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3013,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3014,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3016,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3017,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3019,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3020,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3021,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3022,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3024,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3025,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3028,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3031,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3032,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3033,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3034,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3035,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3036,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3037,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3039,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3040,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3041,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3042,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3044,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3045,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3046,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3048,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3049,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3050,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3061,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3062,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3063,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3064,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3065,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3066,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3067,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3069,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3070,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3071,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3072,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3073,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3074,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3075,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3076,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3077,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3078,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3079,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3080,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3081,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3082,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3084,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3091,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3092,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3093,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3094,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3095,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3106,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3107,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3108,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3110,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3112,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3114,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3115,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3116,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3117,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3118,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3119,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3120,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3121,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3122,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3123,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3124,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3125,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3126,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3127,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3129,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3130,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3131,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3132,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3133,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3134,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3135,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3136,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3137,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3138,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3139,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3142,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3151,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3152,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3153,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3155,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3156,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3157,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3159,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3160,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3161,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3166,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3167,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3168,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3170,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3171,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3174,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3175,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3176,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3177,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3178,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3179,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3180,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3181,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3182,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3183,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3184,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3185,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3187,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3189,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3190,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3191,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3194,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3195,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3196,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3197,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3198,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3199,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3200,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3201,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3202,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3211,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3213,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3226,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3227,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3228,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3229,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3230,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3231,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3232,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3234,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3235,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3236,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3237,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3238,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3239,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3240,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3241,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3242,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3243,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3244,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3246,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3256,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3257,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3258,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3259,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3260,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3261,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3262,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3265,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3266,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3268,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3269,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3271,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3272,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3273,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3274,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3275,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3276,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3277,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3280,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3281,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3286,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3287,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3288,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3289,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3290,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3291,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3294,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3295,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3296,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3298,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3299,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3300,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3301,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3302,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3303,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3304,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3305,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3306,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3307,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3309,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3310,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3311,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3312,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3314,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3315,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3332,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3346,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3347,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3348,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3349,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3351,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3352,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3354,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3355,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3356,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3357,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3358,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3359,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3361,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3362,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3363,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3364,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3365,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3366,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3376,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3377,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3378,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3379,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3380,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3381,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3382,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3385,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3386,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3387,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3388,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3389,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3390,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3391,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3392,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3393,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3394,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3395,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3406,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3421,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3422,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3423,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3424,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3425,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3426,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3427,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3429,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3430,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3431,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3432,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3433,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3434,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3435,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3437,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3438,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3439,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3440,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3441,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3451,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3452,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3453,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3454,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3456,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3457,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3459,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3460,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3461,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3462,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3463,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3464,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3465,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3466,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3467,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3468,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3469,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3470,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3471,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3472,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3474,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3475,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3476,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3477,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3479,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3480,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3481,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3482,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3483,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3484,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3485,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3486,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3487,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3489,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3490,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3491,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3492,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3493,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3494,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3495,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3496,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3497,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3498,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3499,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3500,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3501,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3502,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3505,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3511,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3512,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3513,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3514,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3515,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3516,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3517,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3519,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3520,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3521,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3522,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3523,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3524,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3525,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3527,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3529,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3530,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3531,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3532,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3534,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3536,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3537,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3541,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3542,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3543,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3544,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3545,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3546,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3547,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3549,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3550,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3551,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3552,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3553,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3556,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3557,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3558,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3559,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3560,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3561,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3562,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3564,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3565,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3566,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3567,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3568,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3569,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3570,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3571,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3572,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3573,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3574,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3575,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3576,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3586,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3587,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3588,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3589,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3590,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3591,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3592,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3594,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3595,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3596,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3597,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3598,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3599,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3600,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3601,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3602,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3603,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3604,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3605,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3606,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3609,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3610,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3611,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3612,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3613,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3614,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3616,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3618,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3620,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3621,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3622,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3624,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3625,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3631,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3632,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3633,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3634,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3635,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3636,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3646,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3647,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3648,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3649,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3650,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3651,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3652,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3654,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3655,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3656,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3657,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3658,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3659,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3660,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3661,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3662,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3663,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3664,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3665,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3666,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3667,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3670,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3676,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3677,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3678,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3679,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3680,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3681,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3682,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3684,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3685,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3686,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3687,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3688,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3689,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3690,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3691,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3692,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3693,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3694,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3695,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3696,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3697,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3699,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3700,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3701,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3702,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3703,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3704,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3705,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3706,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3707,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3708,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3709,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3710,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3712,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3714,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3715,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3721,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3722,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3723,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3724,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3737,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3738,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3739,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3740,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3741,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3751,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3753,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3754,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3755,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3756,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3757,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3758,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3759,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3760,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3761,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3762,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3763,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3764,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3765,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3766,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3768,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3770,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3771,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3773,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3775,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3776,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3777,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3783,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3784,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3785,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3786,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3787,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3788,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3789,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3790,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3793,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3796,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3798,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3799,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3800,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3801,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3802,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3803,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3804,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3806,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3807,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3808,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3809,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3811,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3813,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3814,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3815,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3816,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3817,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3818,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3819,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3820,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3821,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3822,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3823,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3826,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3828,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3829,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3836,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3839,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3843,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3845,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3846,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3847,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3848,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3850,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3852,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3856,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3858,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3859,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3860,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3863,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3864,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3865,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3866,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3867,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3868,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3869,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3870,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3871,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3874,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3875,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3876,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3877,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3878,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3880,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3881,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3882,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3883,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3885,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3886,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3888,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3891,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3894,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3895,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3896,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3898,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3901,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3903,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3904,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3905,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3907,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3908,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3909,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3912,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3916,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3918,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3919,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3921,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3922,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3923,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3924,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3925,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3926,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3927,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3928,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3929,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3930,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3931,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3934,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3935,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3948,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3949,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3951,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3952,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3953,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3954,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3955,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3956,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3957,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3958,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3959,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3960,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3961,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3964,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3965,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3966,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3968,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3969,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3970,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3971,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3972,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3973,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3976,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3978,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3980,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3982,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3983,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3984,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3985,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3986,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3987,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3988,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3990,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3991,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3993,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3994,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3996,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 3999,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4001,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4002,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4006,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4008,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4009,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4010,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4011,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4012,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4013,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4014,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4015,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4016,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4017,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4018,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4025,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4027,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4028,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4029,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4030,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4032,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4033,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4034,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4035,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4036,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4038,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4039,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4041,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4046,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4048,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4050,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4051,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4053,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4054,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4055,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4056,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4057,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4058,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4059,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4060,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4061,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4062,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4064,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4065,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4066,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4068,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4069,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4070,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4071,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4074,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4075,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4076,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4077,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4079,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4080,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4081,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4084,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4086,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4087,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4088,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4089,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4092,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4093,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4095,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4096,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4098,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4099,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4100,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4101,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4102,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4103,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4104,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4105,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4106,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4108,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4113,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4114,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4115,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4116,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4118,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4119,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4120,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4121,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4122,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4123,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4126,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4128,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4129,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4130,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4131,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4132,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4133,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4134,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4137,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4141,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4143,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4144,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4147,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4148,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4149,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4150,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4151,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4152,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4153,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4154,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4155,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4156,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4158,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4160,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4161,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4163,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4164,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4165,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4171,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4173,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4174,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4175,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4176,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4177,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4178,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4179,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4180,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4181,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4182,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4183,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4184,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4185,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4201,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4203,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4204,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4205,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4206,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4207,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4208,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4209,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4210,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4212,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4215,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4216,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4218,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4219,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4221,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4222,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4225,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4226,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4228,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4229,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4231,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4234,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4235,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4236,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4237,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4238,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4239,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4241,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4242,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4243,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4245,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4246,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4248,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4250,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4251,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4252,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4253,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4254,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4255,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4256,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4257,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4258,
+'en_laboratorio'        => 1,
+'archivo'               => 'practica.zip',
+]);
+
+EnvioPractica::create([
+'sesion_estudiante_id'  => 4260,
 'en_laboratorio'        => 1,
 'archivo'               => 'practica.zip',
 ]);

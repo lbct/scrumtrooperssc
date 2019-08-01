@@ -649,3 +649,773 @@ Estudiante::create([
 'codigo_sis' => '201928072',
 ]);
 
+Estudiante::create([
+'usuario_id' => 139,
+'codigo_sis' => '201925910',
+]);
+
+Estudiante::create([
+'usuario_id' => 140,
+'codigo_sis' => '201985079',
+]);
+
+Estudiante::create([
+'usuario_id' => 141,
+'codigo_sis' => '201905341',
+]);
+
+Estudiante::create([
+'usuario_id' => 142,
+'codigo_sis' => '201904859',
+]);
+
+Estudiante::create([
+'usuario_id' => 143,
+'codigo_sis' => '201925413',
+]);
+
+Estudiante::create([
+'usuario_id' => 144,
+'codigo_sis' => '201995827',
+]);
+
+Estudiante::create([
+'usuario_id' => 145,
+'codigo_sis' => '201996177',
+]);
+
+Estudiante::create([
+'usuario_id' => 146,
+'codigo_sis' => '201919034',
+]);
+
+Estudiante::create([
+'usuario_id' => 147,
+'codigo_sis' => '201917533',
+]);
+
+Estudiante::create([
+'usuario_id' => 148,
+'codigo_sis' => '201924129',
+]);
+
+Estudiante::create([
+'usuario_id' => 149,
+'codigo_sis' => '201908745',
+]);
+
+Estudiante::create([
+'usuario_id' => 150,
+'codigo_sis' => '201968077',
+]);
+
+Estudiante::create([
+'usuario_id' => 151,
+'codigo_sis' => '201943136',
+]);
+
+Estudiante::create([
+'usuario_id' => 152,
+'codigo_sis' => '201930190',
+]);
+
+Estudiante::create([
+'usuario_id' => 153,
+'codigo_sis' => '201942931',
+]);
+
+Estudiante::create([
+'usuario_id' => 154,
+'codigo_sis' => '201948205',
+]);
+
+Estudiante::create([
+'usuario_id' => 155,
+'codigo_sis' => '201959328',
+]);
+
+Estudiante::create([
+'usuario_id' => 156,
+'codigo_sis' => '201974814',
+]);
+
+Estudiante::create([
+'usuario_id' => 157,
+'codigo_sis' => '201935526',
+]);
+
+Estudiante::create([
+'usuario_id' => 158,
+'codigo_sis' => '201989295',
+]);
+
+Estudiante::create([
+'usuario_id' => 159,
+'codigo_sis' => '201994505',
+]);
+
+Estudiante::create([
+'usuario_id' => 160,
+'codigo_sis' => '201988013',
+]);
+
+Estudiante::create([
+'usuario_id' => 161,
+'codigo_sis' => '201922270',
+]);
+
+Estudiante::create([
+'usuario_id' => 162,
+'codigo_sis' => '201931337',
+]);
+
+Estudiante::create([
+'usuario_id' => 163,
+'codigo_sis' => '201909558',
+]);
+
+Estudiante::create([
+'usuario_id' => 164,
+'codigo_sis' => '201937837',
+]);
+
+Estudiante::create([
+'usuario_id' => 165,
+'codigo_sis' => '201993918',
+]);
+
+Estudiante::create([
+'usuario_id' => 166,
+'codigo_sis' => '201928018',
+]);
+
+Estudiante::create([
+'usuario_id' => 167,
+'codigo_sis' => '201948609',
+]);
+
+Estudiante::create([
+'usuario_id' => 168,
+'codigo_sis' => '201930087',
+]);
+
+Estudiante::create([
+'usuario_id' => 169,
+'codigo_sis' => '201963565',
+]);
+
+Estudiante::create([
+'usuario_id' => 170,
+'codigo_sis' => '201983948',
+]);
+
+Estudiante::create([
+'usuario_id' => 171,
+'codigo_sis' => '201939764',
+]);
+
+Estudiante::create([
+'usuario_id' => 172,
+'codigo_sis' => '201958615',
+]);
+
+Estudiante::create([
+'usuario_id' => 173,
+'codigo_sis' => '201951964',
+]);
+
+Estudiante::create([
+'usuario_id' => 174,
+'codigo_sis' => '201954253',
+]);
+
+Estudiante::create([
+'usuario_id' => 175,
+'codigo_sis' => '201926826',
+]);
+
+Estudiante::create([
+'usuario_id' => 176,
+'codigo_sis' => '201963945',
+]);
+
+Estudiante::create([
+'usuario_id' => 177,
+'codigo_sis' => '201962535',
+]);
+
+Estudiante::create([
+'usuario_id' => 178,
+'codigo_sis' => '201966144',
+]);
+
+Estudiante::create([
+'usuario_id' => 179,
+'codigo_sis' => '201962682',
+]);
+
+Estudiante::create([
+'usuario_id' => 180,
+'codigo_sis' => '201955101',
+]);
+
+Estudiante::create([
+'usuario_id' => 181,
+'codigo_sis' => '201951760',
+]);
+
+Estudiante::create([
+'usuario_id' => 182,
+'codigo_sis' => '201902433',
+]);
+
+Estudiante::create([
+'usuario_id' => 183,
+'codigo_sis' => '201962823',
+]);
+
+Estudiante::create([
+'usuario_id' => 184,
+'codigo_sis' => '201943436',
+]);
+
+Estudiante::create([
+'usuario_id' => 185,
+'codigo_sis' => '201984739',
+]);
+
+Estudiante::create([
+'usuario_id' => 186,
+'codigo_sis' => '201980088',
+]);
+
+Estudiante::create([
+'usuario_id' => 187,
+'codigo_sis' => '201905143',
+]);
+
+Estudiante::create([
+'usuario_id' => 188,
+'codigo_sis' => '201963921',
+]);
+
+Estudiante::create([
+'usuario_id' => 189,
+'codigo_sis' => '201998234',
+]);
+
+Estudiante::create([
+'usuario_id' => 190,
+'codigo_sis' => '201902319',
+]);
+
+Estudiante::create([
+'usuario_id' => 191,
+'codigo_sis' => '201989891',
+]);
+
+Estudiante::create([
+'usuario_id' => 192,
+'codigo_sis' => '201935142',
+]);
+
+Estudiante::create([
+'usuario_id' => 193,
+'codigo_sis' => '201953892',
+]);
+
+Estudiante::create([
+'usuario_id' => 194,
+'codigo_sis' => '201987014',
+]);
+
+Estudiante::create([
+'usuario_id' => 195,
+'codigo_sis' => '201981935',
+]);
+
+Estudiante::create([
+'usuario_id' => 196,
+'codigo_sis' => '201997980',
+]);
+
+Estudiante::create([
+'usuario_id' => 197,
+'codigo_sis' => '201914755',
+]);
+
+Estudiante::create([
+'usuario_id' => 198,
+'codigo_sis' => '201950928',
+]);
+
+Estudiante::create([
+'usuario_id' => 199,
+'codigo_sis' => '201924504',
+]);
+
+Estudiante::create([
+'usuario_id' => 200,
+'codigo_sis' => '201940511',
+]);
+
+Estudiante::create([
+'usuario_id' => 201,
+'codigo_sis' => '201959083',
+]);
+
+Estudiante::create([
+'usuario_id' => 202,
+'codigo_sis' => '201987269',
+]);
+
+Estudiante::create([
+'usuario_id' => 203,
+'codigo_sis' => '201938103',
+]);
+
+Estudiante::create([
+'usuario_id' => 204,
+'codigo_sis' => '201938480',
+]);
+
+Estudiante::create([
+'usuario_id' => 205,
+'codigo_sis' => '201915413',
+]);
+
+Estudiante::create([
+'usuario_id' => 206,
+'codigo_sis' => '201973585',
+]);
+
+Estudiante::create([
+'usuario_id' => 207,
+'codigo_sis' => '201969089',
+]);
+
+Estudiante::create([
+'usuario_id' => 208,
+'codigo_sis' => '201936069',
+]);
+
+Estudiante::create([
+'usuario_id' => 209,
+'codigo_sis' => '201978941',
+]);
+
+Estudiante::create([
+'usuario_id' => 210,
+'codigo_sis' => '201956666',
+]);
+
+Estudiante::create([
+'usuario_id' => 211,
+'codigo_sis' => '201967140',
+]);
+
+Estudiante::create([
+'usuario_id' => 212,
+'codigo_sis' => '201961214',
+]);
+
+Estudiante::create([
+'usuario_id' => 213,
+'codigo_sis' => '201995234',
+]);
+
+Estudiante::create([
+'usuario_id' => 214,
+'codigo_sis' => '201915231',
+]);
+
+Estudiante::create([
+'usuario_id' => 215,
+'codigo_sis' => '201968827',
+]);
+
+Estudiante::create([
+'usuario_id' => 216,
+'codigo_sis' => '201971260',
+]);
+
+Estudiante::create([
+'usuario_id' => 217,
+'codigo_sis' => '201949460',
+]);
+
+Estudiante::create([
+'usuario_id' => 218,
+'codigo_sis' => '201936245',
+]);
+
+Estudiante::create([
+'usuario_id' => 219,
+'codigo_sis' => '201988121',
+]);
+
+Estudiante::create([
+'usuario_id' => 220,
+'codigo_sis' => '201949824',
+]);
+
+Estudiante::create([
+'usuario_id' => 221,
+'codigo_sis' => '201952998',
+]);
+
+Estudiante::create([
+'usuario_id' => 222,
+'codigo_sis' => '201938698',
+]);
+
+Estudiante::create([
+'usuario_id' => 223,
+'codigo_sis' => '201966238',
+]);
+
+Estudiante::create([
+'usuario_id' => 224,
+'codigo_sis' => '201926275',
+]);
+
+Estudiante::create([
+'usuario_id' => 225,
+'codigo_sis' => '201978278',
+]);
+
+Estudiante::create([
+'usuario_id' => 226,
+'codigo_sis' => '201902089',
+]);
+
+Estudiante::create([
+'usuario_id' => 227,
+'codigo_sis' => '201928205',
+]);
+
+Estudiante::create([
+'usuario_id' => 228,
+'codigo_sis' => '201952767',
+]);
+
+Estudiante::create([
+'usuario_id' => 229,
+'codigo_sis' => '201987816',
+]);
+
+Estudiante::create([
+'usuario_id' => 230,
+'codigo_sis' => '201909589',
+]);
+
+Estudiante::create([
+'usuario_id' => 231,
+'codigo_sis' => '201900072',
+]);
+
+Estudiante::create([
+'usuario_id' => 232,
+'codigo_sis' => '201955214',
+]);
+
+Estudiante::create([
+'usuario_id' => 233,
+'codigo_sis' => '201986468',
+]);
+
+Estudiante::create([
+'usuario_id' => 234,
+'codigo_sis' => '201998355',
+]);
+
+Estudiante::create([
+'usuario_id' => 235,
+'codigo_sis' => '201915584',
+]);
+
+Estudiante::create([
+'usuario_id' => 236,
+'codigo_sis' => '201905472',
+]);
+
+Estudiante::create([
+'usuario_id' => 237,
+'codigo_sis' => '201914990',
+]);
+
+Estudiante::create([
+'usuario_id' => 238,
+'codigo_sis' => '201930350',
+]);
+
+Estudiante::create([
+'usuario_id' => 239,
+'codigo_sis' => '201976783',
+]);
+
+Estudiante::create([
+'usuario_id' => 240,
+'codigo_sis' => '201964419',
+]);
+
+Estudiante::create([
+'usuario_id' => 241,
+'codigo_sis' => '201955747',
+]);
+
+Estudiante::create([
+'usuario_id' => 242,
+'codigo_sis' => '201934088',
+]);
+
+Estudiante::create([
+'usuario_id' => 243,
+'codigo_sis' => '201915232',
+]);
+
+Estudiante::create([
+'usuario_id' => 244,
+'codigo_sis' => '201946662',
+]);
+
+Estudiante::create([
+'usuario_id' => 245,
+'codigo_sis' => '201990493',
+]);
+
+Estudiante::create([
+'usuario_id' => 246,
+'codigo_sis' => '201911995',
+]);
+
+Estudiante::create([
+'usuario_id' => 247,
+'codigo_sis' => '201955605',
+]);
+
+Estudiante::create([
+'usuario_id' => 248,
+'codigo_sis' => '201994634',
+]);
+
+Estudiante::create([
+'usuario_id' => 249,
+'codigo_sis' => '201990539',
+]);
+
+Estudiante::create([
+'usuario_id' => 250,
+'codigo_sis' => '201912881',
+]);
+
+Estudiante::create([
+'usuario_id' => 251,
+'codigo_sis' => '201986024',
+]);
+
+Estudiante::create([
+'usuario_id' => 252,
+'codigo_sis' => '201990221',
+]);
+
+Estudiante::create([
+'usuario_id' => 253,
+'codigo_sis' => '201954442',
+]);
+
+Estudiante::create([
+'usuario_id' => 254,
+'codigo_sis' => '201950421',
+]);
+
+Estudiante::create([
+'usuario_id' => 255,
+'codigo_sis' => '201927795',
+]);
+
+Estudiante::create([
+'usuario_id' => 256,
+'codigo_sis' => '201954034',
+]);
+
+Estudiante::create([
+'usuario_id' => 257,
+'codigo_sis' => '201912298',
+]);
+
+Estudiante::create([
+'usuario_id' => 258,
+'codigo_sis' => '201922785',
+]);
+
+Estudiante::create([
+'usuario_id' => 259,
+'codigo_sis' => '201983944',
+]);
+
+Estudiante::create([
+'usuario_id' => 260,
+'codigo_sis' => '201969856',
+]);
+
+Estudiante::create([
+'usuario_id' => 261,
+'codigo_sis' => '201960727',
+]);
+
+Estudiante::create([
+'usuario_id' => 262,
+'codigo_sis' => '201926471',
+]);
+
+Estudiante::create([
+'usuario_id' => 263,
+'codigo_sis' => '201932163',
+]);
+
+Estudiante::create([
+'usuario_id' => 264,
+'codigo_sis' => '201983286',
+]);
+
+Estudiante::create([
+'usuario_id' => 265,
+'codigo_sis' => '201901260',
+]);
+
+Estudiante::create([
+'usuario_id' => 266,
+'codigo_sis' => '201954679',
+]);
+
+Estudiante::create([
+'usuario_id' => 267,
+'codigo_sis' => '201934788',
+]);
+
+Estudiante::create([
+'usuario_id' => 268,
+'codigo_sis' => '201916387',
+]);
+
+Estudiante::create([
+'usuario_id' => 269,
+'codigo_sis' => '201961723',
+]);
+
+Estudiante::create([
+'usuario_id' => 270,
+'codigo_sis' => '201978585',
+]);
+
+Estudiante::create([
+'usuario_id' => 271,
+'codigo_sis' => '201987331',
+]);
+
+Estudiante::create([
+'usuario_id' => 272,
+'codigo_sis' => '201908109',
+]);
+
+Estudiante::create([
+'usuario_id' => 273,
+'codigo_sis' => '201924915',
+]);
+
+Estudiante::create([
+'usuario_id' => 274,
+'codigo_sis' => '201973342',
+]);
+
+Estudiante::create([
+'usuario_id' => 275,
+'codigo_sis' => '201920127',
+]);
+
+Estudiante::create([
+'usuario_id' => 276,
+'codigo_sis' => '201970241',
+]);
+
+Estudiante::create([
+'usuario_id' => 277,
+'codigo_sis' => '201903739',
+]);
+
+Estudiante::create([
+'usuario_id' => 278,
+'codigo_sis' => '201959720',
+]);
+
+Estudiante::create([
+'usuario_id' => 279,
+'codigo_sis' => '201928670',
+]);
+
+Estudiante::create([
+'usuario_id' => 280,
+'codigo_sis' => '201981830',
+]);
+
+Estudiante::create([
+'usuario_id' => 281,
+'codigo_sis' => '201936202',
+]);
+
+Estudiante::create([
+'usuario_id' => 282,
+'codigo_sis' => '201984183',
+]);
+
+Estudiante::create([
+'usuario_id' => 283,
+'codigo_sis' => '201975817',
+]);
+
+Estudiante::create([
+'usuario_id' => 284,
+'codigo_sis' => '201904881',
+]);
+
+Estudiante::create([
+'usuario_id' => 285,
+'codigo_sis' => '201936789',
+]);
+
+Estudiante::create([
+'usuario_id' => 286,
+'codigo_sis' => '201955566',
+]);
+
+Estudiante::create([
+'usuario_id' => 287,
+'codigo_sis' => '201930088',
+]);
+
+Estudiante::create([
+'usuario_id' => 288,
+'codigo_sis' => '201923065',
+]);
+
+Estudiante::create([
+'usuario_id' => 289,
+'codigo_sis' => '201909722',
+]);
+
+Estudiante::create([
+'usuario_id' => 290,
+'codigo_sis' => '201982944',
+]);
+
+Estudiante::create([
+'usuario_id' => 291,
+'codigo_sis' => '201982725',
+]);
+
+Estudiante::create([
+'usuario_id' => 292,
+'codigo_sis' => '201984739',
+]);
+
