@@ -45,7 +45,7 @@
     </li>
 
     <li class="nav-item">
-        <router-link :to="{ name: 'AdministradorClases' }" class="nav-link">
+        <router-link :to="{ name: 'AdministradorClases' }" class="nav-link" data-toggle="offcanvas">
             <i class="fas fa-graduation-cap menu-icon"></i>
             <span class="menu-title">Clases</span>
         </router-link>
