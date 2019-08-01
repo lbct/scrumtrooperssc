@@ -19,6 +19,17 @@ use Chumper\Zipper\Zipper;
 
 class Control extends Base
 {
+    private function retirarPunto($texto){
+        $salida = "";
+        
+        for ($i = 0; $i < strlen($texto); $i++){
+            if($texto[$i] != '.')
+                $salida=$salida.$texto[$i];
+        }
+        
+        return $salida;
+    }
+    
     public function descargar(Request $request, $grupo_docente_id){
         $usuario_id = session('usuario_id'); 
         $docente    = Docente::where("usuario_id", $usuario_id)->first();
@@ -50,19 +61,19 @@ class Control extends Base
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     if($estudiante_inscrito->comentario_auxiliar)
-                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                        $datos['comentario_auxiliar'] = $this->retirarPunto($estudiante_inscrito->comentario_auxiliar);
                     else
                         $datos['comentario_auxiliar'] = 'Sin comentario';
                     $estudiantes[$index]['semanas'][$estudiante_inscrito->semana] = $datos;
                 }else{
                     $estudiantes[$index] = collect();
-                    $estudiantes[$index]['nombre'] = $estudiante_inscrito->nombre.' '.$estudiante_inscrito->apellido;
+                    $estudiantes[$index]['nombre'] = $this->retirarPunto($estudiante_inscrito->nombre.' '.$estudiante_inscrito->apellido);
                     
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     
                     if($estudiante_inscrito->comentario_auxiliar)
-                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                        $datos['comentario_auxiliar'] = $this->retirarPunto($estudiante_inscrito->comentario_auxiliar);
                     else
                         $datos['comentario_auxiliar'] = 'Sin comentario';
                     
@@ -99,7 +110,7 @@ class Control extends Base
                                    $en_lab.'/'.
                                    $practica['archivo'];
                         
-                        Storage::copy($origen, $destino);       
+                        Storage::copy($origen, $destino);
                     }
                 }
             }
@@ -151,19 +162,19 @@ class Control extends Base
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     if($estudiante_inscrito->comentario_auxiliar)
-                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                        $datos['comentario_auxiliar'] = $this->retirarPunto($estudiante_inscrito->comentario_auxiliar);
                     else
                         $datos['comentario_auxiliar'] = 'Sin comentario';
                     $estudiantes[$index]['semanas'][$estudiante_inscrito->semana] = $datos;
                 }else{
                     $estudiantes[$index] = collect();
-                    $estudiantes[$index]['nombre'] = $estudiante_inscrito->nombre.' '.$estudiante_inscrito->apellido;
+                    $estudiantes[$index]['nombre'] = $this->retirarPunto($estudiante_inscrito->nombre.' '.$estudiante_inscrito->apellido);
                     
                     $datos['asistencia'] = $estudiante_inscrito->asistencia_sesion;
                     $datos['sesion_estudiante_id'] = $estudiante_inscrito->sesion_estudiante_id;
                     
                     if($estudiante_inscrito->comentario_auxiliar)
-                        $datos['comentario_auxiliar'] = $estudiante_inscrito->comentario_auxiliar;
+                        $datos['comentario_auxiliar'] = $this->retirarPunto($estudiante_inscrito->comentario_auxiliar);
                     else
                         $datos['comentario_auxiliar'] = 'Sin comentario';
                     
