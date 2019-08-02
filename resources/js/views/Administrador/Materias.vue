@@ -257,7 +257,7 @@
                             this.tipo_mensaje = 'success';
                             this.key_mensajes++;
                             
-                            this.materias.push(datos.materia);
+                            this.cambiarGestion();
                             $('#modal-agregar-materia').modal('hide');
                         }
                         else if(datos.error){

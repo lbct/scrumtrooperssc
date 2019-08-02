@@ -258,24 +258,26 @@
             },
             
             colorGrupoDocente(grupo_docente_id) {
-                var grupo_docente = grupo_docente_id%8;
+                var grupo_docente = grupo_docente_id%9;
                 
-                if(grupo_docente == 1)
-                    return 'table-primary';
+                if(grupo_docente == 0)
+                    return 'td-gris-3';
+                else if(grupo_docente == 1)
+                    return 'td-verde-1';
                 else if(grupo_docente == 2)
-                    return 'table-secondary';
+                    return 'td-gris-1';
                 else if(grupo_docente == 3)
-                    return 'table-success';
+                    return 'td-azul';
                 else if(grupo_docente == 4)
-                    return 'table-danger';
+                    return 'td-naranja-1';
                 else if(grupo_docente == 5)
-                    return 'table-warning';
+                    return 'td-verde-2';
                 else if(grupo_docente == 6)
-                    return 'table-info';
+                    return 'td-rojo';
                 else if(grupo_docente == 7)
-                    return 'table-light';
+                    return 'td-violeta';
                 else if(grupo_docente == 8)
-                    return 'table-dark';
+                    return 'td-gris-2';
             },
         },            
         

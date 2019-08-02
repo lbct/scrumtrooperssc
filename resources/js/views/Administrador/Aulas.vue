@@ -221,7 +221,7 @@
                             this.tipo_mensaje = 'success';
                             this.key_mensajes++;
                             
-                            this.aulas.push(datos.aula);
+                            this.obtenerAulas();
                             $('#modal-agregar-aula').modal('hide');
                         }
                         else if(datos.error){
