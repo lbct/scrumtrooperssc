@@ -23,7 +23,7 @@
                             <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="name@example.com" tabindex="3" value="{{ old('correo') }}">
                         </div>
                     </div>
-                </div>
+                </div>z
                 <div>
                     <div class=" form-row">
                         <div class="col-md-6 mb-3">
