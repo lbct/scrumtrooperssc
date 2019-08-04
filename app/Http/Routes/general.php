@@ -24,6 +24,12 @@ Route::get('inscripcion/activa', function (Request $request) {
     return response()->json(['activa'=>$activa], 200);
 });
 
+//Ruta Estado Edición de Inscripcion
+Route::get('inscripcion/edicion/activa', function (Request $request) {
+    $activa = FechasInscripciones::edicionInscripcion();
+    return response()->json(['activa'=>$activa], 200);
+});
+
 Route::get('registro', 'Registro\Control@vista');
 Route::post('registro', 'Registro\Control@registrar');
 

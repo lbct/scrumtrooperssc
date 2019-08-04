@@ -8,7 +8,7 @@
                         <th scope="col">Código</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Docente</th>
-                        <th v-if="inscripcion_activa" scope="col">Acciones</th>
+                        <th v-if="inscripcion_activa || inscripcion_edicion_activa" scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,11 +16,12 @@
                         <td>{{materia.codigo_materia}}</td>
                         <td>{{materia.nombre_materia}}</td>
                         <td>{{materia.nombre_docente}} {{materia.apellido_docente}}</td>
-                        <td v-if="inscripcion_activa">
+                        <td v-if="inscripcion_activa || inscripcion_edicion_activa">
                             <i v-on:click="mostrarEditar(materia, index)"
                                class="fas fa-edit clickleable">
                             </i>
-                            <i class="fas fa-trash-alt clickleable" 
+                            <i v-if="inscripcion_activa"
+                               class="fas fa-trash-alt clickleable" 
                                v-on:click="mostrarRetirarMateria(index)">
                             </i>
                         </td>
@@ -35,7 +36,7 @@
             Inscribirme
         </router-link>
         
-        <div v-if="inscripcion_activa" class="modal fade" id="modal-retiro-incripcion">
+        <div v-if="inscripcion_activa" class="modal fade" id="modal-retiro-inscripcion">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -63,7 +64,8 @@
           </div>
         </div>
         
-        <div v-if="inscripcion_activa" class="modal fade" id="modal-editar-incripcion">
+        <div v-if="inscripcion_activa || inscripcion_edicion_activa" 
+             class="modal fade" id="modal-editar-inscripcion">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -118,6 +120,7 @@
                 
                 materias: [],
                 inscripcion_activa: false,
+                inscripcion_edicion_activa: false,
                 
                 materia: {},
                 docente: {},
@@ -146,12 +149,21 @@
                     .catch(function (error) {
                         console.log(error);
                     });
+                
+                this.axios
+                    .get('/inscripcion/edicion/activa')
+                    .then((response)=>{
+                        this.inscripcion_edicion_activa = response.data.activa;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             },
             
             mostrarRetirarMateria(index){
                 this.materia = this.materias[index];
                 this.materia.index = index;
-                $('#modal-retiro-incripcion').modal('show');
+                $('#modal-retiro-inscripcion').modal('show');
             },
             
             retirarMateria(){
@@ -169,18 +181,18 @@
                             this.key_mensajes++;
                             this.materias.splice(this.materia.index,1);
                             
-                            $('#modal-retiro-incripcion').modal('hide');
+                            $('#modal-retiro-inscripcion').modal('hide');
                         }
                         else if(datos.error){
                             this.inscripcion_activa = false;
                             this.mensajes = datos.error;
                             this.tipo_mensaje = 'danger';
-                            $('#modal-retiro-incripcion').modal('hide');
+                            $('#modal-retiro-inscripcion').modal('hide');
                         }
                     })
             },
             
-            mostrarEditar(materia, index){
+            mostrarEditar(materia, index){                
                 this.mensajes = [];
                 this.tipo_mensaje = '';
                 this.key_mensajes = 0;
@@ -188,7 +200,7 @@
                 this.materia = materia;
                 this.materia.index = index;
                 this.docentesDisponibles();
-                $('#modal-editar-incripcion').modal('show');
+                $('#modal-editar-inscripcion').modal('show');
             },
             
             docentesDisponibles(){
@@ -265,7 +277,7 @@
                         }
                     
                         this.init();
-                        $('#modal-editar-incripcion').modal('hide');
+                        $('#modal-editar-inscripcion').modal('hide');
                     })
                     .catch(function (error) {
                         console.log(error);

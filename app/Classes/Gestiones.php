@@ -1,6 +1,7 @@
 <?php
 namespace App\Classes;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Gestion;
 
@@ -16,5 +17,21 @@ class Gestiones
         }
             
         return $gestion;
+    }
+    
+    public static function edicionInscripcion()
+    {
+        $activa = false;
+        
+        $gestion = Gestiones::GestionActiva();
+        
+        if($gestion){
+            $fecha_actual = Carbon::now()->subMonth(1)->toDateTimeString();
+            
+            if($gestion->inicio >= $fecha_actual)
+                $activa = true;
+        }
+        
+        return $activa;
     }
 }

@@ -9,8 +9,8 @@ use App\Models\EstudianteClase;
 use App\Models\Clase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use \App\Classes\FechasInscripciones;
-use \App\Classes\Dias;
+use App\Classes\FechasInscripciones;
+use App\Classes\Dias;
 
 use App\Http\Controllers\Estudiante\Base;
 
@@ -107,7 +107,7 @@ class Control extends Base
         $grupo_a_docente_id  = $request->grupo_a_docente_id;
         $clase_id            = $request->clase_id;
         
-        $activa = FechasInscripciones::fechaActiva();
+        $activa = FechasInscripciones::edicionInscripcion();
         if($activa){
             if($estudiante->estaInscrito($estudiante_clase_id)){
                 $clase = Clase::find($clase_id);
@@ -123,6 +123,6 @@ class Control extends Base
             }
             return response()->json(['error'=>['No tienes acceso a este registro.']], 200);
         }
-        return response()->json(['error'=>['La fecha para inscripciones de materias ha finalizado.']], 200);
+        return response()->json(['error'=>['La fecha para la edición de horarios y docentes de la materia ha finalizado.']], 200);
     }
 }
