@@ -306,7 +306,7 @@
                 };
                 
                 this.opciones_envios_chart = { 
-                    labels: ['En Laboratorio', 'Fuera de Laboratorio',],
+                    labels: ['En Laboratorio', 'Fuera',],
                     responsive: [{
                         breakpoint: 480,
                         options: {
