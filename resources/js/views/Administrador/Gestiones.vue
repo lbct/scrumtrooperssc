@@ -11,6 +11,8 @@
                     <tr>
                         <th scope="col">Año</th>
                         <th scope="col">Periodo</th>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fin</th>
                         <th scope="col">Activa</th>
                         <th scope="col">Acciones</th>
                     </tr>
@@ -19,6 +21,8 @@
                     <tr v-for="(gestion, index) in gestiones">
                         <td>{{gestion.anho_gestion}}</td>
                         <td>{{gestion.periodo}}</td>
+                        <td>{{gestion.inicio}}</td>
+                        <td>{{gestion.fin}}</td>
                         <td>
                             <button v-on:click="cambiarActiva(gestion)" class="btn" type="button">
                                 <i v-if="gestion.activa" 
@@ -77,6 +81,27 @@
                                 {{periodo.descripcion}}
                             </option>
                         </select>
+                        
+                        <label>Fecha de inicio de la Gestión:</label>
+                        <datetime type="date"
+                                input-class="form-control"
+                                v-model="gestion.inicio" 
+                                format="yyyy-MM-dd"
+                                value-zone="America/La_Paz"
+                                zone="America/La_Paz"
+                                :phrases="{ok: 'Continuar', cancel: 'Cancelar'}">
+                        </datetime>
+                        <br>
+                        <label>Fecha de fin de la Gestión:</label>
+                        <datetime type="date"
+                                  input-class="form-control"
+                                  v-model="gestion.fin" 
+                                  format="yyyy-MM-dd"
+                                  value-zone="America/La_Paz"
+                                  zone="America/La_Paz"
+                                  :phrases="{ok: 'Continuar', cancel: 'Cancelar'}"
+                                  :min-datetime="gestion.inicio">
+                         </datetime>
                     </div>
                     <p v-else><br>No se tiene periodos disponibles para ese año</p>
                   </div>
@@ -127,6 +152,27 @@
                                 {{periodo.descripcion}}
                             </option>
                         </select>
+                        
+                        <label>Fecha de inicio de la Gestión:</label>
+                        <datetime type="date"
+                                input-class="form-control"
+                                v-model="gestion.inicio" 
+                                format="yyyy-MM-dd"
+                                value-zone="America/La_Paz"
+                                zone="America/La_Paz"
+                                :phrases="{ok: 'Continuar', cancel: 'Cancelar'}">
+                        </datetime>
+                        <br>
+                        <label>Fecha de fin de la Gestión:</label>
+                        <datetime type="date"
+                                  input-class="form-control"
+                                  v-model="gestion.fin" 
+                                  format="yyyy-MM-dd"
+                                  value-zone="America/La_Paz"
+                                  zone="America/La_Paz"
+                                  :phrases="{ok: 'Continuar', cancel: 'Cancelar'}"
+                                  :min-datetime="gestion.inicio">
+                         </datetime>
                     </div>
                     <p v-else><br>No se tiene periodos disponibles para ese año</p>
                   </div>
@@ -187,7 +233,7 @@
                 key_mensajes_gestion: 0,
                 
                 gestiones: [],
-                gestion: {id:'', periodo_id:'', anho_gestion:'', periodo:'', activa:'', index:''},
+                gestion: {id:'', periodo_id:'', anho_gestion:'', periodo:'', activa:'', inicio:'', fin:'', index:''},
                 periodos: [],
                 anho_actual: '',
                 posibles_anhos: [],
@@ -229,8 +275,14 @@
                     .get('/administrador/periodos/'+this.gestion.anho_gestion)
                     .then((response)=>{
                         this.periodos = response.data;
-                        if(this.periodos.length > 0)
-                            this.gestion.periodo_id = this.periodos[0].id;
+                        if(this.periodos.length > 0){
+                            if(this.gestion.periodo_id){
+                                var aux = {id:this.gestion.periodo_id, descripcion:this.gestion.periodo};
+                                this.periodos.push(aux);
+                            }
+                            else
+                                this.gestion.periodo_id = this.periodos[0].id;
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -251,8 +303,12 @@
             mostrarAgregarGestion(){
                 this.initMensajes();
                 
+                this.gestion.periodo_id = 0;
+                this.gestion.periodo = '';
                 this.anho_actual  = new Date().getFullYear();
                 this.posiblesAnhos(this.anho_actual);
+                this.gestion.inicio = '';
+                this.gestion.fin    = ''; 
                 
                 $('#modal-agregar-gestion').modal('show');
             },
@@ -263,6 +319,8 @@
                 const params = {
                     'anho_gestion': this.gestion.anho_gestion,
                     'periodo_id': this.gestion.periodo_id,
+                    'inicio': this.gestion.inicio,
+                    'fin': this.gestion.fin,
                 };
                 this.axios
                     .post('/administrador/gestion', params)
@@ -293,7 +351,10 @@
                 
                 this.gestion.id           = gestion.id;
                 this.gestion.periodo_id   = gestion.periodo_id;
+                this.gestion.periodo      = gestion.periodo;
                 this.posiblesAnhos(gestion.anho_gestion);
+                this.gestion.inicio       = gestion.inicio;
+                this.gestion.fin          = gestion.fin; 
                 
                 $('#modal-editar-gestion').modal('show');
             },
@@ -305,6 +366,8 @@
                     'gestion_id': this.gestion.id,
                     'anho_gestion': this.gestion.anho_gestion,
                     'periodo_id': this.gestion.periodo_id,
+                    'inicio': this.gestion.inicio,
+                    'fin': this.gestion.fin,
                 };
                 this.axios
                     .put('/administrador/gestion', params)

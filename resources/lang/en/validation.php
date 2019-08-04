@@ -157,6 +157,8 @@ return [
             'nombre_materia'=>'Nombre de la Materia',
             'detalle_materia'=>'Detalle de la Materia',
             'file' => 'del archivo',
+            'inicio'=> 'Fecha de Inicio',
+            'fin'=> 'Fecha de fin',
 	],
 	
 ];

@@ -19,7 +19,7 @@ class Control extends Base
         $gestiones = Gestion::join('periodo', 'periodo.id', '=', 'gestion.periodo_id')
                      ->orderBy('anho_gestion', 'desc')
                      ->orderBy('periodo.id', 'desc')
-                     ->select('gestion.id', 'periodo_id', 'anho_gestion', 'descripcion as periodo', 'activa')
+                     ->select('gestion.id', 'periodo_id', 'anho_gestion', 'descripcion as periodo', 'activa', 'inicio', 'fin')
                      ->get();
         
         foreach($gestiones as $gestion){
@@ -32,6 +32,8 @@ class Control extends Base
     public function agregar(Request $request){
         $anho_gestion  = $request->anho_gestion;
         $periodo_id    = $request->periodo_id;
+        $inicio        = $request->inicio;
+        $fin           = $request->fin;
         
         $ultima_gestion = Gestion::orderBy('id', 'desc')
                           ->first();         
@@ -41,26 +43,35 @@ class Control extends Base
                            ->first();
         
         if(!$gestion_similar){
-            $gestion = new Gestion;
-            $gestion->anho_gestion = $anho_gestion;
-            $gestion->periodo_id   = $periodo_id;
-            $gestion->save();
+            $validator = Validator::make($request->all(), [
+                'inicio'  => 'required|date',
+                'fin'     => 'required|date',
+            ]);
+            
+            if(!$validator->fails()){
+                $gestion = new Gestion;
+                $gestion->anho_gestion = $anho_gestion;
+                $gestion->periodo_id   = $periodo_id;
+                $gestion->inicio       = $inicio;
+                $gestion->fin          = $fin;
+                $gestion->save();
 
-            if($ultima_gestion){
-                $materias = Materia::where('gestion_id', $ultima_gestion->id)
-                            ->get();
+                if($ultima_gestion){
+                    $materias = Materia::where('gestion_id', $ultima_gestion->id)
+                                ->get();
 
-                foreach($materias as $materia){
-                    $nueva_materia = new Materia;
-                    $nueva_materia->gestion_id = $gestion->id;
-                    $nueva_materia->codigo_materia = $materia->codigo_materia;
-                    $nueva_materia->nombre_materia = $materia->nombre_materia;
-                    $nueva_materia->detalle_materia = $materia->detalle_materia;
-                    $nueva_materia->save();
+                    foreach($materias as $materia){
+                        $nueva_materia = new Materia;
+                        $nueva_materia->gestion_id = $gestion->id;
+                        $nueva_materia->codigo_materia = $materia->codigo_materia;
+                        $nueva_materia->nombre_materia = $materia->nombre_materia;
+                        $nueva_materia->detalle_materia = $materia->detalle_materia;
+                        $nueva_materia->save();
+                    }
                 }
+                return response()->json(['exito'=>["Gestión añadida con éxito."]], 200);
             }
-
-            return response()->json(['exito'=>["Gestión añadida con éxito."]], 200);
+            return response()->json(['error'=>$validator->errors()->all()], 200);
         }
         return response()->json(['error'=>["Gestión duplicada."]], 200);
     }
@@ -69,6 +80,8 @@ class Control extends Base
         $gestion_id    = $request->gestion_id;
         $anho_gestion  = $request->anho_gestion;
         $periodo_id    = $request->periodo_id;
+        $inicio        = $request->inicio;
+        $fin           = $request->fin;
         
         $gestion = Gestion::find($gestion_id);
         
@@ -77,12 +90,22 @@ class Control extends Base
                                ->where('periodo_id', $periodo_id)
                                ->first();
             
-            if(!$gestion_similar){
-                $gestion->anho_gestion = $anho_gestion;
-                $gestion->periodo_id   = $periodo_id;
-                $gestion->save();
+            if(!$gestion_similar || $gestion_similar->id == $gestion_id){
+                $validator = Validator::make($request->all(), [
+                    'inicio'  => 'required|date',
+                    'fin'     => 'required|date',
+                ]);
+                
+                if(!$validator->fails()){
+                    $gestion->anho_gestion = $anho_gestion;
+                    $gestion->periodo_id   = $periodo_id;
+                    $gestion->inicio       = $inicio;
+                    $gestion->fin          = $fin;
+                    $gestion->save();
 
-                return response()->json(['exito'=>["Gestión editada con éxito."]], 200);
+                    return response()->json(['exito'=>["Gestión editada con éxito."]], 200);
+                }
+                return response()->json(['error'=>$validator->errors()->all()], 200);
             }
             return response()->json(['error'=>["Gestión duplicada."]], 200);
         }

@@ -14,7 +14,9 @@ class CrearTablaGestion extends Migration
             $table->integer('periodo_id')->unsigned();
             
             $table->string('anho_gestion',4);
-            $table->boolean('activa')->default(0);;
+            $table->boolean('activa')->default(0);
+            $table->date('inicio');
+            $table->date('fin');
             $table->timestamps();
             
             $table->foreign('periodo_id')->references('id')->on('periodo')->onDelete('cascade');
