@@ -10924,7 +10924,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-info {
-  color: #212529;
+  color: #fff;
   background-color: #68afff;
   border-color: #68afff;
 }
@@ -10958,13 +10958,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #212529;
+  color: #fff;
   background-color: #f5a623;
   border-color: #f5a623;
 }
 
 .btn-warning:hover {
-  color: #212529;
+  color: #fff;
   background-color: #e7940b;
   border-color: #db8c0a;
 }

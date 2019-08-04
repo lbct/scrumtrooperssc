@@ -44,6 +44,25 @@ class EstudianteClase extends Model
         return $semanas;
     }
     
+    public function enviosEnLaboratorio()
+    {
+        $envios = SesionEstudiante::where('estudiante_clase_id', $this->id)
+                  ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                  ->where('envio_practica.en_laboratorio', true)
+                  ->count();
+        
+        return $envios;
+    }
+    
+    public function enviosTotales()
+    {
+        $envios = SesionEstudiante::where('estudiante_clase_id', $this->id)
+                  ->join('envio_practica', 'envio_practica.sesion_estudiante_id', '=', 'sesion_estudiante.id')
+                  ->count();
+        
+        return $envios;
+    }
+    
     public function datosEstudiante()
     {
         $estudiante = Estudiante::where('estudiante.id', $this->estudiante_id)

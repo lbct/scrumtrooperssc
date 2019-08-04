@@ -22,21 +22,23 @@
             <div v-if="materias.length > 0" class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Nº</th>
-                            <th scope="col">Código</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Detalle</th>
-                            <th scope="col">Acciones</th>
+                        <tr class="d-flex">
+                            <th class="col-1">Nº</th>
+                            <th class="col-md-1 col-2">Código</th>
+                            <th class="col-md-4 col-5">Nombre</th>
+                            <th class="col-md-4 col-5">Detalle</th>
+                            <th class="col-2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(materia, index) in materias">
-                            <td>{{index+1}}</td>
-                            <td>{{materia.codigo_materia}}</td>
-                            <td>{{materia.nombre_materia}}</td>
-                            <td>{{materia.detalle_materia}}</td>
-                            <td>
+                        <tr v-for="(materia, index) in materias" class="d-flex">
+                            <td class="col-1">{{index+1}}</td>
+                            <td class="col-md-1 col-2 overflow-auto">{{materia.codigo_materia}}</td>
+                            <td class="col-md-4 col-5 overflow-auto">{{materia.nombre_materia}}</td>
+                            <td class="col-md-4 col-5 text-wrap">
+                                    {{materia.detalle_materia}}
+                            </td>
+                            <td class="col-2">
                                 <i v-on:click="mostrarEditarMateria(materia, index)" 
                                    class="fas fa-edit clickleable">
                                 </i>
@@ -79,7 +81,8 @@
 
                             <div class="form-group">
                               <label>Detalle de la Materia</label>
-                              <input v-model='materia.detalle_materia'class="form-control" required>
+                                <textarea v-model='materia.detalle_materia' class="form-control" rows="4">
+                                </textarea>
                             </div>
                       </div>
 
@@ -123,7 +126,8 @@
 
                             <div class="form-group">
                               <label>Detalle de la Materia</label>
-                              <input v-model='materia.detalle_materia'class="form-control" required>
+                              <textarea v-model='materia.detalle_materia' class="form-control" rows="4">
+                              </textarea>
                             </div>
                       </div>
 

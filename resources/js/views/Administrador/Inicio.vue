@@ -59,7 +59,7 @@
                     <div class="card-body align-items-center">
                         <p class="card-title">Uso de Laboratorios por Semana</p>
                         <div class="chart-wrap" >    
-                            <apexchart id="chartAulas" width="100%" type="donut" :height="altura"
+                            <apexchart id="chartAulas" width="100%" type="donut"
                                        :options="options" :series="series">
                             </apexchart>
                         </div>
@@ -187,7 +187,18 @@
                 .get('/administrador/estadisticas/chartAulas')
                 .then((response)=>{
                     this.options = {
-                        labels: response.data[0]
+                        labels: response.data[0],
+                        responsive: [{
+                            breakpoint: 480,
+                            options: {
+                              chart: {
+                                width: '100%'
+                              },
+                              legend: {
+                                position: 'bottom'
+                              }
+                            }
+                        }],
                     };
                     this.series = response.data[1];
                 })

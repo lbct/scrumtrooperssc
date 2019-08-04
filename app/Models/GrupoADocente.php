@@ -98,9 +98,10 @@ class GrupoADocente extends Model
                        ->get();
         
         $estudiantes = $estudiantes->map(function ($estudiante) {
-                        $estudiante_clase = EstudianteClase::find($estudiante->id);
-                        $estudiante['semanas_asistidas'] = $estudiante_clase->semanasAsistidas()->count();
-                        $estudiante['semanas_totales'] = $estudiante_clase->semanasTotales()->count();
+                        $estudiante['semanas_asistidas'] = $estudiante->semanasAsistidas()->count();
+                        $estudiante['semanas_totales'] = $estudiante->semanasTotales()->count();
+                        $estudiante['en_laboratorio'] = $estudiante->enviosEnLaboratorio();
+                        $estudiante['envios_totales'] = $estudiante->enviosTotales();
                         return $estudiante;
                        });
         
