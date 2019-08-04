@@ -35,6 +35,12 @@
                             <div class="form-group col-12 col-md-6">
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirma tu Contraseña" tabindex="6" value="{{ old('password_confirmation') }}">
                             </div>
+                            <div class="form-group col-12 col-md-6">
+                                <img src="{{$img}}">
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                                <input type="text" name="captcha" id="captcha" class="form-control input-lg" placeholder="Escribe el Texto de la Imagen"/>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group form-group col-12 col-md-6">

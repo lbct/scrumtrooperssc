@@ -8,12 +8,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Gregwar\Captcha\CaptchaBuilder;
 
 class Control extends Controller
 {
     public function vista()
     {
-        return view('registro.formulario');
+        session_start();
+        $builder = new CaptchaBuilder;
+        $builder->build();
+        $img = $builder->inline();
+        $_SESSION["text_captcha"]=$builder->getPhrase();
+        return view('registro.formulario')
+                ->with('img', $img);
     }
     
     //Registra un nuevo Estudiante
@@ -27,6 +34,7 @@ class Control extends Controller
             'nombre'                    => 'required|min:2',
             'apellido'                  => 'required|min:2',
             'correo'                    => 'required|email|min:8',
+            'captcha'                   => 'required|size:5'
         ]);
         
         if($validator->fails()) 
@@ -39,35 +47,44 @@ class Control extends Controller
         }
         else
         {
-            $cuenta_creada = Usuario::where('username',($request->username))->first();
-            $sis_creado    = Estudiante::where('codigo_sis',($request->codigo_sis))->first();
-            
-            if(!$cuenta_creada && !$sis_creado)
+            session_start();
+            $captcha = $_SESSION["text_captcha"];
+            if ($captcha == $request->captcha)
             {
-                $usuario = new Usuario();
-                $usuario->username          = $request->username;
-                $usuario->password          = Hash::make($request->password);
-                $usuario->nombre            = $request->nombre;
-                $usuario->apellido          = $request->apellido;
-                $usuario->correo            = $request->correo;   
-                $usuario->save();
+                $cuenta_creada = Usuario::where('username',($request->username))->first();
+                $sis_creado    = Estudiante::where('codigo_sis',($request->codigo_sis))->first();
                 
-                $rol_asignado = new AsignaRol;
-                $rol_asignado->rol_id        = 5;
-                $rol_asignado->usuario_id    = $usuario->id;
-                $rol_asignado->save();
+                if(!$cuenta_creada && !$sis_creado)
+                {
+                    $usuario = new Usuario();
+                    $usuario->username          = $request->username;
+                    $usuario->password          = Hash::make($request->password);
+                    $usuario->nombre            = $request->nombre;
+                    $usuario->apellido          = $request->apellido;
+                    $usuario->correo            = $request->correo;   
+                    $usuario->save();
+                    
+                    $rol_asignado = new AsignaRol;
+                    $rol_asignado->rol_id        = 5;
+                    $rol_asignado->usuario_id    = $usuario->id;
+                    $rol_asignado->save();
+                    
+                    $estudiante = new Estudiante;
+                    $estudiante->usuario_id     = $usuario->id;
+                    $estudiante->codigo_sis     = $request->codigo_sis;
+                    $estudiante->save();
+                    
+                    $request->session()->flash('alert-success', 'Cuenta Creada');
+                    return redirect('login');
+                }
                 
-                $estudiante = new Estudiante;
-                $estudiante->usuario_id     = $usuario->id;
-                $estudiante->codigo_sis     = $request->codigo_sis;
-                $estudiante->save();
-                
-                $request->session()->flash('alert-success', 'Cuenta Creada');
-                return redirect('login');
+                $request->session()->flash('alert-danger', 'Usuario o código SIS no válido');
+                return redirect('registro')->withErrors($validator)->withInput();
             }
-            
-            $request->session()->flash('alert-danger', 'Usuario o código SIS no válido');
+               
+            $request->session()->flash('alert-danger', 'El Captcha es Incorrecto');
             return redirect('registro')->withErrors($validator)->withInput();
+        
         }
     }
 }
