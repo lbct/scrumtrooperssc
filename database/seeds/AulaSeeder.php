@@ -10,19 +10,19 @@ class AulaSeeder extends Seeder
         Aula::create([
         'codigo_aula' 		        =>	'CSLAB001',
         'nombre_aula' 	            =>	'LAB001',
-        'detalle_aula' 	            =>	'Laboratorio 001',
+        'capacidad_aula' 	        =>	35,
         ]);
         
         Aula::create([
         'codigo_aula' 		        =>	'CSLAB002',
         'nombre_aula' 	            =>	'LAB002',
-        'detalle_aula' 	            =>	'Laboratorio 002',
+        'capacidad_aula' 	        =>	35,
         ]);
         
         Aula::create([
         'codigo_aula' 		        =>	'CSLAB003',
         'nombre_aula' 	            =>	'LAB003',
-        'detalle_aula' 	            =>	'Laboratorio 003',
+        'capacidad_aula' 	        =>	35,
         ]);
     }
 }

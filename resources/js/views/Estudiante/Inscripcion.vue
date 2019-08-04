@@ -234,6 +234,10 @@
                 }
             },
             
+            obtenerClases(){
+                                
+            },
+            
             comprobar(){
                 if(this.clase){
                     this.formulario_inscripcion.next();
@@ -261,7 +265,14 @@
                             this.key_mensajes++;
                             this.inscrito = true;
                         }else if(datos.error){
-                            this.inscripcion_activa = false;
+                            if(datos.codigo == 1)
+                                this.inscripcion_activa = false;
+                            else if(datos.codigo == 2){
+                                this.mensajes = datos.error;
+                                this.tipo_mensaje = 'danger';
+                                this.key_mensajes++;
+                                this.formulario_inscripcion.to(2);
+                            }
                         }
                     })
                     .catch(function (error) {

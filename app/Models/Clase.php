@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Clase;
 use App\Models\Sesion;
+use App\Models\Aula;
+use App\Models\EstudianteClase;
 
 class Clase extends Model
 {
@@ -39,6 +41,40 @@ class Clase extends Model
     public function estudianteClase()
     {
         return $this->hasMany('App\Models\EstudianteClase', 'clase_id', 'id');
+    }
+    
+    public function cupoDisponible()
+    {
+        $disponible = false;
+        
+        $inscritos = EstudianteClase::where('clase_id', $this->id)
+                     ->count();
+        
+        $cupos = Aula::find($this->aula_id)->capacidad_aula;
+        
+        if($cupos-$inscritos > 0)
+            $disponible = true;
+        
+        return $disponible;
+    }
+    
+    public function cupoDisponibleEstudiante($estudiante_id)
+    {
+        $disponible = false;
+        
+        $inscritos = EstudianteClase::where('clase_id', $this->id)
+                     ->count();
+        
+        $inscrito = EstudianteClase::where('clase_id', $this->id)
+                    ->where('estudiante_id', $estudiante_id)
+                    ->first();
+        
+        $cupos = Aula::find($this->aula_id)->capacidad_aula;
+        
+        if($cupos-$inscritos > 0 || $inscrito)
+            $disponible = true;
+        
+        return $disponible;
     }
     
     public function sesiones()

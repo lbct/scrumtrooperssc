@@ -12,7 +12,7 @@
                         <th scope="col">Nº</th>
                         <th scope="col">Código</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Detalle</th>
+                        <th scope="col">Capacidad (Estudiantes)</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -21,7 +21,7 @@
                         <td>{{index+1}}</td>
                         <td>{{aula.codigo_aula}}</td>
                         <td>{{aula.nombre_aula}}</td>
-                        <td>{{aula.detalle_aula}}</td>
+                        <td>{{aula.capacidad_aula}}</td>
                         <td>
                             <i v-on:click="mostrarEditar(aula, index)"
                                class="fas fa-edit clickleable">
@@ -64,8 +64,9 @@
                         </div>
 
                         <div class="form-group">
-                          <label>Detalle del Aula</label>
-                          <input v-model='aula.detalle_aula'class="form-control" required>
+                          <label>Capacidad del Aula (Estudiantes)</label>
+                          <input v-model='aula.capacidad_aula'class="form-control" 
+                                 type="number" required>
                         </div>
                   </div>
 
@@ -108,8 +109,9 @@
                         </div>
 
                         <div class="form-group">
-                          <label>Detalle del Aula</label>
-                          <input v-model='aula.detalle_aula'class="form-control" required>
+                          <label>Capacidad del Aula (Estudiantes)</label>
+                          <input v-model='aula.capacidad_aula'class="form-control" 
+                                 type="number" required>
                         </div>
                   </div>
 
@@ -164,7 +166,7 @@
                 key_mensajes_aula: 0,
                 
                 aulas: [],
-                aula: {id:'', codigo_aula:'', nombre_aula:'', detalle_aula:''},
+                aula: {id:'', codigo_aula:'', nombre_aula:'', capacidad_aula:35},
             }
         },
     
@@ -197,7 +199,7 @@
                 this.tipo_mensaje_aula = '';
                 this.key_mensajes_aula = 0;
                 
-                this.aula = {id:'', codigo_aula:'', nombre_aula:'', detalle_aula:''};
+                this.aula = {id:'', codigo_aula:'', nombre_aula:'', capacidad_aula:35};
                 $('#modal-agregar-aula').modal('show');
             },
             
@@ -209,7 +211,7 @@
                 const params = {
                     'codigo_aula': this.aula.codigo_aula,
                     'nombre_aula': this.aula.nombre_aula,
-                    'detalle_aula': this.aula.detalle_aula,
+                    'capacidad_aula': this.aula.capacidad_aula,
                 };
                 this.axios
                     .post('/administrador/aula', params)
@@ -259,7 +261,7 @@
                     'aula_id': this.aula.id,
                     'codigo_aula': this.aula.codigo_aula,
                     'nombre_aula': this.aula.nombre_aula,
-                    'detalle_aula': this.aula.detalle_aula,
+                    'capacidad_aula': this.aula.capacidad_aula,
                 };
                 this.axios
                     .put('/administrador/aula', params)
@@ -274,7 +276,7 @@
                             var index = this.aula.index;
                             this.aulas[index].codigo_aula  = this.aula.codigo_aula;
                             this.aulas[index].nombre_aula  = this.aula.nombre_aula;
-                            this.aulas[index].detalle_aula = this.aula.detalle_aula;
+                            this.aulas[index].capacidad_aula = this.aula.capacidad_aula;
                             $('#modal-editar-aula').modal('hide');
                         }
                         else if(datos.error){

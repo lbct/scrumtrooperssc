@@ -13,8 +13,8 @@ class CrearTablaAula extends Migration
             $table->increments('id');
             
             $table->string('codigo_aula',25)->unique();
-            $table->string('nombre_aula',50);
-            $table->string('detalle_aula',255);
+            $table->string('nombre_aula',255);
+            $table->unsignedMediumInteger('capacidad_aula')->default(1);
             $table->timestamps();
         });
     }

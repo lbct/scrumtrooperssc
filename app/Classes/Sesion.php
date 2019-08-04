@@ -12,8 +12,11 @@ class Sesion
         $iniciado = false;
         $usuario_id = session('usuario_id');
         
-        if( $usuario_id )
-            $iniciado = true;
+        if($usuario_id){
+            $usuario = Usuario::find($usuario_id);
+            if($usuario)
+                $iniciado = true;
+        }
         
         return $iniciado;
     }
@@ -26,7 +29,7 @@ class Sesion
             $usuario_id = session('usuario_id');
             $usuario    = Usuario::find($usuario_id);
             
-            if($usuario->tieneRol($rol_id))
+            if($usuario && $usuario->tieneRol($rol_id))
                 $autorizado = true;
         }
         

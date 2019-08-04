@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\GrupoDocente;
 use App\Models\EstudianteClase;
+use App\Models\Clase;
 use Illuminate\Database\Eloquent\Model;
 
 class GrupoADocente extends Model
@@ -49,6 +50,40 @@ class GrupoADocente extends Model
                   ->join("horario", "horario.id", "=", "clase.horario_id")
                   ->select("clase.id as id", "materia_id", "grupo_docente_id", "detalle_grupo_docente", "nombre_aula", "dia", "hora_inicio", "hora_fin")
                   ->get();
+        
+        return $clases;
+    }
+    
+    public function clasesLibres()
+    {
+        $clases = GrupoDocente::where('grupo_docente.id', $this->grupo_docente_id)
+                  ->join("clase", "clase.grupo_docente_id", "=", "grupo_docente.id")
+                  ->join("aula", "aula.id", "=", "clase.aula_id")
+                  ->join("horario", "horario.id", "=", "clase.horario_id")
+                  ->select("clase.id as id", "materia_id", "grupo_docente_id", "detalle_grupo_docente", "nombre_aula", "dia", "hora_inicio", "hora_fin")
+                  ->get();
+        
+        foreach($clases as $clase){
+            $clase_aux = Clase::find($clase->id);
+            $clase['disponible'] = $clase_aux->cupoDisponible();
+        }
+        
+        return $clases;
+    }
+    
+    public function clasesLibresEstudiante($estudiante_id)
+    {
+        $clases = GrupoDocente::where('grupo_docente.id', $this->grupo_docente_id)
+                  ->join("clase", "clase.grupo_docente_id", "=", "grupo_docente.id")
+                  ->join("aula", "aula.id", "=", "clase.aula_id")
+                  ->join("horario", "horario.id", "=", "clase.horario_id")
+                  ->select("clase.id as id", "materia_id", "grupo_docente_id", "detalle_grupo_docente", "nombre_aula", "dia", "hora_inicio", "hora_fin")
+                  ->get();
+        
+        foreach($clases as $clase){
+            $clase_aux = Clase::find($clase->id);
+            $clase['disponible'] = $clase_aux->cupoDisponibleEstudiante($estudiante_id);
+        }
         
         return $clases;
     }
