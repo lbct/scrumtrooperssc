@@ -274,10 +274,12 @@
                 if(this.codigos_sis.length > 0 && this.codigos_sis[0].length > 0){
                     this.codigos_sis.forEach(codigo_sis => {
                         if(codigo_sis.length == 9){
-                            this.estudiantes_filtrados.push(this.estudiantes.find(estudiante => {
-                                                                return estudiante.codigo_sis == codigo_sis;
-                                                            })
-                                                           );
+                            var estudiante = this.estudiantes.find(estudiante => {
+                                                return estudiante.codigo_sis == codigo_sis;
+                                             });
+                            
+                            if(estudiante)
+                                this.estudiantes_filtrados.push(estudiante);
                         }
                     });
                 }else{
