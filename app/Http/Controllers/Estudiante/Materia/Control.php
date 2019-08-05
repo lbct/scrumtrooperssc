@@ -107,8 +107,9 @@ class Control extends Base
         $grupo_a_docente_id  = $request->grupo_a_docente_id;
         $clase_id            = $request->clase_id;
         
-        $activa = FechasInscripciones::edicionInscripcion();
-        if($activa){
+        $edicion_activa = FechasInscripciones::edicionInscripcion();
+        $inscripcion_activa = FechasInscripciones::fechaActiva();
+        if($edicion_activa || $inscripcion_activa){
             if($estudiante->estaInscrito($estudiante_clase_id)){
                 $clase = Clase::find($clase_id);
             

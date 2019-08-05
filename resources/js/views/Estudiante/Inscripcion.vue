@@ -36,7 +36,7 @@
               <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger1">
                 <center v-if="materias.length > 0">
                   <div class="form-group form-group col-md-6">
-                        <label>Selecciona una Materia</label>
+                        <h6>Selecciona una Materia</h6>
                         <select v-model="materia" class="form-control" required>
                             <option v-for="materia in materias" :value="materia">
                                 {{materia.nombre_materia}}
@@ -54,7 +54,12 @@
               <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="steppertrigger2">
                 <center v-if="docentes.length > 0">
                   <div class="form-group form-group col-md-6">
-                    <label>Selecciona un Docente</label>
+                    <h6>Selecciona un Docente</h6>
+                    <p>Por favor elige el docente con el que te inscribiste en el WebSIS, puedes consultar las materias inscritas en el WebSIS 
+                        <a href="http://websis.umss.edu.bo/stud_estadoInscripcionA.asp" target="_blank">
+                            desde acá
+                        </a>
+                    </p>
                     <select v-model="docente" class="form-control" required>
                         <option v-for="docente in docentes" :value="docente">
                             {{docente.nombre_docente}} {{docente.apellido_docente}}
@@ -73,7 +78,7 @@
               <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="steppertrigger3">
                 <center v-if="clases.length > 0">
                   <div class="form-group form-group col-md-6">
-                    <label>Selecciona un Horario</label>
+                    <h6>Selecciona un Horario</h6>
                     <select v-model="clase" class="form-control" required>
                         <option v-for="clase in clases" :value="clase">
                             {{clase.descripcion}}
