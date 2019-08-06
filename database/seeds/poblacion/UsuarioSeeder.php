@@ -152,11 +152,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'MauricioOscarCrespoMontaño',
+'username' => 'MauricioOscarCrespoMontanho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Mauricio ',
-'apellido' => 'Oscar Crespo Montaño',
-'correo'   => 'Mauricio.Oscar.Crespo.Montaño@gmail.com',
+'apellido' => 'Oscar Crespo Montanho',
+'correo'   => 'Mauricio.Oscar.Crespo.Montanho@gmail.com',
 ]);
 
 Usuario::create([
@@ -192,11 +192,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'PabloSaulMaguiñaApaza',
+'username' => 'PabloSaulMaguinhaApaza',
 'password' => Hash::make('texto'),
 'nombre'   => 'Pablo ',
-'apellido' => 'Saul Maguiña Apaza',
-'correo'   => 'Pablo.Saul.Maguiña.Apaza@gmail.com',
+'apellido' => 'Saul Maguinha Apaza',
+'correo'   => 'Pablo.Saul.Maguinha.Apaza@gmail.com',
 ]);
 
 Usuario::create([
@@ -456,11 +456,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'KevinRaulUreñaVidal',
+'username' => 'KevinRaulUrenhaVidal',
 'password' => Hash::make('texto'),
 'nombre'   => 'Kevin ',
-'apellido' => 'Raul Ureña Vidal',
-'correo'   => 'Kevin.Raul.Ureña.Vidal@gmail.com',
+'apellido' => 'Raul Urenha Vidal',
+'correo'   => 'Kevin.Raul.Urenha.Vidal@gmail.com',
 ]);
 
 Usuario::create([
@@ -696,11 +696,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'MauricioDavidOrtuñoAhenke',
+'username' => 'MauricioDavidOrtunhoAhenke',
 'password' => Hash::make('texto'),
 'nombre'   => 'Mauricio ',
-'apellido' => 'David Ortuño Ahenke',
-'correo'   => 'Mauricio.David.Ortuño.Ahenke@gmail.com',
+'apellido' => 'David Ortunho Ahenke',
+'correo'   => 'Mauricio.David.Ortunho.Ahenke@gmail.com',
 ]);
 
 Usuario::create([
@@ -904,11 +904,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'EddyBrandonVeizagaTriveño',
+'username' => 'EddyBrandonVeizagaTrivenho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Eddy ',
-'apellido' => 'Brandon Veizaga Triveño',
-'correo'   => 'Eddy.Brandon.Veizaga.Triveño@gmail.com',
+'apellido' => 'Brandon Veizaga Trivenho',
+'correo'   => 'Eddy.Brandon.Veizaga.Trivenho@gmail.com',
 ]);
 
 Usuario::create([
@@ -928,19 +928,19 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'JhoyerJoseOcañaTicona',
+'username' => 'JhoyerJoseOcanhaTicona',
 'password' => Hash::make('texto'),
 'nombre'   => 'Jhoyer ',
-'apellido' => 'Jose Ocaña Ticona',
-'correo'   => 'Jhoyer.Jose.Ocaña.Ticona@gmail.com',
+'apellido' => 'Jose Ocanha Ticona',
+'correo'   => 'Jhoyer.Jose.Ocanha.Ticona@gmail.com',
 ]);
 
 Usuario::create([
-'username' => 'JorgeIvanLoboOrtuño',
+'username' => 'JorgeIvanLoboOrtunho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Jorge ',
-'apellido' => 'Ivan Lobo Ortuño',
-'correo'   => 'Jorge.Ivan.Lobo.Ortuño@gmail.com',
+'apellido' => 'Ivan Lobo Ortunho',
+'correo'   => 'Jorge.Ivan.Lobo.Ortunho@gmail.com',
 ]);
 
 Usuario::create([
@@ -1000,11 +1000,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'OscarOrdoñezPinto',
+'username' => 'OscarOrdonhezPinto',
 'password' => Hash::make('texto'),
 'nombre'   => 'Oscar ',
-'apellido' => 'Ordoñez Pinto',
-'correo'   => 'Oscar.Ordoñez.Pinto@gmail.com',
+'apellido' => 'Ordonhez Pinto',
+'correo'   => 'Oscar.Ordonhez.Pinto@gmail.com',
 ]);
 
 Usuario::create([
@@ -1056,11 +1056,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'WilliamAlexanderMontañoLaime',
+'username' => 'WilliamAlexanderMontanhoLaime',
 'password' => Hash::make('texto'),
 'nombre'   => 'William ',
-'apellido' => 'Alexander Montaño Laime',
-'correo'   => 'William.Alexander.Montaño.Laime@gmail.com',
+'apellido' => 'Alexander Montanho Laime',
+'correo'   => 'William.Alexander.Montanho.Laime@gmail.com',
 ]);
 
 Usuario::create([
@@ -1136,11 +1136,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'CristianArandoQuecaña',
+'username' => 'CristianArandoQuecanha',
 'password' => Hash::make('texto'),
 'nombre'   => 'Cristian ',
-'apellido' => 'Arando Quecaña',
-'correo'   => 'Cristian.Arando.Quecaña@gmail.com',
+'apellido' => 'Arando Quecanha',
+'correo'   => 'Cristian.Arando.Quecanha@gmail.com',
 ]);
 
 Usuario::create([
@@ -1304,11 +1304,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'VanessaEstherFloresMontaño',
+'username' => 'VanessaEstherFloresMontanho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Vanessa ',
-'apellido' => 'Esther Flores Montaño',
-'correo'   => 'Vanessa.Esther.Flores.Montaño@gmail.com',
+'apellido' => 'Esther Flores Montanho',
+'correo'   => 'Vanessa.Esther.Flores.Montanho@gmail.com',
 ]);
 
 Usuario::create([
@@ -1352,11 +1352,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'AlejandroMontañoCayola',
+'username' => 'AlejandroMontanhoCayola',
 'password' => Hash::make('texto'),
 'nombre'   => 'Alejandro ',
-'apellido' => 'Montaño Cayola',
-'correo'   => 'Alejandro.Montaño.Cayola@gmail.com',
+'apellido' => 'Montanho Cayola',
+'correo'   => 'Alejandro.Montanho.Cayola@gmail.com',
 ]);
 
 Usuario::create([
@@ -1416,11 +1416,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'JonathanMontaño',
+'username' => 'JonathanMontanho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Jonathan ',
-'apellido' => 'Montaño',
-'correo'   => 'Jonathan.Montaño@gmail.com',
+'apellido' => 'Montanho',
+'correo'   => 'Jonathan.Montanho@gmail.com',
 ]);
 
 Usuario::create([
@@ -1512,11 +1512,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'AlejandroPabloCondoUreña',
+'username' => 'AlejandroPabloCondoUrenha',
 'password' => Hash::make('texto'),
 'nombre'   => 'Alejandro ',
-'apellido' => 'Pablo Condo Ureña',
-'correo'   => 'Alejandro.Pablo.Condo.Ureña@gmail.com',
+'apellido' => 'Pablo Condo Urenha',
+'correo'   => 'Alejandro.Pablo.Condo.Urenha@gmail.com',
 ]);
 
 Usuario::create([
@@ -1576,11 +1576,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'FabianPeñarrieta',
+'username' => 'FabianPenharrieta',
 'password' => Hash::make('texto'),
 'nombre'   => 'Fabian ',
-'apellido' => 'Peñarrieta',
-'correo'   => 'Fabian.Peñarrieta@gmail.com',
+'apellido' => 'Penharrieta',
+'correo'   => 'Fabian.Penharrieta@gmail.com',
 ]);
 
 Usuario::create([
@@ -1600,11 +1600,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'GustavoAlanMontañoArgote',
+'username' => 'GustavoAlanMontanhoArgote',
 'password' => Hash::make('texto'),
 'nombre'   => 'Gustavo ',
-'apellido' => 'Alan Montaño Argote',
-'correo'   => 'Gustavo.Alan.Montaño.Argote@gmail.com',
+'apellido' => 'Alan Montanho Argote',
+'correo'   => 'Gustavo.Alan.Montanho.Argote@gmail.com',
 ]);
 
 Usuario::create([
@@ -1640,11 +1640,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'JazzedtTiglatMontañoO',
+'username' => 'JazzedtTiglatMontanhoO',
 'password' => Hash::make('texto'),
 'nombre'   => 'Jazzedt ',
-'apellido' => 'Tiglat Montaño O',
-'correo'   => 'Jazzedt.Tiglat.Montaño.O@gmail.com',
+'apellido' => 'Tiglat Montanho O',
+'correo'   => 'Jazzedt.Tiglat.Montanho.O@gmail.com',
 ]);
 
 Usuario::create([
@@ -1944,11 +1944,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'ParraSuzañoLeslyMelina',
+'username' => 'ParraSuzanhoLeslyMelina',
 'password' => Hash::make('texto'),
 'nombre'   => 'Parra ',
-'apellido' => 'Suzaño Lesly Melina',
-'correo'   => 'Parra.Suzaño.Lesly.Melina@gmail.com',
+'apellido' => 'Suzanho Lesly Melina',
+'correo'   => 'Parra.Suzanho.Lesly.Melina@gmail.com',
 ]);
 
 Usuario::create([
@@ -2016,11 +2016,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'AndresMatiasAlvarezNuñez',
+'username' => 'AndresMatiasAlvarezNunhez',
 'password' => Hash::make('texto'),
 'nombre'   => 'Andres ',
-'apellido' => 'Matias Alvarez Nuñez',
-'correo'   => 'Andres.Matias.Alvarez.Nuñez@gmail.com',
+'apellido' => 'Matias Alvarez Nunhez',
+'correo'   => 'Andres.Matias.Alvarez.Nunhez@gmail.com',
 ]);
 
 Usuario::create([
@@ -2200,11 +2200,11 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'NelsonJavierCruzMontaño',
+'username' => 'NelsonJavierCruzMontanho',
 'password' => Hash::make('texto'),
 'nombre'   => 'Nelson ',
-'apellido' => 'Javier Cruz Montaño',
-'correo'   => 'Nelson.Javier.Cruz.Montaño@gmail.com',
+'apellido' => 'Javier Cruz Montanho',
+'correo'   => 'Nelson.Javier.Cruz.Montanho@gmail.com',
 ]);
 
 Usuario::create([
@@ -2216,19 +2216,19 @@ Usuario::create([
 ]);
 
 Usuario::create([
-'username' => 'SamuelAlexMontañoFernandez',
+'username' => 'SamuelAlexMontanhoFernandez',
 'password' => Hash::make('texto'),
 'nombre'   => 'Samuel ',
-'apellido' => 'Alex Montaño Fernandez',
-'correo'   => 'Samuel.Alex.Montaño.Fernandez@gmail.com',
+'apellido' => 'Alex Montanho Fernandez',
+'correo'   => 'Samuel.Alex.Montanho.Fernandez@gmail.com',
 ]);
 
 Usuario::create([
-'username' => 'SergioVeizagaMuñoz',
+'username' => 'SergioVeizagaMunhoz',
 'password' => Hash::make('texto'),
 'nombre'   => 'Sergio ',
-'apellido' => 'Veizaga Muñoz',
-'correo'   => 'Sergio.Veizaga.Muñoz@gmail.com',
+'apellido' => 'Veizaga Munhoz',
+'correo'   => 'Sergio.Veizaga.Munhoz@gmail.com',
 ]);
 
 Usuario::create([

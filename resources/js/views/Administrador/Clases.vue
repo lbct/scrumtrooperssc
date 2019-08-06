@@ -16,7 +16,7 @@
             
             <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
             
-            <div class="table-responsive">
+            <div v-if="cantidad_aulas > 0" class="table-responsive">
                 <table :key="key_clases" class="table table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -51,6 +51,7 @@
                     </tbody>
                 </table>
             </div>
+            <p v-else>Se necesita al menos una aula creada.</p>
             
             <div class="modal fade" id="modal-agregar-clase">
               <div class="modal-dialog">

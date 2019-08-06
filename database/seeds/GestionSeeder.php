@@ -18,7 +18,7 @@ class GestionSeeder extends Seeder
         Gestion::create([
         	'periodo_id' 	 =>	2,
             'anho_gestion' 	 =>	'2019',
-            'activa'         => true,
+            'activa'         => false,
             'inicio'         => '2019-08-04',
             'fin' 		     => '2019-12-20',
         ]);
