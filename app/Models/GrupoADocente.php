@@ -107,4 +107,14 @@ class GrupoADocente extends Model
         
         return $estudiantes;
     }
+    
+    public function accesoClase($clase_id){
+        $acceso = false;
+        $clase = Clase::find($clase_id);
+        
+        if($clase && $clase->grupo_docente_id == $this->grupo_docente_id)
+            $acceso = true;
+        
+        return $acceso;
+    }
 }

@@ -84,18 +84,22 @@ class Control extends Base
         
         $activa = FechasInscripciones::fechaActiva();
         if($activa){
-            $clase = Clase::find($clase_id);
+            $grupo_a_docente = GrupoADocente::find($grupo_a_docente_id);
             
-            if($clase->cupoDisponible()){
-                $registro = new EstudianteClase;
-                $registro->clase_id             = $clase_id;
-                $registro->grupo_a_docente_id   = $grupo_a_docente_id;
-                $registro->estudiante_id        = $estudiante->id;
-                $registro->save();
+            if($grupo_a_docente && $grupo_a_docente->accesoClase($clase_id)){
+                $clase = Clase::find($clase_id);
 
-                return response()->json(['exito'=>['Materia añadida correctamente']], 200);
+                if($clase->cupoDisponible()){
+                    $registro = new EstudianteClase;
+                    $registro->clase_id             = $clase_id;
+                    $registro->grupo_a_docente_id   = $grupo_a_docente_id;
+                    $registro->estudiante_id        = $estudiante->id;
+                    $registro->save();
+
+                    return response()->json(['exito'=>['Materia añadida correctamente']], 200);
+                }
+                return response()->json(['error'=>['Horario no disponible, cupos llenos'], 'codigo'=>2], 200);
             }
-            return response()->json(['error'=>['Horario no disponible, cupos llenos'], 'codigo'=>2], 200);
         }
         return response()->json(['error'=>['La fecha para inscripciones de materias ha finalizado'], 'codigo'=>1], 200);
     }
@@ -111,16 +115,20 @@ class Control extends Base
         $inscripcion_activa = FechasInscripciones::fechaActiva();
         if($edicion_activa || $inscripcion_activa){
             if($estudiante->estaInscrito($estudiante_clase_id)){
-                $clase = Clase::find($clase_id);
+                $grupo_a_docente = GrupoADocente::find($grupo_a_docente_id);
             
-                if($clase->cupoDisponibleEstudiante($estudiante->id)){
-                    $registro = EstudianteClase::find($estudiante_clase_id);
-                    $registro->clase_id             = $clase_id;
-                    $registro->grupo_a_docente_id   = $grupo_a_docente_id;
-                    $registro->save();
-                    return response()->json(['exito'=>['Materia editada correctamente.']], 200);
+                if($grupo_a_docente && $grupo_a_docente->accesoClase($clase_id)){
+                    $clase = Clase::find($clase_id);
+            
+                    if($clase->cupoDisponibleEstudiante($estudiante->id)){
+                        $registro = EstudianteClase::find($estudiante_clase_id);
+                        $registro->clase_id             = $clase_id;
+                        $registro->grupo_a_docente_id   = $grupo_a_docente_id;
+                        $registro->save();
+                        return response()->json(['exito'=>['Materia editada correctamente.']], 200);
+                    }
+                    return response()->json(['error'=>['Horario no disponible, cupos llenos']], 200);
                 }
-                return response()->json(['error'=>['Horario no disponible, cupos llenos']], 200);
             }
             return response()->json(['error'=>['No tienes acceso a este registro.']], 200);
         }
