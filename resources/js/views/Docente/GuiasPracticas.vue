@@ -12,141 +12,142 @@
                     </select>
               </div>
             </center>
-            <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
-            <div>
-                <button v-if="materia.tiene_clases"
-                        v-on:click="verAgregarSesion()" class="mb-3 btn btn-primary">
-                    Añadir Semana
-                </button>
-                <p v-else>No se tiene clases disponibles</p>
-            </div>
-            <div v-if="sesiones.length > 0" class="table-responsive">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Semana</th>
-                            <th scope="col">Archivo</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="sesion in sesiones">
-                            <td>{{sesion.semana}}</td>
-                            <td>
-                                <a :href="'/docente/archivos/guia_practica/' + sesion.guia_practica_id" 
-                                   target="_blank" class="btn btn-primary">
-                                   {{sesion.archivo}}
-                                </a>
-                            </td>
-                            <td>
-                                <i v-on:click="mostrarEditar(sesion)"
-                                   class="fas fa-edit clickleable">
-                                </i>
-                                <i v-if="sesion.borrable" 
-                                   v-on:click="mostrarBorrar(sesion)" class="fas fa-trash-alt clickleable">
-                                </i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p v-else>No se ha subido ninguna semana</p>
-            
-            <div class="modal fade" id="modal-agregar-sesion">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Añadir Semana</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+            <div v-if="materia.tiene_clases">
+                <Alertas :key=key_mensajes :mensajes=mensajes :tipo=tipo_mensaje></Alertas>
+                <div>
+                    <button v-on:click="verAgregarSesion()" class="mb-3 btn btn-primary">
+                        Añadir Semana
                     </button>
-                  </div>
-                      <div class="modal-body">
-                        <Alertas :key=key_mensajes_guias 
-                                 :mensajes=mensajes_guias 
-                                 :tipo=tipo_mensaje_guias>
-                        </Alertas>
-                        <p>Añade una nueva semana con su guía práctica de laboratorio</p>
-                        <vue-dropzone ref="subirGuiaPractica"
-                                      id="subirGuiaPractica"
-                                      :options="dropzoneOptionsAgregar"
-                                      v-on:vdropzone-sending="enviarDatosExtraAgregar" 
-                                      v-on:vdropzone-success="subidaExitosaAgregar" 
-                                      v-on:vdropzone-error="subidaErrorAgregar" 
-                                      class="text-center">
-                        </vue-dropzone>
-                      </div>
-
-                      <div class="modal-footer">
-                        <button v-on:click="confirmarSubida()" 
-                                type="button" class="btn btn-primary">
-                            Guardar
-                        </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                      </div>
                 </div>
-              </div>
-            </div>
+                <div v-if="sesiones.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Semana</th>
+                                <th scope="col">Archivo</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="sesion in sesiones">
+                                <td>{{sesion.semana}}</td>
+                                <td>
+                                    <a :href="'/docente/archivos/guia_practica/' + sesion.guia_practica_id" 
+                                       target="_blank" class="btn btn-primary">
+                                       {{sesion.archivo}}
+                                    </a>
+                                </td>
+                                <td>
+                                    <i v-on:click="mostrarEditar(sesion)"
+                                       class="fas fa-edit clickleable">
+                                    </i>
+                                    <i v-if="sesion.borrable" 
+                                       v-on:click="mostrarBorrar(sesion)" class="fas fa-trash-alt clickleable">
+                                    </i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p v-else>No se ha subido ninguna semana</p>
             
-            <div class="modal fade" id="modal-editar-sesion">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Semana {{sesion.semana}}</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                      <div class="modal-body">
-                        <Alertas :key=key_mensajes_guias 
-                                 :mensajes=mensajes_guias 
-                                 :tipo=tipo_mensaje_guias>
-                        </Alertas>
-                        <p>Esta acción reemplazará el archivo de la semana {{sesion.semana}}</p>
-                        <vue-dropzone ref="editarGuiaPractica"
-                                      id="editarGuiaPractica"
-                                      :options="dropzoneOptionsEditar"
-                                      v-on:vdropzone-sending="enviarDatosExtraEditar" 
-                                      v-on:vdropzone-success="subidaExitosaEditar" 
-                                      v-on:vdropzone-error="subidaErrorEditar" 
-                                      class="text-center">
-                        </vue-dropzone>
-                      </div>
-
-                      <div class="modal-footer">
-                        <button v-on:click="confirmarEdicion()" 
-                                type="button" class="btn btn-primary">
-                            Subir y reemplazar
+                <div class="modal fade" id="modal-agregar-sesion">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Añadir Semana</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
                         </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                       </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="modal fade" id="modal-confirmar-borrar-sesion">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Semana {{sesion.semana}}</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                      <div class="modal-body">
-                        ¿Estás seguro de borrar la semana {{sesion.semana}}?
-                      </div>
+                          <div class="modal-body">
+                            <Alertas :key=key_mensajes_guias 
+                                     :mensajes=mensajes_guias 
+                                     :tipo=tipo_mensaje_guias>
+                            </Alertas>
+                            <p>Añade una nueva semana con su guía práctica de laboratorio</p>
+                            <vue-dropzone ref="subirGuiaPractica"
+                                          id="subirGuiaPractica"
+                                          :options="dropzoneOptionsAgregar"
+                                          v-on:vdropzone-sending="enviarDatosExtraAgregar" 
+                                          v-on:vdropzone-success="subidaExitosaAgregar" 
+                                          v-on:vdropzone-error="subidaErrorAgregar" 
+                                          class="text-center">
+                            </vue-dropzone>
+                          </div>
 
-                      <div class="modal-footer">
-                        <button v-on:click="confirmarBorrar()" 
-                                type="button" class="btn btn-primary">
-                            Borrar
-                        </button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                      </div>
+                          <div class="modal-footer">
+                            <button v-on:click="confirmarSubida()" 
+                                    type="button" class="btn btn-primary">
+                                Guardar
+                            </button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                <div class="modal fade" id="modal-editar-sesion">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Semana {{sesion.semana}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                          <div class="modal-body">
+                            <Alertas :key=key_mensajes_guias 
+                                     :mensajes=mensajes_guias 
+                                     :tipo=tipo_mensaje_guias>
+                            </Alertas>
+                            <p>Esta acción reemplazará el archivo de la semana {{sesion.semana}}</p>
+                            <vue-dropzone ref="editarGuiaPractica"
+                                          id="editarGuiaPractica"
+                                          :options="dropzoneOptionsEditar"
+                                          v-on:vdropzone-sending="enviarDatosExtraEditar" 
+                                          v-on:vdropzone-success="subidaExitosaEditar" 
+                                          v-on:vdropzone-error="subidaErrorEditar" 
+                                          class="text-center">
+                            </vue-dropzone>
+                          </div>
+
+                          <div class="modal-footer">
+                            <button v-on:click="confirmarEdicion()" 
+                                    type="button" class="btn btn-primary">
+                                Subir y reemplazar
+                            </button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal fade" id="modal-confirmar-borrar-sesion">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Semana {{sesion.semana}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                          <div class="modal-body">
+                            ¿Estás seguro de borrar la semana {{sesion.semana}}?
+                          </div>
+
+                          <div class="modal-footer">
+                            <button v-on:click="confirmarBorrar()" 
+                                    type="button" class="btn btn-primary">
+                                Borrar
+                            </button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                          </div>
+                    </div>
+                  </div>
+                </div>
             </div>
+            <p v-else>No se tiene clases disponibles</p>
         </div>
         <p v-else>No tienes materias asignadas para la gestión activa</p>
     </div>
