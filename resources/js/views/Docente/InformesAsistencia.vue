@@ -67,7 +67,9 @@
                     </div>
                 </div>
             </div>
+            <p v-else>No tienes materias disponibles</p>
         </div>
+        <p v-else>No tienes gestiones disponibles</p>
     </div>
 </template>
 
