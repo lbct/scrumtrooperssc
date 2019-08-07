@@ -33,14 +33,17 @@
                             <h4>Total de estudiantes: {{estudiantes.length}}</h4>
                             <a :href="'/docente/portafolios/'+materia.id"
                                target="_blank" class="mb-3 btn btn-primary">
+                                <i class="fas fa-download"></i>
                                 Descargar Portafolios
                             </a>
                             <button v-on:click="mostrarFiltrarSIS()"
                                     class="mb-3 btn btn-success">
+                                <i class="fas fa-filter"></i>
                                 Filtrar por Código SIS
                             </button>
                             <button v-on:click="mostrarEstadisticas()"
                                     class="mb-3 btn btn-warning">
+                                <i class="fas fa-chart-pie"></i>
                                 Ver Estadísticas
                             </button>
                         </div>
@@ -55,6 +58,14 @@
                                     <input v-model="busqueda" v-on:keyup="filtrar()"
                                            type="text" class="form-control" placeholder="Nombre del estudiante">
                                 </div>
+                            </div>
+                            <div class="text-right col-12 col-lg-8">
+                                <button v-if="busqueda != '' || texto_codigos_sis!=''"
+                                        v-on:click="limpiarFiltros()"
+                                        class="mb-3 btn btn-info">
+                                    <i class="fas fa-eraser"></i>
+                                    Limpiar Filtros
+                                </button>
                             </div>
                         </div>
 
@@ -340,6 +351,12 @@
                 
                 $('#modal-estadisticas').modal('show');
             },
+            
+            limpiarFiltros(){
+                this.busqueda = '';
+                this.texto_codigos_sis = '';
+                this.confirmarFiltrarSIS();
+            }
         },              
         
         mounted(){
