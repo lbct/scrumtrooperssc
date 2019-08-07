@@ -17,6 +17,13 @@ use Illuminate\Support\Collection;
 
 class Control extends Base
 {
+    public function todos(Request $request){
+        $usuarios = Usuario::select('id as usuario_id', 'nombre', 'apellido', 'correo', 'username')
+                    ->get();
+        
+        return $usuarios;
+    }
+    
     public function informacion(Request $request, $usuario_id){
         $usuario = Usuario::find($usuario_id);
         

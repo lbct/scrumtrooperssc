@@ -121,7 +121,7 @@
                             return usuario.usuario_id == this.usuario.usuario_id;
                         });
                         this.usuarios.splice(index, 1);
-                        this.usuarios_filtrados.splice(this.usuario.index, 1);
+                        this.filtrar();
                         $('#modal-borrar-usuario').modal('hide');
                     });
             }

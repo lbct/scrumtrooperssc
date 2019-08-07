@@ -13,6 +13,7 @@ use App\Models\GrupoDocente;
 use App\Models\GrupoADocente;
 use App\Models\Horario;
 use App\Models\Materia;
+use App\Models\AsignaRol;
 use App\Classes\Gestiones;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Administrador\Base;
@@ -25,8 +26,8 @@ class Control extends Base
         
         $gestion_actual = Gestiones::gestionActiva();
         $datos['numero_materias'] =  Materia::where('gestion_id', '=', $gestion_actual->id)->count();
-        $datos['numero_docentes'] = Docente::count();
-        $datos['numero_estudiantes'] = Estudiante::count();
+        $datos['numero_docentes'] = AsignaRol::where('rol_id', 2)->count();
+        $datos['numero_estudiantes'] = AsignaRol::where('rol_id', 5)->count();
         $datos['numero_aulas'] = Aula::count();
         
         return $datos;

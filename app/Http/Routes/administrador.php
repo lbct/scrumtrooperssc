@@ -43,6 +43,7 @@ Route::put('administrador/usuario', 'Administrador\Usuarios\Control@editar');
 Route::put('administrador/usuario/password', 'Administrador\Usuarios\Control@editarPassword');
 Route::delete('administrador/usuario', 'Administrador\Usuarios\Control@borrar');
 
+Route::get('administrador/usuarios/todos', 'Administrador\Usuarios\Control@todos');
 Route::get('administrador/usuarios/administradores', 'Administrador\Usuarios\Administrador@todos');
 Route::get('administrador/usuarios/docentes', 'Administrador\Usuarios\Docente@todos');
 Route::get('administrador/usuarios/auxiliareslaboratorio', 'Administrador\Usuarios\AuxiliarLaboratorio@todos');

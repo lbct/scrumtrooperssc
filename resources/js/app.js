@@ -69,6 +69,7 @@ import AdministradorMaterias from './views/Administrador/Materias'
 import AdministradorGruposDocentes from './views/Administrador/GruposDocentes'
 import AdministradorClasesGrupoDocente from './views/Administrador/ClasesGrupoDocente'
 import AdministradorClases from './views/Administrador/Clases'
+import AdministradorTodosUsuarios from './views/Administrador/Usuarios/Todos'
 import AdministradorAdministradores from './views/Administrador/Usuarios/Administradores'
 import AdministradorDocentes from './views/Administrador/Usuarios/Docentes'
 import AdministradorAuxiliaresTerminal from './views/Administrador/Usuarios/AuxiliaresTerminal'
@@ -309,6 +310,13 @@ const router = new VueRouter({
             name: 'AdministradorClasesGrupoDocente',
             component: AdministradorClasesGrupoDocente,
             props: true,
+            beforeEnter: requireAuth,
+            meta: {permission: 1,},
+        },
+        {
+            path: '/panel/administrador/Todos',
+            name: 'AdministradorTodosUsuarios',
+            component: AdministradorTodosUsuarios,
             beforeEnter: requireAuth,
             meta: {permission: 1,},
         },

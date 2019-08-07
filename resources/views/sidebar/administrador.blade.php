@@ -89,6 +89,11 @@
                     Estudiantes
                 </router-link>
             </li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'AdministradorTodosUsuarios' }" class="nav-link" data-toggle="offcanvas">
+                    Todos
+                </router-link>
+            </li>
           </ul>
         </div>
     </li>
