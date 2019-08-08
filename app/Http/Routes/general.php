@@ -30,8 +30,14 @@ Route::get('inscripcion/edicion/activa', function (Request $request) {
     return response()->json(['activa'=>$activa], 200);
 });
 
+//Ruta de Registro de Cuenta de Estudiante
 Route::get('registro', 'Registro\Control@vista');
 Route::post('registro', 'Registro\Control@registrar');
+
+//Ruta de informacion About-Us
+Route::get('about', function (Request $request){
+    return view('about');
+});
 
 //Rutas Usuario
 Route::get('usuario', 'Usuario\Control@informacion');

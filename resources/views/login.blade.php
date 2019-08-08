@@ -9,7 +9,7 @@
   {!! csrf_field() !!}
   <div class="wrapper fadeInDown">
     <div id="formContent">
-
+      <br>
       <!-- Icono Usuario -->
       <div class="fadeIn first">
         <img src="{{asset('img/user.svg')}}" id="icon" alt="User Icon" />
