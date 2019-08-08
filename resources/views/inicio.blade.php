@@ -14,8 +14,6 @@
         <div class="container">
             <a class="navbar-brand" href="/">SESLAB</a>
             <a class="navbar-brand navbar-info" href="/about">Info</a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
         </div>
     </nav>
     <div class="content">

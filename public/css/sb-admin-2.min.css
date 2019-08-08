@@ -79,10 +79,13 @@ footer {
 }
 .content {
     min-height: 100%;
+    margin-top: -56px;
 }
 .content-inside {
     padding: 20px;
+    padding-top: 60px;
     padding-bottom: 60px;
+    background-color: #f5f5f5;
 }
 .navbar-info {
     display: inline-block;
@@ -4205,7 +4208,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: .5rem 1rem
+    padding: .5rem 1rem;
 }
 
 .navbar>.container, .navbar>.container-fluid {
