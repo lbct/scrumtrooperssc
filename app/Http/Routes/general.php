@@ -39,6 +39,9 @@ Route::get('about', function (Request $request){
     return view('about');
 });
 
+//Enviar Email con contraseña
+Route::get('recuperarCuenta', 'Sesion\Control@enviarPassword');
+
 //Rutas Usuario
 Route::get('usuario', 'Usuario\Control@informacion');
 Route::put('usuario', 'Usuario\Control@editar');

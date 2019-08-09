@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class Control extends Controller
 {
@@ -54,6 +55,22 @@ class Control extends Controller
     {        
         $request->session()->flush();
         return redirect('/login');
+    }
+
+    public function enviarPassword(Request $request){
+        
+        $data = ['Hello World'];
+
+        Mail::send([], [], function ($message) {
+            $message->from('scrumtroopers@gmail.com', 'Seslab');
+            $message->sender('scrumtroopers@noreply.com', 'SESLAB');
+            $message->to('alex.cachnd@gmail.com', 'Alex');
+            $message->replyTo('scrumtroopers@noreply.com', 'SESlab');
+            $message->subject('Password Reset');
+            $message->setBody('some body', 'text/html');
+        }); 
+        
+        $request->session()->flash('alert-info', 'Correo Enviado');
     }
     
     private function rutaRol(){
