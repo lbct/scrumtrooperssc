@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
         <div class="container">
             <a class="navbar-brand" href="/">SESLAB</a>
-            <a class="navbar-brand navbar-info" href="/about">Info</a>
+            <a class="navbar-brand" href="/about">Info</a>
         </div>
     </nav>
     <div class="content">

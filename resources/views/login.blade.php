@@ -24,7 +24,10 @@
 
       <!-- Registrar Estudiante -->
       <div id="formFooter">
-        <a href="registro">Crear Cuenta?</a>
+        <div class="d-flex justify-content-around">
+            <a href="recuperarCuenta">Recuperar Cuenta?</a>
+            <a href="registro">Crear Cuenta?</a>
+        </div>
       </div>
 
     </div>

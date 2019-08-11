@@ -40,7 +40,8 @@ Route::get('about', function (Request $request){
 });
 
 //Enviar Email con contraseña
-Route::get('recuperarCuenta', 'Sesion\Control@enviarPassword');
+Route::get('recuperarCuenta', 'Sesion\Control@getRecuperarCuenta');
+Route::post('recuperarCuenta', 'Sesion\Control@enviarPassword');
 
 //Rutas Usuario
 Route::get('usuario', 'Usuario\Control@informacion');

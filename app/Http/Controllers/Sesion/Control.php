@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Gregwar\Captcha\CaptchaBuilder;
 use Mail;
 
 class Control extends Controller
@@ -57,10 +58,21 @@ class Control extends Controller
         return redirect('/login');
     }
 
+    //Crea un Captcha y Obtiene la vista del Formulario
+    public function getRecuperarCuenta(Request $request){
+        session_start();
+        $builder = new CaptchaBuilder;
+        $builder->build();
+        $img = $builder->inline();
+        $_SESSION["recuperar_captcha"]=$builder->getPhrase();
+        return view('recuperar')
+                ->with('img', $img);
+    }
+
     public function enviarPassword(Request $request){
         
         $data = ['Hello World'];
-
+        return $data;
         Mail::send([], [], function ($message) {
             $message->from('scrumtroopers@gmail.com', 'Seslab');
             $message->sender('scrumtroopers@noreply.com', 'SESLAB');
