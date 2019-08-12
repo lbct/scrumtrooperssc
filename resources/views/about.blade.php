@@ -113,7 +113,7 @@
                 <div class="carousel-item">
                     <div class="user col-md-8">
                         <div class="user_image">
-                            <img src="img/casco.png" alt="" title="" media-simple="true">
+                            <img src="img/scrumtroopers/William.gif" alt="" title="" media-simple="true">
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
