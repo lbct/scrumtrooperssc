@@ -11,9 +11,9 @@
                     <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-5">Sistema Estudiantil de Sesiones de Laboratorio</h1>
                     <h1 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-3">ScrumTroopers</h1>
                     <p class="mbr-text text-justify pb-3 mbr-fonts-style display-5">
-                        El grupo fue originalmente formado para cursar la materia de Taller de Ingenieria de Software, y 
+                        El grupo fue originalmente formado para cursar la materia de Taller de Ingeniería de Software, y 
                         el Sistema Estudiantil de Sesiones de Laboratorio (<b>SESLAB</b>) fue nuestro proyecto durante la gestión I-2019. 
-                        Luego de haber trabajado en este proyecto por mas de un semestre, cada uno de nosotros, como grupo <b>ScrumTroopers</b> 
+                        Luego de haber trabajado en este proyecto por más de un semestre, cada uno de nosotros, como grupo <b>ScrumTroopers</b> 
                         esperamos que el sistema llegue a ser de alguna utilidad para aquellas personas que lleguen a usarlo.
                     </p>
                     <img src="img/casco.png">
@@ -36,8 +36,8 @@
                                         <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-5">SESLAB</h1>
                                         <p class="mbr-text text-justify pb-3 mbr-fonts-style display-5">
                                             El Sistema Estudiantil de Sesiones de Laboratorio (SESLAB) fue diseñado según los requerimientos dados en la materia
-                                            de Taller de Ingenieria de Software, siendo su objetivo facilitar el control sobre las clases que se realizan en los
-                                            laboratorios de la Facultad de Ciencias y Tecnologia. Manteniendo un registro sobre los trabajos realizados y generando
+                                            de Taller de Ingeniería de Software, siendo su objetivo facilitar el control sobre las clases que se realizan en los
+                                            laboratorios de la Facultad de Ciencias y Tecnología. Manteniendo un registro sobre los trabajos realizados y generando
                                             reportes para los docentes de las materias.
                                         </p>
                                     </div>
@@ -56,7 +56,7 @@
                 <div class="carousel-item">
                     <div class="user col-md-8">
                         <div class="user_image">
-                            <img src="img/AlexCardona.png" alt="" title="" media-simple="true">
+                            <img src="img/scrumtroopers/AlexCardona.png" alt="" title="" media-simple="true">
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
@@ -65,7 +65,7 @@
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
-                            Alex
+                            Alex Cardona
                         </div>
                         <div class="user_desk mbr-light mbr-fonts-style display-7">
                             DEVELOPER
@@ -75,15 +75,16 @@
                 <div class="carousel-item">
                     <div class="user col-md-8">
                         <div class="user_image">
-                            <img src="img/casco.png" alt="" title="" media-simple="true">
+                            <img src="img/scrumtroopers/BernardoCaussin.png" alt="" title="" media-simple="true">
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
-                                ad occasum
+                                Estudiante de Ing. de Sistemas<br>
+                                <a href="mailto:lbct95@gmail.com">lbct95@gmail.com</a>
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
-                            Bernardo 
+                            Bernardo Caussin
                         </div>
                         <div class="user_desk mbr-light mbr-fonts-style display-7">
                             DEVELOPER
@@ -93,15 +94,16 @@
                 <div class="carousel-item active">
                     <div class="user col-md-8">
                         <div class="user_image">
-                            <img src="img/casco.png" alt="" title="" media-simple="true">
+                            <img src="img/scrumtroopers/CesarQuiroga.jpg" alt="" title="" media-simple="true">
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
-                                adsum
+                                Estudiante de Ing. Informática<br>
+                                <a href="mailto:Cesar.A.Quiroga.C@gmail.com">Cesar.A.Quiroga.C@gmail.com</a>
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
-                            Cesar
+                            Cesar Quiroga
                         </div>
                         <div class="user_desk mbr-light mbr-fonts-style display-7">
                             DEVELOPER
@@ -115,11 +117,12 @@
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
-                                esse quam
+                                Estudiante de Ing. Informática<br>
+                                <a href="mailto:WilliamVelasquez890@gmail.com">WilliamVelasquez890@gmail.com</a>
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
-                            William 
+                            William Velasquez
                         </div>
                         <div class="user_desk mbr-light mbr-fonts-style display-7">
                             DEVELOPER
@@ -129,15 +132,16 @@
                 <div class="carousel-item">
                     <div class="user col-md-8">
                         <div class="user_image">
-                            <img src="img/casco.png" alt="" title="" media-simple="true">
+                            <img src="img/scrumtroopers/WilsonAlcocer.jfif" alt="" title="" media-simple="true">
                         </div>
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
-                                videri
+                                Estudiante de Ing. de Sistemas<br>
+                                <a href="mailto:darkhunter.056@gmail.com">darkhunter.056@gmail.com</a>
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
-                            Wilson 
+                            Wilson Alcocer
                         </div>
                         <div class="user_desk mbr-light mbr-fonts-style display-7">
                             DEVELOPER

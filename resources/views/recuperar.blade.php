@@ -15,10 +15,10 @@
                         <h2 class="text-primary">Recuperar Cuenta</h2>
                         <div class="row">
                             <Span class="form-group col-12">En caso de que no te acuerdes tu nombre de usuario o contraseña, 
-                                ingresa el correo que estaba asociado a tu cuenta y te enviaremos tu datos.<br>
+                                ingresa el correo que estaba asociado a tu cuenta y te enviaremos tus datos.<br>
                                 <br>
                                 <b>Advertencia!</b>
-                                Esta opcion cambiara tu contraseña actual.
+                                Esta opción cambiara tu contraseña actual.
                             </Span>
                         </div>
                         <div class="row">
