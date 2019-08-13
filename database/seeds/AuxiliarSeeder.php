@@ -9,22 +9,22 @@ class AuxiliarSeeder extends Seeder
     {
         //ID = 1
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	5,
+        	'usuario_id' 		=>	5,
         ]);
         
         //ID = 2
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	6,
+        	'usuario_id' 		=>	6,
         ]);
         
         //ID = 3
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	7,
+        	'usuario_id' 		=>	7,
         ]);
         
         //ID = 4
         Auxiliar::create([
-        	'USUARIO_ID' 		=>	8,
+        	'usuario_id' 		=>	8,
         ]);
     }
 }

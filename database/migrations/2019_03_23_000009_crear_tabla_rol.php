@@ -7,18 +7,18 @@ class CrearTablaRol extends Migration
 {
     public function up()
     {
-        Schema::create('ROL', function (Blueprint $table) {
+        Schema::create('rol', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('DESCRIPCION', 255);
+            $table->string('descripcion', 255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('ROL');
+        Schema::drop('rol');
     }
 }

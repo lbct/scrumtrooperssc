@@ -8,71 +8,71 @@ class FuncionSeeder extends Seeder
     public function run()
     {
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Administrador',
+        	'descripcion' 		=>	'Añadir Administrador',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Administrador',
+        	'descripcion' 		=>	'Editar Administrador',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Administrador',
+        	'descripcion' 		=>	'Borrar Administrador',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Gestión',
+        	'descripcion' 		=>	'Añadir Gestión',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Gestión',
+        	'descripcion' 		=>	'Editar Gestión',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Gestión',
+        	'descripcion' 		=>	'Borrar Gestión',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Docente',
+        	'descripcion' 		=>	'Añadir Docente',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Docente',
+        	'descripcion' 		=>	'Editar Docente',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Docente',
+        	'descripcion' 		=>	'Borrar Docente',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Auxiliar De Laboratorio',
+        	'descripcion' 		=>	'Añadir Auxiliar De Laboratorio',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Auxiliar De Laboratorio',
+        	'descripcion' 		=>	'Editar Auxiliar De Laboratorio',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Auxiliar De Laboratorio',
+        	'descripcion' 		=>	'Borrar Auxiliar De Laboratorio',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Añadir Auxiliar De Terminal',
+        	'descripcion' 		=>	'Añadir Auxiliar De Terminal',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Auxiliar De Terminal',
+        	'descripcion' 		=>	'Editar Auxiliar De Terminal',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Auxiliar De Terminal',
+        	'descripcion' 		=>	'Borrar Auxiliar De Terminal',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Editar Estudiante',
+        	'descripcion' 		=>	'Editar Estudiante',
         ]);
         
         Funcion::create([
-        	'DESCRIPCION' 		=>	'Borrar Estudiante',
+        	'descripcion' 		=>	'Borrar Estudiante',
         ]);
     }
 }

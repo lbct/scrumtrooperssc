@@ -7,29 +7,30 @@ class CrearTablaClase extends Migration
 {
     public function up()
     {
-        Schema::create('CLASE', function (Blueprint $table) {
+        Schema::create('clase', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
-            $table->integer('GESTION_ID')->unsigned();
-            $table->integer('AULA_ID')->unsigned();
-            $table->integer('HORARIO_ID')->unsigned();
-            $table->integer('GRUPO_A_DOCENTE_ID')->unsigned();
+            $table->increments('id');
+            $table->integer('gestion_id')->unsigned();
+            $table->integer('aula_id')->unsigned();
+            $table->integer('horario_id')->unsigned();
+            $table->integer('grupo_docente_id')->unsigned();
             
-            $table->string('DETALLE_CLASE',255);
-            $table->tinyInteger('DIA');
-            $table->tinyInteger('SEMANA_ACTUAL_SESION');
+            $table->tinyInteger('dia');
+            $table->tinyInteger('semana_actual_sesion')->default(0);
             $table->timestamps();
             
-            $table->foreign('GESTION_ID')->references('ID')->on('GESTION')->onDelete('cascade');
-            $table->foreign('AULA_ID')->references('ID')->on('AULA')->onDelete('cascade');
-            $table->foreign('HORARIO_ID')->references('ID')->on('HORARIO')->onDelete('cascade');
-            $table->foreign('GRUPO_A_DOCENTE_ID')->references('ID')->on('GRUPO_A_DOCENTE')->onDelete('cascade');
+            $table->foreign('gestion_id')->references('id')->on('gestion')->onDelete('cascade');
+            $table->foreign('aula_id')->references('id')->on('aula')->onDelete('cascade');
+            $table->foreign('horario_id')->references('id')->on('horario')->onDelete('cascade');
+            $table->foreign('grupo_docente_id')->references('id')->on('grupo_docente')->onDelete('cascade');
+            
+            $table->unique(['gestion_id', 'aula_id', 'horario_id', 'dia']);
         });
     }
 
     public function down()
     {
-        Schema::drop('CLASE');
+        Schema::drop('clase');
     }
 }

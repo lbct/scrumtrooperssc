@@ -7,23 +7,23 @@ class CrearTablaUsuario extends Migration
 {
     public function up()
     {
-        Schema::create('USUARIO', function (Blueprint $table) {
+        Schema::create('usuario', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('USERNAME', 30)->unique();;
-            $table->string('PASSWORD', 100);
+            $table->string('username', 63)->unique();;
+            $table->string('password', 100);
             
-            $table->string('NOMBRE', 100);
-            $table->string('APELLIDO', 100);
-            $table->string('CORREO', 255);
+            $table->string('nombre', 100);
+            $table->string('apellido', 100);
+            $table->string('correo', 255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('USUARIO');
+        Schema::drop('usuario');
     }
 }

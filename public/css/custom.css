@@ -1,0 +1,120 @@
+.clickleable { 
+    cursor: pointer !important; 
+}
+
+.custom-td {
+    margin: 0px;
+    padding: 15px;
+    line-height: 2;
+    margin-top: 10px;
+    border-radius: 15px;
+    box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -webkit-box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -moz-box-shadow: 4px 8px 9px -2px #c7c5d8;
+    -ms-box-shadow: 4px 8px 9px -2px #c7c5d8;
+}
+
+.nav_title {
+    text-align: center;
+    color: #9E9E9E;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.table-responsive {
+    background-color: #efefef !important;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #d3d3d7;
+    cursor: default;
+}
+
+.table-secondary,
+.table-secondary > th,
+.table-secondary > td {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+    font-weight: bold;
+}
+
+.card-title{
+    font-weight: bold !important;
+}
+
+.card-min{
+    min-height: 150px !important; 
+}
+
+.td-rojo{
+    background-color: #ffcdd2;
+}
+
+.td-rojo:hover{
+    background-color: #ef9a9a;
+}
+
+.td-violeta{
+    background-color: #D1C4E9;
+}
+
+.td-violeta:hover{
+    background-color: #B39DDB;
+}
+
+.td-azul{
+    background-color: #BBDEFB;
+}
+
+.td-azul:hover{
+    background-color: #90CAF9;
+}
+
+.td-verde-1{
+    background-color: #DCEDC8;
+}
+
+.td-verde-1:hover{
+    background-color: #C5E1A5;
+}
+
+.td-verde-2{
+    background-color: #C8E6C9;
+}
+
+.td-verde-2:hover{
+    background-color: #A5D6A7;
+}
+
+.td-naranja-1{
+    background-color: #FFCCBC;
+}
+
+.td-naranja-1:hover{
+    background-color: #FFAB91;
+}
+
+.td-gris-1{
+    background-color: #E0E0E0;
+}
+
+.td-gris-1:hover{
+    background-color: #BDBDBD;
+}
+
+.td-gris-2{
+    background-color: #CFD8DC;
+}
+
+.td-gris-2:hover{
+    background-color: #B0BEC5;
+}
+
+.td-gris-3{
+    background-color: #EEEEEE;
+}
+
+.td-gris-3:hover{
+    background-color: #E0E0E0;
+}

@@ -7,18 +7,18 @@ class CrearTablaFuncion extends Migration
 {
     public function up()
     {
-        Schema::create('FUNCION', function (Blueprint $table) {
+        Schema::create('funcion', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('DESCRIPCION', 255);
+            $table->string('descripcion', 255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('FUNCION');
+        Schema::drop('funcion');
     }
 }

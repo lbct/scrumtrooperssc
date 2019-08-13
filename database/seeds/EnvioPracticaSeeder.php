@@ -7,5 +7,6 @@ class EnvioPracticaSeeder extends Seeder
 {
     public function run()
     {
+        include 'poblacion/EnvioPracticaSeeder.php';
     }
 }

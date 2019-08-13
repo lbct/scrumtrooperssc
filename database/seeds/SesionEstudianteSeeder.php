@@ -7,5 +7,6 @@ class SesionEstudianteSeeder extends Seeder
 {
     public function run()
     {
+        include 'poblacion/SesionEstudianteSeeder.php';
     }
 }

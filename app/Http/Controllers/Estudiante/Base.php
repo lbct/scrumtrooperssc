@@ -1,15 +1,13 @@
 <?php
 namespace App\Http\Controllers\Estudiante;
 
-use App\Classes\Rol;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class Base extends Controller
 {
-    protected $rol;
-    
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $this->rol = new Rol('estudiante');
+        $this->middleware('SesionAutorizado:5'); //:5 Estudiante
     }
 }

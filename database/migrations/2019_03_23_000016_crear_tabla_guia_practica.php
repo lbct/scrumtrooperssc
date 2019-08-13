@@ -7,19 +7,18 @@ class CrearTablaGuiaPractica extends Migration
 {
     public function up()
     {
-        Schema::create('GUIA_PRACTICA', function (Blueprint $table) {
+        Schema::create('guia_practica', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             
-            $table->increments('ID');
+            $table->increments('id');
             
-            $table->string('ARCHIVO',255);
-            $table->string('DETALLE',255);
+            $table->string('archivo',255);
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::drop('GUIA_PRACTICA');
+        Schema::drop('guia_practica');
     }
 }

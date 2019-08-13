@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Funcion extends Model
 {
-    protected $primaryKey = 'ID';
-    protected $table = 'FUNCION';
+    protected $primaryKey = 'id';
+    protected $table = 'funcion';
     
     public function asignaFuncion()
     {
-        return $this->hasMany('App\Models\AsignaFuncion', 'FUNCION_ID', 'ID');
+        return $this->hasMany('App\Models\AsignaFuncion', 'funcion_id', 'id');
     }
 }
