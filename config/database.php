@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,9 +67,9 @@ return [
         'pgsql' => [
             'driver'   => 'pgsql',
             'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'scrumtroopers_db'),
-            'username' => env('DB_USERNAME', 'scrumtroopers'),
-            'password' => env('DB_PASSWORD', 'uBsn4O%=X5$j->z'),
+            'database' => env('DB_DATABASE', 'seslab'),
+            'username' => env('DB_USERNAME', 'seslab'),
+            'password' => env('DB_PASSWORD', '.ses.lab.20.19.'),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
