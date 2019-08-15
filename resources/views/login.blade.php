@@ -9,7 +9,7 @@
   {!! csrf_field() !!}
   <div class="wrapper fadeInDown">
     <div id="formContent">
-
+      <br>
       <!-- Icono Usuario -->
       <div class="fadeIn first">
         <img src="{{asset('img/user.svg')}}" id="icon" alt="User Icon" />
@@ -24,7 +24,10 @@
 
       <!-- Registrar Estudiante -->
       <div id="formFooter">
-        <a href="registro">Crear Cuenta?</a>
+        <div class="d-flex justify-content-around">
+            <a href="recuperarCuenta">Recuperar Cuenta?</a>
+            <a href="registro">Crear Cuenta?</a>
+        </div>
       </div>
 
     </div>

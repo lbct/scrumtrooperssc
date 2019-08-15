@@ -1,0 +1,120 @@
+.parrafo {
+    padding-top: 135px;
+    padding-bottom: 90px;
+    background: #f2f2f2;
+    border-radius: 100%;
+  }
+  .parrafo H1 {
+    color: #232323;
+  }
+  .parrafo P {
+    color: #232323;
+  }
+  .parrafo H3 {
+    color: #232323;
+  }
+
+  .parrafo2 {
+    padding-top: 90px;
+    padding-bottom: 90px;
+    background: #f2f2f2;
+    border-radius: 100%;
+  }
+  .parrafo2 H1 {
+    color: #232323;
+  }
+  .parrafo2 P {
+    color: #232323;
+  }
+
+
+  .imagen {
+    padding-top: 135px;
+    padding-bottom: 135px;
+    
+    background-color: #f2f2f2 ;
+    background-image: url(../img/fcyt.jpg); 
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center; 
+  }
+
+
+.integrantes {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #f2f2f2;
+  }
+  .integrantes .carousel-item {
+    justify-content: center;
+  }
+  .integrantes .carousel-item.active,
+  .integrantes .carousel-item-next,  
+  .integrantes .carousel-item-prev {
+    display: flex;
+  }
+  .integrantes .carousel-controls a {
+    transition: opacity .5s;
+    font-size: 2rem;
+  }
+  .integrantes .carousel-controls a span {
+    position: absolute;
+    padding: 5px;
+    border-radius: 50%;
+    width:40px;
+    height:40px;
+    color: #272727;
+    background: #f2f2f2;
+    opacity: .5;
+  }
+  .integrantes .carousel-controls a:hover span {
+    opacity: 2;
+  }
+  .integrantes .user_image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1.6rem;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 2rem auto;
+  }
+  .integrantes .user_image img {
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  @media (max-width: 230px) {
+    .integrantes .user_image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  
+  .contacto {
+    padding-bottom: 90px;
+    background-color: #f2f2f2;
+  }
+  .contacto .title {
+    margin-bottom: 2rem;
+  }
+  .contacto .mbr-section-subtitle {
+    color: #767676;
+  }
+  .contacto a:not([href]):not([tabindex]) {
+    color: #fff;
+    border-radius: 3px;
+  }
+  .contacto a.btn-white:not([href]):not([tabindex]) {
+    color: #333;
+  }
+  .contacto .multi-horizontal {
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    max-width: 100%;
+  }
+  .contacto .input-group-btn {
+    display: block;
+    text-align: center;
+  }

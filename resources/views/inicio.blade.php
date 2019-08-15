@@ -13,17 +13,17 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
         <div class="container">
             <a class="navbar-brand" href="/">SESLAB</a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            </div>
+            <a class="navbar-brand" href="/about">Info</a>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
+    <div class="content">
+        <div class="content-inside">
             <div class="col-lg-12 text-center">
                 @yield('main-content')
             </div>
         </div>
     </div>
+    @include('footer')
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 </body>
