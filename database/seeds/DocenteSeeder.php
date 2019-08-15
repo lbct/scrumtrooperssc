@@ -7,7 +7,7 @@ class DocenteSeeder extends Seeder
 {
     public function run()
     {
-        Docente::create([
+        /*Docente::create([
         	'usuario_id' 		=>	2,
         ]);
         
@@ -17,6 +17,6 @@ class DocenteSeeder extends Seeder
         
         Docente::create([
         	'usuario_id' 		=>	4,
-        ]);
+        ]);*/
     }
 }

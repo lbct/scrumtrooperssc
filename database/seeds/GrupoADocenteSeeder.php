@@ -8,7 +8,7 @@ class GrupoADocenteSeeder extends Seeder
     public function run()
     {
         //Introducción a la programación
-        GrupoADocente::create([
+        /*GrupoADocente::create([
             'docente_id' 		        =>	1,
             'grupo_docente_id' 	        =>	1,
         ]);
@@ -21,6 +21,6 @@ class GrupoADocenteSeeder extends Seeder
         GrupoADocente::create([
             'docente_id' 		        =>	3,
             'grupo_docente_id' 	        =>	1,
-        ]);
+        ]);*/
     }
 }

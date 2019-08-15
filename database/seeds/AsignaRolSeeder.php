@@ -12,7 +12,7 @@ class AsignaRolSeeder extends Seeder
         	'usuario_id' 		=>	1,
             'rol_id' 		    =>	1,
         ]);
-        
+        /*
         //Docentes
         AsignaRol::create([
         	'usuario_id' 		=>	2,
@@ -52,6 +52,6 @@ class AsignaRolSeeder extends Seeder
         ]);
         
         //Estudiantes
-        include 'poblacion/AsignaRolSeeder.php';
+        include 'poblacion/AsignaRolSeeder.php';*/
     }
 }

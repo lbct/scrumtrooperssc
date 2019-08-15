@@ -7,7 +7,7 @@ class GestionSeeder extends Seeder
 {
     public function run()
     {
-        Gestion::create([
+        /*Gestion::create([
         	'periodo_id' 	 =>	1,
             'anho_gestion' 	 =>	'2019',
             'activa'         => true,
@@ -21,6 +21,6 @@ class GestionSeeder extends Seeder
             'activa'         => false,
             'inicio'         => '2019-08-04',
             'fin' 		     => '2019-12-20',
-        ]);
+        ]);*/
     }
 }
