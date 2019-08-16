@@ -10,13 +10,13 @@ class UsuarioSeeder extends Seeder
     {
         //Administrador BernardoAdmin ID = 0
         Usuario::create([
-        	'username' 		    =>	'BernardoCaussin',
-        	'password'		    =>	Hash::make('texto'),
-        	'nombre'			=>	'Bernardo',
-            'apellido'			=>	'Caussin',
-            'correo'			=>	'bernardo.caussin@umss.edu.bo',
+        	'username' 		    =>	'admin',
+        	'password'		    =>	Hash::make('L(*qzF0p'),
+        	'nombre'			=>	'Administrador',
+            'apellido'			=>	'',
+            'correo'			=>	'scrumtrooperssc@gmail.com',
         ]);
-        
+        /*
         //Docente VladimirCostas ID = 2
         Usuario::create([
         	'username' 		    =>	'VladimirCostas',
@@ -80,8 +80,8 @@ class UsuarioSeeder extends Seeder
             'apellido'			=>	'Alcocer',
             'correo'			=>	'wilson.alcocer@gmail.com',
         ]);
-        
+        */
         //Estudiantes ID = 9
-        include 'poblacion/UsuarioSeeder.php';
+        //include 'poblacion/UsuarioSeeder.php';
     }
 }

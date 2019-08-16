@@ -7,7 +7,7 @@ class GuiaPracticaSeeder extends Seeder
 {
     public function run()
     {
-        GuiaPractica::create([
+        /*GuiaPractica::create([
         	'archivo' 		        =>	'guia_practica.pdf',
         ]);
         
@@ -65,6 +65,6 @@ class GuiaPracticaSeeder extends Seeder
         
         GuiaPractica::create([
         	'archivo' 		        =>	'guia_practica.pdf',
-        ]);
+        ]);*/
     }
 }

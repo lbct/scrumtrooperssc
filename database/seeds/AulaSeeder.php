@@ -7,7 +7,7 @@ class AulaSeeder extends Seeder
 {
     public function run()
     {
-        Aula::create([
+        /*Aula::create([
         'codigo_aula' 		        =>	'CSLAB001',
         'nombre_aula' 	            =>	'LAB001',
         'capacidad_aula' 	        =>	35,
@@ -23,6 +23,6 @@ class AulaSeeder extends Seeder
         'codigo_aula' 		        =>	'CSLAB003',
         'nombre_aula' 	            =>	'LAB003',
         'capacidad_aula' 	        =>	35,
-        ]);
+        ]);*/
     }
 }

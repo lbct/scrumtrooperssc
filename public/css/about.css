@@ -100,7 +100,7 @@
     margin-bottom: 2rem;
   }
   .contacto .mbr-section-subtitle {
-    color: #767676;
+    color: #232323;
   }
   .contacto a:not([href]):not([tabindex]) {
     color: #fff;
@@ -117,4 +117,8 @@
   .contacto .input-group-btn {
     display: block;
     text-align: center;
+  }
+
+  .contacto H2 {
+    color: #232323;
   }

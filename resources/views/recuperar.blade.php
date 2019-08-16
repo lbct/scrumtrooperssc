@@ -3,7 +3,7 @@
 <link href="{{asset('/css/form.css')}}" rel="stylesheet" id="bootstrap-css">
 @extends('inicio')
 @section('main-content')
-<form method="POST" action="/recuperarCuenta">
+<form id="form" method="POST" action="/recuperarCuenta">
     {!! csrf_field() !!}
     @include('alertas')
     <div class="wrapper fadeInDown">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-12">
-                                <input type="email" name="correo" id="email" class="form-control input-lg" placeholder="Email" tabindex="4" value="{{ old('correo') }}">
+                                <input type="email" name="correo" id="correo" class="form-control input-lg" placeholder="Email" tabindex="4" value="{{ old('correo') }}">
                             </div>
                             <div class="form-group col-12 col-md-6">
                                 <img src="{{$img}}">
@@ -38,7 +38,7 @@
                                 <input type="button" class="btn-primary" value="Volver" onclick="window.location='/'" tabindex="7" />
                             </div>
                             <div class="form-group form-group col-12 col-md-6">
-                                <input type="submit" class="btn btn-primary" value="Enviar Contraseña" tabindex="8">
+                                <input id="btnSubmit" type="submit" class="btn btn-primary" value="Enviar Contraseña" tabindex="8" onclick="submitForm()">
                             </div>
                         </div>
                     </form>
@@ -47,4 +47,10 @@
         </div>
     </div>
 </form>
+<script>
+    function submitForm() {
+        $("#btnSubmit").attr("disabled", true);
+        $("#form").submit();
+    }
+</script>
 @endsection
