@@ -8,15 +8,15 @@
         <div class="container">
             <div class="row justify-content-md-center">
                 <div class="mbr-white col-md-10">
-                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style display-5">Sistema Estudiantil de Sesiones de Laboratorio</h1>
-                    <h1 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-3">ScrumTroopers</h1>
+                    <h1 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style">Sistema Estudiantil de Sesiones de Laboratorio</h1>
+                    <img src="img/ScrumtroopersSoloLetras.png" style="height: auto; width: 100%;">
                     <p class="mbr-text text-justify pb-3 mbr-fonts-style display-5">
                         El grupo fue originalmente formado para cursar la materia de Taller de Ingeniería de Software, y 
                         el Sistema Estudiantil de Sesiones de Laboratorio (<b>SESLAB</b>) fue nuestro proyecto durante la gestión I-2019. 
                         Luego de haber trabajado en este proyecto por más de un semestre, cada uno de nosotros, como grupo <b>ScrumTroopers</b> 
                         esperamos que el sistema llegue a ser de alguna utilidad para aquellas personas que lleguen a usarlo.
                     </p>
-                    <img src="img/casco.png">
+                    <img src="img/ScrumtroopersLogoCasco.png" style="height: 150px; width: 137px; padding: 10px">
                     <div class="mbr-section-btn align-center">
                         <a class="btn btn-md btn-black-outline display-4 btn-primary" href="#form1-4">CONTACTO</a>
                     </div>
@@ -118,7 +118,7 @@
                         <div class="user_text pb-3">
                             <p class="mbr-fonts-style display-7">
                                 Estudiante de Ing. Informática<br>
-                                <a href="mailto:WilliamVelasquez890@gmail.com">WilliamVelasquez890@gmail.com</a>
+                                <a href="mailto:William18_z95@icloud.com">William18_z95@icloud.com</a>
                             </p>
                         </div>
                         <div class="user_name mbr-bold pb-2 mbr-fonts-style display-7">
@@ -169,7 +169,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="title col-12 col-lg-8">
-                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-3">CONTACTO</h2>
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style" style="font-size:4vmax">CONTACTO</h2>
             </div>
         </div>
     </div>
