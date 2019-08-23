@@ -121,7 +121,7 @@
             </form>
           </div>
         </div>
-        <p v-else>La fecha para inscripciones de materias ha finalizado</p>
+        <p v-else>Gracias por registrarte, en estos momentos no se encuentra disponible la inscripción, su docente les informará al respecto.</p>
     </div>
 </template>
 
