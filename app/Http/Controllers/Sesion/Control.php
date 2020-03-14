@@ -31,7 +31,7 @@ class Control extends Controller
         
         if(!$validator->fails()) {
             //Busca del usuario
-            $usuario  = Usuario::where('username',($request->username))->first();
+            $usuario  = Usuario::where('username', trim($request->username))->first();
             $password = $request->password;
             
             if( $usuario!==null && $usuario->revisarPassword($password) )
@@ -134,7 +134,7 @@ class Control extends Controller
     */
     private function random_str(
         int $length = 64,
-        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyz'
     ): string {
         if ($length < 1) {
             throw new \RangeException("Length must be a positive integer");

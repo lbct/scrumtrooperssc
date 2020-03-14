@@ -16,6 +16,12 @@
                         Luego de haber trabajado en este proyecto por más de un semestre, cada uno de nosotros, como grupo <b>ScrumTroopers</b> 
                         esperamos que el sistema llegue a ser de alguna utilidad para aquellas personas que lleguen a usarlo.
                     </p>
+                    <br>
+                    <h2 class="mbr-section-title align-center mbr-bold pb-3 mbr-fonts-style">Agradecimiento especial</h2>
+                    <p class="mbr-text text-justify pb-3 mbr-fonts-style display-5">
+                    Queremos dar las gracias a nuestra docente <b>Mgtr. Maria Leticia Blanco Coca</b> por darnos la oportunidad de realizar este sistema, 
+                    para ayudar a los estudiantes y auxiliares de las carreras de ingeniería informática e ingeniería de sistemas.
+                    </p>
                     <img src="img/ScrumtroopersLogoCasco.png" style="height: 150px; width: 137px; padding: 10px">
                     <div class="mbr-section-btn align-center">
                         <a class="btn btn-md btn-black-outline display-4 btn-primary" href="#form1-4">CONTACTO</a>

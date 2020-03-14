@@ -105,12 +105,20 @@ class Control extends Base
                                    $codigo_sis.' - '.
                                    $estudiante['nombre'].'/'.
                                    $num_semana.' - '.
-                                   $asistencia.' - '.
-                                   $semana['comentario_auxiliar'].'/'.
+                                   $asistencia.'/'.
                                    $en_lab.'/'.
                                    $practica['archivo'];
                         
+                        $comentario = 'portafolios/'.
+                                    $grupo_a_docente->id.'/'.
+                                    $codigo_sis.' - '.
+                                    $estudiante['nombre'].'/'.
+                                    $num_semana.' - '.
+                                    $asistencia.'/comentario_auxiliar.txt';
+
                         Storage::copy($origen, $destino);
+                        Storage::put($comentario, $semana['comentario_auxiliar']);
+                        
                     }
                 }
             }
@@ -206,12 +214,19 @@ class Control extends Base
                                    $codigo_sis.' - '.
                                    $estudiante['nombre'].'/'.
                                    $num_semana.' - '.
-                                   $asistencia.' - '.
-                                   $semana['comentario_auxiliar'].'/'.
+                                   $asistencia.'/'.
                                    $en_lab.'/'.
                                    $practica['archivo'];
                         
-                        Storage::copy($origen, $destino);       
+                        $comentario = 'portafoliosEstudiantes/'.
+                                    $estudiante_clase_id.'/'.
+                                    $codigo_sis.' - '.
+                                    $estudiante['nombre'].'/'.
+                                    $num_semana.' - '.
+                                    $asistencia.'/comentario_auxiliar.txt';
+
+                        Storage::copy($origen, $destino);
+                        Storage::put($comentario, $semana['comentario_auxiliar']);       
                     }
                 }
             }

@@ -57,7 +57,7 @@ class Control extends Controller
                 if(!$cuenta_creada && !$sis_creado)
                 {
                     $usuario = new Usuario();
-                    $usuario->username          = $request->username;
+                    $usuario->username          = trim($request->username);
                     $usuario->password          = Hash::make($request->password);
                     $usuario->nombre            = $request->nombre;
                     $usuario->apellido          = $request->apellido;
